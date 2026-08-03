@@ -1,0 +1,2653 @@
+units           real
+atom_style      full
+boundary        p p p
+
+pair_style      lj/cut 12.500
+bond_style      harmonic
+angle_style     hybrid fourier cosine/periodic
+dihedral_style  harmonic
+improper_style  fourier
+
+pair_modify     tail yes mix arithmetic
+dielectric      1.0
+special_bonds   lj/coul 0.0 0.0 1.0
+box tilt        large
+
+The 'box' command has been removed and will be ignored
+
+read_data       data.ZIF8_closed
+Reading data file ...
+  triclinic box = (0 0 0) to (33.982 33.982 33.982) with tilt (0 0 0)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  2208 atoms
+  scanning bonds ...
+  3 = max bonds/atom
+  scanning angles ...
+  6 = max angles/atom
+  scanning dihedrals ...
+  14 = max dihedrals/atom
+  scanning impropers ...
+  4 = max impropers/atom
+  triclinic box = (0 0 0) to (33.982 33.982 33.982) with tilt (0 0 0)
+  1 by 1 by 1 MPI processor grid
+  reading bonds ...
+  2496 bonds
+  reading angles ...
+  4608 angles
+  reading dihedrals ...
+  4992 dihedrals
+  reading impropers ...
+  2880 impropers
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        0        1       
+  special bond factors coul:  0        0        1       
+     4 = max # of 1-2 neighbors
+     8 = max # of 1-3 neighbors
+    12 = max # of special neighbors
+  special bonds CPU = 0.001 seconds
+  read_data CPU = 0.052 seconds
+
+#### Atom Groupings ####
+group           fram     id   1:2208
+2208 atoms in group fram
+#### END Atom Groupings ####
+
+min_style       cg
+print           "MinStep,CellMinStep,AtomMinStep,FinalStep,Energy,EDiff" file ZIF8_closed.min.csv screen no
+variable        min_eval   equal 1.00e-06
+variable        prev_E     equal 50000.00
+variable        iter       loop 100000
+label           loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 14.5
+  ghost atom cutoff = 14.5
+  binsize = 7.25, bins = 5 5 5
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton/tri
+      stencil: half/bin/3d/tri
+      bin: standard
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19 | 19 | 19 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   0             -1637.076       15338.204      13701.128      42154.403      39241.609    
+       389   0             -1751.4206      7403.5968      5652.1762      46.751663      37127.544    
+Loop time of 8.49764 on 1 procs for 389 steps with 2208 atoms
+
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      13701.1275646687   5652.17618333708   5652.17618333708
+  Force two-norm initial, final = 42010.434 56.715421
+  Force max component initial, final = 24265.188 38.522753
+  Final line search alpha, max atom move = 3.3318993e-12 1.2835393e-10
+  Iterations, force evaluations = 389 815
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 7.777      | 7.777      | 7.777      |   0.0 | 91.52
+Bond    | 0.46843    | 0.46843    | 0.46843    |   0.0 |  5.51
+Neigh   | 0.11441    | 0.11441    | 0.11441    |   0.0 |  1.35
+Comm    | 0.034402   | 0.034402   | 0.034402   |   0.0 |  0.40
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.1034     |            |       |  1.22
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         834512 ave      834512 max      834512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 834512
+Ave neighs/atom = 377.94928
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 4
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 389
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 389
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+       389   0             -1751.4206      7403.5968      5652.1762      46.751663    
+      7829   2.3573999e-10 -1781.6544      7404.0954      5622.441      -1430.6325    
+Loop time of 73.6559 on 1 procs for 7440 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5652.17618333708   5622.44101163657   5622.44101163657
+  Force two-norm initial, final = 30.153281 0.00016623514
+  Force max component initial, final = 1.2480007 6.9313757e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 7440 7772
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 69.258     | 69.258     | 69.258     |   0.0 | 94.03
+Bond    | 3.8074     | 3.8074     | 3.8074     |   0.0 |  5.17
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.31364    | 0.31364    | 0.31364    |   0.0 |  0.43
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.2767     |            |       |  0.38
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11200 ave       11200 max       11200 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         835896 ave      835896 max      835896 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 835896
+Ave neighs/atom = 378.57609
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 7829
+variable        temppe     equal $(pe)
+variable        temppe     equal 5622.4410116365697831
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(50000-${temppe})
+variable        min_E      equal abs(50000-5622.44101163657)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5622.44101163657
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+      7829   2.3573999e-10 -1781.6544      7404.0954      5622.441      -1430.6325      37127.544    
+      7860   2.3573999e-10 -1784.3977      7403.886       5619.4883     -6.6382639      36873.937    
+Loop time of 1.06308 on 1 procs for 31 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5622.44101163659   5619.48832916474   5619.48832916474
+  Force two-norm initial, final = 1345.9205 16.054311
+  Force max component initial, final = 861.27132 9.15568
+  Final line search alpha, max atom move = 3.2550638e-11 2.9802322e-10
+  Iterations, force evaluations = 31 111
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.99082    | 0.99082    | 0.99082    |   0.0 | 93.20
+Bond    | 0.05769    | 0.05769    | 0.05769    |   0.0 |  5.43
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0036808  | 0.0036808  | 0.0036808  |   0.0 |  0.35
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.01089    |            |       |  1.02
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11120 ave       11120 max       11120 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         835976 ave      835976 max      835976 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 835976
+Ave neighs/atom = 378.61232
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 7860
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 7860
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+      7860   0             -1784.3977      7403.886       5619.4883     -6.6382639    
+     10671   1.1902245e-10 -1787.5015      7406.2299      5618.7284     -526.96278    
+Loop time of 27.9323 on 1 procs for 2811 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5619.48832916475   5618.72840288258   5618.72840288258
+  Force two-norm initial, final = 8.7706655 0.00029261758
+  Force max component initial, final = 0.3611053 9.4366847e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 2811 2942
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 26.284     | 26.284     | 26.284     |   0.0 | 94.10
+Bond    | 1.4275     | 1.4275     | 1.4275     |   0.0 |  5.11
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.11789    | 0.11789    | 0.11789    |   0.0 |  0.42
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.1031     |            |       |  0.37
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         842240 ave      842240 max      842240 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 842240
+Ave neighs/atom = 381.44928
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 10671
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.7284028825815767
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5622.44101163657-${temppe})
+variable        min_E      equal abs(5622.44101163657-5618.72840288258)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.72840288258
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     10671   1.1902245e-10 -1787.5015      7406.2299      5618.7284     -526.96278      36873.937    
+     10691   1.1902245e-10 -1787.2115      7405.6378      5618.4263     -14.430687      36817.477    
+Loop time of 0.929595 on 1 procs for 20 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.72840288258   5618.42625867649   5618.42625867649
+  Force two-norm initial, final = 499.24919 16.815772
+  Force max component initial, final = 357.83225 13.854095
+  Final line search alpha, max atom move = 2.6084272e-11 3.6137399e-10
+  Iterations, force evaluations = 20 95
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.86535    | 0.86535    | 0.86535    |   0.0 | 93.09
+Bond    | 0.051155   | 0.051155   | 0.051155   |   0.0 |  5.50
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0033729  | 0.0033729  | 0.0033729  |   0.0 |  0.36
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.009718   |            |       |  1.05
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         842264 ave      842264 max      842264 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 842264
+Ave neighs/atom = 381.46014
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 10691
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 10691
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     10691   0             -1787.2115      7405.6378      5618.4263     -14.430687    
+     13189   8.0193964e-11 -1788.7346      7407.0612      5618.3265     -324.28137    
+Loop time of 25.1029 on 1 procs for 2498 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.42625867648    5618.3265022239    5618.3265022239
+  Force two-norm initial, final = 5.7215467 0.00017865468
+  Force max component initial, final = 0.28674336 6.3369736e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 2498 2612
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 23.619     | 23.619     | 23.619     |   0.0 | 94.09
+Bond    | 1.2843     | 1.2843     | 1.2843     |   0.0 |  5.12
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.1066     | 0.1066     | 0.1066     |   0.0 |  0.42
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.09325    |            |       |  0.37
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         844480 ave      844480 max      844480 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 844480
+Ave neighs/atom = 382.46377
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 13189
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.3265022238983875
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.72840288258-${temppe})
+variable        min_E      equal abs(5618.72840288258-5618.3265022239)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.3265022239
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     13189   8.0193964e-11 -1788.7346      7407.0612      5618.3265     -324.28137      36817.477    
+     13191   8.0193964e-11 -1788.7271      7407.0116      5618.2845      11.088464      36802.019    
+Loop time of 0.548983 on 1 procs for 2 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.32650222392    5618.2844679814    5618.2844679814
+  Force two-norm initial, final = 312.519 42.772005
+  Force max component initial, final = 240.89655 27.480702
+  Final line search alpha, max atom move = 4.7488926e-12 1.3050291e-10
+  Iterations, force evaluations = 2 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.51201    | 0.51201    | 0.51201    |   0.0 | 93.27
+Bond    | 0.029393   | 0.029393   | 0.029393   |   0.0 |  5.35
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0019933  | 0.0019933  | 0.0019933  |   0.0 |  0.36
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.005587   |            |       |  1.02
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         844424 ave      844424 max      844424 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 844424
+Ave neighs/atom = 382.43841
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 13191
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 13191
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     13191   0             -1788.7271      7407.0116      5618.2845      11.088464    
+     15030   2.1075737e-10 -1789.0656      7407.3215      5618.2558     -268.5459     
+Loop time of 18.8361 on 1 procs for 1839 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.28446798139   5618.25583623277   5618.25583623277
+  Force two-norm initial, final = 6.5669802 0.00014176375
+  Force max component initial, final = 0.1855709 5.3493856e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1839 1925
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 17.711     | 17.711     | 17.711     |   0.0 | 94.03
+Bond    | 0.97161    | 0.97161    | 0.97161    |   0.0 |  5.16
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.082197   | 0.082197   | 0.082197   |   0.0 |  0.44
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.07087    |            |       |  0.38
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         844736 ave      844736 max      844736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 844736
+Ave neighs/atom = 382.57971
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 15030
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.2558362327727082
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.3265022239-${temppe})
+variable        min_E      equal abs(5618.3265022239-5618.25583623277)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.25583623277
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     15030   2.1075737e-10 -1789.0656      7407.3215      5618.2558     -268.5459       36802.019    
+     15037   2.1075737e-10 -1788.9602      7407.1751      5618.215      -6.2147858      36784.602    
+Loop time of 0.655493 on 1 procs for 7 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.25583623277   5618.21496024329   5618.21496024329
+  Force two-norm initial, final = 262.24817 8.1885933
+  Force max component initial, final = 209.56982 3.7272378
+  Final line search alpha, max atom move = 1.032432e-10 3.8481197e-10
+  Iterations, force evaluations = 7 65
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.61116    | 0.61116    | 0.61116    |   0.0 | 93.24
+Bond    | 0.034901   | 0.034901   | 0.034901   |   0.0 |  5.32
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0026089  | 0.0026089  | 0.0026089  |   0.0 |  0.40
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.006824   |            |       |  1.04
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         844848 ave      844848 max      844848 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 844848
+Ave neighs/atom = 382.63043
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 15037
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 15037
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     15037   0             -1788.9602      7407.1751      5618.215      -6.2147858    
+     17147   5.0632314e-11 -1789.4144      7407.5996      5618.1852     -205.96814    
+Loop time of 21.1945 on 1 procs for 2110 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.21496024331    5618.1851969595    5618.1851969595
+  Force two-norm initial, final = 5.746059 0.00027612796
+  Force max component initial, final = 0.1775091 8.5720481e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 2110 2204
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 19.942     | 19.942     | 19.942     |   0.0 | 94.09
+Bond    | 1.0838     | 1.0838     | 1.0838     |   0.0 |  5.11
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.090204   | 0.090204   | 0.090204   |   0.0 |  0.43
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.07839    |            |       |  0.37
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845184 ave      845184 max      845184 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845184
+Ave neighs/atom = 382.78261
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 17147
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.185196959503628
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.25583623277-${temppe})
+variable        min_E      equal abs(5618.25583623277-5618.1851969595)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.1851969595
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     17147   5.0632314e-11 -1789.4144      7407.5996      5618.1852     -205.96814      36784.602    
+     17149   5.0632314e-11 -1789.4064      7407.5721      5618.1657      14.750439      36774.449    
+Loop time of 0.543975 on 1 procs for 2 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+       5618.1851969595   5618.16566824969   5618.16566824969
+  Force two-norm initial, final = 205.48418 39.100027
+  Force max component initial, final = 171.43939 24.092404
+  Final line search alpha, max atom move = 5.4099738e-12 1.3033928e-10
+  Iterations, force evaluations = 2 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.50716    | 0.50716    | 0.50716    |   0.0 | 93.23
+Bond    | 0.029551   | 0.029551   | 0.029551   |   0.0 |  5.43
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0019241  | 0.0019241  | 0.0019241  |   0.0 |  0.35
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.005338   |            |       |  0.98
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845248 ave      845248 max      845248 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845248
+Ave neighs/atom = 382.81159
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 17149
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 17149
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     17149   0             -1789.4064      7407.5721      5618.1657      14.750439    
+     18901   1.4340339e-10 -1789.6308      7407.7811      5618.1503     -169.34735    
+Loop time of 17.6283 on 1 procs for 1752 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.16566824969    5618.1502783797    5618.1502783797
+  Force two-norm initial, final = 4.4107943 0.00013107783
+  Force max component initial, final = 0.13518597 5.3494439e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1752 1831
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 16.582     | 16.582     | 16.582     |   0.0 | 94.06
+Bond    | 0.90626    | 0.90626    | 0.90626    |   0.0 |  5.14
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.074633   | 0.074633   | 0.074633   |   0.0 |  0.42
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.06571    |            |       |  0.37
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845416 ave      845416 max      845416 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845416
+Ave neighs/atom = 382.88768
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 18901
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.1502783796959193
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.1851969595-${temppe})
+variable        min_E      equal abs(5618.1851969595-5618.1502783797)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.1502783797
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     18901   1.4340339e-10 -1789.6308      7407.7811      5618.1503     -169.34735      36774.449    
+     18908   1.4340339e-10 -1789.5709      7407.6924      5618.1215     -5.5014428      36763.756    
+Loop time of 0.620267 on 1 procs for 7 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+       5618.1502783797   5618.12149963041   5618.12149963041
+  Force two-norm initial, final = 173.55042 6.5286615
+  Force max component initial, final = 150.53023 3.3131654
+  Final line search alpha, max atom move = 2.1397416e-10 7.0893178e-10
+  Iterations, force evaluations = 7 63
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.5786     | 0.5786     | 0.5786     |   0.0 | 93.28
+Bond    | 0.033239   | 0.033239   | 0.033239   |   0.0 |  5.36
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0021979  | 0.0021979  | 0.0021979  |   0.0 |  0.35
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.006227   |            |       |  1.00
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845496 ave      845496 max      845496 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845496
+Ave neighs/atom = 382.92391
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 18908
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 18908
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     18908   0             -1789.5709      7407.6924      5618.1215     -5.5014428    
+     21013   5.2381399e-11 -1789.8469      7407.9524      5618.1055     -131.04047    
+Loop time of 21.4063 on 1 procs for 2105 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.12149963041   5618.10549268883   5618.10549268883
+  Force two-norm initial, final = 3.9744149 0.00042737458
+  Force max component initial, final = 0.12983791 1.3344766e-05
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 2105 2198
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 20.13      | 20.13      | 20.13      |   0.0 | 94.04
+Bond    | 1.1026     | 1.1026     | 1.1026     |   0.0 |  5.15
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.093054   | 0.093054   | 0.093054   |   0.0 |  0.43
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.08057    |            |       |  0.38
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845792 ave      845792 max      845792 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845792
+Ave neighs/atom = 383.05797
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 21013
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.1054926888291448
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.1502783797-${temppe})
+variable        min_E      equal abs(5618.1502783797-5618.10549268883)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.10549268883
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     21013   5.2381399e-11 -1789.8469      7407.9524      5618.1055     -131.04047      36763.756    
+     21016   5.2381399e-11 -1789.8274      7407.9292      5618.1019     -0.49298234     36757.764    
+Loop time of 0.545881 on 1 procs for 3 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.10549268883   5618.10185058294   5618.10185058294
+  Force two-norm initial, final = 139.59489 3.4128259
+  Force max component initial, final = 125.9773 0.56268048
+  Final line search alpha, max atom move = 7.875865e-10 4.4315955e-10
+  Iterations, force evaluations = 3 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.50917    | 0.50917    | 0.50917    |   0.0 | 93.27
+Bond    | 0.029334   | 0.029334   | 0.029334   |   0.0 |  5.37
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0019792  | 0.0019792  | 0.0019792  |   0.0 |  0.36
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.005399   |            |       |  0.99
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845792 ave      845792 max      845792 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845792
+Ave neighs/atom = 383.05797
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 21016
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 21016
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     21016   0             -1789.8274      7407.9292      5618.1019     -0.49298234   
+     22701   3.3401085e-10 -1789.9551      7408.0485      5618.0934     -109.54203    
+Loop time of 17.2079 on 1 procs for 1685 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.10185058294   5618.09340756991   5618.09340756991
+  Force two-norm initial, final = 3.3598703 0.00053901578
+  Force max component initial, final = 0.13141922 2.1248365e-05
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1685 1756
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 16.181     | 16.181     | 16.181     |   0.0 | 94.03
+Bond    | 0.88693    | 0.88693    | 0.88693    |   0.0 |  5.15
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.074562   | 0.074562   | 0.074562   |   0.0 |  0.43
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.06528    |            |       |  0.38
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845856 ave      845856 max      845856 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845856
+Ave neighs/atom = 383.08696
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 22701
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.0934075699124151
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.10549268883-${temppe})
+variable        min_E      equal abs(5618.10549268883-5618.09340756991)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.09340756991
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     22701   3.3401085e-10 -1789.9551      7408.0485      5618.0934     -109.54203      36757.764    
+     22707   3.3401085e-10 -1789.9165      7407.9914      5618.0749      1.0233046      36750.783    
+Loop time of 0.566456 on 1 procs for 6 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.09340756993   5618.07489375735   5618.07489375735
+  Force two-norm initial, final = 120.87911 3.1118372
+  Force max component initial, final = 111.94054 0.93134706
+  Final line search alpha, max atom move = 1.2307912e-09 1.1462938e-09
+  Iterations, force evaluations = 6 57
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.52796    | 0.52796    | 0.52796    |   0.0 | 93.20
+Bond    | 0.030689   | 0.030689   | 0.030689   |   0.0 |  5.42
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0020022  | 0.0020022  | 0.0020022  |   0.0 |  0.35
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.005802   |            |       |  1.02
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845808 ave      845808 max      845808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845808
+Ave neighs/atom = 383.06522
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 22707
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 22707
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     22707   0             -1789.9165      7407.9914      5618.0749      1.0233046    
+     24607   1.5941396e-10 -1790.0933      7408.1581      5618.0648     -84.604271    
+Loop time of 19.1505 on 1 procs for 1900 steps with 2208 atoms
+
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.07489375735    5618.0647697854    5618.0647697854
+  Force two-norm initial, final = 2.9167026 0.00013422522
+  Force max component initial, final = 0.097057162 6.5819657e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1900 1985
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 18.012     | 18.012     | 18.012     |   0.0 | 94.06
+Bond    | 0.98236    | 0.98236    | 0.98236    |   0.0 |  5.13
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.083864   | 0.083864   | 0.083864   |   0.0 |  0.44
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.07187    |            |       |  0.38
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845856 ave      845856 max      845856 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845856
+Ave neighs/atom = 383.08696
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 24607
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.0647697854046783
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.09340756991-${temppe})
+variable        min_E      equal abs(5618.09340756991-5618.0647697854)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.0647697854
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     24607   1.5941396e-10 -1790.0933      7408.1581      5618.0648     -84.604271      36750.783    
+     24610   1.5941396e-10 -1790.0875      7408.1412      5618.0537     -0.36971072     36746.92     
+Loop time of 0.54817 on 1 procs for 3 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.06476978542   5618.05372874121   5618.05372874121
+  Force two-norm initial, final = 99.550502 2.6142732
+  Force max component initial, final = 95.189653 0.42226612
+  Final line search alpha, max atom move = 1.0274867e-09 4.3387281e-10
+  Iterations, force evaluations = 3 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.5112     | 0.5112     | 0.5112     |   0.0 | 93.26
+Bond    | 0.029543   | 0.029543   | 0.029543   |   0.0 |  5.39
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0019719  | 0.0019719  | 0.0019719  |   0.0 |  0.36
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.005454   |            |       |  0.99
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845856 ave      845856 max      845856 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845856
+Ave neighs/atom = 383.08696
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 24610
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 24610
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     24610   0             -1790.0875      7408.1412      5618.0537     -0.36971072   
+     26526   7.0782126e-11 -1790.1694      7408.2172      5618.0478     -70.85862     
+Loop time of 19.4559 on 1 procs for 1916 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.05372874121   5618.04779890586   5618.04779890585
+  Force two-norm initial, final = 2.5768194 8.1114125e-05
+  Force max component initial, final = 0.10401675 3.8501923e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1916 2002
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 18.292     | 18.292     | 18.292     |   0.0 | 94.02
+Bond    | 1.006      | 1.006      | 1.006      |   0.0 |  5.17
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.084775   | 0.084775   | 0.084775   |   0.0 |  0.44
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.07302    |            |       |  0.38
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845856 ave      845856 max      845856 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845856
+Ave neighs/atom = 383.08696
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 26526
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.0477989058545063
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.0647697854-${temppe})
+variable        min_E      equal abs(5618.0647697854-5618.04779890585)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.04779890585
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     26526   7.0782126e-11 -1790.1694      7408.2172      5618.0478     -70.85862       36746.92     
+     26527   7.0782126e-11 -1790.1694      7408.2172      5618.0478     -70.85862       36746.92     
+Loop time of 0.540439 on 1 procs for 1 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.04779890586   5618.04779890586   5618.04779890586
+  Force two-norm initial, final = 88.037917 88.037917
+  Force max component initial, final = 85.665585 85.665585
+  Final line search alpha, max atom move = 8.6972856e-13 7.4505806e-11
+  Iterations, force evaluations = 1 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.50405    | 0.50405    | 0.50405    |   0.0 | 93.27
+Bond    | 0.029367   | 0.029367   | 0.029367   |   0.0 |  5.43
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0019176  | 0.0019176  | 0.0019176  |   0.0 |  0.35
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.005108   |            |       |  0.95
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845848 ave      845848 max      845848 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845848
+Ave neighs/atom = 383.08333
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 26527
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 26527
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     26527   0             -1790.1694      7408.2172      5618.0478     -70.85862     
+     26560   4.0297929e-11 -1790.1694      7408.2172      5618.0478     -70.859222    
+Loop time of 0.33336 on 1 procs for 33 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.04779890587    5618.0477989049    5618.0477989049
+  Force two-norm initial, final = 8.1114127e-05 0.00058362986
+  Force max component initial, final = 3.8501906e-06 2.1440785e-05
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 33 34
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.31372    | 0.31372    | 0.31372    |   0.0 | 94.11
+Bond    | 0.016959   | 0.016959   | 0.016959   |   0.0 |  5.09
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0014236  | 0.0014236  | 0.0014236  |   0.0 |  0.43
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.001257   |            |       |  0.38
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845848 ave      845848 max      845848 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845848
+Ave neighs/atom = 383.08333
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 26560
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.0477989049049938
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.04779890585-${temppe})
+variable        min_E      equal abs(5618.04779890585-5618.0477989049)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+jump SELF break_min
+Total wall time: 0:04:37
+units           real
+atom_style      full
+boundary        p p p
+
+pair_style      lj/cut 12.500
+bond_style      harmonic
+angle_style     hybrid fourier cosine/periodic
+dihedral_style  harmonic
+improper_style  fourier
+
+pair_modify     tail yes mix arithmetic
+dielectric      1.0
+special_bonds   lj/coul 0.0 0.0 1.0
+box tilt        large
+
+The 'box' command has been removed and will be ignored
+
+read_data       data.ZIF8_closed
+Reading data file ...
+  triclinic box = (0 0 0) to (33.982 33.982 33.982) with tilt (0 0 0)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  2208 atoms
+  scanning bonds ...
+  3 = max bonds/atom
+  scanning angles ...
+  6 = max angles/atom
+  scanning dihedrals ...
+  14 = max dihedrals/atom
+  scanning impropers ...
+  4 = max impropers/atom
+  triclinic box = (0 0 0) to (33.982 33.982 33.982) with tilt (0 0 0)
+  1 by 1 by 1 MPI processor grid
+  reading bonds ...
+  2496 bonds
+  reading angles ...
+  4608 angles
+  reading dihedrals ...
+  4992 dihedrals
+  reading impropers ...
+  2880 impropers
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        0        1       
+  special bond factors coul:  0        0        1       
+     4 = max # of 1-2 neighbors
+     8 = max # of 1-3 neighbors
+    12 = max # of special neighbors
+  special bonds CPU = 0.001 seconds
+  read_data CPU = 0.112 seconds
+
+#### Atom Groupings ####
+group           fram     id   1:2208
+2208 atoms in group fram
+#### END Atom Groupings ####
+
+min_style       cg
+print           "MinStep,CellMinStep,AtomMinStep,FinalStep,Energy,EDiff" file ZIF8_closed.min.csv screen no
+variable        min_eval   equal 1.00e-06
+variable        prev_E     equal 50000.00
+variable        iter       loop 100000
+label           loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 14.5
+  ghost atom cutoff = 14.5
+  binsize = 7.25, bins = 5 5 5
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton/tri
+      stencil: half/bin/3d/tri
+      bin: standard
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19 | 19 | 19 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+         0   0             -1637.076       15338.204      13701.128      42154.403      39241.609    
+       389   0             -1751.4206      7403.5968      5652.1762      46.751663      37127.544    
+Loop time of 11.8282 on 1 procs for 389 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      13701.1275646687   5652.17618333708   5652.17618333708
+  Force two-norm initial, final = 42010.434 56.715421
+  Force max component initial, final = 24265.188 38.522753
+  Final line search alpha, max atom move = 3.3318993e-12 1.2835393e-10
+  Iterations, force evaluations = 389 815
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 10.822     | 10.822     | 10.822     |   0.0 | 91.49
+Bond    | 0.66825    | 0.66825    | 0.66825    |   0.0 |  5.65
+Neigh   | 0.15568    | 0.15568    | 0.15568    |   0.0 |  1.32
+Comm    | 0.045835   | 0.045835   | 0.045835   |   0.0 |  0.39
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.1362     |            |       |  1.15
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         834512 ave      834512 max      834512 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 834512
+Ave neighs/atom = 377.94928
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 4
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 389
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 389
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+       389   0             -1751.4206      7403.5968      5652.1762      46.751663    
+      7829   2.3573999e-10 -1781.6544      7404.0954      5622.441      -1430.6325    
+Loop time of 108.754 on 1 procs for 7440 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5652.17618333708   5622.44101163657   5622.44101163657
+  Force two-norm initial, final = 30.153281 0.00016623514
+  Force max component initial, final = 1.2480007 6.9313757e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 7440 7772
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 101.85     | 101.85     | 101.85     |   0.0 | 93.65
+Bond    | 6.0197     | 6.0197     | 6.0197     |   0.0 |  5.54
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.47998    | 0.47998    | 0.47998    |   0.0 |  0.44
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.4094     |            |       |  0.38
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11200 ave       11200 max       11200 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         835896 ave      835896 max      835896 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 835896
+Ave neighs/atom = 378.57609
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 7829
+variable        temppe     equal $(pe)
+variable        temppe     equal 5622.4410116365697831
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(50000-${temppe})
+variable        min_E      equal abs(50000-5622.44101163657)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5622.44101163657
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+      7829   2.3573999e-10 -1781.6544      7404.0954      5622.441      -1430.6325      37127.544    
+      7860   2.3573999e-10 -1784.3977      7403.886       5619.4883     -6.6382639      36873.937    
+Loop time of 1.57077 on 1 procs for 31 steps with 2208 atoms
+
+99.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5622.44101163659   5619.48832916474   5619.48832916474
+  Force two-norm initial, final = 1345.9205 16.054311
+  Force max component initial, final = 861.27132 9.15568
+  Final line search alpha, max atom move = 3.2550638e-11 2.9802322e-10
+  Iterations, force evaluations = 31 111
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 1.4586     | 1.4586     | 1.4586     |   0.0 | 92.86
+Bond    | 0.089117   | 0.089117   | 0.089117   |   0.0 |  5.67
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0057823  | 0.0057823  | 0.0057823  |   0.0 |  0.37
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.01729    |            |       |  1.10
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11120 ave       11120 max       11120 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         835976 ave      835976 max      835976 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 835976
+Ave neighs/atom = 378.61232
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 7860
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 7860
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+      7860   0             -1784.3977      7403.886       5619.4883     -6.6382639    
+     10671   1.1902245e-10 -1787.5015      7406.2299      5618.7284     -526.96278    
+Loop time of 40.2381 on 1 procs for 2811 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5619.48832916475   5618.72840288258   5618.72840288258
+  Force two-norm initial, final = 8.7706655 0.00029261758
+  Force max component initial, final = 0.3611053 9.4366847e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 2811 2942
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 37.706     | 37.706     | 37.706     |   0.0 | 93.71
+Bond    | 2.2054     | 2.2054     | 2.2054     |   0.0 |  5.48
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.17751    | 0.17751    | 0.17751    |   0.0 |  0.44
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.1492     |            |       |  0.37
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         842240 ave      842240 max      842240 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 842240
+Ave neighs/atom = 381.44928
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 10671
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.7284028825815767
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5622.44101163657-${temppe})
+variable        min_E      equal abs(5622.44101163657-5618.72840288258)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.72840288258
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     10671   1.1902245e-10 -1787.5015      7406.2299      5618.7284     -526.96278      36873.937    
+     10691   1.1902245e-10 -1787.2115      7405.6378      5618.4263     -14.430687      36817.477    
+Loop time of 1.31386 on 1 procs for 20 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.72840288258   5618.42625867649   5618.42625867649
+  Force two-norm initial, final = 499.24919 16.815772
+  Force max component initial, final = 357.83225 13.854095
+  Final line search alpha, max atom move = 2.6084272e-11 3.6137399e-10
+  Iterations, force evaluations = 20 95
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 1.2212     | 1.2212     | 1.2212     |   0.0 | 92.95
+Bond    | 0.074028   | 0.074028   | 0.074028   |   0.0 |  5.63
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0047792  | 0.0047792  | 0.0047792  |   0.0 |  0.36
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.01387    |            |       |  1.06
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         842264 ave      842264 max      842264 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 842264
+Ave neighs/atom = 381.46014
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 10691
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 10691
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     10691   0             -1787.2115      7405.6378      5618.4263     -14.430687    
+     13189   8.0193964e-11 -1788.7346      7407.0612      5618.3265     -324.28137    
+Loop time of 34.6043 on 1 procs for 2498 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.42625867648    5618.3265022239    5618.3265022239
+  Force two-norm initial, final = 5.7215467 0.00017865468
+  Force max component initial, final = 0.28674336 6.3369736e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 2498 2612
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 32.449     | 32.449     | 32.449     |   0.0 | 93.77
+Bond    | 1.8768     | 1.8768     | 1.8768     |   0.0 |  5.42
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.14988    | 0.14988    | 0.14988    |   0.0 |  0.43
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.1281     |            |       |  0.37
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         844480 ave      844480 max      844480 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 844480
+Ave neighs/atom = 382.46377
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 13189
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.3265022238983875
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.72840288258-${temppe})
+variable        min_E      equal abs(5618.72840288258-5618.3265022239)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.3265022239
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     13189   8.0193964e-11 -1788.7346      7407.0612      5618.3265     -324.28137      36817.477    
+     13191   8.0193964e-11 -1788.7271      7407.0116      5618.2845      11.088464      36802.019    
+Loop time of 0.799982 on 1 procs for 2 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.32650222392    5618.2844679814    5618.2844679814
+  Force two-norm initial, final = 312.519 42.772005
+  Force max component initial, final = 240.89655 27.480702
+  Final line search alpha, max atom move = 4.7488926e-12 1.3050291e-10
+  Iterations, force evaluations = 2 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.74199    | 0.74199    | 0.74199    |   0.0 | 92.75
+Bond    | 0.046004   | 0.046004   | 0.046004   |   0.0 |  5.75
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.003371   | 0.003371   | 0.003371   |   0.0 |  0.42
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.008618   |            |       |  1.08
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         844424 ave      844424 max      844424 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 844424
+Ave neighs/atom = 382.43841
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 13191
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 13191
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     13191   0             -1788.7271      7407.0116      5618.2845      11.088464    
+     15030   2.1075737e-10 -1789.0656      7407.3215      5618.2558     -268.5459     
+Loop time of 25.4175 on 1 procs for 1839 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.28446798139   5618.25583623277   5618.25583623277
+  Force two-norm initial, final = 6.5669802 0.00014176375
+  Force max component initial, final = 0.1855709 5.3493856e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1839 1925
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 23.837     | 23.837     | 23.837     |   0.0 | 93.78
+Bond    | 1.375      | 1.375      | 1.375      |   0.0 |  5.41
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.11106    | 0.11106    | 0.11106    |   0.0 |  0.44
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.09443    |            |       |  0.37
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         844736 ave      844736 max      844736 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 844736
+Ave neighs/atom = 382.57971
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 15030
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.2558362327727082
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.3265022239-${temppe})
+variable        min_E      equal abs(5618.3265022239-5618.25583623277)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.25583623277
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     15030   2.1075737e-10 -1789.0656      7407.3215      5618.2558     -268.5459       36802.019    
+     15037   2.1075737e-10 -1788.9602      7407.1751      5618.215      -6.2147858      36784.602    
+Loop time of 0.801815 on 1 procs for 7 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.25583623277   5618.21496024329   5618.21496024329
+  Force two-norm initial, final = 262.24817 8.1885933
+  Force max component initial, final = 209.56982 3.7272378
+  Final line search alpha, max atom move = 1.032432e-10 3.8481197e-10
+  Iterations, force evaluations = 7 65
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.74662    | 0.74662    | 0.74662    |   0.0 | 93.12
+Bond    | 0.044428   | 0.044428   | 0.044428   |   0.0 |  5.54
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0028233  | 0.0028233  | 0.0028233  |   0.0 |  0.35
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.00794    |            |       |  0.99
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         844848 ave      844848 max      844848 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 844848
+Ave neighs/atom = 382.63043
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 15037
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 15037
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     15037   0             -1788.9602      7407.1751      5618.215      -6.2147858    
+     17147   5.0632314e-11 -1789.4144      7407.5996      5618.1852     -205.96814    
+Loop time of 28.4512 on 1 procs for 2110 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.21496024331    5618.1851969595    5618.1851969595
+  Force two-norm initial, final = 5.746059 0.00027612796
+  Force max component initial, final = 0.1775091 8.5720481e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 2110 2204
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 26.697     | 26.697     | 26.697     |   0.0 | 93.84
+Bond    | 1.5248     | 1.5248     | 1.5248     |   0.0 |  5.36
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.12527    | 0.12527    | 0.12527    |   0.0 |  0.44
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.1038     |            |       |  0.37
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845184 ave      845184 max      845184 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845184
+Ave neighs/atom = 382.78261
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 17147
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.185196959503628
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.25583623277-${temppe})
+variable        min_E      equal abs(5618.25583623277-5618.1851969595)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.1851969595
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     17147   5.0632314e-11 -1789.4144      7407.5996      5618.1852     -205.96814      36784.602    
+     17149   5.0632314e-11 -1789.4064      7407.5721      5618.1657      14.750439      36774.449    
+Loop time of 0.713715 on 1 procs for 2 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+       5618.1851969595   5618.16566824969   5618.16566824969
+  Force two-norm initial, final = 205.48418 39.100027
+  Force max component initial, final = 171.43939 24.092404
+  Final line search alpha, max atom move = 5.4099738e-12 1.3033928e-10
+  Iterations, force evaluations = 2 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.6657     | 0.6657     | 0.6657     |   0.0 | 93.27
+Bond    | 0.038506   | 0.038506   | 0.038506   |   0.0 |  5.40
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0025945  | 0.0025945  | 0.0025945  |   0.0 |  0.36
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.006914   |            |       |  0.97
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845248 ave      845248 max      845248 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845248
+Ave neighs/atom = 382.81159
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 17149
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 17149
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     17149   0             -1789.4064      7407.5721      5618.1657      14.750439    
+     18901   1.4340339e-10 -1789.6308      7407.7811      5618.1503     -169.34735    
+Loop time of 22.6872 on 1 procs for 1752 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.16566824969    5618.1502783797    5618.1502783797
+  Force two-norm initial, final = 4.4107943 0.00013107783
+  Force max component initial, final = 0.13518597 5.3494439e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1752 1831
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 21.32      | 21.32      | 21.32      |   0.0 | 93.97
+Bond    | 1.1956     | 1.1956     | 1.1956     |   0.0 |  5.27
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.091723   | 0.091723   | 0.091723   |   0.0 |  0.40
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.08015    |            |       |  0.35
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845416 ave      845416 max      845416 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845416
+Ave neighs/atom = 382.88768
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 18901
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.1502783796959193
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.1851969595-${temppe})
+variable        min_E      equal abs(5618.1851969595-5618.1502783797)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.1502783797
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     18901   1.4340339e-10 -1789.6308      7407.7811      5618.1503     -169.34735      36774.449    
+     18908   1.4340339e-10 -1789.5709      7407.6924      5618.1215     -5.5014428      36763.756    
+Loop time of 0.776036 on 1 procs for 7 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+       5618.1502783797   5618.12149963041   5618.12149963041
+  Force two-norm initial, final = 173.55042 6.5286615
+  Force max component initial, final = 150.53023 3.3131654
+  Final line search alpha, max atom move = 2.1397416e-10 7.0893178e-10
+  Iterations, force evaluations = 7 63
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.72203    | 0.72203    | 0.72203    |   0.0 | 93.04
+Bond    | 0.043285   | 0.043285   | 0.043285   |   0.0 |  5.58
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0029009  | 0.0029009  | 0.0029009  |   0.0 |  0.37
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.007823   |            |       |  1.01
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845496 ave      845496 max      845496 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845496
+Ave neighs/atom = 382.92391
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 18908
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 18908
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     18908   0             -1789.5709      7407.6924      5618.1215     -5.5014428    
+     21013   5.2381399e-11 -1789.8469      7407.9524      5618.1055     -131.04047    
+Loop time of 28.7186 on 1 procs for 2105 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.12149963041   5618.10549268883   5618.10549268883
+  Force two-norm initial, final = 3.9744149 0.00042737458
+  Force max component initial, final = 0.12983791 1.3344766e-05
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 2105 2198
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 26.939     | 26.939     | 26.939     |   0.0 | 93.80
+Bond    | 1.5497     | 1.5497     | 1.5497     |   0.0 |  5.40
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.12309    | 0.12309    | 0.12309    |   0.0 |  0.43
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.107      |            |       |  0.37
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845792 ave      845792 max      845792 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845792
+Ave neighs/atom = 383.05797
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 21013
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.1054926888291448
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.1502783797-${temppe})
+variable        min_E      equal abs(5618.1502783797-5618.10549268883)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.10549268883
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     21013   5.2381399e-11 -1789.8469      7407.9524      5618.1055     -131.04047      36763.756    
+     21016   5.2381399e-11 -1789.8274      7407.9292      5618.1019     -0.49298234     36757.764    
+Loop time of 0.779207 on 1 procs for 3 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.10549268883   5618.10185058294   5618.10185058294
+  Force two-norm initial, final = 139.59489 3.4128259
+  Force max component initial, final = 125.9773 0.56268048
+  Final line search alpha, max atom move = 7.875865e-10 4.4315955e-10
+  Iterations, force evaluations = 3 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.72446    | 0.72446    | 0.72446    |   0.0 | 92.97
+Bond    | 0.044028   | 0.044028   | 0.044028   |   0.0 |  5.65
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0028092  | 0.0028092  | 0.0028092  |   0.0 |  0.36
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.007909   |            |       |  1.02
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845792 ave      845792 max      845792 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845792
+Ave neighs/atom = 383.05797
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 21016
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 21016
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     21016   0             -1789.8274      7407.9292      5618.1019     -0.49298234   
+     22701   3.3401085e-10 -1789.9551      7408.0485      5618.0934     -109.54203    
+Loop time of 22.3973 on 1 procs for 1685 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.10185058294   5618.09340756991   5618.09340756991
+  Force two-norm initial, final = 3.3598703 0.00053901578
+  Force max component initial, final = 0.13141922 2.1248365e-05
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1685 1756
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 21.021     | 21.021     | 21.021     |   0.0 | 93.86
+Bond    | 1.2009     | 1.2009     | 1.2009     |   0.0 |  5.36
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.093558   | 0.093558   | 0.093558   |   0.0 |  0.42
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.08165    |            |       |  0.36
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845856 ave      845856 max      845856 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845856
+Ave neighs/atom = 383.08696
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 22701
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.0934075699124151
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.10549268883-${temppe})
+variable        min_E      equal abs(5618.10549268883-5618.09340756991)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.09340756991
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     22701   3.3401085e-10 -1789.9551      7408.0485      5618.0934     -109.54203      36757.764    
+     22707   3.3401085e-10 -1789.9165      7407.9914      5618.0749      1.0233046      36750.783    
+Loop time of 0.6874 on 1 procs for 6 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.09340756993   5618.07489375735   5618.07489375735
+  Force two-norm initial, final = 120.87911 3.1118372
+  Force max component initial, final = 111.94054 0.93134706
+  Final line search alpha, max atom move = 1.2307912e-09 1.1462938e-09
+  Iterations, force evaluations = 6 57
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.64065    | 0.64065    | 0.64065    |   0.0 | 93.20
+Bond    | 0.037918   | 0.037918   | 0.037918   |   0.0 |  5.52
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0023209  | 0.0023209  | 0.0023209  |   0.0 |  0.34
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.006513   |            |       |  0.95
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845808 ave      845808 max      845808 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845808
+Ave neighs/atom = 383.06522
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 22707
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 22707
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     22707   0             -1789.9165      7407.9914      5618.0749      1.0233046    
+     24607   1.5941396e-10 -1790.0933      7408.1581      5618.0648     -84.604271    
+Loop time of 26.726 on 1 procs for 1900 steps with 2208 atoms
+
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.07489375735    5618.0647697854    5618.0647697854
+  Force two-norm initial, final = 2.9167026 0.00013422522
+  Force max component initial, final = 0.097057162 6.5819657e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1900 1985
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 25.084     | 25.084     | 25.084     |   0.0 | 93.86
+Bond    | 1.4367     | 1.4367     | 1.4367     |   0.0 |  5.38
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.10789    | 0.10789    | 0.10789    |   0.0 |  0.40
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.09702    |            |       |  0.36
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845856 ave      845856 max      845856 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845856
+Ave neighs/atom = 383.08696
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 24607
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.0647697854046783
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.09340756991-${temppe})
+variable        min_E      equal abs(5618.09340756991-5618.0647697854)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.0647697854
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     24607   1.5941396e-10 -1790.0933      7408.1581      5618.0648     -84.604271      36750.783    
+     24610   1.5941396e-10 -1790.0875      7408.1412      5618.0537     -0.36971072     36746.92     
+Loop time of 0.738683 on 1 procs for 3 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.06476978542   5618.05372874121   5618.05372874121
+  Force two-norm initial, final = 99.550502 2.6142732
+  Force max component initial, final = 95.189653 0.42226612
+  Final line search alpha, max atom move = 1.0274867e-09 4.3387281e-10
+  Iterations, force evaluations = 3 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.68712    | 0.68712    | 0.68712    |   0.0 | 93.02
+Bond    | 0.04163    | 0.04163    | 0.04163    |   0.0 |  5.64
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0025772  | 0.0025772  | 0.0025772  |   0.0 |  0.35
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.007361   |            |       |  1.00
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845856 ave      845856 max      845856 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845856
+Ave neighs/atom = 383.08696
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 24610
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 24610
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     24610   0             -1790.0875      7408.1412      5618.0537     -0.36971072   
+     26526   7.0782126e-11 -1790.1694      7408.2172      5618.0478     -70.85862     
+Loop time of 26.7001 on 1 procs for 1916 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.05372874121   5618.04779890586   5618.04779890585
+  Force two-norm initial, final = 2.5768194 8.1114125e-05
+  Force max component initial, final = 0.10401675 3.8501923e-06
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 1916 2002
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 25.065     | 25.065     | 25.065     |   0.0 | 93.87
+Bond    | 1.4303     | 1.4303     | 1.4303     |   0.0 |  5.36
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.10905    | 0.10905    | 0.10905    |   0.0 |  0.41
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.09604    |            |       |  0.36
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845856 ave      845856 max      845856 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845856
+Ave neighs/atom = 383.08696
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 26526
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.0477989058545063
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.0647697854-${temppe})
+variable        min_E      equal abs(5618.0647697854-5618.04779890585)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+variable        prev_E     equal ${temppe}
+variable        prev_E     equal 5618.04779890585
+next            iter
+jump            SELF loop_min
+min_style       cg
+fix             1 all box/relax aniso 0.0 vmax 0.01
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+WARNING: Energy due to 3 extra global DOFs will be included in minimizer energies
+ (src/min.cpp:222)
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 19.39 | 19.39 | 19.39 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press          Volume    
+     26526   7.0782126e-11 -1790.1694      7408.2172      5618.0478     -70.85862       36746.92     
+     26527   7.0782126e-11 -1790.1694      7408.2172      5618.0478     -70.85862       36746.92     
+Loop time of 0.699584 on 1 procs for 1 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+      5618.04779890586   5618.04779890586   5618.04779890586
+  Force two-norm initial, final = 88.037917 88.037917
+  Force max component initial, final = 85.665585 85.665585
+  Final line search alpha, max atom move = 8.6972856e-13 7.4505806e-11
+  Iterations, force evaluations = 1 55
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.65159    | 0.65159    | 0.65159    |   0.0 | 93.14
+Bond    | 0.038968   | 0.038968   | 0.038968   |   0.0 |  5.57
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0024101  | 0.0024101  | 0.0024101  |   0.0 |  0.34
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.006618   |            |       |  0.95
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845848 ave      845848 max      845848 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845848
+Ave neighs/atom = 383.08333
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix           1
+min_style       fire
+variable        tempstp    equal $(step)
+variable        tempstp    equal 26527
+variable        CellMinStep equal ${tempstp}
+variable        CellMinStep equal 26527
+minimize        1.0e-15 1.0e-15 10000 100000
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+  Parameters for fire:
+    dmax  delaystep dtgrow dtshrink alpha0 alphashrink tmax tmin   integrator   halfstepback   abcfire  
+     0.1     20      1.1     0.5     0.25     0.99      10  0.02 eulerimplicit      yes          no     
+WARNING: Inconsistent image flags
+For more information see https://docs.lammps.org/err0027 (src/domain.cpp:1052)
+Per MPI rank memory allocation (min/avg/max) = 18.27 | 18.27 | 18.27 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+     26527   0             -1790.1694      7408.2172      5618.0478     -70.85862     
+     26560   4.0297929e-11 -1790.1694      7408.2172      5618.0478     -70.859222    
+Loop time of 0.446992 on 1 procs for 33 steps with 2208 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = energy tolerance
+  Energy initial, next-to-last, final = 
+      5618.04779890587    5618.0477989049    5618.0477989049
+  Force two-norm initial, final = 8.1114127e-05 0.00058362986
+  Force max component initial, final = 3.8501906e-06 2.1440785e-05
+  Final line search alpha, max atom move = 0 0
+  Iterations, force evaluations = 33 34
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.41975    | 0.41975    | 0.41975    |   0.0 | 93.90
+Bond    | 0.023862   | 0.023862   | 0.023862   |   0.0 |  5.34
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0017878  | 0.0017878  | 0.0017878  |   0.0 |  0.40
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.001598   |            |       |  0.36
+
+Nlocal:           2208 ave        2208 max        2208 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:          11280 ave       11280 max       11280 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         845848 ave      845848 max      845848 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 845848
+Ave neighs/atom = 383.08333
+Ave special neighs/atom = 6.4347826
+Neighbor list builds = 0
+Dangerous builds = 0
+variable        AtomMinStep equal $(step)
+variable        AtomMinStep equal 26560
+variable        temppe     equal $(pe)
+variable        temppe     equal 5618.0477989049049938
+variable        min_E      equal abs(${prev_E}-${temppe})
+variable        min_E      equal abs(5618.04779890585-${temppe})
+variable        min_E      equal abs(5618.04779890585-5618.0477989049)
+print           "${iter},${CellMinStep},${AtomMinStep},${AtomMinStep},$(pe),${min_E}" append ZIF8_closed.min.csv screen no
+if              "${min_E} < ${min_eval}" then "jump SELF break_min"
+jump SELF break_min
+write_data min_closed.data nocoeff
+System init for write_data ...
+Generated 10 of 10 mixed pair_coeff terms from arithmetic mixing rule
+Total wall time: 0:06:27

@@ -1,25 +1,8 @@
-# Python
-__pycache__/
-*.pyc
-
-# RASPA raw simulation artifacts: regeneratable by rerunning `simulate`,
-# and bulky in aggregate (checkpoints / VTK visualization / movie frames).
-# Output/ is kept -- that's the actual .data results (small text, the real numbers).
-**/Restart/
-**/VTK/
-**/Movies/
-
-# Zeo++ scratch files (normally removed by the pipeline itself, but just in case)
+# RASPA/LAMMPS 대용량 중간 산출물 (재생성 가능)
+07_Bracketed_MTV/widom_runs/
+10_DensityMap/*/Output/
+10_DensityMap/*/VTK/
+09_Deformation/*.data
+09_Deformation/min_*.cif
 *.res
 *.vol
-*.pqr
-
-# Windows "downloaded from internet" NTFS metadata, not real content
-*:Zone.Identifier
-
-# Editor/shell artifacts
-*.save
-/=
-
-# Claude Code's local tool-permission cache -- machine/session-specific, not project data
-.claude/settings.local.json

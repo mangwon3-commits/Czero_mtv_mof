@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m py_compile run_master_pipeline.py)",
+      "Bash(python3 *)",
+      "Bash(find \"//wsl.localhost/Ubuntu/home/skyjun/mof_project\" -maxdepth 2 2>&1 | head -50)",
+      "Read(///wsl.localhost/Ubuntu/home/skyjun/**)",
+      "Read(///wsl.localhost/Ubuntu/home/skyjun/mof_project/**)",
+      "PowerShell($p = \"C:\\\\Users\\\\skyjun\\\\.claude\\\\projects\\\\--wsl-localhost-Ubuntu-home-skyjun-mof-project\\\\memory\"; if \\(Test-Path $p\\) { Get-ChildItem $p; Write-Host \"---MEMORY.md---\"; if \\(Test-Path \"$p\\\\MEMORY.md\"\\) { Get-Content \"$p\\\\MEMORY.md\" } } else { Write-Host \"no memory dir\" })",
+      "Bash(find \"//wsl.localhost/Ubuntu/home/skyjun/mof_project/02_HTS_Master_Results\" -maxdepth 1 -type f 2>&1)",
+      "Bash(python -c ' *)",
+      "Bash(wsl.exe -e bash -lc 'cd ~/mof_project/02_HTS_Master_Results && python3 -c \" *)"
+    ]
+  }
+}

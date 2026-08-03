@@ -1,0 +1,23 @@
+fatal: not a git repository (or any of the parent directories): .git
+No bonds reported in cif file - computing bonding..
+totatomlen = 276
+compute_topology_information()
+func: cartesian_coordinates; Elps. 0.001s
+func: min_img_distances; Elps. 0.193s
+func: compute_bonding; Elps. 0.276s
+func: init_typing; Elps. 0.309s
+func: bond_typing; Elps. 0.310s
+func: angles; Elps. 0.311s
+func: dihedrals; Elps. 0.312s
+func: improper_dihedrals; Elps. 0.313s
+WARNING: unit cell is not large enough to support a non-bonded cutoff of 12.50 Angstroms.
+Re-sizing to a 2 x 2 x 2 supercell. 
+Prog. = 1/8; cell = 0x0x0
+Prog. = 2/8; cell = 0x0x1
+Prog. = 3/8; cell = 0x1x0
+Prog. = 4/8; cell = 0x1x1
+Prog. = 5/8; cell = 1x0x0
+Prog. = 6/8; cell = 1x0x1
+Prog. = 7/8; cell = 1x1x0
+Prog. = 8/8; cell = 1x1x1
+Files created! -> /home/skyjun/mof_project/09_Deformation

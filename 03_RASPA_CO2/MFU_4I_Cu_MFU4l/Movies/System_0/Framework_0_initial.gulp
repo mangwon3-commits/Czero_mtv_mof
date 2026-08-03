@@ -1,0 +1,34 @@
+opti prop conp full nosymmetry phonon
+gmax  1e-06
+accuracy 6
+pressure  6.02214e+06
+switch_min rfo gnorm 50.0
+
+cell
+31.0196 31.0196 31.0196 90 90 90
+space
+1
+
+species
+Zn core 0
+Cl core 0
+Zn core 0
+N core 0
+C core 0
+N core 0
+C core 0
+C core 0
+O core 0
+H core 0
+
+frac
+Zn     core   0.31726   0.31726   0.18274
+Cl     core   0.35540   0.35540   0.14464
+Zn     core   0.25000   0.25000   0.25000
+N      core   0.34050   0.27500   0.22498
+C      core   0.38230   0.26680   0.23323
+N      core   0.31570   0.25000   0.25000
+C      core   0.42100   0.28290   0.21707
+C      core   0.46090   0.26660   0.23343
+O      core   0.50000   0.28280   0.21717
+H      core   0.42094   0.30413   0.19587
