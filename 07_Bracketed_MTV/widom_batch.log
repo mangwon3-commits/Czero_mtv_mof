@@ -1,0 +1,51 @@
+구조 14개 x 가스 2종 = 28개 작업, 2000 cycles, UFF_MOF, EQeq 전하 사용
+
+  [       ok] CO2 clIm025_mIm050_nIm025__closed
+  [       ok] N2  clIm025_mIm050_nIm025__closed
+  [       ok] CO2 clIm025_mIm050_nIm025__open
+  [       ok] N2  clIm025_mIm050_nIm025__open
+  [       ok] CO2 clIm025_mIm075__closed
+  [       ok] N2  clIm025_mIm075__closed
+  [       ok] CO2 clIm025_mIm075__open
+  [       ok] N2  clIm025_mIm075__open
+  [       ok] CO2 clIm050_mIm050__closed
+  [       ok] N2  clIm050_mIm050__closed
+  [       ok] CO2 clIm050_mIm050__open
+  [       ok] N2  clIm050_mIm050__open
+  [       ok] CO2 cnIm025_mIm075__closed
+  [       ok] N2  cnIm025_mIm075__closed
+  [       ok] CO2 cnIm025_mIm075__open
+  [       ok] N2  cnIm025_mIm075__open
+  [       ok] CO2 mIm050_nIm050__closed
+  [       ok] N2  mIm050_nIm050__closed
+  [       ok] CO2 mIm050_nIm050__open
+  [       ok] N2  mIm050_nIm050__open
+  [       ok] CO2 mIm075_nIm025__closed
+  [       ok] N2  mIm075_nIm025__closed
+  [       ok] CO2 mIm075_nIm025__open
+  [       ok] N2  mIm075_nIm025__open
+  [       ok] CO2 mIm100__closed
+  [       ok] N2  mIm100__closed
+  [       ok] CO2 mIm100__open
+  [       ok] N2  mIm100__open
+
+========================================================================================================
+구조                                 KH(CO2)      KH(N2)   CO2/N2   Qst(CO2)   Qst(N2)
+--------------------------------------------------------------------------------------------------------
+clIm025_mIm050_nIm025__closed   3.3407e-05  1.6546e-06    20.19      19.77      8.07
+clIm025_mIm050_nIm025__open     2.7231e-05  1.4653e-06    18.58      19.67      7.67
+clIm025_mIm075__closed          2.3138e-05  2.0518e-06    11.28      15.92      7.18
+clIm025_mIm075__open            2.6349e-05  1.8702e-06    14.09      19.49      7.13
+clIm050_mIm050__closed          3.7315e-05  1.8816e-06    19.83      19.22      8.09
+clIm050_mIm050__open            3.4957e-05  1.5287e-06    22.87      20.82      7.60
+cnIm025_mIm075__closed          1.5142e-05  1.9339e-06     7.83      14.39      7.10
+cnIm025_mIm075__open            1.6686e-05  1.7729e-06     9.41      16.15      7.11
+mIm050_nIm050__closed           2.7830e-05  1.4942e-06    18.63      19.54      7.93
+mIm050_nIm050__open             2.3753e-05  1.4272e-06    16.64      19.19      7.84
+mIm075_nIm025__closed           1.9469e-05  1.9520e-06     9.97      15.46      7.17
+mIm075_nIm025__open             1.7968e-05  1.8120e-06     9.92      15.87      7.18
+mIm100__closed                  1.5811e-05  2.4339e-06     6.50      13.41      6.88
+mIm100__open                    2.0073e-05  2.0673e-06     9.71      16.81      7.12
+
+[OK] 저장: /home/skyjun/mof_project/07_Bracketed_MTV/widom_results.json
+Qst는 무한희석 값 (Widom). 0.15 bar 유한로딩 Qst는 GCMC 별도 필요.

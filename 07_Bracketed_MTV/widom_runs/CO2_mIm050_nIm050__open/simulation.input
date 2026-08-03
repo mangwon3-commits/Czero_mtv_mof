@@ -1,0 +1,19 @@
+SimulationType                MonteCarlo
+NumberOfCycles                2000
+NumberOfInitializationCycles  500
+PrintEvery                    2000
+RestartFile                   no
+
+Forcefield                    UFF_MOF
+CutOff                        12.0
+UseChargesFromCIFFile         yes
+
+Framework 0
+FrameworkName                 mIm050_nIm050__open
+UnitCells                     2 2 2
+ExternalTemperature           298.0
+
+Component 0 MoleculeName              CO2
+            MoleculeDefinition        TraPPE
+            WidomProbability          1.0
+            CreateNumberOfMolecules   0
