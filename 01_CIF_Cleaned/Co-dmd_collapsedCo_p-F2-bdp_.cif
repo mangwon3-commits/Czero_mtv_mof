@@ -1,0 +1,433 @@
+####################################################################### 
+# 
+# This file contains crystal structure data downloaded from the 
+# Cambridge Structural Database (CSD) hosted by the Cambridge 
+# Crystallographic Data Centre (CCDC).
+# 
+# Full information about CCDC data access policies and citation 
+# guidelines are available at http://www.ccdc.cam.ac.uk/access/V1 
+# 
+# Audit and citation data items may have been added by the CCDC. 
+# Please retain this information to preserve the provenance of 
+# this file and to allow appropriate attribution of the data. 
+# 
+#######################################################################
+
+
+data_collapsedCo(p-F2-bdp)
+_audit_block_doi                 10.5517/ccdc.csd.cc1n2ddj
+_database_code_depnum_ccdc_archive 'CCDC 1521647'
+loop_
+_citation_id
+_citation_doi
+_citation_year
+1 10.1021/jacs.6b09155 2016
+_audit_update_record             
+;
+2016-12-08 deposited with the CCDC.	2026-07-17 downloaded from the CCDC.
+;
+
+_chemical_name_common            Co(d4-bdp)
+_chemical_name_systematic        ?
+_chemical_formula_moiety         'C12 H6 Co1 F2 N4'
+_chemical_formula_sum            'C12 H6 Co1 F2 N4'
+_chemical_melting_point          ?
+_chemical_formula_weight         303.138
+
+
+loop_
+_atom_type_symbol
+_atom_type_description
+_atom_type_scat_source
+C C 'International Tables Vol C Tables 4.2.6.8 and 6.1.1.4'
+H H 'International Tables Vol C Tables 4.2.6.8 and 6.1.1.4'
+Co Co 'International Tables Vol C Tables 4.2.6.8 and 6.1.1.4'
+F F 'International Tables Vol C Tables 4.2.6.8 and 6.1.1.4'
+N N 'International Tables Vol C Tables 4.2.6.8 and 6.1.1.4'
+
+#==============================================================================
+
+# 1. POWDER SPECIMEN AND CRYSTAL DATA
+
+_exptl_crystal_colour            purple
+_diffrn_ambient_temperature      298
+_diffrn_ambient_pressure         ?
+_symmetry_cell_setting           monoclinic
+_symmetry_space_group_name_h-m   'P 21/c'
+_symmetry_Int_Tables_number      14
+_space_group_name_Hall           '-P 2ybc'
+_chemical_absolute_configuration ?
+_diffrn_radiation_probe          x-ray
+_diffrn_radiation_type           synchrotron
+_diffrn_radiation_wavelength     0.727680
+_diffrn_source_type              ?
+_cell_measurement_temperature    298
+_cell_length_a                   7.0279(18)
+_cell_length_b                   24.5205(64)
+_cell_length_c                   7.3196(19)
+_cell_angle_alpha                90
+_cell_angle_beta                 111.936(17)
+_cell_angle_gamma                90
+_cell_volume                     1170.1(5)
+_cell_formula_units_Z            4
+
+
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 -x,-y,-z
+2 -x,1/2+y,1/2-z
+3 x,1/2-y,1/2+z
+4 x,y,z
+
+# The next three fields give the specimen dimensions in mm.  The equatorial 
+# plane contains the incident and diffracted beam.
+
+_pd_spec_size_axial              10 # perpendicular to 
+# equatorial plane
+
+_pd_spec_size_equat              0.5 # parallel to 
+# scattering vector 
+# in transmission
+
+_pd_spec_size_thick              ? # parallel to 
+# scattering vector 
+# in reflection
+
+# The next five fields are character fields that describe the specimen.
+
+_pd_spec_mounting                
+;
+packed powder in quartz glass capillary
+;
+_pd_spec_mount_mode              transmission # options are 'reflection' 
+# or 'transmission'
+
+_pd_spec_shape                   cylinder # options are 'cylinder',
+# 'flat_sheet' or 'irregular'
+
+_pd_char_particle_morphology     ?
+_pd_char_colour                  purple # use ICDD colour descriptions
+
+
+# The next four fields are normally only needed for transmission experiments.
+_exptl_absorpt_coefficient_mu    ?
+_exptl_absorpt_correction_type   ?
+_exptl_absorpt_correction_T_min  ?
+_exptl_absorpt_correction_T_max  ?
+
+#==============================================================================
+
+# 2. EXPERIMENTAL DATA
+
+_exptl_special_details           
+; ?
+;
+
+# This following item is used to identify the equipment used to record the
+# powder pattern when the diffractogram was measured at a laboratory
+# other than the authors' home institution, e.g. when neutron or synchrotron
+# radiation is used.
+
+
+
+_pd_instr_location               
+; Advanced Photon Source, Argonne National Laboratory
+;
+
+_diffrn_source_target            ?
+_diffrn_measurement_device_type  custom
+_diffrn_detector_type            'Perkin Elmer a-Si Flat Panel'
+_pd_meas_scan_method             ?
+# options are 'step', 'cont',
+# 'tof', 'fixed' or
+# 'disp' (= dispersive)
+_pd_meas_special_details         
+;  ?
+;
+
+# The following six items are used for angular dispersive measurements only.
+
+_diffrn_radiation_monochromator  'DCM Si(111)'
+
+# The following four items give details of the measured (not processed)
+# powder pattern.  Angles are in degrees.
+
+_pd_meas_number_of_points        2499
+_pd_meas_2theta_range_min        1.70
+_pd_meas_2theta_range_max        26.69
+_pd_meas_2theta_range_inc        0.01
+
+
+# The following three items are used for time-of-flight measurements only.
+
+_pd_instr_dist_src/spec          ?
+_pd_instr_dist_spec/detc         ?
+_pd_meas_2theta_fixed            ?
+
+# The following fields are used to identify the programs used.
+
+_computing_data_collection       ?
+_computing_cell_refinement       'TOPAS, Bruker AXS 2005, Karlsruhe, Germany'
+_computing_data_reduction        ?
+_computing_structure_solution    'TOPAS, Bruker AXS 2005, Karlsruhe, Germany'
+_computing_structure_refinement  'TOPAS, Bruker AXS 2005, Karlsruhe, Germany'
+_computing_molecular_graphics    ?
+_computing_publication_material  'TOPAS, Bruker AXS 2005, Karlsruhe, Germany'
+
+#==============================================================================
+
+# 3. REFINEMENT DATA
+
+# Use the next field to give any special details about the fitting of the
+# powder pattern.
+
+_pd_proc_ls_special_details      
+; The use of a rigid body description for the ligand does not allow 
+  the derivation of statistically  meaningful s.u.'s for their atoms.
+  S.u.'s are available only for the position of the center of mass (X, Y, Z)
+  and for the rotational angles (RX, RY, RZ) of the rigid body.
+  
+    
+rigid body description:
+  
+prm ref1 -11.08545`_0.18087 min -14
+prm ref2 =ref1;  
+
+prm benz  1.40984`_0.00680_LIMIT_MAX_1.41 min 1.35 max 1.41
+prm pyr  1.35937`_0.00253_LIMIT_MAX_1.36 min 1.34 max 1.36
+
+rigid
+
+z_matrix C1
+z_matrix C2 C1 =benz;
+z_matrix C3 C2 =benz; C1 120
+z_matrix C4 C3 =benz; C2 120 C1 0
+z_matrix C5 C4 =benz; C3 120 C1 0
+z_matrix C6 C5 =benz; C4 120 C1 0
+z_matrix F1 C5 @  1.32000 min 1.32 max 1.35 C6 -120 C1 0
+z_matrix F2 C2 @  1.35000 min 1.32 max 1.35 C3 -120 C1 0
+
+z_matrix C7 C1 @  1.53000 min 1.45 max 1.53  C6 -120 C2 =ref1;
+z_matrix C8 C7 =pyr; C1 126 C2 =ref1;
+z_matrix C9 C7 =pyr; C1 -126 C2 =ref1;
+z_matrix N1 C8 =pyr; C7 -108 C2 =ref1;
+z_matrix N2 C9 =pyr; C7 -108 C2 =-ref1;
+
+z_matrix C10 C4 @  1.53000 min 1.45 max 1.53 C5 -120 C3 =ref2;
+z_matrix C11 C10 =pyr; C4 126 C3 =ref2;
+z_matrix C12 C10 =pyr; C4 -126 C3 =ref2;
+z_matrix N3 C11 =pyr; C10 -108 C3 =ref2;
+z_matrix N4 C12 =pyr; C10 -108 C3 =-ref2;
+
+Rotate_about_points(@ -6.44358`_0.88811,C1,C7,"C8 C9 N1 N2")
+Rotate_about_points(@ -10.00581`_1.21726,C4,C10,"C11 C12 N3 N4")
+
+
+Rotate_about_axies(@  253.60367`_0.17857, @ -206.12707`_0.11150, 
+	@  109.67277`_0.11037)
+Translate(@ -0.23177`_0.00117, @ -0.68865`_0.00041, @ -0.80775`_0.00095)
+
+
+Distance_Restrain(Co1 N2 3 59 -113 -185, 2, 2.03167`_0.01444, 0.02, 10) 
+        
+;
+
+# The next three items are given as text
+_pd_proc_ls_profile_function     'fundamental parameters approach'
+_pd_proc_ls_background_function  'Chebychev polynomial'
+_pd_proc_ls_pref_orient_corr     none
+_pd_proc_ls_prof_R_factor        0.066
+_pd_proc_ls_prof_wR_factor       0.088
+_pd_proc_ls_prof_wR_expected     0.011
+_refine_ls_R_I_factor            0.035
+
+
+_refine_special_details          
+; ?
+;
+
+_refine_ls_structure_factor_coef Inet
+_refine_ls_matrix_type           fullcycle
+_refine_ls_weighting_scheme      sigma
+_refine_ls_hydrogen_treatment    constr
+_refine_ls_extinction_method     none
+_refine_ls_extinction_coef       ?
+_refine_ls_number_parameters     46
+_refine_ls_number_restraints     0
+_refine_ls_number_constraints    ?
+# The following item is 'CHI squared'
+_refine_ls_goodness_of_fit_all   8.07
+
+_refine_ls_restrained_S_all      ?
+_refine_ls_restrained_S_obs      ?
+_refine_ls_shift/su_max          .01
+_refine_ls_shift/su_mean         ?
+
+
+# The following four items apply to angular dispersive measurements.
+# 2theta minimum, maximum and increment (in degrees) are for the 
+# intensities used in the refinement.
+_pd_proc_2theta_range_min        1.7
+_pd_proc_2theta_range_max        26.69
+_pd_proc_2theta_range_inc        0.01
+
+loop_
+_pd_proc_wavelength
+0.727680
+
+_pd_block_diffractogram_id       ? # The id used for the block
+# containing the powder 
+# pattern profile (section 11).
+
+# Give appropriate details in the next two text fields.
+_pd_proc_info_excluded_regions   ?
+_pd_proc_info_data_reduction     ?
+
+#==============================================================================
+
+# 4. ATOMIC COORDINATES AND DISPLACEMENT PARAMETERS
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_symmetry_multiplicity
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_occupancy
+_atom_site_B_iso_or_equiv
+
+Co1 Co 4 0.773(1) 0.5094(3) 0.5110(12) 1 0.017(4)
+C1 C 4 0.7682(12) 0.3113(4) 0.1923(10) 1 0.087(7)
+C2 C 4 0.5744(12) 0.2917(4) 0.1769(10) 1 0.087(7)
+C3 C 4 0.5403(12) 0.2351(4) 0.1797(10) 1 0.087(7)
+C4 C 4 0.7001(12) 0.1981(4) 0.1977(10) 1 0.087(7)
+C5 C 4 0.8940(12) 0.2178(4) 0.2130(10) 1 0.087(7)
+C6 C 4 0.9280(12) 0.2744(4) 0.2103(10) 1 0.087(7)
+C7 C 4 0.8142(12) 0.3723(4) 0.2265(10) 1 0.087(7)
+C8 C 4 0.6730(12) 0.4127(4) 0.1963(10) 1 0.087(7)
+C9 C 4 1.0033(12) 0.3956(4) 0.2926(10) 1 0.087(7)
+C10 C 4 0.6506(12) 0.1374(4) 0.1630(10) 1 0.087(7)
+C11 C 4 0.4834(12) 0.1118(4) 0.1736(10) 1 0.087(7)
+C12 C 4 0.7660(12) 0.0994(4) 0.1163(10) 1 0.087(7)
+H1 H 4 0.38802 0.221801 0.167517 1 0.087(7)
+H2 H 4 1.07674 0.289969 0.221155 1 0.087(7)
+H3 H 4 0.51185 0.408151 0.161141 1 0.087(7)
+H4 H 4 1.14774 0.374787 0.306905 1 0.087(7)
+H5 H 4 0.35615 0.132759 0.207294 1 0.087(7)
+H6 H 4 0.90692 0.10758 0.100958 1 0.087(7)
+F1 F 4 1.0436(12) 0.1833(4) 0.2298(10) 1 0.087(7)
+F2 F 4 0.4213(12) 0.3270(4) 0.1597(10) 1 0.087(7)
+N1 N 4 0.7753(12) 0.4602(4) 0.2611(10) 1 0.087(7)
+N2 N 4 0.9788(12) 0.4505(4) 0.2992(10) 1 0.087(7)
+N3 N 4 0.4853(12) 0.0592(4) 0.1153(10) 1 0.087(7)
+N4 N 4 0.6724(12) 0.0502(4) 0.1021(10) 1 0.087(7)
+
+#==============================================================================
+
+#5. MOLECULAR GEOMETRY
+
+loop_
+_geom_bond_atom_site_label_1
+_geom_bond_atom_site_label_2
+_geom_bond_distance
+_geom_bond_site_symmetry_2
+_geom_bond_publ_flag
+
+C1 C2 1.409(13) 1.555 N
+C1 C6 1.410(13) 1.555 N
+C1 C7 1.531(14) 1.555 N
+C2 C3 1.410(14) 1.555 N
+C2 F2 1.350(13) 1.555 N
+C3 C4 1.411(13) 1.555 N
+C3 H1 1.0901 1.555 N
+C4 C5 1.410(13) 1.555 N
+C4 C10 1.528(14) 1.555 N
+C5 C6 1.410(14) 1.555 N
+C5 F1 1.319(13) 1.555 N
+C6 H2 1.087 1.555 N
+N1 N2 1.372(12) 1.555 N
+N1 C8 1.358(13) 1.555 N
+N1 Co1 2.196(11) 1.555 N
+N2 C9 1.360(14) 1.555 N
+C7 C8 1.361(13) 1.555 N
+C7 C9 1.359(13) 1.555 N
+C8 H3 1.0692 1.555 N
+C9 H4 1.106 1.555 N
+C10 C11 1.360(13) 1.555 N
+C10 C12 1.360(13) 1.555 N
+C11 N3 1.360(14) 1.555 N
+C11 H5 1.1352 1.555 N
+C12 N4 1.359(14) 1.555 N
+C12 H6 1.0563 1.555 N
+N3 N4 1.372(13) 1.555 N
+
+loop_
+_geom_angle_atom_site_label_1
+_geom_angle_atom_site_label_2
+_geom_angle_atom_site_label_3
+_geom_angle
+_geom_angle_publ_flag
+
+Co1 N1 N2 104.9(6) N
+Co1 N1 C8 126.5(6) N
+N1 N2 C9 107.5(8) N
+N1 C8 H3 123.16 N
+N1 C8 C7 108.0(8) N
+N2 C9 H4 125.31 N
+N2 C9 C7 108.0(8) N
+N2 N1 C8 107.3(9) N
+C9 C7 C8 108.0(9) N
+C9 C7 C1 126.0(8) N
+H4 C9 C7 125.46 N
+C7 C8 H3 127.38 N
+C7 C1 C6 120.0(8) N
+C7 C1 C2 119.0(8) N
+C1 C6 H2 119.49 N
+C1 C6 C5 120.0(8) N
+C1 C2 F2 120.1(9) N
+C1 C2 C3 120.0(8) N
+H2 C6 C5 120.51 N
+F2 C2 C3 119.9(8) N
+C6 C5 F1 120.0(9) N
+C6 C5 C4 120.0(8) N
+C6 C1 C2 120.1(9) N
+C2 C3 C4 120.0(8) N
+C2 C3 H1 117.33 N
+C3 C4 C5 119.9(8) N
+C3 C4 C10 119.1(8) N
+H1 C3 C4 122.67 N
+C5 C4 C10 120.0(8) N
+F1 C5 C4 120.0(9) N
+C4 C10 C12 126.1(8) N
+C4 C10 C11 126.0(8) N
+C10 C12 H6 124.65 N
+C10 C12 N4 108.1(8) N
+C10 C11 H5 124.85 N
+C10 C11 N3 108.1(8) N
+H6 C12 N4 127.29 N
+C12 N4 N3 107.5(9) N
+C12 C10 C11 107.9(9) N
+C11 N3 N4 107.3(8) N
+H5 C11 N3 126.76 N
+
+
+#END
+
+
+####################################################################### 
+# 
+# This file contains crystal structure data downloaded from the 
+# Cambridge Structural Database (CSD) hosted by the Cambridge 
+# Crystallographic Data Centre (CCDC).
+# 
+# Full information about CCDC data access policies and citation 
+# guidelines are available at http://www.ccdc.cam.ac.uk/access/V1 
+# 
+# Audit and citation data items may have been added by the CCDC. 
+# Please retain this information to preserve the provenance of 
+# this file and to allow appropriate attribution of the data. 
+# 
+#######################################################################
+

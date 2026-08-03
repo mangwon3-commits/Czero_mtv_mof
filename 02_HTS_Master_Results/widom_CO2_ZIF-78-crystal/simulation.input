@@ -1,0 +1,20 @@
+SimulationType                MonteCarlo
+NumberOfCycles                5000
+NumberOfInitializationCycles  1000
+PrintEvery                    1000
+RestartFile                   no
+
+Forcefield                    GenericMOFs
+CutOff                        12.0
+UseChargesFromCIFFile         yes
+
+Framework 0
+FrameworkName                 ZIF-78-crystal
+UnitCells                     3 3 3
+ExternalTemperature           298.0
+ExternalPressure              1e-05
+
+Component 0 MoleculeName              CO2
+            MoleculeDefinition        TraPPE
+            WidomProbability          1.0
+            CreateNumberOfMolecules   0

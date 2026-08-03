@@ -1,0 +1,20 @@
+SimulationType                MonteCarlo
+NumberOfCycles                300
+NumberOfInitializationCycles  100
+PrintEvery                    100
+RestartFile                   no
+
+Forcefield                    GenericMOFs
+CutOff                        12.0
+UseChargesFromCIFFile         yes
+
+Framework 0
+FrameworkName                 ZIF69_cbIm90_cf3Im10
+UnitCells                     2 2 2
+ExternalTemperature           298.0
+ExternalPressure              1e-5
+
+Component 0 MoleculeName              CO2
+            MoleculeDefinition        TraPPE
+            WidomProbability          1.0
+            CreateNumberOfMolecules   0

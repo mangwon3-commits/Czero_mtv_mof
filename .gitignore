@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+
+# RASPA raw simulation artifacts: regeneratable by rerunning `simulate`,
+# and bulky in aggregate (checkpoints / VTK visualization / movie frames).
+# Output/ is kept -- that's the actual .data results (small text, the real numbers).
+**/Restart/
+**/VTK/
+**/Movies/
+
+# Zeo++ scratch files (normally removed by the pipeline itself, but just in case)
+*.res
+*.vol
+*.pqr
+
+# Windows "downloaded from internet" NTFS metadata, not real content
+*:Zone.Identifier
+
+# Editor/shell artifacts
+*.save
+/=
+
+# Claude Code's local tool-permission cache -- machine/session-specific, not project data
+.claude/settings.local.json
