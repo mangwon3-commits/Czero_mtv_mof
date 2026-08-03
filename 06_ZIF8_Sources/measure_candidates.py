@@ -35,15 +35,54 @@ def integrity_check(path):
 
 
 def pressure_of(path):
-    """CIF에 기록된 압력/온도를 뽑는다(있으면). 압력 시리즈 구분용."""
+    """CIF에 기록된 압력/온도/R factor를 뽑는다. 압력 시리즈에서 목표 구조 식별용."""
     txt = open(path, encoding='utf-8', errors='ignore').read()
     out = []
-    for tag in ('_diffrn_ambient_pressure', '_cell_measurement_pressure',
-                '_diffrn_ambient_temperature'):
+    for tag, lab in (('_diffrn_ambient_pressure', '압력'),
+                     ('_cell_measurement_pressure', '셀압력'),
+                     ('_diffrn_ambient_temperature', '온도'),
+                     ('_refine_ls_R_factor_gt', 'R')):
         m = re.search(rf'{tag}\s+(\S+)', txt)
         if m:
-            out.append(f'{tag.split("_")[-1]}={m.group(1)}')
+            out.append(f'{lab}={m.group(1)}')
     return ' '.join(out) or '-'
+
+
+def disorder_of(path):
+    """부분점유(무질서) 사이트 수를 센다.
+
+    [중요] ASE의 CIF 리더는 _atom_site_occupancy를 무시하고 occ<1 사이트도 온전한
+    원자로 전개한다. 실제로 COD의 ZIF-8들은 메틸 수소가 두 배향에 각각 occ=0.5로
+    등재돼 있어 H가 화학적 정답(120개) 대신 192개로 읽힌다. 이 유령 원자는
+    (a) 원자 수를 부풀리고 (b) '원자 겹침' 오경보를 만든다.
+
+    다만 ZIF-8에서 실측해보니 이 유령 수소를 전부 제거해도 PLD가 소수점 3자리까지
+    동일했다 -- 창구를 좁히는 건 메틸 H가 아니라 골격의 C/N이기 때문. 따라서 다공성
+    판정 자체는 무질서 처리 방식에 둔감하다. 원자 겹침 경고 해석에만 주의하면 된다.
+    """
+    txt = open(path, encoding='utf-8', errors='ignore').read()
+    lines = txt.split('\n')
+    tags = [i for i, l in enumerate(lines) if l.strip().startswith('_atom_site_')]
+    if not tags:
+        return 0
+    names = [lines[i].strip() for i in tags]
+    try:
+        col = next(i for i, n in enumerate(names) if n == '_atom_site_occupancy')
+    except StopIteration:
+        return 0
+    partial = 0
+    for l in lines[tags[-1] + 1:]:
+        p = l.split()
+        if len(p) <= col or l.strip().startswith(('_', '#', 'loop_')):
+            if partial:
+                break
+            continue
+        try:
+            if abs(float(re.sub(r'\(.*?\)', '', p[col])) - 1.0) > 1e-3:
+                partial += 1
+        except ValueError:
+            continue
+    return partial
 
 
 def zeopp(cif):
@@ -118,7 +157,13 @@ for path, tag in targets:
     print(f'{name:<24} {len(a):>5} {cell:>7.3f} {lcd:>7.3f} {pld:>7.3f} '
           f'{pld / cell if cell else 0:>7.4f} {av:>9.1f} {mc:>7.3f}  {verdict} {tag}')
     cond = pressure_of(path)
+    ndis = disorder_of(path)
+    comp = dict(Counter(a.get_chemical_symbols()))
     if cond != '-':
-        print(f'{"":24} 조건: {cond} | 조성 {dict(Counter(a.get_chemical_symbols()))}')
+        print(f'{"":24} 조건: {cond}')
+    print(f'{"":24} 조성 {comp}')
+    if ndis:
+        print(f'{"":24} !! 부분점유 사이트 {ndis}개 -- ASE가 occupancy를 무시하고 전개하므로 '
+              f'원자 수/겹침 경고가 부풀려짐 (PLD 판정에는 영향 없음)')
 
 print('\nPLD/a는 셀 크기 효과를 제거한 상대 창구 크기 — 이 값이 같이 커져야 진짜 리간드 재배향.')
