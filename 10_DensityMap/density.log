@@ -4,3 +4,18 @@
   [       ok] mIm100__closed               q_off  loading=0.2323 mol/kg
   [       ok] mIm100__open                 q_on   loading=0.3110 mol/kg
   [       ok] mIm100__open                 q_off  loading=0.2713 mol/kg
+  [       ok] clIm050_mIm050__closed       q_on   loading=0.5162 mol/kg
+  [       ok] clIm050_mIm050__closed       q_off  loading=0.1929 mol/kg
+  [       ok] clIm050_mIm050__open         q_on   loading=0.5122 mol/kg
+  [       ok] clIm050_mIm050__open         q_off  loading=0.1886 mol/kg
+
+==============================================================================
+구조                                    전하O          전하X         정전기 기여
+------------------------------------------------------------------------------
+mIm100__closed                     0.2368       0.2323           1.9%
+mIm100__open                       0.3110       0.2713          12.8%
+clIm050_mIm050__closed             0.5162       0.1929          62.6%
+clIm050_mIm050__open               0.5122       0.1886          63.2%
+
+전하 ON/OFF 차이가 정전기가 흡착에 기여한 몫이다.
+밀도맵: 각 실행 폴더의 VTK/System_0/DensityProfile*.vtk
