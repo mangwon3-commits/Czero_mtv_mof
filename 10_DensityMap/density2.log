@@ -1,0 +1,51 @@
+0.15 bar GCMC, 5000 cycles, 작업 28개
+
+  [   cached] mIm100__closed                   q_on   loading=0.2368 mol/kg
+  [   cached] mIm100__closed                   q_off  loading=0.2323 mol/kg
+  [   cached] mIm100__open                     q_on   loading=0.3110 mol/kg
+  [   cached] mIm100__open                     q_off  loading=0.2713 mol/kg
+  [   cached] clIm050_mIm050__closed           q_on   loading=0.5162 mol/kg
+  [   cached] clIm050_mIm050__closed           q_off  loading=0.1929 mol/kg
+  [   cached] clIm050_mIm050__open             q_on   loading=0.5122 mol/kg
+  [   cached] clIm050_mIm050__open             q_off  loading=0.1886 mol/kg
+  [       ok] mIm050_nIm050__closed            q_on   loading=0.3682 mol/kg
+  [       ok] mIm050_nIm050__closed            q_off  loading=0.1618 mol/kg
+  [       ok] mIm050_nIm050__open              q_on   loading=0.3224 mol/kg
+  [       ok] mIm050_nIm050__open              q_off  loading=0.1695 mol/kg
+  [       ok] mIm075_nIm025__closed            q_on   loading=0.2867 mol/kg
+  [       ok] mIm075_nIm025__closed            q_off  loading=0.1886 mol/kg
+  [       ok] mIm075_nIm025__open              q_on   loading=0.2743 mol/kg
+  [       ok] mIm075_nIm025__open              q_off  loading=0.2351 mol/kg
+  [       ok] clIm025_mIm075__closed           q_on   loading=0.3404 mol/kg
+  [       ok] clIm025_mIm075__closed           q_off  loading=0.2018 mol/kg
+  [       ok] clIm025_mIm075__open             q_on   loading=0.4059 mol/kg
+  [       ok] clIm025_mIm075__open             q_off  loading=0.2369 mol/kg
+  [       ok] cnIm025_mIm075__closed           q_on   loading=0.2257 mol/kg
+  [       ok] cnIm025_mIm075__closed           q_off  loading=0.1907 mol/kg
+  [       ok] cnIm025_mIm075__open             q_on   loading=0.2553 mol/kg
+  [       ok] cnIm025_mIm075__open             q_off  loading=0.2366 mol/kg
+  [       ok] clIm025_mIm050_nIm025__closed    q_on   loading=0.4461 mol/kg
+  [       ok] clIm025_mIm050_nIm025__closed    q_off  loading=0.1749 mol/kg
+  [       ok] clIm025_mIm050_nIm025__open      q_on   loading=0.3950 mol/kg
+  [       ok] clIm025_mIm050_nIm025__open      q_off  loading=0.1797 mol/kg
+
+================================================================================================
+구조                                      전하O        전하X       정전기       입체비용       순효과
+------------------------------------------------------------------------------------------------
+mIm100__closed                       0.2368     0.2323      1.9%       0.0%      0.0%
+mIm100__open                         0.3110     0.2713     12.8%       0.0%      0.0%
+clIm050_mIm050__closed               0.5162     0.1929     62.6%     -17.0%    118.0%
+clIm050_mIm050__open                 0.5122     0.1886     63.2%     -30.5%     64.7%
+mIm050_nIm050__closed                0.3682     0.1618     56.1%     -30.3%     55.5%
+mIm050_nIm050__open                  0.3224     0.1695     47.4%     -37.5%      3.7%
+mIm075_nIm025__closed                0.2867     0.1886     34.2%     -18.8%     21.1%
+mIm075_nIm025__open                  0.2743     0.2351     14.3%     -13.3%    -11.8%
+clIm025_mIm075__closed               0.3404     0.2018     40.7%     -13.1%     43.7%
+clIm025_mIm075__open                 0.4059     0.2369     41.6%     -12.7%     30.5%
+cnIm025_mIm075__closed               0.2257     0.1907     15.5%     -17.9%     -4.7%
+cnIm025_mIm075__open                 0.2553     0.2366      7.4%     -12.8%    -17.9%
+clIm025_mIm050_nIm025__closed        0.4461     0.1749     60.8%     -24.7%     88.4%
+clIm025_mIm050_nIm025__open          0.3950     0.1797     54.5%     -33.8%     27.0%
+
+전하 ON/OFF 차이가 정전기가 흡착에 기여한 몫이다.
+밀도맵: 각 실행 폴더의 VTK/System_0/DensityProfile*.vtk

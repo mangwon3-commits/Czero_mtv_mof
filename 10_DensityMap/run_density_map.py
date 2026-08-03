@@ -13,6 +13,7 @@
 
 대상: 순수 ZIF-8(대조군)과 최고 성능 조성을 닫힌/열린 상 모두.
 """
+import json
 import os
 import shutil
 import subprocess
@@ -30,8 +31,14 @@ CYCLES = 5000
 INIT = 2000
 
 TARGETS = [
-    'mIm100__closed', 'mIm100__open',              # 대조군 (순수 ZIF-8)
-    'clIm050_mIm050__closed', 'clIm050_mIm050__open',  # Widom 최고 선택도
+    'mIm100__closed', 'mIm100__open',                      # 대조군 (순수 ZIF-8)
+    'clIm050_mIm050__closed', 'clIm050_mIm050__open',      # Widom 최고 선택도
+    # EWG 종류별 정전기 효율 비교
+    'mIm050_nIm050__closed', 'mIm050_nIm050__open',        # NO2 50%
+    'mIm075_nIm025__closed', 'mIm075_nIm025__open',        # NO2 25%
+    'clIm025_mIm075__closed', 'clIm025_mIm075__open',      # Cl 25%
+    'cnIm025_mIm075__closed', 'cnIm025_mIm075__open',      # CN 25%
+    'clIm025_mIm050_nIm025__closed', 'clIm025_mIm050_nIm025__open',  # 3원
 ]
 
 
@@ -80,9 +87,29 @@ Component 0 MoleculeName              CO2
 """)
 
 
+def _loading_from(outfile):
+    import re
+    load = None
+    for line in open(outfile, encoding='utf-8', errors='ignore'):
+        if 'Average loading absolute [mol/kg framework]' in line:
+            m = re.search(r':?\s*([0-9.eE+-]+)\s*\+/-', line)
+            if m:
+                load = float(m.group(1))
+    return load
+
+
 def run(name, charges, tag, density_grid):
+    import glob as _glob
     src = os.path.join(SRC, name + '.cif')
     d = os.path.join(HERE, f'{name}__{tag}')
+
+    # 이미 끝난 실행은 결과만 재사용 (재실행 비용 회피)
+    done = _glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
+    if done:
+        load = _loading_from(done[0])
+        if load is not None:
+            return name, tag, load, 'cached'
+
     os.makedirs(d, exist_ok=True)
     shutil.copy(src, os.path.join(d, name + '.cif'))
     na, nb, nc = unit_cells(read(src))
@@ -121,21 +148,36 @@ def main():
     from concurrent.futures import ProcessPoolExecutor
     print(f'0.15 bar GCMC, {CYCLES} cycles, 작업 {len(jobs)}개\n', flush=True)
     results = {}
-    with ProcessPoolExecutor(max_workers=4) as ex:
+    with ProcessPoolExecutor(max_workers=7) as ex:
         for name, tag, load, status in ex.map(_run_star, jobs):
             results.setdefault(name, {})[tag] = load
-            print(f'  [{status:>9}] {name:<28} {tag:<6} '
+            print(f'  [{status:>9}] {name:<32} {tag:<6} '
                   f'loading={load if load is not None else float("nan"):.4f} mol/kg', flush=True)
 
-    print('\n' + '=' * 78)
-    print(f'{"구조":<28} {"전하O":>12} {"전하X":>12} {"정전기 기여":>14}')
-    print('-' * 78)
+    # 각 조성을 같은 상(phase)의 순수 ZIF-8과 대비해 입체 비용/정전기 이득/순효과로 분해
+    print('\n' + '=' * 96)
+    print(f'{"구조":<32} {"전하O":>10} {"전하X":>10} {"정전기":>9} {"입체비용":>10} {"순효과":>9}')
+    print('-' * 96)
+    rows = []
     for n in TARGETS:
         on = results.get(n, {}).get('q_on')
         off = results.get(n, {}).get('q_off')
-        if on is not None and off is not None:
-            frac = (on - off) / on * 100 if on else float('nan')
-            print(f'{n:<28} {on:>12.4f} {off:>12.4f} {frac:>13.1f}%')
+        if on is None or off is None:
+            continue
+        ph = 'open' if n.endswith('__open') else 'closed'
+        b_on = results.get(f'mIm100__{ph}', {}).get('q_on')
+        b_off = results.get(f'mIm100__{ph}', {}).get('q_off')
+        frac = (on - off) / on * 100 if on else float('nan')
+        steric = (off / b_off - 1) * 100 if b_off else float('nan')
+        net = (on / b_on - 1) * 100 if b_on else float('nan')
+        print(f'{n:<32} {on:>10.4f} {off:>10.4f} {frac:>8.1f}% {steric:>9.1f}% {net:>8.1f}%')
+        rows.append({'name': n, 'phase': ph, 'q_on': on, 'q_off': off,
+                     'electrostatic_pct': round(frac, 1),
+                     'steric_pct': round(steric, 1),
+                     'net_vs_pristine_pct': round(net, 1)})
+    with open(os.path.join(HERE, 'electrostatic_decomposition.json'), 'w',
+              encoding='utf-8') as f:
+        json.dump(rows, f, indent=2, ensure_ascii=False)
     print('\n전하 ON/OFF 차이가 정전기가 흡착에 기여한 몫이다.')
     print('밀도맵: 각 실행 폴더의 VTK/System_0/DensityProfile*.vtk')
 
