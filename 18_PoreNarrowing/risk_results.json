@@ -1,0 +1,650 @@
+{
+  "reference_LCD": {
+    "closed": 10.99476,
+    "open": 11.05241
+  },
+  "criteria": {
+    "PLD_min": 3.3,
+    "LCD_drop_max_pct": 20.0,
+    "min_dist_min": 0.7,
+    "AV_floor_per_cell": 20.0
+  },
+  "rows": [
+    {
+      "name": "mIm100__closed",
+      "label": "대조군 순수 ZIF-8",
+      "phase": "closed",
+      "n_substituted": 0,
+      "before": {
+        "LCD": 11.39286,
+        "PLD": 3.40894,
+        "AV": 909.817,
+        "AV_frac": 0.18548,
+        "err": null,
+        "min_dist": 0.929,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 909.8
+      },
+      "after": {
+        "LCD": 10.99476,
+        "PLD": 3.24146,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 1.081,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.40894,
+      "AV_judged_per_cell": 909.8,
+      "LCD_change_pct": 0.0,
+      "AV_per_cell": 909.8,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "clIm050_mIm050__closed",
+      "label": "Cl 50%",
+      "phase": "closed",
+      "n_substituted": 12,
+      "before": {
+        "LCD": 11.10389,
+        "PLD": 3.40894,
+        "AV": 876.756,
+        "AV_frac": 0.17874,
+        "err": null,
+        "min_dist": 0.929,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 876.8
+      },
+      "after": {
+        "LCD": 10.67385,
+        "PLD": 3.21476,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 1.081,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.40894,
+      "AV_judged_per_cell": 876.8,
+      "LCD_change_pct": -2.9,
+      "AV_per_cell": 876.8,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "clIm075_mIm025__closed",
+      "label": "Cl 75%",
+      "phase": "closed",
+      "n_substituted": 18,
+      "before": {
+        "LCD": 10.88034,
+        "PLD": 3.40894,
+        "AV": 857.527,
+        "AV_frac": 0.17482,
+        "err": null,
+        "min_dist": 0.929,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 857.5
+      },
+      "after": {
+        "LCD": 10.42689,
+        "PLD": 3.19436,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 1.081,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.40894,
+      "AV_judged_per_cell": 857.5,
+      "LCD_change_pct": -5.2,
+      "AV_per_cell": 857.5,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "clIm100__closed",
+      "label": "Cl 100% (상한 참고)",
+      "phase": "closed",
+      "n_substituted": 24,
+      "before": {
+        "LCD": 10.872,
+        "PLD": 3.40894,
+        "AV": 839.574,
+        "AV_frac": 0.17116,
+        "err": null,
+        "min_dist": 0.929,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 839.6
+      },
+      "after": {
+        "LCD": 10.42583,
+        "PLD": 3.18337,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 1.081,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.40894,
+      "AV_judged_per_cell": 839.6,
+      "LCD_change_pct": -5.2,
+      "AV_per_cell": 839.6,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "mIm050_saIm050__closed",
+      "label": "SO3H 50%",
+      "phase": "closed",
+      "n_substituted": 12,
+      "before": {
+        "LCD": 10.78533,
+        "PLD": 3.39419,
+        "AV": 768.449,
+        "AV_frac": 0.15666,
+        "err": null,
+        "min_dist": 0.929,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 768.4
+      },
+      "after": {
+        "LCD": 10.28862,
+        "PLD": 3.30523,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 0.977,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.39419,
+      "AV_judged_per_cell": 768.4,
+      "LCD_change_pct": -6.4,
+      "AV_per_cell": 768.4,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "mIm025_saIm075__closed",
+      "label": "SO3H 75%",
+      "phase": "closed",
+      "n_substituted": 18,
+      "before": {
+        "LCD": 10.34534,
+        "PLD": 3.25406,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 0.929,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 0.0
+      },
+      "after": {
+        "LCD": 9.10164,
+        "PLD": 3.23851,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 0.979,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.25406,
+      "AV_judged_per_cell": 0.0,
+      "LCD_change_pct": -17.2,
+      "AV_per_cell": 0.0,
+      "pass": false,
+      "fail": [
+        "PLD 3.25<3.3",
+        "AV 0~0"
+      ]
+    },
+    {
+      "name": "clIm050_saIm050__closed",
+      "label": "Cl 50% + SO3H 50%",
+      "phase": "closed",
+      "n_substituted": 24,
+      "before": {
+        "LCD": 10.56954,
+        "PLD": 3.39419,
+        "AV": 732.739,
+        "AV_frac": 0.14938,
+        "err": null,
+        "min_dist": 0.929,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 732.7
+      },
+      "after": {
+        "LCD": 9.60934,
+        "PLD": 3.3437,
+        "AV": 4564.61,
+        "AV_frac": 0.1193,
+        "err": null,
+        "min_dist": 0.978,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 570.6
+      },
+      "PLD_judged": 3.39419,
+      "AV_judged_per_cell": 732.7,
+      "LCD_change_pct": -12.6,
+      "AV_per_cell": 732.7,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "clIm050_mIm025_saIm025__closed",
+      "label": "Cl 50% + SO3H 25%",
+      "phase": "closed",
+      "n_substituted": 18,
+      "before": {
+        "LCD": 10.56954,
+        "PLD": 3.40753,
+        "AV": 796.605,
+        "AV_frac": 0.1624,
+        "err": null,
+        "min_dist": 0.929,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 796.6
+      },
+      "after": {
+        "LCD": 9.86222,
+        "PLD": 3.27535,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 0.976,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.40753,
+      "AV_judged_per_cell": 796.6,
+      "LCD_change_pct": -10.3,
+      "AV_per_cell": 796.6,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "mIm100__open",
+      "label": "대조군 순수 ZIF-8",
+      "phase": "open",
+      "n_substituted": 0,
+      "before": {
+        "LCD": 11.48833,
+        "PLD": 3.95007,
+        "AV": 827.212,
+        "AV_frac": 0.16628,
+        "err": null,
+        "min_dist": 0.93,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 827.2
+      },
+      "after": {
+        "LCD": 11.05241,
+        "PLD": 3.24839,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 1.081,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.95007,
+      "AV_judged_per_cell": 827.2,
+      "LCD_change_pct": 0.0,
+      "AV_per_cell": 827.2,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "clIm050_mIm050__open",
+      "label": "Cl 50%",
+      "phase": "open",
+      "n_substituted": 12,
+      "before": {
+        "LCD": 11.46628,
+        "PLD": 3.89424,
+        "AV": 801.244,
+        "AV_frac": 0.16106,
+        "err": null,
+        "min_dist": 0.93,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 801.2
+      },
+      "after": {
+        "LCD": 10.42359,
+        "PLD": 3.21478,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 1.081,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.89424,
+      "AV_judged_per_cell": 801.2,
+      "LCD_change_pct": -5.7,
+      "AV_per_cell": 801.2,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "clIm075_mIm025__open",
+      "label": "Cl 75%",
+      "phase": "open",
+      "n_substituted": 18,
+      "before": {
+        "LCD": 11.46628,
+        "PLD": 3.89424,
+        "AV": 787.812,
+        "AV_frac": 0.15836,
+        "err": null,
+        "min_dist": 0.93,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 787.8
+      },
+      "after": {
+        "LCD": 10.42777,
+        "PLD": 3.20556,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 1.081,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.89424,
+      "AV_judged_per_cell": 787.8,
+      "LCD_change_pct": -5.7,
+      "AV_per_cell": 787.8,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "clIm100__open",
+      "label": "Cl 100% (상한 참고)",
+      "phase": "open",
+      "n_substituted": 24,
+      "before": {
+        "LCD": 11.45518,
+        "PLD": 3.48834,
+        "AV": 778.857,
+        "AV_frac": 0.15656,
+        "err": null,
+        "min_dist": 0.93,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 778.9
+      },
+      "after": {
+        "LCD": 10.42623,
+        "PLD": 3.1831,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 1.081,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 0.0
+      },
+      "PLD_judged": 3.48834,
+      "AV_judged_per_cell": 778.9,
+      "LCD_change_pct": -5.7,
+      "AV_per_cell": 778.9,
+      "pass": true,
+      "fail": []
+    },
+    {
+      "name": "mIm050_saIm050__open",
+      "label": "SO3H 50%",
+      "phase": "open",
+      "n_substituted": 12,
+      "before": {
+        "LCD": 10.06692,
+        "PLD": 3.10703,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 0.93,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 0.0
+      },
+      "after": {
+        "LCD": 9.43734,
+        "PLD": 3.388,
+        "AV": 4514.47,
+        "AV_frac": 0.11768,
+        "err": null,
+        "min_dist": 0.987,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 564.3
+      },
+      "PLD_judged": 3.10703,
+      "AV_judged_per_cell": 0.0,
+      "LCD_change_pct": -14.6,
+      "AV_per_cell": 0.0,
+      "pass": false,
+      "fail": [
+        "PLD 3.11<3.3",
+        "AV 0~0"
+      ]
+    },
+    {
+      "name": "mIm025_saIm075__open",
+      "label": "SO3H 75%",
+      "phase": "open",
+      "n_substituted": 18,
+      "before": {
+        "LCD": 10.04915,
+        "PLD": 3.10703,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 0.93,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 0.0
+      },
+      "after": {
+        "LCD": 8.93829,
+        "PLD": 3.43969,
+        "AV": 4016.92,
+        "AV_frac": 0.1022,
+        "err": null,
+        "min_dist": 0.988,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 502.1
+      },
+      "PLD_judged": 3.10703,
+      "AV_judged_per_cell": 0.0,
+      "LCD_change_pct": -19.1,
+      "AV_per_cell": 0.0,
+      "pass": false,
+      "fail": [
+        "PLD 3.11<3.3",
+        "AV 0~0"
+      ]
+    },
+    {
+      "name": "clIm050_saIm050__open",
+      "label": "Cl 50% + SO3H 50%",
+      "phase": "open",
+      "n_substituted": 24,
+      "before": {
+        "LCD": 10.06692,
+        "PLD": 3.02229,
+        "AV": 0.0,
+        "AV_frac": 0.0,
+        "err": null,
+        "min_dist": 0.93,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 0.0
+      },
+      "after": {
+        "LCD": 9.20408,
+        "PLD": 3.51173,
+        "AV": 4258.2,
+        "AV_frac": 0.11164,
+        "err": null,
+        "min_dist": 0.989,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 532.3
+      },
+      "PLD_judged": 3.02229,
+      "AV_judged_per_cell": 0.0,
+      "LCD_change_pct": -16.7,
+      "AV_per_cell": 0.0,
+      "pass": false,
+      "fail": [
+        "PLD 3.02<3.3",
+        "AV 0~0"
+      ]
+    },
+    {
+      "name": "clIm050_mIm025_saIm025__open",
+      "label": "Cl 50% + SO3H 25%",
+      "phase": "open",
+      "n_substituted": 18,
+      "before": {
+        "LCD": 10.63353,
+        "PLD": 3.89424,
+        "AV": 734.88,
+        "AV_frac": 0.14772,
+        "err": null,
+        "min_dist": 0.93,
+        "Zn_CN": {
+          "4": 12
+        },
+        "n_Zn": 12,
+        "AV_per_cell": 734.9
+      },
+      "after": {
+        "LCD": 9.98798,
+        "PLD": 3.44034,
+        "AV": 4936.11,
+        "AV_frac": 0.1324,
+        "err": null,
+        "min_dist": 0.99,
+        "Zn_CN": {
+          "4": 96
+        },
+        "n_Zn": 96,
+        "supercell_rep": 8,
+        "AV_per_cell": 617.0
+      },
+      "PLD_judged": 3.89424,
+      "AV_judged_per_cell": 734.9,
+      "LCD_change_pct": -9.6,
+      "AV_per_cell": 734.9,
+      "pass": true,
+      "fail": []
+    }
+  ]
+}

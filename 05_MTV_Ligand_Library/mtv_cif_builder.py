@@ -24,6 +24,14 @@ LIGAND_LIBRARY = {
     "tfIm": "FC(F)(F)c1ncc[nH]1",
     "etIm": "CCc1ncc[nH]1",
     "amIm": "Nc1ncc[nH]1",
+    # [팀 문헌조사 반영] MIL-101(Cr)을 동일 몰농도로 개질해 비교한 연구에서 CO2 흡착
+    # 성능이 지방족 -NH2 > -SO3H > 방향족 -NH2 > -NO2 순으로 보고됐다. 메커니즘이
+    # 다르기 때문이다 -- 지방족 아민은 카바메이트를 만드는 화학흡착, -SO3H와 방향족
+    # 아민은 루이스 산-염기 + 수소결합 병행, -NO2는 순수 루이스 산-염기.
+    # 기존 amIm은 NH2가 고리에 직접 붙은 '방향족' 아민이라 이 순위에서 3등이다.
+    # 아래 두 개는 그보다 위에 있는 두 종류를 시험하기 위해 추가했다.
+    "amrIm": "NCc1ncc[nH]1",          # 지방족 아민 (-CH2NH2). 문헌 순위 1위
+    "saIm":  "OS(=O)(=O)c1ncc[nH]1",  # 술폰산 (-SO3H). 문헌 순위 2위
 }
 # 이 SMARTS의 원자 순서가 c1(=C2) - n(=N3) - c(=C4) - c(=C5) - [nH](=N1) 이므로
 # tag_zif_linkers.py의 order_ring()과 동일한 순서 규약을 공유한다.
@@ -131,6 +139,36 @@ def _rotation_about_axis(axis, theta):
     return np.eye(3) + np.sin(theta) * K + (1 - np.cos(theta)) * (K @ K)
 
 
+def _unwrap(atoms, idx):
+    """주기 경계를 걸친 원자 묶음을 첫 원자 기준으로 펼친 좌표를 돌려준다.
+
+    [버그 수정] ZIF-8 P1 단위셀 24개 고리 중 **12개가 셀 경계를 걸쳐** 있다.
+    그런 고리의 원시 좌표는 x가 0.1과 16.9로 흩어져 좌표 스팬이 16.32 A까지
+    벌어진다(정상 고리는 2.2 A). 이 좌표를 그대로 Kabsch에 넣으면 고리 중심 Pc가
+    셀 한가운데로 잡히고 회전행렬도 무의미해져서, 치환기가 링커에 붙지 못하고
+    공동 중심(분율좌표 ~0.5,0.5,0.5)에 버려진다.
+
+    실제로 치환 구조마다 치환기 4묶음이 골격에서 분리된 채 기공 안에 떠 있었고,
+    빌더의 '최소 원자간 거리' 검사는 이걸 못 잡았다 -- 구조에 항상 존재하는
+    메틸 C-H(0.929 A)가 전역 최솟값을 차지해 1.37 A짜리 치환기끼리의 충돌도,
+    4.7 A짜리 고아 원자도 가려버렸기 때문이다.
+    """
+    cell = np.asarray(atoms.get_cell())
+    pos = atoms.get_positions()[idx]
+    ref = pos[0]
+    frac = np.linalg.solve(cell.T, (pos - ref).T).T
+    frac -= np.round(frac)                      # 최소 이미지로 펼치기
+    return ref + frac @ cell
+
+
+def _mic_min_distance(ref_positions, trial_positions, cell):
+    """주기 경계를 감안한 두 좌표 집합 사이의 최소 거리."""
+    diff = ref_positions[:, None, :] - trial_positions[None, :, :]
+    frac = np.linalg.solve(cell.T, diff.reshape(-1, 3).T).T
+    frac -= np.round(frac)
+    return np.linalg.norm(frac @ cell, axis=-1).min()
+
+
 def plan_substitution(atoms, site, fragment, avoid_positions=None, n_trial_angles=12, attachment_ring_index=0):
     """site의 ring 좌표(원본 atoms 기준)에 fragment를 Kabsch 정합시키고,
     삭제할 치환기 인덱스와 새로 추가할 원자(symbol, position)를 반환한다.
@@ -148,7 +186,10 @@ def plan_substitution(atoms, site, fragment, avoid_positions=None, n_trial_angle
     돌려보고 이미 배치된 원자들과의 최소 거리가 가장 큰 각도를 선택하는 것만으로
     상당수의 충돌을 피할 수 있다 (완전한 해결책은 아님 -> RASPA 투입 전 UFF 등 힘장
     이완을 권장)."""
-    ring_pos = atoms.get_positions()[site["ring"]]
+    # 셀 경계를 걸친 고리를 펼쳐서 정합한다. 원시 좌표를 그대로 쓰면 12/24 고리가
+    # 깨져 치환기가 공동 중심에 버려진다 (_unwrap 참고).
+    cell = np.asarray(atoms.get_cell())
+    ring_pos = _unwrap(atoms, site["ring"])
     frag_ring_pos = fragment["coords"][fragment["ring_idx"]]
     R, Pc, Qc = kabsch(ring_pos, frag_ring_pos)
 
@@ -160,8 +201,9 @@ def plan_substitution(atoms, site, fragment, avoid_positions=None, n_trial_angle
         for theta in np.linspace(0, 2 * np.pi, n_trial_angles, endpoint=False):
             Rz = _rotation_about_axis(axis, theta)
             trial_pos = (R @ subst_coords.T).T @ Rz.T + Pc
-            d = np.linalg.norm(avoid_positions[:, None, :] - trial_pos[None, :, :], axis=-1)
-            score = d.min()
+            # 충돌 판정도 주기경계를 감안해야 한다. 원시 거리로 재면 셀 경계
+            # 건너편 원자와의 충돌을 통째로 놓친다.
+            score = _mic_min_distance(np.asarray(avoid_positions), trial_pos, cell)
             if score > best_score:
                 best_score, best_theta = score, theta
         Rz = _rotation_about_axis(axis, best_theta)

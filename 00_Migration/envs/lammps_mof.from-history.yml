@@ -1,0 +1,7 @@
+name: lammps_mof
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - lammps[build=cpu*nompi*]
+prefix: /home/skyjun/miniconda3/envs/lammps_mof

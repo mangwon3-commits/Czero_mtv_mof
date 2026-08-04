@@ -1,0 +1,60 @@
+위험도 통과 12개 -> DDEC6 전하 계산
+
+  전하 파일 12개 이미 존재 -> PACMAN 건너뜀
+
+작업 36개 (Widom CO2/N2 + 0.15bar GCMC)
+
+  [       ok] widom CO2 mIm100__closed_DDEC6
+  [       ok] widom N2  mIm100__closed_DDEC6
+  [       ok] widom CO2 clIm050_mIm050__closed_DDEC6
+  [       ok] widom N2  clIm050_mIm050__closed_DDEC6
+  [       ok] widom CO2 clIm075_mIm025__closed_DDEC6
+  [       ok] widom N2  clIm075_mIm025__closed_DDEC6
+  [       ok] widom CO2 clIm100__closed_DDEC6
+  [       ok] widom N2  clIm100__closed_DDEC6
+  [       ok] widom CO2 mIm050_saIm050__closed_DDEC6
+  [       ok] widom N2  mIm050_saIm050__closed_DDEC6
+  [       ok] widom CO2 clIm050_saIm050__closed_DDEC6
+  [       ok] widom N2  clIm050_saIm050__closed_DDEC6
+  [       ok] widom CO2 clIm050_mIm025_saIm025__closed_DDEC6
+  [       ok] widom N2  clIm050_mIm025_saIm025__closed_DDEC6
+  [       ok] widom CO2 mIm100__open_DDEC6
+  [       ok] widom N2  mIm100__open_DDEC6
+  [       ok] widom CO2 clIm050_mIm050__open_DDEC6
+  [       ok] widom N2  clIm050_mIm050__open_DDEC6
+  [       ok] widom CO2 clIm075_mIm025__open_DDEC6
+  [       ok] widom N2  clIm075_mIm025__open_DDEC6
+  [       ok] widom CO2 clIm100__open_DDEC6
+  [       ok] widom N2  clIm100__open_DDEC6
+  [       ok] widom CO2 clIm050_mIm025_saIm025__open_DDEC6
+  [       ok] widom N2  clIm050_mIm025_saIm025__open_DDEC6
+  [       ok] gcmc  CO2 mIm100__closed_DDEC6
+  [       ok] gcmc  CO2 clIm050_mIm050__closed_DDEC6
+  [       ok] gcmc  CO2 clIm075_mIm025__closed_DDEC6
+  [       ok] gcmc  CO2 clIm100__closed_DDEC6
+  [       ok] gcmc  CO2 mIm050_saIm050__closed_DDEC6
+  [       ok] gcmc  CO2 clIm050_saIm050__closed_DDEC6
+  [       ok] gcmc  CO2 clIm050_mIm025_saIm025__closed_DDEC6
+  [       ok] gcmc  CO2 mIm100__open_DDEC6
+  [       ok] gcmc  CO2 clIm050_mIm050__open_DDEC6
+  [       ok] gcmc  CO2 clIm075_mIm025__open_DDEC6
+  [       ok] gcmc  CO2 clIm100__open_DDEC6
+  [       ok] gcmc  CO2 clIm050_mIm025_saIm025__open_DDEC6
+
+========================================================================================================================
+구조                               LCD     PLD     AV/셀     KH(CO2)   CO2/N2      Qst   0.15bar
+------------------------------------------------------------------------------------------------------------------------
+clIm050_mIm025_saIm025__closed    9.86    3.28    796.6  2.9844e-05    16.56    20.57    0.4284
+clIm050_mIm025_saIm025__open    9.99    3.44    734.9  1.2686e-05     9.67    15.92    0.1910
+clIm050_mIm050__closed         10.67    3.21    876.8  1.2988e-05     6.99    13.65    0.2029
+clIm050_mIm050__open           10.42    3.21    801.2  1.8318e-05    12.91    20.32    0.2601
+clIm050_saIm050__closed         9.61    3.34    732.7  4.6496e-05    26.18    24.12    0.7077
+clIm075_mIm025__closed         10.43    3.19    857.5  1.0878e-05     6.74    13.41    0.1652
+clIm075_mIm025__open           10.43    3.21    787.8  1.4503e-05    12.04    19.87    0.2128
+clIm100__closed                10.43    3.18    839.6  8.5491e-06     6.14    12.74    0.1292
+clIm100__open                  10.43    3.18    778.9  1.1581e-05    11.49    19.79    0.1723
+mIm050_saIm050__closed         10.29    3.31    768.4  5.8002e-05    25.31    23.88    0.8321
+mIm100__closed                 10.99    3.24    909.8  1.7751e-05     7.27    14.04    0.2676
+mIm100__open                   11.05    3.25    827.2  2.3056e-05    11.03    18.07    0.3505
+
+[OK] narrow_results.json

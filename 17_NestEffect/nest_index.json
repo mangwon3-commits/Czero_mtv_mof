@@ -1,0 +1,102 @@
+[
+  {
+    "tag": "mIm100",
+    "label": "순수 ZIF-8",
+    "composition": {
+      "mIm": 1.0
+    },
+    "n_polar": 0,
+    "n_methyl": 24,
+    "n_atoms": 276,
+    "min_dist": 0.929
+  },
+  {
+    "tag": "amIm050_nIm050",
+    "label": "push-pull, 메틸 없음(기존)",
+    "composition": {
+      "nIm": 0.5,
+      "amIm": 0.5
+    },
+    "n_polar": 24,
+    "n_methyl": 0,
+    "n_atoms": 252,
+    "min_dist": 0.831
+  },
+  {
+    "tag": "amIm025_mIm050_nIm025",
+    "label": "둥지: 메틸50 + NO2/NH2",
+    "composition": {
+      "mIm": 0.5,
+      "nIm": 0.25,
+      "amIm": 0.25
+    },
+    "n_polar": 12,
+    "n_methyl": 12,
+    "n_atoms": 264,
+    "min_dist": 0.929
+  },
+  {
+    "tag": "amIm025_clIm025_mIm050",
+    "label": "둥지: 메틸50 + Cl/NH2",
+    "composition": {
+      "mIm": 0.5,
+      "clIm": 0.25,
+      "amIm": 0.25
+    },
+    "n_polar": 12,
+    "n_methyl": 12,
+    "n_atoms": 252,
+    "min_dist": 0.929
+  },
+  {
+    "tag": "amrIm025_mIm050_nIm025",
+    "label": "둥지: 메틸50 + NO2/지방족아민",
+    "composition": {
+      "mIm": 0.5,
+      "nIm": 0.25,
+      "amrIm": 0.25
+    },
+    "n_polar": 12,
+    "n_methyl": 12,
+    "n_atoms": 282,
+    "min_dist": 0.929
+  },
+  {
+    "tag": "amrIm025_clIm025_mIm050",
+    "label": "둥지: 메틸50 + Cl/지방족아민",
+    "composition": {
+      "mIm": 0.5,
+      "clIm": 0.25,
+      "amrIm": 0.25
+    },
+    "n_polar": 12,
+    "n_methyl": 12,
+    "n_atoms": 270,
+    "min_dist": 0.929
+  },
+  {
+    "tag": "mIm075_saIm025",
+    "label": "술폰산 25%",
+    "composition": {
+      "mIm": 0.75,
+      "saIm": 0.25
+    },
+    "n_polar": 6,
+    "n_methyl": 18,
+    "n_atoms": 282,
+    "min_dist": 0.929
+  },
+  {
+    "tag": "amrIm012_mIm075_nIm012",
+    "label": "둥지: 메틸75 + NO2/지방족아민",
+    "composition": {
+      "mIm": 0.75,
+      "nIm": 0.125,
+      "amrIm": 0.125
+    },
+    "n_polar": 6,
+    "n_methyl": 18,
+    "n_atoms": 279,
+    "min_dist": 0.929
+  }
+]
