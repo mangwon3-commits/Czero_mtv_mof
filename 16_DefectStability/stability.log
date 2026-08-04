@@ -1,0 +1,46 @@
+구조 10개 이완 중...
+
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [              ok] vac0_s0
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [              ok] vac1_s0
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [              ok] vac1_s1
+  [              ok] vac2_s0
+  [              ok] vac2_s1
+  [              ok] vac3_s0
+  [              ok] vac3_s1
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [              ok] vac4_s0
+  [              ok] vac4_s1
+  [     LAMMPS 시간초과] vac6_s1
+
+========================================================================================================
+구조            결손%            LCD 전→후            PLD 전→후       최소거리     OMS 전→후  판정
+--------------------------------------------------------------------------------------------------------
+vac0_s0      0.0%     0.00→    0.00     0.00→    0.00      1.081    0→0      유지  (+0.0%)
+vac1_s0      4.2%     0.00→    0.00     0.00→    0.00      0.990    1→8      유지  (+0.0%)
+vac1_s1      4.2%     0.00→    0.00     0.00→    0.00      0.990    1→8      유지  (+0.0%)
+vac2_s0      8.3%     0.00→    0.00     0.00→    0.00      0.990    2→16     유지  (+0.0%)
+vac2_s1      8.3%     0.00→    0.00     0.00→    0.00      0.990    2→16     유지  (+0.0%)
+vac3_s0     12.5%     0.00→    0.00     0.00→    0.00      0.990    3→24     유지  (+0.0%)
+vac3_s1     12.5%     0.00→    0.00     0.00→    0.00      0.990    3→24     유지  (+0.0%)
+vac4_s0     16.7%     0.00→    0.00     0.00→    0.00      0.990    4→32     유지  (+0.0%)
+vac4_s1     16.7%     0.00→    0.00     0.00→    0.00      0.990    4→32     유지  (+0.0%)
+vac6_s1           LAMMPS 시간초과
+
+판정 기준: LCD 20% 이상 감소=공동붕괴, 최소거리<0.7Å=원자겹침, OMS 수 감소=재배위로 자리 메움
