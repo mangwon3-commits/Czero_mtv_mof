@@ -173,9 +173,14 @@ def main():
 
     # 이미 끝난 작업은 건너뛴다. 이 계산은 이원 GCMC 라 한 작업이 길고,
     # 기기를 옮기거나 중단됐다 재개하는 일이 실제로 생긴다.
+    # water_results.json 을 먼저 본다. 이건 collect_results.py 가 실행 디렉터리를
+    # 직접 훑어 만든 것이라, 드라이버가 중간에 죽어 로그에 안 남은 작업까지 잡힌다
+    # (실제로 로그에는 9개, 실행 디렉터리에는 12개가 있었다).
     res = {}
-    partial = os.path.join(HERE, 'water_partial.json')
-    if os.path.exists(partial):
+    partial = next((p for p in (os.path.join(HERE, 'water_results.json'),
+                                os.path.join(HERE, 'water_partial.json'))
+                    if os.path.exists(p)), None)
+    if partial:
         for r in json.load(open(partial, encoding='utf-8')):
             d = {'CO2': (r['CO2_molkg'], 0.0)}
             if r['RH'] > 0:
