@@ -169,6 +169,8 @@ python ~/mof_project/18_PoreNarrowing/lammps_iface_patched.py --help
 | 기공 축소 12종 GCMC — **−SO₃H 최고**(Q_st 24.12, 로딩 0.8321) | `18_PoreNarrowing/narrow_results.json` |
 | 위험도 판정 12/16 통과 | `18_PoreNarrowing/risk_results.json` |
 | 둥지 효과 8종 | `17_NestEffect/ddec6_results.json` |
+| **수분 경쟁 12/20 — RH 90%에서 CO₂ 유지 107\~118%** | `19_WaterCompetition/water_results.json` |
+| **모체 공동 크기 모형 — 최적 4.0\~4.5 Å, ZIF-7 예측 34 kJ/mol** | `20_ParentScan/README.md` |
 
 ### 재계산이 필요한 것 (주기경계 버그 영향)
 
@@ -182,10 +184,27 @@ python ~/mof_project/18_PoreNarrowing/lammps_iface_patched.py --help
 
 ### 다음 작업
 
-1. **CO₂/H₂O 경쟁 흡착 마무리** (`19_WaterCompetition/`) — 노트북에서 진행 중이던 것. 결과가 `water_results.json` 에 있으면 완료된 것이고, 없거나 20행 미만이면 `run_water.py` 재실행
-2. 위 재계산 목록 처리
-3. −SO₃H 가 수분 시험을 통과하면 → DFT 결합에너지, 합성 가능성 검토
-4. 통과 못 하면 → 케이지가 작은 모체(ZIF-7 등)로 전환. **6 Å 급 공동은 ZIF-8 을 치환해서 얻을 수 없음이 확인되었습니다** — C2 치환기는 창구를 향하지 공동 중심이 아니라서, 치환하면 창구만 막히고 공동은 안 줄어듭니다
+**우선순위 1 — ZIF-7 검증** (`20_ParentScan/README.md` 참조)
+
+공동 크기 모형이 ZIF-7(공동 4.3 Å)에서 **작용기 없이 Q_st 34 kJ/mol** 을 예측합니다. ZIF-8 과 같은 sod 위상이고, 우리 파이프라인은 이미 벤즈이미다졸레이트 이환식 고리를 다룹니다(ZIF-69 작업에서 구현).
+
+1. ZIF-7 CIF 확보(CCDC/COD) → `audit_orphans.py` → Zeo++ 로 LCD/PLD 실측, 문헌값 4.3/3.0 확인
+2. 닫힌상/열린상 괄호 계산 — 창구 3.0 Å 이 정적 구조 위양성인지 판정
+3. PACMAN 전하 → Widom/GCMC 로 예측 34 kJ/mol 검증
+4. **로딩과 작업용량 확인** — Q_st 가 올라도 용량이 무너지면 의미 없음
+5. 통과하면 수분 경쟁(`19_WaterCompetition` 과 동일 절차)
+
+**우선순위 2 — 미완 계산 마무리**
+
+- 수분 경쟁 남은 8개: `19_WaterCompetition/` 에서 `run_water.py` 실행. 완료된 12개를 자동으로 건너뜁니다
+- 위 재계산 목록(주기경계 버그 영향분) 처리
+
+**우선순위 3 — 참고**
+
+- ZIF-90, ZIF-68 도 CIF 를 받아 문헌값 검증. 예측상 ZIF-8 과 큰 차이 없어 우선순위 낮음
+- −SO₃H 의 가수분해 안정성 — 고전 계산으로는 불가, 문헌/DFT/실험 필요
+
+> **방향 전환** — 연구가 "ZIF-8 을 화학적으로 개량" 에서 **"작은 공동 모체를 그대로 쓰되 유연성과 용량을 관리"** 로 바뀌었습니다. 근거는 두 가지입니다. (a) C2 치환기가 창구를 향하지 케이지 중심이 아니라 **치환으로는 공동이 안 줄어듭니다**(Part 2, 실측으로 반증). (b) **분산력과 정전기가 같은 부피를 놓고 경쟁합니다** — 공동을 좁히면 작용기 붙일 자리가 없고, 작용기를 붙이려면 공동이 넓어야 합니다(Part 4).
 
 ---
 
