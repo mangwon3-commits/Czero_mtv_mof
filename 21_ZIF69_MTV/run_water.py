@@ -48,7 +48,13 @@ P_CO2 = 0.15e5
 P_SAT_298 = 3169.0
 RH_LIST = [0.0, 0.25, 0.50, 0.90]
 CYCLES, INIT = 15000, 5000
-MAX_WORKERS = 12
+# [2026-08-06] 12 -> 6. ZIF-69 는 셀당 600원자이고 2x2x2 슈퍼셀이면 4800원자다.
+# 19_WaterCompetition(ZIF-8, 276원자 -> 2208원자)에서 12 로 돌던 설정을 그대로
+# 쓰다가 15 GB 머신에서 OOM 이 났다:
+#     Out of memory: Killed process (python) anon-rss:14419068kB
+# 그 메모리 압박이 systemd 까지 불안정하게 만들어 /tmp 가 비워지고 실행 중이던
+# LAMMPS 가 SIGTERM 을 받았다. 원자 수가 2.2배이므로 워커도 절반으로 줄인다.
+MAX_WORKERS = 6
 
 TARGETS = [
     ('base',     'ZIF-69 원본 (Cl, 대조군)'),
