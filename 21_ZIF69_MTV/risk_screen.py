@@ -134,6 +134,22 @@ def run_one(name):
     if n_drop:
         print(f'    {name}: group {n_drop}개 제거(상한 32), min_eval 1e-6 -> 1e-4',
               flush=True)
+
+    # [ZIF-69 + SO3H 에서 걸린 두 번째 함정] lammps-interface 가 같은 원자를 두 번
+    # 넣은 이면각을 만든다:
+    #     ERROR on proc 0: Invalid atom ID in Dihedrals section of data file:
+    #       23   4   5   4   692   5
+    # 술폰산 계열 4종이 전부 여기서 죽고 무치환 모체만 통과했다. 정의가 성립하지
+    # 않는 항이므로 제거해도 이완 결과가 왜곡되지 않는다. 처리는 S_3 타이핑 버그와
+    # 같은 자리(18_PoreNarrowing/lammps_iface_patched.py)에 두었다.
+    dat_in = os.path.join(d, f'data.{name}')
+    if os.path.exists(dat_in):
+        sys.path.insert(0, os.path.dirname(os.path.abspath(IFACE)))
+        try:
+            from lammps_iface_patched import clean_degenerate_topology
+            clean_degenerate_topology(dat_in)
+        except Exception as e:
+            print(f'    {name}: 토폴로지 정리 실패 {type(e).__name__}: {e}', flush=True)
     try:
         subprocess.run(['lmp_serial', '-in', f'in.{name}'], cwd=d,
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,

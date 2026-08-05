@@ -57,6 +57,16 @@ LIGAND_LIBRARY_CBIM_ARYL = {
     # 공동을 좁히면서도 작용기를 붙일 자리가 남는 유일한 모체다. 두 메커니즘을
     # 동시에 시험하려면 이환식 라이브러리에 -SO3H가 있어야 한다.
     "saIm_aryl": "c1nc2cc(S(=O)(=O)O)ccc2[nH]1",
+    # [2026-08-06 추가] 실제로 보고된 gme ZIF 4종에 대응하는 벤조환 치환기.
+    # 100% 치환이 각각 그 물질이다. 실험 CIF 는 결정학적으로 무질서해서
+    # (두 링커가 자리를 나눠 갖고 치환기가 두 위치에 반씩 흩어져 있다) 그대로는
+    # 못 쓴다. 정렬된 ZIF-69 골격에 치환기만 바꿔 넣으면 위상·금속·nIm 비율·
+    # 사이트맵·시드가 전부 고정되므로 -SO3H 결과와 apples-to-apples 로 비교된다.
+    # 실험 CIF 는 격자상수 대조용으로만 쓴다(기공값은 게스트 제거 후에야 유효).
+    "nbIm_aryl":  "c1nc2cc([N+](=O)[O-])ccc2[nH]1",   # 5-nitro   -> ZIF-78
+    "mbIm_aryl":  "c1nc2cc(C)ccc2[nH]1",              # 5-methyl  -> ZIF-79
+    "brbIm_aryl": "c1nc2cc(Br)ccc2[nH]1",             # 5-bromo   -> ZIF-81
+    "cnbIm_aryl": "c1nc2cc(C#N)ccc2[nH]1",            # 5-cyano   -> ZIF-82
 }
 RING_SMARTS_BICYCLIC = Chem.MolFromSmarts("c1nc2ccccc2[nH]1")
 CBIM_ARYL_ATTACHMENT_INDEX = 4
