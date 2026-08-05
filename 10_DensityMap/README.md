@@ -184,6 +184,33 @@ v = vals[:n].reshape(dims[::-1]).transpose(2, 1, 0)
 
 ---
 
+## 5-1. ZIF-69(gme) 계열 밀도맵
+
+`21_ZIF69_MTV/run_density_map.py` 가 같은 절차를 gme 계열에 적용합니다.
+
+```bash
+conda activate czeromof
+export RASPA_DIR=${HOME}/RASPA/simulations
+cd ~/mof_project/21_ZIF69_MTV
+python run_density_map.py                              # 전하 ON/OFF 쌍 GCMC + 격자
+python ../10_DensityMap/export_diff_vtk.py density     # 차분맵 -> density/diff_vtk/
+```
+
+`export_diff_vtk.py` 는 인자로 실행 디렉터리 경로를 받습니다(생략하면 종전대로
+`10_DensityMap/` 자신을 봅니다). **스크립트를 복제하지 마세요** — 한쪽만 고쳐지는
+사고가 납니다.
+
+### ZIF-8 계열과 다른 점
+
+| | 07_Bracketed_MTV (ZIF-8) | 21_ZIF69_MTV (gme) |
+|---|---|---|
+| 축 | 조성 × **닫힌상/열린상** × 전하 ON/OFF | 조성 × 전하 ON/OFF |
+| 이유 | ZIF-8 은 게이트 오프닝이 있어 1.47 GPa 열린상을 따로 씀 | gme 는 강체 골격이라 상이 하나 |
+
+**전하 ON/OFF 축은 여기서 더 중요합니다.** ZIF-69 는 치환율을 올리면 공동 축소
+(분산력↑)와 술폰산 도입(정전기↑)이 **동시에** 일어나서, 로딩만 봐서는 Q_st 31.07
+이 어느 쪽에서 왔는지 못 가립니다. 차분맵이 그걸 가르는 유일한 수단입니다.
+
 ## 6. 주의 — 다른 실행 스크립트는 VTK 를 지웁니다
 
 `07 / 13 / 14 / 17 / 18 / 19 / 21` 의 RASPA 실행 스크립트는 전부 끝에서 다음을 합니다.

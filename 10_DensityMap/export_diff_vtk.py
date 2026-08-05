@@ -20,6 +20,15 @@ import numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, 'diff_vtk')
 
+# [2026-08-06] 다른 디렉터리의 실행 결과에도 쓸 수 있게 인자를 받는다.
+# ZIF-69 계열은 21_ZIF69_MTV/density/ 아래에 같은 <조성>__q_on / __q_off 규약으로
+# 실행 디렉터리를 만든다. 스크립트를 복제하면 한쪽만 고쳐지는 사고가 나므로
+# 구현은 하나로 두고 경로만 바꾼다.
+#     python export_diff_vtk.py [실행디렉터리들이 있는 경로]
+if len(sys.argv) > 1:
+    HERE = os.path.abspath(sys.argv[1])
+    OUT = os.path.join(HERE, 'diff_vtk')
+
 
 def read_vtk_grid(path):
     with open(path) as f:

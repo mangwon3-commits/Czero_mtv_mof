@@ -48,13 +48,22 @@ P_CO2 = 0.15e5
 P_SAT_298 = 3169.0
 RH_LIST = [0.0, 0.25, 0.50, 0.90]
 CYCLES, INIT = 15000, 5000
-# [2026-08-06] 12 -> 6. ZIF-69 는 셀당 600원자이고 2x2x2 슈퍼셀이면 4800원자다.
-# 19_WaterCompetition(ZIF-8, 276원자 -> 2208원자)에서 12 로 돌던 설정을 그대로
-# 쓰다가 15 GB 머신에서 OOM 이 났다:
+# [2026-08-06] 12 -> 8. **메모리 때문이 아니라 물리 코어 수 때문이다.**
+#
+# 처음에는 이 스크립트가 15 GB 머신에서 OOM 을 낸 줄 알았다:
 #     Out of memory: Killed process (python) anon-rss:14419068kB
-# 그 메모리 압박이 systemd 까지 불안정하게 만들어 /tmp 가 비워지고 실행 중이던
-# LAMMPS 가 SIGTERM 을 받았다. 원자 수가 2.2배이므로 워커도 절반으로 줄인다.
-MAX_WORKERS = 6
+# 그런데 실제로 재보니 RASPA 한 프로세스는 **471 MB** 밖에 안 쓴다(ZIF-69,
+# 4800원자 슈퍼셀, 이원 GCMC 기준). 12개를 띄워도 5.6 GB 라 한도와 거리가 멀다.
+# 14.4 GB 를 쓴 건 구조 감사 루프의 ASE get_all_distances(mic=True) 였고,
+# 이 계산은 그 여파(systemd 불안정)에 휩쓸린 피해자였다.
+#
+# 그래서 8 로 두는 근거는 메모리가 아니라 **물리 코어가 8개**라는 것이다.
+# RASPA 는 작업당 단일 스레드 CPU 바운드라 물리 코어 수가 처리량 상한이고,
+# 그 이상 띄우면 문맥 전환만 늘어난다.
+#
+# 재확인 명령:
+#     ps -eo rss,args --sort=-rss | grep simulate | head -3
+MAX_WORKERS = 8
 
 TARGETS = [
     ('base',     'ZIF-69 원본 (Cl, 대조군)'),

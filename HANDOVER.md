@@ -210,6 +210,19 @@
 03:32 에는 systemd 가 재시작해 `/tmp` 가 비워지고 실행 중이던 LAMMPS 가 SIGTERM 을
 받았습니다. **사용자 터미널에서 직접 돌리면 이 문제가 없습니다.**
 
+**남은 작업에 필요한 프로그램은 전부 설치돼 있습니다** (2026-08-06 04:29 실측).
+
+| 환경 | 도구 | 상태 |
+|---|---|---|
+| `czeromof` | RASPA 2.0.41 / Zeo++ / ase 3.29.0 / rdkit 2026.03.4 | 정상 |
+| `coremof_tools` | PACMAN(torch 2.7.0+cu126, **CUDA**) / mofchecker / numpy 1.26.4 | 정상 |
+| `lammps_mof` | LAMMPS 22Jul2025-u4 / lammps-interface | 정상 |
+
+> **`which` 만으로 점검하면 틀립니다.** conda 환경 안에는 `UFF_MOF` 도 `water.def` 도
+> 없습니다. 둘 다 `$RASPA_DIR=~/RASPA/simulations/share/raspa/` 에 있고, `.bashrc`
+> 135행이 그 변수를 잡아 줍니다. **`RASPA_DIR` 을 안 내보내고 스크립트를 돌리면
+> 힘장을 못 찾습니다** — 백그라운드 실행 래퍼에는 반드시 `export` 를 넣으세요.
+
 ### ① 수분 경쟁 — 이 노선의 존폐 조건
 
 ```bash
@@ -241,11 +254,46 @@ PATH=$HOME/miniconda3/envs/lammps_mof/bin:$PATH python risk_screen.py
 축퇴 이면각(`Invalid atom ID in Dihedrals`). 후자의 필터는 단위시험을 마쳤습니다
 (saIm100 에서 이면각 15,288 → 15,072, 각·개선각은 불변, 잔여 축퇴 0).
 
-### ③ 아릴 계열 9종 GCMC
+### ③ 아릴 계열 9종 — 전하는 끝, GCMC 만 남음
 
-`aryl_scan_index.json` 의 통과 구조에 `charge_and_run.py` 방식(PACMAN → Widom → GCMC,
-15000 사이클)을 적용하면 됩니다. 대상:
-`nbIm{025,050,075,100}`, `brbIm{025,050,075,100}`, `mbIm025`.
+**전하 부여(PACMAN DDEC6)는 04:34 에 9/9 완료했습니다.** 순전하는 전부 5e-5 미만.
+`charged/{nbIm,brbIm,mbIm}*_DDEC6.cif`, 목록은 `aryl_charged.json`.
+
+전하와 GCMC 를 한 스크립트에서 잇지 않고 `charge_aryl.py` / `run_aryl_gcmc.py` 로
+쪼갠 이유가 있습니다. **PACMAN 은 GPU(torch CUDA)를 쓰고 RASPA 는 CPU 코어를
+통째로 씁니다.** 수분 경쟁이 물리 코어 8개를 전부 잡고 있어도 PACMAN 은
+놀고 있는 GPU 로 돌 수 있으므로, 기다리는 동안 직렬 의존을 미리 끊어 둘 수 있습니다.
+
+```bash
+cd ~/mof_project/21_ZIF69_MTV
+export RASPA_DIR=$HOME/RASPA/simulations
+export PATH=$HOME/miniconda3/envs/czeromof/bin:$PATH
+python run_aryl_gcmc.py 2>&1 | tee ~/.claude_work/aryl_gcmc.log
+```
+
+27작업(9구조 × Widom CO₂ / Widom N₂ / GCMC), 15000 사이클. 완료분은 건너뜁니다.
+사이클을 줄이지 마세요 — `zif69_results.json` 과 나란히 놓으려면 같은 잣대여야 합니다.
+
+**−CH₃ 는 25% 한 점뿐입니다.** 50/75/100% 는 원자 겹침 6/12/27 개로 탈락했습니다.
+대조군의 조성 의존성은 말할 수 없고, 25% 끼리만 비교해야 합니다.
+
+### ④ 밀도맵 — Q_st 31.07 이 어디서 왔는지
+
+```bash
+cd ~/mof_project/21_ZIF69_MTV
+export RASPA_DIR=$HOME/RASPA/simulations
+export PATH=$HOME/miniconda3/envs/czeromof/bin:$PATH
+python run_density_map.py
+python ../10_DensityMap/export_diff_vtk.py density
+```
+
+조성 5개 × 전하 ON/OFF = 10작업. 치환율을 올리면 공동 축소(분산력↑)와 술폰산
+도입(정전기↑)이 **동시에** 일어나 로딩만으로는 원인을 못 가릅니다. 전하 ON/OFF
+차분에서 LJ 항이 소거되므로 이것만이 정전기 기여를 따로 볼 수 있는 수단입니다.
+**전하 끈 계산을 중복으로 오해해 지우지 마세요.**
+
+ZIF-8 계열과 달리 **닫힌상/열린상 축은 없습니다** — 그건 ZIF-8 게이트 오프닝
+(1.47 GPa 고압상)에서 온 축이고, gme 는 강체 골격이라 상이 하나입니다.
 
 ## 7. 미완 사항
 
