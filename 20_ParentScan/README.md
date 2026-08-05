@@ -147,6 +147,15 @@ conda activate czeromof
 python 20_ParentScan/cavity_model.py
 ```
 
-Zeo++ 측정은 `20_ParentScan/zeo/` 에 있습니다. 새 모체 CIF를 넣고 다시 재면 됩니다.
+> **2026-08-05 정정** — `20_ParentScan/zeo/` 는 `.gitignore` 대상이라 데스크탑
+> 이관 아카이브에 실리지 않았고 git 에도 없습니다. **현재 이 디렉터리는 없습니다.**
+> 위 표의 "측정" 두 건(ZIF-8, ZIF-69)은 아래로 다시 잴 수 있습니다.
+>
+> ```bash
+> network -ha -res /tmp/zif8.res 18_PoreNarrowing/structures/mIm100__closed.cif
+> ```
+>
+> ZIF-8 은 데스크탑에서 재측정해 **LCD 11.39286 / PLD 3.40894** 로 표의 값을
+> 확인했습니다. ZIF-69 는 `05_MTV_Ligand_Library/ZIF69_base.cif` 로 다시 재면 됩니다.
 
 > **주의** — `01_CIF_Cleaned/ZIF_67.cif` 는 질소가 190개(정상 48개)로 **게스트 분자가 남아 있어** Zeo++ 값이 무효입니다(LCD 5.99로 측정되나 ZIF-8과 동형이므로 11.4여야 함). `Zn-MOF-11.cif` 는 산소를 포함한 카복실레이트계로 **ZIF가 아닙니다.**

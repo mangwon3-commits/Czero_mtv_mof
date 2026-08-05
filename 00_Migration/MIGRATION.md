@@ -43,6 +43,20 @@ conda env create -f lammps_mof.yml
 
 `*.yml` 이 플랫폼 차이로 실패하면 `*.from-history.yml`(명시적으로 설치한 패키지만)로 만든 뒤 `*.pip.txt` 로 보충하세요.
 
+> **`conda env create` 가 pip 섹션을 건너뛸 수 있습니다.** 실제로 데스크탑 이전 때
+> `coremof_tools` 가 numpy 만 든 채로 만들어졌습니다. conda 패키지 개수만 보면
+> 정상으로 보이니 **반드시 import 로 확인**하세요. 보충은 아래처럼 합니다.
+>
+> ```bash
+> ~/miniconda3/envs/coremof_tools/bin/pip install --no-deps -r coremof_tools.pip.txt
+> ```
+>
+> **`--no-deps` 가 필수입니다.** `coremof_tools==0.3.5` 가 molSimplify·matminer·
+> phonopy 를 의존성으로 선언하는데 원본 환경에는 그것들이 없습니다(freeze 에 없음).
+> 의존성 해석을 켜면 phonopy 소스빌드에서 죽고, pip 는 원자적이라 **아무것도**
+> 설치되지 않습니다. `*.pip.txt` 는 원본 환경의 완전한 freeze 이므로 `--no-deps` 로
+> 그대로 넣는 것이 맞습니다.
+
 | 환경 | 담당 | 핵심 바이너리 |
 |---|---|---|
 | `czeromof` | RASPA, Zeo++, ASE, RDKit | `simulate`, `network`, `obabel` |
@@ -61,6 +75,13 @@ source ~/.bashrc
 ```
 
 `RASPA_DIR` 이 없으면 `simulate` 가 힘장을 못 찾습니다. **`UFF_MOF` 힘장이 여기 들어 있고, 이 프로젝트의 모든 계산이 이걸 씁니다.**
+
+> conda 로 깐 RASPA 의 `share/raspa/forcefield/` 에는 배포 기본 힘장 8종만 있고
+> **`UFF_MOF` 는 없습니다.** "RASPA 바이너리가 실행되니까 됐다"고 넘어가면
+> 계산 단계에서 막힙니다. 확인:
+> ```bash
+> ls $RASPA_DIR/share/raspa/forcefield/UFF_MOF
+> ```
 
 ---
 
@@ -122,6 +143,30 @@ RASPA 배포본 `TraPPE/water.def` 는 3원자(Ow, Hw, Hw)인데 `UFF_MOF` 의 �
 
 `18_PoreNarrowing/risk_screen.py` 에 이 분리가 구현되어 있습니다.
 
+### 3-7-1. PyCifRW 는 소스빌드가 안 되니 conda-forge 것을 쓴다
+
+`PACMANCharge` 가 `from CifFile import ReadCif` 로 **PyCifRW 를 필수 의존**합니다.
+그런데 pip 소스빌드는 conda 컴파일러의 sysroot 가 없어 링크에서 죽습니다
+(`ld: cannot find /lib64/libc.so.6`). 미리 빌드된 바이너리를 받으세요.
+
+```bash
+conda install -n coremof_tools -c conda-forge pycifrw=4.4.6 --no-deps -y
+```
+
+`--no-deps` 는 numpy 1.26.4 핀을 지키기 위한 것입니다.
+
+`pyeqeq` 는 pybind11 헤더가 GCC 14 와 호환되지 않아(`std::uint16_t` 미선언)
+빌드가 불가능합니다. **EQeq 는 3-1 위 판단 사슬에서 이미 폐기한 전하법이라
+현재 파이프라인에 필요 없습니다.** 그냥 빼고 가세요.
+
+### 3-7-2. 14/17 의 전하 부여 단계는 스크립트가 없다
+
+`pmcharge` 를 호출하는 코드는 `13_PACMAN/run_pacman_pipeline.py`(대상: 07 계열)와
+`18_PoreNarrowing/charge_and_run.py`(대상: 18 계열) **둘뿐**입니다.
+`14_Strategies/charged/` 와 `17_NestEffect/charged/` 는 당시 수동으로 만들어졌고
+재현 절차가 저장소에 남아 있지 않습니다. 이 둘을 재계산하려면
+`charge_and_run.py` 의 `make_charges()` 를 참고해 충전 단계를 먼저 작성해야 합니다.
+
 ### 3-7. 구조 검증은 '전역 최소 거리'로 하면 안 된다
 
 메틸 C–H(0.929 Å)가 항상 최솟값을 차지해서, 1.37 Å 짜리 치환기 충돌도 4.7 Å 짜리 고아 원자도 가려집니다. **비결합 접촉과 그래프 연결성**을 봐야 합니다.
@@ -156,6 +201,31 @@ LAMMPS 쪽:
 conda activate lammps_mof
 python ~/mof_project/18_PoreNarrowing/lammps_iface_patched.py --help
 ```
+
+### 검증 결과 (2026-08-05, 데스크탑)
+
+| 항목 | 기대 | 실측 | 판정 |
+|---|---|---|---|
+| ① 구조 무결성 | 결함 0 | **67/68 통과** | 아래 주 참조 |
+| ② Zeo++ `mIm100__closed` | LCD 11.39 / PLD 3.41 | **11.39286 / 3.40894** | 통과 |
+| ③ RASPA 순수 ZIF-8 0.15 bar | 로딩 0.2676 | **0.2723 ± 0.0050** | 통과 (Q_st 14.04 일치) |
+
+③ 은 12개 조성 전체를 다시 돌려 노트북 값과 비교했습니다. **12개 모두 통계오차 내**입니다.
+가장 크게 벌어진 두 개도 유의하지 않습니다 — `clIm050_saIm050__closed` 1.2σ,
+`mIm050_saIm050__closed` 1.4σ. DDEC6 전하도 재현됩니다(원소별 평균 차이 최대 0.008 e).
+
+> **다만 5000 사이클은 −SO₃H 계열을 서로 순위 매기기엔 부족합니다.** 이 조성들의
+> 로딩 상대오차가 8.6~11.0% 라 `mIm050_saIm050`(0.7406 ± 0.0635) 과
+> `clIm050_saIm050`(0.6259 ± 0.0688) 의 오차 막대가 겹칩니다. 둘의 우열을
+> 주장하려면 사이클을 늘려야 합니다.
+
+① 의 남은 1개는 `17_NestEffect/structures/mIm075_saIm025.cif` 입니다. 주기경계
+버그가 아니라 **실제 입체 충돌**입니다 — 술폰산의 −O**H** 수소가 이웃 링커의
+Zn 배위 이미다졸레이트 **N** 을 1.569 Å 에서 찌릅니다(4자리 전부 동일 거리이므로
+무작위가 아니라 빌더가 S−O−H 이면각을 고정해 놓은 결과). 정상 N···H 수소결합은
+1.8~2.0 Å 이므로 이면각 완화가 필요하고, 화학적으로는 양성자 이동
+(−SO₃⁻ / N−H⁺)도 가능한 상황입니다. **18_PoreNarrowing 의 −SO₃H 구조들은
+이 문제가 없으니 주력 결과는 영향을 받지 않습니다.**
 
 ---
 
@@ -211,6 +281,15 @@ python ~/mof_project/18_PoreNarrowing/lammps_iface_patched.py --help
 ## 6. 계산 부하 참고
 
 노트북에서 측정된 값입니다. 데스크탑 코어 수에 맞춰 각 스크립트의 `max_workers` 를 조정하세요.
+
+> 현 데스크탑은 **Ryzen 7 5700X (물리 8 / 논리 16), RAM 15 GB, Quadro P2000** 입니다.
+> `18_PoreNarrowing/charge_and_run.py` 와 `19_WaterCompetition/run_water.py` 는
+> `max_workers=12` 로 올려 두었습니다. 아직 6~7 로 남아 있는 것:
+> `16_DefectStability/relax_and_measure.py`, `18_PoreNarrowing/risk_screen.py`,
+> `07_Bracketed_MTV/run_widom_batch.py`, `14_Strategies/run_raspa_strat.py`,
+> `17_NestEffect/run_raspa_nest.py`, `10_DensityMap/run_density_map.py`.
+>
+> **PACMAN 이 GPU 를 씁니다**(`Using device: cuda`). 노트북에는 없던 가속입니다.
 
 | 작업 | 규모 | 소요 |
 |---|---|---|

@@ -194,7 +194,7 @@ def main():
     print(f'구조 {len(TARGETS)}개 x RH {len(RH_LIST)}단계 중 실행할 작업 {len(jobs)}개', flush=True)
     print(f'CO2 {P_CO2/1e5:.2f} bar 고정, 298 K, TIP5P-Ew, {CYCLES} 사이클\n', flush=True)
 
-    with ProcessPoolExecutor(max_workers=6) as ex:
+    with ProcessPoolExecutor(max_workers=12) as ex:
         for name, rh, r, st in ex.map(_star, jobs):
             res.setdefault(name, {})[rh] = r
             co2 = r.get('CO2', (float('nan'),))[0] if r else float('nan')
