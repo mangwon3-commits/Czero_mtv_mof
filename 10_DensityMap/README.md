@@ -5,6 +5,9 @@ ParaView로 열어 보는 VTK 파일을 만들고 해석하는 절차입니다.
 > [!WARNING]
 > **현재 저장된 결과는 무효입니다.** `07_Bracketed_MTV/` 구조로 계산했는데 그 구조들이 주기경계 버그의 영향을 받았습니다(`HANDOVER.md` 4절). **절차와 스크립트는 그대로 유효**하니, 구조를 재생성한 뒤 다시 돌리면 됩니다. 특히 **"−Cl enrichment E = 1.66~1.98"은 인용하지 마세요** — 공동에 떠 있던 Cl이 만든 허상입니다.
 
+> [!NOTE]
+> **2026-08-05 진행 상황** — `07_Bracketed_MTV` 구조 14종은 수정판 빌더로 **재생성을 마쳤고 감사도 통과**했습니다(5절 1·2번 완료). 남은 것은 3번부터, 즉 이 문서의 계산을 다시 돌리는 것입니다.
+
 ---
 
 ## 1. 왜 밀도맵을 보는가
@@ -161,4 +164,35 @@ v = vals[:n].reshape(dims[::-1]).transpose(2, 1, 0)
 4. 평균 벽거리가 여전히 3.3~3.5 Å인지 확인 — 이게 유지되면 "Q_st 천장은 기하학적"이라는 결론이 재확인됩니다
 5. −Cl enrichment가 정상값(1 근처)으로 내려오는지 확인 — 버그 수정이 제대로 반영됐다는 표지입니다
 
-> `TARGETS` 목록은 `07_Bracketed_MTV` 기준입니다. `18_PoreNarrowing` 구조(−SO₃H 계열)로 돌리려면 `SRC`와 `TARGETS`를 바꾸면 됩니다. **−SO₃H가 최고 작용기로 확인됐으므로, 재계산 시에는 그쪽을 대상에 넣는 편이 낫습니다.**
+> `TARGETS` 목록은 `07_Bracketed_MTV` 기준입니다. **−SO₃H가 최고 작용기로 확인됐는데 밀도맵은 아직 −Cl·−NO₂ 시절 목록이라, 왜 술폰산이 강한지를 공간적으로 본 적이 한 번도 없습니다.** `18_PoreNarrowing` 의 −SO₃H 계열로 대상을 바꾸는 편이 낫습니다.
+
+### 리타깃 — 상수 두 개가 아니라 2개 파일 4곳입니다
+
+`SRC` 와 `TARGETS` 만 고치면 **조용히 EQeq 기반 밀도맵이 나오고 아무도 눈치채지 못합니다.**
+
+| 파일 | 줄 | 무엇을 |
+|---|---|---|
+| `run_density_map.py` | 26 | `SRC` → `../18_PoreNarrowing/charged` |
+| `run_density_map.py` | 33 | `TARGETS` → `_DDEC6` 접미사 포함 |
+| `run_density_map.py` | 168 | 기준선 `mIm100__{ph}` → `mIm100__{ph}_DDEC6` |
+| `analyze_density.py` | 48 | `SRC` (같은 값) |
+| `analyze_density.py` | 250 | `f'{tag}__{phase}.cif'` 에 `_DDEC6` 반영 |
+
+**왜 `structures/` 가 아니라 `charged/` 인가.** `run_density_map.py:103` 이 `SRC/<name>.cif` 를 읽어 `UseChargesFromCIFFile yes` 로 넘깁니다. `18_PoreNarrowing/structures/` 의 CIF 에는 빌더가 써 넣은 **EQeq** 전하가 있고, `narrow_results.json` 의 Q_st·선택도는 **PACMAN DDEC6**(`charged/*_DDEC6.cif`)로 계산됐습니다. `structures/` 를 쓰면 **밀도맵이 설명하려는 수치와 다른 전하 모형**을 그리게 됩니다.
+
+하필 EQeq 는 공명에 의한 전하 분리를 못 다뤄 폐기한 방법이고(니트로 N 이 +0.025, 정상 +0.6), **−SO₃H 는 S=O 공명을 갖습니다.** "왜 술폰산이 강한가"를 보려는 계산에서 가장 쓰면 안 되는 전하입니다.
+
+---
+
+## 6. 주의 — 다른 실행 스크립트는 VTK 를 지웁니다
+
+`07 / 13 / 14 / 17 / 18 / 19 / 21` 의 RASPA 실행 스크립트는 전부 끝에서 다음을 합니다.
+
+```python
+for sub in ('VTK', 'Movies', 'Restart'):
+    shutil.rmtree(os.path.join(d, sub), ignore_errors=True)
+```
+
+게다가 `ComputeDensityProfile3DVTKGrid` 플래그는 **`run_density_map.py` 에만** 있습니다. 즉 다른 스크립트로 돌린 계산에서는 애초에 밀도 분포가 생기지 않고, 남는 VTK 는 골격 형상(`Frame.vtk`, `FrameworkAtoms.vtk`)뿐입니다.
+
+**밀도맵이 필요하면 반드시 `run_density_map.py` 를 쓰세요.** 다른 계산에 플래그만 얹는 것으로는 안 되고, 전하 ON/OFF 쌍을 돌려야 차분맵이 나옵니다(2절 단계 1).

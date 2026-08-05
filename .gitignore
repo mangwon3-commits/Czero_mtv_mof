@@ -35,6 +35,12 @@
 18_PoreNarrowing/lmp/
 19_WaterCompetition/runs/
 19_WaterCompetition/smoke/
+21_ZIF69_MTV/runs/
+21_ZIF69_MTV/water_runs/
+21_ZIF69_MTV/lmp/
+21_ZIF69_MTV/zeo/
+# 21_ZIF69_MTV/charged/ 는 제외하지 않는다 — 17_NestEffect 에서 배운 것과 같은
+# 이유다. 전하 CIF 는 재계산 비용이 크므로 절차가 코드에 있어도 추적해 둔다.
 __pycache__/
 *.pyc
 00_Migration/*.tar.gz

@@ -120,6 +120,31 @@ grep -rn "miniconda3/envs" --include=*.py ~/mof_project
 
 우회 래퍼가 이미 있습니다 → `18_PoreNarrowing/lammps_iface_patched.py`. `lammps-interface` 대신 이걸 호출하세요.
 
+### 3-2-1. `lammps-interface` 의 group 이 LAMMPS 상한(32)을 넘는다
+
+큰 셀에서 걸립니다. `lammps-interface` 는 사이트마다 `group` 을 하나씩 뱉는데
+ZIF-69(600원자)에서는 **98개**가 나와 LAMMPS 가 죽습니다.
+
+```
+ERROR: Too many groups (max 32) (src/group.cpp:154)
+```
+
+ZIF-8(276원자)에서는 그룹 수가 적어 안 걸렸으므로 **ZIF-8 계열만 돌려 본 사람은
+이 함정을 모릅니다.** 새 모체로 넘어갈 때 처음 만납니다.
+
+이 `group` 들은 `#### Atom Groupings ####` 주석이 붙은 **편의용 메타데이터일 뿐**
+실제로 참조하는 명령이 없습니다(유일한 `fix` 가 `all` 을 씁니다). 그래서 제거해도
+이완 결과가 달라지지 않습니다. 확인 방법:
+
+```bash
+grep -vE '^group' in.<name> | grep -E '\b1-[0-9]+\b'   # 비어 있어야 안전
+```
+
+`21_ZIF69_MTV/risk_screen.py` 에 제거 로직이 들어 있습니다.
+
+> **`lmp_serial` 의 출력을 DEVNULL 로 버리지 마세요.** 이 오류를 처음 만났을 때
+> "LAMMPS 출력 없음" 이라는 무의미한 메시지만 남아 원인 파악이 늦어졌습니다.
+
 ### 3-3. RASPA `.def` 파서는 주석 위치에 엄격하다
 
 주석과 데이터를 **정해진 순서로** 읽습니다. 설명 주석을 몇 줄 덧붙이면 정렬이 깨져 "원자 수 0" 으로 읽힙니다. `*.def` 파일에는 원본 레이아웃을 그대로 유지하고, 설명은 스크립트 쪽에 쓰세요.

@@ -1,0 +1,76 @@
+{
+  "criteria": {
+    "PLD_min": 3.3,
+    "LCD_drop_limit_pct": 20.0,
+    "AV_floor": 20.0,
+    "min_dist_limit": 0.7,
+    "LCD_reference": 8.75698
+  },
+  "rows": [
+    {
+      "name": "base",
+      "status": "LAMMPS 출력 없음",
+      "before": {
+        "LCD": 8.75698,
+        "PLD": 4.95917,
+        "AV": 1244.78,
+        "min_dist": 0.949,
+        "n_atoms": 600
+      },
+      "after": null,
+      "pass": false
+    },
+    {
+      "name": "saIm025",
+      "status": "LAMMPS 출력 없음",
+      "before": {
+        "LCD": 7.72901,
+        "PLD": 4.38196,
+        "AV": 1054.95,
+        "min_dist": 0.946,
+        "n_atoms": 624
+      },
+      "after": null,
+      "pass": false
+    },
+    {
+      "name": "saIm050",
+      "status": "LAMMPS 출력 없음",
+      "before": {
+        "LCD": 7.68113,
+        "PLD": 4.23577,
+        "AV": 859.968,
+        "min_dist": 0.946,
+        "n_atoms": 656
+      },
+      "after": null,
+      "pass": false
+    },
+    {
+      "name": "saIm075",
+      "status": "LAMMPS 출력 없음",
+      "before": {
+        "LCD": 7.12958,
+        "PLD": 4.23577,
+        "AV": 788.494,
+        "min_dist": 0.924,
+        "n_atoms": 668
+      },
+      "after": null,
+      "pass": false
+    },
+    {
+      "name": "saIm100",
+      "status": "LAMMPS 출력 없음",
+      "before": {
+        "LCD": 7.17173,
+        "PLD": 4.23577,
+        "AV": 324.775,
+        "min_dist": 0.924,
+        "n_atoms": 696
+      },
+      "after": null,
+      "pass": false
+    }
+  ]
+}

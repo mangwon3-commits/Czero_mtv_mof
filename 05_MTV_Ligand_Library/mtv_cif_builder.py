@@ -45,6 +45,18 @@ RING_SMARTS = Chem.MolFromSmarts("c1ncc[nH]1")
 LIGAND_LIBRARY_CBIM_ARYL = {
     "clIm_aryl": "c1nc2cc(Cl)ccc2[nH]1",
     "cf3Im_aryl": "c1nc2cc(C(F)(F)F)ccc2[nH]1",
+    # [2026-08-05 추가] 술폰산. 단환식 라이브러리의 saIm과 같은 작용기다.
+    #
+    # 왜 이환식에도 필요한가 — Part 4의 결론은 "분산력과 정전기가 같은 부피를 놓고
+    # 경쟁한다"였다. ZIF-7(공동 4.3 A)은 Q_st 34가 예측되지만 -SO3H(2.8 A)를 붙일
+    # 자리가 없고, ZIF-8(11.4 A)은 자리는 있지만 치환해도 공동이 안 줄어든다
+    # (sod에서 C2 치환기는 창구를 향한다 -- Part 2에서 실측으로 반증).
+    #
+    # ZIF-69는 그 사이에 있다. 실측으로 아릴 치환이 LCD를 8.76 -> 7.35 A (-16.1%)
+    # 까지 줄이면서 PLD는 4.24 A로 열어 둔다(CO2 운동직경 3.3 A보다 여유). 즉
+    # 공동을 좁히면서도 작용기를 붙일 자리가 남는 유일한 모체다. 두 메커니즘을
+    # 동시에 시험하려면 이환식 라이브러리에 -SO3H가 있어야 한다.
+    "saIm_aryl": "c1nc2cc(S(=O)(=O)O)ccc2[nH]1",
 }
 RING_SMARTS_BICYCLIC = Chem.MolFromSmarts("c1nc2ccccc2[nH]1")
 CBIM_ARYL_ATTACHMENT_INDEX = 4
