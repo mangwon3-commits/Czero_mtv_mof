@@ -184,11 +184,27 @@ ExternalTemperature           {TEMP}
 ExternalPressure              {p_tot:.4f}
 
 {comp}""")
+    # [2026-08-06] 8시간(28800) -> 72시간. **이 상수가 결과를 5개 날렸다.**
+    #
+    # 다른 스크립트에서 그대로 복사해 온 값인데, 저쪽은 단일 성분 CO2 GCMC 라
+    # 8시간이 넉넉했다. 여기는 5사이트 물이 붙은 이원 GCMC 이고, 술폰산이 많을수록
+    # 물 삽입 수용률이 떨어져 같은 15000 사이클이 몇 배로 길어진다. 실측:
+    #     건조 무치환  77분
+    #     습윤 saIm050 8시간 초과  <- 여기서부터 타임아웃에 걸려 죽었다
+    #
+    # 죽는 방식이 나빴다. subprocess.run 의 timeout 은 프로세스를 죽이고
+    # TimeoutExpired 를 던지는데, 워커는 그걸 받아 다음 작업으로 넘어간다. 즉
+    # **로그도 예외도 남지 않고 조용히 구멍만 남는다.** 감시 스크립트는 완주 수만
+    # 세고 있었으므로 "느린 것"과 "죽은 것"이 구별되지 않았다.
+    #
+    # 실제로 rh50/rh90_saIm025 와 rh25/rh50/rh90_saIm050 다섯 개가 이렇게 사라졌고,
+    # 그중 saIm050 습윤 계열은 통째로 비었다.
     try:
         subprocess.run([SIMULATE, 'simulation.input'], cwd=d,
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                       timeout=28800, check=False)
+                       timeout=259200, check=False)
     except subprocess.TimeoutExpired:
+        print(f'  [타임아웃 72시간 초과] rh{int(rh*100):02d}_{name}', flush=True)
         return name, rh, None, 'timeout'
     outs = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
     if not outs:
