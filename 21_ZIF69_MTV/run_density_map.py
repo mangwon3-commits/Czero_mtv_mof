@@ -55,7 +55,10 @@ CYCLES, INIT = 5000, 2000
 GRID = 90
 # RASPA 는 471 MB/프로세스 정도만 쓰지만(측정값), 밀도 격자를 켜면 출력이 커진다.
 # 물리 코어가 8개라 그 이상은 문맥 전환만 늘어난다.
-MAX_WORKERS = 8
+#
+# 기회주의 스케줄러(opportunistic.sh)가 노는 코어 수만큼만 쓰도록 환경변수로
+# 덮어쓸 수 있다. 수분 경쟁 꼬리에서 코어 절반이 19시간 놀던 것을 메우기 위한 것.
+MAX_WORKERS = int(os.environ.get('DENSITY_WORKERS', '8'))
 
 # 조성 축. base(무치환) 는 "작용기 없이 골격만"의 기준선이라 반드시 포함한다.
 TARGETS = ['base', 'saIm025', 'saIm050', 'saIm075', 'saIm100']
@@ -158,7 +161,44 @@ def _star(a):
     return run_one(a)
 
 
+def already_running():
+    """다른 인스턴스가 이미 돌고 있으면 True.
+
+    이 스크립트는 이제 두 곳에서 불린다 — 파이프라인 STAGE3 과 기회주의
+    스케줄러다. 둘이 겹치면 같은 density/<조성>__q_on 디렉터리에서 RASPA 두 개가
+    같은 이름의 출력과 VTK 격자를 써서 **크래시 없이 결과만 뒤섞인다.**
+    먼저 잡은 쪽이 끝까지 하고, 나중 쪽은 즉시 물러난다.
+
+    run_aryl_gcmc.py 의 wait_for_other_writers() 가 이 스크립트 이름을 감시하므로,
+    물러난 뒤 STAGE4 가 시작돼도 밀도맵이 끝날 때까지 기다린다 — 순서는 지켜진다.
+    """
+    me = os.getpid()
+    try:
+        out = subprocess.run(['pgrep', '-f', 'run_density_map.py'],
+                             capture_output=True, text=True, timeout=20)
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    if out.returncode != 0:
+        return False
+    others = [p for p in out.stdout.split() if p != str(me)]
+    # pgrep -f 는 자기 부모 셸까지 잡을 수 있으므로 실제 python 인지 확인한다.
+    real = []
+    for p in others:
+        try:
+            with open(f'/proc/{p}/cmdline', 'rb') as f:
+                cmd = f.read().decode('utf-8', 'ignore')
+            if 'python' in cmd and 'run_density_map.py' in cmd:
+                real.append(p)
+        except OSError:
+            continue
+    return bool(real)
+
+
 def main():
+    if already_running():
+        print('밀도맵이 이미 다른 프로세스에서 실행 중입니다 — 물러납니다.', flush=True)
+        return 0
+
     missing = [t for t in TARGETS
                if not os.path.exists(os.path.join(CHARGED, t + '_DDEC6.cif'))]
     if missing:
