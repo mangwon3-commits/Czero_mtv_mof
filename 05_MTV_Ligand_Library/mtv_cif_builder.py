@@ -66,7 +66,16 @@ LIGAND_LIBRARY_CBIM_ARYL = {
     "nbIm_aryl":  "c1nc2cc([N+](=O)[O-])ccc2[nH]1",   # 5-nitro   -> ZIF-78
     "mbIm_aryl":  "c1nc2cc(C)ccc2[nH]1",              # 5-methyl  -> ZIF-79
     "brbIm_aryl": "c1nc2cc(Br)ccc2[nH]1",             # 5-bromo   -> ZIF-81
-    "cnbIm_aryl": "c1nc2cc(C#N)ccc2[nH]1",            # 5-cyano   -> ZIF-82
+    "cnbIm_aryl": "c1nc2cc(C#N)ccc2[nH]1",            # 5-cyano   -> ZIF-82 (빌더로 생성 불가, C-아릴 축과 공선)
+    # [2026-08-06 추가] CCUS 링커 검토 보고서(외부 문서) 교차검증 후 등록.
+    # 그 보고서가 1순위로 제안한 mslm(2-메틸설포닐이미다졸레이트)은 SMILES 상
+    # 이미다졸 C2(sod, 창구 방향)에 붙는 자리였다 -- ZIF-8에서 -SO3H로 이미 반증된
+    # 실패 패턴(Q_st 25에서 정체)과 같은 자리다. 같은 화학(설폰 EWG, H-bond donor
+    # 없음)을 벤조 b2(gme, 공동 방향)로 옮긴 버전이 이 mslm_aryl이다.
+    "mslm_aryl":  "c1nc2cc(S(=O)(=O)C)ccc2[nH]1",     # 5-메틸설포닐 (-SO2CH3)
+    # -SO3H보다 훨씬 작아 인접 자리 겹침(0.57 A, 5-6절 saIm 문제)을 회피할 목적의
+    # 저부피 EWG 후보. 100% 치환을 피하면서 목표대에 드는지가 질문이다(브리핑 8-3).
+    "fbIm_aryl":  "c1nc2cc(F)ccc2[nH]1",              # 5-플루오로 (-F)
 }
 RING_SMARTS_BICYCLIC = Chem.MolFromSmarts("c1nc2ccccc2[nH]1")
 CBIM_ARYL_ATTACHMENT_INDEX = 4
