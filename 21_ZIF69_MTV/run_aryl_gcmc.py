@@ -85,6 +85,32 @@ def parse(path):
     return kh, ekh, u, eu, load, eload
 
 
+def occupied_by_other(d):
+    """디렉터리 d 에서 이미 simulate 가 돌고 있으면 True.
+
+    락 파일을 쓰지 않는 이유: 비정상 종료 시 남아서 다음 실행을 영구히 막는다.
+    /proc 의 cwd 는 프로세스가 죽으면 같이 사라지므로 stale 이 생기지 않는다.
+    """
+    target = os.path.realpath(d)
+    try:
+        pids = subprocess.run(['pgrep', 'simulate'], capture_output=True,
+                              text=True, timeout=20)
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    if pids.returncode != 0:
+        return False
+    me = os.getpid()
+    for pid in pids.stdout.split():
+        if pid == str(me):
+            continue
+        try:
+            if os.path.realpath(f'/proc/{pid}/cwd') == target:
+                return True
+        except OSError:
+            continue
+    return False
+
+
 def run_one(job):
     cif, gas, mode = job
     name = os.path.basename(cif).replace('.cif', '')
@@ -96,6 +122,17 @@ def run_one(job):
         r = parse(done[0])
         if any(x is not None for x in r):
             return name, gas, mode, r, 'cached'
+
+    # 다른 세션이 **바로 이 디렉터리**에서 이미 돌고 있으면 손대지 않는다.
+    #
+    # main() 의 wait_for_other_writers() 는 스크립트 이름으로 판정하는 한쪽짜리
+    # 가드라, 상대가 그 이름을 안 쓰거나 나중에 시작하면 못 막는다. 여기는 다르다 --
+    # run_candidate_gcmc.py 가 이 모듈을 import 해서 run_one 을 그대로 쓰므로,
+    # **이 검사는 양쪽 모두에게 적용된다.** 실제로 지금 두 세션이 같은 aryl_runs/ 를
+    # 공유하고 있고, 같은 태그를 동시에 잡으면 RASPA 두 개가 한 디렉터리에서 같은
+    # 이름의 출력을 써서 결과가 조용히 뒤섞인다.
+    if occupied_by_other(d):
+        return name, gas, mode, None, '다른세션실행중'
 
     os.makedirs(d, exist_ok=True)
     shutil.copy(cif, os.path.join(d, name + '.cif'))
