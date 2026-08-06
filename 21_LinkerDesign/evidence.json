@@ -1,0 +1,364 @@
+{
+  "conditions": {
+    "temperature_K": 298.0,
+    "CO2_partial_pressure_bar": 0.15,
+    "forcefield": "UFF_MOF (DREIDING organics + UFF metals)",
+    "charges": "DDEC6 via PACMAN",
+    "cutoff_A": 12.0,
+    "note": "Qst 는 Widom 삽입, 흡착량은 GCMC. 선택도는 K_H(CO2)/K_H(N2)."
+  },
+  "target": {
+    "Qst_kJ_per_mol": [
+      30,
+      40
+    ],
+    "basis": "작업용량 모형 2종 독립 검증 (15_Target/optimal_qst.py). TSA 최적 36, VSA 기준 27~29. 배가스 0.15 bar 기준."
+  },
+  "measurements": [
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "clIm050_mIm025_saIm025__closed",
+      "composition": "Cl 50% + SO3H 25%",
+      "phase": "closed",
+      "Qst": 20.569999453936,
+      "selectivity_CO2_N2": 16.555792860510916,
+      "loading_015bar_molkg": 0.4283904806,
+      "LCD_A": 9.86222,
+      "PLD_A": 3.27535,
+      "AV_per_cell_A3": 796.6
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "clIm050_mIm025_saIm025__open",
+      "composition": "Cl 50% + SO3H 25%",
+      "phase": "open",
+      "Qst": 15.920668938836,
+      "selectivity_CO2_N2": 9.67045030073411,
+      "loading_015bar_molkg": 0.1910258751,
+      "LCD_A": 9.98798,
+      "PLD_A": 3.44034,
+      "AV_per_cell_A3": 734.9
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "clIm050_mIm050__closed",
+      "composition": "Cl 50%",
+      "phase": "closed",
+      "Qst": 13.650240500036,
+      "selectivity_CO2_N2": 6.988061355700582,
+      "loading_015bar_molkg": 0.2029076658,
+      "LCD_A": 10.67385,
+      "PLD_A": 3.21476,
+      "AV_per_cell_A3": 876.8
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "clIm050_mIm050__open",
+      "composition": "Cl 50%",
+      "phase": "open",
+      "Qst": 20.321874596436,
+      "selectivity_CO2_N2": 12.910637638053888,
+      "loading_015bar_molkg": 0.2600688955,
+      "LCD_A": 10.42359,
+      "PLD_A": 3.21478,
+      "AV_per_cell_A3": 801.2
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "clIm050_saIm050__closed",
+      "composition": "Cl 50% + SO3H 50%",
+      "phase": "closed",
+      "Qst": 24.118862076535997,
+      "selectivity_CO2_N2": 26.180180180180177,
+      "loading_015bar_molkg": 0.7077236756,
+      "LCD_A": 9.60934,
+      "PLD_A": 3.3437,
+      "AV_per_cell_A3": 732.7
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "clIm075_mIm025__closed",
+      "composition": "Cl 75%",
+      "phase": "closed",
+      "Qst": 13.405009411136,
+      "selectivity_CO2_N2": 6.739733835592674,
+      "loading_015bar_molkg": 0.165228402,
+      "LCD_A": 10.42689,
+      "PLD_A": 3.19436,
+      "AV_per_cell_A3": 857.5
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "clIm075_mIm025__open",
+      "composition": "Cl 75%",
+      "phase": "open",
+      "Qst": 19.874405228836,
+      "selectivity_CO2_N2": 12.041748314457472,
+      "loading_015bar_molkg": 0.2128364489,
+      "LCD_A": 10.42777,
+      "PLD_A": 3.20556,
+      "AV_per_cell_A3": 787.8
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "clIm100__closed",
+      "composition": "Cl 100% (상한 참고)",
+      "phase": "closed",
+      "Qst": 12.737544980236,
+      "selectivity_CO2_N2": 6.1418010704407475,
+      "loading_015bar_molkg": 0.1292122168,
+      "LCD_A": 10.42583,
+      "PLD_A": 3.18337,
+      "AV_per_cell_A3": 839.6
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "clIm100__open",
+      "composition": "Cl 100% (상한 참고)",
+      "phase": "open",
+      "Qst": 19.790573830135997,
+      "selectivity_CO2_N2": 11.48617957135348,
+      "loading_015bar_molkg": 0.1723088257,
+      "LCD_A": 10.42623,
+      "PLD_A": 3.1831,
+      "AV_per_cell_A3": 778.9
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "mIm050_saIm050__closed",
+      "composition": "SO3H 50%",
+      "phase": "closed",
+      "Qst": 23.882136044735997,
+      "selectivity_CO2_N2": 25.310609961511943,
+      "loading_015bar_molkg": 0.8320996107,
+      "LCD_A": 10.28862,
+      "PLD_A": 3.30523,
+      "AV_per_cell_A3": 768.4
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "mIm100__closed",
+      "composition": "대조군 순수 ZIF-8",
+      "phase": "closed",
+      "Qst": 14.041892978236001,
+      "selectivity_CO2_N2": 7.27199360930747,
+      "loading_015bar_molkg": 0.2675554031,
+      "LCD_A": 10.99476,
+      "PLD_A": 3.24146,
+      "AV_per_cell_A3": 909.8
+    },
+    {
+      "source": "18_PoreNarrowing",
+      "valid": true,
+      "name": "mIm100__open",
+      "composition": "대조군 순수 ZIF-8",
+      "phase": "open",
+      "Qst": 18.072841019536,
+      "selectivity_CO2_N2": 11.030350291351317,
+      "loading_015bar_molkg": 0.3505314459,
+      "LCD_A": 11.05241,
+      "PLD_A": 3.24839,
+      "AV_per_cell_A3": 827.2
+    },
+    {
+      "source": "17_NestEffect",
+      "valid": true,
+      "invalid_reason": null,
+      "name": "amIm025_clIm025_mIm050",
+      "phase": "closed",
+      "Qst": 13.758417067236001,
+      "selectivity_CO2_N2": 7.103634225110641,
+      "loading_015bar_molkg": 0.2178239766
+    },
+    {
+      "source": "17_NestEffect",
+      "valid": true,
+      "invalid_reason": null,
+      "name": "amIm025_mIm050_nIm025",
+      "phase": "closed",
+      "Qst": 14.992461219535999,
+      "selectivity_CO2_N2": 8.714037760981665,
+      "loading_015bar_molkg": 0.2588297432
+    },
+    {
+      "source": "17_NestEffect",
+      "valid": false,
+      "invalid_reason": "주기경계 버그 구조",
+      "name": "amIm050_nIm050",
+      "phase": "closed",
+      "Qst": 22.964969210036,
+      "selectivity_CO2_N2": 19.603198251887168,
+      "loading_015bar_molkg": 0.5494077175
+    },
+    {
+      "source": "17_NestEffect",
+      "valid": true,
+      "invalid_reason": null,
+      "name": "amrIm012_mIm075_nIm012",
+      "phase": "closed",
+      "Qst": 14.969047117636,
+      "selectivity_CO2_N2": 8.214635367538255,
+      "loading_015bar_molkg": 0.2807435222
+    },
+    {
+      "source": "17_NestEffect",
+      "valid": true,
+      "invalid_reason": null,
+      "name": "amrIm025_clIm025_mIm050",
+      "phase": "closed",
+      "Qst": 14.527982730036,
+      "selectivity_CO2_N2": 7.572856662884856,
+      "loading_015bar_molkg": 0.2395196833
+    },
+    {
+      "source": "17_NestEffect",
+      "valid": true,
+      "invalid_reason": null,
+      "name": "amrIm025_mIm050_nIm025",
+      "phase": "closed",
+      "Qst": 16.201695975636,
+      "selectivity_CO2_N2": 9.638553618683998,
+      "loading_015bar_molkg": 0.2944009331
+    },
+    {
+      "source": "17_NestEffect",
+      "valid": false,
+      "invalid_reason": "주기경계 버그 구조",
+      "name": "mIm075_saIm025",
+      "phase": "closed",
+      "Qst": 20.793800533036,
+      "selectivity_CO2_N2": 16.84393459464087,
+      "loading_015bar_molkg": 0.5819557812
+    },
+    {
+      "source": "17_NestEffect",
+      "valid": true,
+      "invalid_reason": null,
+      "name": "mIm100",
+      "phase": "closed",
+      "Qst": 14.068882504435999,
+      "selectivity_CO2_N2": 7.235653255638852,
+      "loading_015bar_molkg": 0.2761413411
+    }
+  ],
+  "water_competition": [
+    {
+      "name": "mIm100__closed",
+      "RH": 0.0,
+      "CO2_molkg": 0.2697735897,
+      "H2O_molkg": 0.0,
+      "CO2_retention_pct": 100.0
+    },
+    {
+      "name": "mIm100__closed",
+      "RH": 0.25,
+      "CO2_molkg": 0.2697949477,
+      "H2O_molkg": 0.0082930275,
+      "CO2_retention_pct": 100.00791700923126
+    },
+    {
+      "name": "mIm100__closed",
+      "RH": 0.5,
+      "CO2_molkg": 0.2719795716,
+      "H2O_molkg": 0.0170650858,
+      "CO2_retention_pct": 100.81771603456558
+    },
+    {
+      "name": "mIm100__closed",
+      "RH": 0.9,
+      "CO2_molkg": 0.272190101,
+      "H2O_molkg": 0.031304806,
+      "CO2_retention_pct": 100.89575532678619
+    },
+    {
+      "name": "clIm100__closed",
+      "RH": 0.0,
+      "CO2_molkg": 0.1306867992,
+      "H2O_molkg": 0.0,
+      "CO2_retention_pct": 100.0
+    },
+    {
+      "name": "clIm100__closed",
+      "RH": 0.25,
+      "CO2_molkg": 0.1309894766,
+      "H2O_molkg": 0.0048299039,
+      "CO2_retention_pct": 100.23160518266023
+    },
+    {
+      "name": "clIm100__closed",
+      "RH": 0.5,
+      "CO2_molkg": 0.1292820655,
+      "H2O_molkg": 0.009038931,
+      "CO2_retention_pct": 98.92511431254029
+    },
+    {
+      "name": "clIm100__closed",
+      "RH": 0.9,
+      "CO2_molkg": 0.1319828794,
+      "H2O_molkg": 0.017301766,
+      "CO2_retention_pct": 100.99174530858048
+    },
+    {
+      "name": "mIm050_saIm050__closed",
+      "RH": 0.0,
+      "CO2_molkg": 0.8539732569,
+      "H2O_molkg": 0.0,
+      "CO2_retention_pct": 100.0
+    },
+    {
+      "name": "mIm050_saIm050__closed",
+      "RH": 0.9,
+      "CO2_molkg": 0.9168224458,
+      "H2O_molkg": 1.8537731868,
+      "CO2_retention_pct": 107.35962026822108
+    },
+    {
+      "name": "clIm050_saIm050__closed",
+      "RH": 0.0,
+      "CO2_molkg": 0.6330531571,
+      "H2O_molkg": 0.0,
+      "CO2_retention_pct": 100.0
+    },
+    {
+      "name": "clIm050_saIm050__closed",
+      "RH": 0.9,
+      "CO2_molkg": 0.74571456,
+      "H2O_molkg": 1.2622543778,
+      "CO2_retention_pct": 117.79651544841812
+    }
+  ],
+  "cavity_model": {
+    "script": "20_ParentScan/cavity_model.py",
+    "method": "골격 원자를 반지름 R 구면에 두고 LJ 12-6 을 구면적분. 무한 평면 벽 대비 배율이라 표면밀도와 eps 가 소거된다.",
+    "optimum_LCD_A": [
+      4.0,
+      4.5
+    ],
+    "enhancement_at_optimum_vs_ZIF8": 2.47,
+    "predicted_Qst_pure_framework": 34.6,
+    "ZIF8_LCD_A": 11.39,
+    "caveat": "CO2 는 길이 5.4 A 선형 분자라 좁은 공동에서 배향이 제한된다. 엔트로피 손실을 모형이 못 보므로 엔탈피 상한으로 읽어야 한다."
+  },
+  "existing_ligands": {
+    "mIm": "Cc1ncc[nH]1",
+    "nIm": "O=[N+]([O-])c1ncc[nH]1",
+    "clIm": "Clc1ncc[nH]1",
+    "cnIm": "N#Cc1ncc[nH]1",
+    "tfIm": "FC(F)(F)c1ncc[nH]1",
+    "etIm": "CCc1ncc[nH]1",
+    "amIm": "Nc1ncc[nH]1",
+    "amrIm": "NCc1ncc[nH]1",
+    "saIm": "OS(=O)(=O)c1ncc[nH]1"
+  }
+}
