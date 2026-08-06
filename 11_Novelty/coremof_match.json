@@ -1,0 +1,156 @@
+{
+  "database": "CR_meta_data_SI.json",
+  "n_entries": 2737,
+  "caveat": "SI 유래 부분집합. 위상 gme 항목이 0개이고 ZIF-69 가 들어 있지 않다. 여기 없다는 것이 세상에 없다는 뜻이 아니므로, 최종 주장에는 전체 CoRE-MOF 와 CSD 조회가 필요하다.",
+  "rows": [
+    {
+      "framework": "ZIF-8 모체",
+      "metal": "Zn",
+      "topology": "sod",
+      "linkers": [
+        "mIm"
+      ],
+      "exact_linker_set": 4,
+      "superset": 4,
+      "same_metal_and_topology": 4,
+      "verdict": "선행 있음",
+      "matches": [
+        "ja202154j_si_002_ASR_pacman",
+        "ic5028256_si_002_ASR_pacman",
+        "ja202154j_si_002_FSR_pacman",
+        "ic5028256_si_002_FSR_pacman"
+      ]
+    },
+    {
+      "framework": "ZIF-8 + SO3H 50%",
+      "metal": "Zn",
+      "topology": "sod",
+      "linkers": [
+        "mIm",
+        "saIm"
+      ],
+      "exact_linker_set": 0,
+      "superset": 0,
+      "same_metal_and_topology": 0,
+      "verdict": "일치 없음",
+      "matches": []
+    },
+    {
+      "framework": "ZIF-8 Cl50+SO3H50",
+      "metal": "Zn",
+      "topology": "sod",
+      "linkers": [
+        "clIm",
+        "saIm"
+      ],
+      "exact_linker_set": 0,
+      "superset": 0,
+      "same_metal_and_topology": 0,
+      "verdict": "일치 없음",
+      "matches": []
+    },
+    {
+      "framework": "ZIF-69 모체",
+      "metal": "Zn",
+      "topology": "gme",
+      "linkers": [
+        "clIm_aryl",
+        "nIm"
+      ],
+      "exact_linker_set": 0,
+      "superset": 0,
+      "same_metal_and_topology": 0,
+      "verdict": "일치 없음",
+      "matches": []
+    },
+    {
+      "framework": "ZIF-69 + SO3H (부분)",
+      "metal": "Zn",
+      "topology": "gme",
+      "linkers": [
+        "clIm_aryl",
+        "nIm",
+        "saIm_aryl"
+      ],
+      "exact_linker_set": 0,
+      "superset": 0,
+      "same_metal_and_topology": 0,
+      "verdict": "일치 없음",
+      "matches": []
+    },
+    {
+      "framework": "ZIF-69 + SO3H 100%",
+      "metal": "Zn",
+      "topology": "gme",
+      "linkers": [
+        "nIm",
+        "saIm_aryl"
+      ],
+      "exact_linker_set": 0,
+      "superset": 0,
+      "same_metal_and_topology": 0,
+      "verdict": "일치 없음",
+      "matches": []
+    },
+    {
+      "framework": "ZIF-69 + NO2 (부분)",
+      "metal": "Zn",
+      "topology": "gme",
+      "linkers": [
+        "clIm_aryl",
+        "nIm",
+        "nbIm_aryl"
+      ],
+      "exact_linker_set": 0,
+      "superset": 0,
+      "same_metal_and_topology": 0,
+      "verdict": "일치 없음",
+      "matches": []
+    },
+    {
+      "framework": "ZIF-69 + Br (부분)",
+      "metal": "Zn",
+      "topology": "gme",
+      "linkers": [
+        "clIm_aryl",
+        "nIm",
+        "brbIm_aryl"
+      ],
+      "exact_linker_set": 0,
+      "superset": 0,
+      "same_metal_and_topology": 0,
+      "verdict": "일치 없음",
+      "matches": []
+    },
+    {
+      "framework": "ZIF-69 + CF3 (부분)",
+      "metal": "Zn",
+      "topology": "gme",
+      "linkers": [
+        "clIm_aryl",
+        "nIm",
+        "cf3Im_aryl"
+      ],
+      "exact_linker_set": 0,
+      "superset": 0,
+      "same_metal_and_topology": 0,
+      "verdict": "일치 없음",
+      "matches": []
+    },
+    {
+      "framework": "ZIF-69 + SO2CH3 (부분)",
+      "metal": "Zn",
+      "topology": "gme",
+      "linkers": [
+        "clIm_aryl",
+        "nIm",
+        "mslm_aryl"
+      ],
+      "exact_linker_set": 0,
+      "superset": 0,
+      "same_metal_and_topology": 0,
+      "verdict": "일치 없음",
+      "matches": []
+    }
+  ]
+}
