@@ -111,11 +111,34 @@ def net_charge_ok(path):
     return True
 
 
+def finished(path):
+    """완주 판정. 파일 존재만으로는 안 된다 — 중간에 죽은 실행도 30 MB 를 남긴다."""
+    try:
+        return 'Average loading absolute [mol/kg framework]' in open(
+            path, encoding='utf-8', errors='ignore').read()
+    except OSError:
+        return False
+
+
 def run_one(job):
     name, rh = job
     cif = os.path.join(CHARGED, name + '_DDEC6.cif')
     fw = name + '_DDEC6'
     d = os.path.join(RUNS, f'rh{int(rh*100):02d}_{name}')
+
+    # [2026-08-06] 작업 단위 이어받기.
+    #
+    # 원래는 water_results.json 만 보고 건너뛰었는데, 그 파일은 20작업이 **전부**
+    # 끝나야 쓰인다. 즉 19개를 끝내고 죽으면 이어받을 지점이 0 이었다. 실제로
+    # 그 일이 났다 — 데스크탑이 절전에 들어갔다가 깨어났고, 그때 살아남은 완주
+    # 작업 2개도 재시작하면 버려질 뻔했다.
+    #
+    # 한 작업이 77분 이상이라 재계산 비용이 크므로, 출력 파일에 최종 로딩 줄이
+    # 있으면 그대로 읽어 쓴다.
+    done = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
+    if done and finished(done[0]) and net_charge_ok(done[0]):
+        return name, rh, parse_components(done[0]), 'cached'
+
     os.makedirs(d, exist_ok=True)
     shutil.copy(cif, os.path.join(d, fw + '.cif'))
     shutil.copy(WATER_DEF, os.path.join(d, 'water.def'))
