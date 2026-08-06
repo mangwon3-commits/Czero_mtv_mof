@@ -154,6 +154,43 @@ def _star(a):
     return run_one(a)
 
 
+def wait_for_other_writers(poll=120):
+    """aryl_runs/ 에 쓰는 다른 프로세스가 있으면 끝날 때까지 기다린다.
+
+    [2026-08-06] 실제로 충돌 직전까지 갔다. 원격 제어로 붙은 다른 세션이
+    `run_candidate_gcmc.py` 로 새 후보 링커(−CF₃ 등)를 돌리기 시작했는데, 그 쪽도
+    같은 `aryl_runs/` 밑에 **같은 `{mode}_{gas}_{tag}` 규약**으로 디렉터리를 만든다.
+    두 프로세스가 같은 태그를 동시에 잡으면 RASPA 두 개가 한 디렉터리에서 같은
+    이름의 출력 파일을 쓰게 되고, 결과는 조용히 뒤섞인다 — 크래시가 아니라
+    **틀린 숫자**로 끝나므로 나중에 알아채기가 가장 어려운 종류의 사고다.
+
+    락을 새로 만들지 않고 프로세스 존재만 본다. 이 스크립트는 파이프라인 마지막
+    단계라 몇 분 더 기다리는 비용이 작고, 락 파일은 비정상 종료 시 남아서
+    다음 실행을 막는 부작용이 있다.
+    """
+    import time
+    others = ('run_candidate_gcmc.py', 'run_density_map.py')
+    waited = 0
+    while True:
+        busy = []
+        for name in others:
+            try:
+                out = subprocess.run(['pgrep', '-f', name], capture_output=True,
+                                     text=True, timeout=20)
+                if out.returncode == 0 and out.stdout.strip():
+                    busy.append(f'{name}({len(out.stdout.split())}개)')
+            except (OSError, subprocess.TimeoutExpired):
+                pass
+        if not busy:
+            if waited:
+                print(f'  [대기 종료] {waited//60}분 기다린 뒤 시작합니다\n', flush=True)
+            return
+        print(f'  [대기 {waited//60}분] aryl_runs/ 에 쓰는 다른 작업: {", ".join(busy)}',
+              flush=True)
+        time.sleep(poll)
+        waited += poll
+
+
 def main():
     ch = json.load(open(os.path.join(HERE, 'aryl_charged.json'), encoding='utf-8'))
     tags = ch['charged']
@@ -169,6 +206,8 @@ def main():
             print(f'  [전하파일 없음] {t} — charge_aryl.py 를 먼저 도세요')
     if not cifs:
         return 1
+
+    wait_for_other_writers()
 
     jobs = ([(c, g, 'widom') for c in cifs for g in ('CO2', 'N2')]
             + [(c, 'CO2', 'gcmc') for c in cifs])
