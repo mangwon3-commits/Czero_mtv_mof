@@ -48,6 +48,21 @@ P_CO2 = 0.15e5
 P_SAT_298 = 3169.0
 RH_LIST = [0.0, 0.25, 0.50, 0.90]
 CYCLES, INIT = 15000, 5000
+
+# [2026-08-07] 체크포인트 간격.
+#
+# 윈도우 업데이트가 강제 재부팅을 걸어 6작업을 잃었다. 그중 셋은 19시간짜리였고,
+# 원인은 정전도 과열도 아니라 `TrustedInstaller.exe` 의 "운영 체제: 업그레이드(계획됨)"
+# 이었다. 즉 **언제든 다시 일어난다.**
+#
+# RASPA 는 `ContinueAfterCrash` 로 이걸 다룬다. 지정한 사이클마다
+# `CrashRestart/binary_restart.dat` 을 쓰고, 같은 디렉터리에서 다시 실행하면
+# 그 지점부터 이어 간다. 이 빌드에서 키워드가 인식되는 것을 확인했다.
+#
+# 500 사이클은 이 계에서 약 40분에 해당한다(15000 사이클이 20시간 안팎).
+# 즉 최악의 손실이 20시간에서 40분으로 줄어든다. 더 촘촘히 하면 I/O 가 늘고,
+# 이 정도면 재부팅 한 번의 대가로 충분히 작다.
+CRASH_EVERY = 500
 # [2026-08-06] 12 -> 8. **메모리 때문이 아니라 물리 코어 수 때문이다.**
 #
 # 처음에는 이 스크립트가 15 GB 머신에서 OOM 을 낸 줄 알았다:
@@ -120,6 +135,36 @@ def finished(path):
         return False
 
 
+def guard_crash_restart(d, tag):
+    """재시작 경로가 반복 실패할 때 깨끗한 실행으로 되돌린다.
+
+    [왜 필요한가]
+        `ContinueAfterCrash` 로 이어받는 경로에서 RASPA 가 **SIGSEGV 를 냅니다**
+        (실측 확인). 시험에서는 결과를 다 쓴 뒤 종료 과정에서 죽어 무해했지만,
+        결과를 쓰기 **전에** 죽으면 이야기가 달라진다 —
+            결과 없음 -> 이어받기 로직이 재실행 -> 또 재시작 경로 -> 또 세그폴트
+        무한히 못 끝낸다.
+
+        그래서 재시작을 시도할 때 표식을 남긴다. 표식이 이미 있는데 아직도 결과가
+        없다면 그 체크포인트는 못 쓰는 것이므로 **버리고 처음부터** 간다.
+        한 번은 이어받아 초기화(전체의 25~35%)를 아끼고, 두 번째부터는 확실하게 끝낸다.
+    """
+    cr = os.path.join(d, 'CrashRestart')
+    mark = os.path.join(d, '.resume_attempted')
+    if not os.path.isdir(cr):
+        return
+    if os.path.exists(mark):
+        print(f'  [체크포인트 폐기] {tag} — 이어받기가 이미 한 번 실패했습니다. '
+              f'처음부터 돌립니다.', flush=True)
+        shutil.rmtree(cr, ignore_errors=True)
+        os.remove(mark)
+        return
+    open(mark, 'w').close()
+    print(f'  [이어받기 시도] {tag} — 체크포인트에서 분자 배치를 복원합니다 '
+          f'(진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).',
+          flush=True)
+
+
 def run_one(job):
     name, rh = job
     cif = os.path.join(CHARGED, name + '_DDEC6.cif')
@@ -138,6 +183,8 @@ def run_one(job):
     done = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
     if done and finished(done[0]) and net_charge_ok(done[0]):
         return name, rh, parse_components(done[0]), 'cached'
+
+    guard_crash_restart(d, f'rh{int(rh*100):02d}_{name}')
 
     os.makedirs(d, exist_ok=True)
     shutil.copy(cif, os.path.join(d, fw + '.cif'))
@@ -170,6 +217,8 @@ NumberOfCycles                {CYCLES}
 NumberOfInitializationCycles  {INIT}
 PrintEvery                    {CYCLES}
 RestartFile                   no
+ContinueAfterCrash            yes
+WriteBinaryRestartFileEvery   {CRASH_EVERY}
 
 Forcefield                    UFF_MOF
 CutOff                        {CUTOFF}
@@ -212,7 +261,10 @@ ExternalPressure              {p_tot:.4f}
     if not net_charge_ok(outs[0]):
         return name, rh, None, '물 알짜전하 != 0'
     res = parse_components(outs[0])
-    for sub in ('VTK', 'Movies', 'Restart'):
+    # 완주한 뒤에만 지운다. **CrashRestart 는 완주 전에 지우면 안 된다** —
+    # 그게 재부팅을 견디는 유일한 수단이다. 다만 완주 뒤에는 반드시 지운다.
+    # 남겨 두면 다음 실행이 끝난 계산을 '이어받으려' 할 수 있다.
+    for sub in ('VTK', 'Movies', 'Restart', 'CrashRestart'):
         shutil.rmtree(os.path.join(d, sub), ignore_errors=True)
     return name, rh, res, 'ok'
 
