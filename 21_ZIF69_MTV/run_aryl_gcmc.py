@@ -50,7 +50,10 @@ WIDOM_CYCLES, WIDOM_INIT = 15000, 3000
 GCMC_CYCLES, GCMC_INIT = 15000, 5000
 # 물리 코어 8개. RASPA 한 프로세스가 코어 하나를 통째로 쓰므로 그 이상은
 # 문맥 전환만 늘린다(메모리는 프로세스당 471 MB 로 병목이 아니다 — 측정값).
-MAX_WORKERS = 8
+#
+# 기회주의 스케줄러(opportunistic.sh)가 노는 코어 수만큼만 쓰도록 환경변수로
+# 덮어쓴다. 수분 계산 꼬리에서 코어가 남는 구간을 메우기 위한 것이다.
+MAX_WORKERS = int(os.environ.get('ARYL_WORKERS', '8'))
 
 
 def unit_cells(atoms, cutoff=CUTOFF):
