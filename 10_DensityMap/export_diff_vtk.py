@@ -59,10 +59,21 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     dirs = [d for d in os.listdir(HERE) if os.path.isdir(os.path.join(HERE, d))]
     pairs = {}
+    # 두 가지 이름 규약을 받는다.
+    #   ZIF-8 계열   <조성>__closed__q_on   — 닫힌상/열린상 괄호 계산이 있었다
+    #   ZIF-69 계열  <조성>__q_on           — gme 는 강체라 상이 하나뿐이다
+    #
+    # [2026-08-07] 처음에는 앞의 규약만 받아서 ZIF-69 결과에 대해 **VTK 를 0개
+    # 만들고도 오류 없이 끝났다.** 경로만 인자화하고 이름 규약을 안 고친 탓이다.
+    # 조용히 아무것도 안 하는 실패라 결과가 없다는 것 말고는 단서가 없었다.
     for d in dirs:
         m = re.match(r'(.+)__(closed|open)__q_(on|off)$', d)
         if m:
             pairs.setdefault(f'{m.group(1)}__{m.group(2)}', {})[m.group(3)] = d
+            continue
+        m = re.match(r'(.+)__q_(on|off)$', d)
+        if m:
+            pairs.setdefault(m.group(1), {})[m.group(2)] = d
 
     print(f'{"구조":<34} {"전체밀도 최대":>13} {"정전기이득 최대":>15} {"최강자리 정전기기원":>18}')
     print('-' * 88)
@@ -92,6 +103,15 @@ def main():
         print(f'{tag:<34} {r_on.max()*100:>12.4f}% {d.max()*100:>14.4f}%p '
               f'{frac:>17.1f}%')
         n += 1
+    if n == 0:
+        # 조용한 0건은 사고다. 무엇을 찾았고 무엇을 못 찾았는지 남긴다.
+        print(f'\n[!!] 짝을 이룬 구조가 하나도 없습니다. 검사한 곳: {HERE}')
+        print(f'     하위 디렉터리 {len(dirs)}개, 이름 규약에 맞은 것 {len(pairs)}개')
+        if dirs:
+            print(f'     예: {sorted(dirs)[:4]}')
+        print('     기대 규약: <조성>__q_on / <조성>__q_off '
+              '(또는 <조성>__closed__q_on)')
+        return 1
     print(f'\n[OK] {n*2}개 VTK -> {OUT}')
     print('ParaView: 두 파일을 함께 열고 ELECTROSTATIC_GAIN에 Contour를 걸어')
     print('          양수 등고면(정전기가 끌어온 자리)과 음수 등고면(밀려난 자리)을 본다.')
