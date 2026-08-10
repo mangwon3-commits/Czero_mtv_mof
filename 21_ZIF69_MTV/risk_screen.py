@@ -37,7 +37,21 @@ from ase.io import read, write
 HERE = os.path.dirname(os.path.abspath(__file__))
 STRUCT = os.path.join(HERE, 'structures')
 BASE_SRC = os.path.join(HERE, '..', '05_MTV_Ligand_Library', 'ZIF69_base.cif')
-WORK = os.path.join(HERE, 'lmp')
+
+# [2026-08-08] 대상 목록을 인자로 받는다.
+#
+# 원래 build_index.json(saIm 5종) 만 읽었다. 그런데 아릴 12종은 GCMC 를 마쳤는데도
+# **LAMMPS 검증을 한 번도 받지 않았다**(NEXT_STEPS 2-3). 정적 강체 골격 GCMC 에서
+# 좋은 값이 나와도 그것만으로는 채택할 수 없으므로 같은 잣대를 적용해야 한다.
+#
+#     python risk_screen.py                                  # saIm 5종 (기본)
+#     python risk_screen.py aryl_scan_index.json aryl        # 아릴 계열
+#
+# 작업 디렉터리와 결과 파일을 함께 갈라, 두 계열이 lmp/ 에서 섞이지 않게 한다.
+INDEX = sys.argv[1] if len(sys.argv) > 1 else 'build_index.json'
+SUFFIX = sys.argv[2] if len(sys.argv) > 2 else ''
+WORK = os.path.join(HERE, 'lmp' + (('_' + SUFFIX) if SUFFIX else ''))
+RESULT = os.path.join(HERE, f'risk_results{("_" + SUFFIX) if SUFFIX else ""}.json')
 # 18_PoreNarrowing 의 S_3+6 패치 래퍼를 그대로 쓴다(중복 구현하지 않는다).
 IFACE = os.path.join(HERE, '..', '18_PoreNarrowing', 'lammps_iface_patched.py')
 
@@ -51,6 +65,12 @@ PROBE_R = CO2_KINETIC / 2
 LCD_DROP_LIMIT = 20.0
 MIN_DIST_LIMIT = 0.7
 AV_FLOOR = 20.0
+
+# 이완 상한. 위 patch_input() 의 주석이 근거다.
+# 무치환은 50루프에 수렴했고, 치환 구조들은 6~11루프에서 EDiff 1~4 로 평평해진다.
+# 12 는 그 평탄부에 도달하되 진동에 시간을 버리지 않는 지점이다.
+OUTER_LOOP_CAP = 12
+INNER_ITER_CAP = 2000
 
 
 def fix_tags(p):
@@ -129,11 +149,37 @@ def run_one(name):
     kept = [re.sub(r'(variable\s+min_eval\s+equal\s+)1\.00e-06',
                    r'\g<1>1.00e-04', l) for l in kept]
 
+    # [2026-08-09] 바깥 루프와 안쪽 반복에 상한을 건다. **이게 없으면 안 끝난다.**
+    #
+    # 생성되는 입력은 이런 구조다:
+    #     variable iter loop 100000
+    #     label loop_min
+    #       minimize 1e-15 1e-15 10000 100000   (box/relax)
+    #       minimize 1e-15 1e-15 10000 100000   (fire)
+    #       if "${min_E} < ${min_eval}" then jump break_min
+    #     jump SELF loop_min
+    #     write_data ...
+    #
+    # `write_data` 는 루프를 빠져나가야 실행된다. 그런데 치환 구조들은 **수렴하지
+    # 않고 진동한다**. 실측(2026-08-09): 무치환은 50루프에서 EDiff 5.3e-08 로 끝났지만
+    # 나머지 16종은 0.5~150 에서 정체했고 saIm075(3.8 -> 123.7), nbIm100(6544 -> 118.7)
+    # 은 에너지가 오히려 올라갔다. 3시간 타임아웃에 전부 걸려 **산출물이 하나도
+    # 안 나왔다.** 시간을 늘려도 결과는 같다.
+    #
+    # 우리가 판정할 것은 LCD 감소율과 최소 원자간 거리이지 에너지 최소점의 마지막
+    # 자릿수가 아니다. 그래서 상한을 걸고 그 시점의 구조를 쓴다. 대신 도달한 EDiff 를
+    # 결과에 남겨, 덜 수렴한 구조로 판정했다는 사실이 보이게 한다.
+    kept = [re.sub(r'(variable\s+iter\s+loop\s+)\d+',
+                   rf'\g<1>{OUTER_LOOP_CAP}', l) for l in kept]
+    kept = [re.sub(r'^(minimize\s+\S+\s+\S+\s+)\d+(\s+)\d+',
+                   rf'\g<1>{INNER_ITER_CAP}\g<2>{INNER_ITER_CAP * 10}', l)
+            for l in kept]
+
     kept.append(f'\nwrite_data min_{name}.data nocoeff')
     open(inp, 'w', encoding='utf-8').write('\n'.join(kept) + '\n')
     if n_drop:
-        print(f'    {name}: group {n_drop}개 제거(상한 32), min_eval 1e-6 -> 1e-4',
-              flush=True)
+        print(f'    {name}: group {n_drop}개 제거(상한 32), min_eval 1e-6 -> 1e-4, '
+              f'바깥루프 <= {OUTER_LOOP_CAP}, 안쪽반복 <= {INNER_ITER_CAP}', flush=True)
 
     # [ZIF-69 + SO3H 에서 걸린 두 번째 함정] lammps-interface 가 같은 원자를 두 번
     # 넣은 이면각을 만든다:
@@ -174,9 +220,28 @@ def run_one(name):
     return name, m0, m1, 'ok'
 
 
+def final_ediff(name):
+    """이완이 어디까지 수렴했는지. 상한에 걸려 멈춘 구조를 판정할 때 반드시 병기한다.
+
+    min_eval(1e-4)보다 크면 **덜 수렴한 구조로 판정한 것**이므로, LCD 감소율이
+    경계 근처인 경우 그 값을 신뢰하면 안 된다.
+    """
+    p = os.path.join(WORK, name, f'{name}.min.csv')
+    try:
+        rows = [l for l in open(p, encoding='utf-8').read().splitlines() if ',' in l]
+        return float(rows[-1].split(',')[-1]), len(rows) - 1
+    except (OSError, ValueError, IndexError):
+        return None, None
+
+
 def main():
-    idx = json.load(open(os.path.join(HERE, 'build_index.json'), encoding='utf-8'))
+    idx = json.load(open(os.path.join(HERE, INDEX), encoding='utf-8'))
+    # 아릴 인덱스에는 감사 탈락 구조가 섞여 있다. 겹침이 있는 구조를 이완시키면
+    # 무의미한 결과가 나오므로 pass=true 인 것만 본다(build_index 에는 이 키가 없어
+    # 기본값 True 로 전부 통과시킨다).
+    idx = [r for r in idx if r.get('pass', True)]
     names = [r['tag'] for r in idx]
+    print(f'대상: {INDEX} -> {len(names)}종, 작업 {WORK}', flush=True)
     os.makedirs(WORK, exist_ok=True)
     print(f'구조 {len(names)}개 UFF4MOF 이완 + Zeo++\n', flush=True)
 
@@ -189,10 +254,10 @@ def main():
     base = res.get('base', (None, None, None))[1]
     lcd_ref = (base or {}).get('LCD') or (res.get('base', ({},))[0] or {}).get('LCD')
 
-    print('\n' + '=' * 112)
+    print('\n' + '=' * 126)
     print(f'{"조성":<12} {"PLD(전)":>8} {"AV(전)":>9} {"LCD(전)":>8} {"LCD(후)":>8} '
-          f'{"LCD감소%":>9} {"최소거리":>9}  판정')
-    print('-' * 112)
+          f'{"LCD감소%":>9} {"최소거리":>9} {"루프":>5} {"EDiff":>10}  판정')
+    print('-' * 126)
     rows = []
     for n in names:
         m0, m1, st = res[n]
@@ -210,20 +275,28 @@ def main():
         }
         ok = all(checks.values())
         bad = ','.join(k for k, v in checks.items() if not v)
+        ed, loops = final_ediff(n)
+        # 상한에 걸려 멈춘 구조는 표시한다. 판정을 무효로 만들지는 않지만,
+        # LCD 감소율이 경계 근처면 그 값을 신뢰하면 안 된다.
+        mark = '' if (ed is not None and ed < 1e-4) else ' *덜수렴'
         print(f'{n:<12} {m0["PLD"]:>8.3f} {m0.get("AV_per_cell",0):>9.1f} '
               f'{m0["LCD"]:>8.3f} {m1["LCD"]:>8.3f} {drop:>9.1f} '
-              f'{m1["min_dist"]:>9.3f}  {"통과" if ok else "탈락: " + bad}')
+              f'{m1["min_dist"]:>9.3f} {str(loops):>5} '
+              f'{("%.3g" % ed) if ed is not None else "-":>10}  '
+              f'{"통과" if ok else "탈락: " + bad}{mark}')
         rows.append({'name': n, 'status': st, 'before': m0, 'after': m1,
-                     'LCD_drop_pct': round(drop, 2), 'checks': checks, 'pass': ok})
+                     'LCD_drop_pct': round(drop, 2), 'checks': checks, 'pass': ok,
+                     'outer_loops': loops, 'final_EDiff': ed,
+                     'converged': bool(ed is not None and ed < 1e-4)})
 
-    with open(os.path.join(HERE, 'risk_results.json'), 'w', encoding='utf-8') as f:
+    with open(RESULT, 'w', encoding='utf-8') as f:
         json.dump({'criteria': {'PLD_min': CO2_KINETIC,
                                 'LCD_drop_limit_pct': LCD_DROP_LIMIT,
                                 'AV_floor': AV_FLOOR,
                                 'min_dist_limit': MIN_DIST_LIMIT,
                                 'LCD_reference': lcd_ref},
                    'rows': rows}, f, indent=2, ensure_ascii=False)
-    print('\n[OK] risk_results.json')
+    print(f'\n[OK] {os.path.basename(RESULT)}')
     print('\n주: PLD/AV 는 이완 **전**, LCD 감소·최소거리는 이완 **후** 값으로 판정했습니다'
           ' (MIGRATION.md 3-6).')
     return 0

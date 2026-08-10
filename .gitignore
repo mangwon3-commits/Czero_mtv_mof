@@ -39,7 +39,18 @@
 21_ZIF69_MTV/aryl_runs/
 21_ZIF69_MTV/water_runs/
 21_ZIF69_MTV/lmp/
+21_ZIF69_MTV/lmp_aryl/
 21_ZIF69_MTV/zeo/
+# 밀도맵 실행 디렉터리는 351 MB 다(원시 격자 10작업분). 재계산으로 복원되므로 제외.
+# **단 diff_vtk/ 는 예외로 포함한다** — 10_DensityMap 과 같은 이유로, ParaView 로
+# 여는 산출물 자체이고 정전기 차분이라는 결론의 근거다. 25 MB 로 감당 가능하다.
+21_ZIF69_MTV/density/*/Output/
+21_ZIF69_MTV/density/*/VTK/
+21_ZIF69_MTV/density/*/Movies/
+21_ZIF69_MTV/density/*/Restart/
+21_ZIF69_MTV/density/*/CrashRestart/
+21_ZIF69_MTV/density/*/*.cif
+21_ZIF69_MTV/density/*/simulation.input
 # 21_ZIF69_MTV/charged/ 는 제외하지 않는다 — 17_NestEffect 에서 배운 것과 같은
 # 이유다. 전하 CIF 는 재계산 비용이 크므로 절차가 코드에 있어도 추적해 둔다.
 __pycache__/
