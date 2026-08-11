@@ -438,6 +438,91 @@ CPU 코어, 같은 GPU)을 동시에 씁니다. 격리된 컨테이너가 아닙
 > `$(pgrep -c x || echo 0)` 로 쓰면 `"0\n0"` 이 되어 산술 확장이 깨집니다.
 > 실제로 이 스케줄러 첫 판이 그렇게 죽었습니다. 값이 숫자인지 검사하고 쓰세요.
 
+### 3-12. WSL 을 붙잡는 것은 안쪽 프로세스가 아니라 바깥쪽 클라이언트다
+
+**이것 하나 때문에 LAMMPS 가 39시간 죽어 있었습니다.**
+
+증상은 두 가지로 나타났습니다. 하나는 세션이 "작업 폴더가 더 이상 존재하지 않는다"고
+하는 것(작업 디렉터리가 UNC 경로 `\\wsl.localhost\Ubuntu\` 라서, VM 이 꺼지면 공유가
+통째로 사라집니다). 다른 하나는 계산이 소리 없이 멈추는 것입니다.
+
+**두 번의 오진을 먼저 적습니다.**
+
+1. `~/.claude_work/wsl_keepalive.sh` — VM 안에서 `while true; do sleep 300; done` 을
+   돌리면 유휴 판정이 안 될 것이라 봤습니다. **아닙니다.**
+2. `.wslconfig` 의 `vmIdleTimeout=-1` — 이걸 적용하면 끝일 것이라 봤습니다.
+   **아닙니다.**
+
+2026-08-10 17:25:06 에 위 둘이 **모두 걸려 있는 상태로** VM 이 꺼졌습니다.
+Hyper-V-VmSwitch 포트 삭제 기록으로 확인됩니다. WSL 안에서는 흔적을 남길 수 없으니
+(로그를 쓸 프로세스가 같이 죽습니다) 윈도우 이벤트 로그를 봐야 합니다.
+
+```powershell
+Get-WinEvent -FilterHashtable @{LogName='System'; StartTime=(Get-Date).AddDays(-3)} |
+  Where-Object { $_.ProviderName -match 'VmSwitch' -and $_.Id -in 67,71 }
+```
+포트 생성(67)과 삭제(71)가 VM 의 수명입니다.
+
+08-12 08:20~08:23 에 세 번 재현했습니다. 윈도우 쪽에 붙어 있는 `wsl.exe` 가 없으면,
+`wsl.exe -e` 호출이 끝나는 순간 **`setsid nohup` 으로 떼어 놓은 프로세스까지 전부**
+사라집니다. 08:23 에 윈도우에서 `vm_hold.sh` 를 붙잡아 두자 **같은 방법으로 띄운
+감시견이 그대로 살아남았습니다.**
+
+**해법 — 되살릴 주체는 반드시 VM 바깥에 있어야 합니다.** VM 이 꺼지면 안에 있던
+감시견도 같이 죽으므로, 안쪽 장치만으로는 원리상 복구가 불가능합니다.
+
+| 층 | 위치 | 하는 일 |
+|---|---|---|
+| 예약 작업 `ClaudeWslHold` (5분) | 윈도우 | `wsl.exe --exec vm_hold.sh` 를 붙잡아 VM 유지 + `ensure_guards.sh` 호출 |
+| `ensure_guards.sh` | WSL | keepalive·감시견 중 **없는 것만** 되살림 |
+| `lammps_watchdog.sh` | WSL | 1시간마다 **진전**을 보고 멈췄으면 재실행 |
+| crontab `@reboot`, `*/10` | WSL | 예약 작업이 안 돌 때의 여벌 |
+
+설치본은 `00_Migration/tools/` 에 있습니다. 윈도우 쪽 등록은 이렇게 합니다.
+
+```powershell
+schtasks /create /tn ClaudeWslHold /tr "\"$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe\" -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File \"C:\Users\mangw\.claude_work\wsl_hold.ps1\"" /sc minute /mo 5 /rl limited /f
+```
+
+> **`Start-Process wsl.exe` 는 출력 리다이렉트가 없으면 조용히 즉시 죽습니다.**
+> 예약 작업에는 콘솔이 없기 때문입니다. `-RedirectStandardOutput` /
+> `-RedirectStandardError` 를 반드시 붙이세요. 08-12 08:20 과 08:22 에 이걸
+> 빠뜨려 홀드 프로세스가 두 번 즉사했고, 로그에는 "새로 띄움"만 남아 있었습니다.
+
+> **crontab `@reboot` 에는 되살릴 것을 **전부** 넣으세요.** 원래 keepalive 만
+> 들어 있었습니다. 그래서 08-10 17:25 에 VM 이 다시 떴을 때 keepalive 만 살아나고
+> LAMMPS 는 39시간 방치됐습니다. 지금은 `ensure_guards.sh` 하나를 부릅니다.
+
+> **감시견이 '포기'한 뒤에는 되살리지 마세요.** 바깥의 5분 감시가 감시견을
+> 되살리면 재시도 횟수가 0으로 돌아가 사실상 무한 재시도가 됩니다.
+> `.watchdog_gave_up` 파일로 막습니다.
+
+**윈도우 빠른 시작(Fast Startup)은 꺼야 합니다.** 켜져 있으면 전원을 껐다 켠 뒤
+WSLService 가 30초 타임아웃으로 매달려 **WSL 이 아예 안 뜹니다**(2026-08-12 08:07:40,
+`Service Control Manager` 이벤트 7011). 커널 세션을 최대 절전으로 남겨 두는 방식이라
+WSL 의 가상화 상태와 어긋납니다. 관리자 권한으로 한 줄이면 됩니다.
+
+```
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v HiberbootEnabled /t REG_DWORD /d 0 /f
+```
+
+확인은 `Get-WinEvent`의 `Microsoft-Windows-Kernel-Boot` 이벤트 27 입니다. 부팅 유형이
+`0x1` 이면 빠른 시작, `0x0` 이면 정상 냉부팅입니다.
+
+### 3-13. 전멸한 결과가 멀쩡한 결과를 덮는다
+
+2026-08-10 17:29 에 `18_PoreNarrowing/risk_screen.py` 가 `lammps_mof` 환경 없이
+실행됐습니다. 16개 구조 **전부** `lammps-interface 실패`로 끝났는데, 스크립트는
+그 실패 목록을 그대로 `risk_results.json` 에 썼습니다. 14 KB 의 기하 데이터가
+3.8 KB 의 실패 목록으로 바뀌었습니다.
+
+git 이 미커밋 변경으로 잡아 주지 않았으면 모르고 지나갔을 사고입니다. 3-8(조용한
+`timeout`)과 같은 종류입니다 — **실패가 결과처럼 보이는 것.**
+
+두 `risk_screen.py` 에 방어를 넣었습니다. **통과가 0개인데 기존 파일에는 통과가
+있으면 덮지 않고** `risk_results.allfail.json` 에 따로 쓰고 종료코드 1 을 냅니다.
+결과 파일을 쓰는 스크립트를 새로 만들 때 같은 방어를 넣으세요.
+
 ---
 
 ## 4. 이전 후 검증 (순서대로)

@@ -289,13 +289,32 @@ def main():
                      'outer_loops': loops, 'final_EDiff': ed,
                      'converged': bool(ed is not None and ed < 1e-4)})
 
+    payload = {'criteria': {'PLD_min': CO2_KINETIC,
+                            'LCD_drop_limit_pct': LCD_DROP_LIMIT,
+                            'AV_floor': AV_FLOOR,
+                            'min_dist_limit': MIN_DIST_LIMIT,
+                            'LCD_reference': lcd_ref},
+               'rows': rows}
+
+    # 전멸한 결과로 멀쩡한 결과를 덮지 않는다. 18_PoreNarrowing 에서 실제로
+    # 당했다 — 환경 없이 실행되어 16개 전부 'lammps-interface 실패'로 끝났는데도
+    # 결과 파일을 그대로 덮어썼다. 여기도 같은 구조라 같은 방어를 넣는다.
+    if not any(r.get('pass') for r in rows) and os.path.exists(RESULT):
+        try:
+            prev = json.load(open(RESULT, encoding='utf-8')).get('rows') or []
+        except (ValueError, OSError):
+            prev = []
+        if any(r.get('pass') for r in prev):
+            alt = RESULT.replace('.json', '.allfail.json')
+            with open(alt, 'w', encoding='utf-8') as f:
+                json.dump(payload, f, indent=2, ensure_ascii=False)
+            print(f'\n[중단] {len(rows)}개 전부 실패했습니다. 기존 결과(통과 '
+                  f'{sum(1 for r in prev if r.get("pass"))}개)를 지키기 위해 '
+                  f'덮어쓰지 않았습니다.\n       실패 내역: {os.path.basename(alt)}')
+            return 1
+
     with open(RESULT, 'w', encoding='utf-8') as f:
-        json.dump({'criteria': {'PLD_min': CO2_KINETIC,
-                                'LCD_drop_limit_pct': LCD_DROP_LIMIT,
-                                'AV_floor': AV_FLOOR,
-                                'min_dist_limit': MIN_DIST_LIMIT,
-                                'LCD_reference': lcd_ref},
-                   'rows': rows}, f, indent=2, ensure_ascii=False)
+        json.dump(payload, f, indent=2, ensure_ascii=False)
     print(f'\n[OK] {os.path.basename(RESULT)}')
     print('\n주: PLD/AV 는 이완 **전**, LCD 감소·최소거리는 이완 **후** 값으로 판정했습니다'
           ' (MIGRATION.md 3-6).')
