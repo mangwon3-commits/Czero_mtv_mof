@@ -14,6 +14,12 @@ set -u
 W=/home/mangwon1/.claude_work
 cd "$W" || exit 0
 
+# 윈도우 예약 작업(5분)과 crontab(10분)이 둘 다 이걸 부른다. 겹치면 같은 감시견을
+# 두 번 띄운다 — watchdog.log 에 "다시 띄움"이 매번 두 줄씩 찍힌 것이 그것이다.
+# 겹친 호출은 그냥 물러난다. 어차피 5분 뒤에 또 온다.
+exec 9>"$W/.ensure_guards.lock"
+flock -n 9 || exit 0
+
 # 1) 유휴 종료 방지 데몬 (여벌). 경로가 절대/상대 둘 다로 뜰 수 있으므로
 #    스크립트 이름만 본다 — 'bash wsl_keepalive.sh' 로 찾으면 crontab 이 띄운
 #    절대경로짜리를 놓쳐 중복으로 켜진다 (실제로 2개까지 늘었다).

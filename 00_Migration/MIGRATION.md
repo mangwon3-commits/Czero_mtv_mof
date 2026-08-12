@@ -484,6 +484,30 @@ Get-WinEvent -FilterHashtable @{LogName='System'; StartTime=(Get-Date).AddDays(-
 schtasks /create /tn ClaudeWslHold /tr "\"$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe\" -NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File \"C:\Users\mangw\.claude_work\wsl_hold.ps1\"" /sc minute /mo 5 /rl limited /f
 ```
 
+> **예약 작업은 작업 프로세스가 끝날 때 자식까지 죽입니다.** 처음에는 5분마다
+> 실행돼 `Start-Process` 로 홀드를 띄우고 바로 끝나는 형태였습니다. 그러자 홀드가
+> **5분마다 죽었습니다**(08-12 12:45~13:25 사이 `wsl_hold.log` 에 "새로 띄움"이
+> 9번 연속). 예약 작업은 작업 개체(job object)로 자식을 묶으므로 `Start-Process`
+> 로 떼어 놔도 소용없습니다. **작업 프로세스 자신이 홀드를 붙잡고 끝나지 않아야
+> 합니다.** 그러려면 XML 로 등록해 `ExecutionTimeLimit` 을 `PT0S`(무제한, 기본값은
+> 3일)로, `MultipleInstancesPolicy` 를 `IgnoreNew` 로 둡니다. 살아 있는 동안 5분
+> 트리거는 무시되고 죽으면 다음 트리거가 다시 띄우므로 재시작 로직이 따로 필요
+> 없습니다. `LogonTrigger` 도 넣으세요 — 08-12 13:31 재부팅 뒤 다음 차례가 14:05
+> 여서 30분간 WSL 을 깨우는 것이 아무것도 없었습니다.
+>
+> 단 `IgnoreNew` 는 **믿을 것이 못 됩니다.** 걸어 두었는데도 14:06 과 14:07 에 두
+> 개가 떴습니다. 스크립트 안에서 뮤텍스(`Local\ClaudeWslHold`)로 직접 막습니다.
+
+> **감시견의 확인 간격은 정지 판정과 분리하세요.** 감시견이 1시간마다 확인하는
+> 동안 홀드 결함으로 감시견 자신이 5분마다 죽고 되살아났습니다. 새로 뜬 감시견은
+> 시작 직후 한 번 보고(그때는 진전이 최근이라 통과) 잠들었다가 1시간을 못 채우고
+> 죽었습니다. **감시견이 9번 떴는데 고장을 한 번도 못 잡았고**, LAMMPS 는 12:47 에
+> 죽어 76분간 방치됐습니다. 확인은 5분마다, 판정 기준은 1시간 무진전 그대로입니다.
+
+> **`ensure_guards.sh` 에는 잠금이 필요합니다.** 윈도우 예약 작업(5분)과
+> crontab(10분)이 둘 다 부르므로 겹치면 같은 감시견을 두 번 띄웁니다.
+> `flock -n` 으로 겹친 호출은 물러나게 합니다.
+
 > **`Start-Process wsl.exe` 는 출력 리다이렉트가 없으면 조용히 즉시 죽습니다.**
 > 예약 작업에는 콘솔이 없기 때문입니다. `-RedirectStandardOutput` /
 > `-RedirectStandardError` 를 반드시 붙이세요. 08-12 08:20 과 08:22 에 이걸
@@ -508,6 +532,42 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Power" /v Hiberbo
 
 확인은 `Get-WinEvent`의 `Microsoft-Windows-Kernel-Boot` 이벤트 27 입니다. 부팅 유형이
 `0x1` 이면 빠른 시작, `0x0` 이면 정상 냉부팅입니다.
+
+### 3-12-1. 윈도우 업데이트가 오후에 재부팅한다 — 활성 시간이 거꾸로다
+
+2026-08-12 13:29 과 13:31 에 컴퓨터가 두 번 재부팅했습니다. `TrustedInstaller.exe`
+가 `NT AUTHORITY\SYSTEM` 권한으로 건 것이고(User32 이벤트 1074), 원인은
+`2026-08 보안 업데이트 (KB5121003)` 입니다. 08:39 에 설치를 시작해 13:34 에
+완료됐습니다.
+
+왜 하필 오후였는지가 핵심입니다.
+
+```
+ActiveHoursStart = 19시
+ActiveHoursEnd   = 13시
+-> 재부팅이 허용되는 창 = 13시 ~ 19시
+```
+
+활성 시간이 19시~13시로 잡혀 있어, **윈도우가 재부팅해도 된다고 보는 유일한 창이
+오후 1시~7시**입니다. 계산을 돌리는 시간대와 정확히 겹칩니다.
+
+활성 시간은 최대 18시간이라 이것만으로는 완전히 막을 수 없습니다. 24시간 계산을
+돌린다면 정책으로 막아야 합니다 (Pro 이상, 관리자 권한).
+
+```
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoRebootWithLoggedOnUsers /t REG_DWORD /d 1 /f
+```
+
+로그인한 사용자가 있으면 자동 재부팅을 하지 않습니다. 업데이트 설치 자체는
+그대로 되고, 재부팅만 사용자가 직접 할 때까지 미룹니다.
+
+확인은 이렇게 합니다.
+
+```powershell
+Get-WinEvent -FilterHashtable @{LogName='System'; StartTime=(Get-Date).AddDays(-3)} |
+  Where-Object { $_.Id -in 1074,109,6005,6006 } | Sort-Object TimeCreated
+```
+1074 에 `TrustedInstaller.exe` 가 보이면 업데이트가 건 재부팅입니다.
 
 ### 3-13. 전멸한 결과가 멀쩡한 결과를 덮는다
 

@@ -21,6 +21,16 @@ W=/home/mangwon1/.claude_work
 P=/home/mangwon1/mof_project/21_ZIF69_MTV
 MAX_RETRY=3
 STALL_SEC=3600
+# 확인 간격은 정지 판정과 **분리한다.**
+#
+# 원래 1시간마다 확인했다. 그런데 08-12 12:45~13:25 에 감시견 자신이 5분마다
+# 죽고 되살아나는 상황이 벌어지자, 새로 뜬 감시견은 시작 직후 한 번 보고
+# (그때는 아직 진전이 최근이라 통과) 잠들었다가 1시간을 못 채우고 죽었다.
+# **그래서 감시견이 9번 떴는데 고장을 한 번도 못 잡았다.** 그동안 LAMMPS 는
+# 12:47 에 죽어 76분간 방치됐다.
+# 확인을 5분마다 하면 수명이 짧아도 판정은 제대로 된다. 판정 기준(1시간 무진전)은
+# 그대로다.
+CHECK_SEC=300
 
 say() { echo "[$(date +%m-%d\ %H:%M)] 감시견: $*"; }
 
@@ -77,5 +87,5 @@ while true; do
     say "고장 감지 (${age}초 무진전, risk $(pgrep -cf risk_screen.py 2>/dev/null || echo 0) / lmp $(pgrep -c lmp_serial 2>/dev/null || echo 0)) — 재실행 ${retries}회차"
     relaunch
   fi
-  sleep 3600
+  sleep "$CHECK_SEC"
 done
