@@ -4,7 +4,7 @@
     "LCD_drop_limit_pct": 20.0,
     "AV_floor": 20.0,
     "min_dist_limit": 0.7,
-    "LCD_reference": 8.01676
+    "LCD_reference": 7.83298
   },
   "rows": [
     {
@@ -19,13 +19,13 @@
         "AV_per_cell": 1244.8
       },
       "after": {
-        "LCD": 8.01676,
-        "PLD": 5.78435,
-        "AV": 8555.43,
-        "min_dist": 1.081,
+        "LCD": 7.83298,
+        "PLD": 5.56084,
+        "AV": 8343.76,
+        "min_dist": 1.08,
         "n_atoms": 4800,
         "supercell_rep": 8,
-        "AV_per_cell": 1069.4
+        "AV_per_cell": 1043.0
       },
       "LCD_drop_pct": 0.0,
       "checks": {
@@ -34,59 +34,138 @@
         "AV": true,
         "min_dist": true
       },
-      "pass": true
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 2.29177843549951,
+      "converged": false
     },
     {
       "name": "saIm025",
-      "status": "LAMMPS 시간초과",
+      "status": "ok",
       "before": {
         "LCD": 7.72901,
         "PLD": 4.38196,
         "AV": 1054.95,
         "min_dist": 0.946,
-        "n_atoms": 624
+        "n_atoms": 624,
+        "AV_per_cell": 1055.0
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 7.74265,
+        "PLD": 4.41379,
+        "AV": 7752.28,
+        "min_dist": 0.9,
+        "n_atoms": 4992,
+        "supercell_rep": 8,
+        "AV_per_cell": 969.0
+      },
+      "LCD_drop_pct": 1.15,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 20.6487277607612,
+      "converged": false
     },
     {
       "name": "saIm050",
-      "status": "LAMMPS 시간초과",
+      "status": "ok",
       "before": {
         "LCD": 7.68113,
         "PLD": 4.23577,
         "AV": 859.968,
         "min_dist": 0.946,
-        "n_atoms": 656
+        "n_atoms": 656,
+        "AV_per_cell": 860.0
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 7.51837,
+        "PLD": 3.94962,
+        "AV": 1417.27,
+        "min_dist": 0.899,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 177.2
+      },
+      "LCD_drop_pct": 4.02,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 12.7771249531979,
+      "converged": false
     },
     {
       "name": "saIm075",
-      "status": "LAMMPS 시간초과",
+      "status": "ok",
       "before": {
         "LCD": 7.12958,
         "PLD": 4.23577,
         "AV": 788.494,
         "min_dist": 0.924,
-        "n_atoms": 668
+        "n_atoms": 668,
+        "AV_per_cell": 788.5
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 7.06051,
+        "PLD": 3.7143,
+        "AV": 1887.76,
+        "min_dist": 0.898,
+        "n_atoms": 5344,
+        "supercell_rep": 8,
+        "AV_per_cell": 236.0
+      },
+      "LCD_drop_pct": 9.86,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 2.88198219059996,
+      "converged": false
     },
     {
       "name": "saIm100",
-      "status": "LAMMPS 시간초과",
+      "status": "ok",
       "before": {
         "LCD": 7.17173,
         "PLD": 4.23577,
         "AV": 324.775,
         "min_dist": 0.924,
-        "n_atoms": 696
+        "n_atoms": 696,
+        "AV_per_cell": 324.8
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 6.59979,
+        "PLD": 3.78647,
+        "AV": 1884.86,
+        "min_dist": 0.894,
+        "n_atoms": 5568,
+        "supercell_rep": 8,
+        "AV_per_cell": 235.6
+      },
+      "LCD_drop_pct": 15.74,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 15.2103939442968,
+      "converged": false
     }
   ]
 }

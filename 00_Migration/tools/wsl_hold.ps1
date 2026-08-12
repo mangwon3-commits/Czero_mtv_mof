@@ -1,31 +1,28 @@
 # WSL VM 을 윈도우 쪽에서 붙잡는다. **이 스크립트는 끝나지 않는다.**
 #
-# [왜 끝나면 안 되는가 - 2026-08-12 오후에 배운 것]
+# [왜 끝나면 안 되는가 - 2026-08-12 오후]
 #   처음에는 5분마다 실행돼 Start-Process 로 홀드를 띄우고 바로 끝나는 형태였다.
-#   그러자 홀드가 5분마다 죽었다 (wsl_hold.log 에 "새로 띄움"이 12:45~13:25 동안
-#   9번 연속). **예약 작업은 작업 프로세스가 끝날 때 자식까지 작업 개체(job object)
-#   째로 종료시킨다.** Start-Process 로 떼어 놔도 소용없다.
+#   그러자 홀드가 5분마다 죽었다. 예약 작업은 작업 개체(job object)로 자식을 묶어
+#   두므로 Start-Process 로 떼어 놔도 소용없다. 작업 프로세스 자신이 붙잡아야 한다.
 #
-#   홀드가 죽으면 VM 이 무방비가 되고, ensure_guards.sh 가 띄운 감시견도 같이
-#   죽는다. 그 결과 LAMMPS 가 오늘 하루 08:25, 10:35, 11:40, 12:45 네 번 처음부터
-#   다시 돌았다.
+# [왜 자가 복구가 필요한가 - 2026-08-12 16:41]
+#   OOM 이 dbus-daemon 을 죽이자 WSL 배포판이 통째로 먹통이 됐다. 그 뒤로
+#   `wsl.exe --exec` 이 **0초 만에 반환**하는 상태가 계속됐다. 다시 거는 것만으로는
+#   절대 안 풀린다 — 10초마다 재시도하며 20분을 허비했다.
+#   이 상태를 푸는 유일한 방법은 `wsl --shutdown` 이다.
 #
-# [해법] 작업 프로세스 자신이 홀드를 붙잡고 안 끝난다. 예약 작업의 중복 실행
-#   정책이 IgnoreNew 라, 살아 있는 동안 5분 트리거는 무시되고 죽으면 다음
-#   트리거가 다시 띄운다. 그래서 재시작 로직이 따로 필요 없다.
+#   더 나쁜 것은 이때 세션의 셸 도구까지 같이 죽는다는 점이다. 작업 디렉터리가
+#   \\wsl.localhost\Ubuntu\ 라서, VM 이 없으면 PowerShell 도 bash 도 못 뜬다.
+#   즉 **사람이든 에이전트든 셸로는 손을 쓸 수 없다.** 복구는 이 예약 작업 안에
+#   들어 있어야 한다.
 $ErrorActionPreference = 'SilentlyContinue'
-$log  = 'C:\Users\mangw\.claude_work\wsl_hold.log'
-
-# 중복 실행 방지는 여기서 한다. 예약 작업의 MultipleInstancesPolicy=IgnoreNew 를
-# 걸었는데도 14:06 과 14:07 에 두 개가 떴다. 스케줄러 쪽 정책은 믿을 것이 못 된다.
-# 뮤텍스는 프로세스가 죽으면 OS 가 알아서 놓아 주므로 잠금이 남을 걱정도 없다.
-$mutex = New-Object System.Threading.Mutex($false, 'Local\ClaudeWslHold')
-if (-not $mutex.WaitOne(0)) { exit 0 }
-$dist = 'Ubuntu'
+$log   = 'C:\Users\mangw\.claude_work\wsl_hold.log'
+$dist  = 'Ubuntu'
 $guard = '/home/mangwon1/.claude_work/ensure_guards.sh'
 $hold  = '/home/mangwon1/.claude_work/vm_hold.sh'
+$FAST_RETURN_SEC = 30   # 이보다 빨리 반환하면 붙잡기 실패로 본다
+$FAILS_BEFORE_SHUTDOWN = 3
 
-# 로그는 ASCII 로 쓴다. PS 5.1 의 UTF-8 처리가 한글을 깨뜨려 읽을 수 없었다.
 function Log($m) {
     "$(Get-Date -Format 'MM-dd HH:mm')  $m" | Out-File -FilePath $log -Append -Encoding ascii
 }
@@ -33,19 +30,49 @@ if ((Test-Path $log) -and ((Get-Item $log).Length -gt 200KB)) {
     Get-Content $log -Tail 400 | Set-Content $log -Encoding ascii
 }
 
+# 이전 판(뮤텍스 이름이 다르다)이 아직 돌고 있으면 정리한다. 그쪽에는 자가 복구가
+# 없어 영원히 0초 반환만 반복한다.
+Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" |
+    Where-Object { $_.CommandLine -like '*wsl_hold.ps1*' -and $_.ProcessId -ne $PID } |
+    ForEach-Object { Stop-Process -Id $_.ProcessId -Force }
+
+# 중복 실행 방지. 예약 작업의 MultipleInstancesPolicy=IgnoreNew 를 걸었는데도
+# 두 개가 뜬 적이 있어(08-12 14:06, 14:07) 여기서 직접 막는다.
+$mutex = New-Object System.Threading.Mutex($false, 'Local\ClaudeWslHold2')
+if (-not $mutex.WaitOne(0)) { exit 0 }
+
 Log "hold loop started (pid $PID)"
+$fails = 0
 
 while ($true) {
-    # 1) 안쪽 감시 장치를 세운다. 이 호출은 금방 끝난다.
+    # 1) 안쪽 감시 장치를 세운다. 금방 끝난다.
     & wsl.exe -d $dist -e bash $guard 2>&1 | Out-Null
 
     # 2) VM 을 붙잡는다. vm_hold.sh 는 sleep infinity 라 여기서 막힌다.
-    #    VM 이 죽거나 wsl --shutdown 이 걸리면 반환되고, 루프가 다시 건다.
     $t0 = Get-Date
     & wsl.exe -d $dist --exec $hold 2>&1 | Out-Null
     $secs = [int]((Get-Date) - $t0).TotalSeconds
-    Log "hold returned after ${secs}s - VM went down, re-establishing"
 
-    # VM 이 즉시 계속 죽는 상황에서 폭주하지 않도록 잠깐 쉰다.
+    if ($secs -lt $FAST_RETURN_SEC) {
+        $fails++
+        Log "hold returned after ${secs}s (연속 실패 $fails)"
+    } else {
+        $fails = 0
+        Log "hold returned after ${secs}s - VM went down, re-establishing"
+    }
+
+    # 3) 자가 복구. 붙잡기가 연달아 즉시 실패하면 배포판이 먹통인 것이므로
+    #    `wsl --shutdown` 으로 판을 접었다 다시 편다. 이 상태에서는 도는 계산이
+    #    어차피 없으므로 잃을 것이 없다.
+    if ($fails -ge $FAILS_BEFORE_SHUTDOWN) {
+        Log "배포판이 먹통으로 판단됨 - wsl --shutdown 실행"
+        & wsl.exe --shutdown 2>&1 | Out-Null
+        Start-Sleep -Seconds 25
+        & wsl.exe -d $dist -e true 2>&1 | Out-Null
+        Start-Sleep -Seconds 10
+        Log "wsl --shutdown 후 재기동 시도함"
+        $fails = 0
+    }
+
     Start-Sleep -Seconds 10
 }

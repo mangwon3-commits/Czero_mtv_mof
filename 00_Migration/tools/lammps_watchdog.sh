@@ -53,7 +53,12 @@ relaunch() {
   sleep 5
   pkill -9 -f risk_screen.py 2>/dev/null
   pkill -9 lmp_serial 2>/dev/null
-  rm -rf "$P/lmp" "$P/lmp_aryl"
+  # **작업 디렉터리를 지우지 않는다.** (2026-08-12 변경)
+  #
+  # 원래 지웠다. risk_screen 에 이어받기가 없어 부분 산출물이 오히려 위험하다고
+  # 봤기 때문이다. 이제는 min_<name>.data 가 있으면 이완을 건너뛰므로 근거가
+  # 뒤집혔다. 지우면 구조당 40분~1시간 20분짜리 이완을 통째로 버리는 셈이다.
+  # 잘린 파일은 risk_screen 이 읽어 보고 스스로 판단해 다시 돌린다.
   cd "$W" || exit 1
   setsid nohup bash lammps_chain.sh >> lammps_chain.log 2>&1 < /dev/null &
   sleep 10

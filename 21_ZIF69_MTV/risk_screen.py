@@ -52,6 +52,19 @@ INDEX = sys.argv[1] if len(sys.argv) > 1 else 'build_index.json'
 SUFFIX = sys.argv[2] if len(sys.argv) > 2 else ''
 WORK = os.path.join(HERE, 'lmp' + (('_' + SUFFIX) if SUFFIX else ''))
 RESULT = os.path.join(HERE, f'risk_results{("_" + SUFFIX) if SUFFIX else ""}.json')
+
+# 워커 수. 물리 코어가 8개이고 lmp_serial 은 코어당 하나씩 붙으므로 8이 상한이다.
+#
+# 6으로 박혀 있었는데, 그러면 아릴 12종이 6+6 두 물결로 갈려 한 물결분(약 45분)을
+# 통째로 더 쓴다. saIm 은 5종뿐이라 6이든 8이든 차이가 없지만 아릴에서는 다르다.
+# ProcessPoolExecutor.map 은 워커가 비는 대로 다음 것을 넣으므로 8이면
+# 12/8 = 1.5 물결로 끝난다.
+# 물리 코어는 8개(논리 16). 그런데 여기의 병목은 CPU 가 아니라 **메모리**다.
+# 이완 후 슈퍼셀(5,248원자)에 Zeo++ 를 돌리면 한 건이 3.2 GB 를 쓴다. 2026-08-12
+# 16:41 에 8워커로 돌렸다가 8 x 3.2 = 25.6 GB 로 20 GB 상한을 넘겨 OOM 이 났고,
+# 그때 dbus-daemon 까지 죽으면서 WSL 배포판이 통째로 먹통이 됐다.
+# 4워커면 12.8 GB 로 여유가 있다. 이 단계는 워커를 늘리면 더 느려지는 게 아니라 죽는다.
+MAX_WORKERS = int(os.environ.get('RISK_WORKERS', '4'))
 # 18_PoreNarrowing 의 S_3+6 패치 래퍼를 그대로 쓴다(중복 구현하지 않는다).
 IFACE = os.path.join(HERE, '..', '18_PoreNarrowing', 'lammps_iface_patched.py')
 
@@ -109,9 +122,24 @@ def zeo(atoms, tag, d):
 
 
 def geom(atoms):
-    d = atoms.get_all_distances(mic=True)
-    np.fill_diagonal(d, np.inf)
-    return {'min_dist': round(float(d.min()), 3), 'n_atoms': len(atoms)}
+    """최소 원자간 거리. **전체 거리 행렬을 만들면 안 된다.**
+
+    원래 `get_all_distances(mic=True)` 였다. 4800원자 슈퍼셀에 기운 육방 셀(γ=120°)
+    이면 ASE 가 주기 이미지를 펼치면서 수 GB 를 잡는다. 2026-08-12 에 이것 때문에
+    프로세스가 12.6 GB / 13.5 GB 까지 커져 OOM 으로 두 번 죽었다. 이완은 12종 모두
+    끝났는데 결과 파일은 한 줄도 안 써졌다.
+
+    판정에 필요한 것은 '가장 가까운 두 원자가 0.7 A 보다 먼가' 하나뿐이다.
+    이웃 목록으로 잘라 보면 **답은 같고** 메모리는 원자 수에 비례한다.
+    골격이면 결합 거리(1.0~1.6 A)가 항상 있으므로 2 A 에서 걸린다. 혹시 비었으면
+    잘라낸 탓에 답을 못 본 것이므로 넓혀서 다시 본다 — 조용히 틀린 값을 주면 안 된다.
+    """
+    from ase.neighborlist import neighbor_list
+    for cut in (2.0, 4.0, 8.0, 16.0):
+        d = neighbor_list('d', atoms, cut)
+        if len(d):
+            return {'min_dist': round(float(d.min()), 3), 'n_atoms': len(atoms)}
+    return {'min_dist': None, 'n_atoms': len(atoms)}
 
 
 def run_one(name):
@@ -123,6 +151,34 @@ def run_one(name):
 
     before = read(src)
     m0 = {**zeo(before, 'before', d), **geom(before)}
+
+    # 이미 이완이 끝나 있으면 다시 돌리지 않는다.
+    #
+    # 2026-08-12 에 12종 이완이 전부 끝난(각 40분~1시간 20분) 뒤 집계 단계에서
+    # OOM 으로 죽어 결과가 한 줄도 안 남았다. 그때 이 분기가 없어서, 되살리려면
+    # 2시간 30분짜리 이완을 통째로 다시 돌려야 하는 상황이 됐다.
+    # 이완 산출물(min_<name>.data)은 결정적이므로 재사용해도 결과가 달라지지 않는다.
+    done = os.path.join(d, f'min_{name}.data')
+    if os.path.exists(done) and os.path.getsize(done) > 0:
+        # 중간에 죽어 잘린 파일일 수 있으므로 읽어 보고 판단한다. 못 읽으면
+        # 재사용을 포기하고 아래로 내려가 처음부터 돌린다.
+        try:
+            after = read(done, format='lammps-data', style='full')
+        except Exception as e:
+            print(f'    {name}: 산출물이 손상됨({type(e).__name__}) — 다시 이완합니다',
+                  flush=True)
+            after = None
+        if after is not None:
+            print(f'    {name}: 이완 산출물 재사용 (다시 돌리지 않음)', flush=True)
+            rep = max(1, len(after) // len(before))
+            after.set_chemical_symbols(list(before.get_chemical_symbols()) * rep)
+            m1 = {**zeo(after, 'after', d), **geom(after)}
+            m1['supercell_rep'] = rep
+            if m1['AV'] is not None:
+                m1['AV_per_cell'] = round(m1['AV'] / rep, 1)
+            if m0['AV'] is not None:
+                m0['AV_per_cell'] = round(m0['AV'], 1)
+            return name, m0, m1, 'ok'
 
     r = subprocess.run(f'yes | python {IFACE} -ff UFF4MOF --minimize {name}.cif',
                        shell=True, cwd=d, capture_output=True, text=True,
@@ -246,13 +302,37 @@ def main():
     print(f'구조 {len(names)}개 UFF4MOF 이완 + Zeo++\n', flush=True)
 
     res = {}
-    with ProcessPoolExecutor(max_workers=6) as ex:
+    # max_tasks_per_child=1: 작업 하나 끝날 때마다 워커를 새로 만든다. .wslconfig 에
+    # 적어 둔 "구조마다 자기 프로세스를 줘서 끝날 때 메모리를 돌려받게 하라"의 구현이다.
+    # geom() 을 고쳐 큰 할당 자체를 없앴지만, 누적으로 터지는 실패는 원인이 하나가
+    # 아니므로 이쪽도 같이 막는다.
+    with ProcessPoolExecutor(max_workers=MAX_WORKERS, max_tasks_per_child=1) as ex:
         for name, m0, m1, st in ex.map(run_one, names):
             res[name] = (m0, m1, st)
             print(f'  [{st[:28]:>28}] {name}', flush=True)
 
     base = res.get('base', (None, None, None))[1]
     lcd_ref = (base or {}).get('LCD') or (res.get('base', ({},))[0] or {}).get('LCD')
+
+    # 아릴 인덱스에는 무치환 모체(base)가 없다. 그래서 lcd_ref 가 None 이 되고,
+    # drop = nan 이 되고, `nan < 20.0` 이 False 라서 **12종이 전부 LCD_drop 으로
+    # 탈락했다**(2026-08-12 20:38). 판정이 아니라 계산 부작용이다.
+    #
+    # 기준은 saIm 쪽 실행이 남긴 무치환 ZIF-69 의 이완 후 LCD 다. 같은 구조를 같은
+    # 규약(UFF4MOF, 상한 12루프)으로 이완시킨 값이므로 그대로 쓸 수 있다.
+    # 없으면 판정을 하지 않는다 — 기준 없이 매긴 '탈락'은 거짓이다.
+    if lcd_ref is None:
+        ref_file = os.path.join(HERE, 'risk_results.json')
+        try:
+            for r in json.load(open(ref_file, encoding='utf-8'))['rows']:
+                if r['name'] == 'base' and (r.get('after') or {}).get('LCD'):
+                    lcd_ref = r['after']['LCD']
+                    print(f'기준 LCD 를 risk_results.json 의 base 에서 가져옴: '
+                          f'{lcd_ref:.5f}', flush=True)
+                    break
+        except (OSError, ValueError, KeyError) as e:
+            print(f'기준 LCD 를 못 찾음({type(e).__name__}) — LCD 감소율 판정은 '
+                  f'보류합니다', flush=True)
 
     print('\n' + '=' * 126)
     print(f'{"조성":<12} {"PLD(전)":>8} {"AV(전)":>9} {"LCD(전)":>8} {"LCD(후)":>8} '
@@ -261,6 +341,24 @@ def main():
     rows = []
     for n in names:
         m0, m1, st = res[n]
+
+        # 측정값이 비어 있으면 **그 구조만** 실패로 적고 넘어간다.
+        #
+        # zeo() 는 Zeo++ 가 죽으면 LCD/PLD/AV 를 None 으로 돌려준다(예외를 삼키고
+        # 로그만 남긴다). 그런데 아래 표 출력이 f'{m0["PLD"]:>8.3f}' 라서 None 이
+        # 오면 TypeError 로 **집계 전체가 죽는다.** 2026-08-12 18:56 과 20:07 두
+        # 번의 재시도가 이것 때문에 통째로 날아갔다. 이완 17종이 다 끝나 있었는데도
+        # 결과 파일이 안 나온 이유다.
+        #
+        # 한 구조의 측정 실패가 나머지 16종의 결과까지 지우게 두면 안 된다.
+        if st == 'ok' and m1:
+            need = [('PLD 전', (m0 or {}).get('PLD')), ('LCD 전', (m0 or {}).get('LCD')),
+                    ('LCD 후', m1.get('LCD')), ('최소거리', m1.get('min_dist'))]
+            gone = [k for k, v in need if v is None]
+            if gone:
+                st = 'Zeo++ 측정 실패: ' + ', '.join(gone)
+                m1 = None
+
         if st != 'ok' or not m1:
             print(f'{n:<12} {st}')
             rows.append({'name': n, 'status': st, 'before': m0, 'after': None,
@@ -269,7 +367,10 @@ def main():
         drop = (lcd_ref - m1['LCD']) / lcd_ref * 100 if (lcd_ref and m1['LCD']) else float('nan')
         checks = {
             'PLD': (m0['PLD'] or 0) > CO2_KINETIC,
-            'LCD_drop': drop < LCD_DROP_LIMIT,
+            # 기준이 없어 drop 이 nan 이면 `nan < 20` 은 False 라 조용히 탈락이 된다.
+            # 판정할 수 없는 것과 탈락은 다르다 — 판정 불가일 때는 이 항목을 걸지 않고,
+            # 대신 아래 rows 의 'LCD_drop_pct' 가 None 으로 남아 그 사실이 보이게 한다.
+            'LCD_drop': True if drop != drop else drop < LCD_DROP_LIMIT,
             'AV': (m0.get('AV_per_cell') or 0) > AV_FLOOR,
             'min_dist': m1['min_dist'] > MIN_DIST_LIMIT,
         }
