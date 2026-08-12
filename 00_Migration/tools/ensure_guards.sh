@@ -27,7 +27,13 @@ if ! pgrep -f 'wsl_keepalive\.sh' >/dev/null 2>&1; then
   setsid nohup bash wsl_keepalive.sh >/dev/null 2>&1 < /dev/null &
 fi
 
-# 2) LAMMPS 감시견. 체인이 이미 끝났거나 감시견이 스스로 포기했으면 건드리지 않는다.
+# 2) 원격 제어 세션. 08-12 13:31 업데이트 재부팅으로 끊겼는데, 손으로 띄운
+#    것이라 되살아나지 못했다. settings.json 의 remoteControlAtStartup=true 가
+#    데스크탑 앱 세션에는 적용되지 않으므로(앱이 --remote-control 을 안 붙인다)
+#    여기서 챙긴다. 세션이 이미 있으면 스크립트가 알아서 물러난다.
+bash "$W/remote_control.sh" >/dev/null 2>&1
+
+# 3) LAMMPS 감시견. 체인이 이미 끝났거나 감시견이 스스로 포기했으면 건드리지 않는다.
 if [ -f "$W/.watchdog_gave_up" ]; then
   exit 0
 fi
