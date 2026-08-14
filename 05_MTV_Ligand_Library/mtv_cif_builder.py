@@ -248,6 +248,43 @@ def plan_substitution(atoms, site, fragment, avoid_positions=None, n_trial_angle
     return site["substituent"], new_atoms
 
 
+def attachment_index(atoms, site, default=0):
+    """치환기가 **실제로 붙어 있는** 고리 원자의 자리 내 인덱스를 기하로 찾는다.
+
+    [왜 고정 상수를 쓰면 안 되는가 — 2026-08-14, 이번 사태의 진짜 뿌리]
+        CBIM_ARYL_ATTACHMENT_INDEX = 4 는 ZIF-69 의 24개 자리 중 **6개에서만**
+        맞다. 나머지 18개는 Cl 이 ring[5] 에 붙어 있고(1.982 Å), ring[4] 는
+        3.002 Å 떨어져 있다. 사이트맵의 벤조 고리 원자 순서가 자리마다 일정하지
+        않기 때문이다.
+
+        그래서 빌더는 **18/24 자리에서 엉뚱한 탄소에 치환기를 달고, 원래 Cl 이
+        있던 쪽(= 이웃 고리 탄소 방향)을 향하게 놓아 왔다.** 관측된 모든 관통이
+        여기서 나온다 —
+
+            −SO₃H  황이 고리 H 에서 0.952 Å / 고리 C 에서 0.894 Å
+            −F     0.561 Å
+            −CH₃   메틸 탄소가 고리 C 에서 0.772 Å
+
+        치환기 종류와 무관하게 같은 자리에서 같은 크기로 나온 이유가 이것이다.
+        치환기의 성질이 아니라 **어느 원자에 다는가**가 틀렸다.
+
+        고리 순서를 믿지 않고, 떼어낼 치환기에 가장 가까운 고리 원자를 부착점으로
+        삼는다. 순서가 어떻든 기하는 하나다.
+    """
+    cell = np.asarray(atoms.get_cell())
+    pos = atoms.get_positions()
+    old = pos[site["substituent"]].mean(0)
+    best, bi = None, default
+    for n, r in enumerate(site["ring"]):
+        dv = old - pos[r]
+        f = np.linalg.solve(cell.T, dv.T).T
+        f -= np.round(f)
+        dd = float(np.linalg.norm(f @ cell))
+        if best is None or dd < best:
+            best, bi = dd, n
+    return bi
+
+
 def _substituent_positions_at_angles(atoms, site, fragment, attachment_ring_index,
                                      angles):
     """한 사이트의 치환기를 여러 회전각으로 배치했을 때의 좌표를 전부 돌려준다.
@@ -280,16 +317,40 @@ def _aligned_substituent(atoms, site, fragment, attachment_ring_index):
         고칠 방법은 하나다. 떼어낸 치환기가 있던 자리를 향하도록 한 번 더 돌린다.
         결합 축을 결정구조에서 가져오는 것이므로 임의의 보정이 아니다.
 
-    반환: (원점 기준 치환기 좌표, 부착 원자 좌표, 결합축) — 축이 None 이면 회전 불가
+    [두 번째 수정 — 결합 길이도 Kabsch 오차를 물려받고 있었다]
+        치환기 좌표를 **고리 중심(Pc) 기준**으로 놓으면, 부착 원자까지의 거리가
+        Kabsch 정합 오차만큼 어긋난다. 고리가 일그러져 있으면 9원자 최소제곱 적합이
+        부착 원자를 제자리에 놓지 못하고, 그 오차가 그대로 **결합 길이**가 된다.
+
+        실측(1차 수정 후 구조): 이상적 결합 길이 대비
+            −SO₃H  S–C  0.941 ~ 1.832 Å   (이상 1.77)
+            −NO₂   N–C  0.743 ~ 1.538 Å   (이상 1.47)
+            −F     F–C  0.674 ~ 1.402 Å   (이상 1.35)
+            −CH₃   C–C  0.772 ~ 2.124 Å   (이상 1.50)
+        한 구조 안에서 같은 결합이 두 배 넘게 흔들린다. −CH₃ 가 가장 심해 메틸 탄소가
+        고리 탄소에서 0.772 Å 까지 파고들었고, 그래서 −CH₃ 만 검사에 걸렸다.
+        **나머지는 걸리지 않았을 뿐 똑같이 틀려 있었다.**
+
+        그래서 좌표를 고리 중심이 아니라 **프래그먼트 자신의 부착 원자** 기준으로
+        잡는다. 그러면 프래그먼트의 내부 기하(결합 길이·각도)가 그대로 보존되고,
+        Kabsch 는 **방향만** 제공한다. 결합 길이는 정합 품질과 무관해진다.
+
+    반환: (부착 원자 기준 치환기 좌표, 부착 원자 좌표, 결합축) — 축이 None 이면 회전 불가
     """
     cell = np.asarray(atoms.get_cell())
     ring_pos = _unwrap(atoms, site["ring"])
     frag_ring_pos = fragment["coords"][fragment["ring_idx"]]
     R, Pc, Qc = kabsch(ring_pos, frag_ring_pos)
-    subst_coords = fragment["coords"][fragment["subst_idx"]] - Qc
-    placed = (R @ subst_coords.T).T + Pc          # Kabsch 만 적용한 위치
 
-    anchor = ring_pos[attachment_ring_index]
+    # 프래그먼트 내부 벡터(자기 부착 원자 -> 치환기 각 원자)를 회전만 시켜 옮긴다.
+    # Pc/Qc 로 옮기면 정합 오차가 결합 길이에 실린다(위 주석).
+    frag_anchor = fragment["coords"][fragment["ring_idx"][attachment_ring_index]]
+    subst_rel = fragment["coords"][fragment["subst_idx"]] - frag_anchor
+    placed_rel = (R @ subst_rel.T).T              # 부착 원자 기준, 회전만 적용
+
+    # 결정구조 쪽 부착 원자는 **기하로 정한다.** 고정 인덱스를 쓰면 안 된다.
+    ai = attachment_index(atoms, site, attachment_ring_index)
+    anchor = ring_pos[ai]
     # 결정구조에서 떼어낼 치환기(ZIF-69 는 Cl)의 무게중심 방향 = 비워 주는 방향
     old = atoms.get_positions()[site["substituent"]]
     dv = old.mean(0) - anchor
@@ -297,9 +358,9 @@ def _aligned_substituent(atoms, site, fragment, attachment_ring_index):
     f -= np.round(f)
     target = f @ cell
     # 프래그먼트가 지금 가리키는 방향 = 부착 원자에서 치환기 뿌리 원자로
-    cur = placed[0] - anchor
+    cur = placed_rel[0]
     nt, nc = np.linalg.norm(target), np.linalg.norm(cur)
-    rel = placed - anchor
+    rel = placed_rel
     if nt > 1e-6 and nc > 1e-6:
         t, c = target / nt, cur / nc
         v = np.cross(c, t)
@@ -438,7 +499,9 @@ def substituent_conflict_graph(atoms, sites, fragment, attachment_ring_index=0,
                   for s in sites]
     sym = [fragment["symbols"][i] for i in fragment["subst_idx"]]
     # 자리별 대표 위치(치환 지점)로 먼 쌍을 먼저 걸러낸다.
-    anchors = np.array([_unwrap(atoms, s["ring"])[attachment_ring_index] for s in sites])
+    anchors = np.array([_unwrap(atoms, s["ring"])[attachment_index(atoms, s,
+                                                                    attachment_ring_index)]
+                        for s in sites])
 
     edges = []
     for i in range(len(sites)):
@@ -479,7 +542,9 @@ def forcing_pairs(atoms, sites, fragment, attachment_ring_index=0, n_angles=12,
                                                    attachment_ring_index, angles)
                   for s in sites]
     fsym = [fragment["symbols"][i] for i in fragment["subst_idx"]]
-    anchors = np.array([_unwrap(atoms, s["ring"])[attachment_ring_index] for s in sites])
+    anchors = np.array([_unwrap(atoms, s["ring"])[attachment_index(atoms, s,
+                                                                    attachment_ring_index)]
+                        for s in sites])
     pos = atoms.get_positions()
 
     out = []

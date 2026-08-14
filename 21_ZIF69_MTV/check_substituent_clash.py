@@ -17,11 +17,16 @@
     이 스크립트는 그래서 거리를 세지 않고 **연결 성분 개수**를 센다. 링커가
     서로 붙으면 성분 수가 줄고, 그건 어떤 예외 규칙으로도 가려지지 않는다.
 
-[검사 두 가지]
-    (A) 성분 수  — ZIF-69 단위셀은 Zn 24 + nIm 24 + 벤즈이미다졸레이트 24 = 72.
-                   이보다 적으면 링커가 융합된 것이다. 결정적 검사.
-    (B) 금지 접촉 — 이 라이브러리에서 결합을 만들 수 없는 원소쌍(할로겐-할로겐,
-                   할로겐-O/N/S, O-O)이 vdW 접촉보다 훨씬 가까운 경우. 보조 검사.
+[검사 네 가지 — 서로 다른 것을 잡는다]
+    (A) 성분 수    링커가 융합됐는가. ZIF-69 단위셀 = Zn 24 + nIm 24 +
+                   벤즈이미다졸레이트 24 = 72. 결정적 검사.
+    (B) 금지 접촉  결합할 수 없는 원소쌍(할로겐-할로겐, 할로겐-O/N/S, O-O)이
+                   어떤 결합보다도 가까운 경우.
+    (C) 수소 관통  H 의 결합 상대가 아닌 중원자가 1.2 A 안에 있는 경우.
+                   -F 는 (A)(B) 어디에도 안 걸리면서 H 를 0.561 A 까지 파고든다.
+    (D) 짓눌린 결합 결합 자체가 공유반지름 합의 0.70 배보다 짧은 경우.
+                   (A)(B)(C) 는 전부 '비결합끼리 가깝다'만 보므로, 결합 길이가
+                   틀린 것은 넷 중 이것만 잡는다.
 
     사용:  python check_substituent_clash.py [구조_glob ...]
 """
@@ -50,6 +55,9 @@ BOND_FLOOR_FRAC = 0.95
 CUT = 2.60                # 후보를 모으는 상한. 실제 판정은 BOND_FLOOR_FRAC 로 한다
 # H 가 결합 상대가 아닌 중원자와 이보다 가까우면 관통. 정상 비결합 접촉은 1.8 A 이상.
 H_CLASH = 1.20
+# 공유반지름 합의 이 배수보다 짧은 결합은 짓눌린 것이다. 모체 자체의 왜곡
+# (벤조 C–C 0.84배, 니트로 N–O 0.86배)은 통과시키는 값으로 잡는다.
+BOND_SQUASH_FRAC = 0.70
 
 
 def forbidden(s1, s2):
@@ -124,12 +132,34 @@ def check(path):
                 h_bad.append((round(dd, 3), f'H-{sym[y]}'))
     h_bad.sort()
 
-    worst = min([b for b in (bad + h_bad)], default=None)
+    # (D) 짓눌린 결합.
+    #
+    # (A)(B)(C) 는 전부 '결합이 아닌 것끼리 너무 가깝다' 를 본다. 그런데 **결합
+    # 자체가 말이 안 되게 짧은** 경우가 있었다. 빌더가 치환기를 고리 중심 기준으로
+    # 놓는 바람에 Kabsch 정합 오차가 결합 길이에 실려, 한 구조 안에서 같은 결합이
+    # 0.67 ~ 1.83 Å 로 흔들렸다(−CH₃ 는 메틸 탄소가 고리 탄소에서 0.772 Å).
+    # 붙어 있어야 할 원자끼리라 (B)(C) 어디에도 안 걸린다.
+    #
+    # 모체 자체가 이미 일그러져 있으므로(벤조 C–C 1.273 = 공유반지름 합의 0.84배,
+    # 니트로 N–O 1.179 = 0.86배) 문턱을 넉넉히 0.70 배로 둔다. 모체의 왜곡은
+    # 통과시키고 빌더가 만든 짓눌림만 잡는 값이다.
+    short_bonds = []
+    for x, y, dd in zip(i, j, d):
+        if x >= y or sym[x] == 'H' or sym[y] == 'H':
+            continue
+        s = (covalent_radii[atomic_numbers[sym[x]]]
+             + covalent_radii[atomic_numbers[sym[y]]])
+        if dd < BOND_SQUASH_FRAC * s:
+            short_bonds.append((round(float(dd), 3), f'{sym[x]}-{sym[y]}'))
+    short_bonds.sort()
+
+    worst = min(bad + h_bad + short_bonds, default=None)
     return {'name': os.path.basename(path), 'n_atoms': len(a), 'n_zn': n_zn,
             'n_components': len(comps), 'expected': expected, 'fused': fused,
-            'forbidden_contacts': len(bad) + len(h_bad), 'worst': worst,
-            'h_clashes': len(h_bad),
-            'pass': fused == 0 and not bad and not h_bad}
+            'forbidden_contacts': len(bad) + len(h_bad) + len(short_bonds),
+            'worst': worst, 'h_clashes': len(h_bad),
+            'squashed_bonds': len(short_bonds),
+            'pass': (fused == 0 and not bad and not h_bad and not short_bonds)}
 
 
 def main():
