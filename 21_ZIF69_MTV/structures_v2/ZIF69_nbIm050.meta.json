@@ -1,26 +1,32 @@
 {
   "base_cif": "/home/mangwon1/mof_project/05_MTV_Ligand_Library/ZIF69_base.cif",
   "composition": {
-    "clIm_aryl": 0.75,
-    "saIm_aryl": 0.25
+    "clIm_aryl": 0.5,
+    "nbIm_aryl": 0.5
   },
   "seed": 0,
-  "min_pairwise_distance": 0.9408,
+  "min_pairwise_distance": 0.7425,
   "topology_drift_risks": [],
   "conflict_aware": true,
   "n_conflict_pairs": 0,
   "n_forcing_pairs": 0,
   "n_sites": 24,
-  "n_substituted": 6,
-  "requested_fraction": 0.25,
-  "achieved_fraction": 0.25,
+  "n_substituted": 12,
+  "requested_fraction": 0.5,
+  "achieved_fraction": 0.5,
   "chosen_sites": [
     2,
+    3,
     4,
+    6,
+    8,
     10,
     11,
     18,
-    21
+    20,
+    21,
+    22,
+    23
   ],
-  "worst_vdw_margin_after_rotation": -0.6515
+  "worst_vdw_margin_after_rotation": -0.6892
 }

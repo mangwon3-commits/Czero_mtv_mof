@@ -48,6 +48,8 @@ HALO = {'F', 'Cl', 'Br', 'I'}
 # 진짜 결함이 숨는다(saIm100 의 O-O 0.924 가 그렇게 숨었다).
 BOND_FLOOR_FRAC = 0.95
 CUT = 2.60                # 후보를 모으는 상한. 실제 판정은 BOND_FLOOR_FRAC 로 한다
+# H 가 결합 상대가 아닌 중원자와 이보다 가까우면 관통. 정상 비결합 접촉은 1.8 A 이상.
+H_CLASH = 1.20
 
 
 def forbidden(s1, s2):
@@ -92,10 +94,42 @@ def check(path):
             bad.append((round(float(dd), 3), f'{sym[x]}-{sym[y]}'))
     bad.sort()
 
+    # (C) 수소 관통.
+    #
+    # (B) 는 중원자만 본다. 그런데 −F 는 원자 하나짜리라 링커를 융합시키지도, 중원자
+    # 금지쌍을 만들지도 않으면서 **이웃 고리의 H 를 0.56 Å 까지 파고든다**
+    # (LINKER_DESIGN_BRIEF.md 5-6절). 그래서 (A)(B) 만으로는 fbIm 이 통과해 버린다.
+    #
+    # H 는 결합이 하나뿐이므로 '가장 가까운 중원자 = 결합 상대' 로 보고, **그 외의**
+    # 중원자가 H_CLASH 보다 가까우면 관통으로 센다. 정상 비결합 H···X 접촉은
+    # 1.8 Å 이상이라 이 문턱에 걸리지 않는다.
+    # 결합 상대를 '가장 가까운 중원자' 로 두면 안 된다 — 침입자가 진짜 결합보다
+    # 가까운 경우가 실제로 있다(fbIm 은 F 가 0.561 Å, 진짜 C–H 는 0.951 Å).
+    # 그러면 침입자를 결합으로 오인하고 멀쩡한 C–H 를 결함으로 신고한다.
+    # 이 라이브러리에서 H 가 결합하는 원소는 C/N/O/S 뿐이므로 그중 가장 가까운 것을
+    # 결합 상대로 본다.
+    H_BONDS_TO = ('C', 'N', 'O', 'S')
+    h_bad = []
+    i2, j2, d2 = neighbor_list('ijd', a, 2.2)
+    near = {}
+    for x, y, dd in zip(i2, j2, d2):
+        if sym[x] == 'H' and sym[y] != 'H':
+            near.setdefault(x, []).append((float(dd), int(y)))
+    for h, lst in near.items():
+        lst.sort()
+        cand = [(dd, y) for dd, y in lst if sym[y] in H_BONDS_TO]
+        bonded = cand[0][1] if cand else lst[0][1]
+        for dd, y in lst:
+            if y != bonded and dd < H_CLASH:
+                h_bad.append((round(dd, 3), f'H-{sym[y]}'))
+    h_bad.sort()
+
+    worst = min([b for b in (bad + h_bad)], default=None)
     return {'name': os.path.basename(path), 'n_atoms': len(a), 'n_zn': n_zn,
             'n_components': len(comps), 'expected': expected, 'fused': fused,
-            'forbidden_contacts': len(bad), 'worst': bad[0] if bad else None,
-            'pass': fused == 0 and not bad}
+            'forbidden_contacts': len(bad) + len(h_bad), 'worst': worst,
+            'h_clashes': len(h_bad),
+            'pass': fused == 0 and not bad and not h_bad}
 
 
 def main():

@@ -256,15 +256,65 @@ def _substituent_positions_at_angles(atoms, site, fragment, attachment_ring_inde
     자리쌍의 **원리적** 충돌 여부(어떤 회전으로도 못 피하는가)를 보려면 배치 순서와
     무관한 값이 필요하기 때문이다.
     """
+    base, anchor, axis = _aligned_substituent(atoms, site, fragment,
+                                              attachment_ring_index)
+    if axis is None:
+        return [base + anchor for _ in angles]
+    return [base @ _rotation_about_axis(axis, t).T + anchor for t in angles]
+
+
+def _aligned_substituent(atoms, site, fragment, attachment_ring_index):
+    """치환기를 **결정구조가 실제로 비워 준 방향**에 맞춰 놓는다.
+
+    [왜 Kabsch 만으로는 안 되는가 — 2026-08-14]
+        Kabsch 는 고리 9원자를 정합할 뿐이고, 치환기 방향은 프래그먼트(RDKit 이
+        이상적으로 임베딩한 것)가 정해 준 값을 그대로 따라간다. 그런데 이 ZIF-69
+        모체는 고리가 상당히 일그러져 있다 — 벤조 C–C 가 1.273 Å(방향족 정상 1.39),
+        C–Cl 이 1.982 Å(정상 1.73) 이다.
+
+        그래서 이상적 프래그먼트의 치환기 방향과 결정구조가 실제로 Cl 을 놓아 둔
+        방향이 어긋나고, 치환기가 **이웃 고리 수소 쪽으로 밀려난다.** 실측:
+        −SO₃H 의 황이 고리 H 에서 0.952 Å, −F 는 0.561 Å, −CH₃ 는 0.95 Å.
+        치환기 종류와 무관하게 전부 나타난다 — 원인이 치환기가 아니라 모체이기 때문이다.
+
+        고칠 방법은 하나다. 떼어낸 치환기가 있던 자리를 향하도록 한 번 더 돌린다.
+        결합 축을 결정구조에서 가져오는 것이므로 임의의 보정이 아니다.
+
+    반환: (원점 기준 치환기 좌표, 부착 원자 좌표, 결합축) — 축이 None 이면 회전 불가
+    """
+    cell = np.asarray(atoms.get_cell())
     ring_pos = _unwrap(atoms, site["ring"])
     frag_ring_pos = fragment["coords"][fragment["ring_idx"]]
     R, Pc, Qc = kabsch(ring_pos, frag_ring_pos)
     subst_coords = fragment["coords"][fragment["subst_idx"]] - Qc
-    axis = ring_pos[attachment_ring_index] - Pc
-    base = (R @ subst_coords.T).T
-    if np.linalg.norm(axis) < 1e-6:
-        return [base + Pc for _ in angles]
-    return [base @ _rotation_about_axis(axis, t).T + Pc for t in angles]
+    placed = (R @ subst_coords.T).T + Pc          # Kabsch 만 적용한 위치
+
+    anchor = ring_pos[attachment_ring_index]
+    # 결정구조에서 떼어낼 치환기(ZIF-69 는 Cl)의 무게중심 방향 = 비워 주는 방향
+    old = atoms.get_positions()[site["substituent"]]
+    dv = old.mean(0) - anchor
+    f = np.linalg.solve(cell.T, dv.T).T
+    f -= np.round(f)
+    target = f @ cell
+    # 프래그먼트가 지금 가리키는 방향 = 부착 원자에서 치환기 뿌리 원자로
+    cur = placed[0] - anchor
+    nt, nc = np.linalg.norm(target), np.linalg.norm(cur)
+    rel = placed - anchor
+    if nt > 1e-6 and nc > 1e-6:
+        t, c = target / nt, cur / nc
+        v = np.cross(c, t)
+        s, co = np.linalg.norm(v), float(np.dot(c, t))
+        if s > 1e-8:
+            K = np.array([[0, -v[2], v[1]], [v[2], 0, -v[0]], [-v[1], v[0], 0]])
+            R2 = np.eye(3) + K + K @ K * ((1 - co) / (s ** 2))
+            rel = rel @ R2.T
+        elif co < 0:                      # 정반대 방향이면 임의 수직축으로 180도
+            perp = np.cross(c, [1.0, 0.0, 0.0])
+            if np.linalg.norm(perp) < 1e-6:
+                perp = np.cross(c, [0.0, 1.0, 0.0])
+            rel = rel @ _rotation_about_axis(perp, np.pi).T
+    axis = target if nt > 1e-6 else None
+    return rel, anchor, axis
 
 
 def optimize_substituent_rotations(atoms, chosen, sites, fragments, ligs,
