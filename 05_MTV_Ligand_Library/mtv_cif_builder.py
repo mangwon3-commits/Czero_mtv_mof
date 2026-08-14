@@ -7,7 +7,9 @@ conda install -c conda-forge openbabel   # EQeq 부분전하 계산용 (obabel C
 """
 import json
 import os
+import shutil
 import subprocess
+import sys
 import tempfile
 
 import numpy as np
@@ -246,6 +248,265 @@ def plan_substitution(atoms, site, fragment, avoid_positions=None, n_trial_angle
     return site["substituent"], new_atoms
 
 
+def _substituent_positions_at_angles(atoms, site, fragment, attachment_ring_index,
+                                     angles):
+    """한 사이트의 치환기를 여러 회전각으로 배치했을 때의 좌표를 전부 돌려준다.
+
+    plan_substitution 과 같은 정합·회전을 쓰되, '이미 배치된 원자'를 보지 않는다.
+    자리쌍의 **원리적** 충돌 여부(어떤 회전으로도 못 피하는가)를 보려면 배치 순서와
+    무관한 값이 필요하기 때문이다.
+    """
+    ring_pos = _unwrap(atoms, site["ring"])
+    frag_ring_pos = fragment["coords"][fragment["ring_idx"]]
+    R, Pc, Qc = kabsch(ring_pos, frag_ring_pos)
+    subst_coords = fragment["coords"][fragment["subst_idx"]] - Qc
+    axis = ring_pos[attachment_ring_index] - Pc
+    base = (R @ subst_coords.T).T
+    if np.linalg.norm(axis) < 1e-6:
+        return [base + Pc for _ in angles]
+    return [base @ _rotation_about_axis(axis, t).T + Pc for t in angles]
+
+
+def optimize_substituent_rotations(atoms, chosen, sites, fragments, ligs,
+                                   attachment_ring_index=0, n_angles=24, sweeps=6):
+    """치환기 회전각을 **좌표 상승법으로 함께** 최적화한다.
+
+    [왜 순차 배치로는 안 되는가 — 2026-08-14]
+        기존 코드는 사이트를 순서대로 돌면서, 그 시점까지 배치된 원자만 보고 각도를
+        골랐다. 그러면 먼저 놓인 치환기는 **아직 존재하지 않는 이웃을 고려하지 못하고**,
+        나중에 놓이는 치환기는 이미 굳어 버린 이웃에 맞춰 최선을 다할 뿐이다.
+
+        실측 결과가 그것이다. −NO₂ 자리쌍의 쌍별 최적 분리는 2.90 Å 인데, 실제로
+        만들어진 구조에서는 O–O 가 **1.142 Å** 이었다. 기하학이 불가능해서가 아니라
+        배치 순서 때문에 도달하지 못한 것이다. −SO₃H 는 0.924 Å 까지 갔다.
+
+        한 바퀴 더 돌면서 각 치환기를 '나머지 전부'에 대해 다시 고르면 이 격차가
+        메워진다. 각도는 이산(n_angles)이고 목적함수는 최소거리라 단조 증가하므로
+        몇 번의 스윕이면 수렴한다.
+
+    반환: {site_index: 최종 좌표 배열}, 달성한 최소 원자간 거리
+    """
+    cell = np.asarray(atoms.get_cell())
+    all_sym = atoms.get_chemical_symbols()
+    angles = np.linspace(0, 2 * np.pi, n_angles, endpoint=False)
+    cand = {k: _substituent_positions_at_angles(atoms, sites[k], fragments[ligs[k]],
+                                                attachment_ring_index, angles)
+            for k in chosen}
+    fsym = {k: [fragments[ligs[k]]["symbols"][i]
+                for i in fragments[ligs[k]]["subst_idx"]] for k in chosen}
+
+    # 골격 = 치환으로 제거될 원자를 뺀 나머지. 제거될 Cl 을 장애물로 세면 안 된다.
+    removed = set()
+    for k in chosen:
+        removed.update(sites[k]["substituent"])
+
+    # [함정] 목적함수를 '최소 거리' 로 두면 안 된다.
+    #
+    # 치환기의 뿌리 원자는 자기 고리의 부착 탄소와 **결합**해 있다(S–C 1.83 Å).
+    # 그 거리는 회전과 무관하게 고정이라, 최소 거리를 최대화하려 하면 모든 각도가
+    # 1.83 에서 동점이 되고 목적함수가 각도를 구별하지 못한다. 그러면 최적화가
+    # 아무 각도나 고르고, 실제로 그래서 이웃 Cl 과 1.955 Å 까지 붙은 배치가 나왔다.
+    #
+    # 그래서 (1) 자기 고리 원자는 장애물에서 빼고 (2) 거리 대신 vdW 여유를 쓴다.
+    def obstacles_for(k, others_pos, others_sym):
+        own = set(sites[k]["ring"]) | set(sites[k]["substituent"])
+        keep = [i for i in range(len(atoms)) if i not in removed and i not in own]
+        p = [atoms.get_positions()[keep]] + others_pos
+        s = [[all_sym[i] for i in keep]] + others_sym
+        return np.vstack(p), [x for sub in s for x in sub]
+
+    cur = {k: 0 for k in chosen}
+    for sweep in range(sweeps):
+        moved = False
+        for k in chosen:
+            op = [cand[m][cur[m]] for m in chosen if m != k]
+            os_ = [fsym[m] for m in chosen if m != k]
+            pos_o, sym_o = obstacles_for(k, op, os_)
+            best_t = max(range(n_angles),
+                         key=lambda t: _vdw_margin(fsym[k], cand[k][t],
+                                                   sym_o, pos_o, cell))
+            if best_t != cur[k]:
+                cur[k] = best_t
+                moved = True
+        if not moved:
+            break
+
+    final = {k: cand[k][cur[k]] for k in chosen}
+    worst = np.inf
+    for k in chosen:
+        op = [final[m] for m in chosen if m != k]
+        os_ = [fsym[m] for m in chosen if m != k]
+        pos_o, sym_o = obstacles_for(k, op, os_)
+        worst = min(worst, _vdw_margin(fsym[k], final[k], sym_o, pos_o, cell))
+    return final, float(worst)
+
+
+# 충돌 판정용 vdW 반지름 (Å). ase.data.vdw_radii 는 일부 원소가 NaN 이라 직접 둔다.
+VDW_R = {"H": 1.20, "C": 1.70, "N": 1.55, "O": 1.52, "F": 1.47,
+         "S": 1.80, "Cl": 1.75, "Br": 1.85, "I": 1.98}
+# 최적 회전에서도 vdW 접촉의 이 배수보다 가까우면 그 자리쌍은 배타적이다.
+#
+# 고정 거리로 자르면 안 된다 -- −CH₃ 의 최선값 2.49 Å 은 H···H 라 정상 접촉(vdW 합
+# 2.40)이고, −SO₃H 의 최선값 2.49 Å 은 중원자라 심각한 겹침(vdW 합 3.32)이다.
+# 같은 숫자가 한쪽은 정상, 한쪽은 결함이다. 원소를 봐야 갈린다.
+VDW_FRAC = 0.85
+
+
+def _vdw_margin(sym_a, pos_a, sym_b, pos_b, cell):
+    """두 원자 집합 사이의 vdW 여유. 음수면 겹친 것이다."""
+    diff = pos_a[:, None, :] - pos_b[None, :, :]
+    frac = np.linalg.solve(cell.T, diff.reshape(-1, 3).T).T
+    frac -= np.round(frac)
+    d = np.linalg.norm(frac @ cell, axis=-1).reshape(len(pos_a), len(pos_b))
+    floor = VDW_FRAC * np.array([[VDW_R.get(a, 1.7) + VDW_R.get(b, 1.7)
+                                  for b in sym_b] for a in sym_a])
+    return float((d - floor).min())
+
+
+def substituent_conflict_graph(atoms, sites, fragment, attachment_ring_index=0,
+                               n_angles=12, prefilter=14.0):
+    """동시에 치환기를 달 수 없는 자리쌍의 목록을 반환한다.
+
+    [왜 필요한가 — 2026-08-14]
+        기존 빌더는 자리를 rng.choice 로 고르고, 충돌은 plan_substitution 의 회전
+        탐색으로만 완화했다. 그런데 회전축이 '고리중심 -> 치환 지점' 이라 치환기의
+        **뿌리 원자는 그 축 위에 있어 회전해도 거의 안 움직인다.** −SO₃H 의 황이
+        그렇다. 그래서 인접한 두 자리를 동시에 고르면 S–S 2.642 Å 이 되고, 회전으로는
+        절대 못 푼다. 실제로 saIm 050/075/100 이 전부 그렇게 만들어졌다
+        (21_ZIF69_MTV/STRUCTURE_DEFECT.md).
+
+        고칠 자리는 회전이 아니라 **자리 선택**이다. 어떤 회전 조합으로도 떨어지지
+        않는 자리쌍을 미리 찾아 두고, 그 쌍은 동시에 고르지 않는다.
+
+    판정은 **최적 회전 조합에서의 vdW 여유**로 한다. 회전으로 풀 수 있는 것은
+    회전이 풀게 두고, 어떤 회전으로도 안 되는 쌍만 배타적이라고 부른다.
+    """
+    cell = np.asarray(atoms.get_cell())
+    angles = np.linspace(0, 2 * np.pi, n_angles, endpoint=False)
+    placements = [_substituent_positions_at_angles(atoms, s, fragment,
+                                                   attachment_ring_index, angles)
+                  for s in sites]
+    sym = [fragment["symbols"][i] for i in fragment["subst_idx"]]
+    # 자리별 대표 위치(치환 지점)로 먼 쌍을 먼저 걸러낸다.
+    anchors = np.array([_unwrap(atoms, s["ring"])[attachment_ring_index] for s in sites])
+
+    edges = []
+    for i in range(len(sites)):
+        for j in range(i + 1, len(sites)):
+            if _mic_min_distance(anchors[i:i + 1], anchors[j:j + 1], cell) > prefilter:
+                continue
+            best = -np.inf
+            for pi in placements[i]:
+                for pj in placements[j]:
+                    m = _vdw_margin(sym, pi, sym, pj, cell)
+                    if m > best:
+                        best = m
+                    if best >= 0.0:
+                        break
+                if best >= 0.0:
+                    break
+            if best < 0.0:
+                edges.append((i, j, round(float(best), 3)))
+    return edges
+
+
+def forcing_pairs(atoms, sites, fragment, attachment_ring_index=0, n_angles=12,
+                  prefilter=14.0):
+    """자리 i 를 치환하면 자리 j 도 **반드시** 치환해야 하는 쌍.
+
+    [왜 이게 따로 필요한가]
+        배타 관계(둘 다 치환하면 충돌)만 보면 절반의 제약을 놓친다. 치환하지 않은
+        자리에는 원래 치환기(ZIF-69 는 Cl)가 **그대로 남아 있고**, 새로 단 −SO₃H 가
+        그 Cl 과 부딪칠 수 있다. 그 경우 해법은 두 가지뿐이다 —
+        i 를 치환하지 않거나, j 도 치환해서 Cl 을 없애거나.
+
+        i 와 j 가 배타적이면서 동시에 강제 관계이면 **i 는 아예 쓸 수 없는 자리**다.
+    """
+    cell = np.asarray(atoms.get_cell())
+    all_sym = atoms.get_chemical_symbols()
+    angles = np.linspace(0, 2 * np.pi, n_angles, endpoint=False)
+    placements = [_substituent_positions_at_angles(atoms, s, fragment,
+                                                   attachment_ring_index, angles)
+                  for s in sites]
+    fsym = [fragment["symbols"][i] for i in fragment["subst_idx"]]
+    anchors = np.array([_unwrap(atoms, s["ring"])[attachment_ring_index] for s in sites])
+    pos = atoms.get_positions()
+
+    out = []
+    for i in range(len(sites)):
+        for j in range(len(sites)):
+            if i == j:
+                continue
+            if _mic_min_distance(anchors[i:i + 1], anchors[j:j + 1], cell) > prefilter:
+                continue
+            dsym = [all_sym[k] for k in sites[j]["substituent"]]
+            dpos = pos[sites[j]["substituent"]]
+            best = max(_vdw_margin(fsym, p, dsym, dpos, cell) for p in placements[i])
+            if best < 0.0:
+                out.append((i, j, round(float(best), 3)))
+    return out
+
+
+def choose_conflict_free_sites(n_target, n_sites, exclusive, forcing=(), seed=0,
+                               tries=2000):
+    """배타 관계와 강제 관계를 **동시에** 만족하는 크기 n_target 의 자리 집합.
+
+    무작위 탐욕법을 여러 번 돌려 가장 큰 유효 집합을 찾는다. 자리 수가 24개
+    수준이라 이걸로 충분하다. 실패하면 **달성 가능한 최대치를 알려주고 예외를
+    던진다** -- 조성을 조용히 바꾸면 나중에 무엇을 계산했는지 알 수 없게 된다.
+    """
+    exc = {k: set() for k in range(n_sites)}
+    for i, j, _ in exclusive:
+        exc[i].add(j)
+        exc[j].add(i)
+    frc = {k: set() for k in range(n_sites)}
+    for i, j, _ in forcing:
+        frc[i].add(j)
+
+    def closure(S):
+        S = set(S)
+        stack = list(S)
+        while stack:
+            i = stack.pop()
+            for j in frc[i]:
+                if j not in S:
+                    S.add(j)
+                    stack.append(j)
+        return S
+
+    rng = np.random.default_rng(seed)
+    best = set()
+    for _ in range(tries):
+        S = set()
+        for k in rng.permutation(n_sites):
+            T = closure(S | {int(k)})
+            if len(T) > n_target:
+                continue
+            if all(not (exc[i] & T) for i in T):
+                S = T
+            if len(S) == n_target:
+                break
+        if len(S) > len(best):
+            best = S
+        if len(best) == n_target:
+            return sorted(best), len(best)
+
+    # 상한을 따로 구해 메시지에 담는다(목표치 제한 없이 최대로 키워 본다).
+    cap = set()
+    for _ in range(tries):
+        S = set()
+        for k in rng.permutation(n_sites):
+            T = closure(S | {int(k)})
+            if all(not (exc[i] & T) for i in T):
+                S = T
+        if len(S) > len(cap):
+            cap = S
+    raise ValueError(
+        f'자리 {n_target}개를 충돌 없이 고를 수 없습니다. 이 치환기의 최대 '
+        f'무충돌 자리 수는 {len(cap)}개({len(cap) / n_sites:.0%})입니다. '
+        f'배타쌍 {len(exclusive)}개, 강제쌍 {len(forcing)}개.')
+
+
 def add_eqeq_charges(cif_path):
     """OpenBabel에 내장된 EQeq(Wilmer et al. extended charge equilibration)로
     부분전하를 계산해 CIF의 _atom_site_charge 컬럼에 기록한다.
@@ -261,8 +522,13 @@ def add_eqeq_charges(cif_path):
     with tempfile.NamedTemporaryFile(suffix=".pqr", delete=False) as tmp:
         pqr_path = tmp.name
     try:
+        # obabel 을 PATH 에만 의존해 부르면, 환경을 activate 하지 않고 인터프리터를
+        # 절대경로로 실행했을 때 FileNotFoundError 로 죽는다. 같은 환경의 bin/ 을
+        # 먼저 본다.
+        obabel = shutil.which("obabel") or os.path.join(
+            os.path.dirname(sys.executable), "obabel")
         proc = subprocess.run(
-            ["obabel", cif_path, "-O", pqr_path, "--partialcharge", "eqeq"],
+            [obabel, cif_path, "-O", pqr_path, "--partialcharge", "eqeq"],
             capture_output=True, text=True,
         )
         if proc.returncode != 0 or not os.path.exists(pqr_path):
@@ -298,7 +564,8 @@ def add_eqeq_charges(cif_path):
     print(f"     EQeq 부분전하 기록 완료 (원자 {len(charges)}개, 전하 합 {sum(charges):+.4f})")
 
 
-def _finalize_and_write(atoms, output_cif, base_cif, composition, seed, n_sites):
+def _finalize_and_write(atoms, output_cif, base_cif, composition, seed, n_sites,
+                        extra_meta=None):
     """치환 완료된 atoms를 CIF로 기록하고 공통 후처리(레거시 대칭 태그, EQeq 전하,
     위상 드리프트 플래그, 충돌 최종 확인, meta.json)를 수행한다.
     generate_mtv_cif()와 generate_mtv_cif_zif69_aryl() 둘 다 이 공통 마무리 단계를 쓴다."""
@@ -328,14 +595,16 @@ def _finalize_and_write(atoms, output_cif, base_cif, composition, seed, n_sites)
         print(f"     [위상 드리프트 주의] {risk['ligand']} 비율 {risk['fraction']:.2f} — {risk['note']}")
 
     meta_path = output_cif.rsplit(".", 1)[0] + ".meta.json"
+    meta = {
+        "base_cif": base_cif,
+        "composition": composition,
+        "seed": seed,
+        "min_pairwise_distance": round(float(min_dist), 4),
+        "topology_drift_risks": topology_risks,
+    }
+    meta.update(extra_meta or {})
     with open(meta_path, "w", encoding="utf-8") as f:
-        json.dump({
-            "base_cif": base_cif,
-            "composition": composition,
-            "seed": seed,
-            "min_pairwise_distance": round(float(min_dist), 4),
-            "topology_drift_risks": topology_risks,
-        }, f, indent=2, ensure_ascii=False)
+        json.dump(meta, f, indent=2, ensure_ascii=False)
 
     print(f"[OK] {output_cif} 생성 완료 (링커 {n_sites}개, 조성 {composition})")
 
@@ -385,40 +654,85 @@ def generate_mtv_cif(base_cif, site_map_json, composition, output_cif, seed=0):
     _finalize_and_write(atoms, output_cif, base_cif, composition, seed, len(sites))
 
 
-def generate_mtv_cif_zif69_aryl(base_cif, bicyclic_site_map_json, aryl_composition, output_cif, seed=0):
+def generate_mtv_cif_zif69_aryl(base_cif, bicyclic_site_map_json, aryl_composition,
+                                output_cif, seed=0, conflict_aware=True):
     """[Priority 3, 문서 권장 방향] ZIF-69의 cbIm:nIm 1:1 비율은 그대로 두고,
     cbIm 벤조환의 아릴 치환기(기본 Cl)만 LIGAND_LIBRARY_CBIM_ARYL 조성대로 SALE식
-    교체한다. nIm 자리는 site_map에 아예 포함되지 않으므로 손대지 않는다."""
+    교체한다. nIm 자리는 site_map에 아예 포함되지 않으므로 손대지 않는다.
+
+    conflict_aware: 자리를 무작위로 고르지 않고, **동시에 달 수 없는 자리쌍을 먼저
+        찾아 피해서** 고른다. 기본값 True. 2026-08-14 이전 구조는 전부 False 상태로
+        만들어졌고 그래서 치환기끼리 관통했다(STRUCTURE_DEFECT.md).
+        요청한 치환율이 무충돌로 달성 불가능하면 **예외를 던진다** -- 조성을 조용히
+        낮추면 무엇을 계산했는지 알 수 없게 된다.
+    """
     assert abs(sum(aryl_composition.values()) - 1.0) < 1e-6, "조성비 합은 1이어야 함"
 
     atoms = read(base_cif)
     with open(bicyclic_site_map_json) as f:
         sites = json.load(f)
+    # plan_substitution / 충돌 그래프는 site["ring"], site["substituent"] 를 기대한다.
+    # bicyclic 사이트맵의 필드명을 한 번만 맞춰 두고 아래에서 계속 쓴다.
+    sites = [{"ring": s["bicyclic_ring"], "substituent": s["aryl_substituent"]}
+             for s in sites]
 
     rng = np.random.default_rng(seed)
     names, probs = list(aryl_composition.keys()), list(aryl_composition.values())
-    assignment = rng.choice(names, size=len(sites), p=probs)
+
+    subs = [n for n, p in zip(names, probs) if n != "clIm_aryl" and p > 0]
+    conflict_info = None
+    if conflict_aware and len(subs) == 1:
+        lig = subs[0]
+        frac = dict(zip(names, probs))[lig]
+        n_target = int(round(frac * len(sites)))
+        frag = build_fragment_cbim_aryl(lig)
+        edges = substituent_conflict_graph(
+            atoms, sites, frag, attachment_ring_index=CBIM_ARYL_ATTACHMENT_INDEX)
+        forced = forcing_pairs(
+            atoms, sites, frag, attachment_ring_index=CBIM_ARYL_ATTACHMENT_INDEX)
+        chosen, max_found = choose_conflict_free_sites(n_target, len(sites), edges,
+                                                       forcing=forced, seed=seed)
+        assignment = np.array(["clIm_aryl"] * len(sites), dtype=object)
+        for k in chosen:
+            assignment[k] = lig
+        conflict_info = {"conflict_aware": True, "n_conflict_pairs": len(edges),
+                         "n_forcing_pairs": len(forced),
+                         "n_sites": len(sites), "n_substituted": len(chosen),
+                         "requested_fraction": frac,
+                         "achieved_fraction": round(len(chosen) / len(sites), 6),
+                         "chosen_sites": sorted(int(k) for k in chosen)}
+        print(f"     충돌 회피 배치: 배타적 자리쌍 {len(edges)}쌍, "
+              f"강제쌍 {len(forced)}쌍, {len(chosen)}/{len(sites)} 자리 치환")
+    else:
+        if conflict_aware and len(subs) > 1:
+            print("     [주의] 치환기가 2종 이상이라 충돌 회피 배치를 건너뜁니다 — "
+                  "무작위 배치입니다.")
+        assignment = rng.choice(names, size=len(sites), p=probs)
+        conflict_info = {"conflict_aware": False}
 
     fragments = {n: build_fragment_cbim_aryl(n) for n in set(assignment) if n != "clIm_aryl"}
 
+    chosen = [k for k, lig in enumerate(assignment) if lig != "clIm_aryl"]
+    ligs = {k: assignment[k] for k in chosen}
+
     remove_indices = set()
     new_symbols, new_positions = [], []
-    avoid_positions = atoms.get_positions().copy()
-    for site, lig in zip(sites, assignment):
-        if lig == "clIm_aryl":
-            continue  # 원래 결정구조의 Cl을 그대로 유지 (교체 없음)
-        # plan_substitution은 site["ring"]/site["substituent"]를 기대하므로
-        # bicyclic 사이트의 필드명을 맞춰 재구성한다.
-        remapped_site = {"ring": site["bicyclic_ring"], "substituent": site["aryl_substituent"]}
-        subst_idx, new_atoms = plan_substitution(
-            atoms, remapped_site, fragments[lig], avoid_positions=avoid_positions,
-            attachment_ring_index=CBIM_ARYL_ATTACHMENT_INDEX,
-        )
-        remove_indices.update(subst_idx)
-        for sym, pos in new_atoms:
-            new_symbols.append(sym)
-            new_positions.append(pos)
-            avoid_positions = np.vstack([avoid_positions, pos])
+    if chosen:
+        # 순차 배치가 아니라 **함께** 최적화한다. 순차로 하면 먼저 놓인 치환기가
+        # 아직 없는 이웃을 고려하지 못해, 기하학적으로 가능한 분리에 도달하지 못한다
+        # (−NO₂ 쌍별 최적 2.90 Å 인데 실제 구조는 1.142 Å 이었다).
+        final, worst = optimize_substituent_rotations(
+            atoms, chosen, sites, fragments, ligs,
+            attachment_ring_index=CBIM_ARYL_ATTACHMENT_INDEX)
+        print(f"     회전 동시 최적화 후 최악 vdW 여유 {worst:+.3f} Å")
+        conflict_info["worst_vdw_margin_after_rotation"] = round(worst, 4)
+        for k in chosen:
+            remove_indices.update(sites[k]["substituent"])
+            syms = [fragments[ligs[k]]["symbols"][i]
+                    for i in fragments[ligs[k]]["subst_idx"]]
+            for sym, pos in zip(syms, final[k]):
+                new_symbols.append(sym)
+                new_positions.append(pos)
 
     keep_mask = np.ones(len(atoms), dtype=bool)
     keep_mask[sorted(remove_indices)] = False
@@ -426,7 +740,8 @@ def generate_mtv_cif_zif69_aryl(base_cif, bicyclic_site_map_json, aryl_compositi
     if new_symbols:
         atoms += Atoms(symbols=new_symbols, positions=new_positions)
 
-    _finalize_and_write(atoms, output_cif, base_cif, aryl_composition, seed, len(sites))
+    _finalize_and_write(atoms, output_cif, base_cif, aryl_composition, seed, len(sites),
+                        extra_meta=conflict_info)
 
 
 if __name__ == "__main__":
