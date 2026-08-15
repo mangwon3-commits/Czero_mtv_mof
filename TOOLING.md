@@ -101,6 +101,27 @@ setx MSYS_NO_PATHCONV 1
 그래도 `~/.bashrc` 는 남겨 뒀습니다 — **사람이 직접 여는 Git Bash 창**에서는
 그 설정이 걸립니다.
 
+## 4-1. 커밋 메시지는 **파일**로 넘기세요
+
+`bash -c '...'` 안에 heredoc 으로 긴 메시지를 넣으면, **메시지에 아포스트로피가
+하나만 있어도 거기서 홑따옴표 문자열이 끊깁니다.**
+
+```
+... van't Hoff ...
+        ^ 여기서 -c '...' 가 닫혀 버림
+  -> bash: syntax error near unexpected token `('
+  -> here-document at line 4 delimited by end-of-file
+```
+
+`van't Hoff`, `Rappe's`, 한글 안의 `'` 전부 같은 문제를 냅니다.
+**메시지를 파일에 쓰고 `-F` 로 넘기면 인용 문제가 원천적으로 사라집니다.**
+
+```bash
+# 메시지는 Write 도구로 파일에 쓴 다음
+MSYS_NO_PATHCONV=1 wsl.exe -d Ubuntu -e bash -c \
+  'cd /home/mangwon1/mof_project && git commit -F /home/mangwon1/.claude_work/msg.txt'
+```
+
 ## 5. 곁들여 — 이 프로젝트에서 반복된 셸 함정
 
 `00_Migration/MIGRATION.md` 3절에 전부 있지만, 자주 걸린 것만.
