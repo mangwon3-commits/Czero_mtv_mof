@@ -29,6 +29,7 @@
 | 문서 | 무엇이 있나 |
 |---|---|
 | `21_ZIF69_MTV/STRUCTURE_DEFECT.md` | **2026-08-14 발견. 치환 구조 전부 재계산 필요** |
+| `TOOLING.md` | **셸 호출이 깨지는 이유와 확정된 패턴.** 자주 걸립니다 |
 | `21_ZIF69_MTV/AUDIT_20260814.md` | **위 결함과 같은 종류를 훑은 감사. 미수정 2건 있음** |
 | `00_Migration/MIGRATION.md` 3절 | 계산 환경의 함정 전부(조용한 timeout, OOM, WSL 종료 등) |
 | `21_ZIF69_MTV/DRYING_PLAN.md` | 건조 비용 판단 절차와 사전 등록 기준 |
