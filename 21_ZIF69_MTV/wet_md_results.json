@@ -1,0 +1,69 @@
+{
+  "conditions": {
+    "RH": 0.9,
+    "T_K": 298.0,
+    "P_atm": 1.0,
+    "dt_fs": 0.5,
+    "ns_push": 10000,
+    "ns_nvt": 100000,
+    "ns_npt": 500000,
+    "water_model": "SPC/E (3-site)",
+    "framework_ff": "UFF4MOF, bonded, topology fixed"
+  },
+  "criteria": {
+    "LCD_drop_limit_pct": 20.0,
+    "PLD_min": 3.3,
+    "ZnN_stretch_limit_pct": 5.0,
+    "min_dist_limit": 0.7,
+    "baseline": "같은 조성의 건조 MD (모체가 아님)"
+  },
+  "caveat": "결합형 힘장이라 Zn-N 이 끊어질 수 없다. 여기서 통과는 \"물이 기계적으로는 못 무너뜨린다\" 까지이고, 가수분해를 배제하지 않는다. HYDROLYSIS.md 6절 참조.",
+  "rows": [
+    {
+      "name": "base",
+      "wet": false,
+      "status": "ok",
+      "pass": null,
+      "cell": {
+        "a": 52.37337389290471,
+        "b": 52.21497340030094,
+        "c": 37.191011900949924,
+        "volume": 87926.87496965146
+      },
+      "LCD": 8.72584,
+      "PLD": 5.62089,
+      "ZnN_mean": 1.9163,
+      "ZnN_max": 2.0849,
+      "ZnN_n": 768,
+      "min_dist": 0.982,
+      "n_water_target": 0,
+      "n_water_placed": 0,
+      "loading_molkg": null,
+      "n_so3h_sites": null
+    },
+    {
+      "name": "base",
+      "wet": true,
+      "status": "ok",
+      "pass": true,
+      "cell": {
+        "a": 52.079345016139754,
+        "b": 52.22158944220412,
+        "c": 37.0998089566732,
+        "volume": 87582.61701048134
+      },
+      "LCD": 7.91048,
+      "PLD": 5.45874,
+      "ZnN_mean": 1.9143,
+      "ZnN_max": 2.0702,
+      "ZnN_n": 768,
+      "min_dist": 0.991,
+      "n_water_target": 33,
+      "n_water_placed": 33,
+      "loading_molkg": 0.5160241325,
+      "n_so3h_sites": 0,
+      "LCD_drop_vs_dry_pct": 9.34,
+      "ZnN_stretch_vs_dry_pct": -0.104
+    }
+  ]
+}
