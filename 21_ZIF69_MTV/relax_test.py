@@ -75,7 +75,18 @@ def report(atoms, label):
         print(f'    {k[0]+"-"+k[1]:>7} {len(v):>5} {v.min():>7.3f} '
               f'{np.median(v):>7.3f} {v.max():>7.3f} {v.max()-v.min():>7.3f} '
               f'{ideal if ideal else "-":>7}')
-    dmin = float(neighbor_list('d', atoms, 1.3).min())
+    # [2026-08-16] 여기서 빈 배열에 .min() 을 불러 죽은 적이 있습니다.
+    #   원인은 구조가 아니라 **단위**였습니다 -- xtb 가 xtbopt.poscar 의 격자를
+    #   Bohr 로 쓰는데 ASE 가 Angstrom 으로 읽어 셀이 6.75배로 부풀었고,
+    #   분율좌표라 모든 결합이 함께 늘어나 1.3 A 안에 아무것도 없었습니다.
+    #   죽는 대신 **증상을 말하게** 고칩니다. 판정이 예외에 가려지면 안 됩니다.
+    d = neighbor_list('d', atoms, 1.3)
+    if len(d) == 0:
+        print('    최소 원자간 거리 — 1.3 A 안에 원자쌍이 하나도 없습니다.')
+        print('    !! 결합이 전부 끊긴 구조이거나 격자 단위가 틀렸습니다'
+              ' (Bohr/Angstrom 을 의심하세요).')
+        return st, float('inf')
+    dmin = float(d.min())
     print(f'    최소 원자간 거리 {dmin:.3f} A')
     return st, dmin
 
