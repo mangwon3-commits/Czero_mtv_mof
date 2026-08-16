@@ -31,7 +31,7 @@ def main():
     total = len([f for f in os.listdir(SRC) if f.endswith('.cif')])
     print(f'  판정 대상 {len(names)} / 전체 {total}\n')
     print(f'    {"구조":18s} {"C-H":>6} {"방향족C-C폭":>11} {"Zn-N":>15} '
-          f'{"sp3 C-C":>16} {"최소":>6}  판정')
+          f'{"아릴-치환기":>16} {"최소":>6}  판정')
 
     rows, bad = [], []
     for n in names:
@@ -44,7 +44,7 @@ def main():
         rows.append({'name': n, 'pass': passed, 'criteria': ok, **num})
         if not passed:
             bad.append((n, [k for k, v in ok.items() if not v]))
-        sp3 = num['sp3CC_range']
+        sp3 = num['nonAromCC_range']
         print(f"    {n:18s} {num['CH_after']:6.3f} {num['aromCC_width_after']:11.4f} "
               f"{num['ZnN_min']:6.3f}~{num['ZnN_max']:.3f}({num['ZnN_pairs']:3d}) "
               f"{(f'{sp3[0]:.3f}~{sp3[1]:.3f}' if sp3 else '-'):>16} "

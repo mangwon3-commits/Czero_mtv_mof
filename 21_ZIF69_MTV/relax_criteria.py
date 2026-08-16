@@ -24,7 +24,26 @@
 
 [구분하는 법]
     탄소의 이웃 수로 가릅니다. 방향족 고리 탄소는 3(예: N,N,H 또는 C,C,치환기),
-    sp3 탄소(CF3, CH3)는 4 입니다. 둘 다 3 인 쌍만 방향족으로 셉니다.
+    sp3 탄소(CF3, CH3)는 4, 나이트릴 탄소(C≡N)는 2 입니다.
+    **둘 다 3 인 쌍만** 방향족으로 셉니다. 나머지는 판정에 안 쓰되 값은 남깁니다.
+
+    (처음에 나머지 통을 'C_sp3' 라고 불렀는데 틀린 이름이었습니다. cnbIm 의
+     아릴-C≡N 은 sp2-sp 이지 sp3 가 아닙니다. 'C_other' 로 바꿨습니다.
+     이름이 틀리면 나중에 읽는 사람이 틀리게 읽습니다.)
+
+[판정에 안 쓰지만 기록해 둘 것 -- GFN-FF 가 아릴-치환기 단일결합을 짧게 잡는다]
+    이완 전후를 재 보니 결합 종류마다 방향이 달랐습니다(실측, 2026-08-16).
+
+        아릴-C≡N   (cnbIm)  1.434 -> 1.393~1.396    문헌 벤조나이트릴 1.451
+        아릴-CH3   (mbIm)   1.501 -> 1.484~1.487    문헌 톨루엔       1.524
+        아릴-CF3   (cf3Im)  1.508 -> 1.512~1.515    문헌 벤조트라이플루오라이드 1.50
+
+    **나이트릴이 약 4% 짧습니다.** 우리가 고치려던 C-H 왜곡(0.13 A)보다 작고,
+    600원자 중 24개 결합에만 걸리며, **사전 등록 기준에 없던 항목**이므로 판정을
+    바꾸지 않습니다. 결과를 보고 기준을 늘리지 않는다는 원칙 그대로입니다.
+
+    다만 cnbIm 계열의 수치를 해석할 때는 이 편향을 알고 봐야 합니다. 치환기가
+    고리 쪽으로 0.04 A 당겨져 있으면 기공 안 유효 부피가 그만큼 넓게 잡힙니다.
 """
 import collections
 
@@ -48,7 +67,7 @@ def bonds(atoms):
             continue
         key = tuple(sorted((s[a], s[b])))
         if key == ('C', 'C'):
-            key = ('C', 'C') if (deg[a] == 3 and deg[b] == 3) else ('C', 'C_sp3')
+            key = ('C', 'C') if (deg[a] == 3 and deg[b] == 3) else ('C', 'C_other')
         out[key].append(float(dd))
     return {k: np.array(v) for k, v in out.items()}
 
@@ -62,7 +81,7 @@ def evaluate(st0, st1, dmin1, cell_moved):
     cc0 = st0.get(('C', 'C'))
     w0 = float(cc0.max() - cc0.min()) if cc0 is not None else float('nan')
     zn = st1.get(('N', 'Zn'))
-    sp3 = st1.get(('C', 'C_sp3'))
+    sp3 = st1.get(('C', 'C_other'))
 
     ok = {
         '1_CH': ch is not None and 1.05 <= ch1 <= 1.12,
@@ -78,8 +97,8 @@ def evaluate(st0, st1, dmin1, cell_moved):
         'aromCC_width_after': w1,
         'aromCC_n': int(len(cc1)) if cc1 is not None else 0,
         # sp3 C-C 는 판정에 쓰지 않지만, 값이 이상하면 눈에 띄어야 하므로 남깁니다.
-        'sp3CC_n': int(len(sp3)) if sp3 is not None else 0,
-        'sp3CC_range': [float(sp3.min()), float(sp3.max())] if sp3 is not None else None,
+        'nonAromCC_n': int(len(sp3)) if sp3 is not None else 0,
+        'nonAromCC_range': [float(sp3.min()), float(sp3.max())] if sp3 is not None else None,
         'ZnN_min': float(zn.min()) if zn is not None else None,
         'ZnN_max': float(zn.max()) if zn is not None else None,
         'ZnN_pairs': int(len(zn)) if zn is not None else 0,
