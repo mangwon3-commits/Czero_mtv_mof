@@ -166,6 +166,30 @@ commit "Recompute the charges on the geometry that actually moved" \
   21_ZIF69_MTV/charge_v3.py 21_ZIF69_MTV/run_gcmc_v3.py
 echo "- v3 전하 $n_ch 종 완료" >> "$NOTION"
 
+# ---------------------------------------------------------------- E-2
+# 지인에게 넘길 꾸러미. 사용자가 "그때 만들어 달라" 고 승인했습니다(08-17 00:0x).
+# **전하가 생긴 직후가 유일하게 옳은 시점**입니다 -- 그 전에 만들면 전하 없는
+# 구조가 나가서 상대가 GCMC 를 못 돌리고, 그 사실을 상대가 먼저 발견하게 됩니다.
+# prepare_handoff.sh 자체에도 같은 관문이 있어 이중으로 막힙니다.
+mark "E-2: 지인 전달 꾸러미"
+say "=== E-2. 전달 꾸러미 (D 드라이브) ==="
+if bash "$R/prepare_handoff.sh" --go 2>&1 | tee -a "$LOG"; then
+  sz=$(du -sh /mnt/d/MTV-ZIF_계산지원 2>/dev/null | cut -f1)
+  nf=$(find /mnt/d/MTV-ZIF_계산지원 -type f 2>/dev/null | wc -l)
+  say "  꾸러미 완료 — ${sz}, 파일 ${nf}개"
+  {
+    echo "생성 $(date '+%m-%d %H:%M')"
+    echo "위치 D:\\MTV-ZIF_계산지원"
+    echo "크기 ${sz} / 파일 ${nf}개 / 전하 CIF ${n_ch}종"
+  } > "$W/handoff_ready.flag"
+  echo "- ✅ **지인 전달 꾸러미 생성 완료** (D:\\MTV-ZIF_계산지원, ${sz}, ${nf}개 파일)" \
+    " — 사용자에게 **채팅으로 알릴 것**" >> "$NOTION"
+else
+  say "  !! 꾸러미 생성 실패"
+  echo "실패 $(date '+%m-%d %H:%M') — overnight.log 확인" > "$W/handoff_failed.flag"
+  echo "- ⚠️ 전달 꾸러미 생성 실패 — 사용자에게 알릴 것" >> "$NOTION"
+fi
+
 # ---------------------------------------------------------------- F
 mark "F: 연기 시험 (모체 1종)"
 say "=== F. 연기 시험 — 모체 1종만 돌려 본다 ==="
