@@ -41,18 +41,29 @@ PIDS=$(ps -eo pid=,comm=,args= | awk '
 if [ -z "$PIDS" ]; then
   echo "  (없음) — 백그라운드 계산이 하나도 돌고 있지 않습니다."
 else
-  declare -A T0
+  declare -A T0 PCT KIDS GRP GSUM GKIDS
   for p in $PIDS; do
     T0[$p]=$(awk '{print $14+$15}' /proc/$p/stat 2>/dev/null || echo 0)
   done
   sleep 4
-  printf "  %-7s %-5s %-11s %8s %7s  %s\n" PID nice 경과 "CPU점유" RSS 무엇
+
+  # 1차: 재고 무리를 짓습니다. 같은 스크립트에서 갈라진 것들이 한 무리입니다.
   for p in $PIDS; do
     [ -d /proc/$p ] || continue
     t1=$(awk '{print $14+$15}' /proc/$p/stat 2>/dev/null || echo 0)
-    d=$(( t1 - ${T0[$p]:-0} ))
-    # 4초 동안 늘어난 CPU 틱 / (4초 x HZ) = 코어 몇 개어치
-    pct=$(awk -v d="$d" -v hz="$HZ" 'BEGIN{printf "%.0f%%", d/(4*hz)*100}')
+    PCT[$p]=$(( ( (t1 - ${T0[$p]:-0}) * 100 ) / (4 * HZ) ))
+    KIDS[$p]=$(pgrep -P "$p" 2>/dev/null | wc -l)
+    g=$(ps -o args= -p $p | awk '{for(i=1;i<=NF;i++) if($i ~ /\.py$/){n=split($i,a,"/"); print a[n]; exit}}')
+    [ -z "$g" ] && g=$(ps -o comm= -p $p | tr -d ' ')
+    GRP[$p]=$g
+    GSUM[$g]=$(( ${GSUM[$g]:-0} + ${PCT[$p]} ))
+    GKIDS[$g]=$(( ${GKIDS[$g]:-0} + ${KIDS[$p]} ))
+  done
+
+  printf "  %-7s %-5s %-11s %8s %7s  %s\n" PID nice 경과 "CPU점유" RSS 무엇
+  for p in $PIDS; do
+    [ -d /proc/$p ] || continue
+    pct="${PCT[$p]}%"
     ni=$(ps -o ni= -p $p | tr -d ' ')
     et=$(ps -o etime= -p $p | tr -d ' ')
     rss=$(awk -v r="$(ps -o rss= -p $p | tr -d ' ')" 'BEGIN{printf "%.0fM", r/1024}')
@@ -66,15 +77,20 @@ else
       *)         lbl=$(ps -o args= -p $p | awk '{for(i=1;i<=NF;i++) if($i ~ /\.py$/){print "python " $i; exit}} END{}')
                  [ -z "$lbl" ] && lbl="python (드라이버)" ;;
     esac
-    # CPU 가 0% 라고 곧바로 "놀고 있다" 고 하면 안 됩니다. 드라이버 파이썬은
-    # 자식(xtb, simulate)이 일하는 동안 subprocess 에서 **정상적으로 멈춰
-    # 있습니다.** 자식이 있는지 먼저 봅니다.
+    # [2026-08-16 오탐 수정] CPU 0% 를 프로세스 하나만 보고 판정하면 틀립니다.
+    #   수분 v2 는 워커가 4인데 남은 작업이 2뿐이라, 놀던 워커 둘을 "멈춘 것일
+    #   수 있음" 으로 찍었습니다. 멈춘 게 아니라 **일감이 없었습니다.**
+    #
+    #   풀 방식에서 워커 하나가 노는 것은 정상입니다. 비정상은 **무리 전체가
+    #   노는 것**입니다. 그래서 개체가 아니라 무리로 판정합니다.
+    g=${GRP[$p]}
     if [ "${pct%\%}" -lt 3 ] 2>/dev/null; then
-      kids=$(pgrep -P "$p" 2>/dev/null | wc -l)
-      if [ "$kids" -gt 0 ]; then
-        lbl="$lbl  (대기 — 자식 $kids개가 계산 중)"
+      if [ "${KIDS[$p]}" -gt 0 ]; then
+        lbl="$lbl  (대기 — 자식 ${KIDS[$p]}개가 계산 중)"
+      elif [ "${GSUM[$g]:-0}" -ge 30 ] || [ "${GKIDS[$g]:-0}" -gt 0 ]; then
+        lbl="$lbl  (놀고 있음 — 같은 배치의 다른 워커가 계산 중)"
       else
-        lbl="$lbl  <-- CPU 0%, 자식도 없음. 멈춘 것일 수 있음"
+        lbl="$lbl  <-- 배치 전체가 0%, 자식도 없음. **멈췄을 수 있음**"
       fi
     fi
     printf "  %-7s %-5s %-11s %8s %7s  %s\n" "$p" "$ni" "$et" "$pct" "$rss" "$lbl"
