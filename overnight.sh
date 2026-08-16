@@ -194,7 +194,11 @@ esac
 mark "G: 전체 GCMC v3 (90작업)"
 say "=== G. 전체 GCMC v3 ==="
 disk_guard
-cd "$P" && V3_WORKERS=6 "$CZ/python" run_gcmc_v3.py 2>&1 | tee -a "$LOG"
+# [2026-08-16 자원 재배분] 워커 6 -> 7.
+#   사용자가 9시간 동안 이 기기를 안 씁니다. boost.sh 실측이 "우선순위 0 으로
+#   7개까지" 라고 계산했고(물리 8코어 - 수분 v2 의 RASPA 1건), RASPA 는 건당
+#   약 471 MB 라 메모리는 병목이 아닙니다. 90작업짜리 단계라 17% 가 1.5시간입니다.
+cd "$P" && V3_WORKERS=7 "$CZ/python" run_gcmc_v3.py 2>&1 | tee -a "$LOG"
 n_res=$("$CZ/python" -c "
 import json;d=json.load(open('$P/results_v3.json'))
 print(sum(1 for r in d['rows'] if r.get('status')=='ok'))" 2>/dev/null || echo 0)

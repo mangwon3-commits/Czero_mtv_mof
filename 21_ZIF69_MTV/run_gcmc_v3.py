@@ -27,6 +27,7 @@
 import argparse
 import json
 import os
+import subprocess
 import sys
 from concurrent.futures import ProcessPoolExecutor
 
@@ -82,11 +83,38 @@ def main():
     assert rg.CHARGED.endswith('charged_v3'), 'v3 경로가 덮어써지지 않았습니다'
     assert rg.RUNS.endswith('runs_v3'), 'v3 경로가 덮어써지지 않았습니다'
 
-    print(f'\n구조 {len(cifs)}종. 먼저 Zeo++ (LCD/PLD/AV)\n', flush=True)
+    # [08-12 먹통 조합을 여기서 막는다]
+    #   Zeo++ 는 건당 3.2 GB 입니다. 8워커가 OOM 을 냈고 dbus-daemon 까지 죽어
+    #   WSL 배포판이 통째로 먹통이 됐습니다(밖에서 wsl --shutdown 해야 복구).
+    #   boost.sh 의 규칙 1 은 아예 **"RASPA 가 돌 때 Zeo++ 를 띄우지 말라"** 입니다.
+    #
+    #   그런데 이 스크립트는 무인으로 돕니다. v3 GCMC 가 시작될 때 수분 v2 의
+    #   마지막 RASPA 작업이 아직 20시간쯤 남아 있을 수 있고, 그러면 정확히
+    #   그 금지된 조합이 됩니다. 사람이 볼 수 없으니 코드가 재고 정합니다.
+    #   메모리는 /proc/meminfo 를 직접 읽습니다. `free | awk '{print $7}'` 를
+    #   subprocess 로 부르면 셸 계층이 하나 더 끼고, 거기서 $7 이 먹히면 awk 가
+    #   행 전체를 뱉어 int() 가 터집니다. 무인 실행 중에 그러면 90작업이 통째로
+    #   죽습니다. 파싱 실패가 계산을 못 죽이게 예외까지 막아 둡니다.
+    try:
+        n_raspa = len(subprocess.run(['pgrep', '-x', 'simulate'],
+                                     capture_output=True, text=True).stdout.split())
+    except Exception:                                        # noqa: BLE001
+        n_raspa = 1          # 모르면 RASPA 가 도는 쪽으로 가정(안전한 방향)
+    free_gb = 0
+    try:
+        for line in open('/proc/meminfo'):
+            if line.startswith('MemAvailable:'):
+                free_gb = int(line.split()[1]) // (1024 * 1024)
+                break
+    except Exception:                                        # noqa: BLE001
+        free_gb = 8
+    zw = 4 if n_raspa == 0 else 2
+    zw = min(zw, max(1, (free_gb - 4) // 4))     # 여유에서 4 GB 는 남긴다
+    print(f'\n구조 {len(cifs)}종. 먼저 Zeo++ (LCD/PLD/AV)')
+    print(f'  RASPA {n_raspa}건 가동 중, 메모리 여유 {free_gb} GB '
+          f'-> Zeo++ 워커 {zw}\n', flush=True)
     geo = {}
-    # Zeo++ 는 건당 3.2 GB. 4워커 위로 올리면 빨라지는 게 아니라 죽습니다
-    # (2026-08-12 에 8워커가 OOM 을 내고 WSL 배포판이 통째로 먹통).
-    with ProcessPoolExecutor(max_workers=4) as ex:
+    with ProcessPoolExecutor(max_workers=zw) as ex:
         for cif, g in zip(cifs, ex.map(v2.zeo, cifs)):
             geo[os.path.basename(cif).replace('_DDEC6.cif', '')] = g
 
