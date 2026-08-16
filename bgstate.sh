@@ -55,6 +55,10 @@ else
     KIDS[$p]=$(pgrep -P "$p" 2>/dev/null | wc -l)
     g=$(ps -o args= -p $p | awk '{for(i=1;i<=NF;i++) if($i ~ /\.py$/){n=split($i,a,"/"); print a[n]; exit}}')
     [ -z "$g" ] && g=$(ps -o comm= -p $p | tr -d ' ')
+    # xtb 는 한 단계가 14초라 이 4초 사이에 끝나 버릴 수 있습니다. 그러면 ps 가
+    # 빈 문자열을 돌려주고 연관배열 첨자가 비어 "bad array subscript" 가 납니다.
+    # 사라진 프로세스는 무리 이름을 '(종료됨)' 으로 두고 넘어갑니다.
+    [ -z "$g" ] && g='(종료됨)'
     GRP[$p]=$g
     GSUM[$g]=$(( ${GSUM[$g]:-0} + ${PCT[$p]} ))
     GKIDS[$g]=$(( ${GKIDS[$g]:-0} + ${KIDS[$p]} ))
@@ -102,9 +106,18 @@ fi
 # ------------------------------------------------------- 2. RASPA 배치 진행도
 hdr "=== 2. 배치 진행도 ==="
 
-batch() {  # $1 = 폴더, $2 = 표시 이름
+batch() {  # $1 = 폴더, $2 = 표시 이름(폭 14 로 맞춰 넘길 것), $3 = 결과 파일(선택)
   local d="$P/$1" done=0 run=0 wait=0 names=""
-  [ -d "$d" ] || { printf "  %-16s %s\n" "$2" "폴더 없음(아직 시작 전이거나 정리됨)"; return; }
+  if [ ! -d "$d" ]; then
+    # "폴더 없음" 을 뭉뚱그리면 **끝나서 정리한 것**과 **아직 시작도 안 한 것**이
+    # 같아 보입니다. 결과 파일로 가릅니다 -- 그게 실제로 다른 상태입니다.
+    if [ -n "${3:-}" ] && [ -f "$P/$3" ]; then
+      printf "  %s ✅ 완료 후 정리됨 (결과 %s 보존)\n" "$2" "$3"
+    else
+      printf "  %s ⬜ 아직 시작 전\n" "$2"
+    fi
+    return
+  fi
   for r in "$d"/*/; do
     [ -d "$r" ] || continue
     local f
@@ -114,10 +127,21 @@ batch() {  # $1 = 폴더, $2 = 표시 이름
       done=$((done+1))
     else
       run=$((run+1))
-      local st el
-      st=$(stat -c %W "$r"); [ "$st" = "0" ] && st=$(stat -c %Y "$r/simulation.input" 2>/dev/null)
-      el=$(awk -v a="$NOW" -v b="$st" 'BEGIN{printf "%.1f", (a-b)/3600}')
-      names="$names $(basename "$r")(${el}h)"
+      local st el pid
+      # 폴더 생성 시각으로 경과를 재면, **재시작한 작업**이 원래 시작 시각부터
+      # 잰 값으로 나옵니다(08-16 정전 복구 때 22시간으로 찍혔는데 실제로는
+      # 1분이었습니다). 그 폴더를 실제로 쓰고 있는 프로세스가 있으면 그쪽 경과를
+      # 씁니다 -- 그것이 지금 이 계산이 얼마나 돌았는지입니다.
+      pid=$(for q in $(pgrep -x simulate 2>/dev/null); do
+              [ "$(readlink /proc/$q/cwd 2>/dev/null)" = "${r%/}" ] && echo "$q" && break
+            done)
+      if [ -n "$pid" ]; then
+        names="$names $(basename "$r")($(ps -o etime= -p "$pid" | tr -d ' '))"
+      else
+        st=$(stat -c %W "$r"); [ "$st" = "0" ] && st=$(stat -c %Y "$r/simulation.input" 2>/dev/null)
+        el=$(awk -v a="$NOW" -v b="$st" 'BEGIN{printf "%.1f", (a-b)/3600}')
+        names="$names $(basename "$r")(${el}h·프로세스없음)"
+      fi
     fi
   done
   local tot=$((done+run+wait))
@@ -130,11 +154,12 @@ batch() {  # $1 = 폴더, $2 = 표시 이름
 }
 
 #            표시폭 14 칸에 맞춰 손으로 채웁니다 (한글 1자 = 2칸)
-batch water_runs_v2  "수분 v2       "
-batch wc_runs_v2     "작업용량 v2   "
-batch runs_v2        "GCMC v2       "
-batch humid_wc_v2    "습윤 WC v2    "
-batch aryl_runs      "아릴 GCMC     "
+batch water_runs_v2  "수분 v2       " v2_water/water_results.json
+batch wc_runs_v2     "작업용량 v2   " v2_wc/working_capacity.json
+batch runs_v2        "GCMC v2       " results_v2.json
+batch runs_v3        "GCMC v3       " results_v3.json
+batch humid_wc_v2    "습윤 WC v2    " humid_working_capacity_v2.json
+batch aryl_runs      "아릴 GCMC     " aryl_results.json
 
 # ---------------------------------------------------------- 3. 결과 파일
 hdr "=== 3. 결과 파일 (이게 있어야 끝난 것) ==="

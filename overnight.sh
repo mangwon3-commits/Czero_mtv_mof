@@ -122,22 +122,23 @@ commit "Relax all thirty, and let the criteria say so one structure at a time" \
 echo "- v3 이완 $n_ok/$n_all 통과 — Part 0-D 7-2 와 SCHEDULE.md 갱신 필요" >> "$NOTION"
 
 # ---------------------------------------------------------------- C
-mark "C: 수분 v2 마지막 1건 대기"
-say "=== C. 수분 v2 ==="
-wait_gone "run_water_v2.py" "수분 경쟁 v2" $((10*3600))
-if [ -f "$P/v2_water/water_results.json" ]; then
-  say "  water_results.json 확인"
-  {
-    echo "수분 경쟁 v2 20종이 끝났습니다(RH 0/25/50/90 x saIm 0~100%)."
-    echo "가장 비싼 rh90_saIm100 이 20시간을 넘겼습니다 -- 작업 비용이 조합에 따라"
-    echo "13배까지 벌어집니다. v3 큐는 비싼 것부터 넣어야 합니다(LPT)."
-  } > "$W/_ovn_body.txt"
-  commit "Water competition v2, all twenty" "$W/_ovn_body.txt" \
-    21_ZIF69_MTV/v2_water
-  echo "- 수분 경쟁 v2 20/20 완료 — 노션 수분 절 갱신 필요" >> "$NOTION"
+# [2026-08-16 재설계] 여기서 수분 v2 를 **기다리지 않습니다.**
+#
+#   원래는 wait_gone 으로 막아 두었습니다. 그런데 컴퓨터가 꺼지면서 마지막 1건
+#   (rh90_saIm100)이 통째로 날아갔고, 처음부터 돌리면 22~26시간이 걸립니다.
+#   v3 GCMC 는 수분 v2 에 **아무것도 의존하지 않습니다** -- 별개의 산출물입니다.
+#   묶어 두면 v3 가 하루를 서서 기다립니다. 풀어 놓고 병렬로 갑니다.
+#
+#   수확은 맨 끝(H)에서 합니다. 그때까지 끝나 있으면 커밋하고, 아니면 다음 사람이
+#   이어받습니다 -- run_water.py 는 작업 단위 이어받기가 있어서 완주분을 캐시로
+#   회수합니다(2026-08-06 에 절전으로 같은 일을 겪고 넣은 장치).
+mark "C: 수분 v2 는 병렬로 두고 진행"
+say "=== C. 수분 v2 — 기다리지 않고 병렬 진행 ==="
+if pgrep -f run_water_v2.py > /dev/null 2>&1; then
+  say "  수분 v2 가 돌고 있습니다. 끝에서 수확합니다."
 else
-  say "  !! water_results.json 이 없습니다. 계속은 하되 노션에 적어 둡니다."
-  echo "- ⚠️ 수분 v2 프로세스는 끝났는데 결과 JSON 이 없음 — 확인 필요" >> "$NOTION"
+  say "  !! 수분 v2 가 돌고 있지 않습니다. 노션에 적어 둡니다."
+  echo "- ⚠️ 수분 v2 미가동 — 재기동 필요" >> "$NOTION"
 fi
 
 # ---------------------------------------------------------------- D
@@ -209,6 +210,24 @@ say "  GCMC v3 성공 $n_res 종"
 commit "The same protocol on a better geometry" "$W/_ovn_body.txt" \
   21_ZIF69_MTV/results_v3.json 21_ZIF69_MTV/results_v3_smoke.json
 echo "- **v3 GCMC $n_res 종 완료** — v2 대비 Q_st/선택도 변화를 노션 본문에 반영 필요" >> "$NOTION"
+
+# ---------------------------------------------------------------- H
+mark "H: 수분 v2 수확 (끝나 있으면)"
+say "=== H. 수분 v2 수확 ==="
+if [ -f "$P/v2_water/water_results.json" ]; then
+  {
+    echo "수분 경쟁 v2 20종(RH 0/25/50/90 x saIm 0~100%)."
+    echo
+    echo "작업 비용이 조합에 따라 13배까지 벌어집니다 -- rh00_base 1.5시간,"
+    echo "rh90_saIm075 20.2시간. 평균 처리율로 잡은 일정이 꼬리에서 어긋난 이유이고,"
+    echo "v3 큐는 비싼 것부터 넣어야 합니다(LPT, 표준 makespan 휴리스틱)."
+  } > "$W/_ovn_body.txt"
+  commit "Water competition v2, all twenty" "$W/_ovn_body.txt" 21_ZIF69_MTV/v2_water
+  echo "- 수분 경쟁 v2 20/20 완료 — 노션 수분 절 갱신 필요" >> "$NOTION"
+else
+  say "  아직입니다(마지막 1건이 22~26시간짜리). 다음 사람이 이어받습니다."
+  echo "- 수분 v2 진행 중 — 완주분은 캐시로 회수되므로 재기동만 하면 됩니다" >> "$NOTION"
+fi
 
 mark "완료 ($(date '+%m-%d %H:%M')) — v3 GCMC $n_res 종까지"
 say "================ 밤샘 파이프라인 끝 ================"
