@@ -29,7 +29,8 @@ P=/home/mangwon1/mof_project
 Z=$P/21_ZIF69_MTV
 R=/home/mangwon1/RASPA/simulations/share/raspa
 DEST=/mnt/d/MTV-ZIF_계산지원
-PDF=/mnt/c/Users/mangw/Downloads/계산지원_요청명세_MTV-ZIF.pdf
+PDFGEN=$P/tools/make_peer_request.py
+PY=/home/mangwon1/miniconda3/envs/czeromof/bin/python
 GO=0
 for a in "$@"; do [ "$a" = "--go" ] && GO=1; done
 
@@ -46,7 +47,7 @@ if [ "$NCIF" -lt 25 ]; then
 fi
 say "전하 CIF ${NCIF}개 확인"
 
-[ -f "$PDF" ] || { echo "!! 요청 명세 PDF 가 없습니다: $PDF"; exit 1; }
+[ -f "$PDFGEN" ] || { echo "!! 요청 명세 생성기가 없습니다: $PDFGEN"; exit 1; }
 
 # ---- 담을 목록 ------------------------------------------------------------
 echo
@@ -76,7 +77,15 @@ cp "$P/19_WaterCompetition/water.def" "$DEST/19_WaterCompetition/"
 for f in run_aryl_gcmc.py run_gcmc_v3.py run_water.py run_water_v3.py; do
   [ -f "$Z/$f" ] && cp "$Z/$f" "$DEST/21_ZIF69_MTV/"
 done
-cp "$PDF" "$DEST/"
+
+# 요청 명세는 **여기서 새로 뽑습니다.** 다운로드 폴더의 사본을 복사하지 않습니다 --
+# 그 파일은 뷰어로 열려 있으면 잠기고, 그러면 생성기가 `_2.pdf` 로 빠져서
+# 정작 꾸러미에는 **낡은 판**이 들어갑니다(실제로 그렇게 될 뻔했습니다).
+# 꾸러미 안을 직접 가리켜 잠긴 파일과 마주치지 않게 합니다. 구조 개수도
+# 이때 실제 폴더를 세므로 문서와 내용물이 어긋나지 않습니다.
+say "요청 명세 PDF 생성 중..."
+PEER_PDF_OUT="$DEST/계산지원_요청명세_MTV-ZIF.pdf" "$PY" "$PDFGEN" \
+  || { echo "!! PDF 생성 실패"; exit 1; }
 
 cat > "$DEST/README.md" <<'MD'
 # MTV-ZIF CO2 포집 — 계산 지원 꾸러미
