@@ -1,0 +1,32 @@
+{
+  "source": "relax_v3 + charged_v3 (GFN-FF 셀 고정 이완 이후)",
+  "conditions": {
+    "P_CO2_Pa": 15000.0,
+    "T_K": 298.0,
+    "cycles": 15000,
+    "ff": "UFF_MOF",
+    "charges": "PACMAN DDEC6",
+    "geometry": "GFN-FF relaxed, cell fixed"
+  },
+  "rows": [
+    {
+      "name": "base",
+      "group": null,
+      "frac": null,
+      "LCD": 8.89809,
+      "PLD": 5.157,
+      "AV": 1232.2,
+      "KH_CO2": 5.33337e-05,
+      "KH_CO2_err": 1.14459e-06,
+      "KH_N2": 2.65311e-06,
+      "KH_N2_err": 1.68783e-08,
+      "selectivity": 20.10233273403666,
+      "selectivity_err": 0.44997002774999806,
+      "Qst_CO2": 22.419619997035998,
+      "Qst_CO2_err": 0.1128659201,
+      "loading_015bar": 0.5889109478,
+      "loading_015bar_err": 0.0059482753,
+      "status": "ok"
+    }
+  ]
+}

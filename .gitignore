@@ -71,3 +71,18 @@ __pycache__/
 21_ZIF69_MTV/run_gcmc_v2.log
 21_ZIF69_MTV/charge_v2.log
 21_ZIF69_MTV/relax_v3/*/
+
+# v3 재계산 (이완 반영) — v2/density 와 같은 이유로 원시 실행 산출물만 제외
+21_ZIF69_MTV/runs_v3/
+21_ZIF69_MTV/density_v2/*/Output/
+21_ZIF69_MTV/density_v2/*/VTK/
+21_ZIF69_MTV/density_v2/*/Movies/
+21_ZIF69_MTV/density_v2/*/Restart/
+21_ZIF69_MTV/density_v2/*/CrashRestart/
+21_ZIF69_MTV/density_v2/*/*.cif
+21_ZIF69_MTV/density_v2/*/simulation.input
+# 이완 방법 선정 과정의 시험 디렉터리 (xtb 로그/궤적, 재생성 가능). 판정 결과는
+# relax_v3_judged.json 과 Part 0-D 7-2/7-3절에 이미 기록되어 있다.
+21_ZIF69_MTV/relax_test/
+21_ZIF69_MTV/relax_fixcell/
+21_ZIF69_MTV/chtest/
