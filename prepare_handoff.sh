@@ -74,9 +74,44 @@ cp "$Z"/charged_v3/*_DDEC6.cif "$DEST/cif/"
 cp -r "$R/forcefield/UFF_MOF" "$DEST/raspa_share/forcefield/"
 cp "$R/molecules/TraPPE/CO2.def" "$R/molecules/TraPPE/N2.def" "$DEST/raspa_share/molecules/"
 cp "$P/19_WaterCompetition/water.def" "$DEST/19_WaterCompetition/"
-for f in run_aryl_gcmc.py run_gcmc_v3.py run_water.py run_water_v3.py; do
-  [ -f "$Z/$f" ] && cp "$Z/$f" "$DEST/21_ZIF69_MTV/"
-done
+# [2026-08-18] 손으로 고른 목록을 쓰지 않습니다. **의존성 폐포**를 계산합니다.
+#
+#   앞선 판이 run_aryl_gcmc / run_gcmc_v3 / run_water / run_water_v3 넷만
+#   복사했습니다. 그런데
+#       run_wc_v3.py   -> import run_working_capacity    (빠짐)
+#       run_gcmc_v3.py -> import run_gcmc_v2             (빠짐)
+#   이라 상대 기기에서 ModuleNotFoundError 로 즉사했습니다. 랩탑 쪽이 형제
+#   러너를 보고 모듈을 **복원해서** 돌렸는데, 규약이 원본과 같다는 보장이 없어
+#   더 위험한 상황이 됐습니다.
+#
+#   목록을 손으로 관리하면 반드시 또 빠집니다. 씨앗에서 import 를 따라가
+#   프로젝트 안의 모듈을 전부 끌어옵니다.
+say "실행 스크립트 의존성 추적 중..."
+"$PY" - "$Z" "$DEST/21_ZIF69_MTV" <<'PYEOF'
+import ast, os, shutil, sys
+src, dst = sys.argv[1], sys.argv[2]
+seeds = ['run_wc_v3.py', 'run_gcmc_v3.py', 'run_water_v3.py']
+seen, queue = set(), [s for s in seeds if os.path.exists(os.path.join(src, s))]
+while queue:
+    f = queue.pop()
+    if f in seen:
+        continue
+    seen.add(f)
+    tree = ast.parse(open(os.path.join(src, f), encoding='utf-8').read())
+    names = []
+    for n in ast.walk(tree):
+        if isinstance(n, ast.Import):
+            names += [a.name for a in n.names]
+        elif isinstance(n, ast.ImportFrom) and n.level == 0 and n.module:
+            names.append(n.module)
+    for m in names:
+        cand = m.split('.')[0] + '.py'
+        if os.path.exists(os.path.join(src, cand)) and cand not in seen:
+            queue.append(cand)
+for f in sorted(seen):
+    shutil.copy(os.path.join(src, f), os.path.join(dst, f))
+print(f'  모듈 {len(seen)}개: {" ".join(sorted(seen))}')
+PYEOF
 
 # 요청 명세는 **여기서 새로 뽑습니다.** 다운로드 폴더의 사본을 복사하지 않습니다 --
 # 그 파일은 뷰어로 열려 있으면 잠기고, 그러면 생성기가 `_2.pdf` 로 빠져서
