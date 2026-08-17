@@ -108,7 +108,7 @@ def one(cif):
            'pass': all(ok.values()), 'criteria': ok, **num}
     print(f"  [{'통과' if row['pass'] else '실패'}] {name:16s} "
           f"{row['minutes']:5.1f}분 {calc.ncalls:4d}단계  "
-          f"C-H {num['CH_after']:.3f}  C-C폭 {num['CC_width_after']:.3f}  "
+          f"C-H {num['CH_after']:.3f}  C-C폭 {num['aromCC_width_after']:.3f}  "
           f"Zn-N {num['ZnN_min']:.3f}~{num['ZnN_max']:.3f}", flush=True)
     return row
 
