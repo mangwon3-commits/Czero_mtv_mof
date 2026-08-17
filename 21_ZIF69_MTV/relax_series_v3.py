@@ -122,8 +122,19 @@ def main():
           f'최소거리 >0.9 / 셀 고정\n', flush=True)
 
     t0 = time.time()
+    # [2026-08-17] pool.map 이 아니라 imap_unordered(chunksize=1) 입니다.
+    #
+    #   pool.map 은 작업을 미리 **덩어리로 잘라 배분**합니다. 30종 / 워커 3 이면
+    #   chunksize 가 3 이라 인덱스 27~29 가 한 덩어리로 묶입니다. 이어받기로
+    #   대부분을 건너뛰고 **느린 것 세 개만 남았을 때** 그 배분이 최악이 됩니다 --
+    #   saIm075 와 saIm100 이 같은 덩어리(워커 0)에 들어가 순차로 돌고, 워커 하나는
+    #   통째로 놉니다. 한 종에 2~3시간이므로 5시간이 될 일이 2.5시간으로 끝날 수
+    #   있었습니다.
+    #
+    #   chunksize=1 로 하나씩 나눠 주면 노는 워커가 바로 다음 것을 집습니다.
+    #   결과 순서가 섞이지만 이름으로 판정하므로 상관없습니다.
     with mp.Pool(3) as pool:
-        rows = pool.map(one, cifs)
+        rows = list(pool.imap_unordered(one, cifs, chunksize=1))
 
     bad = [r['name'] for r in rows if not r.get('skipped') and not r.get('pass')]
     json.dump({'fmax': FMAX, 'steps_cap': STEPS,
