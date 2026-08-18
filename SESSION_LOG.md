@@ -24,6 +24,49 @@
   `dbus-daemon` 까지 죽어 WSL 배포판이 통째로 먹통이 됐습니다.
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
+## 08-19 07:45 · desktop  [진행중] C: 회수 예약 (RASPA 유휴 대기)
+
+하는 일: `cleanup_for_compact.sh` 를 **대기 모드**로 띄웠습니다. RASPA(`simulate`)
+  가 0 이 되는 순간(지금 도는 saIm025 습윤 WC 3작업이 끝나는 시점)을 잡아
+  수확이 끝난 실행 폴더를 지웁니다. 사용자가 외출 중이라 사람이 붙어 있을 수
+  없어서, 관문 검사가 있는 기존 스크립트를 그대로 씁니다.
+
+건드리는 파일: `cleanup_for_compact.sh`(TARGETS 3줄 추가), `.gitignore`,
+  `~/.claude_work/{cleanup_for_compact.log,pending_cleanup.state}`
+
+쓰는 코어: 0 (대기 루프는 5분마다 pgrep 한 번)
+
+지울 것 (dry-run 으로 확인함, 3.3 GB):
+
+    runs_v3              2420 MB   관문 results_v3.json (16496 B) 확인
+    humid_wc_runs_v3      882 MB   관문 v3_humid_wc/humid_working_capacity.json 확인
+    humid_wc_runs_v3ext   215 MB   관문 아직 없음 -> 지금은 보존. 배치가 끝나
+                                   ..._ext.json 이 나온 뒤에야 대상이 됩니다
+
+**보존**: density_v2(VTK 원본), structures_v2, charged_v2/v3, 결과 JSON 전부,
+  relax_v3 의 CIF.
+
+### ⚠️ 이것만으로는 C: 여유가 늘지 않습니다
+
+C: 여유 **1.9 GB**, vhdx **38.0 GB**, WSL 안 사용량 32 GB. 안에서 지워도
+vhdx 는 스스로 줄지 않으므로 C: 는 1 바이트도 안 돌아옵니다. 실제 회수는
+**밖에서** 해야 합니다.
+
+    wsl --shutdown
+    wsl --manage Ubuntu --set-sparse true
+    wsl -d Ubuntu -e true
+
+회수 예상은 vhdx 슬랙만큼인 **4~6 GB** 입니다(38.0 − 32). C: 는 231 GB 중
+229 GB 가 차 있으므로 vhdx 는 주범이 아니고, 이 작업은 응급 처치입니다.
+
+**그래도 안쪽 정리가 의미 있는 이유**: 3.3 GB 를 비우면 vhdx 안에 슬랙이
+9 GB 대로 늘어 **남은 창(08-21) 동안 vhdx 가 더 커질 일이 없습니다.** C: 가
+마르는 사고(= ext4 손상)를 막는 것은 이쪽입니다.
+
+다음: 배치 완주 후 정리 결과는 `~/.claude_work/pending_cleanup.state` 에
+  남습니다. 바깥 명령 세 줄은 사람이 실행해야 합니다(윈도우 쪽 쓰기·실행이
+  이 세션 권한 밖입니다).
+
 ## 08-19 07:30 · desktop  [완료] 랩탑 60시간 배정 · MOSAEC 세팅 · 노션 Part 7
 
 ### 습윤 작업 용량 v3 가 끝났습니다 (06:47, auto68 S1)
