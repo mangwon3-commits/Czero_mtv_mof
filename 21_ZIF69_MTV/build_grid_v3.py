@@ -72,9 +72,16 @@ SITE_MAP = os.path.join(LIGLIB, "site_map_zif69_bicyclic.json")
 INDEX = os.path.join(HERE, "rebuild_index.json")
 
 # (태그, 라이브러리 키, 표기, 치환율, 기대 자리수)
+#
+# 앞의 둘이 본 목표입니다. 뒤의 둘은 **대기조**입니다 — 62.5% 가 애매하게
+# 나왔을 때(흡착은 넘는데 안정성이 걸리거나 그 반대) 절벽 위치를 좁히는 데
+# 씁니다. 만들어 두는 값은 몇 초이고, 사람이 없는 창에서 구조를 만들지 않기로
+# 한 이상 **지금 만들어 두지 않으면 그때는 못 만듭니다.**
 GRID = [
-    ("saIm0625", "saIm_aryl", "-SO3H", 0.625, 15),
-    ("saIm0875", "saIm_aryl", "-SO3H", 0.875, 21),
+    ("saIm0625", "saIm_aryl", "-SO3H", 15 / 24.0, 15),   # 62.5%  1순위
+    ("saIm0875", "saIm_aryl", "-SO3H", 21 / 24.0, 21),   # 87.5%  2순위
+    ("saIm0583", "saIm_aryl", "-SO3H", 14 / 24.0, 14),   # 58.3%  대기
+    ("saIm0667", "saIm_aryl", "-SO3H", 16 / 24.0, 16),   # 66.7%  대기
 ]
 
 
@@ -124,7 +131,9 @@ def main():
             continue
         print("\n=== %s (%s, %.1f%%, 자리 %d/%d) ==="
               % (tag, group, frac * 100, want, n_sites), flush=True)
-        comp = {"clIm_aryl": round(1 - frac, 6), full: frac}
+        # 1 - frac 을 반올림하지 않습니다. 14/24 같은 무한소수에서 반올림하면
+        # 빌더의 "조성 합 = 1" 검사(1e-6)에 3e-7 씩 밀려 들어갑니다.
+        comp = {"clIm_aryl": 1.0 - frac, full: frac}
         try:
             generate_mtv_cif_zif69_aryl(BASE_CIF, SITE_MAP, comp, out_cif, seed=0)
         except Exception as e:                                   # noqa: BLE001

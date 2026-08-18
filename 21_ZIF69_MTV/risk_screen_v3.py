@@ -78,7 +78,17 @@ rs.BASE_SRC = os.path.join(STAGE, "ZIF69_base.cif")
 #
 #   그래서 상수를 쓰지 않고 **그 기기의 실제 가용 메모리에서 계산**합니다.
 #   숫자를 문서에서 베끼면 기기가 바뀌는 순간 틀립니다.
-ZEO_GB = 3.2
+# [2026-08-19] 3.2 도 베낀 숫자였습니다. 랩탑이 실제로 쟀습니다.
+#
+#   08-18 에 이 상수를 3.2 로 두고 "기기에서 계산한다" 고 적었지만, 정작
+#   3.2 자체가 v1 구조에서 나온 옛 측정입니다. v3 는 이완으로 셀이 34%
+#   수축했고 슈퍼셀 원자 수가 늘어, 랩탑 실측이 **한 건에 약 9.5 GB** 였습니다
+#   (꾸러미의 zeo_peak.log). 3.2 를 믿으면 24 GB 기기에서 상한이 6 으로
+#   계산되고, 6 x 9.5 = 57 GB 를 요구해 08-18 랩탑 OOM 이 그대로 재현됩니다.
+#
+#   측정값을 쓰되, 다른 기기에서 또 달라질 수 있으므로 환경변수로 덮을 수
+#   있게 둡니다. **문서에서 베끼지 말고 그 기기에서 재세요.**
+ZEO_GB = float(os.environ.get("ZEO_GB_PER_JOB", "9.5"))
 MEM_FLOOR_GB = 4.0          # WSL 자체와 dbus 가 살아 있을 여유
 
 
@@ -145,7 +155,8 @@ def main():
     import risk_screen as rs
     print(f"  STRUCT   {rs.STRUCT}")
     print(f"  결과     {rs.RESULT}")
-    print(f"  워커     {rs.MAX_WORKERS}  (Zeo++ 3.2 GB/건)")
+    print(f"  워커     {rs.MAX_WORKERS}  (Zeo++ {ZEO_GB} GB/건, 가용 "
+          f"{_avail:.1f} GB)")
     assert rs.STRUCT.endswith("structures_v3_stage"), "v3 경로가 안 잡혔습니다"
     print(flush=True)
     return rs.main()
