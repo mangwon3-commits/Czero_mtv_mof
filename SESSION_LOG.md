@@ -58,6 +58,60 @@ v3 LAMMPS 안정성 연기시험을 검토한다.
 다음: `48H_COMPUTE_PLAN.md`의 0-12시간 관문을 따른다. 랩탑은 dry-WC JSON만
 검증·전달하고, 계산 중 Git 병합을 하지 않는다.
 
+## 08-18 15:30 · laptop  [진행중] 안정성 관문 v3 + 밀도맵 v3
+
+하는 일: `LAPTOP_10H_SESSION.md` 배정 수행. dry-WC 24작업은 09:11 에 완주해
+  인계 완료(`V3_WC_LAPTOP_VALIDATION.md`).
+
+건드리는 파일: `21_ZIF69_MTV/lmp_v3/`, `risk_results_v3.json`,
+  `structures_v3_stage/`, `density_v3/`, 각 로그
+
+쓰는 코어: 안정성 4(Zeo++ 3.2 GB/건) → 밀도맵 8. **겹치지 않게 순차 실행**합니다
+  (`LAPTOP_DENSITY_V3.md` 가 LAMMPS·Zeo++ 동시 실행을 금지).
+
+### ⚠️ risk_screen_v3.py 에 결함이 있습니다 — 재현 확인
+
+`risk_screen_v3.py` 는 `rs.STRUCT` 를 **`main()` 안에서** 바꿉니다. 그런데
+`risk_screen.py` 는 워커를 이렇게 만듭니다.
+
+    ProcessPoolExecutor(max_workers=..., max_tasks_per_child=1)
+
+**`max_tasks_per_child` 는 spawn 기동을 강제합니다**(fork 와는 배타적이라
+`mp_context=fork` 를 주면 `ValueError: max_tasks_per_child is incompatible with
+the 'fork' multiprocessing start method` 로 죽습니다). spawn 자식은 부모 메모리를
+물려받지 않고 `__main__` 을 `__mp_main__` 으로 다시 실행하는데, 그때는
+`__name__ != "__main__"` 이라 `main()` 이 돌지 않습니다. 결과:
+
+    부모: STRUCT = structures_v3_stage    <- 화면에는 이렇게 찍힙니다
+    자식: STRUCT = structures             <- run_one 이 실제로 읽는 값
+
+랩탑에는 `structures/` 가 없어서 FileNotFoundError 로 죽어 발각됐습니다.
+**그 폴더가 있는 데스크탑에서는 죽지 않고, v3 라고 이름 붙은 결과가 v1 구조에서
+나옵니다.** risk_screen_v3.py 의 docstring 이 막으려던 바로 그 사고가 다른
+경로로 재현된 것입니다. 화면 출력은 정상으로 보이므로 눈으로도 안 잡힙니다.
+
+우회로 `risk_screen_v3_run.py` 를 추가했습니다 — 같은 대입을 **모듈 최상위**에
+두어 spawn 자식이 파일을 다시 실행할 때도 적용되게 한 것뿐이고, 검증된
+`risk_screen.py` / `risk_screen_v3.py` 는 건드리지 않았습니다. 랩탑은 이걸로
+돌립니다. **원본을 직접 부르는 다른 기기는 여전히 영향을 받습니다** —
+`risk_screen_v3.py` 의 세 대입을 최상위로 올리면 해결됩니다.
+
+### 두 번째 결함: lammps_iface_patched.py 판이 갈려 있었습니다
+
+랩탑 사본은 08-04 판(1508 bytes, S_3+6 별칭만)이라
+`clean_degenerate_topology` 가 없어 술폰산 계열이 전부 LAMMPS 에서 죽습니다.
+`origin/master` 판(5076 bytes)으로 교체했습니다.
+
+### 08-18 15:34 꾸러미 (`MTV-ZIF_계산지원_Desktop`) 검증 결과: 통과
+
+60/60 해시 일치, 디렉터리 구조 보존, 이름과 내용 일치, `run_density_v3.py` 포함.
+
+그 직전에 받은 평면 꾸러미는 **폐기했습니다** — 이름과 내용이 서로 어긋나 있었고
+(`CLAUDE.md` 안에 run_working_capacity.py, `mbIm075_DDEC6.cif` 안에 PDF),
+`CHECKSUMS.txt` 조차 Makefile.am 이라 검증 자체가 불가능했습니다.
+
+다음: 안정성 연기 시험 통과 확인 → 밀도맵 v3 10작업(워커 8) → 안정성 v3 전체(워커 4).
+
 ## 08-18 00:48 · laptop (Windows 11 + WSL2, Ryzen 9 5900HS)  [진행중]
 
 하는 일: **작업 용량 v3** — `run_wc_v3.py`, 6종 × 4조건 = **24작업**.
