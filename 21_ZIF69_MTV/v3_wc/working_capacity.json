@@ -1,0 +1,238 @@
+{
+  "conditions": [
+    {
+      "label": "ads",
+      "pressure_Pa": 15000.0,
+      "temperature_K": 298.0
+    },
+    {
+      "label": "vsa10",
+      "pressure_Pa": 10000.0,
+      "temperature_K": 298.0
+    },
+    {
+      "label": "vsa05",
+      "pressure_Pa": 5000.0,
+      "temperature_K": 298.0
+    },
+    {
+      "label": "tsa",
+      "pressure_Pa": 15000.0,
+      "temperature_K": 373.0
+    }
+  ],
+  "cycles": 15000,
+  "note": "saIm100 은 수분 종료 판정으로 제외",
+  "rows": [
+    {
+      "name": "base",
+      "loadings": {
+        "ads": {
+          "mol_per_kg": 0.576311507,
+          "err": 0.0110582197
+        },
+        "vsa10": {
+          "mol_per_kg": 0.4180070255,
+          "err": 0.0022142829
+        },
+        "vsa05": {
+          "mol_per_kg": 0.2305655457,
+          "err": 0.0114218607
+        },
+        "tsa": {
+          "mol_per_kg": 0.0917912527,
+          "err": 0.0018436067
+        }
+      },
+      "working_capacity": {
+        "vsa10": {
+          "value": 0.1583,
+          "err": 0.0113
+        },
+        "vsa05": {
+          "value": 0.3457,
+          "err": 0.0159
+        },
+        "tsa": {
+          "value": 0.4845,
+          "err": 0.0112
+        }
+      }
+    },
+    {
+      "name": "saIm025",
+      "loadings": {
+        "ads": {
+          "mol_per_kg": 0.9612862473,
+          "err": 0.0177771231
+        },
+        "vsa10": {
+          "mol_per_kg": 0.7084351863,
+          "err": 0.0129478387
+        },
+        "vsa05": {
+          "mol_per_kg": 0.4343236755,
+          "err": 0.0087823124
+        },
+        "tsa": {
+          "mol_per_kg": 0.153875641,
+          "err": 0.0037170703
+        }
+      },
+      "working_capacity": {
+        "vsa10": {
+          "value": 0.2529,
+          "err": 0.022
+        },
+        "vsa05": {
+          "value": 0.527,
+          "err": 0.0198
+        },
+        "tsa": {
+          "value": 0.8074,
+          "err": 0.0182
+        }
+      }
+    },
+    {
+      "name": "saIm050",
+      "loadings": {
+        "ads": {
+          "mol_per_kg": 1.2302913394,
+          "err": 0.0136725355
+        },
+        "vsa10": {
+          "mol_per_kg": 0.9475087788,
+          "err": 0.0225229544
+        },
+        "vsa05": {
+          "mol_per_kg": 0.5620855768,
+          "err": 0.0206867819
+        },
+        "tsa": {
+          "mol_per_kg": 0.167791806,
+          "err": 0.005141583
+        }
+      },
+      "working_capacity": {
+        "vsa10": {
+          "value": 0.2828,
+          "err": 0.0263
+        },
+        "vsa05": {
+          "value": 0.6682,
+          "err": 0.0248
+        },
+        "tsa": {
+          "value": 1.0625,
+          "err": 0.0146
+        }
+      }
+    },
+    {
+      "name": "saIm075",
+      "loadings": {
+        "ads": {
+          "mol_per_kg": 1.3663673003,
+          "err": 0.0144901023
+        },
+        "vsa10": {
+          "mol_per_kg": 1.0760650999,
+          "err": 0.0263420542
+        },
+        "vsa05": {
+          "mol_per_kg": 0.6980737855,
+          "err": 0.0129013679
+        },
+        "tsa": {
+          "mol_per_kg": 0.2195974757,
+          "err": 0.0094035536
+        }
+      },
+      "working_capacity": {
+        "vsa10": {
+          "value": 0.2903,
+          "err": 0.0301
+        },
+        "vsa05": {
+          "value": 0.6683,
+          "err": 0.0194
+        },
+        "tsa": {
+          "value": 1.1468,
+          "err": 0.0173
+        }
+      }
+    },
+    {
+      "name": "mslm075",
+      "loadings": {
+        "ads": {
+          "mol_per_kg": 0.9836508231,
+          "err": 0.0233306516
+        },
+        "vsa10": {
+          "mol_per_kg": 0.762488227,
+          "err": 0.0174990111
+        },
+        "vsa05": {
+          "mol_per_kg": 0.4602610557,
+          "err": 0.01203511
+        },
+        "tsa": {
+          "mol_per_kg": 0.1507579972,
+          "err": 0.003101812
+        }
+      },
+      "working_capacity": {
+        "vsa10": {
+          "value": 0.2212,
+          "err": 0.0292
+        },
+        "vsa05": {
+          "value": 0.5234,
+          "err": 0.0263
+        },
+        "tsa": {
+          "value": 0.8329,
+          "err": 0.0235
+        }
+      }
+    },
+    {
+      "name": "saIm100",
+      "loadings": {
+        "ads": {
+          "mol_per_kg": 1.5460831059,
+          "err": 0.0163408345
+        },
+        "vsa10": {
+          "mol_per_kg": 1.2345722252,
+          "err": 0.0213002469
+        },
+        "vsa05": {
+          "mol_per_kg": 0.8191459195,
+          "err": 0.031665682
+        },
+        "tsa": {
+          "mol_per_kg": 0.248477129,
+          "err": 0.0066356353
+        }
+      },
+      "working_capacity": {
+        "vsa10": {
+          "value": 0.3115,
+          "err": 0.0268
+        },
+        "vsa05": {
+          "value": 0.7269,
+          "err": 0.0356
+        },
+        "tsa": {
+          "value": 1.2976,
+          "err": 0.0176
+        }
+      }
+    }
+  ]
+}

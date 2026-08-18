@@ -234,11 +234,37 @@ def main():
                      'LCD_change_pct': None if drop != drop else round(drop, 1),
                      'AV_per_cell': av_j, 'pass': not fails, 'fail': fails})
 
-    with open(os.path.join(HERE, 'risk_results.json'), 'w', encoding='utf-8') as f:
-        json.dump({'reference_LCD': ref, 'criteria': {
-            'PLD_min': CO2_KINETIC, 'LCD_drop_max_pct': LCD_DROP_LIMIT,
-            'min_dist_min': MIN_DIST_LIMIT, 'AV_floor_per_cell': AV_FLOOR},
-            'rows': rows}, f, indent=2, ensure_ascii=False)
+    payload = {'reference_LCD': ref, 'criteria': {
+        'PLD_min': CO2_KINETIC, 'LCD_drop_max_pct': LCD_DROP_LIMIT,
+        'min_dist_min': MIN_DIST_LIMIT, 'AV_floor_per_cell': AV_FLOOR},
+        'rows': rows}
+
+    # 전멸한 결과로 멀쩡한 결과를 덮지 않는다.
+    #
+    # 2026-08-10 17:29 에 이 스크립트가 lammps_mof 환경 없이 실행돼 16개 전부
+    # 'lammps-interface 실패'로 끝났는데, 그대로 risk_results.json 을 덮어썼다.
+    # 14 KB 의 기하 데이터가 3.8 KB 의 실패 목록으로 바뀌었고, 08-12 에 git 이
+    # 미커밋 변경으로 잡아 주지 않았으면 모르고 지나갈 뻔했다.
+    # 3-8(조용한 timeout)과 같은 종류의 사고다 — 실패가 결과처럼 보이는 것.
+    dst = os.path.join(HERE, 'risk_results.json')
+    if not any(r.get('pass') for r in rows) and os.path.exists(dst):
+        try:
+            prev = json.load(open(dst, encoding='utf-8')).get('rows') or []
+        except (ValueError, OSError):
+            prev = []
+        if any(r.get('pass') for r in prev):
+            alt = dst.replace('.json', '.allfail.json')
+            with open(alt, 'w', encoding='utf-8') as f:
+                json.dump(payload, f, indent=2, ensure_ascii=False)
+            print(f'\n[중단] {len(rows)}개 전부 실패했습니다. 기존 결과(통과 '
+                  f'{sum(1 for r in prev if r.get("pass"))}개)를 지키기 위해 '
+                  f'덮어쓰지 않았습니다.\n       실패 내역: {os.path.basename(alt)}\n'
+                  f'       환경을 확인하세요 — lammps_mof 의 PATH 가 빠지면 '
+                  f'전부 lammps-interface 실패로 끝납니다.')
+            return 1
+
+    with open(dst, 'w', encoding='utf-8') as f:
+        json.dump(payload, f, indent=2, ensure_ascii=False)
 
     ok = [r['name'] for r in rows if r.get('pass')]
     print(f'\n통과 {len(ok)}/{len(rows)} -> GCMC 대상')

@@ -1,0 +1,66 @@
+{
+  "assumptions": {
+    "Cp_framework_J_gK": 0.9,
+    "Cp_range": [
+      0.6,
+      1.2
+    ],
+    "T_ads_K": 298.0,
+    "T_des_K": 373.0,
+    "heat_recovery": 0.0,
+    "recovery": 0.5,
+    "recovery_range": [
+      0.3,
+      0.9
+    ],
+    "dH_vap_kJ_mol": 44.0,
+    "p_co2_bar": 0.15,
+    "p_h2o_bar": 0.028521
+  },
+  "vacuum_work_kJ_mol_lower_bound": 2.722,
+  "drying_kJ_mol": 16.732,
+  "rows": [
+    {
+      "name": "base",
+      "Q_st": 21.08,
+      "wc": {
+        "dry_tsa": 0.5791,
+        "dry_vsa": 0.4318,
+        "wet_tsa": 0.5656,
+        "wet_vsa": 0.4254
+      },
+      "wet_tsa_kJ_per_mol": 140.42,
+      "dry_tsa_kJ_per_mol": 154.37,
+      "wet_vsa_kJ_per_mol": 23.8,
+      "dry_vsa_kJ_per_mol": 40.53
+    },
+    {
+      "name": "saIm050",
+      "Q_st": 25.17,
+      "wc": {
+        "dry_tsa": 1.2455,
+        "dry_vsa": 0.8702,
+        "wet_tsa": 0.9099,
+        "wet_vsa": 0.6528
+      },
+      "wet_tsa_kJ_per_mol": 99.35,
+      "dry_tsa_kJ_per_mol": 96.1,
+      "wet_vsa_kJ_per_mol": 27.89,
+      "dry_vsa_kJ_per_mol": 44.62
+    },
+    {
+      "name": "saIm075",
+      "Q_st": 26.63,
+      "wc": {
+        "dry_tsa": 1.4944,
+        "dry_vsa": 0.9796,
+        "wet_tsa": 0.9133,
+        "wet_vsa": 0.6701
+      },
+      "wet_tsa_kJ_per_mol": 100.54,
+      "dry_tsa_kJ_per_mol": 88.53,
+      "wet_vsa_kJ_per_mol": 29.35,
+      "dry_vsa_kJ_per_mol": 46.08
+    }
+  ]
+}

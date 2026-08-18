@@ -2,6 +2,18 @@
 07_Bracketed_MTV/widom_runs/
 10_DensityMap/*/Output/
 10_DensityMap/*/VTK/
+10_DensityMap/*/Movies/
+10_DensityMap/*/Restart/
+# 1세대 스크리닝의 RASPA 실행 디렉터리. 최종 수치는 각 디렉터리 *.json 에 있다.
+02_HTS_Master_Results/*/Movies/
+02_HTS_Master_Results/*/Output/
+02_HTS_Master_Results/*/Restart/
+02_HTS_Master_Results/*/VTK/
+03_RASPA_CO2/*/Movies/
+03_RASPA_CO2/*/Output/
+03_RASPA_CO2/*/Restart/
+03_RASPA_CO2/*/VTK/
+05_MTV_Ligand_Library/raspa_*_test/
 09_Deformation/*.data
 09_Deformation/min_*.cif
 *.res
@@ -14,12 +26,76 @@
 
 # 2세대 디렉터리의 중간 산출물 (재생성 가능)
 17_NestEffect/runs/
-17_NestEffect/charged/
+# 17_NestEffect/charged/ 는 더 이상 제외하지 않는다.
+# 다른 중간 산출물과 달리 전하 CIF 는 재계산 비용이 크고(PACMAN + torch),
+# 특히 17번은 pmcharge 를 호출하는 스크립트가 저장소에 없어 재생성 자체가 불가능하다.
+# (pmcharge 호출은 13_PACMAN=07계열, 18_PoreNarrowing=18계열 둘뿐)
+# 실제로 이관 때 아카이브·git 양쪽에서 빠져 랩탑에서 따로 받아와야 했다.
 18_PoreNarrowing/runs/
 18_PoreNarrowing/lmp/
 19_WaterCompetition/runs/
 19_WaterCompetition/smoke/
+21_ZIF69_MTV/runs/
+21_ZIF69_MTV/aryl_runs/
+21_ZIF69_MTV/water_runs/
+21_ZIF69_MTV/lmp/
+21_ZIF69_MTV/lmp_aryl/
+21_ZIF69_MTV/zeo/
+# 밀도맵 실행 디렉터리는 351 MB 다(원시 격자 10작업분). 재계산으로 복원되므로 제외.
+# **단 diff_vtk/ 는 예외로 포함한다** — 10_DensityMap 과 같은 이유로, ParaView 로
+# 여는 산출물 자체이고 정전기 차분이라는 결론의 근거다. 25 MB 로 감당 가능하다.
+21_ZIF69_MTV/density/*/Output/
+21_ZIF69_MTV/density/*/VTK/
+21_ZIF69_MTV/density/*/Movies/
+21_ZIF69_MTV/density/*/Restart/
+21_ZIF69_MTV/density/*/CrashRestart/
+21_ZIF69_MTV/density/*/*.cif
+21_ZIF69_MTV/density/*/simulation.input
+# 21_ZIF69_MTV/charged/ 는 제외하지 않는다 — 17_NestEffect 에서 배운 것과 같은
+# 이유다. 전하 CIF 는 재계산 비용이 크므로 절차가 코드에 있어도 추적해 둔다.
 __pycache__/
 *.pyc
 00_Migration/*.tar.gz
 20_ParentScan/zeo/
+.resume_attempted
+
+# 윈도우가 다운로드 파일에 붙이는 출처 표시(ZoneTransfer). 내용 없음.
+*:Zone.Identifier
+
+# 21_ZIF69_MTV 실행 디렉터리 (재생성 가능. 최종 수치는 각 *.json 에 있다)
+21_ZIF69_MTV/wetmd/
+21_ZIF69_MTV/wc_runs/
+21_ZIF69_MTV/humid_wc_runs/
+21_ZIF69_MTV/humid_wc_runs_v3/
+21_ZIF69_MTV/humid_wc_v3.log
+21_ZIF69_MTV/wet_md.log
+21_ZIF69_MTV/runs_v2/
+21_ZIF69_MTV/run_gcmc_v2.log
+21_ZIF69_MTV/charge_v2.log
+21_ZIF69_MTV/relax_v3/*/
+
+# v3 재계산 (이완 반영) — v2/density 와 같은 이유로 원시 실행 산출물만 제외
+21_ZIF69_MTV/runs_v3/
+21_ZIF69_MTV/density_v2/*/Output/
+21_ZIF69_MTV/density_v2/*/VTK/
+21_ZIF69_MTV/density_v2/*/Movies/
+21_ZIF69_MTV/density_v2/*/Restart/
+21_ZIF69_MTV/density_v2/*/CrashRestart/
+21_ZIF69_MTV/density_v2/*/*.cif
+21_ZIF69_MTV/density_v2/*/simulation.input
+# 이완 방법 선정 과정의 시험 디렉터리 (xtb 로그/궤적, 재생성 가능). 판정 결과는
+# relax_v3_judged.json 과 Part 0-D 7-2/7-3절에 이미 기록되어 있다.
+21_ZIF69_MTV/relax_test/
+# relax_fixcell 은 스크래치가 큽니다(gfnff_topo 155 MB, xtboptlog.cif 59 MB).
+# 다만 **이완된 모체 CIF 는 v3 의 기준 구조**라 반드시 추적해야 합니다.
+# 이것이 없으면 구조 안정성 관문에서 base 가 대상에 못 들어가고, LCD 기준선이
+# null 이 되어 NaN 이 되고, 373행이 NaN 을 통과로 처리해 **30종이 전부 그 기준을
+# 무조건 통과**합니다(랩탑이 08-18 에 발견). 검사기가 조용히 꺼지는 경로입니다.
+21_ZIF69_MTV/relax_fixcell/*
+!21_ZIF69_MTV/relax_fixcell/base_relaxed_gfnff_fixcell.cif
+21_ZIF69_MTV/chtest/
+
+# MOSAEC 실행 산출물 — per-CIF JSON 은 수백 개라 추적하지 않습니다.
+# 요약(flags.json)과 통합표(v3_scores.csv)만 남깁니다.
+08_MOSAEC/results/*/
+!08_MOSAEC/results/*/flags.json

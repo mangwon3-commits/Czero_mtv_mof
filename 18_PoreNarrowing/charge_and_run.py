@@ -191,7 +191,7 @@ def main():
     print(f'\n작업 {len(jobs)}개 (Widom CO2/N2 + 0.15bar GCMC)\n', flush=True)
     os.makedirs(RUNS, exist_ok=True)
     res = {}
-    with ProcessPoolExecutor(max_workers=7) as ex:
+    with ProcessPoolExecutor(max_workers=12) as ex:
         for name, gas, mode, kh, u, load, st in ex.map(_star, jobs):
             res.setdefault(name, {})[(mode, gas)] = (kh, u, load)
             print(f'  [{st:>9}] {mode:<5} {gas:<3} {name}', flush=True)

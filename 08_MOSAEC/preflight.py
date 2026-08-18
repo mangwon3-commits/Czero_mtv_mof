@@ -11,6 +11,7 @@ MOSAEC은 금속의 산화수를 자동 할당해 "계산 준비된(computation-
     conda activate coremof_tools
     python ~/mof_project/08_MOSAEC/preflight.py
 """
+import glob
 import importlib
 import os
 import sys
@@ -76,8 +77,35 @@ def main():
         print('  주의: 평가판은 30일 한정이므로, 활성화 직후 검사 대상 구조를 한 번에')
         print('        돌려두는 편이 유리합니다 (run_mosaec.py가 폴더 단위 일괄 실행).')
 
+    # [대상 목록을 여기서도 보여 준다]
+    #   평가판 시계가 도는 순간 무엇을 돌릴 수 있는지 미리 알아야, 라이선스를
+    #   켠 뒤에 대상을 고르느라 시간을 쓰지 않습니다.
+    print()
+    print('-' * 72)
+    print('검사 대상 (우선순위 순 -- run_mosaec.py 의 TARGETS)')
+    print('-' * 72)
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import run_mosaec as R
+        total = 0
+        for label, rel, why in R.TARGETS:
+            folder = os.path.join(R.ROOT, rel)
+            n = len(glob.glob(os.path.join(folder, '*.cif')))
+            total += n
+            print(f'  {label:<16} {n:>4} CIF   {why}')
+        print(f'  {"합계":<16} {total:>4} CIF')
+        print()
+        print('  v3_charged 가 08-21 장표의 후보입니다. 이것부터 돌리세요:')
+        print('    python ~/mof_project/08_MOSAEC/run_mosaec.py --only v3_charged')
+    except Exception as e:                                   # noqa: BLE001
+        print(f'  (목록을 읽지 못했습니다: {type(e).__name__}: {e})')
+
     if ready:
         print('\n다음 단계: python ~/mof_project/08_MOSAEC/run_mosaec.py')
+    else:
+        print('\n라이선스 없이 지금 할 수 있는 것:')
+        print('  python ~/mof_project/08_MOSAEC/run_mosaec.py --dry-run   대상 점검')
+        print('  python ~/mof_project/08_MOSAEC/join_scores.py            빈 칸 표')
     return 0 if ready else 1
 
 
