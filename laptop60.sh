@@ -18,12 +18,16 @@
 # 관문을 못 넘으면 다음으로 가지 않고 멈춰 서서 이유를 남깁니다.
 # 절반 성공이 틀린 숫자 네 종보다 낫습니다.
 #
+# 먼저 점검만 (아무것도 시작하지 않습니다):
+#   bash ~/mof_project/laptop60.sh --check
 # 실행:
 #   setsid nohup bash ~/mof_project/laptop60.sh > /dev/null 2>&1 < /dev/null &
 # 확인:
 #   cat ~/.claude_work/laptop60.state ; tail -30 ~/.claude_work/laptop60.log
 
 set -u
+CHECK_ONLY=0
+[ "${1:-}" = "--check" ] && CHECK_ONLY=1
 P=$HOME/mof_project
 Z=$P/21_ZIF69_MTV
 W=$HOME/.claude_work
@@ -117,6 +121,16 @@ say "  가용 메모리 ${AVAIL} GB, 논리 코어 ${CORES}"
 # RASPA 워커는 코어에서, Zeo++ 워커는 메모리에서. 숫자를 문서에서 베끼지 않습니다.
 GW=$(( CORES / 2 )); [ "$GW" -lt 2 ] && GW=2; [ "$GW" -gt 6 ] && GW=6
 say "  GCMC 워커 $GW (RASPA 약 0.5 GB/건이라 코어가 병목)"
+
+NSIM=$(pgrep -x simulate | wc -l)
+say "  RASPA simulate $NSIM 건 가동 중"
+
+if [ "$CHECK_ONLY" -eq 1 ]; then
+  say "  --check 이므로 여기서 끝냅니다. 계산은 시작하지 않았습니다."
+  mark "점검만 통과 ($(date '+%m-%d %H:%M'))"
+  say "  이제 실행: setsid nohup bash $P/laptop60.sh > /dev/null 2>&1 < /dev/null &"
+  exit 0
+fi
 
 # ---------------------------------------------------------------- L1
 mark "L1: 이완 (GFN-FF, 격자 4종)"
