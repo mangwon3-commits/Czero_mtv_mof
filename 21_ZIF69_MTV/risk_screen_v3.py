@@ -40,6 +40,32 @@ PARENT = os.path.join(HERE, "relax_fixcell", "base_relaxed_gfnff_fixcell.cif")
 STAGE = os.path.join(HERE, "structures_v3_stage")
 JUDGED = os.path.join(HERE, "relax_v3_judged.json")
 
+# [2026-08-18 랩탑이 잡은 결함 -- 대입은 반드시 모듈 최상위에 있어야 한다]
+#
+#   원래 이 세 줄이 main() 안에 있었습니다. 그런데 risk_screen.py 는 워커를
+#   ProcessPoolExecutor(..., max_tasks_per_child=1) 로 만듭니다.
+#   **max_tasks_per_child 는 spawn 기동을 강제합니다**(fork 와 배타적이라
+#   mp_context=fork 를 주면 ValueError 로 죽습니다). spawn 자식은 부모 메모리를
+#   물려받지 않고 이 파일을 __mp_main__ 으로 다시 실행하는데, 그때는
+#   __name__ != "__main__" 이라 main() 이 돌지 않습니다. 결과가 이렇습니다.
+#
+#       부모: STRUCT = structures_v3_stage   <- 화면에는 이렇게 찍힘
+#       자식: STRUCT = structures            <- run_one 이 실제로 읽는 값
+#
+#   랩탑에는 structures/ 가 없어 FileNotFoundError 로 발각됐습니다.
+#   **그 폴더가 있는 데스크탑에서는 죽지 않고 v3 라는 이름으로 v1 결과가
+#   나옵니다.** 이 파일의 docstring 이 막으려던 바로 그 사고가 다른 경로로
+#   재현된 것이고, 화면 출력이 정상으로 보여 눈으로도 안 잡힙니다.
+#
+#   최상위에 두면 spawn 자식이 파일을 다시 실행할 때도 그대로 적용됩니다.
+sys.argv = ["risk_screen.py", "risk_v3_index.json", "v3"]
+sys.path.insert(0, HERE)
+import risk_screen as rs  # noqa: E402
+
+rs.STRUCT = STAGE
+rs.BASE_SRC = os.path.join(STAGE, "ZIF69_base.cif")
+rs.MAX_WORKERS = int(os.environ.get("RISK_WORKERS", "4"))
+
 
 def stage():
     os.makedirs(STAGE, exist_ok=True)
@@ -81,12 +107,7 @@ def main():
               open(idx, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     print(f"  대상 {len(ok)}종", flush=True)
 
-    sys.argv = ["risk_screen.py", "risk_v3_index.json", "v3"]
-    sys.path.insert(0, HERE)
     import risk_screen as rs
-    rs.STRUCT = STAGE
-    rs.BASE_SRC = os.path.join(STAGE, "ZIF69_base.cif")
-    rs.MAX_WORKERS = int(os.environ.get("RISK_WORKERS", "4"))
     print(f"  STRUCT   {rs.STRUCT}")
     print(f"  결과     {rs.RESULT}")
     print(f"  워커     {rs.MAX_WORKERS}  (Zeo++ 3.2 GB/건)")
