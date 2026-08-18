@@ -123,3 +123,23 @@ sha256sum ~/mof_export/*.tar.gz > ~/mof_export/SHA256
 바꾸지 않았다면 같은 명령을 다시 치면 됩니다. 설정을 바꿨다면 해당 실행
 폴더를 지우고 처음부터 -- 이어받기는 **무슨 설정으로 만든 출력인지 검사하지
 않습니다**(CLAUDE.md 3절).
+
+## H. 안정성 단계의 별도 전제 — LAMMPS
+
+밀도맵은 RASPA 만 있으면 되지만 **안정성은 다릅니다.**
+
+    lmp_serial            UFF4MOF 이완용. conda install -c conda-forge lammps
+    network (Zeo++)       기공 지표용. czeromof 환경에 있음
+    lammps_iface_patched  꾸러미에 동봉됨(18_PoreNarrowing 에서 자동으로 딸려옴)
+
+**황(-SO3H)이 있는 구조 때문에 S_3+6 패치가 필요합니다.** 표준 UFF4MOF 타이핑은
+6가 사면체 황을 잘못 잡아 이완이 깨집니다. 그래서 동봉한 래퍼를 씁니다 --
+직접 구현하지 마세요.
+
+먼저 확인하세요.
+
+    which lmp_serial && which network
+
+**둘 중 하나라도 없으면 안정성 단계를 건너뛰고 밀도맵만 하십시오.**
+LAMMPS 설치는 10시간 세션 안에서 감당할 일이 아니고, 밀도맵이 이번 세션의
+주 산출물입니다. 없다고 알려 주시면 안정성은 60시간 무인 운전으로 넘깁니다.
