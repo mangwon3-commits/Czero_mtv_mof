@@ -45,8 +45,8 @@ Already complete and preserved:
 | Machine | Work | Output that defines completion | Rule |
 |---|---|---|---|
 | Desktop | v3 humid working capacity: base/saIm050/saIm075/saIm100 x ads/TSA/VSA | `v3_humid_wc/humid_working_capacity.json` | Running with 7 RASPA workers; never start Zeo++ concurrently |
-| Laptop | v3 dry working capacity: base/saIm025/saIm050/saIm075/mslm075/saIm100 x four conditions | **Complete 24/24; received and SHA-256 verified** | Next allocation is `21_ZIF69_MTV/LAPTOP_48H_WATER.md` |
-| External helper, if started | v3 water competition: five saIm compositions x RH 0/25/50/90 | `v3_water/water_results.json` | Use the validated transfer package only; do not substitute three-site water |
+| Laptop | v3 density maps: five structures x charge ON/OFF | `density_v3/density_results.json` + retained VTK grids | 8 physical RASPA workers; `LAPTOP_DENSITY_V3.md` |
+| External helper | v3 water competition: five saIm compositions x RH 0/25/50/90 | `v3_water/water_results.json` | 16 physical RASPA workers; `EXTERNAL_WATER_V3.md` |
 
 The desktop must not duplicate laptop or helper work.  RASPA jobs are
 job-resumable: rerunning the same *unchanged* runner is safe; changing its
@@ -62,9 +62,10 @@ settings requires a new run directory.
 2. Laptop dry-WC was received, hash-verified, and archived as a raw result.
    Its interpretation correction is recorded in
    `21_ZIF69_MTV/V3_WC_LAPTOP_VALIDATION.md`.
-3. Obtain the external water-v3 JSON, if the helper accepted the job.  A
-   missing helper result is a scheduling event, not grounds to reuse v2 water
-   data in a v3 conclusion.
+3. External helper runs water-v3.  Laptop runs independent v3 density maps.
+   A missing helper result is a scheduling event, not grounds to reuse v2 water
+   data in a v3 conclusion.  Do not launch duplicate water jobs unless the
+   external run explicitly fails.
 4. After each accepted result: write a concise result note, make one focused
    Git commit, push `master`, and update Notion Part 3/Part 6 only with the
    matching-generation result.  Mark the source JSON and calculation version.
@@ -171,7 +172,8 @@ WC_V3_WORKERS=6 python run_wc_v3.py 2>&1 | tee -a wc_v3.log
 ```
 
 The dry-WC batch is now complete.  The active next instruction is
-`21_ZIF69_MTV/LAPTOP_48H_WATER.md`.
+`21_ZIF69_MTV/LAPTOP_DENSITY_V3.md`; water-v3 is assigned to the external
+16-core machine.
 
 ## 6. Mandatory read order for every Claude session
 

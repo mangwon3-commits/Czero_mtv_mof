@@ -10,7 +10,8 @@
 >
 > 랩탑 dry-WC 결과의 수용·문구 불일치 판정은
 > `21_ZIF69_MTV/V3_WC_LAPTOP_VALIDATION.md`, 다음 48시간의 랩탑 배정은
-> `21_ZIF69_MTV/LAPTOP_48H_WATER.md`에 있습니다.
+> `21_ZIF69_MTV/LAPTOP_DENSITY_V3.md`에 있습니다. 외부 16코어의 수분 경쟁
+> 배정은 `21_ZIF69_MTV/EXTERNAL_WATER_V3.md`에 있습니다.
 
 ## 0. 이 프로젝트가 반복해서 데인 것
 
