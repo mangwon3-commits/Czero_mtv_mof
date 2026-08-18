@@ -24,6 +24,55 @@
   `dbus-daemon` 까지 죽어 WSL 배포판이 통째로 먹통이 됐습니다.
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
+## 08-18 00:48 · laptop (Windows 11 + WSL2, Ryzen 9 5900HS)  [진행중]
+
+하는 일: **작업 용량 v3** — `run_wc_v3.py`, 6종 × 4조건 = **24작업**.
+  데스크탑의 임계 경로에서 떼어낸 배치입니다(`LAPTOP_QUICKSTART.md`).
+
+건드리는 파일: `21_ZIF69_MTV/wc_runs_v3/`, `v3_wc/working_capacity.json`,
+  `wc_v3.log`, `wc_v3_status.log`
+
+쓰는 코어: **6** (물리 8 중). **다른 기기입니다** — 저장소는 같지만 작업
+  디렉터리를 공유하지 않으므로 데스크탑과 코어 경합이 없습니다. 스로틀링을
+  60초 창으로 계측 중이며 성능비 110% 대로 여유가 있습니다(공칭 클럭 위).
+
+다음: 완주하면 `v3_wc/working_capacity.json` 을 전달합니다. 비교표는 앞의
+  다섯만 v2 와 나란히 놓고 saIm100 은 신규 항목으로 답니다. saIm100 행에는
+  "습윤 조건에서 여유가 가장 적은 조성"(RH90 유지율 58.5%, 물 2.7887 mol/kg)을
+  함께 적습니다.
+
+### 인계 과정에서 확인한 것
+
+- 꾸러미 `MTV-ZIF_계산지원` 에 `run_working_capacity.py` 와 `run_gcmc_v2.py` 가
+  빠져 있었습니다. `_fixed` 로 다시 받아 해결했습니다(해시 `1f3a9c73…` 일치).
+- 빠진 동안 복원판으로 잠시 돌렸다가 원본으로 교체하면서 **`wc_runs_v3/` 를
+  통째로 비웠습니다**(CLAUDE.md §3). 완료 작업 0건 시점이라 손실 없습니다.
+- 대조 결과: CIF 6종 SHA256 · `run_working_capacity.py` · `run_aryl_gcmc.py`
+  모두 원격과 **일치**. `run_wc_v3.py` 만 달랐는데 docstring 단일 헝크이고
+  `TARGETS`·`MAX_WORKERS`·경로 등 실행 코드는 동일합니다.
+- 힘장은 랩탑 설치본이 꾸러미와 바이트 단위로 같았습니다. `C_co2` ε 29.933 /
+  σ 2.745, `q_C` +0.6512 확인.
+
+### 랩탑 환경 함정 (다음 사람을 위해)
+
+- **`RASPA_DIR` 이 비대화형 셸에서 안 잡힙니다.** 우분투 `.bashrc` 는 비대화형
+  셸에서 조기 return 합니다. 게다가 conda 배포본 `share/raspa` 에는 `UFF_MOF` 가
+  **없어서** export 없이 띄우면 조용히 틀리는 게 아니라 즉시 실패합니다.
+- 한글이 든 경로(`~/MTV-ZIF_계산지원`)를 피해 `~/mof_project/21_ZIF69_MTV/` 에서
+  실행합니다.
+- CLAUDE.md §4 를 읽기 전에 §4 의 함정에 걸렸습니다 — `.data` **파일 개수**를
+  완료 건수로 세어 7/24 로 오보했습니다. RASPA 는 `.data` 를 시작할 때 만듭니다.
+  완료 판정은 `Average loading absolute [mol/kg framework]` 블록의 유무로 해야
+  합니다. 감시기를 그렇게 고쳤습니다.
+
+### 이 저장소에 아직 없는 랩탑 작업
+
+`21_LinkerDesign/` (`DESIGN_BRIEF.md`, `evidence.json`, `collect_evidence.py`) 이
+로컬 커밋 `30b811e` 에만 있고 원격에는 없습니다. 랩탑 계보(2커밋)와 원격
+계보(73커밋)가 `fec3c3a` 에서 갈라져 있어 이번에는 합치지 않았습니다 —
+계산이 도는 중에 `21_ZIF69_MTV/` 45개 파일이 체크아웃 충돌 대상이기 때문입니다.
+완주 후 정리 예정.
+
 ## 08-16 23:55 · 무인 v3 파이프라인  [진행중]
 
 하는 일: `overnight.sh` 가 v3 를 끝까지 잇습니다 — 이완 30종 완주 대기 → 판정 →
