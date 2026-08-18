@@ -94,3 +94,8 @@ __pycache__/
 21_ZIF69_MTV/relax_fixcell/*
 !21_ZIF69_MTV/relax_fixcell/base_relaxed_gfnff_fixcell.cif
 21_ZIF69_MTV/chtest/
+
+# MOSAEC 실행 산출물 — per-CIF JSON 은 수백 개라 추적하지 않습니다.
+# 요약(flags.json)과 통합표(v3_scores.csv)만 남깁니다.
+08_MOSAEC/results/*/
+!08_MOSAEC/results/*/flags.json
