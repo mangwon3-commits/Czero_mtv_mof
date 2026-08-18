@@ -24,6 +24,53 @@
   `dbus-daemon` 까지 죽어 WSL 배포판이 통째로 먹통이 됐습니다.
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
+## 08-19 00:05 · laptop  [완료] iPad 원격 경로 · [진행중] 안정성 관문 v3
+
+### iPad 접속 확인됨
+
+    ss:  100.107.56.81:2222  <-  100.125.137.15:49294   (iPad 의 Tailscale 주소)
+    sshd: Accepted publickey ... SHA256:3udQZ...  00:02:08
+
+절차는 `21_ZIF69_MTV/LAPTOP_REMOTE.md` 에 있습니다. 접속은 **2222** 입니다.
+
+    iPad --Tailscale--> 100.107.56.81:2222 --> 포워더 --> 127.0.0.1:22 --> sshd
+
+### ⚠️ 그 과정에서 SSH 가 30분간 인터넷에 노출됐습니다
+
+낡은 portproxy 규칙(`0.0.0.0:22 -> 127.0.0.1:22`, 자기 참조 고리)을 지우자
+mirrored 모드의 sshd 가 `0.0.0.0:22` 에 붙었고, 이 기기의 eth1 은 공인 IP 입니다.
+세 곳에서 무차별 대입이 들어왔습니다(`91.224.92.17`, `62.60.130.253`,
+`2.57.122.209` — root 비밀번호 시도 10회). `PasswordAuthentication` 이
+미지정(=기본 yes)이었고 `skyjun` 은 sudo 권한이 있어 실제 위험이었습니다.
+
+**다른 기기에도 해당하는 교훈 둘.**
+
+1. **방화벽 규칙으로는 못 막았습니다.** 22번을 여는 인바운드 허용 규칙이 처음부터
+   없었는데도 외부 연결이 들어왔습니다. mirrored 모드에서 Hyper-V 방화벽이
+   기대만큼 걸러 주지 않습니다. 노출 여부는 방화벽이 아니라 **소켓이 어디에
+   바인딩되는가**로 판단해야 합니다.
+
+2. **`sshd_config` 의 `ListenAddress` 는 무시됩니다.** 우분투는 `ssh.socket` 으로
+   소켓 활성화를 쓰므로 주소는 소켓 유닛이 정합니다.
+
+        sudo mkdir -p /etc/systemd/system/ssh.socket.d
+        printf '[Socket]\nListenStream=\nListenStream=127.0.0.1:22\n' \
+          | sudo tee /etc/systemd/system/ssh.socket.d/listen.conf
+        sudo systemctl daemon-reload && sudo systemctl restart ssh.socket
+
+현재: sshd 는 루프백 전용, 포워더는 Tailscale 주소 전용, 비밀번호 인증 차단.
+공인 IP 로는 22 도 2222 도 보이지 않습니다. 키 인증은 재확인했습니다.
+
+### 무인 운전 준비
+
+`cron` 15분 주기 `~/watchdog.sh` 하나가 러너 · SSH 포워더 · tmux · keepalive 를
+지킵니다. 생존 판정은 프로세스 이름 기준입니다 — PID 파일로 판정하다 러너가 두 개
+떠서 가용 메모리가 0 이 된 적이 있습니다(tmux 로 띄우면 PID 파일이 안 갱신됨).
+
+재부팅 대비로 시작 프로그램에 WSL 기동 스크립트를 넣었습니다. WSL 은 Windows
+부팅만으로는 뜨지 않아, 정전이나 업데이트 재부팅 시 그대로 멈춥니다.
+**한계: 로그온 시점에 돌므로 잠금 화면에 머무르면 뜨지 않습니다.**
+
 ## 08-18 23:00 · laptop  [진행중] 안정성 관문 v3 — 자원 재배분
 
 ### Zeo++ 메모리를 이 기기에서 실측했습니다: **RSS GB**
