@@ -94,7 +94,17 @@ def one(cif):
     dmin = float(d.min()) if len(d) else float('inf')
 
     ok, num = criteria(st0, st1, dmin, moved)
-    write(dst, atoms)
+    # [2026-08-19] 실패했으면 결과 CIF 를 쓰지 않습니다.
+    #   랩탑에 xtb 가 없어 0단계로 죽었는데, 여기서 원본 기하가 그대로
+    #   _relaxed.cif 로 나갔습니다. C-H 0.949 짜리가 "이완본" 이 된 것입니다.
+    #   그리고 위의 "있으면 건너뜀" 규칙과 맞물려 재기동해도 가짜가 고착되고,
+    #   laptop60.sh 의 L1 관문(결과 4종 세기)까지 그 가짜를 세어 통과했습니다.
+    #   실패가 결과처럼 보이는 그 유형입니다. 실패하면 아무것도 남기지 않습니다.
+    if err is None and calc.ncalls > 0:
+        write(dst, atoms)
+    else:
+        print(f"  [실패] {name:16s} 결과 CIF 를 쓰지 않습니다 "
+              f"— {err or '0단계에서 끝남'}", flush=True)
     # 궤적과 위상 찌꺼기는 남기지 않습니다. C: 여유가 5 GB 뿐입니다.
     for f in ('gfnff_topo', 'POSCAR', 'gradient', 'energy', 'charges', 'xtbrestart'):
         p = os.path.join(wd, f)
