@@ -64,7 +64,42 @@ import risk_screen as rs  # noqa: E402
 
 rs.STRUCT = STAGE
 rs.BASE_SRC = os.path.join(STAGE, "ZIF69_base.cif")
-rs.MAX_WORKERS = int(os.environ.get("RISK_WORKERS", "4"))
+
+# [2026-08-18 랩탑 OOM -- 4 는 이 기기의 숫자가 아니었다]
+#
+#   CLAUDE.md 와 이 프로젝트의 모든 문서가 Zeo++ 워커 상한을 4 로 적었습니다.
+#   그 4 는 **20 GB 를 쓰는 데스크탑에서** 측정한 값입니다(4 x 3.2 = 12.8 GB).
+#   그것을 랩탑 지시서에 그대로 옮겨 적었고, 랩탑이 OOM 으로 무너졌습니다.
+#
+#   WSL2 는 기본으로 **호스트 RAM 의 절반**만 씁니다. 16 GB 랩탑이면 WSL 은
+#   8 GB 이고, 거기에 4 x 3.2 = 12.8 GB 를 요구하면 반드시 죽습니다. 게다가
+#   OOM 이 dbus-daemon 을 같이 죽이면 배포판이 통째로 먹통이 되어, 밖에서
+#   wsl --shutdown 을 해야 복구됩니다(08-12 에 데스크탑에서 겪은 것과 동일).
+#
+#   그래서 상수를 쓰지 않고 **그 기기의 실제 가용 메모리에서 계산**합니다.
+#   숫자를 문서에서 베끼면 기기가 바뀌는 순간 틀립니다.
+ZEO_GB = 3.2
+MEM_FLOOR_GB = 4.0          # WSL 자체와 dbus 가 살아 있을 여유
+
+
+def _avail_gb():
+    try:
+        for line in open("/proc/meminfo"):
+            if line.startswith("MemAvailable:"):
+                return int(line.split()[1]) / (1024.0 * 1024.0)
+    except Exception:      # noqa: BLE001
+        pass
+    return 8.0
+
+
+_avail = _avail_gb()
+_cap = max(1, int((_avail - MEM_FLOOR_GB) // ZEO_GB))
+_asked = int(os.environ.get("RISK_WORKERS", "4"))
+rs.MAX_WORKERS = min(_asked, _cap)
+if rs.MAX_WORKERS < _asked:
+    print(f"  !! 워커를 {_asked} -> {rs.MAX_WORKERS} 로 낮춥니다. "
+          f"가용 메모리 {_avail:.1f} GB, Zeo++ {ZEO_GB} GB/건, "
+          f"여유 {MEM_FLOOR_GB} GB 확보.")
 
 
 def stage():
