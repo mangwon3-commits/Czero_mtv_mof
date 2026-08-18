@@ -1,0 +1,26 @@
+  [spawn 안전 실행기] 최상위에서 STRUCT 고정: /home/skyjun/mof_project/21_ZIF69_MTV/structures_v3_stage
+  ** 연기 시험: 1종만 돌립니다 **
+  staging 30종 -> /home/skyjun/mof_project/21_ZIF69_MTV/structures_v3_stage
+  대상 1종
+  STRUCT   /home/skyjun/mof_project/21_ZIF69_MTV/structures_v3_stage
+  결과     /home/skyjun/mof_project/21_ZIF69_MTV/risk_results_v3.json
+  워커     1  (Zeo++ 3.2 GB/건)
+
+대상: risk_v3_index.json -> 1종, 작업 /home/skyjun/mof_project/21_ZIF69_MTV/lmp_v3
+구조 1개 UFF4MOF 이완 + Zeo++
+
+    brbIm025: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] brbIm025
+기준 LCD 를 못 찾음(FileNotFoundError) — LCD 감소율 판정은 보류합니다
+
+==============================================================================================================================
+조성             PLD(전)     AV(전)   LCD(전)   LCD(후)    LCD감소%      최소거리    루프      EDiff  판정
+------------------------------------------------------------------------------------------------------------------------------
+brbIm025        5.032    1234.5    9.002    7.489       nan     1.079    12       1.62  통과 *덜수렴
+
+[OK] risk_results_v3.json
+
+주: PLD/AV 는 이완 **전**, LCD 감소·최소거리는 이완 **후** 값으로 판정했습니다 (MIGRATION.md 3-6).
