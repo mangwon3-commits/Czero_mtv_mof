@@ -93,7 +93,8 @@ say "실행 스크립트 의존성 추적 중..."
 "$PY" - "$Z" "$DEST/21_ZIF69_MTV" <<'PYEOF'
 import ast, os, shutil, sys
 src, dst = sys.argv[1], sys.argv[2]
-seeds = ['run_wc_v3.py', 'run_gcmc_v3.py', 'run_water_v3.py']
+seeds = ['run_wc_v3.py', 'run_gcmc_v3.py', 'run_water_v3.py',
+         'run_density_v3.py', 'run_humid_wc_v3.py']
 seen, queue = set(), [s for s in seeds if os.path.exists(os.path.join(src, s))]
 while queue:
     f = queue.pop()
