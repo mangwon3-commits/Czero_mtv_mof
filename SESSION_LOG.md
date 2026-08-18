@@ -24,6 +24,22 @@
   `dbus-daemon` 까지 죽어 WSL 배포판이 통째로 먹통이 됐습니다.
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
+## 08-19 02:00 · laptop  [완료] 안정성 관문 v3 (28/31 통과)
+
+무인 감시자가 기록했습니다.
+
+    ~/mof_export/zif69_v3_risk_laptop.tar.gz   34M
+    sha256 1c7eb88dceecdff4e1bdac41767e3d7c14762666dc315d9cfede78a70cba6fc3
+
+탈락·실패: `mslm075,saIm075,saIm100`
+
+기준: PLD > 3.3 · LCD 감소 < 20% · AV > 20 A^3 · 최소거리 > 0.7 A.
+기준선 CIF(`relax_fixcell/base_relaxed_gfnff_fixcell.cif`, 커밋 7f4dd40)를
+받아 두었으므로 이번에는 LCD 감소 판정이 실제로 작동했습니다.
+
+Zeo++ 는 이 기기 실측 9.5 GB/건입니다(문서 상수 3.2 GB 의 약 3배).
+WSL 24 GB 할당에 워커 2 로 돌렸습니다. 상세는 꾸러미의 zeo_peak.log.
+
 ## 08-19 00:05 · laptop  [완료] iPad 원격 경로 · [진행중] 안정성 관문 v3
 
 ### iPad 접속 확인됨
