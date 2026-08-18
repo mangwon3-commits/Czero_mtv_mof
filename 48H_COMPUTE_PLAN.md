@@ -45,7 +45,7 @@ Already complete and preserved:
 | Machine | Work | Output that defines completion | Rule |
 |---|---|---|---|
 | Desktop | v3 humid working capacity: base/saIm050/saIm075/saIm100 x ads/TSA/VSA | `v3_humid_wc/humid_working_capacity.json` | Running with 7 RASPA workers; never start Zeo++ concurrently |
-| Laptop | v3 dry working capacity: base/saIm025/saIm050/saIm075/mslm075/saIm100 x four conditions | `v3_wc/working_capacity.json` | Isolated machine; no pull/rebase/cleanup while jobs run |
+| Laptop | v3 dry working capacity: base/saIm025/saIm050/saIm075/mslm075/saIm100 x four conditions | **Complete 24/24; received and SHA-256 verified** | Next allocation is `21_ZIF69_MTV/LAPTOP_48H_WATER.md` |
 | External helper, if started | v3 water competition: five saIm compositions x RH 0/25/50/90 | `v3_water/water_results.json` | Use the validated transfer package only; do not substitute three-site water |
 
 The desktop must not duplicate laptop or helper work.  RASPA jobs are
@@ -59,8 +59,9 @@ settings requires a new run directory.
 1. Let desktop humid working capacity finish.  Do not change its runner while
    worker children exist.  Validate all 12 component outputs, neutral charge,
    and propagated working-capacity uncertainty before accepting JSON.
-2. Collect the laptop dry-WC result using the hand-off procedure in Section 5.
-   Validate provenance before copying it into the desktop repository.
+2. Laptop dry-WC was received, hash-verified, and archived as a raw result.
+   Its interpretation correction is recorded in
+   `21_ZIF69_MTV/V3_WC_LAPTOP_VALIDATION.md`.
 3. Obtain the external water-v3 JSON, if the helper accepted the job.  A
    missing helper result is a scheduling event, not grounds to reuse v2 water
    data in a v3 conclusion.
@@ -122,7 +123,7 @@ settings requires a new run directory.
 - Before changing a runner, record the old SHA256 and clear only the affected
   run directory after confirming there is no desired unharvested output.
 
-## 5. Laptop-session instructions (print this verbatim)
+## 5. Laptop-session instructions (superseded after dry-WC completion)
 
 The laptop must first let the existing v3 dry-WC batch finish.  It must **not**
 run `git pull`, `git rebase`, `git clean`, or delete `wc_runs_v3/` during work.
@@ -168,6 +169,9 @@ export RASPA_DIR=$HOME/RASPA/simulations
 export PATH=$HOME/miniconda3/envs/czeromof/bin:$PATH
 WC_V3_WORKERS=6 python run_wc_v3.py 2>&1 | tee -a wc_v3.log
 ```
+
+The dry-WC batch is now complete.  The active next instruction is
+`21_ZIF69_MTV/LAPTOP_48H_WATER.md`.
 
 ## 6. Mandatory read order for every Claude session
 
