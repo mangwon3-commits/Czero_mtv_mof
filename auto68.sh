@@ -36,12 +36,31 @@ halt() {
   exit 1
 }
 
+# [2026-08-19 07:50 — 이 가드가 엉뚱한 디스크를 보고 파이프라인을 세웠습니다]
+#
+#   06:47 에 S3 앞에서 "C: 여유 1938 MB" 로 중단됐습니다. 그런데 이 기기의
+#   WSL 루트는 /dev/sdd(별도 1 TB 디스크)이고 **계산은 전부 거기에 씁니다.**
+#   그때 /dev/sdd 여유는 925 GB 였습니다.
+#
+#       /mnt/c   9p 마운트, 231G 중 1.9G 남음   <- 가드가 본 곳
+#       /        /dev/sdd, 1007G 중 925G 남음   <- 계산이 쓰는 곳
+#
+#   C: 가 가득 찬 것은 사실이고 사람이 볼 일이지만, **그것 때문에 60시간
+#   무인 창을 통째로 세우는 것은 손해입니다.** 실패가 결과처럼 보이는 것만큼이나
+#   멀쩡한 것을 실패로 판정하는 것도 이 프로젝트가 반복한 실수입니다
+#   (검사기 오탐 3건).
+#
+#   이제 **작업 디렉터리가 실제로 얹힌 파일시스템**을 보고, /mnt/c 는
+#   경고만 남깁니다.
 disk_guard() {
-  local free
-  free=$(df -BM /mnt/c 2>/dev/null | awk 'NR==2{gsub("M","",$4); print $4}')
+  local free host
+  free=$(df -BM "$P" 2>/dev/null | awk 'NR==2{gsub("M","",$4); print $4}')
+  host=$(df -BM /mnt/c 2>/dev/null | awk 'NR==2{gsub("M","",$4); print $4}')
+  [ -n "$host" ] && [ "$host" -lt 5000 ] \
+    && say "  (참고) 윈도우 C: 여유 ${host} MB — 사람이 정리해야 합니다. 계산은 무관"
   [ -z "$free" ] && return 0
-  say "  C: 여유 ${free} MB"
-  [ "$free" -lt 2000 ] && halt "C: 여유 ${free} MB. 새 계산을 띄우지 않습니다."
+  say "  작업 디스크 여유 ${free} MB ($P)"
+  [ "$free" -lt 5000 ] && halt "작업 디스크 여유 ${free} MB. 새 계산을 띄우지 않습니다."
   return 0
 }
 
@@ -131,12 +150,28 @@ say "      목표대(30~40) 진입 지점을 짚으려면 그 사이가 필요�
 #
 #   대신 **사람이 미리 만들어 둔 격자 구조가 있으면** 그 위에서 검증된 러너로
 #   GCMC 만 돕니다. 없으면 조용히 건너뜁니다 -- 없는 숫자를 만들지 않습니다.
+# [2026-08-19 07:50 잠복 결함 수정 — 발동했다면 v3 전체를 격자라고 커밋했습니다]
+#
+#   아래는 charged_v3grid/ 를 세어 놓고 run_gcmc_v3.py 를 그냥 불렀는데,
+#   그 러너는 charged_v3 와 charged_v3.json 을 **하드코딩으로** 읽습니다
+#   (게다가 rg.CHARGED 가 charged_v3 로 끝나는지 assert 까지 합니다).
+#   그 폴더가 있었다면 **31종 전체를 다시 돌려 results_v3grid.json 이라는
+#   이름으로 커밋**했을 것입니다. 폴더가 없어 발동하지 않았을 뿐입니다.
+#
+#   격자는 랩탑이 charged_v3/ 안에서 처리하므로(구조를 structures_v2/ 에
+#   더하는 방식) 이 폴더는 끝까지 생기지 않습니다. 그래도 --only 로 태그를
+#   명시해 두어야 다음 사람이 같은 함정에 빠지지 않습니다.
 GRID="$Z/charged_v3grid"
 NG=$(ls "$GRID"/*_DDEC6.cif 2>/dev/null | wc -l)
+GRID_TAGS=$(ls "$GRID"/*_DDEC6.cif 2>/dev/null \
+            | xargs -n1 basename 2>/dev/null | sed 's/_DDEC6.cif//' | tr '\n' ' ')
 if [ "$NG" -ge 2 ]; then
-  say "  격자 구조 $NG 종 발견 -- 검증된 러너로 GCMC 만 돕니다"
+  say "  격자 구조 $NG 종 발견 ($GRID_TAGS) -- 검증된 러너로 GCMC 만 돕니다"
+  say "  !! 주의: run_gcmc_v3.py 는 charged_v3/ 를 읽습니다. 격자 구조가"
+  say "     charged_v3/ 에 없으면 아래는 아무것도 못 찾고 끝납니다."
   cd "$Z" || halt "폴더 없음"
-  if V3_WORKERS=7 "$CZ/python" run_gcmc_v3.py --out results_v3grid.json >> "$LOG" 2>&1; then
+  if V3_WORKERS=7 "$CZ/python" run_gcmc_v3.py --only $GRID_TAGS \
+       --out results_v3grid.json >> "$LOG" 2>&1; then
     echo "saIm075(31.42) 와 saIm100(34.01) 사이를 12.5% 간격으로 채웠습니다." > "$W/_a68b.txt"
     commit "Fill the gap where the target band opens" "$W/_a68b.txt" 21_ZIF69_MTV/results_v3grid.json
     echo "- 조성 격자 GCMC 완료" >> "$NOTION"
