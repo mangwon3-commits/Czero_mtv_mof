@@ -55,6 +55,9 @@ water_runs:water_results.json:1000
 wc_runs:working_capacity.json:1000
 humid_wc_runs:humid_working_capacity.json:1000
 runs:zif69_results.json:1000
+runs_v3:results_v3.json:5000
+humid_wc_runs_v3:v3_humid_wc/humid_working_capacity.json:1000
+humid_wc_runs_v3ext:v3_humid_wc/humid_working_capacity_ext.json:1000
 "
 
 cat > "$STATE" <<EOF
