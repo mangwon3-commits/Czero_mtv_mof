@@ -73,7 +73,10 @@ mkdir -p "$DEST"/{cif,raspa_share/forcefield,raspa_share/molecules,19_WaterCompe
 cp "$Z"/charged_v3/*_DDEC6.cif "$DEST/cif/"
 cp -r "$R/forcefield/UFF_MOF" "$DEST/raspa_share/forcefield/"
 cp "$R/molecules/TraPPE/CO2.def" "$R/molecules/TraPPE/N2.def" "$DEST/raspa_share/molecules/"
-cp "$P/19_WaterCompetition/water.def" "$DEST/19_WaterCompetition/"
+cp "/home/mangwon1/mof_project/19_WaterCompetition/water.def" "$DEST/19_WaterCompetition/"
+# 규약과 함정을 담은 문서. 다른 기기의 세션이 이것을 먼저 읽어야 합니다.
+cp "$P/CLAUDE.md" "$DEST/"
+cp "$P/LAPTOP_QUICKSTART.md" "$DEST/"
 # [2026-08-18] 손으로 고른 목록을 쓰지 않습니다. **의존성 폐포**를 계산합니다.
 #
 #   앞선 판이 run_aryl_gcmc / run_gcmc_v3 / run_water / run_water_v3 넷만
