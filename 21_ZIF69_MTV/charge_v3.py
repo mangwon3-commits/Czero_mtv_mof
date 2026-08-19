@@ -58,7 +58,6 @@ def main():
         return 1
 
     os.makedirs(CHARGED, exist_ok=True)
-    from PACMANCharge import pmcharge
 
     # 모체를 목록 맨 앞에 둡니다. 연기 시험이 이것 하나로 돌기 때문입니다.
     jobs = []
@@ -88,6 +87,8 @@ def main():
             print(f'  [구조없음] {src}', flush=True)
             fail.append(tag)
             continue
+        # PACMAN 이 없는 기기에서도 전부 [이미있음]이면 여기 도달하지 않는다.
+        from PACMANCharge import pmcharge
         # PACMAN 의 predict() 는 입력 CIF 를 덮어씁니다. 반드시 사본에서.
         work = os.path.join(CHARGED, tag + '.cif')
         shutil.copy(src, work)
