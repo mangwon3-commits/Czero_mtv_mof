@@ -73,6 +73,15 @@ IFACE = os.path.join(HERE, '..', '18_PoreNarrowing', 'lammps_iface_patched.py')
 NETWORK = shutil.which('network') or os.path.expanduser(
     '~/miniconda3/envs/czeromof/bin/network')
 
+# [2026-08-20] lmp_serial 도 같은 처리가 필요하다. 랩탑이 L4 진입 **전에**
+# 잡았다 -- 러너의 실제 PATH(/proc 확인)에 lammps_mof/bin 이 없어서, 그대로
+# 들어갔으면 LAMMPS 작업이 전부 FileNotFoundError 로 죽었다. 08-19 02:00 에
+# 성공했던 것은 그 세션이 conda 활성화 상태에서 띄워졌기 때문이고, 즉
+# **호출자의 셸 상태에 의존하고 있었다.** setsid nohup 으로 띄우면 그 상태가
+# 없다. NETWORK 와 같은 패턴으로 해석 시점을 코드 안으로 옮긴다.
+LMP = shutil.which('lmp_serial') or os.path.expanduser(
+    '~/miniconda3/envs/lammps_mof/bin/lmp_serial')
+
 CO2_KINETIC = 3.3
 PROBE_R = CO2_KINETIC / 2
 LCD_DROP_LIMIT = 20.0
@@ -253,7 +262,7 @@ def run_one(name):
         except Exception as e:
             print(f'    {name}: 토폴로지 정리 실패 {type(e).__name__}: {e}', flush=True)
     try:
-        subprocess.run(['lmp_serial', '-in', f'in.{name}'], cwd=d,
+        subprocess.run([LMP, '-in', f'in.{name}'], cwd=d,
                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
                        timeout=10800)
     except subprocess.TimeoutExpired:
