@@ -580,5 +580,71 @@
     "n_substituted": 16,
     "worst_vdw_margin": -0.3628,
     "note": "08-19 조성 격자. 태그 4자리 = 백분율 x 10"
+  },
+  {
+    "tag": "sa50nb50",
+    "sub": "nbIm_aryl+saIm_aryl",
+    "group": "v4mix",
+    "frac": {
+      "saIm_aryl": 0.5,
+      "nbIm_aryl": 0.5
+    },
+    "built": true,
+    "pass": true,
+    "n_atoms": 672,
+    "elements": {
+      "Zn": 24,
+      "N": 132,
+      "C": 240,
+      "H": 156,
+      "O": 108,
+      "S": 12
+    },
+    "seed": 2,
+    "note": "v4 델타-균형 혼합. V4_DESIGN_BRIEF.md G0 통과"
+  },
+  {
+    "tag": "sa25nb75",
+    "sub": "nbIm_aryl+saIm_aryl",
+    "group": "v4mix",
+    "frac": {
+      "saIm_aryl": 0.25,
+      "nbIm_aryl": 0.75
+    },
+    "built": true,
+    "pass": true,
+    "n_atoms": 660,
+    "elements": {
+      "Zn": 24,
+      "N": 138,
+      "C": 240,
+      "H": 150,
+      "O": 102,
+      "S": 6
+    },
+    "seed": 3,
+    "note": "v4 델타-균형 혼합. V4_DESIGN_BRIEF.md G0 통과"
+  },
+  {
+    "tag": "ms50nb50",
+    "sub": "mslm_aryl+nbIm_aryl",
+    "group": "v4mix",
+    "frac": {
+      "mslm_aryl": 0.5,
+      "nbIm_aryl": 0.5
+    },
+    "built": true,
+    "pass": true,
+    "n_atoms": 696,
+    "elements": {
+      "Zn": 24,
+      "N": 132,
+      "C": 252,
+      "H": 180,
+      "O": 96,
+      "S": 12
+    },
+    "seed": 2,
+    "note": "v4 델타-균형 혼합. V4_DESIGN_BRIEF.md G0 통과"
   }
 ]
