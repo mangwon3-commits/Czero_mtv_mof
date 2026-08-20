@@ -1,0 +1,79 @@
+{
+  "source": "relax_v3 + charged_v3 (GFN-FF 셀 고정 이완 이후)",
+  "conditions": {
+    "P_CO2_Pa": 15000.0,
+    "T_K": 298.0,
+    "cycles": 15000,
+    "ff": "UFF_MOF",
+    "charges": "PACMAN DDEC6",
+    "geometry": "GFN-FF relaxed, cell fixed"
+  },
+  "rows": [
+    {
+      "name": "ms50nb50",
+      "group": "v4mix",
+      "frac": {
+        "mslm_aryl": 0.5,
+        "nbIm_aryl": 0.5
+      },
+      "LCD": 8.8482,
+      "PLD": 4.01548,
+      "AV": 983.474,
+      "KH_CO2": 0.000117523,
+      "KH_CO2_err": 4.88643e-06,
+      "KH_N2": 2.38762e-06,
+      "KH_N2_err": 1.36718e-08,
+      "selectivity": 49.22181921746342,
+      "selectivity_err": 2.065886182497455,
+      "Qst_CO2": 28.449377110436,
+      "Qst_CO2_err": 0.1927208004,
+      "loading_015bar": 0.8113465832,
+      "loading_015bar_err": 0.025276373,
+      "status": "ok"
+    },
+    {
+      "name": "sa25nb75",
+      "group": "v4mix",
+      "frac": {
+        "saIm_aryl": 0.25,
+        "nbIm_aryl": 0.75
+      },
+      "LCD": 9.12436,
+      "PLD": 5.69054,
+      "AV": 1295.67,
+      "KH_CO2": 0.00013518,
+      "KH_CO2_err": 7.10338e-06,
+      "KH_N2": 2.37258e-06,
+      "KH_N2_err": 2.57867e-08,
+      "selectivity": 56.975950231393675,
+      "selectivity_err": 3.057317961437283,
+      "Qst_CO2": 29.575788753236,
+      "Qst_CO2_err": 0.3351962146,
+      "loading_015bar": 0.884595161,
+      "loading_015bar_err": 0.0206763601,
+      "status": "ok"
+    },
+    {
+      "name": "sa50nb50",
+      "group": "v4mix",
+      "frac": {
+        "saIm_aryl": 0.5,
+        "nbIm_aryl": 0.5
+      },
+      "LCD": 9.10137,
+      "PLD": 4.44808,
+      "AV": 1117.84,
+      "KH_CO2": 0.000192866,
+      "KH_CO2_err": 7.46868e-06,
+      "KH_N2": 2.54344e-06,
+      "KH_N2_err": 1.63037e-08,
+      "selectivity": 75.82879879218696,
+      "selectivity_err": 2.976405979681598,
+      "Qst_CO2": 30.356005385535997,
+      "Qst_CO2_err": 0.3530017207,
+      "loading_015bar": 1.1162808195,
+      "loading_015bar_err": 0.0184164313,
+      "status": "ok"
+    }
+  ]
+}
