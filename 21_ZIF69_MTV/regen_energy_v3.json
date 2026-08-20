@@ -1,0 +1,56 @@
+{
+  "generation": "v3",
+  "assumptions": "=== regen_energy.py 와 동일 (Cp 0.9, 회수율 0.5, 열회수 0) ===",
+  "vacuum_work_kJ_mol_lower_bound": 2.722,
+  "drying_kJ_mol": 16.732,
+  "rows": [
+    {
+      "name": "base",
+      "Q_st": 22.42,
+      "wc": {
+        "dry_tsa": 0.4845,
+        "dry_vsa": 0.3457,
+        "wet_tsa": 0.4692,
+        "wet_vsa": 0.3516
+      },
+      "wet_tsa_kJ_per_mol": 166.28,
+      "dry_tsa_kJ_per_mol": 178.47
+    },
+    {
+      "name": "saIm050",
+      "Q_st": 29.51,
+      "wc": {
+        "dry_tsa": 1.0625,
+        "dry_vsa": 0.6682,
+        "wet_tsa": 0.768,
+        "wet_vsa": 0.5574
+      },
+      "wet_tsa_kJ_per_mol": 117.4,
+      "dry_tsa_kJ_per_mol": 109.77
+    },
+    {
+      "name": "saIm075",
+      "Q_st": 31.42,
+      "wc": {
+        "dry_tsa": 1.1468,
+        "dry_vsa": 0.6683,
+        "wet_tsa": 0.8333,
+        "wet_vsa": 0.5804
+      },
+      "wet_tsa_kJ_per_mol": 112.42,
+      "dry_tsa_kJ_per_mol": 107.01
+    },
+    {
+      "name": "saIm100",
+      "Q_st": 34.01,
+      "wc": {
+        "dry_tsa": 1.2976,
+        "dry_vsa": 0.7269,
+        "wet_tsa": 0.6883,
+        "wet_vsa": 0.4978
+      },
+      "wet_tsa_kJ_per_mol": 132.08,
+      "dry_tsa_kJ_per_mol": 102.76
+    }
+  ]
+}
