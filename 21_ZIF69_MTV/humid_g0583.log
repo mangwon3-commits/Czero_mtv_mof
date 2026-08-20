@@ -1,0 +1,22 @@
+습윤 작업 용량 v3 — saIm0583 (경계 생존자 보강)
+  CHARGED  /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3
+  RUNS     /home/skyjun/mof_project/21_ZIF69_MTV/humid_wc_runs_v3g0583
+  RESULT   /home/skyjun/mof_project/21_ZIF69_MTV/v3_humid_wc/humid_working_capacity_g0583.json
+  TARGETS  ['saIm0583']
+  MAX_WORKERS 3
+
+습윤 작업 용량 — 물 분압 2852.1 Pa 고정, 작업 3개, 워커 3
+  ads  CO2  0.15 bar  298.0 K  -> RH  90.0%
+  tsa  CO2  0.15 bar  373.0 K  -> RH   2.8%
+  vsa  CO2  0.05 bar  298.0 K  -> RH  90.0%
+
+  [              ok] ads  saIm0583 CO2 1.0093  물 1.198
+  [              ok] tsa  saIm0583 CO2 0.1766  물 0.161
+  [              ok] vsa  saIm0583 CO2 0.4404  물 1.317
+
+====================================================================================================
+조성                    흡착 CO2            TSA 잔류            VSA 잔류       WC(TSA)       WC(VSA)
+----------------------------------------------------------------------------------------------------
+saIm0583       1.0093±0.0242     0.1766±0.0069     0.4404±0.0153 0.8328±0.0252 0.5689±0.0286
+
+[OK] humid_working_capacity_g0583.json
