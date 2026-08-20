@@ -9,6 +9,14 @@ fresh PACMAN charges for fixed-cell GFN-FF-relaxed structures.  Do not replace
 the supplied five-site `19_WaterCompetition/water.def` with a RASPA default
 three-site water file.
 
+> **Source-built RASPA note (2026-08-20):** the RASPA source tree ships **no**
+> `molecules/TraPPE/` folder, so the CO2/N2 definitions must be installed at
+> `$RASPA_DIR/share/raspa/molecules/TraPPE/{CO2,N2}.def` — files placed at
+> `molecules/` directly are never read. The 5-site `water.def` is *not*
+> installed by the `cp -r raspa_share/*` step at all: the runner copies
+> `19_WaterCompetition/water.def` into each run directory, which is why it
+> must stay at that relative path.
+
 ```bash
 cd ~/mof_project/21_ZIF69_MTV
 export RASPA_DIR=$HOME/RASPA/simulations

@@ -34,6 +34,14 @@ copy_common() {
            "$dest/21_ZIF69_MTV/charged_v3/"
     done
     cp -a "$RASPA_SHARE/forcefield/UFF_MOF" "$dest/raspa_share/forcefield/"
+    # [2026-08-20] 소스 빌드 RASPA 에는 molecules/TraPPE 가 아예 없습니다.
+    # conda 배포본만 가정하고 분자 정의를 빼면, 소스 빌드 기기는
+    # "Cannot open .../molecules/TraPPE/CO2.def" 로 즉시 죽습니다(지인 실측).
+    # 반드시 TraPPE/ 하위에 놓아야 읽힙니다 -- molecules/ 바로 밑은 안 읽힙니다.
+    mkdir -p "$dest/raspa_share/molecules/TraPPE"
+    for m in CO2.def N2.def; do
+        cp "$RASPA_SHARE/molecules/TraPPE/$m" "$dest/raspa_share/molecules/TraPPE/"
+    done
 }
 
 copy_common "$WATER"
