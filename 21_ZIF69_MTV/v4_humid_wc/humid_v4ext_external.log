@@ -1,0 +1,23 @@
+  CHARGED  /home/hwanhee/workspace/mtvzif/MTV-ZIF_계산지원/21_ZIF69_MTV/charged_v3
+  RUNS     /home/hwanhee/workspace/mtvzif/MTV-ZIF_계산지원/21_ZIF69_MTV/humid_wc_runs_v4ext
+  RESULT   /home/hwanhee/workspace/mtvzif/MTV-ZIF_계산지원/21_ZIF69_MTV/v4_humid_wc/humid_working_capacity_v4ext.json
+  TARGETS  ['sa25nb75', 'ms50nb50']
+습윤 작업 용량 — 물 분압 2852.1 Pa 고정, 작업 6개, 워커 6
+  ads  CO2  0.15 bar  298.0 K  -> RH  90.0%
+  tsa  CO2  0.15 bar  373.0 K  -> RH   2.8%
+  vsa  CO2  0.05 bar  298.0 K  -> RH  90.0%
+
+  [              ok] ads  sa25nb75 CO2 0.7337  물 0.525
+  [              ok] tsa  sa25nb75 CO2 0.1338  물 0.070
+  [              ok] vsa  sa25nb75 CO2 0.3060  물 0.565
+  [              ok] ads  ms50nb50 CO2 0.7497  물 0.547
+  [              ok] tsa  ms50nb50 CO2 0.1240  물 0.053
+  [              ok] vsa  ms50nb50 CO2 0.3222  물 0.584
+
+====================================================================================================
+조성                    흡착 CO2            TSA 잔류            VSA 잔류       WC(TSA)       WC(VSA)
+----------------------------------------------------------------------------------------------------
+sa25nb75       0.7337±0.0155     0.1338±0.0038     0.3060±0.0086 0.5999±0.0160 0.4277±0.0177
+ms50nb50       0.7497±0.0058     0.1240±0.0072     0.3222±0.0206 0.6257±0.0092 0.4275±0.0214
+
+[OK] humid_working_capacity_v4ext.json
