@@ -93,6 +93,7 @@ git show origin/<브랜치>:21_ZIF69_MTV/COMMS/<기기>.md   # 우편함 읽기
 | 데스크탑 (HKHOME, WSL2) | `COMMS/desktop.md` | `master` | 8 (19 GiB) | 상주 | 🟢 앙상블 이완 4/5 → 승자 조성 수분 4작업 대기 |
 | 4코어 클라우드 컨테이너 (**세션명 `MANGWON-desktop`**) | `COMMS/cloud4c.md` | `claude/essential-programs-install-ur7v6e` | 4 | **수명 약 55분 — 이 노선은 종료** | 🔴 08-22 04:51 재부팅, 4작업 전멸. 작업 회수됨 |
 | 랩탑 (laptop-mof) | `COMMS/laptop.md` | `laptop-20260822` | **8** (23 GiB) | 상주 · AC 절전 0 · 덮개 개방 · 업데이트 일시중지 | 🟢 08-22 14:41 수분 12작업 기동 |
+| **Junseok (데스크탑)** | `COMMS/junseok.md` | `junseok-20260822` | **6** (WSL 15 GiB) | 상주 · 배터리 없음 · AC 절전 0 · **7일 가동 예정** · ⚠️ 업데이트 미중지(재부팅 창 02~08시) | 🟢 08-22 수분 `saIm0875` 4작업 |
 | 외부 16코어 | `COMMS/external16.md` | — (tar.gz 반환) | 16 | 지원 | ⚪ 완료 |
 
 **"임시"의 의미**: 컨테이너가 회수되면 작업 폴더가 통째로 사라집니다.

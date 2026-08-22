@@ -172,7 +172,12 @@ cp -r ~/mof_project/00_Migration/raspa_share/raspa/* "$RASPA_DIR/share/raspa/"
 > `molecules/TraPPE/` 폴더가 **아예 없습니다.** CO₂/N₂ 정의가
 > `$RASPA_DIR/share/raspa/molecules/TraPPE/{CO2,N2}.def` 에 있어야 하고,
 > `molecules/` 바로 아래 두면 **절대 읽히지 않습니다.**
-> conda의 raspa2를 쓰면 이 문제는 없습니다.
+>
+> **[2026-08-22 정정] "conda 를 쓰면 이 문제는 없습니다" 는 틀렸습니다.**
+> conda-forge `raspa2-2.0.50-h678ec8c_0` 의 `share/raspa` 에도
+> `molecules/TraPPE` 와 `forcefield/UFF_MOF` 가 **없습니다**
+> (`molecules/ExampleDefinitions` 만 있습니다). Junseok 기기에서 실측
+> 확인됐습니다. **빌드 종류와 무관하게 위 `cp -r` 단계는 반드시 필요합니다.**
 
 ## 3-4. 설치 검증 — 반드시 통과시키고 넘어가세요
 
