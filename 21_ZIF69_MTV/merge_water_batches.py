@@ -141,24 +141,52 @@ def main():
         print('\n등록된 문턱: <2.0σ 일관 / 2.0~3.0σ 조건부 / >=3.0σ 불일치')
         print('(COMMS/desktop.md 13:55 항목. 수를 보고 고치지 않습니다.)')
 
-    print(f'\n{"조성":<12} {"RH0 CO2":>18} {"RH90 CO2":>18} {"유지율":>9} {"유의도":>8}  판정')
-    print('-' * 82)
+    print(f'\n{"조성":<12} {"출처":<14} {"RH0 CO2":>18} {"RH90 CO2":>18} '
+          f'{"유지율":>9} {"유의도":>8}  판정')
+    print('-' * 98)
     rc = 0
     for n in names:
         def pick(rh):
+            """쌍이면 알파벳 첫 기기. 어느 기기였는지와 미해소 여부를 함께 돌려준다.
+
+            [2026-08-22] 원래는 값만 돌려주고 출처를 안 적었다. 그러면 표만 읽는
+            사람은 그것이 어느 기기 값인지도, 쌍이 아직 안 맞은 상태인지도
+            알 수 없다. 더 나쁜 것은 쌍이 조건부/불일치인데도 관문 판정이
+            찍혀 나온다는 것 -- 화해되지 않은 수로 채운 칸이 완성된 칸처럼
+            보인다. 이 저장소가 반복해서 데인 유형이라 판정을 보류로 바꾼다.
+            """
             by = table.get((n, rh))
             if not by:
                 return None
-            r = by[sorted(by)[0]]          # 쌍이면 첫 기기 기준, 쌍 자체는 위에 이미 표시
-            return r['CO2_molkg'], r.get('CO2_err', 0.0)
+            ms = sorted(by)
+            r = by[ms[0]]
+            unresolved = False
+            if len(ms) > 1:
+                c1, e1 = by[ms[0]]['CO2_molkg'], by[ms[0]].get('CO2_err', 0.0)
+                c2, e2 = by[ms[1]]['CO2_molkg'], by[ms[1]].get('CO2_err', 0.0)
+                den = math.sqrt(e1 ** 2 + e2 ** 2)
+                unresolved = den and abs(c1 - c2) / den >= 2.0
+            return r['CO2_molkg'], r.get('CO2_err', 0.0), ms[0], len(ms) > 1, unresolved
         p0, p90 = pick(0.0), pick(0.9)
         if not p0 or not p90:
             print(f'{n:<12} {"RH0 또는 RH90 없음 — 유지율 계산 불가":>60}')
             rc = 1
             continue
         pct, sig = retention(p90[0], p90[1], p0[0], p0[1])
-        print(f'{n:<12} {p0[0]:>11.4f} ± {p0[1]:<5.4f} {p90[0]:>11.4f} ± {p90[1]:<5.4f} '
-              f'{pct:>8.1f}% {sig:>7.2f}σ  {verdict(pct)}')
+        src = p0[2] if p0[2] == p90[2] else f'{p0[2]}/{p90[2]}'
+        if p0[3] or p90[3]:
+            src += '*'
+        if p0[4] or p90[4]:
+            note = '보류(쌍 미해소)'
+            rc = 1
+        else:
+            note = verdict(pct)
+        print(f'{n:<12} {src:<14} {p0[0]:>11.4f} ± {p0[1]:<5.4f} '
+              f'{p90[0]:>11.4f} ± {p90[1]:<5.4f} '
+              f'{pct:>8.1f}% {sig:>7.2f}σ  {note}')
+    if any(len(v) > 1 for v in table.values()):
+        print('\n* = 그 점에 교차 검증 쌍이 있습니다. 표의 값은 알파벳 첫 기기 것이고,')
+        print('  쌍이 2.0σ 이상 벌어졌으면 판정을 내지 않고 보류로 적습니다.')
     print('\n유지율은 비율이라 분모가 조성마다 다릅니다 — 위 표의 절대 로딩과')
     print('반드시 함께 읽으세요. 유지율만 인용하면 결론이 거꾸로 읽힙니다.')
     return rc
