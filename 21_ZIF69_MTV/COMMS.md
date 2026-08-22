@@ -92,7 +92,7 @@ git show origin/<브랜치>:21_ZIF69_MTV/COMMS/<기기>.md   # 우편함 읽기
 |---|---|---|---|---|---|
 | 데스크탑 (HKHOME, WSL2) | `COMMS/desktop.md` | `master` | 8 (19 GiB) | 상주 | 🟢 앙상블 이완 4/5 → 승자 조성 수분 4작업 대기 |
 | 4코어 클라우드 컨테이너 (**세션명 `MANGWON-desktop`**) | `COMMS/cloud4c.md` | `claude/essential-programs-install-ur7v6e` | 4 | **수명 약 55분 — 이 노선은 종료** | 🔴 08-22 04:51 재부팅, 4작업 전멸. 작업 회수됨 |
-| 랩탑 (laptop-mof) | `COMMS/laptop.md` | `laptop-20260822` | **8** (23 GiB) | 상주 · AC 절전 0 · 덮개 개방 · ⚠️ **업데이트 중지 미검증** (재부팅 창 04~10시, 창 2회 통과) | 🟢 08-22 14:41 수분 12작업 |
+| 랩탑 (laptop-mof) | `COMMS/laptop.md` | `laptop-20260822` | **8** (23 GiB) | 상주 · AC 절전 0 · 덮개 개방 · **업데이트 중지 검증됨(만료 9/17)** | 🟢 08-22 14:41 수분 12작업 |
 | **Junseok (데스크탑)** | `COMMS/junseok.md` | `junseok-20260822` | **6** (WSL 15 GiB) | 상주 · 배터리 없음 · AC 절전 0 · 7일 가동 · **업데이트 중지 검증됨(만료 9/17)** | 🟢 08-22 15:47 `saIm0875` 4작업 |
 | 외부 16코어 | `COMMS/external16.md` | — (tar.gz 반환) | 16 | 지원 | ⚪ 완료 |
 
@@ -144,6 +144,19 @@ HKLM\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings
 ```
 
 Junseok 은 요청 뒤 다시 읽어 **만료 2026-09-17** 을 확인했습니다.
+랩탑도 17:10 에 설정돼 두 기기 모두 확보됐습니다.
+
+> ⚠️ **값 이름이 윈도우 빌드마다 다릅니다.** 두 기기가 서로 달랐습니다.
+>
+> | Junseok | 랩탑 |
+> |---|---|
+> | `PauseUpdatesExpiryTime` | `PauseUpdatesExpiryTime` |
+> | `PausedQualityStatus` | `PauseQualityUpdatesEndTime` |
+> | `PausedFeatureStatus` | `PauseFeatureUpdatesEndTime` |
+>
+> **정확한 이름을 찍어 조회하면 다른 빌드에서 "설정 안 됨" 이라는 거짓
+> 음성이 납니다.** `Pause*` 로 훑고 나온 것을 읽으세요 — 검사기가 틀리는
+> 그 유형이고, 이 프로젝트가 반복해서 데인 자리입니다.
 **말로 받은 설정을 시스템 상태로 검증하는 것**이 이 프로젝트의 규율이
 설정 영역으로 확장된 사례입니다 — 계산 결과에만 적용되는 것이 아닙니다.
 
