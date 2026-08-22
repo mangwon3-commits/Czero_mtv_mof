@@ -186,11 +186,23 @@ res risk_results_v2.json
 
 # ---------------------------------------------------------- 4. 자원과 디스크
 hdr "=== 4. 자원 ==="
-printf "  부하 %s (물리 8코어)   메모리 가용 %s GB / 스왑 사용 %s MB\n" \
+# [2026-08-22] 코어 수와 디스크 이름을 재서 씁니다.
+#
+#   여기 "물리 8코어" 가 데스크탑 값으로 **박혀** 있었습니다. 새 기기(물리
+#   4코어 컨테이너)가 이 스크립트를 돌리자 8코어라고 거짓 보고했습니다.
+#   워커 수를 물리 코어로 정하는 것이 이 프로젝트의 규약이므로, 그 판단의
+#   입력이 거짓이면 배정이 통째로 틀립니다 -- 재지 않고 적어 둔 숫자가
+#   측정값 행세를 하는, 이 프로젝트가 반복해서 데인 바로 그 유형입니다.
+#   같은 이유로 "WSL 디스크" 도 WSL 이 아닌 기기에서 거짓말이었습니다.
+PHYS=$(lscpu -p=Core,Socket 2>/dev/null | grep -v '^#' | sort -u | wc -l)
+[ "${PHYS:-0}" -gt 0 ] 2>/dev/null || PHYS=$(nproc 2>/dev/null || echo '?')
+if grep -qi microsoft /proc/version 2>/dev/null; then DLABEL="WSL 디스크"; else DLABEL="루트 디스크"; fi
+printf "  부하 %s (물리 %s코어)   메모리 가용 %s GB / 스왑 사용 %s MB\n" \
   "$(cut -d' ' -f1-3 /proc/loadavg)" \
+  "$PHYS" \
   "$(free -g | awk 'NR==2{print $7}')" \
   "$(free -m | awk 'NR==3{print $3}')"
-printf "  WSL 디스크  %s\n" "$(df -h / | awk 'NR==2{print $4" 여유 ("$5" 사용)"}')"
+printf "  %s  %s\n" "$DLABEL" "$(df -h / | awk 'NR==2{print $4" 여유 ("$5" 사용)"}')"
 if [ -d /mnt/c ]; then
   cfree=$(df -BG /mnt/c 2>/dev/null | awk 'NR==2{gsub("G","",$4); print $4}')
   printf "  C: 드라이브 %s" "$(df -h /mnt/c | awk 'NR==2{print $4" 여유 ("$5" 사용)"}')"
