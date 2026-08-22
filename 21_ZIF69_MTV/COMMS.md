@@ -91,7 +91,7 @@ git show origin/<브랜치>:21_ZIF69_MTV/COMMS/<기기>.md   # 우편함 읽기
 | 기기 | 우편함 | 브랜치 | 물리 코어 | 성격 | 상태 |
 |---|---|---|---|---|---|
 | 데스크탑 (HKHOME, WSL2) | `COMMS/desktop.md` | `master` | 8 | 상주 | 🟢 앙상블 |
-| 4코어 클라우드 컨테이너 | `COMMS/cloud4c.md` | `claude/essential-programs-install-ur7v6e` | 4 | **수명 약 55분 — 이 노선은 종료** | 🔴 08-22 04:51 재부팅, 4작업 전멸. 작업 회수됨 |
+| 4코어 클라우드 컨테이너 (**세션명 `MANGWON-desktop`**) | `COMMS/cloud4c.md` | `claude/essential-programs-install-ur7v6e` | 4 | **수명 약 55분 — 이 노선은 종료** | 🔴 08-22 04:51 재부팅, 4작업 전멸. 작업 회수됨 |
 | 랩탑 (laptop-mof) | `COMMS/laptop.md` | `backup-laptop-20260819` 등 | 8 | 상주 | ⚪ 유휴 |
 | 외부 16코어 | `COMMS/external16.md` | — (tar.gz 반환) | 16 | 지원 | ⚪ 완료 |
 
@@ -122,7 +122,14 @@ git show origin/<브랜치>:21_ZIF69_MTV/COMMS/<기기>.md   # 우편함 읽기
 
 - 08-20 외부 16코어: 건조 base 가 **0.45σ** 로 일치 → 수용
 - 08-22 4코어 컨테이너: RH0(단성분) + RH90(이원) 두 점, 문턱 2.0σ 로
-  등록 (`COMMS/desktop.md` 13:55)
+  등록 (`COMMS/desktop.md` 13:55).
+  > **[정정] 이 대조는 애초에 "빌드 차이"를 시험할 수 없었습니다.** 컨테이너와
+  > 데스크탑이 **같은 conda-forge 패키지 빌드**(`raspa2-2.0.50-h678ec8c_0`)를
+  > 씁니다. 데스크탑에 소스 빌드가 있다고 적었던 것은 제 착각이고, 그 소스
+  > 빌드는 **외부 16코어 지원자의 것**이었습니다. 실제로 달랐던 것은 커널과
+  > CPU 뿐입니다(Firecracker 6.18.44 대 WSL2 6.18.33).
+  > **그리고 우리 conda 빌드는 이미 검증돼 있습니다** — 08-20 에 그 소스 빌드와
+  > 건조 base 가 **0.45σ** 로 일치했습니다(`REPLY_EXTERNAL_20260820.md`).
 
 ### 임시 기기에 긴 작업을 주지 않습니다 (08-22 실증)
 
