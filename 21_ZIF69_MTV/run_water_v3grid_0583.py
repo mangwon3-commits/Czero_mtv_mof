@@ -22,6 +22,7 @@
     WATER_V3_WORKERS=<물리코어수> python run_water_v3grid_0583.py
 """
 import os
+import shutil
 import sys
 
 import run_water_v3grid  # noqa: F401 — 전역 설정(경로·워커·격자 대상)을 물려받는다
@@ -52,4 +53,16 @@ if __name__ == '__main__':
         print('  !! 5자리 물이 아닙니다. 중단합니다.', flush=True)
         sys.exit(1)
     print(flush=True)
-    sys.exit(rw.main())
+    rc = rw.main()
+
+    # 기기 이름을 붙인 사본. 데스크탑도 같은 16작업을 돌리므로 saIm0583 이
+    # 두 벌 생길 수 있고, 같은 water_results.json 경로로는 어느 기기가 낸
+    # 값인지 되돌릴 수 없습니다. 두 벌이 생기면 그것이 곧 원래 하려던
+    # conda 빌드 대 소스 빌드 교차 검증입니다 — 덮어쓰면 그 검증이 사라집니다.
+    src = os.path.join(rw.HERE, 'water_results.json')
+    if rc == 0 and os.path.exists(src):
+        dst = os.path.join(rw.HERE, 'water_results_cloud4c.json')
+        shutil.copy(src, dst)
+        print(f'  기기명 사본 저장: {dst}', flush=True)
+
+    sys.exit(rc)
