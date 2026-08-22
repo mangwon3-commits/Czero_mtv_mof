@@ -90,9 +90,9 @@ git show origin/<브랜치>:21_ZIF69_MTV/COMMS/<기기>.md   # 우편함 읽기
 
 | 기기 | 우편함 | 브랜치 | 물리 코어 | 성격 | 상태 |
 |---|---|---|---|---|---|
-| 데스크탑 (HKHOME, WSL2) | `COMMS/desktop.md` | `master` | 8 | 상주 | 🟢 앙상블 |
+| 데스크탑 (HKHOME, WSL2) | `COMMS/desktop.md` | `master` | 8 (19 GiB) | 상주 | 🟢 앙상블 이완 4/5 → 승자 조성 수분 4작업 대기 |
 | 4코어 클라우드 컨테이너 (**세션명 `MANGWON-desktop`**) | `COMMS/cloud4c.md` | `claude/essential-programs-install-ur7v6e` | 4 | **수명 약 55분 — 이 노선은 종료** | 🔴 08-22 04:51 재부팅, 4작업 전멸. 작업 회수됨 |
-| 랩탑 (laptop-mof) | `COMMS/laptop.md` | `backup-laptop-20260819` 등 | 8 | 상주 | ⚪ 유휴 |
+| 랩탑 (laptop-mof) | `COMMS/laptop.md` | `laptop-20260822` | **8** (23 GiB) | 상주 · AC 절전 0 · 덮개 개방 · 업데이트 일시중지 | 🟢 08-22 14:41 수분 12작업 기동 |
 | 외부 16코어 | `COMMS/external16.md` | — (tar.gz 반환) | 16 | 지원 | ⚪ 완료 |
 
 **"임시"의 의미**: 컨테이너가 회수되면 작업 폴더가 통째로 사라집니다.
@@ -149,6 +149,26 @@ git show origin/<브랜치>:21_ZIF69_MTV/COMMS/<기기>.md   # 우편함 읽기
 > **단성분 점 하나로는 절반만 검증됩니다.** 물이 안 들어간 계산은
 > 5자리 물·이원 Ewald·물 정의 복사 경로를 전혀 시험하지 않습니다.
 > 배포본 3자리 물로 바뀌어도 그 점은 멀쩡히 통과합니다.
+
+## 진행 상황은 로그가 아니라 출력 파일로 셉니다
+
+`run_water.py:300` 이 `ex.map(_star, jobs)` 로 도는데 **`ex.map` 은 결과를
+제출 순서대로 내놓습니다.** 작업 순서가 조성별·RH 오름차순이라 네 번째
+작업이 그 조성의 RH90(20시간대)입니다.
+
+> **그래서 로그가 세 줄을 찍고 스무 시간 가까이 얼어붙습니다.** 그 사이
+> 뒤쪽 작업이 완주해도 한 줄도 안 나옵니다.
+
+CLAUDE.md 4절 함정의 세 번째 판입니다. 여기서 "멈췄다"고 판단해 죽였다
+살리면 **진행 중이던 RH90 의 스무 시간이 통째로 날아갑니다** — 체크포인트는
+배치만 복원하고 진행도는 복원하지 않습니다.
+
+```bash
+~/miniconda3/envs/czeromof/bin/python 21_ZIF69_MTV/water_progress.py
+```
+
+러너 자신의 `finished()` · `net_charge_ok()` 를 그대로 써서, 여기서 완료로
+세는 것과 러너가 `cached` 로 건너뛰는 것이 항상 일치합니다.
 
 ## 하지 말 것
 
