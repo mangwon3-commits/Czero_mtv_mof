@@ -86,11 +86,16 @@ MTV-ZIF 기반 CO₂ 포집 소재를 **분자 시뮬레이션으로** 설계·�
 ## 3-1. 저장소
 
 ```bash
-git clone <저장소 URL> ~/mof_project
+git clone https://github.com/mangwon3-commits/Czero_mtv_mof.git ~/mof_project
 cd ~/mof_project
 ```
 
-비공개 저장소입니다. 접근이 안 되면 사용자에게 요청하세요.
+**비공개 저장소입니다.** 접근이 안 되면 사용자에게 초대를 요청하세요.
+
+clone 하나로 계산에 필요한 것이 **전부** 들어옵니다 — 힘장 트리
+(`00_Migration/raspa_share/`), 5자리 물 정의(`19_WaterCompetition/water.def`),
+전하가 붙은 v3 구조 38종(`21_ZIF69_MTV/charged_v3/`), 러너 전부.
+**따로 받아야 하는 파일은 없습니다.**
 
 ## 3-2. 파이썬 환경
 
