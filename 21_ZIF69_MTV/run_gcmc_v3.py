@@ -108,8 +108,18 @@ def main():
                 break
     except Exception:                                        # noqa: BLE001
         free_gb = 8
+    # [2026-08-22] 건당 4 GB 가정을 실측 9.5 GB 로 바꿉니다.
+    #
+    #   이 줄의 4 는 v1 구조에서 잰 3.2 GB 시절 상수를 올림한 값입니다.
+    #   v3 는 이완으로 셀이 34% 수축해 슈퍼셀 원자 수가 늘었고 실측이
+    #   9.5 GB/건이었습니다(CLAUDE.md 5절, 08-19 랩탑). 4 를 믿으면 가용
+    #   15 GB 에서 워커 2 가 나오고 2 x 9.5 = 19 GB 를 요구합니다 --
+    #   08-12 에 OOM 이 dbus 까지 죽여 WSL 을 통째로 먹통으로 만든 그
+    #   조합입니다. risk_screen_v3 는 이미 ZEO_GB_PER_JOB 으로 덮게
+    #   돼 있었는데 이 러너만 빠져 있었습니다.
+    ZEO_GB = float(os.environ.get('ZEO_GB_PER_JOB', '9.5'))
     zw = 4 if n_raspa == 0 else 2
-    zw = min(zw, max(1, (free_gb - 4) // 4))     # 여유에서 4 GB 는 남긴다
+    zw = min(zw, max(1, int((free_gb - 4) // ZEO_GB)))   # 여유에서 4 GB 는 남긴다
     print(f'\n구조 {len(cifs)}종. 먼저 Zeo++ (LCD/PLD/AV)')
     print(f'  RASPA {n_raspa}건 가동 중, 메모리 여유 {free_gb} GB '
           f'-> Zeo++ 워커 {zw}\n', flush=True)
