@@ -74,7 +74,7 @@ Liquids: From Z-Bonds to Quasi-Liquids"(Wang 2022)인데 실제 첨부 PDF 는 J
 | 첨부 없는 레코드 | 8 | id 19/20/40/41/42/44/48/63 — 전부 **다른 id 와 같은 DOI 의 중복 레코드** |
 | 중복 첨부(같은 논문 파일 반복) | 8 레코드 | id 1(5개) 2(3개) 3·4·5·6·7·10(각 2개) — 아래 표는 대표 1개만 적고 `(+중복 N건)` 로 표기 |
 | 범위 밖(촉매/광촉매/막) | 9 | id 2/26/28/29/30/31/32/38 + 부분 35·50 — 아래에서 명시적으로 제외 |
-| 📖 전문 정독 | 14 | 노트 파일 참조 |
+| 📖 전문 확인(PDF 정독) | 16 | 그중 **14편은 상세 노트**, 2편(id 51·55)은 보조로 짧게 — 노트 파일 참조 |
 
 **범위 밖 처리 원칙.** CO2 **전환(conversion)·광촉매(photoreduction)·촉매 고정
 (cycloaddition)** 논문은 우리 과제(습윤 flue gas 물리흡착 포집)와 축이 달라
@@ -155,7 +155,7 @@ Liquids: From Z-Bonds to Quasi-Liquids"(Wang 2022)인데 실제 첨부 PDF 는 J
 | 72 | Avci, G. 2020 | ACS Appl Mater Interfaces | Do New MOFs Perform Better for CO(2) Capture and H(2) Purification? Computational Screening of the Updated MOF Database | 10.1021/acsami.0c12330 | `1259770414/do-new-mofs-perform-better-for-co2-capture-and.pdf` | 스크리닝 — 갱신 MOF DB 계산 스크리닝(CO2 포집·H2 정제) |
 | 73 | Kazemi, A. 2023 | Sci Rep | Enhanced CO(2) capture potential of UiO-66-NH(2) synthesized by sonochemical method: experimental findings and performance evaluation | 10.1038/s41598-023-47221-6 | `1329525859/41598_2023_Article_47221.pdf` | 주변 — UiO-66-NH2 초음파 합성 실험. 합성법 축 |
 
-## 4. 📖 전문 정독 대상 (14편) — 노트 파일로
+## 4. 📖 전문 정독 대상 (상세 14편) — 노트 파일로
 
 읽은 순서가 아니라 **논점 묶음** 순입니다. 상세는
 [LITERATURE_NOTES_20260824.md](LITERATURE_NOTES_20260824.md).
@@ -177,8 +177,10 @@ Liquids: From Z-Bonds to Quasi-Liquids"(Wang 2022)인데 실제 첨부 PDF 는 J
 | 기능화 축 | 52 | Yadav 2024 JACS Au | 순차 세공 기능화 = MTV 인접 전략 |
 | 유연성 재생 | 70 | Klokic 2025 Nat Commun | TSA 대신 구조 전이로 재생하는 노선 |
 
-추가로 확인만 하고 노트에 짧게 반영한 것: id 51(희박 스트림 기능화),
-id 55(DES 함침), id 56(Open DAC 2023), id 43(전처리 제습 TEA), id 37(물 안정성 설계).
+표 안에서 📖 가 붙었지만 위 14편에 없는 두 건 — **id 51**(희박 스트림 기능화),
+**id 55**(DES 함침) — 은 PDF 를 열어 수치까지 뽑았고 노트의 "보조 3편" 절에
+짧게 실었습니다. **id 56**(Open DAC 2023)도 같은 절에 있습니다.
+초록·표제 수준으로만 참고한 것: id 43(전처리 제습 TEA), id 37(물 안정성 설계).
 
 ---
 
