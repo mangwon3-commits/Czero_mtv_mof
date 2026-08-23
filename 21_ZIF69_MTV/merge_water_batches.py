@@ -32,6 +32,10 @@
     python merge_water_batches.py --selftest
     python merge_water_batches.py v3_water_grid/water_results_cloud4c.json \\
                                   v3_water_grid/water_results_desktop16.json
+
+    ⚠️ `water_results*.json` 로 글롭하지 마세요. 러너는 태그 없는
+    `water_results.json` 도 같이 쓰기 때문에 같은 행이 두 번 들어갑니다.
+    기기 태그가 붙은 파일만 명시적으로 나열하세요 -- 이제 도구가 거부합니다.
 """
 import argparse
 import json
@@ -54,12 +58,33 @@ def generation_of(path):
 
 
 def machine_of(path):
-    """파일명 끝의 기기 이름. water_results_cloud4c.json -> cloud4c."""
+    """파일명 끝의 기기 이름. water_results_cloud4c.json -> cloud4c.
+
+    접두사가 없으면 **거부합니다.** 예전에는 stem 을 그대로 기기명으로
+    돌려줬는데, 그것이 이중 계수를 부릅니다.
+
+    [2026-08-23] 러너는 `water_results.json` 과 기기 태그 사본
+    `water_results_desktop4.json` 을 **둘 다** 씁니다. 내용이 같습니다.
+    `water_results*.json` 로 글롭해서 넘기면 옛 코드는 앞의 것을
+    기기 "water_results", 뒤의 것을 "desktop4" 로 읽어 **같은 4행을 서로 다른
+    두 기기가 낸 것처럼** 표에 넣었습니다. 그러면 교차 검증 쌍이 0.00σ 로
+    완벽하게 일치한다고 찍힙니다 -- 같은 파일이니 당연한데, 표에서는 두 기기가
+    독립으로 재현한 것처럼 보입니다. 이 저장소가 반복해서 데인 유형(§0,
+    "실패가 결과처럼 보이는 것")이라 이름 없는 파일은 받지 않습니다.
+
+    태그 없는 파일을 정말 쓰려면 어느 기기 것인지 사람이 정해서 이름을
+    붙이세요. 도구가 추측하면 그 추측이 출처로 굳습니다.
+    """
     base = os.path.basename(path)
     stem = base[:-len('.json')] if base.endswith('.json') else base
-    if stem.startswith('water_results_'):
+    if stem.startswith('water_results_') and len(stem) > len('water_results_'):
         return stem[len('water_results_'):]
-    return stem
+    raise SystemExit(
+        f'{path}: 기기 이름이 없습니다.\n'
+        f'  파일명이 water_results_<기기>.json 이어야 출처를 지킬 수 있습니다.\n'
+        f'  (러너는 태그 없는 water_results.json 도 같이 씁니다 -- 그것까지\n'
+        f'   넘기면 같은 행이 두 기기 몫으로 이중 계수됩니다.)\n'
+        f'  기기 태그 사본만 넘기거나, 어느 기기 것인지 정해 이름을 붙이세요.')
 
 
 def load(path):
@@ -101,7 +126,9 @@ def collect(paths):
 
 def main():
     ap = argparse.ArgumentParser(description='수분 경쟁 배치 병합·판정')
-    ap.add_argument('files', nargs='*', help='기기별 water_results_<기기>.json')
+    ap.add_argument('files', nargs='*',
+                    help='기기별 water_results_<기기>.json '
+                         '(글롭 금지 — 태그 없는 파일은 거부됩니다)')
     ap.add_argument('--selftest', action='store_true',
                     help='기존 v3_water/water_results.json 으로 자기 검증')
     a = ap.parse_args()
