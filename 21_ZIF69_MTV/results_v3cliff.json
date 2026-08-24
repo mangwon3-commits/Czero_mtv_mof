@@ -1,0 +1,51 @@
+{
+  "source": "relax_v3 + charged_v3 (GFN-FF 셀 고정 이완 이후)",
+  "conditions": {
+    "P_CO2_Pa": 15000.0,
+    "T_K": 298.0,
+    "cycles": 15000,
+    "ff": "UFF_MOF",
+    "charges": "PACMAN DDEC6",
+    "geometry": "GFN-FF relaxed, cell fixed"
+  },
+  "rows": [
+    {
+      "name": "saIm0917",
+      "group": "-SO3H",
+      "frac": 0.9166666666666666,
+      "LCD": 9.05709,
+      "PLD": 4.04728,
+      "AV": 815.94,
+      "KH_CO2": 0.0002475,
+      "KH_CO2_err": 7.44271e-06,
+      "KH_N2": 2.70252e-06,
+      "KH_N2_err": 2.47888e-08,
+      "selectivity": 91.58119088850405,
+      "selectivity_err": 2.879253175177511,
+      "Qst_CO2": 30.864476532835997,
+      "Qst_CO2_err": 0.2153746943,
+      "loading_015bar": 1.3225201146,
+      "loading_015bar_err": 0.0110923529,
+      "status": "ok"
+    },
+    {
+      "name": "saIm0958",
+      "group": "-SO3H",
+      "frac": 0.9583333333333334,
+      "LCD": 8.88669,
+      "PLD": 4.16332,
+      "AV": 779.346,
+      "KH_CO2": 0.000423799,
+      "KH_CO2_err": 2.55223e-05,
+      "KH_N2": 3.03456e-06,
+      "KH_N2_err": 3.59495e-08,
+      "selectivity": 139.6574791732574,
+      "selectivity_err": 8.571729681807296,
+      "Qst_CO2": 33.874841144936,
+      "Qst_CO2_err": 0.4054729921,
+      "loading_015bar": 1.519454588,
+      "loading_015bar_err": 0.0269895533,
+      "status": "ok"
+    }
+  ]
+}
