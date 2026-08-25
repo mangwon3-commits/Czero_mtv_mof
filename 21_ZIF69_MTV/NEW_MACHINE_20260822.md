@@ -61,6 +61,24 @@ bash bgstate.sh 돌린 다음 현황 보고해
 규칙이 있습니다. 1σ 로 환산하려면 2.776 으로 나누세요. 본문 어딘가에 σ 로
 읽히게 적힌 곳이 있으면 이 규칙이 우선합니다.
 
+### 윈도우 기기라면 — **NTFS 에는 이 저장소를 체크아웃할 수 없습니다**
+
+2026-08-25 에 laptop2 가 확인했습니다. 윈도우 파일시스템에 클론하면 여기서
+멈춥니다:
+
+```
+error: invalid path '00_Migration/raspa_share/raspa/structures/zeolites/cif/CON.cif'
+fatal: unable to checkout working tree
+```
+
+`CON` 이 **윈도우 예약 장치명**이라 NTFS 가 그 이름의 파일 생성을 거부합니다.
+zeolite CIF 1781 개 중 이 하나가 전체 체크아웃을 막고, git 설정으로 우회되지
+않습니다. 게다가 윈도우 git 은 `core.autocrlf=true` 가 기본이라 체크아웃이
+됐더라도 러너 스크립트가 CRLF 로 깨집니다.
+
+**반드시 WSL 의 ext4 안에 클론하세요** (`~/mof_project`). `/mnt/c/...` 아래는
+안 됩니다 — 그것도 NTFS 입니다.
+
 ### 그 밖에 지금 알아야 할 규약 둘
 
 - **결과 파일명에 기기 태그가 반드시 필요합니다.** `water_results_<기기>.json`

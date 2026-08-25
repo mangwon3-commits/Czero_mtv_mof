@@ -31,8 +31,11 @@
 ```
 21_ZIF69_MTV/COMMS/desktop.md      <- 데스크탑만 씀
 21_ZIF69_MTV/COMMS/laptop.md       <- 랩탑만 씀
+21_ZIF69_MTV/COMMS/laptop2.md      <- laptop2 만 씀
+21_ZIF69_MTV/COMMS/junseok.md      <- Junseok 만 씀
 21_ZIF69_MTV/COMMS/cloud4c.md      <- 4코어 클라우드 컨테이너만 씀
 21_ZIF69_MTV/COMMS/external16.md   <- 외부 16코어만 씀
+21_ZIF69_MTV/COMMS/audit.md        <- 자동 일일 감사만 씀 (사람이 쓰지 않음)
 ```
 
 읽는 것은 **누구나 전부** 읽습니다.
@@ -95,6 +98,7 @@ git show origin/<브랜치>:21_ZIF69_MTV/COMMS/<기기>.md   # 우편함 읽기
 | 랩탑 (laptop-mof) | `COMMS/laptop.md` | `laptop-20260822` | **8** (23 GiB) | 상주 · AC 절전 0 · 덮개 개방 · **업데이트 중지 검증됨(만료 9/17)** | 🟢 08-22 14:41 수분 12작업 |
 | **Junseok (데스크탑)** | `COMMS/junseok.md` | `junseok-20260822` | **6** (WSL 15 GiB) | 상주 · 배터리 없음 · AC 절전 0 · 7일 가동 · **업데이트 중지 검증됨(만료 9/17)** | 🟢 08-22 15:47 `saIm0875` 4작업 |
 | 외부 16코어 | `COMMS/external16.md` | — (tar.gz 반환) | 16 | 지원 | ⚪ 완료 |
+| **laptop2 (DESKTOP-JS1IB6U, WSL2)** | `COMMS/laptop2.md` | `laptop2-20260825` | **6** (논리 12, WSL 15 GiB) | i7-9750H · **가동 시간 미확인** · **업데이트 중지 검증됨(만료 9/29)** | 🟡 08-25 합류. 빌드 검증 3건 통과. `saIm0875` 재현 배정, 가동 시간 확인 후 기동 |
 
 **"임시"의 의미**: 컨테이너가 회수되면 작업 폴더가 통째로 사라집니다.
 `ContinueAfterCrash` 이어받기는 **디스크가 남아야** 작동합니다 — 08-17
