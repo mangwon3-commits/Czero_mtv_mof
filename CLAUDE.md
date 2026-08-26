@@ -126,7 +126,7 @@
 같은 이유로, 다른 기기의 세션에 일을 시킬 때는 **대화 맥락을 옮기려 하지 말고**
 읽을 파일을 지정하세요. 아이패드에서든 랩탑에서든 이 한 줄이면 부팅됩니다.
 
-    CLAUDE.md, SESSION_LOG.md, 21_ZIF69_MTV/ASSIGN_48H_20260824.md 읽고
+    CLAUDE.md, SESSION_LOG.md, 21_ZIF69_MTV/ASSIGN_36H_20260826.md 읽고
     bash bgstate.sh 돌린 다음 현황 보고해
 
 **배정 문서는 날짜가 붙어 늘어납니다.** 위 줄이 낡았을 수 있으니 붙여 넣기
