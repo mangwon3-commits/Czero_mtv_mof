@@ -110,9 +110,9 @@ git show origin/<브랜치>:21_ZIF69_MTV/COMMS/<기기>.md   # 우편함 읽기
 | 데스크탑 (HKHOME, WSL2) | `COMMS/desktop.md` | `master` | 8 (19 GiB) | 상주 | 🟢 앙상블 이완 4/5 → 승자 조성 수분 4작업 대기 |
 | 4코어 클라우드 컨테이너 (**세션명 `MANGWON-desktop`**) | `COMMS/cloud4c.md` | `claude/essential-programs-install-ur7v6e` | 4 | **수명 약 55분 — 이 노선은 종료** | 🔴 08-22 04:51 재부팅, 4작업 전멸. 작업 회수됨 |
 | 랩탑 (laptop-mof) | `COMMS/laptop.md` | `laptop-20260822` | **8** (23 GiB) | 상주 · AC 절전 0 · 덮개 개방 · **업데이트 중지 검증됨(만료 9/17)** | 🟢 08-22 14:41 수분 12작업 |
-| **Junseok (데스크탑)** | `COMMS/junseok.md` | `junseok-20260822` | **6** (WSL 15 GiB) | 상주 · 배터리 없음 · AC 절전 0 · 7일 가동 · **업데이트 중지 검증됨(만료 9/17)** | 🟢 08-22 15:47 `saIm0875` 4작업 |
+| **Junseok (원격지)** | `COMMS/junseok.md` | `junseok-20260822` | **6** (WSL 24 GiB) | 상주 · 배터리 없음 · **업데이트 중지 검증됨(만료 9/17)** | 🔴 **08-26 오전 다운.** 마지막 소식 08-25 17:02. `saIm050` 습윤 WC 15작업 배정이 미착수로 남음 |
 | 외부 16코어 | `COMMS/external16.md` | — (tar.gz 반환) | 16 | 지원 | ⚪ 완료 |
-| **laptop2 (DESKTOP-JS1IB6U, WSL2)** | `COMMS/laptop2.md` | `laptop2-20260825` | **6** (논리 12, WSL 15 GiB) | i7-9750H · **상주** · 절전·최대절전 AC=0/DC=0 (값으로 확인) · **업데이트 중지 검증됨(만료 9/29)** · ⚠️ **덮개 동작 미확인** | 🟢 08-25 21:10 `saIm0875` 4작업 (빌드 교차검증) |
+| **laptop2 (DESKTOP-JS1IB6U, WSL2)** | `COMMS/laptop2.md` | `laptop2-20260825` | **6** (논리 12, WSL 15 GiB) | i7-9750H · ⚠️ **BSOD 2건/40h, 관측 연속 수명 약 14 h** · 함대 최저속(RH90 22.37 h) · 업데이트 중지(만료 9/29) | 🟡 RH0 완주(0.31시그마 일관). **RH25/50/90 반납** — 14 h 초과라 규칙상 배정 불가. **RH0급(4.44 h) 이하만** |
 
 > ⚠️ **laptop2 의 덮개 닫기 동작은 아직 값으로 확인되지 않았습니다.**
 > `SUB_BUTTONS/LIDACTION` 이 그 전원 구성에 노출돼 있지 않아 읽지 못했고,
