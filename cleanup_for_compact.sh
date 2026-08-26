@@ -46,6 +46,15 @@ say() { echo "$(date '+%m-%d %H:%M:%S')  $*" | tee -a "$LOG"; }
 
 # 실행 폴더:관문 파일:최소 바이트
 #   관문은 "그 폴더의 결과가 이미 파일로 나와 있다" 는 증거입니다.
+#
+#   ⚠️ 폴더를 두 번째 캠페인에 재사용하면 관문이 거짓 통과합니다.
+#   `runs_v3` 가 실제로 그랬습니다(08-23 발견): 관문이 `results_v3.json`
+#   (rows 31)이었는데 그 실행 폴더들은 이전 정리에서 이미 지워졌고, 남아 있던
+#   24개는 전부 앙상블 `saIm0583e1~e5` 였습니다. 그 수확물은
+#   `results_v3ens0583.json`(rows 5)입니다. 관문은 통과했지만 **보고 있던 것이
+#   그 폴더의 결과가 아니었습니다.** 결과적으로만 안전했습니다.
+#   그래서 관문을 지금 그 폴더에 실제로 들어 있는 것의 수확물로 바꿨습니다.
+#   **폴더를 재사용하면 여기 관문도 같이 바꾸세요.**
 TARGETS="
 runs_v2:results_v2.json:5000
 wc_runs_v2:v2_wc/working_capacity.json:1000
@@ -55,9 +64,10 @@ water_runs:water_results.json:1000
 wc_runs:working_capacity.json:1000
 humid_wc_runs:humid_working_capacity.json:1000
 runs:zif69_results.json:1000
-runs_v3:results_v3.json:5000
+runs_v3:results_v3ens0583.json:1000
 humid_wc_runs_v3:v3_humid_wc/humid_working_capacity.json:1000
 humid_wc_runs_v3ext:v3_humid_wc/humid_working_capacity_ext.json:1000
+water_runs_v3grid:v3_water_grid/water_results.json:1000
 "
 
 cat > "$STATE" <<EOF

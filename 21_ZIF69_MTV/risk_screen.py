@@ -64,7 +64,35 @@ RESULT = os.path.join(HERE, f'risk_results{("_" + SUFFIX) if SUFFIX else ""}.jso
 # 16:41 에 8워커로 돌렸다가 8 x 3.2 = 25.6 GB 로 20 GB 상한을 넘겨 OOM 이 났고,
 # 그때 dbus-daemon 까지 죽으면서 WSL 배포판이 통째로 먹통이 됐다.
 # 4워커면 12.8 GB 로 여유가 있다. 이 단계는 워커를 늘리면 더 느려지는 게 아니라 죽는다.
-MAX_WORKERS = int(os.environ.get('RISK_WORKERS', '4'))
+# [2026-08-22] 메모리 상한. 이 줄에는 상한이 아예 없었습니다.
+#
+#   risk_screen_v3.py 는 import 뒤 rs.MAX_WORKERS 를 /proc/meminfo 로 계산해
+#   덮어씁니다. 그런데 **이 파일을 직접 돌리면 그 보호가 없습니다** -- 기본 4워커
+#   근거가 "4 x 3.2 GB = 12.8 GB" 인데 3.2 는 v1 구조에서 잰 값이고 v3 실측은
+#   9.5 GB 입니다. 명세서가 "RISK_WORKERS 를 손으로 주지 마라, 스크립트가
+#   /proc/meminfo 에서 계산한다" 고 적었는데 그것이 v3 러너에만 참이었습니다.
+#   여기에도 같은 상한을 둡니다. v3 가 나중에 다시 덮어써도 같은 공식이라
+#   충돌하지 않고, 이 파일을 직접 돌리는 경로가 보호됩니다.
+def _zeo_worker_cap(asked):
+    zeo_gb = float(os.environ.get('ZEO_GB_PER_JOB', '9.5'))
+    floor_gb = 4.0
+    try:
+        for line in open('/proc/meminfo'):
+            if line.startswith('MemAvailable:'):
+                avail = int(line.split()[1]) / (1024 * 1024)
+                break
+        else:
+            return asked
+    except Exception:                                        # noqa: BLE001
+        return asked                                          # 못 재면 손대지 않는다
+    cap = max(1, int((avail - floor_gb) // zeo_gb))
+    if cap < asked:
+        print(f'  !! 워커를 {asked} -> {cap} 로 낮춥니다 '
+              f'(가용 {avail:.1f} GB, Zeo++ {zeo_gb} GB/건)', flush=True)
+    return min(asked, cap)
+
+
+MAX_WORKERS = _zeo_worker_cap(int(os.environ.get('RISK_WORKERS', '4')))
 # 18_PoreNarrowing 의 S_3+6 패치 래퍼를 그대로 쓴다(중복 구현하지 않는다).
 IFACE = os.path.join(HERE, '..', '18_PoreNarrowing', 'lammps_iface_patched.py')
 
