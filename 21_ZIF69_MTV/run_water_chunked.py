@@ -175,6 +175,15 @@ def carry_restart(prev_d, next_d):
     `RestartFile yes` 면 `RestartInitial/System_0/` 에서 읽는다.
     (run_water.py:267 이 완주 뒤 Restart/ 를 지우는 것이 그 산출물이다 —
      이 러너는 지우지 않고 이어 넘긴다.)
+
+    ⚠️ **이 러너는 Restart/ 를 절대 지우지 않습니다.** 조각 단위 이어받기가
+    앞 조각의 Restart/ 에 의존하기 때문입니다 — cached 로 건너뛴 조각도
+    그것이 남아 있어야 다음 조각이 사슬을 잇습니다.
+
+    나중에 누가 용량 때문에 run_water.py:264-268 같은 정리를 여기 넣으면
+    **그 순간 이어받기가 조용히 끊깁니다.** 완주는 계속 되고 결과도
+    나오므로 겉으로는 안 드러납니다. 지우려면 **작업 전체가 끝난 뒤
+    base 폴더째** 지우세요. 조각 폴더 안을 선택적으로 비우지 마세요.
     """
     src = os.path.join(prev_d, 'Restart', 'System_0')
     dst = os.path.join(next_d, 'RestartInitial', 'System_0')
@@ -226,6 +235,44 @@ def main():
     for k in range(CHUNKS):
         d = os.path.join(base, f'chunk{k}')
         os.makedirs(d, exist_ok=True)
+
+        # [2026-08-26] 조각 단위 이어받기. **이것이 이 러너의 존재 이유입니다.**
+        #
+        #   첫 판에는 이 블록이 없었습니다. 그래서 재기동하면 조각 0 부터 다시
+        #   돌았고, 규약 6절이 약속한 "크래시 1회 손실 3.36 h" 가 실제로는
+        #   **처음부터 22.37 h** 였습니다. laptop2 가 찾았습니다.
+        #
+        #   더 나쁜 것은 드러나지 않는 방식입니다 — 한 번 안 죽고 완주하면
+        #   검증 셋(재현성·사슬 연속성·오버헤드)이 **전부 통과**합니다.
+        #   결함은 크래시가 나야 드러나고 그때는 이미 잃은 뒤입니다.
+        #   문서가 약속한 것과 코드가 하는 것이 달랐고, 그것이 §0 유형입니다.
+        #
+        #   판정 기준은 run_water.py:183-185 와 **같은 것**을 씁니다 —
+        #   출력이 있고 완주 표지가 있고 알짜전하가 0 이면 완주분입니다.
+        cached = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
+        if cached and rw.finished(cached[0]) and rw.net_charge_ok(cached[0]):
+            res = rw.parse_components(cached[0])
+            co2 = res.get('CO2', (float('nan'), 0.0))[0]
+            vals.append(co2)
+            print(f'  [조각 {k}] cached — 완주분 회수, CO2 {co2:.4f} mol/kg',
+                  flush=True)
+            prev_d = d
+            continue
+
+        # 반복 실패 표식. run_water.guard_crash_restart 와 같은 취지인데,
+        # 조각 방식에서는 "체크포인트를 버리고 처음부터" 가 답이 아닙니다 —
+        # 조각 k 의 처음이 곧 앞 조각의 Restart 이므로 버릴 것이 없습니다.
+        # 그래서 **두 번 실패하면 멈추고 사람을 부릅니다.** 조용히 반복해서
+        # 같은 조각을 계속 실패하는 것이 이 구조에서 가장 나쁜 결말입니다.
+        att_f = os.path.join(d, '.attempts')
+        att = int(open(att_f).read().strip()) if os.path.exists(att_f) else 0
+        if att >= 2:
+            print(f'  !! 조각 {k} 가 이미 {att}회 실패했습니다. 자동 재시도를 '
+                  f'멈춥니다 — 사람이 봐야 합니다.', flush=True)
+            print(f'     작업 폴더: {d}', flush=True)
+            return 3
+        open(att_f, 'w').write(str(att + 1))
+
         shutil.copy(cif, os.path.join(d, a.name + '_DDEC6.cif'))
         shutil.copy(rw.WATER_DEF, os.path.join(d, 'water.def'))
         if k > 0:
