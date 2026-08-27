@@ -61,6 +61,7 @@ PUSH_TRIES = 5
 ALLOW_PREFIX = (
     '21_ZIF69_MTV/v3_water_ens/',
     '21_ZIF69_MTV/v3_water_grid/',
+    '21_ZIF69_MTV/v3_water_mslm050/',   # [2026-08-27] mslm050 물 경쟁 2작업
     '21_ZIF69_MTV/v4_water_mix/',
     '21_ZIF69_MTV/COMMS/',
     '21_ZIF69_MTV/risk_results',      # 안정성 스크린 결과 (하위 폴더 없음)
