@@ -40,11 +40,25 @@ MAX_TRIES=5
 #   BUSY_COMM  프로세스 **이름** 정확일치 -> 계산 바이너리. 데몬과 안 겹친다.
 #              (`networkd-dispatcher` 의 comm 은 `networkd-dispat` 라 안 걸린다)
 #   BUSY_CMD   **명령줄** 매칭 -> 우리 드라이버만.
-BUSY_COMM='^(simulate|lmp_serial|lmp|network|xtb)$'
-BUSY_CMD='run_water|run_humid|run_gcmc|risk_screen|relax_series|autopush'
-# autopush 를 넣는 이유: 그것이 git 커밋·푸시 중일 때 감시자가 "유휴" 로
-# 보고 git merge 를 걸면 같은 저장소를 둘이 동시에 만진다. 계산이 아니어도
-# 붙잡아야 한다.
+BUSY_COMM='^(simulate|lmp_serial|lmp|network|xtb|git|git-remote-http|git-remote-https)$'
+#
+# [2026-08-28] git 을 여기 넣은 이유, 그리고 autopush 를 **안** 넣은 이유.
+#
+#   보호하려는 것: 푸시가 도는 중에 감시자가 git merge 를 걸어 같은 저장소를
+#   둘이 동시에 만지는 것. 08-27 에 34개 파일이 로컬에만 남은 적이 있다.
+#
+#   처음에는 autopush 를 BUSY_CMD 에 넣었는데 데스크탑이 되짚었다 --
+#   **autopush 는 계산 내내 붙어 있는 감독자**다. 고아로 남으면 busy 가
+#   영구히 참이 되어 감시자가 영영 아무것도 안 한다. 방금 고친
+#   `/network` -> networkd-dispatcher 와 **같은 형태**다.
+#
+#     상주 감독자를 매칭  ->  가드가 영구히 켜짐  ->  복구 불능
+#     일시적 일꾼을 매칭  ->  일하는 동안만 켜짐  ->  그 창만 정확히 보호
+#
+#   git 프로세스는 전송 중에만 뜬다 (실측: 전송 중 1개, 끝난 뒤 0개).
+#   이 스크립트 자신의 git 은 안 세인다 -- busy 검사가 첫 git 호출보다
+#   앞줄에 있다 (stage2 84 < 93, water 76 < 120).
+BUSY_CMD='run_water|run_humid|run_gcmc|risk_screen|relax_series'
 
 # 이 스크립트 자신은 어느 쪽에도 안 걸린다 - 명령줄이 경로뿐이고
 # BUSY_CMD 의 어떤 낱말도 들어 있지 않다.
