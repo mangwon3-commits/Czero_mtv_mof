@@ -169,94 +169,227 @@
     },
     {
       "name": "saIm0583e4",
-      "status": "lammps-interface 실패: /bin/sh: 1: python: not found\n",
+      "status": "ok",
       "before": {
         "LCD": 8.91967,
         "PLD": 3.82904,
         "AV": 984.617,
         "min_dist": 0.971,
-        "n_atoms": 656
+        "n_atoms": 656,
+        "AV_per_cell": 984.6
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 7.21901,
+        "PLD": 4.11092,
+        "AV": 4291.84,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 536.5
+      },
+      "LCD_drop_pct": 5.26,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 3.66204384869889,
+      "converged": false
     },
     {
       "name": "saIm0583e5",
-      "status": "lammps-interface 실패: /bin/sh: 1: python: not found\n",
+      "status": "ok",
       "before": {
         "LCD": 9.89858,
         "PLD": 4.33551,
         "AV": 1083.54,
         "min_dist": 0.971,
-        "n_atoms": 656
+        "n_atoms": 656,
+        "AV_per_cell": 1083.5
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 6.6404,
+        "PLD": 4.08031,
+        "AV": 3727.84,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 466.0
+      },
+      "LCD_drop_pct": 12.85,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 1.6195425474998,
+      "converged": false
     },
     {
       "name": "saIm0583r1",
-      "status": "lammps-interface 실패: /bin/sh: 1: python: not found\n",
+      "status": "ok",
       "before": {
         "LCD": 9.87644,
         "PLD": 4.45216,
         "AV": 461.432,
         "min_dist": 0.971,
-        "n_atoms": 656
+        "n_atoms": 656,
+        "AV_per_cell": 461.4
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 6.38977,
+        "PLD": 4.06295,
+        "AV": 3785.63,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 473.2
+      },
+      "LCD_drop_pct": 16.14,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.670181786701505,
+      "converged": false
     },
     {
       "name": "saIm0583r2",
-      "status": "lammps-interface 실패: /bin/sh: 1: python: not found\n",
+      "status": "ok",
       "before": {
         "LCD": 10.11231,
         "PLD": 3.81623,
         "AV": 1049.8,
         "min_dist": 0.971,
-        "n_atoms": 656
+        "n_atoms": 656,
+        "AV_per_cell": 1049.8
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 6.58151,
+        "PLD": 4.08532,
+        "AV": 3857.95,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 482.2
+      },
+      "LCD_drop_pct": 13.63,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 2.28911836050065,
+      "converged": false
     },
     {
       "name": "saIm0583r3",
-      "status": "lammps-interface 실패: /bin/sh: 1: python: not found\n",
+      "status": "ok",
       "before": {
         "LCD": 9.20211,
         "PLD": 3.96147,
         "AV": 1039.51,
         "min_dist": 0.971,
-        "n_atoms": 656
+        "n_atoms": 656,
+        "AV_per_cell": 1039.5
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 6.55711,
+        "PLD": 4.07792,
+        "AV": 3942.47,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 492.8
+      },
+      "LCD_drop_pct": 13.95,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.632729367300271,
+      "converged": false
     },
     {
       "name": "saIm0583r4",
-      "status": "lammps-interface 실패: /bin/sh: 1: python: not found\n",
+      "status": "ok",
       "before": {
         "LCD": 9.68041,
         "PLD": 3.65643,
         "AV": 1018.35,
         "min_dist": 0.971,
-        "n_atoms": 656
+        "n_atoms": 656,
+        "AV_per_cell": 1018.4
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 6.53484,
+        "PLD": 4.09074,
+        "AV": 4045.62,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 505.7
+      },
+      "LCD_drop_pct": 14.24,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 3.52297275890123,
+      "converged": false
     },
     {
       "name": "saIm0583r5",
-      "status": "lammps-interface 실패: /bin/sh: 1: python: not found\n",
+      "status": "ok",
       "before": {
         "LCD": 9.75008,
         "PLD": 4.25618,
         "AV": 727.885,
         "min_dist": 0.971,
-        "n_atoms": 656
+        "n_atoms": 656,
+        "AV_per_cell": 727.9
       },
-      "after": null,
-      "pass": false
+      "after": {
+        "LCD": 6.69367,
+        "PLD": 4.23182,
+        "AV": 4199.19,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 524.9
+      },
+      "LCD_drop_pct": 12.15,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.815522733000762,
+      "converged": false
     }
   ]
 }
