@@ -65,8 +65,33 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RELAX = os.path.join(HERE, "relax_v3")
 STAGE = os.path.join(HERE, "structures_v3ensA_stage")
 
-# 대상 — saIm0583 의 11실현. 손으로 적습니다(작업 지시서지 요약표가 아님).
-TARGETS = (["saIm0583"]
+# 대상 — saIm0583 의 11실현 + **base**. 손으로 적습니다(작업 지시서).
+#
+# [2026-08-27 Junseok 이 착수 전에 잡은 결함 — base 가 없으면 v1 자를 씁니다]
+#
+#   risk_screen.py:350 이 이번 실행 결과에서 base 의 after LCD 를 찾고,
+#   못 찾으면 :360 에서 **risk_results.json(v1)** 으로 대체합니다. 그 값이
+#   7.83298 인데 v3 판정이 쓴 자는 **7.63144** 입니다.
+#
+#       saIm0583 drop   v3 기준 7.63144 -> 15.708%
+#                       v1 대체 7.83298 -> 17.877%     **2.17%p 차이**
+#
+#   그런데 지금 조사 중인 마진이 saIm075 0.26%p · saIm0667 0.65%p ·
+#   saIm0625 0.87%p 입니다. **오차가 신호의 2.5~8배**입니다. 그리고 s_LCD
+#   자체도 기준으로 나누는 상수배라 0.9743 배, 즉 2.6% 작게 나옵니다 —
+#   등록 문턱 0.30%p 근처면 그것만으로 선을 넘길 수 있습니다.
+#
+#   **CLAUDE.md §2 가 금지하는 "버전을 넘나드는 인용" 이고, 이 러너는 base 를
+#   안 넣었기 때문에 그 경로를 반드시 탑니다.** 대체 경로가 화면에 한 줄
+#   찍기는 하지만 로그에서 놓치기 쉽습니다.
+#
+#   고치는 방법 둘 중 **base 를 대상에 넣는 쪽**을 택했습니다:
+#     (가) 공유 risk_screen.py 를 고친다   -> 러너 5개가 물려 있어 회귀 위험
+#     (나) **base 를 이 실행에 포함**한다  -> 기준이 이번 실행에서 나옴. 채택
+#
+#   base 의 LCD 는 Zeo++ -res 라 결정론적이므로 7.63144 가 그대로 나와야
+#   합니다. **안 나오면 그 자체가 신호**이니 보고에 반드시 적으십시오.
+TARGETS = (["base", "saIm0583"]
            + [f"saIm0583e{i}" for i in range(1, 6)]
            + [f"saIm0583r{i}" for i in range(1, 6)])
 
@@ -79,7 +104,7 @@ sys.path.insert(0, HERE)
 import risk_screen as rs  # noqa: E402
 
 rs.STRUCT = STAGE
-rs.BASE_SRC = os.path.join(STAGE, "ZIF69_base.cif")   # 이 배치에는 base 없음
+rs.BASE_SRC = os.path.join(STAGE, "ZIF69_base.cif")
 
 ZEO_GB = float(os.environ.get("ZEO_GB_PER_JOB", "9.5"))
 MEM_FLOOR_GB = 4.0
@@ -99,11 +124,17 @@ _avail = _avail_gb()
 rs.MAX_WORKERS = max(1, int((_avail - MEM_FLOOR_GB) // ZEO_GB))
 
 
+PARENT = os.path.join(HERE, "relax_fixcell", "base_relaxed_gfnff_fixcell.cif")
+
+
 def stage():
     os.makedirs(STAGE, exist_ok=True)
     n, missing = 0, []
     for tag in TARGETS:
-        src = os.path.join(RELAX, f"ZIF69_{tag}_relaxed.cif")
+        # base 만 경로가 다릅니다 — risk_screen_v3.py 와 **같은 모체 파일**을
+        # 씁니다. 이것이 v3 판정의 기준 7.63144 를 낸 파일입니다.
+        src = (PARENT if tag == "base"
+               else os.path.join(RELAX, f"ZIF69_{tag}_relaxed.cif"))
         if not os.path.exists(src):
             missing.append(tag)
             continue
@@ -122,7 +153,8 @@ def main():
         return 2
 
     n, missing = stage()
-    print(f"  안정성 관문 자기 산포 — saIm0583 {len(TARGETS)}실현")
+    print(f"  안정성 관문 자기 산포 — base + saIm0583 11실현 "
+          f"(총 {len(TARGETS)}종)")
     print(f"  staging {n}종 -> {STAGE}")
     if missing:
         print(f"  !! 이완 CIF 없음: {missing}")
@@ -132,7 +164,7 @@ def main():
     print(f"  워커     {rs.MAX_WORKERS}  (Zeo++ {ZEO_GB} GB/건, 가용 "
           f"{_avail:.1f} GB)")
     assert rs.STRUCT.endswith("structures_v3ensA_stage"), "경로가 안 잡혔습니다"
-    assert len(TARGETS) == 11, "대상이 11실현이 아닙니다"
+    assert len(TARGETS) == 12, "base + 11실현이 아닙니다"
 
     idx = os.path.join(HERE, "risk_v3ensA_index.json")
     json.dump([{"tag": t, "pass": True} for t in TARGETS],
