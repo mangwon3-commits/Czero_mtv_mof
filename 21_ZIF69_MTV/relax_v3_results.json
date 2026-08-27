@@ -2,13 +2,9 @@
  "fmax": 0.05,
  "steps_cap": 800,
  "method": "GFN-FF, cell fixed, FIRE",
- "wall_hours": 3.6,
+ "wall_hours": 5.3,
  "failed": [],
  "rows": [
-  {
-   "name": "ZIF69_brbIm050",
-   "skipped": true
-  },
   {
    "name": "ZIF69_brbIm075",
    "skipped": true
@@ -18,11 +14,19 @@
    "skipped": true
   },
   {
-   "name": "ZIF69_cf3Im025",
+   "name": "ZIF69_brbIm050",
    "skipped": true
   },
   {
    "name": "ZIF69_brbIm100",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_cf3Im025",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_cnbIm025",
    "skipped": true
   },
   {
@@ -31,10 +35,6 @@
   },
   {
    "name": "ZIF69_cf3Im075",
-   "skipped": true
-  },
-  {
-   "name": "ZIF69_cnbIm025",
    "skipped": true
   },
   {
@@ -58,10 +58,6 @@
    "skipped": true
   },
   {
-   "name": "ZIF69_fbIm075",
-   "skipped": true
-  },
-  {
    "name": "ZIF69_fbIm100",
    "skipped": true
   },
@@ -70,11 +66,7 @@
    "skipped": true
   },
   {
-   "name": "ZIF69_mbIm075",
-   "skipped": true
-  },
-  {
-   "name": "ZIF69_mbIm050",
+   "name": "ZIF69_fbIm075",
    "skipped": true
   },
   {
@@ -82,7 +74,11 @@
    "skipped": true
   },
   {
-   "name": "ZIF69_ms50nb50",
+   "name": "ZIF69_mbIm075",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_mbIm050",
    "skipped": true
   },
   {
@@ -98,15 +94,11 @@
    "skipped": true
   },
   {
-   "name": "ZIF69_nbIm050",
-   "skipped": true
-  },
-  {
    "name": "ZIF69_nbIm025",
    "skipped": true
   },
   {
-   "name": "ZIF69_nbIm100",
+   "name": "ZIF69_nbIm050",
    "skipped": true
   },
   {
@@ -114,7 +106,11 @@
    "skipped": true
   },
   {
-   "name": "ZIF69_sa50nb50",
+   "name": "ZIF69_nbIm100",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_ms50nb50",
    "skipped": true
   },
   {
@@ -122,96 +118,120 @@
    "skipped": true
   },
   {
-   "name": "ZIF69_saIm050",
+   "name": "ZIF69_sa50nb50",
    "skipped": true
+  },
+  {
+   "name": "ZIF69_sa50nb50e2",
+   "skipped": false,
+   "error": null,
+   "steps": 379,
+   "minutes": 130.2,
+   "fmax_reached": 0.03528198900262984,
+   "pass": true,
+   "criteria": {
+    "1_CH": true,
+    "2_방향족CC폭": true,
+    "3_ZnN": true,
+    "5_최소거리": true,
+    "셀고정": true
+   },
+   "CH_before": 0.9493003754226941,
+   "CH_after": 1.0773526712021475,
+   "aromCC_width_before": 0.1921790560680703,
+   "aromCC_width_after": 0.05184697868575361,
+   "aromCC_n": 168,
+   "nonAromCC_n": 0,
+   "nonAromCC_range": null,
+   "ZnN_min": 1.9512237950421294,
+   "ZnN_max": 2.0200477733406803,
+   "ZnN_pairs": 96,
+   "dmin": 0.9707507829663408,
+   "cell_moved": 0.0
+  },
+  {
+   "name": "ZIF69_sa50nb50e3",
+   "skipped": false,
+   "error": null,
+   "steps": 401,
+   "minutes": 137.7,
+   "fmax_reached": 0.045015022976360744,
+   "pass": true,
+   "criteria": {
+    "1_CH": true,
+    "2_방향족CC폭": true,
+    "3_ZnN": true,
+    "5_최소거리": true,
+    "셀고정": true
+   },
+   "CH_before": 0.9493003754226941,
+   "CH_after": 1.077227587505628,
+   "aromCC_width_before": 0.1921790560680703,
+   "aromCC_width_after": 0.05358210015639697,
+   "aromCC_n": 168,
+   "nonAromCC_n": 0,
+   "nonAromCC_range": null,
+   "ZnN_min": 1.95377710495869,
+   "ZnN_max": 2.0268817024257184,
+   "ZnN_pairs": 96,
+   "dmin": 0.9707857978430842,
+   "cell_moved": 0.0
+  },
+  {
+   "name": "ZIF69_sa50nb50e1",
+   "skipped": false,
+   "error": null,
+   "steps": 645,
+   "minutes": 220.2,
+   "fmax_reached": 0.03311707618255748,
+   "pass": true,
+   "criteria": {
+    "1_CH": true,
+    "2_방향족CC폭": true,
+    "3_ZnN": true,
+    "5_최소거리": true,
+    "셀고정": true
+   },
+   "CH_before": 0.9493003754226941,
+   "CH_after": 1.0771869792325264,
+   "aromCC_width_before": 0.1921790560680703,
+   "aromCC_width_after": 0.04985331182310859,
+   "aromCC_n": 168,
+   "nonAromCC_n": 0,
+   "nonAromCC_range": null,
+   "ZnN_min": 1.9698623037807697,
+   "ZnN_max": 2.0395362751053367,
+   "ZnN_pairs": 96,
+   "dmin": 0.9705356141885229,
+   "cell_moved": 0.0
   },
   {
    "name": "ZIF69_saIm025",
    "skipped": true
   },
   {
-   "name": "ZIF69_saIm050e1",
-   "skipped": false,
-   "error": null,
-   "steps": 300,
-   "minutes": 93.4,
-   "fmax_reached": 0.03385805409606131,
-   "pass": true,
-   "criteria": {
-    "1_CH": true,
-    "2_방향족CC폭": true,
-    "3_ZnN": true,
-    "5_최소거리": true,
-    "셀고정": true
-   },
-   "CH_before": 0.9493003754226941,
-   "CH_after": 1.0774624844002854,
-   "aromCC_width_before": 0.1921790560680703,
-   "aromCC_width_after": 0.05459196640018327,
-   "aromCC_n": 168,
-   "nonAromCC_n": 0,
-   "nonAromCC_range": null,
-   "ZnN_min": 1.9523712945953393,
-   "ZnN_max": 2.0205377096468795,
-   "ZnN_pairs": 96,
-   "dmin": 0.9710197447363321,
-   "cell_moved": 0.0
+   "name": "ZIF69_saIm050",
+   "skipped": true
   },
   {
-   "name": "ZIF69_saIm050e3",
-   "skipped": false,
-   "error": null,
-   "steps": 353,
-   "minutes": 109.5,
-   "fmax_reached": 0.039882201865007294,
-   "pass": true,
-   "criteria": {
-    "1_CH": true,
-    "2_방향족CC폭": true,
-    "3_ZnN": true,
-    "5_최소거리": true,
-    "셀고정": true
-   },
-   "CH_before": 0.9493003754226941,
-   "CH_after": 1.0770920471457046,
-   "aromCC_width_before": 0.1921790560680703,
-   "aromCC_width_after": 0.05400724812021207,
-   "aromCC_n": 168,
-   "nonAromCC_n": 0,
-   "nonAromCC_range": null,
-   "ZnN_min": 1.9528629271951972,
-   "ZnN_max": 2.0357971535316413,
-   "ZnN_pairs": 96,
-   "dmin": 0.9706807868215914,
-   "cell_moved": 0.0
+   "name": "ZIF69_saIm050e1",
+   "skipped": true
   },
   {
    "name": "ZIF69_saIm050e2",
-   "skipped": false,
-   "error": null,
-   "steps": 439,
-   "minutes": 136.1,
-   "fmax_reached": 0.04285667455212226,
-   "pass": true,
-   "criteria": {
-    "1_CH": true,
-    "2_방향족CC폭": true,
-    "3_ZnN": true,
-    "5_최소거리": true,
-    "셀고정": true
-   },
-   "CH_before": 0.9493003754226941,
-   "CH_after": 1.0772478573840991,
-   "aromCC_width_before": 0.1921790560680703,
-   "aromCC_width_after": 0.053758656117039116,
-   "aromCC_n": 168,
-   "nonAromCC_n": 0,
-   "nonAromCC_range": null,
-   "ZnN_min": 1.9596190354165575,
-   "ZnN_max": 2.046856666238294,
-   "ZnN_pairs": 96,
-   "dmin": 0.9709303926478673,
-   "cell_moved": 0.0
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_saIm050e3",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_saIm050e4",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_saIm050e5",
+   "skipped": true
   },
   {
    "name": "ZIF69_saIm0583",
@@ -235,6 +255,26 @@
   },
   {
    "name": "ZIF69_saIm0583e5",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_saIm0583r1",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_saIm0583r2",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_saIm0583r3",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_saIm0583r4",
+   "skipped": true
+  },
+  {
+   "name": "ZIF69_saIm0583r5",
    "skipped": true
   },
   {
@@ -266,12 +306,12 @@
    "skipped": true
   },
   {
-   "name": "ZIF69_saIm050e4",
+   "name": "ZIF69_sa50nb50e4",
    "skipped": false,
    "error": null,
-   "steps": 366,
-   "minutes": 110.7,
-   "fmax_reached": 0.04127085949638218,
+   "steps": 374,
+   "minutes": 125.7,
+   "fmax_reached": 0.0335063557777897,
    "pass": true,
    "criteria": {
     "1_CH": true,
@@ -281,25 +321,25 @@
     "셀고정": true
    },
    "CH_before": 0.9493003754226941,
-   "CH_after": 1.0770626623796167,
+   "CH_after": 1.0774153481700366,
    "aromCC_width_before": 0.1921790560680703,
-   "aromCC_width_after": 0.05537843757855465,
+   "aromCC_width_after": 0.05132858865103063,
    "aromCC_n": 168,
    "nonAromCC_n": 0,
    "nonAromCC_range": null,
-   "ZnN_min": 1.9566794032409827,
-   "ZnN_max": 2.0348705131132587,
+   "ZnN_min": 1.9472102885484732,
+   "ZnN_max": 2.0223629230757125,
    "ZnN_pairs": 96,
-   "dmin": 0.9712725427595824,
+   "dmin": 0.9708939917369679,
    "cell_moved": 0.0
   },
   {
-   "name": "ZIF69_saIm050e5",
+   "name": "ZIF69_sa50nb50e5",
    "skipped": false,
    "error": null,
-   "steps": 353,
-   "minutes": 106.7,
-   "fmax_reached": 0.036659257031806614,
+   "steps": 543,
+   "minutes": 180.2,
+   "fmax_reached": 0.04325486659240742,
    "pass": true,
    "criteria": {
     "1_CH": true,
@@ -309,16 +349,16 @@
     "셀고정": true
    },
    "CH_before": 0.9493003754226941,
-   "CH_after": 1.076904024075545,
+   "CH_after": 1.0774033323283456,
    "aromCC_width_before": 0.1921790560680703,
-   "aromCC_width_after": 0.054524959581869314,
+   "aromCC_width_after": 0.050442020312837954,
    "aromCC_n": 168,
    "nonAromCC_n": 0,
    "nonAromCC_range": null,
-   "ZnN_min": 1.9531606289533556,
-   "ZnN_max": 2.0353295715882256,
+   "ZnN_min": 1.9744568071672184,
+   "ZnN_max": 2.046668939408411,
    "ZnN_pairs": 96,
-   "dmin": 0.971328678710895,
+   "dmin": 0.9711651604669981,
    "cell_moved": 0.0
   }
  ]
