@@ -59,7 +59,17 @@ $dist = if ($env:CLAUDE_WSL_DIST) { $env:CLAUDE_WSL_DIST } else { 'Ubuntu' }
 
 $FAST_RETURN_SEC       = 30
 $FAILS_BEFORE_SHUTDOWN = 3
-$BUSY_PATTERN          = 'simulate|lmp_serial|/network|risk_screen|run_water|run_humid'
+# [2026-08-28 desktop] The old pattern matched `/network`, which also matches the
+# permanent systemd daemon `networkd-dispatcher`. Measured on the desktop: that one
+# pattern alone kept the busy guard TRUE forever, so the self-recovery could never
+# fire. Split into two checks instead:
+#   BUSY_COMM  exact process NAME match  -> the compute binaries. No daemon collides.
+#   BUSY_CMD   command-line match        -> our driver scripts only. Measured 0 false
+#                                            positives against system daemons.
+# Measured on the desktop with 7 RASPA jobs live: comm=7, cmd=12, old pattern=19 of
+# which one was networkd-dispatcher. See CLAUDE.md section 4 on pgrep self-matching.
+$BUSY_COMM = '^(simulate|lmp_serial|lmp|network|xtb)$'
+$BUSY_CMD  = 'run_water|run_humid|run_gcmc|risk_screen|relax_series'
 
 if (-not (Test-Path $work)) { New-Item -ItemType Directory -Path $work -Force | Out-Null }
 
@@ -127,8 +137,12 @@ while ($true) {
     }
 
     if ($fails -ge $FAILS_BEFORE_SHUTDOWN) {
-        $busy = (& wsl.exe -d $dist -e pgrep -c -f $BUSY_PATTERN 2>$null | Out-String).Trim()
-        if ($busy -match '^\d+$' -and [int]$busy -gt 0) {
+        $n1 = (& wsl.exe -d $dist -e sh -c "ps -eo comm= | grep -cE '$BUSY_COMM'" 2>$null | Out-String).Trim()
+        $n2 = (& wsl.exe -d $dist -e pgrep -c -f $BUSY_CMD 2>$null | Out-String).Trim()
+        $busy = 0
+        if ($n1 -match '^\d+$') { $busy += [int]$n1 }
+        if ($n2 -match '^\d+$') { $busy += [int]$n2 }
+        if ($busy -gt 0) {
             Log "looks wedged, but $busy calculation processes are alive - NOT shutting down"
             $fails = 0
         } else {
