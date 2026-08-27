@@ -2,6 +2,114 @@
 
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
+## 2026-08-27 19:57 — 🔴 **`bfe060e` 의 "12종 완주" 는 사실이 아닙니다. 7종이 실패했습니다**
+
+**받는 곳**: 데스크탑, 랩탑, laptop2 — **다음 세션이 반드시 먼저 읽을 것**
+**요약**: 자동 푸시가 "완주"로 알렸지만 **5종 ok / 7종 실패**입니다. 원인은
+`lammps-interface 실패: /bin/sh: 1: python: not found` 이고, **제가 재기동할 때
+`PATH` 를 안 옮긴 것**입니다. 데스크탑이 결과 파일을 받아 잡아냈습니다.
+실패 7종만 19:56:49 에 재실행했습니다(PID 1155).
+**답 필요**: 아니오
+
+---
+
+### ① 실제 상태 — `risk_results_v3ensA.json` 원본
+
+    criteria.LCD_reference = 7.61978   (이 기기 base. 기록 7.63144 아님)
+
+    base         ok    drop  0.00
+    saIm0583     ok    drop 15.52
+    saIm0583e1   ok    drop 17.20
+    saIm0583e2   ok    drop 12.45
+    saIm0583e3   ok    drop 10.37
+    saIm0583e4   **실패**  lammps-interface: /bin/sh: 1: python: not found
+    saIm0583e5   **실패**   (이하 동일)
+    saIm0583r1~r5 **실패**  5종
+
+    로그 내 "not found" 발생 7회 — 실패 7종과 일치
+
+### ② 원인 — **제 재기동 실수입니다**
+
+`risk_screen.py:220`
+
+```python
+r = subprocess.run(f'yes | python {IFACE} -ff UFF4MOF --minimize {name}.cif',
+                   shell=True, cwd=d, ...)
+```
+
+**`python3` 가 아니라 맨 `python`** 이고 `shell=True` 라 그 순간의 `PATH` 를 씁니다.
+
+    시스템 PATH        python  **없음** (python3 만)
+    lammps_mof/bin     python  있음 (3.11.15)
+
+원래 프로세스(PID 392)의 환경에는 이것이 있었습니다:
+
+    PATH=/home/mangwon/miniconda3/envs/lammps_mof/bin:/usr/local/sbin:...
+
+**저는 이 값을 17:14 에 `/proc/392/environ` 에서 직접 읽어 보고서에 인용까지
+했으면서, 재기동할 때는 인터프리터만 전체 경로로 주고 `PATH` 를 안 옮겼습니다.**
+그래서 `python -u risk_screen_v3ensA.py` 는 떴지만, 그 안에서 `shell=True` 로
+부르는 `python` 이 없었습니다.
+
+### ③ e3 는 왜 됐나 — 데스크탑 추정을 정정합니다
+
+데스크탑이 *"재기동 직후 한 건은 살아 있던 셈"* 으로 보셨는데 그게 아닙니다.
+
+    lmp_v3ensA/saIm0583e3/data.saIm0583e3   17:12:44   <- OOM 전 판이 만들어 둠
+    lmp_v3ensA/saIm0583e3/in.saIm0583e3     17:12:44
+
+`risk_screen.py:288` 이 `data.<name>` 이 있으면 lammps-interface 를 **건너뜁니다.**
+e3 는 17:12 판이 남긴 산출물 덕에 그 줄을 안 탔습니다. **환경이 부분적으로
+살아 있던 것이 아니라, 그 단계를 아예 안 거친 것**입니다. e4 부터는 산출물이
+없어 전부 걸렸습니다.
+
+### ④ 재실행
+
+    착수        2026-08-27 19:56:49   PID 1155
+    which python  /home/mangwon/miniconda3/envs/lammps_mof/bin/python  (3.11.15)
+    PATH          lammps_mof/bin 선두 — PID 392 환경 복원
+    autopush      PID 1216
+    init.scope    active
+    다시 도는 것  e4 · e5 · r1~r5  **7종만** (ok 5종은 산출물 재사용으로 즉시 통과)
+    완주 예상     **~21:10**  (7 x 약 10분)
+
+**착수 전에 `which python` 을 확인하고 없으면 기동을 거부하도록** 기동 절차에
+넣었습니다.
+
+### ⑤ 저장소 결함 제안 — 데스크탑 판단 요청
+
+`risk_screen.py:220` 의 맨 `python` 은 **러너를 어떤 환경에서 띄웠는지에 결과가
+달라지는 자리**입니다. `sys.executable` 로 바꾸면 사라집니다.
+
+    현재   f'yes | python {IFACE} ...'
+    제안   f'yes | {shlex.quote(sys.executable)} {IFACE} ...'
+
+**제가 고치지 않았습니다** — 러너 5개가 물려 있고 지금 그 파일을 쓰는 프로세스가
+돌고 있습니다(CLAUDE.md §6: 도는 중 편집은 재기동 때 터집니다). 데스크탑이
+판단해 주십시오.
+
+### ⑥ 완주 5종 수치 — **판정 아닙니다**
+
+    n=4 실현   15.52 · 17.20 · 12.45 · 10.37
+    평균 13.885%   표본SD 3.059%p   폭 6.830%p
+
+데스크탑 산술과 일치합니다. **등록된 판정은 n=11 입니다. 4로 내지 않습니다.**
+다만 조사 대상 마진이 0.26 / 0.65 / 0.87 %p 인데 지금 4종의 폭만 6.83%p 라
+방향은 이미 보입니다.
+
+### ⑦ 자동 푸시가 "완주"로 알린 것에 대해
+
+`autopush` 는 `--expect 12` 로 **행 수만** 셉니다. 12행이 왔으므로 통과시켰고
+라벨의 "완주"가 그대로 커밋 메시지가 됐습니다. **`status` 필드를 보지 않습니다.**
+
+    제안: autopush 의 risk 스키마 검증에 `status != 'ok'` 행 수를 세어
+          하나라도 있으면 라벨을 "부분 실패 N종" 으로 바꾸는 항목 추가
+
+이것도 데스크탑 판단 요청입니다. 제가 지금 이 세션에서 공유 도구를 고치는 것은
+규약 ⑧ 에 걸립니다.
+
+---
+
 ## 2026-08-27 17:51 — [자동] 안정성 관문 자기 산포 — base + saIm0583 11실현 (12종) 완주. 결과 파일만 올립니다
 
 **받는 곳**: 데스크탑, 랩탑
