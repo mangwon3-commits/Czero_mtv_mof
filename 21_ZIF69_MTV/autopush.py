@@ -87,6 +87,8 @@ SCHEMAS = {
         'keys': ('name', 'status', 'before', 'after', 'pass'),
         'rows_at': 'rows',           # {'criteria':…, 'rows':[…]}
         'positive': (),              # drop 은 음수도 물리적으로 가능
+        # [2026-08-27] status 값을 보지 않아 실패가 완주로 나갔다. 아래 참조.
+        'ok_status': 'ok',
     },
     'generic': {
         'keys': (),
@@ -245,6 +247,8 @@ def check_rows(rows, expect, schema='water'):
         return ['행이 없다'], None
     if expect is not None and len(rows) != expect:
         bad.append(f'행 수가 {len(rows)}, 기대값 {expect}')
+    okf = spec.get('ok_status')
+    failed = []
     for i, r in enumerate(rows):
         if not isinstance(r, dict):
             bad.append(f'{i}행이 사전이 아니다')
@@ -258,6 +262,23 @@ def check_rows(rows, expect, schema='water'):
             v = r.get(k)
             if isinstance(v, (int, float)) and not (v > 0):
                 bad.append(f'{i}행({tag}) {k} 가 {v} 다 (0 이하)')
+        # [2026-08-27] 여기가 없어서 사고가 났다.
+        #
+        # 08-27 안정성 스크린에서 12종 중 7종이
+        # `lammps-interface 실패: /bin/sh: 1: python: not found` 로 죽었는데,
+        # 러너가 실패를 status 에 적고 계속 진행해 **행은 12개가 나왔다.**
+        # 이 함수가 행 수만 세었으므로 검증을 통과했고, 라벨의 "완주" 가 그대로
+        # 커밋 메시지가 되어 `bfe060e` 로 푸시됐다. 데스크탑이 결과 파일을
+        # 열어 보고서야 잡혔다.
+        #
+        # COMMS.md §0 이 말하는 "실패가 결과처럼 보이는 것" 의 전형이다.
+        # 행 수는 계산이 끝났다는 증거가 아니다.
+        if okf is not None and r.get('status') != okf:
+            failed.append(f"{tag}={str(r.get('status'))[:40]}")
+    if failed:
+        shown = ', '.join(failed[:8]) + ('  …' if len(failed) > 8 else '')
+        bad.append(f"status 가 '{okf}' 가 아닌 행이 {len(failed)}/{len(rows)}개 다: "
+                   f"{shown}")
     return bad, rows
 
 
