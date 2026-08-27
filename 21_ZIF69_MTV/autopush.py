@@ -63,15 +63,37 @@ ALLOW_PREFIX = (
     '21_ZIF69_MTV/v3_water_grid/',
     '21_ZIF69_MTV/v4_water_mix/',
     '21_ZIF69_MTV/COMMS/',
+    '21_ZIF69_MTV/risk_results',      # 안정성 스크린 결과 (하위 폴더 없음)
 )
 ALLOW_SUFFIX = ('.json', '.log', '.md')
 DENY_SUBSTR = ('water_runs', 'runs_v3', 'Output/', 'Restart/', 'CrashRestart/',
                'Movies/', 'VTK/', '.data', '.cif')
 
-# 결과 행이 갖춰야 할 열. 하나라도 없으면 절반만 찬 행이다.
-REQUIRED_KEYS = ('name', 'label', 'RH', 'CO2_molkg', 'CO2_err',
+# 결과 스키마별로 갖춰야 할 열. 하나라도 없으면 절반만 찬 행이다.
+#
+# [2026-08-27] 물 계산 전용이던 것을 스키마별로 나눴습니다. 안정성 스크린은
+# 최상위가 리스트가 아니라 {'criteria':…, 'rows':[…]} 이고 열도 전혀 다릅니다.
+# 물 검사를 그대로 걸면 모든 행이 "열 없음" 으로 잡혀 **정상 결과를 실패로**
+# 읽습니다 — 이 저장소가 경계하는 것의 거울상입니다.
+SCHEMAS = {
+    'water': {
+        'keys': ('name', 'label', 'RH', 'CO2_molkg', 'CO2_err',
                  'H2O_molkg', 'H2O_err', 'CO2_retention_pct',
-                 'retention_sigma', 'H2O_over_CO2')
+                 'retention_sigma', 'H2O_over_CO2'),
+        'rows_at': None,             # 최상위가 곧 리스트
+        'positive': ('CO2_molkg',),  # 0 이하면 계산이 안 된 것
+    },
+    'risk': {
+        'keys': ('name', 'status', 'before', 'after', 'pass'),
+        'rows_at': 'rows',           # {'criteria':…, 'rows':[…]}
+        'positive': (),              # drop 은 음수도 물리적으로 가능
+    },
+    'generic': {
+        'keys': (),
+        'rows_at': None,
+        'positive': (),
+    },
+}
 
 
 def now():
@@ -138,8 +160,21 @@ def check_paths(paths):
     return bad
 
 
-def check_log(path):
-    """러너 로그가 성공으로 끝났는지."""
+def check_log(path, schema='water'):
+    """러너 로그가 성공으로 끝났는지. 러너마다 성공·실패 표지가 다르다.
+
+    [2026-08-27] 물 러너 기준으로만 짜여 있었습니다. 안정성 스크린에 그대로
+    걸면 두 가지가 틀립니다:
+
+      * `기기명 사본 저장` 은 물 러너만 찍습니다 -> 정상 완주를 실패로 읽음
+      * `!! 워커를 4 -> 1 로 낮춥니다` 는 **정상 안내**입니다
+        (risk_screen 이 /proc/meminfo 로 워커를 줄일 때 늘 찍습니다)
+        -> 정상 안내를 실패 표지로 읽음
+
+    둘 다 **정상을 실패로 읽는** 방향이라 조용히 전달을 막습니다. 그래서
+    `!!` 를 통째로 무시하지는 않습니다 — `!! 이완 CIF 없음` 같은 진짜 실패는
+    그대로 잡아야 하므로, 워커 조정 줄만 예외로 둡니다.
+    """
     bad = []
     if not os.path.exists(path):
         return [f'로그가 없다: {path}']
@@ -148,27 +183,61 @@ def check_log(path):
         bad.append('로그에 Traceback 이 있다')
     if '[OK]' not in txt:
         bad.append('로그에 [OK] 표지가 없다')
-    if '기기명 사본 저장' not in txt:
+    if schema == 'water' and '기기명 사본 저장' not in txt:
         bad.append('로그에 기기명 사본 저장 줄이 없다 (러너가 rc=0 으로 끝나지 않았다)')
-    for mark in ('!!', '중단합니다'):
+    for mark in ('중단합니다', '[중단]'):
         if mark in txt:
-            bad.append(f'로그에 자체 검사 실패 표지가 있다: {mark!r}')
+            bad.append(f'로그에 중단 표지가 있다: {mark!r}')
+    for ln in txt.splitlines():
+        s = ln.strip()
+        if not s.startswith('!!'):
+            continue
+        if '워커를' in s:            # 메모리 가드의 정상 안내
+            continue
+        bad.append(f'로그에 자체 검사 실패 줄이 있다: {s[:80]!r}')
     return bad
 
 
-def check_json(path, expect):
+def check_json(path, expect, schema='water'):
     """결과 JSON 이 온전한지. 절반만 찬 행을 완성된 행으로 올리지 않기 위한 것."""
     if not os.path.exists(path):
         return [f'결과 파일이 없다: {path}'], None
     try:
-        rows = json.load(open(path, encoding='utf-8'))
+        doc = json.load(open(path, encoding='utf-8'))
     except Exception as exc:
         return [f'JSON 을 읽을 수 없다: {exc}'], None
-    return check_rows(rows, expect)
+    spec = SCHEMAS.get(schema)
+    if spec is None:
+        return [f'모르는 스키마: {schema}'], None
+    at = spec['rows_at']
+    if at is not None:
+        if not isinstance(doc, dict):
+            return [f"스키마 {schema} 는 최상위가 사전이어야 한다 "
+                    f'(받은 것: {type(doc).__name__})'], None
+        if at not in doc:
+            return [f"최상위에 '{at}' 가 없다 (키: {sorted(doc)})"], None
+        doc = doc[at]
+    return check_rows(doc, expect, schema)
 
 
-def check_rows(rows, expect):
+def _nan_walk(obj, path, out):
+    """중첩된 값 안의 NaN·무한대까지 찾는다 — before/after 가 사전이라 필요하다."""
+    if isinstance(obj, float):
+        if math.isnan(obj) or math.isinf(obj):
+            out.append(f'{path} 가 {obj} 다')
+    elif isinstance(obj, dict):
+        for k, v in obj.items():
+            _nan_walk(v, f'{path}.{k}', out)
+    elif isinstance(obj, list):
+        for i, v in enumerate(obj):
+            _nan_walk(v, f'{path}[{i}]', out)
+
+
+def check_rows(rows, expect, schema='water'):
     """행 목록 자체를 검사한다 (파일로 쓰기 전에도 볼 수 있게 분리)."""
+    spec = SCHEMAS.get(schema)
+    if spec is None:
+        return [f'모르는 스키마: {schema}'], None
     bad = []
     if not isinstance(rows, list):
         return [f'리스트가 아니다: {type(rows).__name__}'], None
@@ -180,15 +249,15 @@ def check_rows(rows, expect):
         if not isinstance(r, dict):
             bad.append(f'{i}행이 사전이 아니다')
             continue
-        for k in REQUIRED_KEYS:
+        tag = r.get('name', '?')
+        for k in spec['keys']:
             if k not in r:
-                bad.append(f'{i}행({r.get("name", "?")}/{r.get("RH", "?")})에 {k} 가 없다')
-        for k, v in r.items():
-            if isinstance(v, float) and (math.isnan(v) or math.isinf(v)):
-                bad.append(f'{i}행 {k} 가 {v} 다')
-        c = r.get('CO2_molkg')
-        if isinstance(c, (int, float)) and not (c > 0):
-            bad.append(f'{i}행 CO2_molkg 가 {c} 다 (0 이하)')
+                bad.append(f'{i}행({tag})에 {k} 가 없다')
+        _nan_walk(r, f'{i}행({tag})', bad)
+        for k in spec['positive']:
+            v = r.get(k)
+            if isinstance(v, (int, float)) and not (v > 0):
+                bad.append(f'{i}행({tag}) {k} 가 {v} 다 (0 이하)')
     return bad, rows
 
 
@@ -319,44 +388,55 @@ def run(args):
         else:
             verified.append('결과 파일이 이번 실행에서 새로 쓰였다')
 
-    lp = check_log(os.path.join(REPO, args.log))
+    lp = check_log(os.path.join(REPO, args.log), args.schema)
     problems += lp
     if not lp:
-        verified.append('러너 로그에 성공 표지 `[OK]` 와 기기명 사본 줄이 있고 Traceback 이 없다')
+        verified.append(
+            '러너 로그에 성공 표지 `[OK]` 가 있고 Traceback·중단 표지·자체 검사 '
+            '실패 줄이 없다'
+            + (' (기기명 사본 줄 포함)' if args.schema == 'water' else ''))
 
     # 합집합 — 좁힌 러너가 자기 TARGETS 밖의 행을 버리고 쓰는 경우를 되돌린다.
     # run_water.py:314/318 이 rows 를 res 가 아니라 TARGETS x RH_LIST 로 만들기
     # 때문에, 같은 결과 파일을 공유하는 두 번째 러너가 앞선 행을 지운다.
+    nkeys = len(SCHEMAS[args.schema]['keys'])
     rows = None
     if args.union_from:
-        jp0, produced = check_json(result_full, None)   # (문제, 행) 순서다
-        problems += jp0
-        if not jp0:
-            base, bp = read_git_rows(args.union_from)
-            problems += bp
-            if not bp:
-                merged, up = union_rows(base, produced)
-                problems += up
-                if not up:
-                    rows = merged
-                    note(f'합집합: 커밋본 {len(base)}행 + 이번 실행 {len(produced)}행 '
-                         f'= {len(merged)}행 (겹침 0)')
+        if args.schema != 'water':
+            problems.append(f'--union-from 은 water 스키마 전용이다 '
+                            f'((조성, RH) 로 합치므로). 받은 스키마: {args.schema}')
+        else:
+            jp0, produced = check_json(result_full, None, args.schema)  # (문제, 행) 순
+            problems += jp0
+            if not jp0:
+                base, bp = read_git_rows(args.union_from)
+                problems += bp
+                if not bp:
+                    merged, up = union_rows(base, produced)
+                    problems += up
+                    if not up:
+                        rows = merged
+                        note(f'합집합: 커밋본 {len(base)}행 + 이번 실행 '
+                             f'{len(produced)}행 = {len(merged)}행 (겹침 0)')
+                        verified.append(
+                            f'`{args.union_from}` 의 {len(base)}행과 이번 실행 '
+                            f'{len(produced)}행을 (조성, RH) 로 합쳤습니다 — '
+                            f'겹침 0, 덮어쓴 행 0')
+            if rows is not None:
+                rp, _ = check_rows(rows, args.expect, args.schema)
+                problems += rp
+                if not rp:
                     verified.append(
-                        f'`{args.union_from}` 의 {len(base)}행과 이번 실행 '
-                        f'{len(produced)}행을 (조성, RH) 로 합쳤습니다 — 겹침 0, 덮어쓴 행 0')
-        if rows is not None:
-            rp, _ = check_rows(rows, args.expect)
-            problems += rp
-            if not rp:
-                verified.append(
-                    f'합친 {len(rows)}행이 필수 열 {len(REQUIRED_KEYS)}종 전부 존재, '
-                    'NaN·무한대 없음, CO2 로딩 전부 양수')
+                        f'합친 {len(rows)}행이 필수 열 {nkeys}종 전부 존재, '
+                        'NaN·무한대 없음, CO2 로딩 전부 양수')
     else:
-        jp, rows = check_json(result_full, args.expect)
+        jp, rows = check_json(result_full, args.expect, args.schema)
         problems += jp
         if not jp:
-            verified.append(f'결과 JSON {len(rows)}행, 필수 열 {len(REQUIRED_KEYS)}종 전부 존재, '
-                            'NaN·무한대 없음, CO2 로딩 전부 양수')
+            verified.append(
+                f'결과 JSON({args.schema} 스키마) {len(rows)}행, '
+                f'필수 열 {nkeys}종 전부 존재, NaN·무한대 없음'
+                + (', 로딩 전부 양수' if SCHEMAS[args.schema]['positive'] else ''))
 
     files = [args.result, args.log]
     if args.mailbox:
@@ -523,6 +603,31 @@ def selftest():
     expect('CO2 로딩 0 을 잡는다', check_json(wjson(zero), 1)[0] != [])
     expect('없는 파일을 잡는다', check_json(os.path.join(d, 'nope.json'), 1)[0] != [])
 
+    print('risk 스키마 (안정성 스크린 — 최상위가 {criteria, rows})')
+    rr = {'name': 'base', 'status': 'ok',
+          'before': {'LCD': 8.898, 'PLD': 5.157, 'AV': 1234.0},
+          'after': {'LCD': 7.6198, 'PLD': 5.248, 'min_dist': 1.9},
+          'LCD_drop_pct': 0.0, 'pass': True}
+    p = os.path.join(d, 'risk_ok.json')
+    json.dump({'criteria': {'LCD_drop_limit_pct': 20.0}, 'rows': [rr]},
+              open(p, 'w', encoding='utf-8'))
+    expect('정상 risk 파일을 통과시킨다', check_json(p, 1, 'risk')[0] == [])
+    expect('risk 파일을 water 로 읽으면 거부한다', check_json(p, 1, 'water')[0] != [])
+    expect('water 파일을 risk 로 읽으면 거부한다', check_json(wjson(good), 1, 'risk')[0] != [])
+    p2 = os.path.join(d, 'risk_norows.json')
+    json.dump({'criteria': {}}, open(p2, 'w', encoding='utf-8'))
+    expect("rows 키가 없으면 잡는다", check_json(p2, 1, 'risk')[0] != [])
+    rr2 = json.loads(json.dumps(rr)); del rr2['after']
+    p3 = os.path.join(d, 'risk_missing.json')
+    json.dump({'criteria': {}, 'rows': [rr2]}, open(p3, 'w', encoding='utf-8'))
+    expect('risk 행에 after 가 없으면 잡는다', check_json(p3, 1, 'risk')[0] != [])
+    p4 = os.path.join(d, 'risk_nan.json')
+    open(p4, 'w').write('{"criteria":{},"rows":[{"name":"x","status":"ok",'
+                        '"before":{"LCD":8.9},"after":{"LCD":NaN},"pass":true}]}')
+    expect('중첩된 after.LCD 의 NaN 까지 잡는다', check_json(p4, 1, 'risk')[0] != [])
+    expect('risk 결과 경로가 허용된다',
+           check_paths(['21_ZIF69_MTV/risk_results_v3ensA.json']) in ([], ['21_ZIF69_MTV/risk_results_v3ensA.json: 파일이 없다']))
+
     print('합집합 (좁힌 러너가 버린 행을 되살리는 부분)')
     b = [dict(good[0], name='e1', RH=0.0), dict(good[0], name='e1', RH=0.9)]
     n = [dict(good[0], name='e1', RH=0.25)]
@@ -551,6 +656,26 @@ def selftest():
     open(lg4, 'w', encoding='utf-8').write('  !! 5자리 물이 아닙니다. 중단합니다.\n')
     expect('러너 자체 검사 실패를 잡는다', check_log(lg4) != [])
 
+    print('로그 검사기 — risk 스키마 (정상을 실패로 읽지 않는가)')
+    lg5 = os.path.join(d, 'risk_ok.log')
+    open(lg5, 'w', encoding='utf-8').write(
+        '  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.7 GB, Zeo++ 9.5 GB/건)\n'
+        '  [                          ok] base\n'
+        '\n[OK] risk_results_v3ensA.json\n'
+        '\n주: PLD/AV 는 이완 전, LCD 감소는 이완 후 값으로 판정했습니다\n')
+    expect('워커 조정 안내를 실패로 읽지 않는다', check_log(lg5, 'risk') == [])
+    expect('같은 로그를 water 로 읽으면 거부한다 (기기명 사본 줄 없음)',
+           check_log(lg5, 'water') != [])
+    lg6 = os.path.join(d, 'risk_bad.log')
+    open(lg6, 'w', encoding='utf-8').write(
+        '  !! 워커를 4 -> 1 로 낮춥니다\n'
+        '  !! 이완 CIF 없음: saIm0583e3\n[OK] x.json\n')
+    expect('진짜 !! 실패는 그대로 잡는다', check_log(lg6, 'risk') != [])
+    lg7 = os.path.join(d, 'risk_allfail.log')
+    open(lg7, 'w', encoding='utf-8').write(
+        '[중단] 12개 전부 실패했습니다. 기존 결과를 지키기 위해...\n')
+    expect('전멸 방어([중단])를 잡는다', check_log(lg7, 'risk') != [])
+
     print('경로 검사기 (122 MB 실행 디렉터리를 막는 것이 목적)')
     expect('실행 디렉터리를 거부한다',
            check_paths(['21_ZIF69_MTV/water_runs_v3ens/rh25_x/Output/System_0/a.data']) != [])
@@ -578,6 +703,10 @@ def main():
     ap.add_argument('--log')
     ap.add_argument('--mailbox', default=None,
                     help='자동 생성 글을 넣을 우편함 (생략하면 안 넣는다)')
+    ap.add_argument('--schema', default='water', choices=sorted(SCHEMAS),
+                    help="결과 파일 형식. water=물 경쟁(최상위 리스트), "
+                         "risk=안정성 스크린({criteria, rows}), "
+                         "generic=열 검사 없이 NaN 만 본다")
     ap.add_argument('--union-from', default=None, metavar='REF:PATH',
                     help='커밋된 결과와 (조성, RH) 로 합친다. 좁힌 러너가 '
                          '자기 TARGETS 밖의 행을 버리고 쓰는 것을 되돌린다. '
