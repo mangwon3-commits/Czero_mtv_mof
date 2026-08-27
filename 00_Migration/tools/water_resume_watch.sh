@@ -27,7 +27,35 @@ RUNNER=run_water_v3mslm050.py
 WANT_ROWS=2
 MAX_TRIES=5
 
-BUSY_RE='simulate|lmp_serial|/network|risk_screen|run_water|run_humid'
+# 계산으로 치는 것. 하나라도 살아 있으면 걸지 않는다.
+#
+# [2026-08-28 데스크탑이 잡은 결함] 예전에는 이 한 줄이었다:
+#     BUSY_RE='simulate|lmp_serial|/network|risk_screen|run_water|run_humid'
+# `/network` 가 상시 데몬 `networkd-dispatcher` 에 걸린다. 그러면 busy 가 항상
+# 참이 되어 **감시자가 영원히 아무것도 안 한다.** Junseok 에서 그 데몬이 지금
+# 돌지는 않지만 `networkd-dispatcher.service` 가 **enabled** 로 설치돼 있어
+# 언제든 뜬다. 이름 매칭과 명령줄 매칭을 섞으면 어느 쪽 함정인지 안 보인다
+# (CLAUDE.md §4 의 pgrep 자기 매칭과 같은 계열).
+#
+#   BUSY_COMM  프로세스 **이름** 정확일치 -> 계산 바이너리. 데몬과 안 겹친다.
+#              (`networkd-dispatcher` 의 comm 은 `networkd-dispat` 라 안 걸린다)
+#   BUSY_CMD   **명령줄** 매칭 -> 우리 드라이버만.
+BUSY_COMM='^(simulate|lmp_serial|lmp|network|xtb)$'
+BUSY_CMD='run_water|run_humid|run_gcmc|risk_screen|relax_series|autopush'
+# autopush 를 넣는 이유: 그것이 git 커밋·푸시 중일 때 감시자가 "유휴" 로
+# 보고 git merge 를 걸면 같은 저장소를 둘이 동시에 만진다. 계산이 아니어도
+# 붙잡아야 한다.
+
+# 이 스크립트 자신은 어느 쪽에도 안 걸린다 - 명령줄이 경로뿐이고
+# BUSY_CMD 의 어떤 낱말도 들어 있지 않다.
+count_busy() {
+  local n1 n2
+  n1=$(ps -eo comm= | grep -cE "$BUSY_COMM") || n1=0
+  n2=$(pgrep -c -f "$BUSY_CMD") || n2=0
+  case "$n1" in ''|*[!0-9]*) n1=0 ;; esac
+  case "$n2" in ''|*[!0-9]*) n2=0 ;; esac
+  echo $(( n1 + n2 ))
+}
 PY=/home/mangwon/miniconda3/envs/czeromof/bin/python
 
 mkdir -p "$STATE"
@@ -45,8 +73,7 @@ if [ -s "$RESULT" ]; then
 fi
 
 # ---- 뭐라도 돌고 있으면 손대지 않는다 ---------------------------------------
-NBUSY=$(pgrep -c -f "$BUSY_RE" 2>/dev/null) || NBUSY=0
-case "$NBUSY" in ''|*[!0-9]*) NBUSY=0 ;; esac
+NBUSY=$(count_busy)
 [ "$NBUSY" -gt 0 ] && exit 0
 
 # ---- 여기까지 왔으면: 결과가 미완인데 아무것도 안 돈다 ----------------------
