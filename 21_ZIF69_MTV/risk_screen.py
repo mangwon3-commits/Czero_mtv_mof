@@ -217,9 +217,19 @@ def run_one(name):
                 m0['AV_per_cell'] = round(m0['AV'], 1)
             return name, m0, m1, 'ok'
 
-    r = subprocess.run(f'yes | python {IFACE} -ff UFF4MOF --minimize {name}.cif',
-                       shell=True, cwd=d, capture_output=True, text=True,
-                       timeout=1800)
+    # [2026-08-27 Junseok] 여기가 맨 `python` 이었습니다. `shell=True` 라 그
+    # 순간의 PATH 를 쓰는데, 시스템에는 python3 만 있고 python 은 conda 환경에만
+    # 있습니다. Junseok 이 OOM 재기동 뒤 환경이 안 잡힌 채로 재개돼 **12종 중
+    # 7종이 `/bin/sh: 1: python: not found` 로 실패**했습니다. 그런데 러너가
+    # 실패를 status 에 적고 계속 진행해 자동 푸시가 "12종 완주" 로 알렸습니다 —
+    # 0 절이 말하는 "실패가 결과처럼 보이는 것" 입니다.
+    #
+    # `sys.executable` 은 지금 이 파이썬의 절대 경로라 PATH 와 무관합니다.
+    # 셸 인용이 필요 없도록 리스트 인자로 넘기고 `yes` 는 stdin 으로 대체합니다.
+    r = subprocess.run([sys.executable, IFACE, '-ff', 'UFF4MOF', '--minimize',
+                        f'{name}.cif'],
+                       input='y\n' * 200, cwd=d, capture_output=True,
+                       text=True, timeout=1800)
     inp = os.path.join(d, f'in.{name}')
     if not os.path.exists(inp):
         tail = (r.stderr or r.stdout or '')[-300:]

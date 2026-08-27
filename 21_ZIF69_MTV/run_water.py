@@ -283,9 +283,13 @@ def main():
 
     # 이어받기 — 이원 GCMC 는 한 작업이 길어 중단·재개가 실제로 생긴다.
     res = {}
+    prior_rows = []
     part = os.path.join(HERE, 'water_results.json')
     if os.path.exists(part):
-        for r in json.load(open(part, encoding='utf-8')):
+        # 원본 행을 그대로 들고 있습니다. 아래 저장에서 이 실행이 건드리지 않은
+        # 조성을 보존하는 데 씁니다 — res 는 압축된 형태라 되돌릴 수 없습니다.
+        prior_rows = json.load(open(part, encoding='utf-8'))
+        for r in prior_rows:
             d = {'CO2': (r['CO2_molkg'], r.get('CO2_err', 0.0))}
             if r['RH'] > 0:
                 d['water'] = (r['H2O_molkg'], r.get('H2O_err', 0.0))
@@ -336,9 +340,28 @@ def main():
                          'H2O_over_CO2': (w / c if c else None)})
         print()
 
+    # [2026-08-25] 덮어쓰지 않고 병합합니다. laptop2 가 보고한 결함입니다.
+    #
+    #   rows 는 위에서 TARGETS 만 순회해 만들어집니다. 조성을 한 종으로 좁힌
+    #   래퍼(run_water_v3grid_0875.py 등)가 돌면 이 파일에 **그 조성만** 남고
+    #   앞서 있던 조성이 사라졌습니다. 값이 틀리는 것이 아니라 **없어진 조성이
+    #   "계산 안 된 것"처럼 보이는** 것이 문제입니다 — 0 절이 말하는 그 유형.
+    #
+    #   기기별 태그 사본(water_results_<기기>.json)이 진짜 기록이고 이 파일은
+    #   이어받기 상태에 가깝지만, 사람이 이 파일을 열어 보는 것을 막을 수는
+    #   없습니다. 그래서 이 실행이 건드리지 않은 (조성, RH) 는 그대로 둡니다.
+    #   같은 (조성, RH) 는 이번 실행 값이 이깁니다 — 재계산이 갱신을 이겨야
+    #   이어받기를 지우고 다시 돌린 의미가 있습니다.
+    merged = {(r['name'], r['RH']): r for r in prior_rows}
+    kept = len([k for k in merged if k not in {(r['name'], r['RH']) for r in rows}])
+    for r in rows:
+        merged[(r['name'], r['RH'])] = r
+    out = sorted(merged.values(), key=lambda r: (r['name'], r['RH']))
+
     with open(os.path.join(HERE, 'water_results.json'), 'w', encoding='utf-8') as f:
-        json.dump(rows, f, indent=2, ensure_ascii=False)
-    print('[OK] water_results.json')
+        json.dump(out, f, indent=2, ensure_ascii=False)
+    print(f'[OK] water_results.json — 이번 실행 {len(rows)}행, '
+          f'보존 {kept}행, 합계 {len(out)}행')
     print('\n판정 기준(19_WaterCompetition 과 동일, 계산 전 확정):')
     print('  RH90 유지율 80% 이상 -> 유효 / 50~80% -> 조건부(전처리 건조 비용) / 50% 미만 -> 종료')
     print('  차이의 유의성은 1.5σ 를 기준으로 본다.')

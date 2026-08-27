@@ -10,6 +10,7 @@ v2 와 달라지는 것은 두 입력뿐이다:
 
 산출: regen_energy_v3.json
 """
+import glob
 import json
 import os
 import sys
@@ -19,25 +20,53 @@ sys.path.insert(0, HERE)
 from regen_energy import sensible, vacuum_work, drying, RECOVERY, \
     CP_FRAMEWORK, CP_RANGE, HEAT_RECOVERY, RECOVERY_RANGE  # noqa: E402
 
-QST = {'base': 22.42, 'saIm025': 27.97, 'saIm050': 29.51,
-       'saIm075': 31.42, 'saIm100': 34.01}
-NAMES = ['base', 'saIm050', 'saIm075', 'saIm100']   # 습윤 WC 가 있는 넷
+# [2026-08-27] 하드코딩을 걷어냈습니다. 일일 감사(08-26)가 잡은 것:
+#
+#   "승자 조성 saIm0583 은 건조·습윤 WC 가 둘 다 완비되어 있는데
+#    regen_energy_v3.py 의 NAMES/파일 목록에서 완전히 빠져 있어
+#    regen_energy_v3.json 에 그 행 자체가 존재하지 않습니다."
+#
+# 원인은 이 스크립트가 접미사 없는 파일 **하나씩만** 열고 NAMES 를 손으로
+# 적어 둔 것이었습니다. `_g0583` `_ext` `_grid` `_mslm075` 접미사 파일과
+# v4_humid_wc/ 는 아예 안 열렸습니다. **글롭으로 바꾸고 NAMES 를 자료에서
+# 유도합니다** — 새 조성이 생기면 자동으로 들어옵니다.
+
+
+def load_qst():
+    """Q_st 를 결과 파일에서 읽는다. 손으로 적어 두면 새 조성이 누락된다."""
+    out = {}
+    for f in sorted(glob.glob(os.path.join(HERE, 'results_v3*.json'))):
+        d = json.load(open(f, encoding='utf-8'))
+        rows = d['rows'] if isinstance(d, dict) and 'rows' in d else d
+        for r in rows:
+            if 'Qst_CO2' in r:
+                out[r['name']] = r['Qst_CO2']
+    return out
 
 
 def load_wc():
     out = {}
-    dry = json.load(open(os.path.join(HERE, 'v3_wc/working_capacity.json'),
-                         encoding='utf-8'))
-    for r in dry['rows']:
-        out[r['name']] = {'dry_tsa': r['working_capacity']['tsa']['value'],
-                          'dry_vsa': r['working_capacity']['vsa05']['value']}
-    wet = json.load(open(os.path.join(
-        HERE, 'v3_humid_wc/humid_working_capacity.json'), encoding='utf-8'))
-    for r in wet['rows']:
-        w = r['working_capacity']
-        out.setdefault(r['name'], {})['wet_tsa'] = w['tsa']['value']
-        out[r['name']]['wet_vsa'] = w['vsa']['value']
+    for f in sorted(glob.glob(os.path.join(HERE, 'v3_wc', '*.json'))):
+        d = json.load(open(f, encoding='utf-8'))
+        for r in (d['rows'] if isinstance(d, dict) and 'rows' in d else d):
+            w = r['working_capacity']
+            out.setdefault(r['name'], {})['dry_tsa'] = w['tsa']['value']
+            out[r['name']]['dry_vsa'] = w['vsa05']['value']
+    for sub in ('v3_humid_wc', 'v4_humid_wc'):
+        for f in sorted(glob.glob(os.path.join(HERE, sub, '*.json'))):
+            d = json.load(open(f, encoding='utf-8'))
+            for r in (d['rows'] if isinstance(d, dict) and 'rows' in d else d):
+                w = r['working_capacity']
+                out.setdefault(r['name'], {})['wet_tsa'] = w['tsa']['value']
+                out[r['name']]['wet_vsa'] = w['vsa']['value']
     return out
+
+
+QST = load_qst()
+# 건조·습윤·Q_st 가 **셋 다** 있는 조성만. 하나라도 없으면 계산이 안 됩니다.
+NAMES = sorted(n for n, v in load_wc().items()
+               if {'dry_tsa', 'dry_vsa', 'wet_tsa', 'wet_vsa'} <= set(v)
+               and n in QST)
 
 
 def main():
@@ -45,6 +74,11 @@ def main():
     vw = vacuum_work()
     dc = drying()
     print('=== 재생 에너지 v3 (kJ / mol CO2) — 가정은 v2 와 동일 ===')
+    print('  ⚠️ WC 는 **생산 실현 하나**의 값입니다. 08-27 에 생산 실현이')
+    print('     앙상블 평균보다 높다는 것이 확인됐습니다(saIm0583 +1.76 SD,')
+    print('     saIm050 +1.16 SD). 조성 간 재생에너지 **순위를 이 표로 매기지')
+    print('     마세요** — 배치 산포가 들어 있지 않습니다.')
+    print()
     print(f'  Cp {CP_FRAMEWORK} J/(g K) [실측 아님, 감도 {CP_RANGE}] · '
           f'열회수 {HEAT_RECOVERY*100:.0f}% · CO2 회수율 {RECOVERY*100:.0f}% · '
           f'건조 잠열 {dc:.2f} · 진공 일 하한 {vw:.2f}')
