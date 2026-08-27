@@ -1,0 +1,28 @@
+수분 경쟁 — mslm050 (RH90, RH0)
+  입력   /home/mangwon/mof_project/21_ZIF69_MTV/charged_v3
+  작업   /home/mangwon/mof_project/21_ZIF69_MTV/water_runs_v3mslm050
+  결과   /home/mangwon/mof_project/21_ZIF69_MTV/v3_water_mslm050/water_results.json
+  워커   2
+  RH     [0.9, 0.0]  (RH90 이 유지율의 분자)
+  대상   mslm050
+  물 정의 사이트 5개 (TIP5P-Ew 는 5)
+  simulate /home/mangwon/miniconda3/envs/czeromof/bin/simulate
+
+구조 1개 x RH 2단계 중 실행 2개
+CO2 0.15 bar 고정, 298 K, TIP5P-Ew(5사이트), 15000 사이클
+
+  [              ok] RH 90% mslm050    CO2  0.9124  H2O   1.0355
+  [              ok] RH  0% mslm050    CO2  1.2438  H2O   0.0000
+
+============================================================================================================
+구조                                  RH         CO2 [mol/kg]         H2O [mol/kg]               건조대비   H2O/CO2
+------------------------------------------------------------------------------------------------------------
+SO2CH3 50% — 관문 통과 비-saIm 중 여유 최대   90%      0.9124 ± 0.0133      1.0355 ± 0.0314       73.4% (20.8σ)      1.13
+SO2CH3 50% — 관문 통과 비-saIm 중 여유 최대    0%      1.2438 ± 0.0087      0.0000 ± 0.0000      100.0% (0.0σ)      0.00
+
+[OK] water_results.json — 이번 실행 2행, 보존 0행, 합계 2행
+
+판정 기준(19_WaterCompetition 과 동일, 계산 전 확정):
+  RH90 유지율 80% 이상 -> 유효 / 50~80% -> 조건부(전처리 건조 비용) / 50% 미만 -> 종료
+  차이의 유의성은 1.5σ 를 기준으로 본다.
+  기기명 사본 저장: /home/mangwon/mof_project/21_ZIF69_MTV/v3_water_mslm050/water_results_junseok.json
