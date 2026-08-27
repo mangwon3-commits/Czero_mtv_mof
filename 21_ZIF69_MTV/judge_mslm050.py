@@ -130,6 +130,10 @@ def main():
     print(f'  SE_ref = {S_REF}/sqrt({N_REF}) = {se:.4f}')
     print(f'  SD_new = {REL_BATCH} x {wc:.4f} = {sd:.4f}   <- **빌려온 값**')
     print(f'  단위   = {d:.4f} / {den:.4f} = **{u:.2f}**    문턱 {THRESHOLD}')
+    print(f'\n  ※ 이 1.5 는 **실현 SD 자**입니다 — 분모 두 항이 다 배치 산포이고')
+    print(f'    RASPA ± 가 안 들어갑니다. 통계 비교의 1.5(= 1.5 x 95%CI = 4.16 진짜σ)와')
+    print(f'    **같은 숫자, 다른 자**입니다. 08-28 에 확인된 미해결 항목이며')
+    print(f'    바꾸려면 과거 판정 전부에 일괄 적용해야 합니다(ERROR_BARS.md).')
 
     print(f'\n=== 결론 (등록문 3절 표) ===')
     if u >= THRESHOLD and wc > M_REF:
