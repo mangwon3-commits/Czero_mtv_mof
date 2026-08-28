@@ -163,3 +163,18 @@ __pycache__/
 21_ZIF69_MTV/lmp_v3ens075/
 21_ZIF69_MTV/lmp_v3ens50nb50/
 21_ZIF69_MTV/lmp_v3ensA/
+
+# [2026-08-29] 물 러너 실행 디렉터리 둘 — 이 기기에서 **하루 세 번째** 같은 누락입니다
+# (water_runs_repro* 580MB · lmp_v3ens* 116MB · 그리고 여기 **396 MB**).
+#
+# 이 항목을 넣으면서 더 중한 것을 찾았습니다: **v3_water_ens/water_results.json
+# 자체가 미추적이었습니다.** 08-24 앙상블 배치의 원자료이고, 08-29 재현성 판정
+# 전체(H_A / H_B 분해)가 이 파일 위에 서 있습니다. 같은 커밋에서 추적으로 넣었습니다.
+#
+#   water_runs_v3ens/        -> v3_water_ens/water_results.json          (**추적 추가**)
+#   water_runs_v3mslm050/    -> v3_water_mslm050/water_results*.json      (**추적 추가**)
+#
+# 교훈: 실행 디렉터리를 제외할 때 "결과가 추적되나" 를 **매번 실제로 확인**해야
+# 합니다. 확인 없이 제외했으면 원자료가 영영 안 올라갔을 것입니다.
+21_ZIF69_MTV/water_runs_v3ens/
+21_ZIF69_MTV/water_runs_v3mslm050/
