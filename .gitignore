@@ -137,3 +137,15 @@ __pycache__/
 21_ZIF69_MTV/water_runs_v3grid/
 21_ZIF69_MTV/lmp_v3grid/
 21_ZIF69_MTV/lmp_v4mix/
+
+# [2026-08-29] 재현성 반복 실행 디렉터리 — **20개가 빠져 있었습니다.**
+# 08-28 항목이 경고한 그대로입니다: "러너를 새로 만들 때 실행 디렉터리 이름을
+# 여기 같이 넣으십시오." run_water_repro.py 를 만들면서 안 넣었습니다.
+# 실측 **29 MB x 20 = 약 580 MB**.
+#
+# 결과 JSON 이 추적되고 있음을 확인한 뒤 넣었습니다:
+#   water_runs_repro/          -> v3_water_repro/water_results.json
+#   water_runs_repro_<태그>/    -> v3_water_repro_<태그>/water_results.json
+#                                 (태그 a~s, 총 20회 반복)
+21_ZIF69_MTV/water_runs_repro/
+21_ZIF69_MTV/water_runs_repro_*/
