@@ -125,8 +125,24 @@ STAGE = os.path.join(HERE, "structures_v3ensA_stage")
 #     (가) 공유 risk_screen.py 를 고친다   -> 러너 5개가 물려 있어 회귀 위험
 #     (나) **base 를 이 실행에 포함**한다  -> 기준이 이번 실행에서 나옴. 채택
 #
-#   base 의 LCD 는 Zeo++ -res 라 결정론적이므로 7.63144 가 그대로 나와야
-#   합니다. **안 나오면 그 자체가 신호**이니 보고에 반드시 적으십시오.
+#   [2026-08-28 정정] 이 문단은 **틀렸습니다.**
+#
+#   Zeo++ `-res` 는 결정론적인 것이 맞습니다. 그런데 그 앞의 **이완이
+#   비결정론적**입니다 — lammps_interface 가 문자열 set 을 순회해
+#   `angle_style hybrid` 순서를 내고, PYTHONHASHSEED 가 미설정이면
+#   프로세스마다 뒤집힙니다. 그래서 base 는 **두 값**을 가집니다:
+#
+#       cosine/periodic fourier -> 7.61978
+#       fourier cosine/periodic -> 7.63144
+#
+#   데스크탑 한 기기가 두 값을 다 냈고(lmp_v4mix 대 lmp_v3grid), 한
+#   배치 안에서도 구조마다 갈립니다. **"7.63144 가 나와야 한다" 는
+#   검사로 못 씁니다 — 둘 다 정상입니다.**
+#
+#   이 파일 위쪽의 PYTHONHASHSEED 고정이 앞으로의 실행을 한쪽으로
+#   묶습니다. 그래도 **base 를 같은 실행에 포함하는 것**이 유일한
+#   방어입니다 — 순서는 구조마다 무작위라 기기별 상수처럼 보정할 수
+#   없습니다.
 TARGETS = (["base", "saIm0583"]
            + [f"saIm0583e{i}" for i in range(1, 6)]
            + [f"saIm0583r{i}" for i in range(1, 6)])
