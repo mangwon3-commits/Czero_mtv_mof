@@ -149,3 +149,17 @@ __pycache__/
 #                                 (태그 a~s, 총 20회 반복)
 21_ZIF69_MTV/water_runs_repro/
 21_ZIF69_MTV/water_runs_repro_*/
+
+# [2026-08-29] 앙상블 LAMMPS 실행 디렉터리 셋 — 형제는 이미 제외돼 있었습니다.
+# lmp_v3grid/ · lmp_v4mix/ · lmp_aryl/ · lmp_sens*/ 가 이미 있는데 v3ens 계열
+# 셋만 빠졌습니다. 실측 **116 MB** (32+32+53).
+#
+# 결과가 보존됨을 확인한 뒤 넣었습니다:
+#   lmp_v3ens075/     -> risk_results_v3ens075.json · risk_v3ens075_index.json
+#   lmp_v3ens50nb50/  -> risk_results_v3ens50nb50.json · risk_v3ens50nb50_index.json
+#   lmp_v3ensA/       -> risk_results_v3ensA.json · risk_v3ensA_index.json
+# 완화 구조 자체는 relax_v3/ (64파일) · charged_v3/ (60파일) 로 추적 중이라,
+# 이 디렉터리들은 중간 산출(LAMMPS 로그 · Zeo++ .res/.vol)뿐입니다.
+21_ZIF69_MTV/lmp_v3ens075/
+21_ZIF69_MTV/lmp_v3ens50nb50/
+21_ZIF69_MTV/lmp_v3ensA/
