@@ -40,12 +40,16 @@ os.environ.setdefault("PYTHONHASHSEED", "0")
 import run_water as rw
 
 REAL = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(REAL, 'v3_water_repro')
+# [2026-08-28] 랩탑 지적: 2구조 x 1회는 dof 2 라 R 추정이 약합니다. 한 구조를
+# 여러 번 반복하는 쪽이 낫습니다 - 구조 간 차이가 안 섞이니까요.
+# REPRO_TAG 로 인스턴스를 나눠 병렬 반복하고, REPRO_ONLY 로 대상을 좁힙니다.
+TAG = os.environ.get('REPRO_TAG', '')
+OUT = os.path.join(REAL, 'v3_water_repro' + (('_' + TAG) if TAG else ''))
 os.makedirs(OUT, exist_ok=True)
 
 rw.HERE = OUT
 rw.CHARGED = os.path.join(REAL, 'charged_v3')
-rw.RUNS = os.path.join(REAL, 'water_runs_repro')
+rw.RUNS = os.path.join(REAL, 'water_runs_repro' + (('_' + TAG) if TAG else ''))
 rw.WATER_DEF = os.path.join(REAL, '..', '19_WaterCompetition', 'water.def')
 rw.MAX_WORKERS = int(os.environ.get('REPRO_WORKERS', '2'))
 
@@ -63,8 +67,13 @@ if __name__ == '__main__':
     print(f'  워커   {rw.MAX_WORKERS}   RH {rw.RH_LIST}', flush=True)
     print(f'  대상   {" ".join(n for n, _ in rw.TARGETS)}', flush=True)
 
-    if len(rw.TARGETS) != 2 or rw.RH_LIST != [0.0]:
-        print('  !! 등록된 2건(e1·e5 × RH0)이 아닙니다. 중단합니다.', flush=True)
+    only = os.environ.get('REPRO_ONLY', '').strip()
+    if only:
+        keep = {t.strip() for t in only.split(',') if t.strip()}
+        rw.TARGETS = [(n, l) for n, l in rw.TARGETS if n in keep]
+        print('  REPRO_ONLY -> ' + ' '.join(n for n, _ in rw.TARGETS), flush=True)
+    if not rw.TARGETS or rw.RH_LIST != [0.0]:
+        print('  !! 대상이 비었거나 RH 가 [0.0] 이 아닙니다. 중단합니다.', flush=True)
         sys.exit(1)
     for p, label in ((rw.CHARGED, '전하 CIF 폴더'), (rw.WATER_DEF, '물 정의')):
         if not os.path.exists(p):
