@@ -1,0 +1,74 @@
+
+===== 2026-08-28 14:56:58 착수 (사용자 상시 승인) =====
+===== which python = /home/mangwon/miniconda3/envs/lammps_mof/bin/python =====
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.7 GB, Zeo++ 9.5 GB/건)
+  안정성 관문 자기 산포 — base + sa50nb50 계열 (총 7종)
+  대상     base sa50nb50 sa50nb50e1 sa50nb50e2 sa50nb50e3 sa50nb50e4 sa50nb50e5
+  staging  7종 -> /home/mangwon/mof_project/21_ZIF69_MTV/structures_v3ens50nb50_stage
+  STRUCT   /home/mangwon/mof_project/21_ZIF69_MTV/structures_v3ens50nb50_stage
+  결과     /home/mangwon/mof_project/21_ZIF69_MTV/risk_results_v3ens50nb50.json
+  워커     1  (Zeo++ 9.5 GB/건, 가용 22.7 GB)
+  python   /home/mangwon/miniconda3/envs/lammps_mof/bin/python
+  대상 7종
+
+대상: risk_v3ens50nb50_index.json -> 7종, 작업 /home/mangwon/mof_project/21_ZIF69_MTV/lmp_v3ens50nb50
+구조 7개 UFF4MOF 이완 + Zeo++
+
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.7 GB, Zeo++ 9.5 GB/건)
+    base: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] base
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+    sa50nb50: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] sa50nb50
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+    sa50nb50e1: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] sa50nb50e1
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.3 GB, Zeo++ 9.5 GB/건)
+    sa50nb50e2: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] sa50nb50e2
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+    sa50nb50e3: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] sa50nb50e3
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.5 GB, Zeo++ 9.5 GB/건)
+    sa50nb50e4: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] sa50nb50e4
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.5 GB, Zeo++ 9.5 GB/건)
+    sa50nb50e5: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] sa50nb50e5
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+
+==============================================================================================================================
+조성             PLD(전)     AV(전)   LCD(전)   LCD(후)    LCD감소%      최소거리    루프      EDiff  판정
+------------------------------------------------------------------------------------------------------------------------------
+base            5.157    1232.2    8.898    7.631       0.0     1.079    12      0.854  통과 *덜수렴
+sa50nb50        4.448    1117.8    9.101    6.878       9.9     0.990    12       1.26  통과 *덜수렴
+sa50nb50e1      5.593    1091.5    8.991    6.435      15.7     0.990    12      0.645  통과 *덜수렴
+sa50nb50e2      4.944    1069.8    9.179    6.840      10.4     0.990    12      0.519  통과 *덜수렴
+sa50nb50e3      4.284    1148.2    9.144    6.433      15.7     0.990    12       1.38  통과 *덜수렴
+sa50nb50e4      4.083    1088.7    9.346    6.516      14.6     0.990    12        1.1  통과 *덜수렴
+sa50nb50e5      4.791     778.8    8.918    6.741      11.7     0.990    12      0.054  통과 *덜수렴
+
+[OK] risk_results_v3ens50nb50.json
+
+주: PLD/AV 는 이완 **전**, LCD 감소·최소거리는 이완 **후** 값으로 판정했습니다 (MIGRATION.md 3-6).
