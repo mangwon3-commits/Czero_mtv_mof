@@ -65,8 +65,18 @@ BUSY_CMD='run_water|run_humid|run_gcmc|risk_screen|relax_series'
 # BUSY_CMD 의 어떤 낱말도 들어 있지 않다.
 count_busy() {
   local n1 n2
+  # 이름 매칭: 계산 바이너리. 데몬과 안 겹친다.
   n1=$(ps -eo comm= | grep -cE "$BUSY_COMM") || n1=0
-  n2=$(pgrep -c -f "$BUSY_CMD") || n2=0
+  # 명령줄 매칭: **파이썬 프로세스로 한정**한다.
+  #
+  # [2026-08-28] 여기가 pgrep -f 였다. 그러면 그 낱말이 명령줄에 있기만 하면
+  # 무엇이든 걸린다. 실제로 10:47~11:17 에 **착수를 지켜보던 내 감시 셸**이
+  # (명령줄에 risk_screen_v3ens075 가 있었다) busy 로 세어져, stage2_watch 가
+  # 30분간 "계산 1건이 돌고 있다" 로 물러났다. **관찰이 대상을 바꿨다.**
+  #
+  # 드라이버는 전부 `python -u <러너>.py` 이므로 comm 이 python 이다.
+  # 셸·grep·ps·편집기는 아무리 그 낱말을 달고 있어도 안 걸린다.
+  n2=$(ps -eo comm=,args= | awk -v p="$BUSY_CMD" '$1 ~ /^python/ && $0 ~ p' | wc -l)
   case "$n1" in ''|*[!0-9]*) n1=0 ;; esac
   case "$n2" in ''|*[!0-9]*) n2=0 ;; esac
   echo $(( n1 + n2 ))
