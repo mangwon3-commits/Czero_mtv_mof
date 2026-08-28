@@ -67,10 +67,15 @@ if __name__ == '__main__':
     print(f'  워커   {rw.MAX_WORKERS}   RH {rw.RH_LIST}', flush=True)
     print(f'  대상   {" ".join(n for n, _ in rw.TARGETS)}', flush=True)
 
+    # [2026-08-29] REPRO_ONLY 를 **필터가 아니라 지정**으로 바꿉니다.
+    # 필터였을 때 REPRO_ONLY=saIm0583e2 가 목록에 없어 빈 대상이 됐고,
+    # 가드가 막아 안 돌았습니다(태그 k·l·m). 선택 편향 없는 시험을 하려면
+    # 애초에 목록에 없던 구조를 재실행할 수 있어야 합니다 — 랩탑 지적.
     only = os.environ.get('REPRO_ONLY', '').strip()
     if only:
-        keep = {t.strip() for t in only.split(',') if t.strip()}
-        rw.TARGETS = [(n, l) for n, l in rw.TARGETS if n in keep]
+        known = dict(rw.TARGETS)
+        rw.TARGETS = [(t.strip(), known.get(t.strip(), '재현성 반복'))
+                      for t in only.split(',') if t.strip()]
         print('  REPRO_ONLY -> ' + ' '.join(n for n, _ in rw.TARGETS), flush=True)
     if not rw.TARGETS or rw.RH_LIST != [0.0]:
         print('  !! 대상이 비었거나 RH 가 [0.0] 이 아닙니다. 중단합니다.', flush=True)
