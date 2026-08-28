@@ -111,3 +111,29 @@ __pycache__/
 
 # 좌표 변환본은 vtk_to_cartesian.py 로 재생성된다 (원본의 5배 크기)
 *_cart.vtk
+
+# [2026-08-28] 08-26~28 에 생긴 실행 디렉터리 — **7개가 빠져 있었습니다.**
+# laptop2 가 자기 기기에서 발견해 알려 준 함정입니다(`684b8ce`):
+#   "water_runs_chunked/ 는 untracked 이고 .gitignore 에도 없다.
+#    git add -A 하면 RASPA 출력이 통째로 올라간다."
+# 데스크탑에서 실측하니 **1,308 MB** 였습니다(그쪽 260 MB 의 5배).
+#
+# 형제 디렉터리는 전부 이미 제외돼 있었고 **새로 생긴 것만 매번 빠집니다.**
+# 러너를 새로 만들 때 실행 디렉터리 이름을 여기 같이 넣으십시오.
+#
+# 아래 전부 **결과 JSON 이 추적되고 있음을 확인한 뒤** 넣었습니다:
+#   water_runs_chunked/        -> v3_water_chunkref/water_results.json (1.2869)
+#   water_runs_chunkref/       -> 같음
+#   water_runs_lowrh_ensA/     -> v3_water_lowrh_ensA/water_results.json (15항목)
+#   humid_wc_runs_v3mslm075/   -> v3_humid_wc/humid_working_capacity_mslm075.json
+#   water_runs_v3cliff/        -> results_v3cliff.json
+#   lmp_v3grid/                -> results_v3grid.json · risk_results_v3grid.json
+#   lmp_v4mix/                 -> results_v4mix.json · risk_results_v4mix.json
+21_ZIF69_MTV/water_runs_chunked/
+21_ZIF69_MTV/water_runs_chunkref/
+21_ZIF69_MTV/water_runs_lowrh_ensA/
+21_ZIF69_MTV/humid_wc_runs_v3mslm075/
+21_ZIF69_MTV/water_runs_v3cliff/
+21_ZIF69_MTV/water_runs_v3grid/
+21_ZIF69_MTV/lmp_v3grid/
+21_ZIF69_MTV/lmp_v4mix/

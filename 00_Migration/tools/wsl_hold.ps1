@@ -68,7 +68,16 @@ $FAILS_BEFORE_SHUTDOWN = 3
 #                                            positives against system daemons.
 # Measured on the desktop with 7 RASPA jobs live: comm=7, cmd=12, old pattern=19 of
 # which one was networkd-dispatcher. See CLAUDE.md section 4 on pgrep self-matching.
-$BUSY_COMM = '^(simulate|lmp_serial|lmp|network|xtb)$'
+# git is here on purpose: if `wsl --shutdown` lands while autopush is mid-push,
+# the push is lost and the results stay local-only. That exact failure cost us 34
+# unpushed files on 08-27.
+#
+# [2026-08-28] Junseok suggested adding 'autopush' to BUSY_CMD instead. Do NOT.
+# If autopush is a supervisor loop it is ALWAYS alive, which makes the busy guard
+# permanently true - the very bug just removed with '/network'. Match the TRANSIENT
+# worker, not the persistent supervisor. Measured on the desktop: git processes are
+# 0 while idle, 3 during a transfer, 0 again after. No permanent false positive.
+$BUSY_COMM = '^(simulate|lmp_serial|lmp|network|xtb|git|git-remote-http|git-remote-https)$'
 $BUSY_CMD  = 'run_water|run_humid|run_gcmc|risk_screen|relax_series'
 
 if (-not (Test-Path $work)) { New-Item -ItemType Directory -Path $work -Force | Out-Null }
