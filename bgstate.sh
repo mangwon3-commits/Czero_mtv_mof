@@ -19,8 +19,15 @@
 # 사용:  bash bgstate.sh          전체
 #        bash bgstate.sh --brief  1절만
 
-P=/home/mangwon1/mof_project/21_ZIF69_MTV
-W=/home/mangwon1/.claude_work
+# [2026-08-28] 두 경로가 /home/mangwon1 으로 박혀 있었습니다. 사용자 이름이
+#   다른 기기에서는 경로가 없어 **3절이 완주한 결과 파일을 전부 "아직" 으로
+#   보고합니다.** 1절(ps 기반)은 멀쩡해서 스크립트가 도는 것처럼 보이고,
+#   틀리는 방향이 "끝난 것을 안 끝난 것으로" 라 가장 나쁩니다.
+#   CLAUDE.md 가 새 세션마다 이 스크립트를 돌리라고 합니다.
+#   그래서 스크립트 위치와 $HOME 에서 유도합니다.
+P="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/21_ZIF69_MTV"
+W="$HOME/.claude_work"
+[ -d "$P" ] || { echo "bgstate: 프로젝트 경로 없음: $P" >&2; exit 1; }
 HZ=$(getconf CLK_TCK 2>/dev/null || echo 100)
 NOW=$(date +%s)
 
