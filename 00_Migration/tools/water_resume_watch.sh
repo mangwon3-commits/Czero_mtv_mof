@@ -85,6 +85,18 @@ PY=/home/mangwon/miniconda3/envs/czeromof/bin/python
 mkdir -p "$STATE"
 log() { echo "[$(date '+%F %T')] [water] $*" >> "$LOG"; }
 
+# [2026-08-28] 판단이 **바뀔 때만** 적는다.
+#
+# 예전에는 시각 창(`분%60 < 10`)으로 억제했다. stage2_watch 쪽에서 그 방식이
+# 사고를 냈다 — 10:53 에 감시자가 막힌 것이 로그에 안 남아 **막히고 있다는
+# 것조차 안 보이는 상태**가 30분 갔다. 억제할 것은 *같은 말 반복* 이지
+# *상태 변화* 가 아니다. 상태키는 water 전용으로 따로 둔다.
+logchange() {   # $1 = 상태키(같으면 침묵)   $2 = 메시지
+  local f="$STATE/.lastreason_water" prev=""
+  [ -f "$f" ] && prev=$(cat "$f" 2>/dev/null)
+  if [ "$prev" != "$1" ]; then printf '%s' "$1" > "$f"; log "$2"; fi
+}
+
 exec 8>"$STATE/water.lock"
 flock -n 8 || exit 0
 
@@ -105,7 +117,7 @@ T=0
 [ -f "$TRIES" ] && T=$(cat "$TRIES" 2>/dev/null || echo 0)
 case "$T" in ''|*[!0-9]*) T=0 ;; esac
 if [ "$T" -ge "$MAX_TRIES" ]; then
-  [ $(( $(date +%M) % 60 )) -lt 10 ] && log "재기동 $T회로 상한 도달. 더 걸지 않는다. 사람이 볼 일이다."
+  logchange "maxtries:$T" "재기동 $T회로 상한 도달. 더 걸지 않는다. 사람이 볼 일이다."
   exit 0
 fi
 T=$((T+1)); echo "$T" > "$TRIES"

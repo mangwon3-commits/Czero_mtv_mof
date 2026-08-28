@@ -88,6 +88,17 @@ AP_PY=/home/mangwon/miniconda3/envs/czeromof/bin/python
 mkdir -p "$STATE"
 log() { echo "[$(date '+%F %T')] $*" >> "$LOG"; }
 
+# [2026-08-28] 판단이 **바뀔 때만** 적는다.
+#
+# 예전에는 `분%30 < 10` 인 시각에만 적었다. 그래서 10:53 에 감시자가 막힌 것이
+# 로그에 안 남았고, **막히고 있다는 것조차 안 보이는 상태**가 30분 갔다.
+# 억제해야 할 것은 *같은 말 반복* 이지 *상태 변화* 가 아니다.
+logchange() {   # $1 = 상태키(같으면 침묵)   $2 = 메시지
+  local f="$STATE/.lastreason" prev=""
+  [ -f "$f" ] && prev=$(cat "$f" 2>/dev/null)
+  if [ "$prev" != "$1" ]; then printf '%s' "$1" > "$f"; log "$2"; fi
+}
+
 # 겹쳐 도는 것을 막는다. cron 이 10분마다 부르는데 git fetch 가 느릴 수 있다.
 exec 9>"$STATE/lock"
 flock -n 9 || exit 0
@@ -107,8 +118,7 @@ fi
 # 헛돈 적이 있어 여기 적어 둔다.)
 NBUSY=$(count_busy)
 if [ "$NBUSY" -gt 0 ]; then
-  # 10분마다 같은 줄을 쌓지 않는다. 30분에 한 번만 적는다.
-  [ $(( $(date +%M) % 30 )) -lt 10 ] && log "계산 $NBUSY건이 돌고 있다. 대기."
+  logchange "busy:$NBUSY" "계산 $NBUSY건이 돌고 있다. 대기."
   exit 0
 fi
 
