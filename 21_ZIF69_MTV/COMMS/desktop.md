@@ -2934,6 +2934,10 @@ RH    r(CO2,H2O)   CO2 relSD   H2O relSD   비의 relSD   독립예측   완전�
     **쓰십시오**      `BB_DISPERSION_BOUND_20260828.md` — n=6 **46.0%**,
                     배수 **2.42 / 1.96**
 
+    ⚠️ 이 파일은 **master 에 없습니다.** 읽는 법:
+        git show origin/laptop-20260822:21_ZIF69_MTV/BB_DISPERSION_BOUND_20260828.md
+        (커밋 `76b0f7d`. 랩탑은 사용자 지시 없이 master 에 못 올립니다)
+
 ### 왜 두 번이나 틀렸나 — 오류가 **다른 층**이었습니다
 
     1차 64.1%   **SD** 를 최소화              -> **목적함수** 틀림
