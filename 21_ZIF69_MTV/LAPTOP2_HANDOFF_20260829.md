@@ -31,16 +31,14 @@
 - **게시·푸시 완료**: 이 커밋. 데스크탑 회신 대기 사항 없음(기록용).
 - WSL 에 실행 중 계산 없음. 러너 로그 ~/.claude_work/, 이벤트 nb_events.tsv.
 
-## 3. 진행 중인 백그라운드 작업 (끊겼으면 이렇게 재개)
+## 3. CALF-20 앵커 전문 대조 — **데스크탑으로 이관됨** (09:15 수락)
 
-**CALF-20 앵커 전문 대조 워크플로** (Opus 읽기 5기, 종합은 주 에이전트 몫):
+**이 기기에서 워크플로를 다시 돌리지 말 것** — 중복이자 토큰 위험 (데스크탑 합의).
+사유: 이 기기 앱의 GPU 크래시(5절)로 5기 워크플로가 3회 유실, CLI 우회도 403 봉쇄.
 
-- 스크립트: `C:\Users\LeeHK\.claude\projects\D--Claude-MOF\ec05659d-160d-40a7-84f8-fa858216547e\workflows\scripts\calf20-anchor-verify-wf_6f9f0c42-fca.js`
-- 재개: Workflow 도구에 `{scriptPath: 위 경로, resumeFromRunId: "wf_03763dde-176"}`
-- 완료 후 할 일: 주 에이전트(Fable)가 결과를 V-1(대조표)/V-2(결정 질문:
-  CALF-20 분말 RH80–90 평형 <0.8 mmol/g?)/V-3(앵커 병기 단서)/V-4(출처)로
-  종합 → 우편함 부록 게시 + 커밋 + HKHOME-desktop_now 통지.
-  등급 상향 금지(개별 결과의 등급 존중).
+- 산출물 대기: master 의 `CALF20_ANCHOR_20260829.md` (V-1 대조표 / V-2 결정
+  질문: 분말 RH80-90 평형 <0.8 / V-3 병기 단서 / V-4 출처, 등급제 유지).
+- 도착하면 laptop2 주 에이전트가 검토·종합해 우편함 부록 게시 + 통지.
 
 ## 4. 남은 일 (우선순위순)
 
@@ -54,7 +52,7 @@
 | 시각 | 유형 | 증거 |
 |---|---|---|
 | 01:43:39 | Application Hang 1002 (행 4건째) | 이벤트 로그, WER MoAppHang |
-| 01:49:29 | **GPU 프로세스 크래시** (신규 유형) | main.log 마지막 줄 `GPU process gone: crashed, exitCode 101457950`, 이후 02:11 재시작까지 무기록 |
+| 01:49:29, 02:21:15, 05:54:10 | **GPU 프로세스 크래시** ×3 (최신 버전·가속 OFF 에서도 재발) | main.log 마지막 줄 `GPU process gone: crashed, exitCode 101457950`, 이후 02:11 재시작까지 무기록 |
 
 - 이번 두 건 모두 **stealth-update 전조 없음** (누적 3건 그대로, 마지막 08-28 00:54).
 - 두 건 모두 OS 재부팅 없음, WSL(17h+ 연속)·계산 데이터 무사.
@@ -66,3 +64,8 @@
 - 우편함: `21_ZIF69_MTV/COMMS/laptop2.md` (이 기기 전용 필자), 규약 COMMS.md.
 - 데스크탑 직통: 세션 목록의 `HKHOME-desktop_now`. 계산 중 pull 금지(fetch+show).
 - 브랜치: `laptop2-20260825`, 신원 skyjun <mangwon3@gmail.com>.
+
+## 7. 크래시 증거 보존 (앱 결함 보고용)
+
+`D:\Claude_MOF\crash_evidence_20260829\` — README(재현 연쇄 + 4/4 상관표),
+main.log 사본, Windows 이벤트 추출. 원본 로그 회전에 대비한 보존본.
