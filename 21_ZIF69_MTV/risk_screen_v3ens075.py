@@ -128,6 +128,103 @@ sys.argv = ["risk_screen.py", "risk_v3ens075_index.json", "v3ens075"]
 sys.path.insert(0, HERE)
 import risk_screen as rs  # noqa: E402
 
+
+# ---------------------------------------------------------------------------
+# [2026-08-29] 사전검사 — **환경을 잘못 고르면 여기서 죽습니다.**
+#
+#   이 기기에는 환경이 둘이고 하나만 이 스크린을 돌릴 수 있습니다:
+#       lammps_mof  Python 3.11.15  lammps-interface 0.2.2   <- 맞는 환경
+#       czeromof    Python 3.10.21  lammps-interface **없음**  <- 틀린 환경
+#
+#   stage2_watch.sh:85 가 PY_ENV=.../lammps_mof/bin 으로 제대로 쓰고 있고,
+#   08-28 11:23 무인 실행은 그래서 완주했습니다. 오늘 제가 손으로 czeromof 로
+#   띄웠다가 3.11 전용 인자에서 TypeError 로 죽었습니다 — 운이 좋았습니다.
+#   그게 아니었으면 이완 단계에서 lammps-interface 없음으로 **워커 안에서**
+#   죽고, 08-27 처럼 "일부만 조용히 실패" 가 될 수 있었습니다.
+#
+#   그래서 **모듈 최상위에서, 워커가 뜨기 전에** 확인합니다.
+# ---------------------------------------------------------------------------
+def _preflight():
+    missing = []
+    try:
+        import lammps_interface  # noqa: F401
+    except Exception as e:
+        missing.append("lammps-interface (%s)" % type(e).__name__)
+    import shutil as _sh
+    # lmp_serial 은 PATH 에 있어야 합니다.
+    if not _sh.which("lmp_serial"):
+        missing.append("실행파일 lmp_serial")
+    # network(Zeo++) 는 **risk_screen.py:101 과 같은 방식**으로 찾습니다 —
+    # PATH 에 없으면 czeromof 절대경로로 대체합니다. 처음에 PATH 만 봤다가
+    # 맞는 환경(lammps_mof, network 없음)을 막을 뻔했습니다. 08-28 무인 실행이
+    # 완주한 것이 바로 그 대체 덕이었습니다.
+    _net = _sh.which("network") or os.path.expanduser(
+        "~/miniconda3/envs/czeromof/bin/network")
+    if not (_net and os.path.exists(_net) and os.access(_net, os.X_OK)):
+        missing.append("실행파일 network (PATH 에도, czeromof 대체경로에도 없음)")
+    if missing:
+        print("", flush=True)
+        print("  !! 사전검사 실패 — 이 환경으로는 스크린을 돌릴 수 없습니다.", flush=True)
+        print("     python  = %s" % sys.executable, flush=True)
+        print("     없는 것 : %s" % ", ".join(missing), flush=True)
+        print("", flush=True)
+        print("     맞는 환경: /home/mangwon/miniconda3/envs/lammps_mof/bin", flush=True)
+        print("     (stage2_watch.sh:85 의 PY_ENV 와 같은 것)", flush=True)
+        print("  ** 아무것도 안 돌리고 중단합니다. **", flush=True)
+        sys.exit(2)
+
+
+_preflight()
+
+
+# ---------------------------------------------------------------------------
+# [2026-08-29] Python 3.10 호환 shim — **공유 risk_screen.py 는 안 고칩니다.**
+#
+#   risk_screen.py:356 이 ProcessPoolExecutor(max_tasks_per_child=1) 을 쓰는데
+#   그 인자는 **Python 3.11+** 입니다. 이 기기의 czeromof 환경은 3.10.21 이라
+#   TypeError 로 즉사합니다.
+#
+#   ★ 그 인자를 그냥 떼면 안 됩니다. 08-12 fcdfc6d 주석이 이유를 적어 놨습니다:
+#     "작업 하나 끝날 때마다 워커를 새로 만든다. .wslconfig 의 '구조마다 자기
+#      프로세스를 줘서 끝날 때 메모리를 돌려받게 하라'의 구현이다."
+#   08-12 16:41 에 이게 없어 8워커 x 3.2 GB = 25.6 GB 로 OOM 이 났고 dbus 까지
+#   죽어 WSL 배포판이 통째로 먹통이 됐습니다. 저도 08-27 에 같은 자리를 밟았습니다.
+#
+#   그래서 **의미를 보존**합니다: multiprocessing.Pool 의 maxtasksperchild 는
+#   3.10 에도 있고 같은 일을 합니다(작업 하나마다 새 자식).
+#   시작 방식은 spawn 으로 명시합니다 — 이 파일의 [spawn 안전] 주석과 모듈
+#   최상위 sys.argv 설정이 spawn 을 전제로 쓰여 있습니다.
+#
+#   3.11+ 에서는 아무 일도 안 합니다.
+# ---------------------------------------------------------------------------
+if sys.version_info < (3, 11):
+    import multiprocessing as _mp
+
+    class _PoolAsExecutor:
+        """ProcessPoolExecutor(max_workers, max_tasks_per_child) 의 3.10 대역."""
+
+        def __init__(self, max_workers=None, max_tasks_per_child=None, **_kw):
+            ctx = _mp.get_context("spawn")
+            self._pool = ctx.Pool(processes=max_workers,
+                                  maxtasksperchild=max_tasks_per_child)
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_exc):
+            self._pool.close()
+            self._pool.join()
+            return False
+
+        def map(self, fn, iterable):
+            # imap 은 Executor.map 과 같이 **순서를 지키고 지연 평가**합니다.
+            return self._pool.imap(fn, iterable)
+
+    rs.ProcessPoolExecutor = _PoolAsExecutor
+    print("  [shim] Python %d.%d — ProcessPoolExecutor 를 spawn Pool"
+          "(maxtasksperchild=1) 로 대체합니다. 메모리 가드 유지."
+          % sys.version_info[:2], flush=True)
+
 rs.STRUCT = STAGE
 rs.BASE_SRC = os.path.join(STAGE, "ZIF69_base.cif")
 
