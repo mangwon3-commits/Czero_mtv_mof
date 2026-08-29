@@ -55,6 +55,42 @@
 사용:
     python3 risk_screen_v3ensA.py
 """
+import os as _os
+
+# ============================================================================
+# [2026-08-28] 이완이 **비결정론적**이었습니다. 여기서 고정합니다.
+#
+#   lammps_interface/lammps_main.py:318
+#       angles = set([j['potential'].name for ... ])
+#
+#   문자열 `set` 을 순회해 `angle_style hybrid <이름들>` 순서를 냅니다.
+#   PYTHONHASHSEED 가 미설정이면 파이썬이 **프로세스마다** 문자열 해시를
+#   무작위화하므로 순서가 실행마다 바뀝니다. LAMMPS 가 다른 순서로 합을
+#   내면 부동소수점 반올림이 달라지고 최소점이 달라집니다.
+#
+#   실측 (같은 CIF · 같은 기기 · 같은 빌드):
+#       시드 미고정 6회   cosine 먼저 4 · fourier 먼저 2
+#       PYTHONHASHSEED=0  6회 전부 동일
+#       base after LCD    cosine 먼저 7.61978  ·  fourier 먼저 7.63144
+#
+#   risk_screen.py:346 이 max_tasks_per_child=1 이라 **구조마다 새 프로세스 =
+#   새 시드**입니다. 그래서 한 실행 안에서도 구조마다 순서가 달랐습니다
+#   (데스크탑 lmp_v3grid: saIm0667 만 cosine, 나머지는 fourier).
+#
+#   ⚠️ **이 고정은 앞으로의 재현성을 위한 것이지 과거를 맞추는 것이 아닙니다.**
+#      어느 값으로 고정해도 과거의 절반은 재현되지 않습니다.
+#      `0` 은 `fourier` 먼저 = base 7.63144 쪽입니다.
+#
+#   ⚠️ 그래서 **base 를 같은 실행에 포함하는 것**이 유일한 방어입니다.
+#      빌드 차이라면 기기별 상수라 보정할 수 있지만, 해시 순서는 구조마다
+#      무작위라 보정이 불가능합니다.
+#
+#   setdefault 이므로 기동 시 `PYTHONHASHSEED=... python runner.py` 로 덮을 수
+#   있습니다. 이 줄은 lammps-interface 를 **자식 프로세스로** 부르는
+#   risk_screen.py:220 에 상속되어 거기서 효력을 냅니다.
+# ============================================================================
+_os.environ.setdefault("PYTHONHASHSEED", "0")
+
 import json
 import os
 import shutil
@@ -89,8 +125,24 @@ STAGE = os.path.join(HERE, "structures_v3ensA_stage")
 #     (가) 공유 risk_screen.py 를 고친다   -> 러너 5개가 물려 있어 회귀 위험
 #     (나) **base 를 이 실행에 포함**한다  -> 기준이 이번 실행에서 나옴. 채택
 #
-#   base 의 LCD 는 Zeo++ -res 라 결정론적이므로 7.63144 가 그대로 나와야
-#   합니다. **안 나오면 그 자체가 신호**이니 보고에 반드시 적으십시오.
+#   [2026-08-28 정정] 이 문단은 **틀렸습니다.**
+#
+#   Zeo++ `-res` 는 결정론적인 것이 맞습니다. 그런데 그 앞의 **이완이
+#   비결정론적**입니다 — lammps_interface 가 문자열 set 을 순회해
+#   `angle_style hybrid` 순서를 내고, PYTHONHASHSEED 가 미설정이면
+#   프로세스마다 뒤집힙니다. 그래서 base 는 **두 값**을 가집니다:
+#
+#       cosine/periodic fourier -> 7.61978
+#       fourier cosine/periodic -> 7.63144
+#
+#   데스크탑 한 기기가 두 값을 다 냈고(lmp_v4mix 대 lmp_v3grid), 한
+#   배치 안에서도 구조마다 갈립니다. **"7.63144 가 나와야 한다" 는
+#   검사로 못 씁니다 — 둘 다 정상입니다.**
+#
+#   이 파일 위쪽의 PYTHONHASHSEED 고정이 앞으로의 실행을 한쪽으로
+#   묶습니다. 그래도 **base 를 같은 실행에 포함하는 것**이 유일한
+#   방어입니다 — 순서는 구조마다 무작위라 기기별 상수처럼 보정할 수
+#   없습니다.
 TARGETS = (["base", "saIm0583"]
            + [f"saIm0583e{i}" for i in range(1, 6)]
            + [f"saIm0583r{i}" for i in range(1, 6)])

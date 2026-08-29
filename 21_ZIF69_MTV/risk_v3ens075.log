@@ -1,0 +1,75 @@
+
+===== 2026-08-28 11:23:04 2단계 무인 착수 (stage2_watch.sh) =====
+===== 대상 base,saIm075,saIm075e1,saIm075e2,saIm075e3,saIm075e4,saIm075e5 =====
+===== which python = /home/mangwon/miniconda3/envs/lammps_mof/bin/python =====
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.8 GB, Zeo++ 9.5 GB/건)
+  안정성 관문 자기 산포 2단계 — base + saIm075 계열 (총 7종)
+  대상     base saIm075 saIm075e1 saIm075e2 saIm075e3 saIm075e4 saIm075e5
+  staging  7종 -> /home/mangwon/mof_project/21_ZIF69_MTV/structures_v3ens075_stage
+  STRUCT   /home/mangwon/mof_project/21_ZIF69_MTV/structures_v3ens075_stage
+  결과     /home/mangwon/mof_project/21_ZIF69_MTV/risk_results_v3ens075.json
+  워커     1  (Zeo++ 9.5 GB/건, 가용 22.8 GB)
+  python   /home/mangwon/miniconda3/envs/lammps_mof/bin/python
+  대상 7종
+
+대상: risk_v3ens075_index.json -> 7종, 작업 /home/mangwon/mof_project/21_ZIF69_MTV/lmp_v3ens075
+구조 7개 UFF4MOF 이완 + Zeo++
+
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.7 GB, Zeo++ 9.5 GB/건)
+    base: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] base
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+    saIm075: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] saIm075
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+    saIm075e1: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] saIm075e1
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.3 GB, Zeo++ 9.5 GB/건)
+    saIm075e2: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] saIm075e2
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+    saIm075e3: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] saIm075e3
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.5 GB, Zeo++ 9.5 GB/건)
+    saIm075e4: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] saIm075e4
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+    saIm075e5: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] saIm075e5
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+
+==============================================================================================================================
+조성             PLD(전)     AV(전)   LCD(전)   LCD(후)    LCD감소%      최소거리    루프      EDiff  판정
+------------------------------------------------------------------------------------------------------------------------------
+base            5.157    1232.2    8.898    7.620       0.0     1.079    12      0.338  통과 *덜수렴
+saIm075         3.747     923.4    9.408    6.089      20.1     0.990    12       1.72  탈락: LCD_drop *덜수렴
+saIm075e1       4.215     691.3    9.259    6.241      18.1     0.989    12       3.34  통과 *덜수렴
+saIm075e2       4.151     868.0    9.646    6.695      12.1     0.990    12        1.1  통과 *덜수렴
+saIm075e3       4.020     912.6    9.678    6.189      18.8     0.989    12      0.754  통과 *덜수렴
+saIm075e4       3.934     958.9    8.983    6.948       8.8     0.990    12      0.711  통과 *덜수렴
+saIm075e5       4.246     918.3    9.005    6.189      18.8     0.990    12       1.13  통과 *덜수렴
+
+[OK] risk_results_v3ens075.json
+
+주: PLD/AV 는 이완 **전**, LCD 감소·최소거리는 이완 **후** 값으로 판정했습니다 (MIGRATION.md 3-6).
