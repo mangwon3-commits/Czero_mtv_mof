@@ -113,3 +113,70 @@ __pycache__/
 
 # 좌표 변환본은 vtk_to_cartesian.py 로 재생성된다 (원본의 5배 크기)
 *_cart.vtk
+
+# [2026-08-28] 08-26~28 에 생긴 실행 디렉터리 — **7개가 빠져 있었습니다.**
+# laptop2 가 자기 기기에서 발견해 알려 준 함정입니다(`684b8ce`):
+#   "water_runs_chunked/ 는 untracked 이고 .gitignore 에도 없다.
+#    git add -A 하면 RASPA 출력이 통째로 올라간다."
+# 데스크탑에서 실측하니 **1,308 MB** 였습니다(그쪽 260 MB 의 5배).
+#
+# 형제 디렉터리는 전부 이미 제외돼 있었고 **새로 생긴 것만 매번 빠집니다.**
+# 러너를 새로 만들 때 실행 디렉터리 이름을 여기 같이 넣으십시오.
+#
+# 아래 전부 **결과 JSON 이 추적되고 있음을 확인한 뒤** 넣었습니다:
+#   water_runs_chunked/        -> v3_water_chunkref/water_results.json (1.2869)
+#   water_runs_chunkref/       -> 같음
+#   water_runs_lowrh_ensA/     -> v3_water_lowrh_ensA/water_results.json (15항목)
+#   humid_wc_runs_v3mslm075/   -> v3_humid_wc/humid_working_capacity_mslm075.json
+#   water_runs_v3cliff/        -> results_v3cliff.json
+#   lmp_v3grid/                -> results_v3grid.json · risk_results_v3grid.json
+#   lmp_v4mix/                 -> results_v4mix.json · risk_results_v4mix.json
+21_ZIF69_MTV/water_runs_chunked/
+21_ZIF69_MTV/water_runs_chunkref/
+21_ZIF69_MTV/water_runs_lowrh_ensA/
+21_ZIF69_MTV/humid_wc_runs_v3mslm075/
+21_ZIF69_MTV/water_runs_v3cliff/
+21_ZIF69_MTV/water_runs_v3grid/
+21_ZIF69_MTV/lmp_v3grid/
+21_ZIF69_MTV/lmp_v4mix/
+
+# [2026-08-29] 재현성 반복 실행 디렉터리 — **20개가 빠져 있었습니다.**
+# 08-28 항목이 경고한 그대로입니다: "러너를 새로 만들 때 실행 디렉터리 이름을
+# 여기 같이 넣으십시오." run_water_repro.py 를 만들면서 안 넣었습니다.
+# 실측 **29 MB x 20 = 약 580 MB**.
+#
+# 결과 JSON 이 추적되고 있음을 확인한 뒤 넣었습니다:
+#   water_runs_repro/          -> v3_water_repro/water_results.json
+#   water_runs_repro_<태그>/    -> v3_water_repro_<태그>/water_results.json
+#                                 (태그 a~s, 총 20회 반복)
+21_ZIF69_MTV/water_runs_repro/
+21_ZIF69_MTV/water_runs_repro_*/
+
+# [2026-08-29] 앙상블 LAMMPS 실행 디렉터리 셋 — 형제는 이미 제외돼 있었습니다.
+# lmp_v3grid/ · lmp_v4mix/ · lmp_aryl/ · lmp_sens*/ 가 이미 있는데 v3ens 계열
+# 셋만 빠졌습니다. 실측 **116 MB** (32+32+53).
+#
+# 결과가 보존됨을 확인한 뒤 넣었습니다:
+#   lmp_v3ens075/     -> risk_results_v3ens075.json · risk_v3ens075_index.json
+#   lmp_v3ens50nb50/  -> risk_results_v3ens50nb50.json · risk_v3ens50nb50_index.json
+#   lmp_v3ensA/       -> risk_results_v3ensA.json · risk_v3ensA_index.json
+# 완화 구조 자체는 relax_v3/ (64파일) · charged_v3/ (60파일) 로 추적 중이라,
+# 이 디렉터리들은 중간 산출(LAMMPS 로그 · Zeo++ .res/.vol)뿐입니다.
+21_ZIF69_MTV/lmp_v3ens075/
+21_ZIF69_MTV/lmp_v3ens50nb50/
+21_ZIF69_MTV/lmp_v3ensA/
+
+# [2026-08-29] 물 러너 실행 디렉터리 둘 — 이 기기에서 **하루 세 번째** 같은 누락입니다
+# (water_runs_repro* 580MB · lmp_v3ens* 116MB · 그리고 여기 **396 MB**).
+#
+# 이 항목을 넣으면서 더 중한 것을 찾았습니다: **v3_water_ens/water_results.json
+# 자체가 미추적이었습니다.** 08-24 앙상블 배치의 원자료이고, 08-29 재현성 판정
+# 전체(H_A / H_B 분해)가 이 파일 위에 서 있습니다. 같은 커밋에서 추적으로 넣었습니다.
+#
+#   water_runs_v3ens/        -> v3_water_ens/water_results.json          (**추적 추가**)
+#   water_runs_v3mslm050/    -> v3_water_mslm050/water_results*.json      (**추적 추가**)
+#
+# 교훈: 실행 디렉터리를 제외할 때 "결과가 추적되나" 를 **매번 실제로 확인**해야
+# 합니다. 확인 없이 제외했으면 원자료가 영영 안 올라갔을 것입니다.
+21_ZIF69_MTV/water_runs_v3ens/
+21_ZIF69_MTV/water_runs_v3mslm050/

@@ -1,0 +1,235 @@
+{
+  "criteria": {
+    "PLD_min": 3.3,
+    "LCD_drop_limit_pct": 20.0,
+    "AV_floor": 20.0,
+    "min_dist_limit": 0.7,
+    "LCD_reference": 7.63144
+  },
+  "rows": [
+    {
+      "name": "base",
+      "status": "ok",
+      "before": {
+        "LCD": 8.89809,
+        "PLD": 5.157,
+        "AV": 1232.2,
+        "min_dist": 1.074,
+        "n_atoms": 600,
+        "AV_per_cell": 1232.2
+      },
+      "after": {
+        "LCD": 7.63144,
+        "PLD": 5.26127,
+        "AV": 8137.52,
+        "min_dist": 1.079,
+        "n_atoms": 4800,
+        "supercell_rep": 8,
+        "AV_per_cell": 1017.2
+      },
+      "LCD_drop_pct": 0.0,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.854070553699785,
+      "converged": false
+    },
+    {
+      "name": "sa50nb50",
+      "status": "ok",
+      "before": {
+        "LCD": 9.10137,
+        "PLD": 4.44808,
+        "AV": 1117.84,
+        "min_dist": 0.971,
+        "n_atoms": 672,
+        "AV_per_cell": 1117.8
+      },
+      "after": {
+        "LCD": 6.87764,
+        "PLD": 4.05641,
+        "AV": 3668.38,
+        "min_dist": 0.99,
+        "n_atoms": 5376,
+        "supercell_rep": 8,
+        "AV_per_cell": 458.5
+      },
+      "LCD_drop_pct": 9.88,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 1.26273884300099,
+      "converged": false
+    },
+    {
+      "name": "sa50nb50e1",
+      "status": "ok",
+      "before": {
+        "LCD": 8.99146,
+        "PLD": 5.59261,
+        "AV": 1091.54,
+        "min_dist": 0.971,
+        "n_atoms": 672,
+        "AV_per_cell": 1091.5
+      },
+      "after": {
+        "LCD": 6.43523,
+        "PLD": 4.07904,
+        "AV": 3742.38,
+        "min_dist": 0.99,
+        "n_atoms": 5376,
+        "supercell_rep": 8,
+        "AV_per_cell": 467.8
+      },
+      "LCD_drop_pct": 15.67,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.644565929500459,
+      "converged": false
+    },
+    {
+      "name": "sa50nb50e2",
+      "status": "ok",
+      "before": {
+        "LCD": 9.17931,
+        "PLD": 4.94399,
+        "AV": 1069.81,
+        "min_dist": 0.971,
+        "n_atoms": 672,
+        "AV_per_cell": 1069.8
+      },
+      "after": {
+        "LCD": 6.83962,
+        "PLD": 4.05625,
+        "AV": 3697.18,
+        "min_dist": 0.99,
+        "n_atoms": 5376,
+        "supercell_rep": 8,
+        "AV_per_cell": 462.1
+      },
+      "LCD_drop_pct": 10.38,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.518963062299008,
+      "converged": false
+    },
+    {
+      "name": "sa50nb50e3",
+      "status": "ok",
+      "before": {
+        "LCD": 9.14416,
+        "PLD": 4.28366,
+        "AV": 1148.15,
+        "min_dist": 0.971,
+        "n_atoms": 672,
+        "AV_per_cell": 1148.2
+      },
+      "after": {
+        "LCD": 6.4328,
+        "PLD": 4.05757,
+        "AV": 3599.4,
+        "min_dist": 0.99,
+        "n_atoms": 5376,
+        "supercell_rep": 8,
+        "AV_per_cell": 449.9
+      },
+      "LCD_drop_pct": 15.71,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 1.38364788429863,
+      "converged": false
+    },
+    {
+      "name": "sa50nb50e4",
+      "status": "ok",
+      "before": {
+        "LCD": 9.34602,
+        "PLD": 4.08252,
+        "AV": 1088.68,
+        "min_dist": 0.971,
+        "n_atoms": 672,
+        "AV_per_cell": 1088.7
+      },
+      "after": {
+        "LCD": 6.5164,
+        "PLD": 4.16794,
+        "AV": 3637.65,
+        "min_dist": 0.99,
+        "n_atoms": 5376,
+        "supercell_rep": 8,
+        "AV_per_cell": 454.7
+      },
+      "LCD_drop_pct": 14.61,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 1.1018534832001,
+      "converged": false
+    },
+    {
+      "name": "sa50nb50e5",
+      "status": "ok",
+      "before": {
+        "LCD": 8.91757,
+        "PLD": 4.79094,
+        "AV": 778.774,
+        "min_dist": 0.971,
+        "n_atoms": 672,
+        "AV_per_cell": 778.8
+      },
+      "after": {
+        "LCD": 6.74089,
+        "PLD": 4.10327,
+        "AV": 3853.91,
+        "min_dist": 0.99,
+        "n_atoms": 5376,
+        "supercell_rep": 8,
+        "AV_per_cell": 481.7
+      },
+      "LCD_drop_pct": 11.67,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.0540232187995571,
+      "converged": false
+    }
+  ]
+}

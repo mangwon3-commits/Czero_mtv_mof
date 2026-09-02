@@ -1,0 +1,6 @@
+MAILTO=""
+# Junseok 무인 가동 (2026-08-28 설치). 사용자 1주 부재 대비.
+# 둘 다 "계산이 돌고 있으면 아무것도 안 한다" 가 첫 조건이다.
+# 3분 어긋나게 두어 같은 순간에 판단하지 않게 한다.
+0,10,20,30,40,50 * * * * /bin/bash /home/mangwon/mof_project/00_Migration/tools/water_resume_watch.sh >/dev/null 2>&1
+3,13,23,33,43,53 * * * * /bin/bash /home/mangwon/mof_project/00_Migration/tools/stage2_watch.sh >/dev/null 2>&1

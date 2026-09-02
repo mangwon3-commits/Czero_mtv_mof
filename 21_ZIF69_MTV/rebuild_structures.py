@@ -78,8 +78,32 @@ def fix_tags(path):
     open(path, 'w', encoding='utf-8').write(t)
 
 
+USAGE = """rebuild_structures.py — structures_v2/ 를 **덮어씁니다**
+
+  python rebuild_structures.py --run        기본 대상만 재빌드
+  python rebuild_structures.py --run all    OTHERS 까지 포함
+
+⚠️ 인자 없이 부르면 아무것도 안 합니다. **--run 을 명시해야 돕니다.**
+
+   [2026-08-19] 이 파일에 argparse 가 없어 `--help` 를 부른 것이 즉시
+   전체 재빌드를 시작해 structures_v2/ 를 덮어썼습니다. 빌더가 고정
+   시드라 바이트가 같아 피해는 없었지만 무인이었다면 몰랐을 것입니다.
+   그 사고가 "무인 창에서 구조 생성 금지" 규칙을 만들었습니다.
+
+   [2026-08-27] 사용자가 데스크탑·랩탑은 대체로 임석이라 구조 생성이
+   무방하다고 확정했습니다(ASSIGN_36H_20260826.md 13절). 그러면 이
+   함정을 막는 것이 **더** 중요해집니다 — 임석은 사고를 **알아채게**
+   할 뿐 **막지는** 못하기 때문입니다. 그래서 관문을 여기 답니다.
+"""
+
+
 def main():
-    targets = TARGETS + (OTHERS if 'all' in sys.argv[1:] else [])
+    args = sys.argv[1:]
+    # 오폭 방지: --run 이 없으면 무엇도 만들지 않고 사용법만 냅니다.
+    if '--run' not in args:
+        print(USAGE)
+        return 0
+    targets = TARGETS + (OTHERS if 'all' in args else [])
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for short, full, group, fracs in targets:
