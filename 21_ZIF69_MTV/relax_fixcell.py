@@ -60,7 +60,9 @@ from ase.optimize import FIRE
 from ase.units import Bohr, Hartree
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-XTB = '/home/mangwon1/miniconda3/envs/spectra/bin/xtb'
+# [2026-09-03] 데스크탑 절대경로가 박혀 있어 laptop2 가 못 썼습니다(ASSIGN_20260903 §1-4b).
+# 다른 기기는 XTB_BIN 환경변수로 덮습니다. 기본값은 데스크탑 그대로.
+XTB = os.environ.get('XTB_BIN', '/home/mangwon1/miniconda3/envs/spectra/bin/xtb')
 
 # xtb 는 스택에 큰 배열을 잡습니다. 600원자 주기계에서 8 MB 한도를 넘습니다.
 PRE = ('ulimit -s unlimited 2>/dev/null || ulimit -s 65536; '
