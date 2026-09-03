@@ -8,7 +8,7 @@
 
 | # | 자리 | 무엇을 가정했나 | 어떻게 드러났나 |
 |---|---|---|---|
-| 1 | `relax_fixcell.py:63` | `XTB = '~/miniconda3/envs/spectra/bin/xtb'` 하드코딩 | 랩탑에 그 env 자체가 없음. L1 이 0단계로 실패 |
+| 1 | `relax_fixcell.py:65` | `XTB = '/home/mangwon1/.../envs/spectra/bin/xtb'` 데스크탑 절대경로 하드코딩 (**09-03 5e5d931 에서 `XTB_BIN` 환경변수 폴백으로 고침**) | 랩탑에 그 env 자체가 없음. L1 이 0단계로 실패 |
 | 2 | `laptop60.sh:34` | `CZ=czeromof` 하나로 전 단계 실행 | PACMANCharge 는 `coremof_tools` 에 있음. L2 중단 |
 | 3 | `charge_v3.py:61` | import 가 스킵 검사보다 **앞** | 35종 전부 충전돼 있어도 import 에서 죽음 |
 | 4 | `risk_screen.py:256` | `lmp_serial` bare 호출 | 러너 PATH 에 lammps_mof/bin 없음. **실행 전 차단** |
@@ -55,8 +55,12 @@ cat /proc/<러너PID>/environ | tr '\0' '\n' | grep ^PATH=      # 러너의 실�
 
 ## 아직 안 고친 것
 
-- **1번** `relax_fixcell.py` 의 xtb 경로는 하드코딩 그대로입니다. 이번에는
-  데스크탑이 이완을 대신 돌아 우회했을 뿐입니다. 환경변수 폴백으로
-  고칠 항목이고, 무인 창이 끝난 뒤 사용자 확인 아래 합니다
+- ~~**1번**~~ **고쳐짐(09-03, 5e5d931)** — `relax_fixcell.py:65` 가
+  `os.environ.get('XTB_BIN', <데스크탑 경로>)` 입니다. laptop2 가 §6 이완 체인을
+  `XTB_BIN=~/miniconda3/envs/spectra/bin/xtb` 로 띄워 실제 동작 확인(09-03 13:xx).
+  **폴백이 있어도 xtb 가 설치돼 있어야 합니다** — 랩탑은 09-03 현재 env 4개 전수에
+  xtb 가 없어(랩탑 2e618ae) GFN-FF 이완을 못 받습니다. 판은 등록 판 **xtb 6.7.1
+  conda-forge**(`ASSIGN_20260903.md` 129행, `COMMS/desktop.md` 의 "부피 환산이 6.7.1
+  특성")로 맞춰야 하며, 설치 지시 없이 §6 계열을 배정하면 08-19 와 같은 자리에서 죽습니다
 - **2번** `laptop60.sh` 의 단일 env 가정도 그대로입니다. 단계별로 다른
   env 가 필요하다는 사실이 문서화되지 않았습니다
