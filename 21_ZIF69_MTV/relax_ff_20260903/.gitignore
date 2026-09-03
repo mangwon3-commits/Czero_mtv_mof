@@ -1,4 +1,8 @@
-run_*/xtbopt.log
+# 궤적은 약 100 MB 라 제외한다. 판정 근거는 xtb.log 와 xtbopt.poscar 에 다 있다.
+run_*/xtboptlog.cif
 run_*/gfnff_topo
 run_*/gfnff_charges
 run_*/charges
+run_*/POSCAR
+run_*/.xtboptok
+run_*/xtbopt.log
