@@ -66,11 +66,13 @@ def two_sided_p(T, t_obs):
     return float(min(1.0, 2.0 * min(lo, hi)))
 
 
-def machine_axis(r_l2, rng):
+def machine_axis(r_l2):
     """§7-4 최종 규칙. 대조 셋 각각의 양측 p 와 판정."""
     rows = []
     for name, r_m, n_m in CONTROLS:
-        T = null_T(rng, N_L2, n_m)
+        # 비교마다 seed 20260903 로 새 흐름 — 세 비교가 난수 소비 순서에 안 걸리고, 어느 비교든
+        # 단독 재현이 같은 p 를 냄(13:30 laptop2 대조: 순서 차이로 대 1.76 이 0.0216/0.0204 갈렸음)
+        T = null_T(np.random.default_rng(SEED), N_L2, n_m)
         t_obs = math.log(r_l2 / r_m)
         p = two_sided_p(T, t_obs)
         rows.append({'machine': name, 'r_control': r_m, 'n_control': n_m,
@@ -142,7 +144,6 @@ def main():
     ap.add_argument('--selftest', action='store_true')
     a = ap.parse_args()
     vals, cis, r_fixed, F_A = load_inputs(a)
-    rng = np.random.default_rng(SEED)
 
     out = {'rule': 'ASSIGN_20260903 §7-4(최종 13:00)·§7-5', 'seed': SEED, 'n_mc': N_MC,
            'approx': 'σ_stat² ~ σ_w²χ²(4n)/(4n) — 반보수적, p 상대 약 5% (13:10 단서). '
@@ -150,7 +151,7 @@ def main():
 
     if r_fixed is not None:
         print(f'[selftest] r_laptop2 = {r_fixed} 가정')
-        rows, verdict = machine_axis(r_fixed, rng)
+        rows, verdict = machine_axis(r_fixed)
         for x in rows:
             print(f"  대 {x['machine']:8s} r={x['r_control']:.2f} n={x['n_control']}  "
                   f"t_obs={x['t_obs']:+.4f}  p={x['p_two_sided']:.4f}")
@@ -185,7 +186,7 @@ def main():
         out['B_applies'] = None
 
     print('\n§7-4 비교 B — 직접 검정 (MC 200,000, seed 20260903, dof 4n 근사)')
-    rows, verdict = machine_axis(r_l2, rng)
+    rows, verdict = machine_axis(r_l2)
     for x in rows:
         flag = '  ※ 0.048~0.050 경계 — 근사 단서로 판정 유보 표기' if x['near_boundary_0.048_0.050'] else ''
         print(f"  대 {x['machine']:8s} r={x['r_control']:.2f} n={x['n_control']}  "
