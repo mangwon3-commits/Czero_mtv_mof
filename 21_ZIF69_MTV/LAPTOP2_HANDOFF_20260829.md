@@ -144,7 +144,7 @@ Zn-N 개방 없음. 강체 GCMC 가 놓치는 것은 배위 자체이고, 이 �
     **금지 문구**(등록됨): "분할 러너가 더 재현성이 높다" — 판정 전까지 사용 금지
     대조: 내 분할 4회 0.7951 / 0.7980 / 0.7949 / 0.7978 (s_rep 0.00168)
 
-**§6 T-B5·T-C1 장기 체인 — 설치 대기 중** (예상 35~45 h)
+**§6 T-B5·T-C1 장기 체인 — 12:06:06 기동, 실행 중** (예상 35~45 h)
 
     azbIm/bIm 22종. 단계: 이완(GFN-FF 셀고정) -> 판정 -> 전하(PACMAN) -> Zeo++/건조 GCMC -> T-B6 예비
     띄우기: XTB_BIN=~/miniconda3/envs/spectra/bin/xtb 로 준 뒤
@@ -153,8 +153,20 @@ Zn-N 개방 없음. 강체 GCMC 가 놓치는 것은 배위 자체이고, 이 �
     사전검사 1차: coremof_tools(PACMAN)·Zeo++ 없음 -> 설치 중(~/.claude_work/tb5_install.log)
       **채널은 --override-channels -c conda-forge 로 한정할 것** (기본 채널은 Anaconda 약관
       미동의로 실패. 약관 동의는 사용자 몫 — 대신 누르지 않는다). 판 지정은 그대로.
+    사전검사 통과 12:06:08 (코어 12, 가용 14 GB). PACMAN 은 **GPU 사용**
+      (GTX 1660 Ti, torch 2.7.0+cu126) — 데스크탑이 CPU 면 전하가 미세하게
+      갈릴 수 있으나 등록문 4단계가 base 를 같은 기기에서 다시 돌려 내부 정합.
+    Zeo++ 는 건당 9.5 GB 라 **워커 1 로 자동 하향**(가용 13 GB) — 4단계가 길어질 수 있음.
+    **설치 함정**: 지정 판 pip 설치가 PyCifRW 휠 빌드에서 실패한다 —
+      **이 기기에 gcc 가 없다.** PyCifRW 는 판 지정 대상이 아닌 전이 의존성이므로
+      `conda install -n coremof_tools --override-channels -c conda-forge pycifrw -y`
+      를 **먼저** 한 뒤 지정 넷을 판 그대로 설치할 것.
     **돌고 있는 tb5_chain.sh 편집 금지.** 결과 JSON 은 도착한 날 커밋, 실행 폴더는 커밋 안 함.
     판정문은 내가 COMMS/laptop2.md 에 쓴다(tb5_report.py 는 표만 찍음).
+
+**⚠ 감시 함정 (이 세션이 겪음)**: Monitor 도구는 **WSL 밖(Git Bash)** 에서 돈다.
+`pgrep` 를 그냥 쓰면 WSL 프로세스가 안 보여 **멀쩡한 체인을 "종료" 로 오보**한다.
+반드시 `wsl.exe -e bash -lc '...'` 로 감싸서 확인할 것.
 
 **데스크탑 요청 대기**: 설치 후 사전검사 **통과 줄 전체**(특히 PACMANCharge import,
 network 판 0.4.7) 전송 · §7 r1 완주 시각 · §6 1단계 첫 구조 소요 실측.
