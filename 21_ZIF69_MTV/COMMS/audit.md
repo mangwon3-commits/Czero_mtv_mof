@@ -5,6 +5,192 @@
 
 ---
 
+## 2026-09-03 00:12 UTC — 일일 감사
+
+**실행 조건**: 클라우드 저장소 체크아웃만으로 확인. 로컬 프로세스·메모리·
+미푸시 커밋은 볼 수 없음. 새 계산 없음(`regen_energy_v3.py` 등은 실행하지
+않고 파이썬으로 입력 JSON 을 직접 읽어 같은 로직을 재현함). 아래 6개 점검
+외 어떤 파일도 수정하지 않음.
+
+**방법 참고**: 직전 감사 항목이 **2026-08-29**로, 이번 감사까지 **5일 공백**이
+있었다(자동 감사 루틴 자체가 그동안 돌지 않음 — 대상 계산이나 저장소
+문제가 아니라 이 스케줄 실행의 공백). 이 컨테이너도 얕은 클론으로
+시작했고, `git fetch --all` 직후 브랜치 비교 수치가 `laptop-20260822`
+앞섬 346커밋처럼 비정상으로 나와(08-29 감사가 기록한 것과 같은 종류의
+얕은 클론 아티팩트) `git fetch --unshallow` 로 다시 계산했다. 아래 1절은
+**언셸로우 후** 값이다.
+
+### 1) 브랜치 정체
+
+`git fetch --all` (+ `--unshallow`) 후 (기준 시각 2026-09-03 00:11 UTC):
+
+| 브랜치 | 마지막 커밋 | 경과 | master 대비 뒤처짐 | master 대비 앞섬 |
+|---|---|---|---|---|
+| `origin/master` | `4f41696` 2026-09-03 08:30:43 KST | 0.6시간 | — | — |
+| `origin/laptop-20260822` | `fcd7313` 2026-09-03 03:10:13 KST | 6.0시간 | **4커밋** | 50커밋 |
+| `origin/junseok-20260822` | `41fb1b7` 2026-08-29 00:54:23 KST | **128.2시간(5.3일)** | **50커밋** | 0커밋 |
+
+(참고, 지시된 세 브랜치 밖: `origin/laptop2-20260825` `ad931aa`
+2026-09-03 09:10:35 KST, 1.0시간 경과, master 대비 99커밋 뒤처짐 /
+25커밋 앞섬 — 기준(24)을 넘지만 지시 범위 밖이라 경고에 안 넣음.)
+
+**경고: `junseok-20260822` 가 `origin/master` 보다 50커밋 뒤처졌고, 마지막
+커밋이 5.3일 전이다.** 08-24 사고 기준(24커밋 이상 경고)의 두 배를 넘는다.
+`laptop-20260822` 는 4커밋 뒤처짐으로 기준 미만이며 6시간 전까지 계속
+커밋되고 있어 정상 범위. (참고: 08-29 감사는 laptop 이 77커밋 뒤처졌다고
+기록했는데, 지금은 4커밋뿐이다 — 그 사이 laptop 의 커밋 다수가 `master` 에
+병합됐고(예: `9c8bb3e Merge remote-tracking branch 'origin/master' into
+laptop-20260822`), laptop 은 그 뒤로도 50커밋을 새로 쌓았다. 격차가 좁혀진
+것이지 이상이 아니다.)
+
+### 2) 우편함 침묵
+
+각 우편함 파일의 마지막 갱신 커밋 시각(경과 시간만 보고, 침묵을 "죽었다"로
+단정하지 않음):
+
+| 파일 | 마지막 커밋 | 경과 |
+|---|---|---|
+| `COMMS/desktop.md` | `30e2ef4` 2026-09-03 02:50:56 KST | 6.3시간 |
+| `COMMS/junseok.md` | `c557111` 2026-08-29 11:19:28 KST | 117.8시간(4.9일) |
+| `COMMS/laptop.md` | `d5dd7f7` 2026-08-28 05:35:52 KST | 147.5시간(6.1일) |
+
+`COMMS/junseok.md` 침묵(117.8시간)이 1절의 `junseok-20260822` 브랜치 정체
+(128.2시간)와 같은 방향으로 겹친다 — 브랜치도 우편함도 같은 시기(08-29
+전후)에 멈췄다. "죽었다"고 단정하지는 않되, 두 신호가 같은 기기에서 함께
+멈췄다는 사실 자체는 경고로 올린다.
+
+`COMMS/laptop.md` 는 147.5시간 침묵이지만 `laptop-20260822` 브랜치 자체는
+6시간 전까지 계속 커밋되고 있다(1절 참고) — 08-29 감사가 기록한 "계산은
+계속하면서 우편함만 갱신을 멈춘" 패턴이 그대로 이어지고 있고, 침묵 기간이
+82.8시간(08-29) → 147.5시간(오늘)으로 더 길어졌다.
+
+### 3) 결과 JSON 무결성
+
+`results_v3*.json`, `v3_wc/`, `v3_humid_wc/`, `v4_humid_wc/`, `v3_water_grid*/`
+아래 모든 `.json` 을 파이썬으로 파싱(`{"rows": [...]}` dict 는 `rows` 배열
+길이, 순수 리스트는 원소 수를 행수로 셈):
+
+| 파일 | 결과 | 행수 |
+|---|---|---|
+| `results_v3.json` | OK | 31 |
+| `results_v3_smoke.json` | OK | 1 |
+| `results_v3cliff.json` | OK | 2 |
+| `results_v3ens0583.json` | OK | 5 |
+| `results_v3grid.json` | OK | 4 |
+| `results_v3pctl.json` | OK | 5 |
+| `v3_wc/working_capacity.json` | OK | 6 |
+| `v3_wc/working_capacity_g0583.json` | OK | 1 |
+| `v3_humid_wc/humid_working_capacity.json` | OK | 4 |
+| `v3_humid_wc/humid_working_capacity_ext.json` | OK | 1 |
+| `v3_humid_wc/humid_working_capacity_g0583.json` | OK | 1 |
+| `v3_humid_wc/humid_working_capacity_grid.json` | OK | 1 |
+| `v3_humid_wc/humid_working_capacity_mslm075.json` | OK | 1 |
+| `v4_humid_wc/humid_working_capacity_v4ext.json` | OK | 2 |
+| `v4_humid_wc/humid_working_capacity_v4m1.json` | OK | 1 |
+| `v3_water_grid/water_results.json` | OK | 4 |
+| `v3_water_grid/water_results_desktop4.json` | OK | 4 |
+| `v3_water_grid/water_results_junseok.json` | OK | 4 |
+| `v3_water_grid/water_results_laptop.json` | OK | 12 |
+| `v3_water_grid_cliff/water_results.json` | OK | 4 |
+| `v3_water_grid_cliff/water_results_desktopcliff.json` | OK | 4 |
+
+이상 없음 — 파싱 실패·0행 없음. 08-29 감사 표와 행수 전부 동일. `git log`
+로 확인한 결과 `origin/master` 기준 이 경로들을 마지막으로 건드린 커밋은
+`a118db7`(2026-08-27 12:40:42 KST)로, 08-29 감사 이후는 물론 이번 감사
+시점까지도 이 자료들에 변경이 없었다.
+
+### 4) 출처 규약 위반
+
+`merge_water_batches.py` 의 `machine_of()` 는 `water_results_<기기>.json`
+형식이 아니면 거부한다(2026-08-23 이중 계수 사고 이후 도입). 태그 붙은
+파일만 서로 비교:
+
+- `v3_water_grid/`: `water_results_desktop4.json`(saIm0583) ·
+  `water_results_junseok.json`(saIm0875) · `water_results_laptop.json`
+  (saIm0625·saIm0667·saIm0875) — (조성,RH) 조합 중 `(saIm0875, 0.0/0.25/
+  0.5/0.9)` 4개가 junseok/laptop 양쪽에 있음. **값이 서로 다름**(RH0 junseok
+  1.2905±0.0333 vs laptop 1.3031±0.0215, RH90 junseok 0.9619±0.0181 vs
+  laptop 0.9671±0.0482) → **진짜 교차검증**이지 중복이 아님.
+- `v3_water_grid_cliff/`: 태그 파일이 `water_results_desktopcliff.json`
+  하나뿐(saIm0917·saIm0958) — 애초에 중복·교차검증 대상이 없음.
+
+이상 없음 — 태그 붙은 파일 사이에서 값이 동일한 (조성,RH) 중복은 없음.
+
+참고(경고 아님, 08-29 감사와 동일): 두 디렉터리 모두 기기 태그 없는
+`water_results.json` 이 따로 있고, 값이 각각 `water_results_desktop4.json`,
+`water_results_desktopcliff.json` 과 바이트 단위로 동일함(이어받기 체크포인트
+사본). `machine_of()` 가 태그 없는 파일을 구조적으로 거부하므로
+`merge_water_batches.py` 를 규약대로(태그 파일만 명시) 쓰는 한 이중 계수로
+이어지지 않음.
+
+### 5) 사전 등록 관문 대비 기록
+
+`v3_water_grid*/` 태그 파일에서 RH0·RH90 로딩으로 유지율을 직접 재계산
+(각 행의 `CO2_retention_pct` 필드가 `RH90_CO2/RH0_CO2*100` 재계산값과 같음을
+확인, 관문 80/50/0):
+
+| 조성 | 출처 | RH0 | RH90 | 재계산 유지율 | 재계산 판정 | 문서 기재값 | 일치 |
+|---|---|---|---|---|---|---|---|
+| saIm0583 | desktop4 | 1.3188±0.0264 | 1.0010±0.0170 | 75.90% | 조건부 | `COMMS/desktop.md:742` 75.90±1.99% 조건부 | ✅ |
+| saIm0625 | laptop | 1.3804±0.0135 | 0.9902±0.0223 | 71.74% | 조건부 | `COMMS/laptop.md:359,366` 71.7% 조건부 | ✅ |
+| saIm0667 | laptop | 1.3682±0.0301 | 1.0269±0.0387 | 75.06% | 조건부 | `COMMS/desktop.md:916` 75.05±3.28% 조건부 | ✅ |
+| saIm0875 | junseok | 1.2905±0.0333 | 0.9619±0.0181 | 74.54% | 조건부 | `COMMS/junseok.md:8,71` 74.5% 조건부 | ✅ |
+| saIm0875 | laptop | 1.3031±0.0215 | 0.9671±0.0482 | 74.21% | 조건부 | `COMMS/laptop.md:320` 74.2±3.9pp | ✅ |
+| saIm0917 | desktopcliff | 1.3249±0.0258 | 0.9725±0.0143 | 73.41% | 조건부 | `COMMS/desktop.md:1296,1359` 73.4 | ✅ |
+| saIm0958 | desktopcliff | 1.5205±0.0129 | 1.0032±0.0312 | 65.98% | 조건부 | `COMMS/desktop.md:1296,1374` 66.0 | ✅ |
+
+이상 없음 — 확인 가능한 7개 조성/출처 조합 전부 문서 기재와 재계산이
+일치함(08-29 감사와 동일 수치, 자료 변경 없음). 관문 80/50/0 기준으로 전부
+"50~80% 조건부" 구간에 있고 "유효"·"종료" 경계를 넘는 곳은 없음. 어긋나는
+곳을 찾지 못함.
+
+### 6) WC 자료 공백
+
+`regen_energy_v3.py` 를 실행하지 않고 소스만 읽어, 실제로 읽는 글롭 패턴
+(`v3_wc/*.json`, `v3_humid_wc/*.json`, `v4_humid_wc/*.json`)을 그대로
+재현해 파이썬으로 확인:
+
+| 조성 | 건조 WC | 습윤 WC | 재생에너지 계산에 포함되는가 |
+|---|---|---|---|
+| base | ✓ `working_capacity.json` | ✓ `humid_working_capacity.json` | ✓ |
+| saIm050 | ✓ 〃 | ✓ 〃 | ✓ |
+| saIm075 | ✓ 〃 | ✓ 〃 | ✓ |
+| saIm100 | ✓ 〃 | ✓ 〃 | ✓ |
+| saIm025 | ✓ `working_capacity.json` | ✓ `humid_working_capacity_ext.json` | ✓ |
+| mslm075 | ✓ `working_capacity.json` | ✓ `humid_working_capacity_mslm075.json` | ✓ |
+| **saIm0583 (승자 조성)** | ✓ `working_capacity_g0583.json` | ✓ `humid_working_capacity_g0583.json` | ✓ |
+| saIm0625 | — 없음 | ✓ `humid_working_capacity_grid.json` | ✗ (건조 없어 계산 불가) |
+| ms50nb50 | — 없음 | ✓ `v4_humid_wc/..._v4ext.json` | ✗ |
+| sa25nb75 | — 없음 | ✓ `v4_humid_wc/..._v4ext.json` | ✗ |
+| sa50nb50 | — 없음 | ✓ `v4_humid_wc/..._v4m1.json` | ✗ |
+
+건조·습윤이 둘 다 있는 조성 7개(base, saIm050, saIm075, saIm100, saIm025,
+mslm075, saIm0583)와 습윤만 있는 조성 4개(saIm0625, ms50nb50, sa25nb75,
+sa50nb50)로 나뉜다. 건조만 있고 습윤이 없는 조성은 없음.
+
+`regen_energy_v3.json` 을 직접 파싱해 재확인: 산출된 7개 조성이 위 표의
+"둘 다 있음" 7개와 정확히 일치. 소스(`regen_energy_v3.py:66-69`)도
+`dry_tsa/dry_vsa/wet_tsa/wet_vsa` 넷과 `Q_st` 가 **모두 있는 조성만** 걸러
+넣는 것을 재확인 — "한쪽만 있는데 완성된 행처럼 보이는" 위험 없음.
+
+이상 없음(08-29 감사와 동일, 자료 변경 없음).
+
+---
+
+## 사람이 볼 것
+
+- 경고: `junseok-20260822` 브랜치가 `origin/master` 보다 **50커밋** 뒤처졌고
+  마지막 커밋이 **5.3일 전**(08-24 사고 기준 24커밋의 두 배 초과). 같은
+  기기의 `COMMS/junseok.md` 우편함도 **4.9일** 침묵 — 브랜치·우편함이 같은
+  시기에 함께 멈춰, 그 기기가 5일 넘게 실제로 정지했을 가능성이 있음.
+- 참고: `laptop-20260822` 브랜치는 6시간 전까지 활동 중(4커밋 뒤처짐,
+  정상)이나 `COMMS/laptop.md` 우편함은 **6.1일** 침묵 — "계산은 계속,
+  우편함만 멈춤" 패턴이 08-29 대비 더 길어짐(82.8h → 147.5h).
+- 나머지(JSON 무결성·출처 중복·사전 등록 관문·WC 자료 공백)는 이상 없음,
+  08-29 감사 이후 관련 자료 변경 없음.
+
+---
+
 ## 2026-08-29 00:11 UTC — 일일 감사
 
 **실행 조건**: 클라우드 저장소 체크아웃만으로 확인. 로컬 프로세스·메모리·
