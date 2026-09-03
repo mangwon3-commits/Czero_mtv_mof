@@ -30,6 +30,20 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-03 12:00 · desktop  [완료] laptop2 배정 — T-B5·T-C1 무인 장기 체인 + s_rep 통짜 4회
+
+하는 일: azbIm/bIm 22종 빌드(`build_azbim.py`, fbIm 후처리 경로 — DESIGN_STUDY §0-0 5항,
+30→22건 정정) → laptop2 무인 체인 `tb5_chain.sh`(이완→판정→전하→Zeo++→건조 GCMC(+base 같은
+기기)→T-B6 예비 물 `run_water_lowrh_tb6.py`; 전 단계 이어받기, 사전검사 실패 시 무실행,
+`TB5_PREFLIGHT_ONLY=1`) + laptop2 제안 채택 `srep_whole_chain.sh`(nbIm025 RH0 통짜 4회,
+F(3,3) 15.44/0.0648 사전 등록). `ASSIGN_20260903.md` §6·§7, `COMMS/desktop.md` 12:00.
+`relax_fixcell.py` XTB 경로를 `XTB_BIN` 으로 덮게 함(laptop2 1-4b 지적). `tb5_report.py`
+는 수와 문턱만 찍고 판정문은 안 씀.
+건드리는 파일: 위 + `structures_v2/ZIF69_{azbIm*,bIm*}.cif/.meta.json`(22), `rebuild_index.json`(86행)
+쓰는 코어: 데스크탑 0 (laptop2 6)
+다음: laptop2 착수 확인 → 랩탑 가지 8건 판정 문서 취합(§4 ②, master 참조 끊김) → 노션
+T-B5/T-3 설명 반영 → Junseok 복귀 시 §2.
+
 ## 09-03 10:30 · desktop  [완료] §1 frozen-framework 검정 회신 + laptop2 가지 취합(ba9ab0f)
 
 laptop2 결과(ad931aa): 넷 수렴, (A) Zn–N 끊김 0/96, (B) 미검출(무정보, 출발 4.381 Å),
