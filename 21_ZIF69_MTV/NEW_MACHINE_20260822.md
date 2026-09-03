@@ -262,6 +262,11 @@ conda create -n czeromof -c conda-forge python=3.10 \
       raspa2=2.0.50 ase=3.29 numpy -y
 ```
 
+> **(09-03 추가) 빌드·전하·Zeo++ 까지 맡는 기기**라면 `coremof_tools`(PACMAN) 와
+> `zeopp-lsmo` 가 더 필요합니다. 판과 설치 명령은 `tb5_chain.sh` 사전검사가 찍어
+> 주고, **gcc 없는 기기의 `PyCifRW` 함정과 GPU 전하 단서**는
+> `ASSIGN_20260903.md` §6-1 에 있습니다.
+
 ## 3-3. RASPA 힘장 설치 — **여기서 가장 많이 틀립니다**
 
 RASPA는 `$RASPA_DIR/share/raspa/` 를 읽습니다. **배포본 기본 파일을 그대로

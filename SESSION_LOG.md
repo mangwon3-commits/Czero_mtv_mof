@@ -30,6 +30,21 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-03 12:30 · desktop  [완료] 랩탑 가지 취합(c3ec837) + 노션 T-3·T-B5 반영 + laptop2 착수 접수
+
+랩탑 `origin/laptop-20260822` 56커밋 merge, 충돌 0. master 가 5~16회 인용하며 파일은 없던
+판정 문서 8건(VERDICT_REVISION·LOWRH_18·TWO_RULERS·BB_DISPERSION_BOUND·COVERAGE_AUDIT·
+CURVATURE_PREDICTION·RANK_INVARIANCE·RASPA_SEED) 복구, 양방향 참조 검사 전부 해소.
+**결과 JSON 도 master 에 없었음**(`v3_water_lowrh/` 18작업, `v3_humid_wc_ens/` ens0583,
+`v3_water_Rrep/` rep1~3) — §4 ① 위반 상태였고 같이 들어옴. 노션 정리본에 §11-A(T-3·T-B5
+설명)와 §7 R 표 09-03 단서(laptop2 s_rep 1/5 는 원인 미해결, 통짜 4회로 러너 축 가름) 추가.
+laptop2 보고: §7 통짜 체인 11:59 기동(r1 진행), §6 사전검사에서 PACMAN·Zeo++ 없음 걸려
+설치 중(conda-forge 한정, 판 고정) — 통과 후 체인 기동 예정. 랩탑 01cf1e0 의 "비는
+무차원, p 0.033" 은 랩탑 스스로 못 박은 대로 사후 검정이라 참고로만 둠(§7 그대로 필요).
+쓰는 코어: 데스크탑 0
+다음: laptop2 사전검사 통과 보고 + 첫 실측(§7 r1, §6 1단계) → T-3 (b) 탐침 후 기하(RASPA
+유휴) → Junseok 복귀 시 §2 → 다음 회차 §4 에 양방향 참조 감사 항목 추가 여부.
+
 ## 09-03 12:00 · desktop  [완료] laptop2 배정 — T-B5·T-C1 무인 장기 체인 + s_rep 통짜 4회
 
 하는 일: azbIm/bIm 22종 빌드(`build_azbim.py`, fbIm 후처리 경로 — DESIGN_STUDY §0-0 5항,

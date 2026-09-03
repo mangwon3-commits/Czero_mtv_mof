@@ -1,0 +1,38 @@
+습윤 작업 용량 — saIm0583 앙상블 e1~e5 (15작업)
+  CHARGED  /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3
+  RUNS     /home/skyjun/mof_project/21_ZIF69_MTV/humid_wc_runs_v3ens0583
+  RESULT   /home/skyjun/mof_project/21_ZIF69_MTV/v3_humid_wc_ens/humid_working_capacity_ens0583.json
+  TARGETS  ['saIm0583e1', 'saIm0583e2', 'saIm0583e3', 'saIm0583e4', 'saIm0583e5']
+  MAX_WORKERS 8
+
+습윤 작업 용량 — 물 분압 2852.1 Pa 고정, 작업 15개, 워커 8
+  ads  CO2  0.15 bar  298.0 K  -> RH  90.0%
+  tsa  CO2  0.15 bar  373.0 K  -> RH   2.8%
+  vsa  CO2  0.05 bar  298.0 K  -> RH  90.0%
+
+  [              ok] ads  saIm0583e1 CO2 0.8322  물 1.412
+  [              ok] tsa  saIm0583e1 CO2 0.1675  물 0.171
+  [              ok] vsa  saIm0583e1 CO2 0.3377  물 1.611
+  [              ok] ads  saIm0583e2 CO2 0.8229  물 1.273
+  [              ok] tsa  saIm0583e2 CO2 0.1364  물 0.120
+  [              ok] vsa  saIm0583e2 CO2 0.3260  물 1.404
+  [              ok] ads  saIm0583e3 CO2 0.9084  물 1.215
+  [              ok] tsa  saIm0583e3 CO2 0.1684  물 0.155
+  [              ok] vsa  saIm0583e3 CO2 0.3762  물 1.340
+  [              ok] ads  saIm0583e4 CO2 0.9086  물 1.447
+  [              ok] tsa  saIm0583e4 CO2 0.1798  물 0.166
+  [              ok] vsa  saIm0583e4 CO2 0.3817  물 1.553
+  [              ok] ads  saIm0583e5 CO2 0.8909  물 0.920
+  [              ok] tsa  saIm0583e5 CO2 0.1606  물 0.114
+  [              ok] vsa  saIm0583e5 CO2 0.3621  물 1.032
+
+====================================================================================================
+조성                    흡착 CO2            TSA 잔류            VSA 잔류       WC(TSA)       WC(VSA)
+----------------------------------------------------------------------------------------------------
+saIm0583e1     0.8322±0.0188     0.1675±0.0061     0.3377±0.0195 0.6647±0.0197 0.4945±0.0271
+saIm0583e2     0.8229±0.0313     0.1364±0.0054     0.3260±0.0069 0.6865±0.0317 0.4969±0.0320
+saIm0583e3     0.9084±0.0193     0.1684±0.0086     0.3762±0.0083 0.7401±0.0211 0.5323±0.0210
+saIm0583e4     0.9086±0.0087     0.1798±0.0073     0.3817±0.0091 0.7289±0.0114 0.5270±0.0126
+saIm0583e5     0.8909±0.0130     0.1606±0.0036     0.3621±0.0143 0.7303±0.0135 0.5288±0.0193
+
+[OK] humid_working_capacity_ens0583.json
