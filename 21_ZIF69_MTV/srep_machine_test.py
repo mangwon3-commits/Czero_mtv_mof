@@ -13,6 +13,7 @@ r1 완주 전(수치 아무도 못 봄)에 작성 — 결과를 보고 고치지
     r = s_rep / σ_stat,  σ_stat = 네 실행 ±/2.776 의 중앙값 (LAPTOP_R_20260829.md 3절)
     귀무  s_rep² ~ σ_b²·χ²(n−1)/(n−1),  σ_stat² ~ σ_w²·χ²(4n)/(4n)   (dof 4n 근사, 등록)
     T = log(r_laptop2 / r_기기), MC 200,000회 seed 20260903, 양측 p = 2·min(P(T≤t), P(T≥t))
+    p 가 0.045~0.055 면 N=5,000,000 같은 seed 로 재실행해 둘 다 보고(판정은 등록 N 의 p)
     셋(데스크탑 1.17 n=4 · Junseok 1.18 n=8 · 랩탑 1.76 n=4) 전부 p<0.05 → "기기 축 실재"
     하나라도 아니면 "기기 축 미확인 — 남는 후보 우연, n=4 검정력 한계"
     B 는 비교 A 가 F ≥ 15.44 가 아닐 때만 유효.  근사는 반보수적 p 상대 ~5%(13:10 단서).
@@ -37,6 +38,8 @@ T95 = 2.776                     # RASPA ± = t(0.975,4)×SEM (ERROR_BARS.md)
 N_BLOCK_DOF = 4                 # 블록 5개 → ± 의 dof 4
 SEED = 20260903
 N_MC = 200_000
+N_MC_BIG = 5_000_000            # 조건부 재실행(§7-4 13:45 등록): p 가 0.045~0.055 면 같은 seed 로 다시, 둘 다 보고
+BIG_BAND = (0.045, 0.055)
 N_L2 = 4
 
 # §7-4 대조 셋 — 각 기기의 통짜 러너 r 점값 (등록된 중앙값 정의)
@@ -75,9 +78,15 @@ def machine_axis(r_l2):
         T = null_T(np.random.default_rng(SEED), N_L2, n_m)
         t_obs = math.log(r_l2 / r_m)
         p = two_sided_p(T, t_obs)
-        rows.append({'machine': name, 'r_control': r_m, 'n_control': n_m,
-                     't_obs': t_obs, 'p_two_sided': p, 'significant': p < ALPHA,
-                     'near_boundary_0.048_0.050': 0.048 <= p <= 0.050})
+        row = {'machine': name, 'r_control': r_m, 'n_control': n_m,
+               't_obs': t_obs, 'p_two_sided': p, 'significant': p < ALPHA,
+               'near_boundary_0.048_0.050': 0.048 <= p <= 0.050}
+        if BIG_BAND[0] <= p <= BIG_BAND[1]:
+            # 등록 N=200,000 의 3σ 폭(±0.0015)이 단서 폭(0.002)과 맞먹어, 경계대에서는 N 을
+            # 올려 둘 다 보고. 판정은 등록 N 의 p 로 하고 큰 N 의 p 는 병기(등록문 §7-4).
+            T_big = null_T(np.random.default_rng(SEED), N_L2, n_m, N_MC_BIG)
+            row['p_two_sided_5M'] = two_sided_p(T_big, t_obs)
+        rows.append(row)
     all_sig = all(x['significant'] for x in rows)
     verdict = ('기기 축 실재 (셋 전부 p<0.05)' if all_sig
                else '기기 축 미확인 — 남는 후보 우연, n=4 검정력 한계')
@@ -153,8 +162,9 @@ def main():
         print(f'[selftest] r_laptop2 = {r_fixed} 가정')
         rows, verdict = machine_axis(r_fixed)
         for x in rows:
+            big = f"  [N=5M p={x['p_two_sided_5M']:.4f}]" if 'p_two_sided_5M' in x else ''
             print(f"  대 {x['machine']:8s} r={x['r_control']:.2f} n={x['n_control']}  "
-                  f"t_obs={x['t_obs']:+.4f}  p={x['p_two_sided']:.4f}")
+                  f"t_obs={x['t_obs']:+.4f}  p={x['p_two_sided']:.4f}{big}")
         print(f'  → {verdict}   (랩탑 8019c6c: 대 1.76 p≈0.0205, 대조 확인용)')
         return 0
 
@@ -189,6 +199,8 @@ def main():
     rows, verdict = machine_axis(r_l2)
     for x in rows:
         flag = '  ※ 0.048~0.050 경계 — 근사 단서로 판정 유보 표기' if x['near_boundary_0.048_0.050'] else ''
+        if 'p_two_sided_5M' in x:
+            flag += f"  [0.045~0.055 대 → N=5M 재실행 p={x['p_two_sided_5M']:.4f} 병기]"
         print(f"  대 {x['machine']:8s} r={x['r_control']:.2f} n={x['n_control']}  "
               f"t_obs={x['t_obs']:+.4f}  p={x['p_two_sided']:.4f}  "
               f"{'유의' if x['significant'] else '비유의'}{flag}")
