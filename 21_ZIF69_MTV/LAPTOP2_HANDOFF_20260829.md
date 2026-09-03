@@ -130,6 +130,35 @@ Zn-N 개방 없음. 강체 GCMC 가 놓치는 것은 배위 자체이고, 이 �
 **결론 표현 규칙 (데스크탑)**: 결론 문장은 등록 판정어("약한 실재, 골격 개방
 미관찰")를 유지할 것. "C2 는 신호 · C1 은 잡음" 은 §5-2 의 해석으로만 쓸 것.
 
+## 3d. 실행 중 — 배정 두 건 (ASSIGN_20260903 §6·§7, 09-03 12:00 배정)
+
+**§7 s_rep 러너 축 가름 — 11:59:37 기동, 실행 중**
+
+    nbIm025 RH0, run_water.py **통짜**(초기화 5000 + 생산 15000 한 실행) x 4회 순차
+    폴더 분리 v3_water_srep_whole/r1..r4 (같은 폴더면 이어받기가 4회를 1회로 만듦)
+    스크립트 21_ZIF69_MTV/srep_whole_chain.sh (setsid, 세션 무관) · 로그 ~/.claude_work/srep_whole.log
+    재기동: 같은 명령 (완주분은 cached 회수)
+    등록 문턱: F = s2(통짜)/s2(분할), dof(3,3), 15.44 / 0.0648
+      >=15.44 러너 축 확인(기제 미주장) · 사이면 러너로 설명 안 됨(남는 후보 기기·우연, n=4 한계 병기)
+      <=0.0648 예상 밖.  `run_water_whole_nbim025_rep.py --summary` 가 F 를 찍음
+    **금지 문구**(등록됨): "분할 러너가 더 재현성이 높다" — 판정 전까지 사용 금지
+    대조: 내 분할 4회 0.7951 / 0.7980 / 0.7949 / 0.7978 (s_rep 0.00168)
+
+**§6 T-B5·T-C1 장기 체인 — 설치 대기 중** (예상 35~45 h)
+
+    azbIm/bIm 22종. 단계: 이완(GFN-FF 셀고정) -> 판정 -> 전하(PACMAN) -> Zeo++/건조 GCMC -> T-B6 예비
+    띄우기: XTB_BIN=~/miniconda3/envs/spectra/bin/xtb 로 준 뒤
+            TB5_PREFLIGHT_ONLY=1 bash 21_ZIF69_MTV/tb5_chain.sh   (사전검사)
+            setsid nohup bash 21_ZIF69_MTV/tb5_chain.sh < /dev/null &
+    사전검사 1차: coremof_tools(PACMAN)·Zeo++ 없음 -> 설치 중(~/.claude_work/tb5_install.log)
+      **채널은 --override-channels -c conda-forge 로 한정할 것** (기본 채널은 Anaconda 약관
+      미동의로 실패. 약관 동의는 사용자 몫 — 대신 누르지 않는다). 판 지정은 그대로.
+    **돌고 있는 tb5_chain.sh 편집 금지.** 결과 JSON 은 도착한 날 커밋, 실행 폴더는 커밋 안 함.
+    판정문은 내가 COMMS/laptop2.md 에 쓴다(tb5_report.py 는 표만 찍음).
+
+**데스크탑 요청 대기**: 설치 후 사전검사 **통과 줄 전체**(특히 PACMANCharge import,
+network 판 0.4.7) 전송 · §7 r1 완주 시각 · §6 1단계 첫 구조 소요 실측.
+
 ## 4. 남은 일 (우선순위순)
 
 1. **다음 배정 대기** — 데스크탑이 사용자 결정(T-B5 azbIm 빌드 vs T-3 (b)
