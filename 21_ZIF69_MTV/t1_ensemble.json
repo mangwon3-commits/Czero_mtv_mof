@@ -1,0 +1,949 @@
+{
+  "quantity": "습윤 TSA 작업 용량 (mol/kg)",
+  "rule": "ASSIGN_20260904 §2 D3 (결과 전 등록)",
+  "t95": 2.776,
+  "threshold_units": 1.5,
+  "duplicate_files_skipped": [
+    {
+      "file": "v3_humid_wc_ens/humid_working_capacity_ens0583_laptop.json",
+      "same_as": "v3_humid_wc_ens/humid_working_capacity_ens0583.json",
+      "md5": "804dfc3bcf83ec0874bea4c425d03677"
+    }
+  ],
+  "compositions": {
+    "base": {
+      "n": 1,
+      "values": [
+        0.4692
+      ],
+      "mean": 0.4692,
+      "batch_sd": null,
+      "ci95": 0.0119,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    },
+    "ms50nb50": {
+      "n": 1,
+      "values": [
+        0.6257
+      ],
+      "mean": 0.6257,
+      "batch_sd": null,
+      "ci95": 0.0092,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    },
+    "mslm075": {
+      "n": 1,
+      "values": [
+        0.6587
+      ],
+      "mean": 0.6587,
+      "batch_sd": null,
+      "ci95": 0.0269,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    },
+    "sa25nb75": {
+      "n": 1,
+      "values": [
+        0.5999
+      ],
+      "mean": 0.5999,
+      "batch_sd": null,
+      "ci95": 0.016,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    },
+    "sa50nb50": {
+      "n": 1,
+      "values": [
+        0.693
+      ],
+      "mean": 0.693,
+      "batch_sd": null,
+      "ci95": 0.0159,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    },
+    "saIm025": {
+      "n": 1,
+      "values": [
+        0.6357
+      ],
+      "mean": 0.6357,
+      "batch_sd": null,
+      "ci95": 0.0124,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    },
+    "saIm050": {
+      "n": 1,
+      "values": [
+        0.768
+      ],
+      "mean": 0.768,
+      "batch_sd": null,
+      "ci95": 0.0177,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    },
+    "saIm0583": {
+      "n": 6,
+      "values": [
+        0.8328,
+        0.6647,
+        0.6865,
+        0.7401,
+        0.7289,
+        0.7303
+      ],
+      "mean": 0.73055,
+      "batch_sd": 0.05800978365758659,
+      "sem": 0.023682395008388268,
+      "ci95": 0.06574232854328582,
+      "pm_source": "앙상블 2.776 x SEM"
+    },
+    "saIm0625": {
+      "n": 1,
+      "values": [
+        0.8232
+      ],
+      "mean": 0.8232,
+      "batch_sd": null,
+      "ci95": 0.0206,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    },
+    "saIm075": {
+      "n": 1,
+      "values": [
+        0.8333
+      ],
+      "mean": 0.8333,
+      "batch_sd": null,
+      "ci95": 0.0218,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    },
+    "saIm100": {
+      "n": 1,
+      "values": [
+        0.6883
+      ],
+      "mean": 0.6883,
+      "batch_sd": null,
+      "ci95": 0.0241,
+      "pm_source": "RASPA 통계 ± (배치 산포 없음)"
+    }
+  },
+  "pairs": [
+    {
+      "a": "base",
+      "b": "ms50nb50",
+      "delta": 0.15650000000000003,
+      "combined_pm": 0.015041608956491325,
+      "units": 10.404472051672451,
+      "asymmetric": false,
+      "verdict": "차이 있음 (10.40 단위 ≥ 1.5)"
+    },
+    {
+      "a": "base",
+      "b": "mslm075",
+      "delta": 0.18949999999999995,
+      "combined_pm": 0.02941462221413017,
+      "units": 6.442374089338741,
+      "asymmetric": false,
+      "verdict": "차이 있음 (6.44 단위 ≥ 1.5)"
+    },
+    {
+      "a": "base",
+      "b": "sa25nb75",
+      "delta": 0.13069999999999998,
+      "combined_pm": 0.019940160480798545,
+      "units": 6.5546112392554745,
+      "asymmetric": false,
+      "verdict": "차이 있음 (6.55 단위 ≥ 1.5)"
+    },
+    {
+      "a": "base",
+      "b": "sa50nb50",
+      "delta": 0.22379999999999994,
+      "combined_pm": 0.019860010070490902,
+      "units": 11.268876461071605,
+      "asymmetric": false,
+      "verdict": "차이 있음 (11.27 단위 ≥ 1.5)"
+    },
+    {
+      "a": "base",
+      "b": "saIm025",
+      "delta": 0.16650000000000004,
+      "combined_pm": 0.017186331778480245,
+      "units": 9.68793120871098,
+      "asymmetric": false,
+      "verdict": "차이 있음 (9.69 단위 ≥ 1.5)"
+    },
+    {
+      "a": "base",
+      "b": "saIm050",
+      "delta": 0.2988,
+      "combined_pm": 0.0213283848427395,
+      "units": 14.00949965049585,
+      "asymmetric": false,
+      "verdict": "차이 있음 (14.01 단위 ≥ 1.5)"
+    },
+    {
+      "a": "base",
+      "b": "saIm0583",
+      "delta": 0.26135,
+      "combined_pm": 0.06681065605345703,
+      "units": 3.9118011323057025,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "base",
+      "b": "saIm0625",
+      "delta": 0.35400000000000004,
+      "combined_pm": 0.02379012400135821,
+      "units": 14.880124205312661,
+      "asymmetric": false,
+      "verdict": "차이 있음 (14.88 단위 ≥ 1.5)"
+    },
+    {
+      "a": "base",
+      "b": "saIm075",
+      "delta": 0.36410000000000003,
+      "combined_pm": 0.02483646512690564,
+      "units": 14.659896170392063,
+      "asymmetric": false,
+      "verdict": "차이 있음 (14.66 단위 ≥ 1.5)"
+    },
+    {
+      "a": "base",
+      "b": "saIm100",
+      "delta": 0.21910000000000002,
+      "combined_pm": 0.026877871939571408,
+      "units": 8.151687026882001,
+      "asymmetric": false,
+      "verdict": "차이 있음 (8.15 단위 ≥ 1.5)"
+    },
+    {
+      "a": "ms50nb50",
+      "b": "mslm075",
+      "delta": 0.03299999999999992,
+      "combined_pm": 0.028429737951658998,
+      "units": 1.1607563902316667,
+      "asymmetric": false,
+      "verdict": "동급"
+    },
+    {
+      "a": "ms50nb50",
+      "b": "sa25nb75",
+      "delta": 0.025800000000000045,
+      "combined_pm": 0.018456435192094924,
+      "units": 1.397886413680278,
+      "asymmetric": false,
+      "verdict": "동급"
+    },
+    {
+      "a": "ms50nb50",
+      "b": "sa50nb50",
+      "delta": 0.06729999999999992,
+      "combined_pm": 0.0183698121928342,
+      "units": 3.6636193823610608,
+      "asymmetric": false,
+      "verdict": "차이 있음 (3.66 단위 ≥ 1.5)"
+    },
+    {
+      "a": "ms50nb50",
+      "b": "saIm025",
+      "delta": 0.010000000000000009,
+      "combined_pm": 0.015440207252495026,
+      "units": 0.6476597001885503,
+      "asymmetric": false,
+      "verdict": "동급"
+    },
+    {
+      "a": "ms50nb50",
+      "b": "saIm050",
+      "delta": 0.14229999999999998,
+      "combined_pm": 0.019948182874637982,
+      "units": 7.133481826102541,
+      "asymmetric": false,
+      "verdict": "차이 있음 (7.13 단위 ≥ 1.5)"
+    },
+    {
+      "a": "ms50nb50",
+      "b": "saIm0583",
+      "delta": 0.10485,
+      "combined_pm": 0.06638293276357511,
+      "units": 1.5794722473836242,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "ms50nb50",
+      "b": "saIm0625",
+      "delta": 0.1975,
+      "combined_pm": 0.022561028345356955,
+      "units": 8.754033591764241,
+      "asymmetric": false,
+      "verdict": "차이 있음 (8.75 단위 ≥ 1.5)"
+    },
+    {
+      "a": "ms50nb50",
+      "b": "saIm075",
+      "delta": 0.2076,
+      "combined_pm": 0.02366178353379136,
+      "units": 8.773641247437107,
+      "asymmetric": false,
+      "verdict": "차이 있음 (8.77 단위 ≥ 1.5)"
+    },
+    {
+      "a": "ms50nb50",
+      "b": "saIm100",
+      "delta": 0.06259999999999999,
+      "combined_pm": 0.025796317566660554,
+      "units": 2.4267029523975516,
+      "asymmetric": false,
+      "verdict": "차이 있음 (2.43 단위 ≥ 1.5)"
+    },
+    {
+      "a": "mslm075",
+      "b": "sa25nb75",
+      "delta": 0.05879999999999996,
+      "combined_pm": 0.0312987220186384,
+      "units": 1.8786709554781358,
+      "asymmetric": false,
+      "verdict": "차이 있음 (1.88 단위 ≥ 1.5)"
+    },
+    {
+      "a": "mslm075",
+      "b": "sa50nb50",
+      "delta": 0.0343,
+      "combined_pm": 0.03124771991681953,
+      "units": 1.097680089661119,
+      "asymmetric": false,
+      "verdict": "동급"
+    },
+    {
+      "a": "mslm075",
+      "b": "saIm025",
+      "delta": 0.02299999999999991,
+      "combined_pm": 0.02962043213729334,
+      "units": 0.7764910347490159,
+      "asymmetric": false,
+      "verdict": "동급"
+    },
+    {
+      "a": "mslm075",
+      "b": "saIm050",
+      "delta": 0.10930000000000006,
+      "combined_pm": 0.03220093166354042,
+      "units": 3.394311728059572,
+      "asymmetric": false,
+      "verdict": "차이 있음 (3.39 단위 ≥ 1.5)"
+    },
+    {
+      "a": "mslm075",
+      "b": "saIm0583",
+      "delta": 0.07185000000000008,
+      "combined_pm": 0.07103283580354464,
+      "units": 1.0115040345385544,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "mslm075",
+      "b": "saIm0625",
+      "delta": 0.1645000000000001,
+      "combined_pm": 0.03388170597830044,
+      "units": 4.855127427920962,
+      "asymmetric": false,
+      "verdict": "차이 있음 (4.86 단위 ≥ 1.5)"
+    },
+    {
+      "a": "mslm075",
+      "b": "saIm075",
+      "delta": 0.1746000000000001,
+      "combined_pm": 0.034624413352430966,
+      "units": 5.042684715631189,
+      "asymmetric": false,
+      "verdict": "차이 있음 (5.04 단위 ≥ 1.5)"
+    },
+    {
+      "a": "mslm075",
+      "b": "saIm100",
+      "delta": 0.02960000000000007,
+      "combined_pm": 0.03611675511448945,
+      "units": 0.8195642135116683,
+      "asymmetric": false,
+      "verdict": "동급"
+    },
+    {
+      "a": "sa25nb75",
+      "b": "sa50nb50",
+      "delta": 0.09309999999999996,
+      "combined_pm": 0.022556817151362468,
+      "units": 4.1273553522765765,
+      "asymmetric": false,
+      "verdict": "차이 있음 (4.13 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa25nb75",
+      "b": "saIm025",
+      "delta": 0.035800000000000054,
+      "combined_pm": 0.020242529486207993,
+      "units": 1.7685536792421106,
+      "asymmetric": false,
+      "verdict": "차이 있음 (1.77 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa25nb75",
+      "b": "saIm050",
+      "delta": 0.16810000000000003,
+      "combined_pm": 0.023859798825639753,
+      "units": 7.045323442516191,
+      "asymmetric": false,
+      "verdict": "차이 있음 (7.05 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa25nb75",
+      "b": "saIm0583",
+      "delta": 0.13065000000000004,
+      "combined_pm": 0.0676613165870524,
+      "units": 1.930940847595051,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "sa25nb75",
+      "b": "saIm0625",
+      "delta": 0.22330000000000005,
+      "combined_pm": 0.026083711392361326,
+      "units": 8.560898280196199,
+      "asymmetric": false,
+      "verdict": "차이 있음 (8.56 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa25nb75",
+      "b": "saIm075",
+      "delta": 0.23340000000000005,
+      "combined_pm": 0.02704144966528237,
+      "units": 8.631194070177926,
+      "asymmetric": false,
+      "verdict": "차이 있음 (8.63 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa25nb75",
+      "b": "saIm100",
+      "delta": 0.08840000000000003,
+      "combined_pm": 0.028927668416241222,
+      "units": 3.055897859724101,
+      "asymmetric": false,
+      "verdict": "차이 있음 (3.06 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa50nb50",
+      "b": "saIm025",
+      "delta": 0.05729999999999991,
+      "combined_pm": 0.020163581031156147,
+      "units": 2.841757121984518,
+      "asymmetric": false,
+      "verdict": "차이 있음 (2.84 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa50nb50",
+      "b": "saIm050",
+      "delta": 0.07500000000000007,
+      "combined_pm": 0.023792856070678024,
+      "units": 3.1522066866293112,
+      "asymmetric": false,
+      "verdict": "차이 있음 (3.15 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa50nb50",
+      "b": "saIm0583",
+      "delta": 0.03755000000000008,
+      "combined_pm": 0.06763773918673904,
+      "units": 0.5551634405805521,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "sa50nb50",
+      "b": "saIm0625",
+      "delta": 0.1302000000000001,
+      "combined_pm": 0.026022490272838993,
+      "units": 5.003364345029519,
+      "asymmetric": false,
+      "verdict": "차이 있음 (5.00 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa50nb50",
+      "b": "saIm075",
+      "delta": 0.1403000000000001,
+      "combined_pm": 0.026982401672201086,
+      "units": 5.1996853988185086,
+      "asymmetric": false,
+      "verdict": "차이 있음 (5.20 단위 ≥ 1.5)"
+    },
+    {
+      "a": "sa50nb50",
+      "b": "saIm100",
+      "delta": 0.0046999999999999265,
+      "combined_pm": 0.02887247824486149,
+      "units": 0.16278477933692437,
+      "asymmetric": false,
+      "verdict": "동급"
+    },
+    {
+      "a": "saIm025",
+      "b": "saIm050",
+      "delta": 0.13229999999999997,
+      "combined_pm": 0.021611339616044167,
+      "units": 6.121786171079418,
+      "asymmetric": false,
+      "verdict": "차이 있음 (6.12 단위 ≥ 1.5)"
+    },
+    {
+      "a": "saIm025",
+      "b": "saIm0583",
+      "delta": 0.09484999999999999,
+      "combined_pm": 0.06690152286976234,
+      "units": 1.4177554700009618,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "saIm025",
+      "b": "saIm0625",
+      "delta": 0.1875,
+      "combined_pm": 0.02404412610181539,
+      "units": 7.798162395506789,
+      "asymmetric": false,
+      "verdict": "차이 있음 (7.80 단위 ≥ 1.5)"
+    },
+    {
+      "a": "saIm025",
+      "b": "saIm075",
+      "delta": 0.1976,
+      "combined_pm": 0.025079872407968905,
+      "units": 7.878827961549532,
+      "asymmetric": false,
+      "verdict": "차이 있음 (7.88 단위 ≥ 1.5)"
+    },
+    {
+      "a": "saIm025",
+      "b": "saIm100",
+      "delta": 0.05259999999999998,
+      "combined_pm": 0.027102951868754072,
+      "units": 1.9407480135269122,
+      "asymmetric": false,
+      "verdict": "차이 있음 (1.94 단위 ≥ 1.5)"
+    },
+    {
+      "a": "saIm050",
+      "b": "saIm0583",
+      "delta": 0.03744999999999998,
+      "combined_pm": 0.06808335892340604,
+      "units": 0.5500609927622891,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "saIm050",
+      "b": "saIm0625",
+      "delta": 0.05520000000000003,
+      "combined_pm": 0.027159712811441878,
+      "units": 2.0324220798367683,
+      "asymmetric": false,
+      "verdict": "차이 있음 (2.03 단위 ≥ 1.5)"
+    },
+    {
+      "a": "saIm050",
+      "b": "saIm075",
+      "delta": 0.06530000000000002,
+      "combined_pm": 0.028080776342544377,
+      "units": 2.325434282992592,
+      "asymmetric": false,
+      "verdict": "차이 있음 (2.33 단위 ≥ 1.5)"
+    },
+    {
+      "a": "saIm050",
+      "b": "saIm100",
+      "delta": 0.0797,
+      "combined_pm": 0.0299015049788468,
+      "units": 2.665417679022581,
+      "asymmetric": false,
+      "verdict": "차이 있음 (2.67 단위 ≥ 1.5)"
+    },
+    {
+      "a": "saIm0583",
+      "b": "saIm0625",
+      "delta": 0.09265000000000001,
+      "combined_pm": 0.068894221545013,
+      "units": 1.3448152533295676,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "saIm0583",
+      "b": "saIm075",
+      "delta": 0.10275000000000001,
+      "combined_pm": 0.06926249896078926,
+      "units": 1.4834867575044992,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "saIm0583",
+      "b": "saIm100",
+      "delta": 0.04225000000000001,
+      "combined_pm": 0.0700204524570738,
+      "units": 0.6033951298144133,
+      "asymmetric": true,
+      "verdict": "판정 유보 — 분모 비대칭(단일 실현 대 앙상블)"
+    },
+    {
+      "a": "saIm0625",
+      "b": "saIm075",
+      "delta": 0.010099999999999998,
+      "combined_pm": 0.029993332592427938,
+      "units": 0.33674150642899303,
+      "asymmetric": false,
+      "verdict": "동급"
+    },
+    {
+      "a": "saIm0625",
+      "b": "saIm100",
+      "delta": 0.13490000000000002,
+      "combined_pm": 0.031704416096184455,
+      "units": 4.254927754882541,
+      "asymmetric": false,
+      "verdict": "차이 있음 (4.25 단위 ≥ 1.5)"
+    },
+    {
+      "a": "saIm075",
+      "b": "saIm100",
+      "delta": 0.14500000000000002,
+      "combined_pm": 0.032496922931256125,
+      "units": 4.461960915706773,
+      "asymmetric": false,
+      "verdict": "차이 있음 (4.46 단위 ≥ 1.5)"
+    }
+  ],
+  "sensitivity_batch_sd_from_saIm0583": {
+    "batch_sd": 0.05800978365758659,
+    "note": "감도일 뿐 판정이 아니다. 등록 문턱 1.5 와 등록 ± 규약은 불변",
+    "rows": [
+      {
+        "a": "base",
+        "b": "ms50nb50",
+        "units_registered": 10.404472051672451,
+        "units_with_batch": 0.6856988665798822,
+        "flips_to_equal": true
+      },
+      {
+        "a": "base",
+        "b": "mslm075",
+        "units_registered": 6.442374089338741,
+        "units_with_batch": 0.8252411659259958,
+        "flips_to_equal": true
+      },
+      {
+        "a": "base",
+        "b": "sa25nb75",
+        "units_registered": 6.5546112392554745,
+        "units_with_batch": 0.5717175377616244,
+        "flips_to_equal": true
+      },
+      {
+        "a": "base",
+        "b": "sa50nb50",
+        "units_registered": 11.268876461071605,
+        "units_with_batch": 0.9789922728981153,
+        "flips_to_equal": true
+      },
+      {
+        "a": "base",
+        "b": "saIm025",
+        "units_registered": 9.68793120871098,
+        "units_with_batch": 0.7290299719138532,
+        "flips_to_equal": true
+      },
+      {
+        "a": "base",
+        "b": "saIm050",
+        "units_registered": 14.00949965049585,
+        "units_with_batch": 1.3063171041947108,
+        "flips_to_equal": true
+      },
+      {
+        "a": "base",
+        "b": "saIm0625",
+        "units_registered": 14.880124205312661,
+        "units_with_batch": 1.546004613039034,
+        "flips_to_equal": false
+      },
+      {
+        "a": "base",
+        "b": "saIm075",
+        "units_registered": 14.659896170392063,
+        "units_with_batch": 1.5893428018999778,
+        "flips_to_equal": false
+      },
+      {
+        "a": "base",
+        "b": "saIm100",
+        "units_registered": 8.151687026882001,
+        "units_with_batch": 0.9554388810393427,
+        "flips_to_equal": true
+      },
+      {
+        "a": "ms50nb50",
+        "b": "mslm075",
+        "units_registered": 1.1607563902316667,
+        "units_with_batch": 0.14378723915603228,
+        "flips_to_equal": false
+      },
+      {
+        "a": "ms50nb50",
+        "b": "sa25nb75",
+        "units_registered": 1.397886413680278,
+        "units_with_batch": 0.11291781605045029,
+        "flips_to_equal": false
+      },
+      {
+        "a": "ms50nb50",
+        "b": "sa50nb50",
+        "units_registered": 3.6636193823610608,
+        "units_with_batch": 0.2945581864446076,
+        "flips_to_equal": true
+      },
+      {
+        "a": "ms50nb50",
+        "b": "saIm025",
+        "units_registered": 0.6476597001885503,
+        "units_with_batch": 0.04380951516044313,
+        "flips_to_equal": false
+      },
+      {
+        "a": "ms50nb50",
+        "b": "saIm050",
+        "units_registered": 7.133481826102541,
+        "units_with_batch": 0.6224572039513425,
+        "flips_to_equal": true
+      },
+      {
+        "a": "ms50nb50",
+        "b": "saIm0625",
+        "units_registered": 8.754033591764241,
+        "units_with_batch": 0.8629998083687269,
+        "flips_to_equal": true
+      },
+      {
+        "a": "ms50nb50",
+        "b": "saIm075",
+        "units_registered": 8.773641247437107,
+        "units_with_batch": 0.9066926527057337,
+        "flips_to_equal": true
+      },
+      {
+        "a": "ms50nb50",
+        "b": "saIm100",
+        "units_registered": 2.4267029523975516,
+        "units_with_batch": 0.27313052499657403,
+        "flips_to_equal": true
+      },
+      {
+        "a": "mslm075",
+        "b": "sa25nb75",
+        "units_registered": 1.8786709554781358,
+        "units_with_batch": 0.2557869807740474,
+        "flips_to_equal": true
+      },
+      {
+        "a": "mslm075",
+        "b": "sa50nb50",
+        "units_registered": 1.097680089661119,
+        "units_with_batch": 0.14921357590474088,
+        "flips_to_equal": false
+      },
+      {
+        "a": "mslm075",
+        "b": "saIm025",
+        "units_registered": 0.7764910347490159,
+        "units_with_batch": 0.10014965935685063,
+        "flips_to_equal": false
+      },
+      {
+        "a": "mslm075",
+        "b": "saIm050",
+        "units_registered": 3.394311728059572,
+        "units_with_batch": 0.4752104511825295,
+        "flips_to_equal": true
+      },
+      {
+        "a": "mslm075",
+        "b": "saIm0625",
+        "units_registered": 4.855127427920962,
+        "units_with_batch": 0.714457316249177,
+        "flips_to_equal": true
+      },
+      {
+        "a": "mslm075",
+        "b": "saIm075",
+        "units_registered": 5.042684715631189,
+        "units_with_batch": 0.7579600454935824,
+        "flips_to_equal": true
+      },
+      {
+        "a": "mslm075",
+        "b": "saIm100",
+        "units_registered": 0.8195642135116683,
+        "units_with_batch": 0.1283696032356897,
+        "flips_to_equal": false
+      },
+      {
+        "a": "sa25nb75",
+        "b": "sa50nb50",
+        "units_registered": 4.1273553522765765,
+        "units_with_batch": 0.4068122931492707,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa25nb75",
+        "b": "saIm025",
+        "units_registered": 1.7685536792421106,
+        "units_with_batch": 0.15658078892074906,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa25nb75",
+        "b": "saIm050",
+        "units_registered": 7.045323442516191,
+        "units_with_batch": 0.7341105867325991,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa25nb75",
+        "b": "saIm0625",
+        "units_registered": 8.560898280196199,
+        "units_with_batch": 0.9741436493463965,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa25nb75",
+        "b": "saIm075",
+        "units_registered": 8.631194070177926,
+        "units_with_batch": 1.0177121690893602,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa25nb75",
+        "b": "saIm100",
+        "units_registered": 3.055897859724101,
+        "units_with_batch": 0.3850711319747029,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa50nb50",
+        "b": "saIm025",
+        "units_registered": 2.841757121984518,
+        "units_with_batch": 0.25062438475822785,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa50nb50",
+        "b": "saIm050",
+        "units_registered": 3.1522066866293112,
+        "units_with_batch": 0.3275429441543634,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa50nb50",
+        "b": "saIm0625",
+        "units_registered": 5.003364345029519,
+        "units_with_batch": 0.5680132258953573,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa50nb50",
+        "b": "saIm075",
+        "units_registered": 5.1996853988185086,
+        "units_with_batch": 0.6117795525137837,
+        "flips_to_equal": true
+      },
+      {
+        "a": "sa50nb50",
+        "b": "saIm100",
+        "units_registered": 0.16278477933692437,
+        "units_with_batch": 0.020473858564206877,
+        "flips_to_equal": false
+      },
+      {
+        "a": "saIm025",
+        "b": "saIm050",
+        "units_registered": 6.121786171079418,
+        "units_with_batch": 0.5783322924851096,
+        "flips_to_equal": true
+      },
+      {
+        "a": "saIm025",
+        "b": "saIm0625",
+        "units_registered": 7.798162395506789,
+        "units_with_batch": 0.8187635130315677,
+        "flips_to_equal": true
+      },
+      {
+        "a": "saIm025",
+        "b": "saIm075",
+        "units_registered": 7.878827961549532,
+        "units_with_batch": 0.8624493012978324,
+        "flips_to_equal": true
+      },
+      {
+        "a": "saIm025",
+        "b": "saIm100",
+        "units_registered": 1.9407480135269122,
+        "units_with_batch": 0.2293486099024606,
+        "flips_to_equal": true
+      },
+      {
+        "a": "saIm050",
+        "b": "saIm0625",
+        "units_registered": 2.0324220798367683,
+        "units_with_batch": 0.24067818673200628,
+        "flips_to_equal": true
+      },
+      {
+        "a": "saIm050",
+        "b": "saIm075",
+        "units_registered": 2.325434282992592,
+        "units_with_batch": 0.28457772192553943,
+        "flips_to_equal": true
+      },
+      {
+        "a": "saIm050",
+        "b": "saIm100",
+        "units_registered": 2.665417679022581,
+        "units_with_batch": 0.3469853130636011,
+        "flips_to_equal": true
+      },
+      {
+        "a": "saIm0625",
+        "b": "saIm075",
+        "units_registered": 0.33674150642899303,
+        "units_with_batch": 0.04396949817769433,
+        "flips_to_equal": false
+      },
+      {
+        "a": "saIm0625",
+        "b": "saIm100",
+        "units_registered": 4.254927754882541,
+        "units_with_batch": 0.5866891460516288,
+        "flips_to_equal": true
+      },
+      {
+        "a": "saIm075",
+        "b": "saIm100",
+        "units_registered": 4.461960915706773,
+        "units_with_batch": 0.630311501758228,
+        "flips_to_equal": true
+      }
+    ]
+  }
+}
