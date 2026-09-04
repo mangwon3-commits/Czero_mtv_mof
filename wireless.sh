@@ -61,8 +61,19 @@ alive() { remote_pid > /dev/null; }
 has_session() { tmux has-session -t "$S" 2>/dev/null; }
 
 start() {
+  # [2026-09-04 17:11 — sleep 86400 을 없앱니다. 이것이 좀비를 만드는 장본인입니다]
+  #
+  #   claude 가 죽으면 pane 에 sleep 만 남는데, **sleep 은 stdin 을 읽지 않습니다.**
+  #   그래서 attach 해서 타이핑하면 글자는 화면에 찍히지만 아무 데도 가지
+  #   않습니다. 오늘 사용자가 그 pane 에 /login 을 쳤고 허공으로 떨어졌습니다.
+  #
+  #   이 스크립트의 머리말이 "sleep 86400 이 세션을 붙잡는다" 고 경고해 놓고
+  #   정작 스스로 그 sleep 을 심고 있었습니다.
+  #
+  #   대화형 셸로 바꿉니다. claude 가 죽어도 pane 은 **입력을 받는 셸**이 되므로
+  #   붙어서 바로 손을 쓸 수 있습니다. tmux 세션도 그대로 유지됩니다.
   tmux new-session -d -s "$S" -c "$WORK" \
-    "$CLAUDE --remote-control $DEVICE; echo '[원격 제어 종료됨]'; sleep 86400"
+    "$CLAUDE --remote-control $DEVICE; echo '[원격 제어 종료됨 — 이 셸에서 바로 손보세요]'; exec bash -i"
   sleep 4
 }
 
@@ -187,6 +198,9 @@ if [ "$S_OK" -eq 1 ] && [ "$P_OK" -eq 1 ]; then
   pid=$(remote_pid)
   echo "  ✅ 원격 제어 살아 있음 (pid $pid, $(ps -o etime= -p "$pid" | tr -d ' ') 경과)"
   echo "     브리지 등록 확인: $(bridge_id)"
+  # 세션 이름은 작업 폴더에서 파생됩니다(mof-project-xx). 기기 이름으로 찾기
+  # 어려우므로 **직접 들어가는 주소**를 같이 찍습니다. 이게 가장 확실합니다.
+  echo "     바로 열기: https://claude.ai/code/$(bridge_id)"
   # 느슨한 검사와 몇 개나 차이 나는지 보여 줍니다. 이 격차가 1판·2판이 틀렸던 폭입니다.
   loose=$(pgrep -cf -- "--remote-control" 2>/dev/null)
   echo "     (느슨한 검사로는 ${loose}개가 잡힙니다 — tmux 서버와 래퍼 셸까지."
