@@ -10,6 +10,7 @@
 
     density_results.json                                   스칼라 결과 (로딩·정전기 몫)
     <조성>__q_{on,off}/VTK/System_0/COMDensityProfile_CO2.vtk.gz   **질량중심 CO₂ 격자 12개**
+    <조성>__q_{on,off}/simulation.input                    **RASPA 가 실제로 읽은 설정 12개**
 
 **질량중심(COM) 판만 커밋합니다.** 분석 규약이 COM 이고
 (`10_DensityMap/README.md` 66행, `export_diff_vtk.py:84` 가 COM 을 하드코딩),
@@ -26,6 +27,14 @@ gunzip -k <조성>__q_on/VTK/System_0/COMDensityProfile_CO2.vtk.gz
 
 `10_DensityMap/export_diff_vtk.py <폴더>` 로 ON−OFF 차분맵을 재생성할 수 있습니다
 — **원산출물이 여기 있으므로 차분맵은 사본 없는 자료가 아닙니다.**
+
+## `simulation.input` 을 함께 넣는 이유
+
+09-05 새벽에 **같은 이름의 `density_v3` 폴더가 서로 다른 실행분**이었던 일이
+있었습니다(랩탑 로컬 08-18 판 대 이 커밋본). 격자만 있고 설정이 없으면
+**"다르다" 는 알 수 있어도 "왜 다른가" 를 못 가립니다.** 위 README 는 사람이
+옮겨 적은 것이라 원본과 어긋날 수 있지만, `simulation.input` 은 **실행이 실제로
+읽은 것**이라 어긋날 수 없습니다. 격자당 4 KB 입니다.
 
 ## 주의
 
