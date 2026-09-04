@@ -9,7 +9,9 @@
     마주봄  두 법선 사이 각 <= 30도
     대역    중심-중심 거리 6.5 ~ 7.0 A, **주기 경계 최소상**
     정규화  단위셀당 쌍 수
-    판정    base 값이 saIm0583 앙상블(생산 + e1~e5, n=6) 평균 +- 2.776 x SEM
+    판정    base 값이 saIm0583 앙상블(생산 + e1~e5, n=6) 평균 +- t(0.975,5) x SEM
+            [09-04 정정, 랩탑 지적] 2.776 은 RASPA 5블록(dof 4)의 자다. 실현체 6개는
+            dof 5 -> 2.5706 (ERROR_BARS.md 211행). 판정 불변(base 는 여전히 구간 밖)
             **밖**이면 "차이 실재", 안이면 "차이 없음 -> 슬릿이 아니다"
 
 ⚠️ 08-04 에 주기 경계 언랩 버그로 계산 전량을 폐기한 전력이 있습니다.
@@ -26,10 +28,13 @@ import sys
 from statistics import mean, stdev
 
 import numpy as np
+from scipy.stats import t as tdist
 from ase.io import read
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-T95 = 2.776
+def t95(n):
+    """표본 n 개의 평균에 대한 95% 배수 — dof = n-1 (ERROR_BARS.md 211행)."""
+    return float(tdist.ppf(0.975, n - 1))
 ANGLE_MAX = 30.0        # 등록: 법선 사이 각
 BAND = (6.5, 7.0)       # 등록: 중심-중심 거리 대역 (A)
 RCOV = {'H': 0.31, 'C': 0.76, 'N': 0.71, 'O': 0.66, 'F': 0.57,
@@ -174,7 +179,7 @@ def sweep():
     for lo, hi in bands:
         row = [sum(1 for d in ds[n] if lo <= d <= hi) / 2 for n in names]
         ens = row[1:]
-        m, ci = mean(ens), T95 * stdev(ens) / len(ens) ** 0.5
+        m, ci = mean(ens), t95(len(ens)) * stdev(ens) / len(ens) ** 0.5
         side = ('base 큼' if row[0] > m else 'base 작음')
         tag = '밖' if abs(row[0] - m) > ci else '안'
         mark = '  <- 등록 대역' if (lo, hi) == BAND else ''
@@ -219,7 +224,7 @@ def main():
 
     ens = [res[t]['pairs_per_cell'] for t in ENSEMBLE]
     m, sd = mean(ens), stdev(ens)
-    ci = T95 * sd / len(ens) ** 0.5
+    ci = t95(len(ens)) * sd / len(ens) ** 0.5
     b = res[CONTROL]['pairs_per_cell']
     outside = abs(b - m) > ci
     verdict = ('차이 실재 — base 가 앙상블 95% CI 밖' if outside else
@@ -227,13 +232,14 @@ def main():
 
     print(f'\n=== 판정 (등록 규칙 그대로) ===')
     print(f'  saIm0583 앙상블 n={len(ens)}  평균 {m:.2f}  배치 SD {sd:.2f}  '
-          f'± (2.776xSEM) {ci:.2f}   구간 [{m-ci:.2f}, {m+ci:.2f}]')
+          f'± (t(0.975,{len(ens)-1})={t95(len(ens)):.4f} xSEM) {ci:.2f}   '
+          f'구간 [{m-ci:.2f}, {m+ci:.2f}]')
     print(f'  base {b:.2f}  -> {"밖" if outside else "안"}')
     print(f'  → {verdict}')
     print('  병기: base 는 단일 실현이라 자기 CI 가 없다(분모 비대칭).')
 
     out = {'rule': 'ASSIGN_20260904 §2 D5 (결과 전 등록)',
-           'angle_max_deg': ANGLE_MAX, 'band_A': BAND, 't95': T95,
+           'angle_max_deg': ANGLE_MAX, 'band_A': BAND, 't95': t95(len(ENSEMBLE) + 0) if False else t95(6),
            'per': res, 'ensemble': ENSEMBLE, 'control': CONTROL,
            'ensemble_mean': m, 'ensemble_batch_sd': sd, 'ensemble_ci95': ci,
            'control_value': b, 'outside': outside, 'verdict': verdict}

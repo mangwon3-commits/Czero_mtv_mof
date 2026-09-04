@@ -1,0 +1,40 @@
+  구조 폴더 /home/mangwon1/mof_project/21_ZIF69_MTV/charged_v3
+  실행 폴더 /home/mangwon1/mof_project/21_ZIF69_MTV/runs_v3
+  결과 파일 /home/mangwon1/mof_project/21_ZIF69_MTV/results_v3ens075.json
+
+구조 5종. 먼저 Zeo++ (LCD/PLD/AV)
+  RASPA 0건 가동 중, 메모리 여유 17 GB -> Zeo++ 워커 1
+
+
+5종 x (Widom CO2 + Widom N2 + GCMC) = 15작업 (워커 6)
+0.15 bar, 298 K, 15000 사이클, UFF_MOF, DDEC6 전하
+
+  [       ok] widom CO2 saIm075e1_DDEC6
+  [       ok] widom N2  saIm075e1_DDEC6
+  [       ok] widom CO2 saIm075e2_DDEC6
+  [       ok] widom N2  saIm075e2_DDEC6
+  [       ok] widom CO2 saIm075e3_DDEC6
+  [       ok] widom N2  saIm075e3_DDEC6
+  [       ok] widom CO2 saIm075e4_DDEC6
+  [       ok] widom N2  saIm075e4_DDEC6
+  [       ok] widom CO2 saIm075e5_DDEC6
+  [       ok] widom N2  saIm075e5_DDEC6
+  [       ok] gcmc  CO2 saIm075e1_DDEC6
+  [       ok] gcmc  CO2 saIm075e2_DDEC6
+  [       ok] gcmc  CO2 saIm075e3_DDEC6
+  [       ok] gcmc  CO2 saIm075e4_DDEC6
+  [       ok] gcmc  CO2 saIm075e5_DDEC6
+
+==========================================================================================================================
+조성           작용기          LCD     PLD       AV      Qst (kJ/mol)           CO2/N2          0.15bar 로딩
+--------------------------------------------------------------------------------------------------------------------------
+saIm075e1    -SO3H      9.259   4.215    691.3      31.38 ± 0.33     86.70 ± 2.81      1.2660 ± 0.0165
+saIm075e2    -SO3H      9.646   4.151    868.0      31.06 ± 0.12     98.04 ± 1.54      1.4940 ± 0.0398
+saIm075e3    -SO3H      9.678   4.020    912.6      30.41 ± 0.32     81.01 ± 4.07      1.2170 ± 0.0165
+saIm075e4    -SO3H      8.983   3.934    958.9      32.22 ± 0.40     91.06 ± 5.34      1.2448 ± 0.0177
+saIm075e5    -SO3H      9.005   4.246    918.3      29.96 ± 0.48     74.50 ± 4.96      1.2467 ± 0.0332
+
+[OK] results_v3ens075.json
+
+주: v2 와의 차이는 **이완 때문**입니다 — 규약은 동일합니다.
+    차이가 1.5σ 미만이면 순위를 매기지 않습니다.

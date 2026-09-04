@@ -1,0 +1,19 @@
+  CHARGED  /home/mangwon1/mof_project/21_ZIF69_MTV/charged_v3
+  RUNS     /home/mangwon1/mof_project/21_ZIF69_MTV/humid_wc_runs_v4m1
+  RESULT   /home/mangwon1/mof_project/21_ZIF69_MTV/v4_humid_wc/humid_working_capacity_v4m1.json
+  TARGETS  ['sa50nb50']
+습윤 작업 용량 — 물 분압 2852.1 Pa 고정, 작업 3개, 워커 3
+  ads  CO2  0.15 bar  298.0 K  -> RH  90.0%
+  tsa  CO2  0.15 bar  373.0 K  -> RH   2.8%
+  vsa  CO2  0.05 bar  298.0 K  -> RH  90.0%
+
+  [              ok] ads  sa50nb50 CO2 0.8530  물 1.106
+  [              ok] tsa  sa50nb50 CO2 0.1601  물 0.125
+  [              ok] vsa  sa50nb50 CO2 0.3507  물 1.225
+
+====================================================================================================
+조성                    흡착 CO2            TSA 잔류            VSA 잔류       WC(TSA)       WC(VSA)
+----------------------------------------------------------------------------------------------------
+sa50nb50       0.8530±0.0142     0.1601±0.0071     0.3507±0.0096 0.6930±0.0159 0.5023±0.0171
+
+[OK] humid_working_capacity_v4m1.json
