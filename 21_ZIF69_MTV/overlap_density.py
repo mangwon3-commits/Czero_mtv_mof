@@ -11,6 +11,7 @@
     주기경계 위 분율 처리로 자동. 단위 시험 T1~T3 로 확인한다.
 """
 import os
+import gzip
 import numpy as np
 from ase.io import read
 from scipy.spatial import cKDTree
@@ -19,8 +20,14 @@ ACCESSIBLE_MIN = 3.0
 
 
 def read_vtk_grid(path):
-    """RASPA STRUCTURED_POINTS VTK -> (values[nx,ny,nz], cell_lengths, dims)."""
-    with open(path) as f:
+    """RASPA STRUCTURED_POINTS VTK -> (values[nx,ny,nz], cell_lengths, dims).
+
+    `.gz` 를 그대로 받는다. 데스크탑이 보낸 CO2 격자가 gzip 이고(2.2 MB -> 62 KB,
+    32배), 압축을 풀어 두면 조성당 2.2 MB 짜리 사본이 작업트리에 남아 실수로
+    커밋될 수 있다. 여기서 직접 읽으면 사본이 아예 안 생긴다.
+    """
+    op = gzip.open if str(path).endswith('.gz') else open
+    with op(path, 'rt') as f:
         head = [f.readline() for _ in range(10)]
         cellp = [float(x) for x in head[1].split()[1:4]]
         dims = [int(x) for x in head[4].split()[1:4]]
