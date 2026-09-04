@@ -1,0 +1,607 @@
+09-03 11:59:12  =================== T-B5 체인 시작 (pid 6111) ===================
+09-03 11:59:12  저장소 /home/leehk/mof_project/21_ZIF69_MTV   로그 /home/leehk/.claude_work/tb5_chain.log
+09-03 11:59:12  !! 없음: /home/leehk/miniconda3/envs/coremof_tools/bin/python   (coremof_tools env — 아래 설치 안내)
+09-03 11:59:12  !! Zeo++ network 없음 -> conda install -n czeromof -c conda-forge zeopp-lsmo=0.4.7
+09-03 11:59:12  !! 사전검사 실패 — 아무것도 돌리지 않았습니다.
+09-03 11:59:12     coremof_tools 설치(PACMAN, 데스크탑과 같은 판):
+09-03 11:59:12       conda create -n coremof_tools python=3.9 -y
+09-03 11:59:12       /home/leehk/miniconda3/envs/coremof_tools/bin/pip install PACMAN-charge==1.4.2 torch==2.7.0 pymatgen==2024.8.9 ase==3.26.0
+09-03 11:59:12     Zeo++:  conda install -n czeromof -c conda-forge zeopp-lsmo=0.4.7 -y
+09-03 11:59:12     고친 뒤 같은 명령으로 다시 띄우세요.
+09-03 12:02:50  =================== T-B5 체인 시작 (pid 6655) ===================
+09-03 12:02:50  저장소 /home/leehk/mof_project/21_ZIF69_MTV   로그 /home/leehk/.claude_work/tb5_chain.log
+09-03 12:02:50  !! PACMANCharge import 실패 (coremof_tools) — 아래 설치 안내
+09-03 12:02:50  !! 사전검사 실패 — 아무것도 돌리지 않았습니다.
+09-03 12:02:50     coremof_tools 설치(PACMAN, 데스크탑과 같은 판):
+09-03 12:02:50       conda create -n coremof_tools python=3.9 -y
+09-03 12:02:50       /home/leehk/miniconda3/envs/coremof_tools/bin/pip install PACMAN-charge==1.4.2 torch==2.7.0 pymatgen==2024.8.9 ase==3.26.0
+09-03 12:02:50     Zeo++:  conda install -n czeromof -c conda-forge zeopp-lsmo=0.4.7 -y
+09-03 12:02:50     고친 뒤 같은 명령으로 다시 띄우세요.
+09-03 12:05:35  =================== T-B5 체인 시작 (pid 6943) ===================
+09-03 12:05:35  저장소 /home/leehk/mof_project/21_ZIF69_MTV   로그 /home/leehk/.claude_work/tb5_chain.log
+09-03 12:05:38  사전검사 통과. 코어 12  가용메모리 13 GB  xtb /home/leehk/miniconda3/envs/spectra/bin/xtb
+09-03 12:05:38     주의: Zeo++ 건당 9.5 GB. 가용 13 GB 면 워커 1 로 돕니다(자동).
+09-03 12:05:38  사전검사만(TB5_PREFLIGHT_ONLY=1) — 여기서 끝.
+09-03 12:06:06  =================== T-B5 체인 시작 (pid 7056) ===================
+09-03 12:06:06  저장소 /home/leehk/mof_project/21_ZIF69_MTV   로그 /home/leehk/.claude_work/tb5_chain.log
+09-03 12:06:08  사전검사 통과. 코어 12  가용메모리 14 GB  xtb /home/leehk/miniconda3/envs/spectra/bin/xtb
+09-03 12:06:08  --- 1. 이완 (GFN-FF 셀 고정, FIRE fmax 0.05) ---
+  구조 86종, 워커 3 x 스레드 2, nice 19
+  기준: C-H 1.05~1.12 / C-C폭 <0.08 / Zn-N 1.90~2.10 / 최소거리 >0.9 / 셀 고정
+
+  [통과] ZIF69_azbIm025    49.2분  103단계  C-H 1.077  C-C폭 0.050  Zn-N 1.979~2.009
+  [통과] ZIF69_azbIm025e1  49.3분  103단계  C-H 1.077  C-C폭 0.050  Zn-N 1.980~2.008
+  [통과] ZIF69_azbIm025e2  49.8분  104단계  C-H 1.077  C-C폭 0.050  Zn-N 1.979~2.008
+  [통과] ZIF69_azbIm050    42.2분   91단계  C-H 1.077  C-C폭 0.050  Zn-N 1.979~2.008
+  [통과] ZIF69_azbIm025e4  48.8분  103단계  C-H 1.077  C-C폭 0.050  Zn-N 1.979~2.008
+  [통과] ZIF69_azbIm025e3  49.2분  104단계  C-H 1.077  C-C폭 0.050  Zn-N 1.979~2.008
+  [통과] ZIF69_azbIm050e1  42.2분   92단계  C-H 1.077  C-C폭 0.051  Zn-N 1.979~2.008
+  [통과] ZIF69_azbIm050e2  42.2분   92단계  C-H 1.077  C-C폭 0.051  Zn-N 1.979~2.008
+  [통과] ZIF69_azbIm050e3  42.0분   92단계  C-H 1.077  C-C폭 0.051  Zn-N 1.979~2.008
+  [통과] ZIF69_azbIm050e4  42.1분   91단계  C-H 1.077  C-C폭 0.050  Zn-N 1.979~2.008
+  [통과] ZIF69_azbIm075    47.4분  105단계  C-H 1.077  C-C폭 0.051  Zn-N 1.977~2.005
+  [통과] ZIF69_azbIm075e1  47.4분  105단계  C-H 1.077  C-C폭 0.051  Zn-N 1.978~2.006
+  [통과] ZIF69_azbIm075e2  41.6분   91단계  C-H 1.077  C-C폭 0.050  Zn-N 1.978~2.007
+  [통과] ZIF69_azbIm075e3  48.2분  105단계  C-H 1.077  C-C폭 0.051  Zn-N 1.978~2.005
+  [통과] ZIF69_azbIm075e4  48.3분  105단계  C-H 1.077  C-C폭 0.051  Zn-N 1.978~2.005
+  [통과] ZIF69_azbIm100    38.4분   86단계  C-H 1.078  C-C폭 0.038  Zn-N 1.979~2.001
+  [통과] ZIF69_bIm025      49.7분  104단계  C-H 1.077  C-C폭 0.051  Zn-N 1.979~2.007
+  [통과] ZIF69_bIm025e1    50.3분  105단계  C-H 1.077  C-C폭 0.051  Zn-N 1.980~2.008
+  [통과] ZIF69_bIm025e2    50.9분  105단계  C-H 1.077  C-C폭 0.051  Zn-N 1.980~2.008
+  [통과] ZIF69_bIm025e3    50.9분  105단계  C-H 1.077  C-C폭 0.051  Zn-N 1.980~2.008
+  [통과] ZIF69_bIm025e4    50.2분  104단계  C-H 1.077  C-C폭 0.051  Zn-N 1.979~2.007
+  [통과] ZIF69_bIm100      45.4분  103단계  C-H 1.077  C-C폭 0.045  Zn-N 1.978~1.998
+
+  전체 5.88 시간
+  전 86종 통과. 다음: PACMAN 전하 -> charged_v3 -> GCMC 90
+09-03 17:58:49  이완 완료 22/22  (rc=0, 352 분)  미완: 없음
+09-03 17:58:49  --- 2. 판정 (judge_relax_v3.py) ---
+  판정 대상 86 / 전체 86
+
+    구조                    C-H     방향족C-C폭            Zn-N           아릴-치환기     최소  판정
+    ZIF69_azbIm025      1.077      0.0504  1.979~2.009( 96)                -  1.074  통과
+    ZIF69_azbIm025e1    1.077      0.0504  1.980~2.008( 96)                -  1.074  통과
+    ZIF69_azbIm025e2    1.077      0.0504  1.979~2.008( 96)                -  1.074  통과
+    ZIF69_azbIm025e3    1.077      0.0505  1.979~2.008( 96)                -  1.074  통과
+    ZIF69_azbIm025e4    1.077      0.0504  1.979~2.008( 96)                -  1.074  통과
+    ZIF69_azbIm050      1.077      0.0505  1.979~2.008( 96)                -  1.074  통과
+    ZIF69_azbIm050e1    1.077      0.0506  1.979~2.008( 96)                -  1.074  통과
+    ZIF69_azbIm050e2    1.077      0.0507  1.979~2.008( 96)                -  1.073  통과
+    ZIF69_azbIm050e3    1.077      0.0507  1.979~2.008( 96)                -  1.074  통과
+    ZIF69_azbIm050e4    1.077      0.0504  1.979~2.008( 96)                -  1.074  통과
+    ZIF69_azbIm075      1.077      0.0505  1.977~2.005( 96)                -  1.074  통과
+    ZIF69_azbIm075e1    1.077      0.0505  1.978~2.006( 96)                -  1.074  통과
+    ZIF69_azbIm075e2    1.077      0.0503  1.978~2.007( 96)                -  1.074  통과
+    ZIF69_azbIm075e3    1.077      0.0506  1.978~2.005( 96)                -  1.074  통과
+    ZIF69_azbIm075e4    1.077      0.0505  1.978~2.005( 96)                -  1.074  통과
+    ZIF69_azbIm100      1.078      0.0385  1.979~2.001( 96)                -  1.075  통과
+    ZIF69_bIm025        1.077      0.0506  1.979~2.007( 96)                -  1.074  통과
+    ZIF69_bIm025e1      1.077      0.0507  1.980~2.008( 96)                -  1.074  통과
+    ZIF69_bIm025e2      1.077      0.0506  1.980~2.008( 96)                -  1.074  통과
+    ZIF69_bIm025e3      1.077      0.0506  1.980~2.008( 96)                -  1.074  통과
+    ZIF69_bIm025e4      1.077      0.0506  1.979~2.007( 96)                -  1.074  통과
+    ZIF69_bIm100        1.077      0.0453  1.978~1.998( 96)                -  1.075  통과
+    ZIF69_brbIm025      1.077      0.0508  1.979~2.007( 96)                -  1.074  통과
+    ZIF69_brbIm050      1.077      0.0501  1.981~2.008( 96)                -  1.073  통과
+    ZIF69_brbIm075      1.077      0.0507  1.981~2.007( 96)                -  1.074  통과
+    ZIF69_brbIm100      1.077      0.0460  1.983~2.005( 96)                -  1.075  통과
+    ZIF69_cf3Im025      1.078      0.0514  1.971~2.026( 96)      1.514~1.517  1.073  통과
+    ZIF69_cf3Im050      1.078      0.0519  1.969~2.020( 96)      1.513~1.516  1.073  통과
+    ZIF69_cf3Im075      1.078      0.0524  1.964~2.010( 96)      1.512~1.515  1.073  통과
+    ZIF69_cnbIm025      1.078      0.0513  1.974~2.018( 96)      1.394~1.395  1.073  통과
+    ZIF69_cnbIm050      1.077      0.0512  1.971~2.015( 96)      1.393~1.395  1.073  통과
+    ZIF69_cnbIm075      1.077      0.0512  1.970~2.015( 96)      1.393~1.395  1.073  통과
+    ZIF69_cnbIm100      1.077      0.0460  1.968~2.006( 96)      1.393~1.396  1.074  통과
+    ZIF69_fbIm025       1.077      0.0504  1.981~2.009( 96)                -  1.073  통과
+    ZIF69_fbIm050       1.077      0.0506  1.981~2.009( 96)                -  1.073  통과
+    ZIF69_fbIm075       1.077      0.0508  1.982~2.009( 96)                -  1.073  통과
+    ZIF69_fbIm100       1.077      0.0451  1.984~2.008( 96)                -  1.073  통과
+    ZIF69_mbIm025       1.078      0.0510  1.971~2.017( 96)      1.484~1.487  1.074  통과
+    ZIF69_mbIm050       1.077      0.0525  1.974~2.006( 96)      1.484~1.487  1.073  통과
+    ZIF69_mbIm075       1.077      0.0515  1.971~1.995( 96)      1.483~1.486  1.073  통과
+    ZIF69_mbIm100       1.077      0.0437  1.973~1.990( 96)      1.484~1.487  1.073  통과
+    ZIF69_ms50nb50      1.078      0.0522  1.971~2.057( 96)                -  1.070  통과
+    ZIF69_mslm025       1.078      0.0527  1.957~2.013( 96)                -  1.072  통과
+    ZIF69_mslm050       1.078      0.0532  1.952~2.008( 96)                -  1.072  통과
+    ZIF69_mslm075       1.078      0.0538  1.963~2.039( 96)                -  1.072  통과
+    ZIF69_nbIm025       1.077      0.0514  1.971~2.021( 96)                -  1.073  통과
+    ZIF69_nbIm050       1.078      0.0511  1.962~2.019( 96)                -  1.073  통과
+    ZIF69_nbIm075       1.077      0.0553  1.990~2.045( 96)                -  1.071  통과
+    ZIF69_nbIm100       1.077      0.0492  1.999~2.058( 96)                -  1.071  통과
+    ZIF69_sa25nb75      1.077      0.0509  1.977~2.047( 96)                -  0.971  통과
+    ZIF69_sa50nb50      1.077      0.0504  1.958~2.046( 96)                -  0.971  통과
+    ZIF69_sa50nb50e1    1.077      0.0499  1.970~2.040( 96)                -  0.971  통과
+    ZIF69_sa50nb50e2    1.077      0.0518  1.951~2.020( 96)                -  0.971  통과
+    ZIF69_sa50nb50e3    1.077      0.0536  1.954~2.027( 96)                -  0.971  통과
+    ZIF69_sa50nb50e4    1.077      0.0513  1.947~2.022( 96)                -  0.971  통과
+    ZIF69_sa50nb50e5    1.077      0.0504  1.974~2.047( 96)                -  0.971  통과
+    ZIF69_saIm025       1.077      0.0534  1.954~2.026( 96)                -  0.972  통과
+    ZIF69_saIm050       1.077      0.0543  1.965~2.044( 96)                -  0.972  통과
+    ZIF69_saIm050e1     1.077      0.0546  1.952~2.021( 96)                -  0.971  통과
+    ZIF69_saIm050e2     1.077      0.0538  1.960~2.047( 96)                -  0.971  통과
+    ZIF69_saIm050e3     1.077      0.0540  1.953~2.036( 96)                -  0.971  통과
+    ZIF69_saIm050e4     1.077      0.0554  1.957~2.035( 96)                -  0.971  통과
+    ZIF69_saIm050e5     1.077      0.0545  1.953~2.035( 96)                -  0.971  통과
+    ZIF69_saIm0583      1.077      0.0548  1.956~2.020( 96)                -  0.971  통과
+    ZIF69_saIm0583e1    1.077      0.0549  1.950~2.042( 96)                -  0.971  통과
+    ZIF69_saIm0583e2    1.077      0.0537  1.968~2.042( 96)                -  0.971  통과
+    ZIF69_saIm0583e3    1.077      0.0534  1.960~2.027( 96)                -  0.971  통과
+    ZIF69_saIm0583e4    1.078      0.0554  1.944~2.004( 96)                -  0.971  통과
+    ZIF69_saIm0583e5    1.077      0.0538  1.955~2.042( 96)                -  0.971  통과
+    ZIF69_saIm0583r1    1.077      0.0543  1.950~2.054( 96)                -  0.971  통과
+    ZIF69_saIm0583r2    1.078      0.0538  1.969~2.036( 96)                -  0.971  통과
+    ZIF69_saIm0583r3    1.077      0.0547  1.957~2.027( 96)                -  0.971  통과
+    ZIF69_saIm0583r4    1.077      0.0543  1.944~2.025( 96)                -  0.971  통과
+    ZIF69_saIm0583r5    1.077      0.0529  1.954~2.019( 96)                -  0.971  통과
+    ZIF69_saIm0625      1.077      0.0545  1.954~2.020( 96)                -  0.971  통과
+    ZIF69_saIm0667      1.077      0.0546  1.951~2.015( 96)                -  0.971  통과
+    ZIF69_saIm075       1.077      0.0547  1.952~2.016( 96)                -  0.971  통과
+    ZIF69_saIm075e1     1.077      0.0533  1.942~2.022( 96)                -  0.971  통과
+    ZIF69_saIm075e2     1.077      0.0548  1.940~2.020( 96)                -  0.970  통과
+    ZIF69_saIm075e3     1.077      0.0531  1.944~2.030( 96)                -  0.971  통과
+    ZIF69_saIm075e4     1.078      0.0541  1.942~2.025( 96)                -  0.971  통과
+    ZIF69_saIm075e5     1.078      0.0555  1.955~2.035( 96)                -  0.971  통과
+    ZIF69_saIm0875      1.077      0.0529  1.951~2.016( 96)                -  0.970  통과
+    ZIF69_saIm0917      1.077      0.0524  1.946~2.016( 96)                -  0.970  통과
+    ZIF69_saIm0958      1.077      0.0555  1.942~1.998( 96)                -  0.970  통과
+    ZIF69_saIm100       1.077      0.0510  1.943~1.990( 96)                -  0.970  통과
+
+  86종 전부 통과. 다음: PACMAN 전하 -> charged_v3 -> GCMC 90
+판정 통과 22/22   미달 없음   미판정(이완 미완) 없음
+09-03 18:04:21  --- 3. 전하 (PACMAN DDEC6, coremof_tools) ---
+이완 판정 통과 86종 / 미달 0종
+  대조군: 이완된 무치환 모체를 포함합니다
+  [이미있음] base      원자 600  순전하 -0.000025
+/home/leehk/miniconda3/envs/coremof_tools/lib/python3.9/site-packages/PACMANCharge/pmcharge.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+Using device: cuda
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025_pacman.cif
+  [ok] azbIm025  원자 594  순전하 -0.000044
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025e1.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025e1_pacman.cif
+  [ok] azbIm025e1 원자 594  순전하 -0.000004
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025e2.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025e2_pacman.cif
+  [ok] azbIm025e2 원자 594  순전하 -0.000040
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025e3.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025e3_pacman.cif
+  [ok] azbIm025e3 원자 594  순전하 +0.000074  <-- 순전하 5e-05 초과
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025e4.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm025e4_pacman.cif
+  [ok] azbIm025e4 원자 594  순전하 +0.000031
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050_pacman.cif
+  [ok] azbIm050  원자 588  순전하 -0.000015
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050e1.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050e1_pacman.cif
+  [ok] azbIm050e1 원자 588  순전하 -0.000011
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050e2.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050e2_pacman.cif
+  [ok] azbIm050e2 원자 588  순전하 -0.000053  <-- 순전하 5e-05 초과
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050e3.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050e3_pacman.cif
+  [ok] azbIm050e3 원자 588  순전하 -0.000033
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050e4.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm050e4_pacman.cif
+  [ok] azbIm050e4 원자 588  순전하 +0.000053  <-- 순전하 5e-05 초과
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075_pacman.cif
+  [ok] azbIm075  원자 582  순전하 -0.000033
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075e1.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075e1_pacman.cif
+  [ok] azbIm075e1 원자 582  순전하 +0.000004
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075e2.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075e2_pacman.cif
+  [ok] azbIm075e2 원자 582  순전하 -0.000053  <-- 순전하 5e-05 초과
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075e3.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075e3_pacman.cif
+  [ok] azbIm075e3 원자 582  순전하 +0.000047
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075e4.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm075e4_pacman.cif
+  [ok] azbIm075e4 원자 582  순전하 -0.000047
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm100.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/azbIm100_pacman.cif
+  [ok] azbIm100  원자 576  순전하 -0.000028
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025_pacman.cif
+  [ok] bIm025    원자 600  순전하 -0.000053  <-- 순전하 5e-05 초과
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025e1.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025e1_pacman.cif
+  [ok] bIm025e1  원자 600  순전하 +0.000026
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025e2.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025e2_pacman.cif
+  [ok] bIm025e2  원자 600  순전하 -0.000010
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025e3.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025e3_pacman.cif
+  [ok] bIm025e3  원자 600  순전하 -0.000053  <-- 순전하 5e-05 초과
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025e4.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm025e4_pacman.cif
+  [ok] bIm025e4  원자 600  순전하 +0.000019
+CIF Name: /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm100.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/leehk/mof_project/21_ZIF69_MTV/charged_v3/bIm100_pacman.cif
+  [ok] bIm100    원자 600  순전하 +0.000030
+  [이미있음] brbIm025  원자 600  순전하 +0.000053  <-- 순전하 5e-05 초과
+  [이미있음] brbIm050  원자 600  순전하 +0.000042
+  [이미있음] brbIm075  원자 600  순전하 +0.000027
+  [이미있음] brbIm100  원자 600  순전하 +0.000036
+  [이미있음] cf3Im025  원자 618  순전하 +0.000015
+  [이미있음] cf3Im050  원자 636  순전하 -0.000005
+  [이미있음] cf3Im075  원자 654  순전하 +0.000043
+  [이미있음] cnbIm025  원자 606  순전하 +0.000057  <-- 순전하 5e-05 초과
+  [이미있음] cnbIm050  원자 612  순전하 -0.000029
+  [이미있음] cnbIm075  원자 618  순전하 -0.000006
+  [이미있음] cnbIm100  원자 624  순전하 +0.000016
+  [이미있음] fbIm025   원자 600  순전하 +0.000053  <-- 순전하 5e-05 초과
+  [이미있음] fbIm050   원자 600  순전하 -0.000053  <-- 순전하 5e-05 초과
+  [이미있음] fbIm075   원자 600  순전하 +0.000005
+  [이미있음] fbIm100   원자 600  순전하 -0.000024
+  [이미있음] mbIm025   원자 618  순전하 -0.000055  <-- 순전하 5e-05 초과
+  [이미있음] mbIm050   원자 636  순전하 +0.000079  <-- 순전하 5e-05 초과
+  [이미있음] mbIm075   원자 654  순전하 -0.000002
+  [이미있음] mbIm100   원자 672  순전하 +0.000021
+  [이미있음] ms50nb50  원자 696  순전하 -0.000035
+  [이미있음] mslm025   원자 636  순전하 +0.000001
+  [이미있음] mslm050   원자 672  순전하 -0.000007
+  [이미있음] mslm075   원자 708  순전하 +0.000015
+  [이미있음] nbIm025   원자 612  순전하 +0.000005
+  [이미있음] nbIm050   원자 624  순전하 +0.000002
+  [이미있음] nbIm075   원자 636  순전하 -0.000040
+  [이미있음] nbIm100   원자 648  순전하 +0.000006
+  [이미있음] sa25nb75  원자 660  순전하 -0.000033
+  [이미있음] sa50nb50  원자 672  순전하 +0.000032
+  [이미있음] sa50nb50e1 원자 672  순전하 +0.000032
+  [이미있음] sa50nb50e2 원자 672  순전하 +0.000009
+  [이미있음] sa50nb50e3 원자 672  순전하 +0.000056  <-- 순전하 5e-05 초과
+  [이미있음] sa50nb50e4 원자 672  순전하 -0.000010
+  [이미있음] sa50nb50e5 원자 672  순전하 -0.000009
+  [이미있음] saIm025   원자 624  순전하 +0.000035
+  [이미있음] saIm050   원자 648  순전하 +0.000018
+  [이미있음] saIm050e1 원자 648  순전하 -0.000032
+  [이미있음] saIm050e2 원자 648  순전하 +0.000017
+  [이미있음] saIm050e3 원자 648  순전하 +0.000044
+  [이미있음] saIm050e4 원자 648  순전하 +0.000023
+  [이미있음] saIm050e5 원자 648  순전하 -0.000001
+  [이미있음] saIm0583  원자 656  순전하 +0.000061  <-- 순전하 5e-05 초과
+  [이미있음] saIm0583e1 원자 656  순전하 -0.000052  <-- 순전하 5e-05 초과
+  [이미있음] saIm0583e2 원자 656  순전하 +0.000051  <-- 순전하 5e-05 초과
+  [이미있음] saIm0583e3 원자 656  순전하 -0.000026
+  [이미있음] saIm0583e4 원자 656  순전하 -0.000036
+  [이미있음] saIm0583e5 원자 656  순전하 -0.000067  <-- 순전하 5e-05 초과
+  [이미있음] saIm0583r1 원자 656  순전하 +0.000007
+  [이미있음] saIm0583r2 원자 656  순전하 -0.000044
+  [이미있음] saIm0583r3 원자 656  순전하 +0.000001
+  [이미있음] saIm0583r4 원자 656  순전하 +0.000062  <-- 순전하 5e-05 초과
+  [이미있음] saIm0583r5 원자 656  순전하 -0.000034
+  [이미있음] saIm0625  원자 660  순전하 +0.000004
+  [이미있음] saIm0667  원자 664  순전하 +0.000016
+  [이미있음] saIm075   원자 672  순전하 -0.000075  <-- 순전하 5e-05 초과
+  [이미있음] saIm075e1 원자 672  순전하 +0.000007
+  [이미있음] saIm075e2 원자 672  순전하 +0.000009
+  [이미있음] saIm075e3 원자 672  순전하 -0.000031
+  [이미있음] saIm075e4 원자 672  순전하 +0.000033
+  [이미있음] saIm075e5 원자 672  순전하 +0.000014
+  [이미있음] saIm0875  원자 684  순전하 -0.000018
+  [이미있음] saIm0917  원자 688  순전하 -0.000008
+  [이미있음] saIm0958  원자 692  순전하 +0.000008
+  [이미있음] saIm100   원자 696  순전하 -0.000034
+
+전하 완료 87종, 실패 0종
+순전하 경고 19종: ['azbIm025e3', 'azbIm050e2', 'azbIm050e4', 'azbIm075e2', 'bIm025', 'bIm025e3', 'brbIm025', 'cnbIm025', 'fbIm025', 'fbIm050', 'mbIm025', 'mbIm050', 'sa50nb50e3', 'saIm0583', 'saIm0583e1', 'saIm0583e2', 'saIm0583e5', 'saIm0583r4', 'saIm075']
+[OK] charged_v3.json
+09-03 18:06:54  전하 CIF 22/22 (rc=0)
+09-03 18:06:54  --- 4. Zeo++ -> 건조 GCMC (Widom CO2/N2 + GCMC 0.15 bar)  대상 22 종 + base, 워커 5 ---
+  구조 폴더 /home/leehk/mof_project/21_ZIF69_MTV/charged_v3
+  실행 폴더 /home/leehk/mof_project/21_ZIF69_MTV/runs_v3
+  결과 파일 /home/leehk/mof_project/21_ZIF69_MTV/results_tb5.json
+
+구조 23종. 먼저 Zeo++ (LCD/PLD/AV)
+  RASPA 1건 가동 중, 메모리 여유 14 GB -> Zeo++ 워커 1
+
+
+23종 x (Widom CO2 + Widom N2 + GCMC) = 69작업 (워커 5)
+0.15 bar, 298 K, 15000 사이클, UFF_MOF, DDEC6 전하
+
+  [       ok] widom CO2 base_DDEC6
+  [       ok] widom N2  base_DDEC6
+  [       ok] widom CO2 azbIm025_DDEC6
+  [       ok] widom N2  azbIm025_DDEC6
+  [       ok] widom CO2 azbIm025e1_DDEC6
+  [       ok] widom N2  azbIm025e1_DDEC6
+  [       ok] widom CO2 azbIm025e2_DDEC6
+  [       ok] widom N2  azbIm025e2_DDEC6
+  [       ok] widom CO2 azbIm025e3_DDEC6
+  [       ok] widom N2  azbIm025e3_DDEC6
+  [       ok] widom CO2 azbIm025e4_DDEC6
+  [       ok] widom N2  azbIm025e4_DDEC6
+  [       ok] widom CO2 azbIm050_DDEC6
+  [       ok] widom N2  azbIm050_DDEC6
+  [       ok] widom CO2 azbIm050e1_DDEC6
+  [       ok] widom N2  azbIm050e1_DDEC6
+  [       ok] widom CO2 azbIm050e2_DDEC6
+  [       ok] widom N2  azbIm050e2_DDEC6
+  [       ok] widom CO2 azbIm050e3_DDEC6
+  [       ok] widom N2  azbIm050e3_DDEC6
+  [       ok] widom CO2 azbIm050e4_DDEC6
+  [       ok] widom N2  azbIm050e4_DDEC6
+  [       ok] widom CO2 azbIm075_DDEC6
+  [       ok] widom N2  azbIm075_DDEC6
+  [       ok] widom CO2 azbIm075e1_DDEC6
+  [       ok] widom N2  azbIm075e1_DDEC6
+  [       ok] widom CO2 azbIm075e2_DDEC6
+  [       ok] widom N2  azbIm075e2_DDEC6
+  [       ok] widom CO2 azbIm075e3_DDEC6
+  [       ok] widom N2  azbIm075e3_DDEC6
+  [       ok] widom CO2 azbIm075e4_DDEC6
+  [       ok] widom N2  azbIm075e4_DDEC6
+  [       ok] widom CO2 azbIm100_DDEC6
+  [       ok] widom N2  azbIm100_DDEC6
+  [       ok] widom CO2 bIm025_DDEC6
+  [       ok] widom N2  bIm025_DDEC6
+  [       ok] widom CO2 bIm025e1_DDEC6
+  [       ok] widom N2  bIm025e1_DDEC6
+  [       ok] widom CO2 bIm025e2_DDEC6
+  [       ok] widom N2  bIm025e2_DDEC6
+  [       ok] widom CO2 bIm025e3_DDEC6
+  [       ok] widom N2  bIm025e3_DDEC6
+  [       ok] widom CO2 bIm025e4_DDEC6
+  [       ok] widom N2  bIm025e4_DDEC6
+  [       ok] widom CO2 bIm100_DDEC6
+  [       ok] widom N2  bIm100_DDEC6
+  [       ok] gcmc  CO2 base_DDEC6
+  [       ok] gcmc  CO2 azbIm025_DDEC6
+  [       ok] gcmc  CO2 azbIm025e1_DDEC6
+  [       ok] gcmc  CO2 azbIm025e2_DDEC6
+  [       ok] gcmc  CO2 azbIm025e3_DDEC6
+  [       ok] gcmc  CO2 azbIm025e4_DDEC6
+  [       ok] gcmc  CO2 azbIm050_DDEC6
+  [       ok] gcmc  CO2 azbIm050e1_DDEC6
+  [       ok] gcmc  CO2 azbIm050e2_DDEC6
+  [       ok] gcmc  CO2 azbIm050e3_DDEC6
+  [       ok] gcmc  CO2 azbIm050e4_DDEC6
+  [       ok] gcmc  CO2 azbIm075_DDEC6
+  [       ok] gcmc  CO2 azbIm075e1_DDEC6
+  [       ok] gcmc  CO2 azbIm075e2_DDEC6
+  [       ok] gcmc  CO2 azbIm075e3_DDEC6
+  [       ok] gcmc  CO2 azbIm075e4_DDEC6
+  [       ok] gcmc  CO2 azbIm100_DDEC6
+  [       ok] gcmc  CO2 bIm025_DDEC6
+  [       ok] gcmc  CO2 bIm025e1_DDEC6
+  [       ok] gcmc  CO2 bIm025e2_DDEC6
+  [       ok] gcmc  CO2 bIm025e3_DDEC6
+  [       ok] gcmc  CO2 bIm025e4_DDEC6
+  [       ok] gcmc  CO2 bIm100_DDEC6
+
+==========================================================================================================================
+조성           작용기          LCD     PLD       AV      Qst (kJ/mol)           CO2/N2          0.15bar 로딩
+--------------------------------------------------------------------------------------------------------------------------
+azbIm025     CH->N (5-aza)   9.016   5.222   1342.0      22.63 ± 0.13     20.29 ± 0.53      0.5352 ± 0.0119
+azbIm025e1   CH->N (5-aza)   9.005   5.197   1389.4      22.70 ± 0.18     20.38 ± 0.61      0.5231 ± 0.0091
+azbIm025e2   CH->N (5-aza)   9.242   5.427   1410.0      22.73 ± 0.16     20.34 ± 0.61      0.4992 ± 0.0108
+azbIm025e3   CH->N (5-aza)   9.004   5.257   1412.9      22.90 ± 0.12     20.92 ± 0.41      0.4979 ± 0.0147
+azbIm025e4   CH->N (5-aza)   9.010   5.222   1347.1      22.77 ± 0.17     20.67 ± 0.57      0.5333 ± 0.0131
+azbIm050     CH->N (5-aza)   9.383   5.241   1459.2      22.83 ± 0.04     20.98 ± 0.34      0.4782 ± 0.0058
+azbIm050e1   CH->N (5-aza)   9.450   5.635   1534.1      22.69 ± 0.16     20.08 ± 0.64      0.4494 ± 0.0091
+azbIm050e2   CH->N (5-aza)   9.446   5.669   1539.8      22.75 ± 0.10     20.16 ± 0.44      0.4540 ± 0.0077
+azbIm050e3   CH->N (5-aza)   9.238   5.665   1509.5      22.70 ± 0.14     20.10 ± 0.75      0.4640 ± 0.0077
+azbIm050e4   CH->N (5-aza)   9.211   5.620   1460.9      22.89 ± 0.21     20.91 ± 0.72      0.4688 ± 0.0124
+azbIm075     CH->N (5-aza)   9.760   6.183   1619.3      23.52 ± 0.08     22.59 ± 0.55      0.4309 ± 0.0188
+azbIm075e1   CH->N (5-aza)   9.467   5.652   1596.4      23.35 ± 0.09     21.88 ± 0.63      0.4300 ± 0.0122
+azbIm075e2   CH->N (5-aza)  10.541   7.467   1690.2      22.93 ± 0.16     20.51 ± 0.57      0.3973 ± 0.0127
+azbIm075e3   CH->N (5-aza)   9.775   6.428   1621.0      23.22 ± 0.13     21.65 ± 0.58      0.4319 ± 0.0163
+azbIm075e4   CH->N (5-aza)  10.465   6.168   1594.7      22.98 ± 0.13     20.94 ± 0.49      0.4319 ± 0.0174
+azbIm100     CH->N (5-aza)  10.540   7.469   1742.2      23.31 ± 0.23     21.76 ± 0.79      0.3990 ± 0.0131
+bIm025       -H (Cl 제거 대조)   9.027   5.210   1326.5      22.83 ± 0.09     21.02 ± 0.45      0.5592 ± 0.0113
+bIm025e1     -H (Cl 제거 대조)   9.032   5.202   1367.7      22.90 ± 0.07     20.89 ± 0.28      0.5400 ± 0.0074
+bIm025e2     -H (Cl 제거 대조)   9.028   5.387   1386.6      22.77 ± 0.20     20.24 ± 0.62      0.5332 ± 0.0134
+bIm025e3     -H (Cl 제거 대조)   9.029   5.226   1386.0      22.51 ± 0.13     19.62 ± 0.69      0.5375 ± 0.0122
+bIm025e4     -H (Cl 제거 대조)   9.025   5.208   1323.7      22.91 ± 0.11     21.06 ± 0.39      0.5688 ± 0.0152
+bIm100       -H (Cl 제거 대조)  10.434   7.450   1657.0      23.30 ± 0.16     21.39 ± 0.63      0.4691 ± 0.0098
+base                    8.898   5.157   1232.2      22.48 ± 0.15     20.30 ± 0.43      0.5845 ± 0.0152
+
+[OK] results_tb5.json
+
+주: v2 와의 차이는 **이완 때문**입니다 — 규약은 동일합니다.
+    차이가 1.5σ 미만이면 순위를 매기지 않습니다.
+09-04 07:49:00  건조 GCMC 끝 (rc=0, 13 시간) -> results_tb5.json
+T-B5 / T-C1 — results_tb5.json   base 출처: results_tb5.json
+  base  LCD 8.898  Q_st 22.48 ± 0.15  로딩 0.5845 ± 0.0152
+
+== T-B5 관문 (LCD |Δ| < 2%, 5% 초과는 감사 대상) ==
+  태그               LCD      Δ% 관문     기하판정    
+  azbIm025       9.016   +1.32 통과     통과      
+  azbIm025e1     9.005   +1.20 통과     통과      
+  azbIm025e2     9.242   +3.86 초과     통과      
+  azbIm025e3     9.004   +1.19 통과     통과      
+  azbIm025e4     9.010   +1.26 통과     통과      
+  azbIm050       9.383   +5.45 감사!    통과      
+  azbIm050e1     9.450   +6.20 감사!    통과      
+  azbIm050e2     9.446   +6.16 감사!    통과      
+  azbIm050e3     9.238   +3.82 초과     통과      
+  azbIm050e4     9.211   +3.52 초과     통과      
+  azbIm075       9.760   +9.69 감사!    통과      
+  azbIm075e1     9.467   +6.40 감사!    통과      
+  azbIm075e2    10.541  +18.46 감사!    통과      
+  azbIm075e3     9.775   +9.86 감사!    통과      
+  azbIm075e4    10.465  +17.61 감사!    통과      
+  azbIm100      10.540  +18.46 감사!    통과      
+  bIm025         9.027   +1.45 통과     통과      
+  bIm025e1       9.032   +1.51 통과     통과      
+  bIm025e2       9.028   +1.46 통과     통과      
+  bIm025e3       9.029   +1.47 통과     통과      
+  bIm025e4       9.025   +1.43 통과     통과      
+  bIm100        10.434  +17.26 감사!    통과      
+  관문+기하 통과 9  /  걸림 13: azbIm025e2 azbIm050 azbIm050e1 azbIm050e2 azbIm050e3 azbIm050e4 azbIm075 azbIm075e1 azbIm075e2 azbIm075e3 azbIm075e4 azbIm100 bIm100
+
+== 조성별 (앙상블은 평균 · s_rep(n) — ± 는 실현 하나의 95% CI) ==
+  조성          n    Q_st  s_rep      로딩   s_rep
+  azbIm025    5   22.74   0.10  0.5177  0.0181
+  azbIm050    5   22.77   0.09  0.4629  0.0115
+  azbIm075    5   23.20   0.25  0.4244  0.0152
+  azbIm100    1   23.31  ±0.23  0.3990 ±0.0131
+  bIm025      5   22.78   0.16  0.5478  0.0154
+  bIm100      1   23.30  ±0.16  0.4691 ±0.0098
+
+== T-C1 사다리 (등록 문턱) ==
+  Q_st(az100) − base          +0.84  σ_diff 0.28  문턱 +4  미달  [순위 가능]
+  Q_st(az100) − Q_st(bIm100)  +0.02  σ_diff 0.28  문턱 +3  미달  [순위 불가(1.5 단위 미만)]
+  (참고) Q_st(bIm100) − base    +0.82  σ_diff 0.22  문턱 +0  충족  [순위 가능]
+  로딩(az100, 0.15 bar)        0.3990 ± 0.0131  문턱 1.0  미달
+
+  주: 판정문은 사람이 씁니다. 하한 +3 은 1.5 단위 규칙의 여유이지 별도 문턱이 아닙니다.
+09-04 07:49:00  --- 5. T-B6 예비 물 (RH 0.15/0.10/0.05 × azbIm050 azbIm100 bIm100) ---
+T-B6 예비 — 저RH 물, azbIm050/azbIm100/bIm100 (9작업)
+  입력   /home/leehk/mof_project/21_ZIF69_MTV/charged_v3
+  작업   /home/leehk/mof_project/21_ZIF69_MTV/water_runs_lowrh_tb6
+  결과   /home/leehk/mof_project/21_ZIF69_MTV/v3_water_lowrh_tb6/water_results.json
+  워커   5   RH [0.15, 0.1, 0.05]
+  물 정의 사이트 5개 (TIP5P-Ew 는 5)
+
+구조 3개 x RH 3단계 중 실행 9개
+CO2 0.15 bar 고정, 298 K, TIP5P-Ew(5사이트), 15000 사이클
+
+  [              ok] RH 15% azbIm050   CO2  0.4741  H2O   0.1567
+  [              ok] RH 10% azbIm050   CO2  0.4747  H2O   0.1118
+  [              ok] RH  5% azbIm050   CO2  0.4803  H2O   0.0702
+  [              ok] RH 15% azbIm100   CO2  0.3904  H2O   0.1648
+  [              ok] RH 10% azbIm100   CO2  0.3924  H2O   0.1387
+  [              ok] RH  5% azbIm100   CO2  0.3943  H2O   0.0797
+  [              ok] RH 15% bIm100     CO2  0.4592  H2O   0.1690
+  [              ok] RH 10% bIm100     CO2  0.4621  H2O   0.1339
+  [              ok] RH  5% bIm100     CO2  0.4605  H2O   0.0708
+
+============================================================================================================
+구조                                  RH         CO2 [mol/kg]         H2O [mol/kg]               건조대비   H2O/CO2
+------------------------------------------------------------------------------------------------------------
+5-azabenzimidazole 50% — T-B6 대상   15%      0.4741 ± 0.0130      0.1567 ± 0.0190        nan% (nanσ)      0.33
+5-azabenzimidazole 50% — T-B6 대상   10%      0.4747 ± 0.0148      0.1118 ± 0.0149        nan% (nanσ)      0.24
+5-azabenzimidazole 50% — T-B6 대상    5%      0.4803 ± 0.0148      0.0702 ± 0.0078        nan% (nanσ)      0.15
+
+5-azabenzimidazole 100% — T-B6 대상   15%      0.3904 ± 0.0157      0.1648 ± 0.0205        nan% (nanσ)      0.42
+5-azabenzimidazole 100% — T-B6 대상   10%      0.3924 ± 0.0183      0.1387 ± 0.0125        nan% (nanσ)      0.35
+5-azabenzimidazole 100% — T-B6 대상    5%      0.3943 ± 0.0116      0.0797 ± 0.0097        nan% (nanσ)      0.20
+
+benzimidazole(H) 100% — Cl 제거 대조군   15%      0.4592 ± 0.0139      0.1690 ± 0.0203        nan% (nanσ)      0.37
+benzimidazole(H) 100% — Cl 제거 대조군   10%      0.4621 ± 0.0113      0.1339 ± 0.0137        nan% (nanσ)      0.29
+benzimidazole(H) 100% — Cl 제거 대조군    5%      0.4605 ± 0.0138      0.0708 ± 0.0099        nan% (nanσ)      0.15
+
+[OK] water_results.json — 이번 실행 9행, 보존 0행, 합계 9행
+
+판정 기준(19_WaterCompetition 과 동일, 계산 전 확정):
+  RH90 유지율 80% 이상 -> 유효 / 50~80% -> 조건부(전처리 건조 비용) / 50% 미만 -> 종료
+  차이의 유의성은 1.5σ 를 기준으로 본다.
+  기기명 사본 저장: water_results_desktop-js1ib6u.json
+09-04 14:20:32  T-B6 예비 물 끝 (rc=0, 6 시간) -> v3_water_lowrh_tb6/water_results.json
+09-04 14:20:32  =================== T-B5 체인 끝 ===================
+09-04 14:20:32  보고: results_tb5.json, relax_v3_judged.json, (v3_water_lowrh_tb6/water_results.json)
+09-04 14:20:32        tb5_report.py 출력이 위에 있습니다. 커밋 규칙 ASSIGN_20260903.md §4 ①.
