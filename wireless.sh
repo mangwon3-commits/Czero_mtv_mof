@@ -130,31 +130,63 @@ alive && P_OK=1
 #   점검 스크립트 안에서 세 번째로 재현된 것입니다.
 #
 #   그래서 화면을 읽어 끊김 배너를 직접 찾습니다.
-link_broken() {
-  tmux capture-pane -p -S -200 -t "$S" 2>/dev/null \
-    | grep -qE "Remote Control disconnected|OAuth token unavailable|/rc failed"
+#
+# [2026-09-04 17:10 — 배너 검사도 부족했습니다. 네 번째 판]
+#
+#   위 배너 검사를 넣고 --force 로 새로 띄운 뒤 "배너 없음 -> 살아남" 이라고
+#   보고했는데, **여전히 죽어 있었습니다.** 문구가 버전마다 다릅니다.
+#
+#       2.1.258  "Remote Control disconnected — OAuth token unavailable"
+#       2.1.260  "Not logged in · Run /login"
+#
+#   문구 목록을 쫓아다니는 한 계속 집니다. **없음을 세지 말고 있음을 세야
+#   합니다.** 등록에 성공하면 세션 기록에 브리지 id 가 박힙니다.
+#
+#       ~/.claude/sessions/<pid>.json  ->  "bridgeSessionId":"session_01..."
+#
+#   실제로 과거 살아 있던 세션(449/509/716/865/899)에는 전부 있고,
+#   죽어 있던 484 는 기록 파일조차 없었으며 27155 는 기록은 있는데 이 키가
+#   없었습니다. 이것이 유일하게 믿을 수 있는 지표입니다.
+bridge_id() {
+  local pid f
+  pid=$(remote_pid) || return 1
+  [ -n "$pid" ] || return 1
+  f=$HOME/.claude/sessions/$pid.json
+  [ -f "$f" ] || return 1
+  sed -n 's/.*"bridgeSessionId":"\([^"]*\)".*/\1/p' "$f"
 }
 
+# 기동 직후에는 등록이 아직 안 끝났을 수 있으므로 잠깐 기다려 줍니다.
+wait_bridge() {
+  local i
+  for i in 1 2 3 4 5 6 7 8 9 10; do
+    [ -n "$(bridge_id)" ] && return 0
+    sleep 3
+  done
+  return 1
+}
+
+link_broken() { ! wait_bridge; }
+
 if [ "$S_OK" -eq 1 ] && [ "$P_OK" -eq 1 ] && link_broken; then
-  echo "  ⚠️  프로세스는 살아 있지만 **링크가 끊겨 있습니다.**"
+  echo "  ❌ 프로세스는 살아 있지만 **브리지에 등록되지 않았습니다.**"
+  echo "     ~/.claude/sessions/$(remote_pid).json 에 bridgeSessionId 가 없습니다."
+  echo "     화면이 말하는 것:"
   tmux capture-pane -p -S -200 -t "$S" 2>/dev/null \
-    | grep -E "Remote Control disconnected|OAuth token unavailable|/rc failed" \
-    | tail -3 | sed 's/^/       /'
-  if [ "$FORCE" -eq 1 ]; then
-    echo "     --force 로 이미 새로 띄웠는데도 배너가 남아 있습니다."
-    echo "     자격증명이 정말 만료됐을 수 있습니다 -> tmux attach 후 /login"
-  else
-    echo "     대개 낡은 토큰을 든 장수 프로세스입니다. 재시작으로 고쳐집니다:"
-    echo "       bash $0 --force"
-  fi
-  log "링크 끊김 감지 (프로세스는 생존)"
+    | grep -E "Not logged in|Run /login|Remote Control disconnected|OAuth|/rc failed" \
+    | tail -2 | sed 's/^/       /'
+  echo
+  echo "     로그인은 사용자 본인이 하셔야 합니다(계정 인증이라 대신 못 합니다):"
+  echo "       tmux attach -t $S     →  /login  →  Ctrl-b d 로 빠져나오기"
+  echo "     끝나면 다시:  bash $0 --force"
+  log "브리지 등록 없음 — /login 필요"
   exit 1
 fi
 
 if [ "$S_OK" -eq 1 ] && [ "$P_OK" -eq 1 ]; then
   pid=$(remote_pid)
   echo "  ✅ 원격 제어 살아 있음 (pid $pid, $(ps -o etime= -p "$pid" | tr -d ' ') 경과)"
-  echo "     링크 배너 검사도 통과 — 화면에 끊김 표시 없음"
+  echo "     브리지 등록 확인: $(bridge_id)"
   # 느슨한 검사와 몇 개나 차이 나는지 보여 줍니다. 이 격차가 1판·2판이 틀렸던 폭입니다.
   loose=$(pgrep -cf -- "--remote-control" 2>/dev/null)
   echo "     (느슨한 검사로는 ${loose}개가 잡힙니다 — tmux 서버와 래퍼 셸까지."
