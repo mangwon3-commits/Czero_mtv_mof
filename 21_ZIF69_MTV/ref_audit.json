@@ -1,0 +1,173 @@
+{
+  "rule": "ASSIGN_20260903 §4 ⑤ (규칙 ①②③)",
+  "master": "master",
+  "refs": [
+    "origin",
+    "origin/claude/essential-programs-install-ur7v6e",
+    "origin/junseok",
+    "origin/junseok-20260822",
+    "origin/laptop-20260822",
+    "origin/laptop2-20260825"
+  ],
+  "master_md_count": 98,
+  "a_master_cites_missing": [
+    {
+      "name": "H_COMPUTE_PLAN.md",
+      "cited_by": [
+        {
+          "by": "21_ZIF69_MTV/ASSIGN_20260903.md",
+          "n": 1
+        },
+        {
+          "by": "21_ZIF69_MTV/ASSIGN_20260904.md",
+          "n": 1
+        }
+      ],
+      "total_citations": 2,
+      "registry_lines": [],
+      "truncation_of": [
+        "48H_COMPUTE_PLAN.md"
+      ],
+      "found_in_refs": [],
+      "ignore_reason": null,
+      "verdict": "오탐(잘린 인용)"
+    },
+    {
+      "name": "LCD_LOADING_CONFOUND.md",
+      "cited_by": [
+        {
+          "by": "21_ZIF69_MTV/ASSIGN_20260904.md",
+          "n": 1
+        }
+      ],
+      "total_citations": 1,
+      "registry_lines": [],
+      "truncation_of": [],
+      "found_in_refs": [],
+      "ignore_reason": "ASSIGN_20260904 §2 D4 의 예정 산출물 — 아직 안 만듦. 만들면 자동 해소",
+      "verdict": "보류(사유 등록)"
+    },
+    {
+      "name": "T1_ENSEMBLE_TABLE.md",
+      "cited_by": [
+        {
+          "by": "21_ZIF69_MTV/ASSIGN_20260904.md",
+          "n": 1
+        }
+      ],
+      "total_citations": 1,
+      "registry_lines": [],
+      "truncation_of": [],
+      "found_in_refs": [],
+      "ignore_reason": "ASSIGN_20260904 §2 D3 의 예정 산출물 — 아직 안 만듦. 만들면 자동 해소",
+      "verdict": "보류(사유 등록)"
+    },
+    {
+      "name": "cloud4c.md",
+      "cited_by": [
+        {
+          "by": "21_ZIF69_MTV/ASSIGN_20260903.md",
+          "n": 1
+        },
+        {
+          "by": "21_ZIF69_MTV/ASSIGN_20260904.md",
+          "n": 1
+        },
+        {
+          "by": "21_ZIF69_MTV/COMMS.md",
+          "n": 2
+        },
+        {
+          "by": "21_ZIF69_MTV/COMMS/audit.md",
+          "n": 2
+        },
+        {
+          "by": "21_ZIF69_MTV/COMMS/desktop.md",
+          "n": 2
+        }
+      ],
+      "total_citations": 8,
+      "registry_lines": [
+        36,
+        447
+      ],
+      "truncation_of": [],
+      "found_in_refs": [
+        "origin/claude/essential-programs-install-ur7v6e"
+      ],
+      "ignore_reason": null,
+      "verdict": "도달 가능(COMMS.md 등록표)"
+    },
+    {
+      "name": "external16.md",
+      "cited_by": [
+        {
+          "by": "21_ZIF69_MTV/COMMS.md",
+          "n": 2
+        },
+        {
+          "by": "21_ZIF69_MTV/COMMS/audit.md",
+          "n": 2
+        }
+      ],
+      "total_citations": 4,
+      "registry_lines": [
+        37,
+        450
+      ],
+      "truncation_of": [],
+      "found_in_refs": [],
+      "ignore_reason": null,
+      "verdict": "도달 가능(COMMS.md 등록표)"
+    }
+  ],
+  "b_branch_only_cited": [
+    {
+      "branch": "origin/claude/essential-programs-install-ur7v6e",
+      "path": "21_ZIF69_MTV/COMMS/cloud4c.md",
+      "cited_by": [
+        {
+          "by": "21_ZIF69_MTV/COMMS.md",
+          "n": 2
+        },
+        {
+          "by": "21_ZIF69_MTV/COMMS/desktop.md",
+          "n": 1
+        },
+        {
+          "by": "21_ZIF69_MTV/DESKTOP_REST12_20260822.md",
+          "n": 2
+        },
+        {
+          "by": "21_ZIF69_MTV/HANDOFF_CLOUD4C_20260822.md",
+          "n": 2
+        }
+      ],
+      "total_citations": 7,
+      "verdict": "취합 대상 — 인용되고 있고 master 에 없음"
+    },
+    {
+      "branch": "origin/claude/essential-programs-install-ur7v6e",
+      "path": "21_ZIF69_MTV/DESKTOP_REST12_20260822.md",
+      "cited_by": [
+        {
+          "by": "21_ZIF69_MTV/COMMS/cloud4c.md",
+          "n": 2
+        },
+        {
+          "by": "21_ZIF69_MTV/HANDOFF_CLOUD4C_20260822.md",
+          "n": 1
+        }
+      ],
+      "total_citations": 3,
+      "verdict": "취합 대상 — 인용되고 있고 master 에 없음"
+    },
+    {
+      "branch": "origin/claude/essential-programs-install-ur7v6e",
+      "path": "21_ZIF69_MTV/HANDOFF_CLOUD4C_20260822.md",
+      "cited_by": [],
+      "total_citations": 0,
+      "verdict": "가지 전용 문서(인용 없음)"
+    }
+  ]
+}
