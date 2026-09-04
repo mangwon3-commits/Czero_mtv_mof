@@ -1,0 +1,61 @@
+{
+  "rule": "ASSIGN_20260904 §2 D5 (결과 전 등록)",
+  "angle_max_deg": 30.0,
+  "band_A": [
+    6.5,
+    7.0
+  ],
+  "t95": 2.776,
+  "per": {
+    "base": {
+      "n_rings": 72,
+      "pairs_per_cell": 0.0,
+      "mean_dist": null
+    },
+    "saIm0583": {
+      "n_rings": 72,
+      "pairs_per_cell": 12.0,
+      "mean_dist": 6.691751074455114
+    },
+    "saIm0583e1": {
+      "n_rings": 72,
+      "pairs_per_cell": 9.0,
+      "mean_dist": 6.65528601629622
+    },
+    "saIm0583e2": {
+      "n_rings": 72,
+      "pairs_per_cell": 12.0,
+      "mean_dist": 6.710969387195236
+    },
+    "saIm0583e3": {
+      "n_rings": 72,
+      "pairs_per_cell": 11.0,
+      "mean_dist": 6.636412005888099
+    },
+    "saIm0583e4": {
+      "n_rings": 72,
+      "pairs_per_cell": 17.0,
+      "mean_dist": 6.764323560367756
+    },
+    "saIm0583e5": {
+      "n_rings": 72,
+      "pairs_per_cell": 10.0,
+      "mean_dist": 6.646151288915632
+    }
+  },
+  "ensemble": [
+    "saIm0583",
+    "saIm0583e1",
+    "saIm0583e2",
+    "saIm0583e3",
+    "saIm0583e4",
+    "saIm0583e5"
+  ],
+  "control": "base",
+  "ensemble_mean": 11.833333333333334,
+  "ensemble_batch_sd": 2.786873995477131,
+  "ensemble_ci95": 3.158356647231454,
+  "control_value": 0.0,
+  "outside": true,
+  "verdict": "차이 실재 — base 가 앙상블 95% CI 밖"
+}
