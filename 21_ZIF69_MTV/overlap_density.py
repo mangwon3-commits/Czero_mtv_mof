@@ -25,6 +25,13 @@ def read_vtk_grid(path):
     `.gz` 를 그대로 받는다. 데스크탑이 보낸 CO2 격자가 gzip 이고(2.2 MB -> 62 KB,
     32배), 압축을 풀어 두면 조성당 2.2 MB 짜리 사본이 작업트리에 남아 실수로
     커밋될 수 있다. 여기서 직접 읽으면 사본이 아예 안 생긴다.
+
+    ⚠ **이 함수는 헤더의 길이 3개만 돌려주고 각도는 버린다.**
+    ZIF-69 는 육방(γ=120°)이다. 각도는 CIF 에서 와야 하므로 **VTK 만 있고 CIF 가
+    없으면 육방 셀이 조용히 직교로 읽힌다** — 오류 없이 틀린 값이 나온다.
+    격자를 다른 기기로 옮길 때는 CIF 를 함께 옮기고, 자가 같은지
+    `check_grid_compat.py` 로 대라. 헤더의 각도만 필요하면
+    `read_vtk_cellpar()` 를 쓴다. (랩탑 지적, 2026-09-05)
     """
     op = gzip.open if str(path).endswith('.gz') else open
     with op(path, 'rt') as f:
@@ -37,6 +44,14 @@ def read_vtk_grid(path):
         raise ValueError(f'{path}: {vals.size} < {n}')
     v = vals[:n].reshape(dims[::-1]).transpose(2, 1, 0)
     return v, np.array(cellp), np.array(dims)
+
+
+def read_vtk_cellpar(path):
+    """VTK 헤더의 셀 6개(a b c alpha beta gamma). read_vtk_grid 는 길이만 준다."""
+    op = gzip.open if str(path).endswith('.gz') else open
+    with op(path, 'rt') as f:
+        head = [f.readline() for _ in range(2)]
+    return np.array([float(x) for x in head[1].split()[1:7]])
 
 
 def accessible_mask(atoms, dims, L_sup):
