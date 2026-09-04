@@ -132,6 +132,7 @@
 | v2 → v3 결과 해석 | `21_ZIF69_MTV/V3_RESULT_NOTE.md` |
 | 실행 계약 | `48H_COMPUTE_PLAN.md`, `AUTOMATION_60H.md` |
 | azbIm · "월등" 정의 · 사전 등록 시험 T-1~T-C10 | `21_ZIF69_MTV/DESIGN_STUDY_20260903.md` |
+| T-SRCC (순위 보존 검정, 부트스트랩 ρ) | `21_ZIF69_MTV/SRCC_TEST_20260904.md` |
 
 같은 이유로, 다른 기기의 세션에 일을 시킬 때는 **대화 맥락을 옮기려 하지 말고**
 읽을 파일을 지정하세요. 아이패드에서든 랩탑에서든 이 한 줄이면 부팅됩니다.
