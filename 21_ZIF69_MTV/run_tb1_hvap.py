@@ -11,6 +11,18 @@
          ② PV_liq 무시 (1 bar 에서 약 0.0018 kJ/mol)
          ③ 분극 자체에너지 보정 없음 (raw 보고)
 
+[사이클 — §1 흡착 규약이 아닙니다 (2026-09-04 사용자 승인, ASSIGN a16cdb1)]
+    초기화 **2,000** + 생산 **3,000**.
+    사유는 성능이 아니라 **완주 가능성**입니다 — 등록 덱 5,000+15,000 은 실측
+    사이클당 6.975초로 **38.76시간**이고 이 기기 실증 최장 연속 17.49 h 의
+    2.2배입니다. 체크포인트가 진행도를 복원하지 않아 등록 덱으로는 값을 아예
+    못 얻습니다.
+    ⚠️ **§1 표(5,000+15,000)는 불변이고 흡착 계산은 전부 그대로입니다.**
+    이 계는 골격 없는 순수 액체 NPT 라 층위가 다릅니다. 보고문에 이 이탈을
+    명시해 흡착 규약을 따른 것처럼 읽히지 않게 합니다.
+    충분성 점검: 완주 시 5블록 ± 가 **0.3 kJ/mol 이하**여야 하고, 넘으면
+    연장하고 연장 사실과 최종 사이클 수를 판정문에 적습니다.
+
 [최소 이미지 관문]
     컷오프 12 -> L > 24 Å 필요. N=512 의 <L> ~ 24.86 Å.
     평형 후 실측으로 재확인하고 <L> - 3σ_L <= 24 면 N=1000 으로 재실행.
@@ -22,9 +34,9 @@ WATER_DEF = os.path.join(HERE, '..', '19_WaterCompetition', 'water.def')
 SIMULATE = shutil.which('simulate') or os.path.expanduser(
     '~/miniconda3/envs/czeromof/bin/simulate')
 
-N_MOL   = int(os.environ.get('TB1_N', '512'))
-CYCLES  = int(os.environ.get('TB1_CYCLES', '15000'))
-INIT    = int(os.environ.get('TB1_INIT', '5000'))
+N_MOL   = int(os.environ.get('TB1_N', '1000'))
+CYCLES  = int(os.environ.get('TB1_CYCLES', '3000'))
+INIT    = int(os.environ.get('TB1_INIT', '2000'))
 TEMP    = 298.15
 PRESS   = 100000.0          # 1 bar
 CUTOFF  = 12.0
@@ -44,7 +56,7 @@ NumberOfInitializationCycles  {INIT}
 PrintEvery                    {max(1, CYCLES // 10)}
 RestartFile                   no
 ContinueAfterCrash            yes
-WriteBinaryRestartFileEvery   5000
+WriteBinaryRestartFileEvery   500
 
 Forcefield                    UFF_MOF
 CutOff                        {CUTOFF}
