@@ -110,9 +110,51 @@ echo "=== 확인 ==="
 S_OK=0; P_OK=0
 has_session && S_OK=1
 alive && P_OK=1
+
+# [2026-09-04 — 세 번째 판. 프로세스가 살아도 링크는 죽어 있을 수 있습니다]
+#
+#   09-04 16:53 에 이 스크립트가 "✅ 살아 있음 (pid 484, 1-14:22 경과)" 라고
+#   보고했는데, 정작 화면에는 이렇게 떠 있었습니다.
+#
+#       ● Remote Control disconnected — OAuth token unavailable —
+#         run /login to restore Remote Control
+#                                        ... 상태줄: /rc failed
+#
+#   원인은 자격증명이었습니다. 프로세스는 09-03 02:29 에 떴고
+#   ~/.claude/.credentials.json 은 09-04 11:20 에 **갱신**됐습니다. 오래 도는
+#   프로세스가 메모리에 든 낡은 토큰을 계속 들고 있었던 것입니다. 재시작만으로
+#   복구됩니다 -- /login 이 필요 없습니다.
+#
+#   1판은 세션을 봤고(틀림), 2판은 프로세스를 봤습니다(부족함). **살아 있음의
+#   층이 하나 더 있습니다 -- 연결.** 이 프로젝트가 반복해서 데인 유형이
+#   점검 스크립트 안에서 세 번째로 재현된 것입니다.
+#
+#   그래서 화면을 읽어 끊김 배너를 직접 찾습니다.
+link_broken() {
+  tmux capture-pane -p -S -200 -t "$S" 2>/dev/null \
+    | grep -qE "Remote Control disconnected|OAuth token unavailable|/rc failed"
+}
+
+if [ "$S_OK" -eq 1 ] && [ "$P_OK" -eq 1 ] && link_broken; then
+  echo "  ⚠️  프로세스는 살아 있지만 **링크가 끊겨 있습니다.**"
+  tmux capture-pane -p -S -200 -t "$S" 2>/dev/null \
+    | grep -E "Remote Control disconnected|OAuth token unavailable|/rc failed" \
+    | tail -3 | sed 's/^/       /'
+  if [ "$FORCE" -eq 1 ]; then
+    echo "     --force 로 이미 새로 띄웠는데도 배너가 남아 있습니다."
+    echo "     자격증명이 정말 만료됐을 수 있습니다 -> tmux attach 후 /login"
+  else
+    echo "     대개 낡은 토큰을 든 장수 프로세스입니다. 재시작으로 고쳐집니다:"
+    echo "       bash $0 --force"
+  fi
+  log "링크 끊김 감지 (프로세스는 생존)"
+  exit 1
+fi
+
 if [ "$S_OK" -eq 1 ] && [ "$P_OK" -eq 1 ]; then
   pid=$(remote_pid)
   echo "  ✅ 원격 제어 살아 있음 (pid $pid, $(ps -o etime= -p "$pid" | tr -d ' ') 경과)"
+  echo "     링크 배너 검사도 통과 — 화면에 끊김 표시 없음"
   # 느슨한 검사와 몇 개나 차이 나는지 보여 줍니다. 이 격차가 1판·2판이 틀렸던 폭입니다.
   loose=$(pgrep -cf -- "--remote-control" 2>/dev/null)
   echo "     (느슨한 검사로는 ${loose}개가 잡힙니다 — tmux 서버와 래퍼 셸까지."
