@@ -12,9 +12,33 @@ TRUNC   = +0.2125      # 문헌 관례로 옮길 때 더함
 E_POL   = 3.983        # 보정 시 뺌
 REF, TOL = 44.0, 3.0
 
+def parse_energy(txt):
+    """`Average Adsorbate-Adsorbate energy:` 절에서 5블록·평균·± 를 뽑는다 [K].
+
+    실제 형식(완료된 RASPA 출력에서 확인, 09-05):
+        Average Adsorbate-Adsorbate energy:
+        ===================================
+        \tBlock[ 0] -12621.25084   Van der Waals: ...  Coulomb: ...  [K]
+        ...
+        \t------------------------------------------------
+        \tAverage   -13016.70475   Van der Waals: ...   Coulomb: ...  [K]
+        \t      +/- 777.56727            +/- ...             +/- ...   [K]
+    """
+    m = re.search(r'Average Adsorbate-Adsorbate energy:\s*\n=+\n(.*?)\n\s*\n', txt, re.S)
+    if not m:
+        return None, None, []
+    blk = m.group(1)
+    blocks = [float(x) for x in re.findall(r'Block\[\s*\d+\]\s+(-?[\d.eE+]+)', blk)]
+    avg = re.search(r'Average\s+(-?[\d.eE+]+)', blk)
+    err = re.search(r'\+/-\s+([\d.eE+]+)', blk)
+    return (float(avg.group(1)) if avg else None,
+            float(err.group(1)) if err else None, blocks)
+
+
 def grab(txt, pat):
     m = re.findall(pat, txt)
     return [float(x) for x in m] if m else []
+
 
 def main(path=None):
     if path is None:
@@ -25,39 +49,55 @@ def main(path=None):
     txt = open(path, encoding='utf-8', errors='replace').read()
     print(f'출력 {path}\n')
 
-    # 평균 분자간 에너지 [K] — RASPA 는 Adsorbate-Adsorbate 로 찍는다
-    tot = grab(txt, r'Average Adsorbate-Adsorbate energy:\s*\n?\s*-*\s*\n?.*?Total\s+([-\d.]+)')
-    if not tot:
-        blk = re.search(r'Average Adsorbate-Adsorbate energy:(.{0,4000}?)Average Host-Host', txt, re.S)
-        if blk: tot = grab(blk.group(1), r'Total\s+([-\d.eE+]+)')
-    vol = grab(txt, r'Average Volume:\s*([\d.]+)')
-    box = grab(txt, r'Average Box:\s*([\d.]+)')
+    U_K, dU_K, blocks = parse_energy(txt)
+    vol  = grab(txt, r'Average Volume:\s*([\d.]+)')
+    box  = grab(txt, r'Average Box:\s*([\d.]+)')
+    boxc = grab(txt, r'Current Box:\s*([\d.]+)')
     nmol = grab(txt, r'current number of integer/fractional/reaction molecules:\s*(\d+)')
-    print(f'  파싱: U 후보 {len(tot)}개 · V {len(vol)}개 · Box {len(box)}개 · N {nmol[:1]}')
-    if not tot or not vol:
-        print('  !! 자동 파싱 실패 — 아래 후보를 눈으로 확인하십시오')
-        for pat in ('Average Adsorbate-Adsorbate','Average Volume','Average Box'):
-            for ln in [l for l in txt.splitlines() if pat in l][-3:]:
-                print('   ', ln.strip()[:140])
+
+    if U_K is None:
+        print('  !! 에너지 절을 못 찾았습니다 — 완주 전이거나 형식이 다릅니다')
+        for ln in [l for l in txt.splitlines() if 'Adsorbate-Adsorbate' in l][-3:]:
+            print('   ', ln.strip()[:120])
         return 2
-    N  = int(nmol[0]) if nmol else 1000
-    U  = tot[-1] * K_TO_KJ          # kJ/mol (전체 상자)
-    V  = vol[-1]
-    L  = box[-1] if box else V ** (1/3)
-    raw = -U / N + RT
-    print(f'\n  N {N}   <V> {V:.2f} Å³   <L> {L:.4f} Å   T 298.15 K   RT {RT:.4f}')
-    print(f'  <U_inter> {tot[-1]:.2f} K = {U:.3f} kJ/mol   ->  <U>/N = {U/N:.4f} kJ/mol')
-    print(f'\n  ① raw                    {raw:8.3f} kJ/mol')
+
+    N   = next((int(x) for x in nmol if int(x) > 0), 0)
+    if N <= 0:
+        print(f'  !! 분자 수를 못 읽었습니다 (후보 {nmol[:3]}). 이 출력은 T-B1 이 아닙니다.')
+        print(f'     참고로 에너지 파싱은 성공: <U> {U_K:.4f} ± {dU_K:.4f} K, 5블록 {len(blocks)}개')
+        return 3
+    U   = U_K * K_TO_KJ / N          # kJ/mol/분자
+    dU  = (dU_K or 0.0) * K_TO_KJ / N
+    V   = vol[-1] if vol else float('nan')
+    raw = -U + RT
+
+    print(f'  N {N}   <V> {V:.2f} Å³   T 298.15 K   RT {RT:.4f} kJ/mol')
+    print(f'  <U_inter> {U_K:.2f} ± {dU_K:.2f} K  ->  <U>/N = {U:.4f} ± {dU:.4f} kJ/mol')
+    print(f'  5블록 [K]: ' + ' '.join(f'{b:.1f}' for b in blocks))
+    print(f'\n  ① raw                    {raw:8.3f} ± {dU:.3f} kJ/mol')
     print(f'  ② raw + 절단({TRUNC:+.3f})   {raw+TRUNC:8.3f}')
     print(f'  ③ raw − E_pol({E_POL:.3f})   {raw-E_POL:8.3f}')
     print(f'  ④ 둘 다                  {raw+TRUNC-E_POL:8.3f}')
+
+    print(f'\n  [충분성 점검] 5블록 ± = {dU:.4f} kJ/mol  (문턱 0.3)  -> '
+          f'{"통과" if dU <= 0.3 else "**미달 — 연장 필요, 연장 사실을 판정문에 기재**"}')
+
+    if boxc:
+        import statistics as st
+        tail = boxc[len(boxc)//2:]
+        m, sd = st.mean(tail), st.pstdev(tail)
+        print(f'  [최소 이미지] <L> {m:.4f} ± σ {sd:.4f}  ->  <L>−3σ = {m-3*sd:.4f} '
+              f'(하한 24)  -> {"통과" if m-3*sd > 24 else "**미달**"}   표본 {len(tail)}')
+
     print(f'\n  판정 (|x−44| ≥ 3 이면 문구 교체)')
     for lab, x in (('①', raw), ('④', raw+TRUNC-E_POL)):
         d = abs(x - REF)
         print(f'    {lab} |{x:.3f} − 44| = {d:.3f}  ->  {"교체" if d>=TOL else "유지"}')
     a, b = abs(raw-REF) >= TOL, abs(raw+TRUNC-E_POL-REF) >= TOL
-    print(f'\n  => {"두 축 일치: " + ("교체" if a else "유지") if a==b else "**두 축이 갈림 -> 기준 미확정, 판정 보류 (문구 불변)**"}')
+    print(f'\n  => ' + (f'두 축 일치: {"교체" if a else "유지"}' if a == b
+                        else '**두 축이 갈림 -> 기준 미확정, 판정 보류 (저장소 문구 불변)**'))
     return 0
+
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv[1] if len(sys.argv) > 1 else None))
