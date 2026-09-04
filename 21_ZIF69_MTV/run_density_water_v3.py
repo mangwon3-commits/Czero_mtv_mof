@@ -74,19 +74,29 @@ rw.subprocess.run = _run_with_grid
 
 
 def main():
+    # [2026-09-05 01:0x] 대상을 인자로 받는다. 세 구조는 서로 독립이므로
+    # 프로세스를 나눠 **동시 3** 으로 돌린다(데스크탑 지시). 사이클·격자·RH·
+    # 힘장은 그대로이고 **스케줄링만** 바뀐다. 동시 워커 수는 보고문에 병기한다.
+    # 한 프로세스가 셋을 순차로 돌면 다른 프로세스와 **같은 작업 폴더**를 잡아
+    # 충돌하므로, 프로세스마다 대상을 하나씩 준다.
+    targets = sys.argv[1:] or TARGETS
+    bad = [t for t in targets if t not in TARGETS]
+    if bad:
+        print(f'  !! 등록 대상이 아닙니다: {bad}  (등록: {TARGETS})', flush=True)
+        return 1
     print('물 밀도 격자 — T-4·T-6 선행 (ASSIGN_20260905 §2)', flush=True)
     print(f'  RH {int(RH*100)}%  격자 {GRID}^3  '
           f'초기화 {rw.INIT} + 생산 {rw.CYCLES}', flush=True)
-    print(f'  대상 {", ".join(TARGETS)}', flush=True)
+    print(f'  대상 {", ".join(targets)}', flush=True)
     print(f'  결과 {os.path.join(rw.HERE, "water_results.json")}', flush=True)
     print(f'  작업 {rw.RUNS}', flush=True)
-    for i, name in enumerate(TARGETS, 1):
+    for name in targets:
         cif = os.path.join(rw.CHARGED, name + '_DDEC6.cif')
         if not os.path.exists(cif):
             print(f'  !! 전하 CIF 없음: {cif}', flush=True)
             return 1
-    for i, name in enumerate(TARGETS, 1):
-        print(f'\n[{i}/{len(TARGETS)}] {name} RH{int(RH*100)}', flush=True)
+    for i, name in enumerate(targets, 1):
+        print(f'\n[{i}/{len(targets)}] {name} RH{int(RH*100)}', flush=True)
         r = rw.run_one((name, RH))
         print(f'    -> {r[-1]}', flush=True)
     print('\n끝. VTK 는 각 작업의 VTK/System_0/ 아래.', flush=True)
