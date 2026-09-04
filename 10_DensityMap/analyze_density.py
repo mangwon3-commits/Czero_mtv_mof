@@ -144,7 +144,14 @@ def classify_atoms(atoms):
 def analyze(struct_cif, dir_on, dir_off, use_com=True):
     atoms = read(struct_cif)
     fam = classify_atoms(atoms)
-    L_unit = atoms.get_cell().lengths()
+    # [2026-09-05 수정] 셀 **행렬**을 쓴다. 이전 판은 길이(lengths())만 썼는데,
+    # 그러면 비직교 셀에서 좌표가 틀린다. ZIF-69 는 γ=120° 육방이고
+    # b 축이 (-13.042, 22.589, 0) 이라 분율(0.25,0.75,0.50) 에서
+    # 길이방식과 **10.13 Å** 어긋났다(T-4 판정 문턱 3 Å).
+    # 입방·정방에서는 두 방식이 수치적으로 일치하므로 과거 ZIF-8 계열 결과는
+    # 바뀌지 않는다(회귀 확인함). 감사: ZIF-69 가 이 함수를 지난 적은 없다.
+    cell = np.array(atoms.get_cell())               # (3,3) 행 = 셀 벡터
+    L_unit = atoms.get_cell().lengths()             # 아래 슈퍼셀 배수 산정에만 씀
 
     fn = 'COMDensityProfile_CO2.vtk' if use_com else 'DensityProfile_CO2.vtk'
     g_on, L_sup, dims = read_vtk_grid(os.path.join(dir_on, 'VTK', 'System_0', fn))
@@ -152,16 +159,19 @@ def analyze(struct_cif, dir_on, dir_off, use_com=True):
     if g_on.sum() <= 0 or g_off.sum() <= 0:
         return None
 
-    # 격자 좌표 -> 단위셀로 접기 (밀도 격자는 슈퍼셀 위에 정의되어 있다)
+    # 격자 인덱스는 **슈퍼셀 분율좌표**다. 접기·거리를 전부 분율에서 하고,
+    # 데카르트 변환은 셀 **행렬**로 한다(비직교 셀에서 길이만 쓰면 틀린다).
+    reps = np.round(L_sup / L_unit)                 # 슈퍼셀 배수 (예: 2 2 2)
     idx = np.stack(np.meshgrid(*[np.arange(d) for d in dims], indexing='ij'), -1)
-    cart = idx / dims * L_sup                       # 슈퍼셀 직교좌표
-    folded = np.mod(cart.reshape(-1, 3), L_unit)    # 단위셀로 환원 (정방정계)
+    f_sup = idx.reshape(-1, 3) / dims               # 슈퍼셀 분율 [0,1)
+    f_unit = np.mod(f_sup * reps, 1.0)              # 단위셀 분율로 환원
+    folded = f_unit @ cell                          # 데카르트 (셀 행렬)
 
     # 주기 이미지로 패딩한 KD-트리 (최근접 원자를 주기 경계 넘어서도 찾도록)
-    pos = atoms.get_positions() % L_unit
+    fpos = atoms.get_scaled_positions() % 1.0       # 원자도 분율에서 접는다
     shifts = np.array([[i, j, k] for i in (-1, 0, 1)
                        for j in (-1, 0, 1) for k in (-1, 0, 1)])
-    pad_pos = (pos[None] + (shifts * L_unit)[:, None]).reshape(-1, 3)
+    pad_pos = ((fpos[None] + shifts[:, None]) @ cell).reshape(-1, 3)
     pad_fam = np.tile(fam, len(shifts))
     tree = cKDTree(pad_pos)
     dmin, jmin = tree.query(folded, k=1)
