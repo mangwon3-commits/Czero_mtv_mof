@@ -69,14 +69,47 @@ def overlap(p1, p2):
     return float(np.minimum(p1, p2).sum()), float(np.sqrt(p1 * p2).sum())
 
 
-def peak_distance(atoms, g, acc, cart, elements=('O', 'N')):
-    """T-4: 밀도 최대 피크에서 치환기 O/N 원자까지 최단거리 (주기 고려)."""
+def substituent_ON(atoms):
+    """T-4 의 '치환기 O/N' — **원소만으로 고르면 안 된다.**
+
+    [2026-09-05 정의 확정, 결과 전 등록]
+        ZIF-69 계열은 이미다졸레이트 N 이 Zn 에 배위한다. 그 N 이 구조당 **96개**로
+        골격 전체에 깔려 있어, 원소(O,N) 전체를 쓰면 **어느 복셀이든 3 Å 안에**
+        들어와 T-4 판정이 자동 통과한다(무의미해진다).
+
+        실측 (전체 N / Zn배위 N / 니트로 N):
+            base     120 / 96 / 24        nbIm025  126 / 96 / 30
+            saIm050  120 / 96 / 24   (O 84 = 니트로 48 + 설폰산 36)
+
+        정의: **치환기 O/N = 모든 O + Zn 에 배위하지 않은 N.**
+        이미다졸레이트 고리에는 O 가 없으므로 O 는 전부 치환기(니트로·설폰산)이고,
+        비배위 N 은 니트로 N 과 정확히 일치한다(base 24 = 니트로 24).
+    """
+    from ase.neighborlist import natural_cutoffs, NeighborList
+    sym = np.array(atoms.get_chemical_symbols())
+    nl = NeighborList(natural_cutoffs(atoms), self_interaction=False, bothways=True)
+    nl.update(atoms)
+    sel = np.zeros(len(atoms), bool)
+    sel[sym == 'O'] = True
+    for i in np.where(sym == 'N')[0]:
+        nb, _ = nl.get_neighbors(i)
+        if not any(sym[j] == 'Zn' for j in nb):
+            sel[i] = True
+    return sel
+
+
+def peak_distance(atoms, g, acc, cart, sel=None):
+    """T-4: 밀도 최대 피크에서 **치환기** O/N 까지 최단거리 (주기 고려).
+
+    sel 을 안 주면 substituent_ON() 을 쓴다. 원소 목록을 그대로 쓰지 않는 이유는
+    그 함수 독스트링에 있다.
+    """
     v = g.reshape(-1).astype(float).copy()
     v[~acc] = -1.0
     k = int(np.argmax(v))
     cell = np.array(atoms.get_cell())
-    sym = np.array(atoms.get_chemical_symbols())
-    sel = np.isin(sym, list(elements))
+    if sel is None:
+        sel = substituent_ON(atoms)
     if not sel.any():
         return None, None, k
     fpos = atoms.get_scaled_positions()[sel] % 1.0
