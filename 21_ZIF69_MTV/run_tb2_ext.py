@@ -61,8 +61,15 @@ FFSRC = os.path.join(T.HERE, '..', '00_Migration', 'raspa_share', 'raspa',
 WORKERS = int(os.environ.get('TB2_WORKERS', '8'))
 
 
-def net_charge(sysdir):
-    """출력 머리말의 성분 순전하. **정의 파일을 바꾸는 진단의 확인 조건.**
+def component_net_charge(sysdir):
+    """출력 머리말의 **흡착질 성분** 순전하. 정의 파일을 바꾸는 진단의 확인 조건.
+
+    !! **"계" 의 순전하가 아닙니다.** 골격이 있는 실행에서도 이 줄은
+       `Component 0 [water]` 에 대한 것이고 **골격 DDEC6 전하 합은 안 들어갑니다.**
+       이름을 `net_charge` 로 두면 나중에 **골격 검사로 오독**됩니다
+       (검사 5: 같은 이름의 다른 양). 골격 쪽은 CIF 의 전하 열을 따로 합해야 하고,
+       09-05 랩탑 측정으로 `charged_v3/*.cif` **90종 전부 |합| < 1e-3**
+       (최대 mbIm050 +7.9e-05) 입니다.
 
     09-05: 배포본 3자리 `water.def` 를 넣었더니 `Lw` 가 없어 순전하가 **+0.482**
     가 됐고(우리 `pseudo_atoms.def` 는 TIP5P-Ew 배치라 음전하가 `Lw` 에 있음),
@@ -215,16 +222,18 @@ Component 0 MoleculeName              water
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
     sysdir = os.path.join(d, 'Output', 'System_0')
     kh, ekh, why = read_kh(sysdir, comp='water')
-    q = net_charge(sysdir)
+    q = component_net_charge(sysdir)
     # **등록 확인 조건 (09-05 추가)**: 정의 파일을 바꾸는 진단은 순전하가 0 이어야 함
     if q is None or abs(q) > 1e-6:
-        why = f'순전하 {q} — 0 이 아니므로 다른 분자입니다. K_H 를 쓰지 마십시오.'
+        why = (f'**성분** 순전하 {q} — 0 이 아니므로 다른 분자입니다. '
+               'K_H 를 쓰지 마십시오. (골격 전하 합은 별개 검사)')
         kh = ekh = None
-    return {'name': name, 'water_sites': 3, 'net_charge': q, 'KH': kh, 'KH_err': ekh, 'why': why,
+    return {'name': name, 'water_sites': 3, 'component_net_charge': q, 'KH': kh, 'KH_err': ekh, 'why': why,
             'unit_cells': [na, nb, nc], 'ok': kh is not None,
             'WARN': '진단 전용 — 규약 물 정의(TIP5P-Ew 5자리)가 아님. '
                     '어떤 결과 집합에도 넣지 말 것. '
-                    '**순전하가 0 이 아니면 다른 분자이므로 무효.**'}
+                    '**성분 순전하가 0 이 아니면 다른 분자이므로 무효.** '
+                    '(이 값은 흡착질 성분이며 골격 전하 합이 아님)'}
 
 
 def make_local_ff(rundir):
