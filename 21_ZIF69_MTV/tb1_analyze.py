@@ -42,10 +42,21 @@ def grab(txt, pat):
 
 def main(path=None):
     if path is None:
-        c = sorted(glob.glob('tb1_runs_n*/hvap/Output/System_0/*.data'),
-                   key=os.path.getmtime)
-        if not c: print('출력 없음'); return 1
-        path = c[-1]
+        # ⚠️ 09-05: 실행이 둘이 됐습니다(`tb1_runs_n1000` 본 실행, `tb1_runs_ffctl` 대조).
+        #    원래 글롭은 `tb1_runs_n*` 라 **대조를 못 잡고 본 실행을 조용히 집었습니다.**
+        #    넓히면 이번엔 **둘 중 아무거나 조용히 집습니다.** 둘 다 나쁩니다.
+        #    -> 하나면 쓰고, 둘 이상이면 **거부하고 목록을 보여 줍니다.**
+        #       (`scope_report.py` 와 같은 규율: 막지 말고 말하게 하되, 애매하면 멈춘다)
+        c = sorted(glob.glob('tb1_runs_*/hvap/Output/System_0/*.data'))
+        if not c:
+            print('출력 없음 — `tb1_runs_*/hvap/Output/System_0/*.data` 가 비었습니다')
+            return 1
+        if len(c) > 1:
+            print(f'  실행이 **{len(c)}개** 잡혔습니다. 어느 것인지 인자로 주십시오:')
+            for f in c:
+                print(f'    python tb1_analyze.py {f}')
+            return 2
+        path = c[0]
     txt = open(path, encoding='utf-8', errors='replace').read()
     print(f'출력 {path}\n')
 
