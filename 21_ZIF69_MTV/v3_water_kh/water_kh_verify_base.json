@@ -17,5 +17,7 @@
       "concurrency": "Widom 1 + NVT 1",
       "ok": true
     }
-  ]
+  ],
+  "WARN_forcefield": "물 힘장 결함: UFF_MOF 혼합규칙에 Hw 항이 없어 RASPA 가 앞자리 일치로 H_(UFF 수소, eps 22.1417 K / sigma 2.57113 A)를 물려줬다. TIP5P 수소는 LJ 가 없어야 한다. **이 K_H 는 수소결합이 없는 물로 잰 값이다.** 확인: 출력 머리말 Hw-Hw p_0/k_B = 22.14170. 근거 문서 WATER_FF_CONFIRM_20260905.md / WATER_FF_DEFECT_20260905.md",
+  "WARN_output": "이 실행의 출력은 진행을 보여 주지 않는다: PrintEvery = NumberOfCycles 라 .data 가 처음과 끝에만 쓰인다. 실행 중 .data 정지는 정상이며 죽음의 신호가 아니다(완주한 실행에서 25분 침묵 확인). 살아 있음은 `pgrep -x simulate` 개수와 `ps -o etime,time` 의 CPU 시간 증가로 본다."
 }
