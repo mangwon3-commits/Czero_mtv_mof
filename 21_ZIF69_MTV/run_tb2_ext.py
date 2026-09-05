@@ -180,15 +180,21 @@ def make_local_ff(rundir):
     return d
 
 
-def run_hwnone(name):
-    """진단 전용: `Hw none`/`Lw none` 지역 힘장으로 같은 구조의 물 K_H."""
+def run_water_ff(name, local_ff):
+    """물 K_H 1건. `local_ff` 참이면 `Hw none`/`Lw none` 지역 힘장을 쓴다.
+
+    **분자와 분모를 같은 배치에서 잽니다** — D 는 비이므로 기기·씨앗·동시성·
+    러너가 모두 같아야 하고, 다른 것은 **혼합규칙 두 줄뿐**이어야 합니다.
+    (랩탑 09-05 지적: `base` K_H 가 둘이라 어느 것을 분모로 쓸지 정해야 함)
+    """
     cif = os.path.join(T.CHARGED, name + '_DDEC6.cif')
     fw = name + '_DDEC6'
-    d = os.path.join(T.RUNS, 'widom_hwnone_' + name)
+    d = os.path.join(T.RUNS, ('widom_hwnone_' if local_ff else 'widom_current_') + name)
     os.makedirs(d, exist_ok=True)
     shutil.copy(cif, os.path.join(d, fw + '.cif'))
     shutil.copy(T.WATER_DEF, os.path.join(d, 'water.def'))
-    make_local_ff(d)
+    if local_ff:
+        make_local_ff(d)
     na, nb, nc = T.unit_cells(cif)
     with open(os.path.join(d, 'simulation.input'), 'w') as f:
         f.write(f"""SimulationType                MonteCarlo
@@ -270,20 +276,22 @@ def main():
     print(f'  물 정의 사이트 {nsite}개 (TIP5P-Ew 는 5)', flush=True)
     print('  확장 대상: ' + ', '.join(EXT), flush=True)
 
-    water_rows, gas_rows, w3_rows, hw_rows = [], [], [], []
+    water_rows, gas_rows, w3_rows, hw_rows, cur_rows = [], [], [], [], []
     jobs = ([('water', n) for n in EXT]
             + [('gas', (CONTROL_STRUCT, CONTROL_GAS))]
             + [('water3', CONTROL_STRUCT)]
-            + [('hwnone', CONTROL_STRUCT)])
+            + [('hwnone', CONTROL_STRUCT)]
+            + [('current', CONTROL_STRUCT)])
     with Pool(WORKERS) as p:
         for kind, r in p.imap_unordered(_dispatch, jobs, chunksize=1):
-            {'water': water_rows, 'gas': gas_rows,
-             'water3': w3_rows, 'hwnone': hw_rows}[kind].append(r)
-            v = r['KH_water'] if kind in ('water', 'hwnone') else r['KH']
+            {'water': water_rows, 'gas': gas_rows, 'water3': w3_rows,
+             'hwnone': hw_rows, 'current': cur_rows}[kind].append(r)
+            v = r['KH_water'] if kind in ('water', 'hwnone', 'current') else r['KH']
             lbl = (r['name'] if kind == 'water'
                    else f"{r['name']}/{r['gas']}" if kind == 'gas'
                    else f"{r['name']}/물3자리" if kind == 'water3'
-                   else f"{r['name']}/Hw-none")
+                   else f"{r['name']}/Hw-none" if kind == 'hwnone'
+                   else f"{r['name']}/현행(분모)")
             print(f"  [{'ok' if r['ok'] else '실패'}] {lbl:14s} K_H {v}", flush=True)
 
     f1 = os.path.join(T.OUT, f'water_kh_EXT_{tag}.json')
@@ -322,7 +330,8 @@ def main():
                           'TB2_CONTROLS_20260905.md 에 측정 전 등록.',
                'verify': '등록 확인 조건 — 출력에서 Hw-Hw 와 Ow-Hw 의 eps 가 0 '
                          '이거나 NO VDW 여야 지역 사본이 먹은 것. ff_applied 참조.',
-               'rows': hw_rows}, open(f4, 'w'), ensure_ascii=False, indent=2)
+               'rows': hw_rows, 'denominator_rows': cur_rows},
+              open(f4, 'w'), ensure_ascii=False, indent=2)
 
     ok = len([r for r in water_rows if r['ok']])
     print(f'\n[OK] 확장 {ok}/{len(EXT)} -> {f1}', flush=True)
@@ -333,7 +342,15 @@ def main():
             print('  !! Hw-none 대조: **지역 힘장이 안 먹었습니다** '
                   f"(Hw-Hw eps {r['HwHw_eps']}, Ow-Hw eps {r['OwHw_eps']}). "
                   'K_H 를 쓰지 마십시오.', flush=True)
-    print(f'[OK] 대조 Hw-none {len([r for r in hw_rows if r["ok"]])}/1 -> {f4}', flush=True)
+    print(f'[OK] 대조 Hw-none {len([r for r in hw_rows if r["ok"]])}/1 '
+          f'+ 분모(현행) {len([r for r in cur_rows if r["ok"]])}/1 -> {f4}', flush=True)
+    if hw_rows and cur_rows and hw_rows[0]['ok'] and cur_rows[0]['ok']:
+        num, den = hw_rows[0], cur_rows[0]
+        D = den['KH_water'] / num['KH_water']
+        rel = ((den['KH_water_err'] / den['KH_water']) ** 2
+               + (num['KH_water_err'] / num['KH_water']) ** 2) ** 0.5
+        print(f'  D = K_H(현행)/K_H(수정) = **{D:.3f}**  상대± {rel*100:.1f}%  '
+              f'(창 0.67~1.5 / 지배 D>=3 또는 <=0.33)', flush=True)
     return 0
 
 
@@ -345,7 +362,7 @@ def _dispatch(job):
         return kind, run_gas(payload)
     if kind == 'water3':
         return kind, run_water3(payload)
-    return kind, run_hwnone(payload)
+    return kind, run_water_ff(payload, kind == 'hwnone')
 
 
 if __name__ == '__main__':
