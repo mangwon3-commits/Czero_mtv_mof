@@ -1,0 +1,187 @@
+{
+  "half": "B",
+  "tag": "hkhome",
+  "note": "Widom 물 K_H. 문턱 5e-6 mmol/g/Pa 는 TIP4P 기준 — TIP5P-Ew 값에 적용한다는 한정어 필수",
+  "rows": [
+    {
+      "name": "brbIm025",
+      "KH_water": 0.000632361,
+      "KH_water_err": 5.04879e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "brbIm075",
+      "KH_water": 0.000502626,
+      "KH_water_err": 4.85986e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "cf3Im025",
+      "KH_water": 0.000613381,
+      "KH_water_err": 4.39274e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "cf3Im075",
+      "KH_water": 0.00110412,
+      "KH_water_err": 7.8506e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "cnbIm050",
+      "KH_water": 0.000427327,
+      "KH_water_err": 2.19374e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "cnbIm100",
+      "KH_water": 0.000802865,
+      "KH_water_err": 7.26181e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "fbIm050",
+      "KH_water": 0.000471008,
+      "KH_water_err": 4.47902e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "fbIm100",
+      "KH_water": 0.000736848,
+      "KH_water_err": 0.000175344,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "mbIm050",
+      "KH_water": 0.000831822,
+      "KH_water_err": 0.000155224,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "mbIm100",
+      "KH_water": 0.000884055,
+      "KH_water_err": 9.59751e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "mslm025",
+      "KH_water": 0.000625707,
+      "KH_water_err": 5.80676e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "nbIm025",
+      "KH_water": 0.00038829,
+      "KH_water_err": 2.76034e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "nbIm075",
+      "KH_water": 0.0014012,
+      "KH_water_err": 0.000437612,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "sa25nb75",
+      "KH_water": 0.0011068,
+      "KH_water_err": 0.000488927,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "saIm025",
+      "KH_water": 0.000656031,
+      "KH_water_err": 2.92486e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "saIm0583",
+      "KH_water": 0.00314118,
+      "KH_water_err": 0.00111876,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    }
+  ],
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "WARN_forcefield": "물 힘장 결함: UFF_MOF 혼합규칙에 Hw 항이 없어 RASPA 가 앞자리 일치로 H_(UFF 수소, eps 22.1417 K / sigma 2.57113 A)를 물려줬다. TIP5P 수소는 LJ 가 없어야 한다. **이 K_H 는 수소결합이 없는 물로 잰 값이다.** 확인: 출력 머리말 Hw-Hw p_0/k_B = 22.14170. 근거 문서 WATER_FF_CONFIRM_20260905.md / WATER_FF_DEFECT_20260905.md",
+  "WARN_output": "이 실행의 출력은 진행을 보여 주지 않는다: PrintEvery = NumberOfCycles 라 .data 가 처음과 끝에만 쓰인다. 실행 중 .data 정지는 정상이며 죽음의 신호가 아니다(완주한 실행에서 25분 침묵 확인). 살아 있음은 `pgrep -x simulate` 개수와 `ps -o etime,time` 의 CPU 시간 증가로 본다."
+}
