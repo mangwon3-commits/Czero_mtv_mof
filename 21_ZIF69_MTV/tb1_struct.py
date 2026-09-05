@@ -7,7 +7,7 @@
 
 사용:  python tb1_struct.py <실행폴더>
 """
-import glob, os, sys
+import glob, os, re, sys
 import numpy as np
 
 WIN_PEAK = (2.75, 2.90)
@@ -48,14 +48,33 @@ def analyze(path):
     return dict(L=L, n=n, peak=peak, g282=g282, cn=cnt / n, minoo=float(mn))
 
 def cycles_of(rundir):
-    """.data 의 마지막 사이클 표시. 판독 시점을 병기하기 위한 것."""
+    """판독 시점 — **하한만** 말할 수 있습니다.
+
+    ⚠️ **Restart 파일에는 사이클 표시가 없습니다**(09-05 확인: `Cell info` ·
+    `Maximum changes` · `Adsorbate-atom-*` 뿐). 그래서 `.data` 의 마지막 인쇄를
+    쓰는데, 그것은 **`PrintEvery` 만큼 뒤처질 수 있습니다** — 09-05 본 실행에서
+    완주 배치를 읽고도 `13500 out of 15000` 이라고 찍었습니다.
+    **그래서 "=" 가 아니라 "≥" 로 적습니다.**
+    """
     fs = glob.glob(os.path.join(rundir, 'Output', 'System_0', '*.data'))
-    if not fs: return None
-    last = None
+    if not fs: return None, None, None
+    last = None; total = None
     for ln in open(fs[0], errors='replace'):
         if 'Current cycle:' in ln:
             last = ln.strip()
-    return last
+            m = re.search(r'Current cycle: (\d+) out of (\d+)', ln)
+            if m: cyc, total = int(m.group(1)), int(m.group(2))
+    # 그 폴더에서 도는 simulate 가 없으면 완주 -> 사이클을 정확히 말할 수 있습니다
+    done = True
+    for pid in os.listdir('/proc'):
+        if not pid.isdigit(): continue
+        try:
+            if os.path.realpath(f'/proc/{pid}/cwd') == os.path.realpath(rundir) and \
+               os.path.basename(os.readlink(f'/proc/{pid}/exe')) == 'simulate':
+                done = False; break
+        except (OSError, PermissionError):
+            continue
+    return last, total, done
 
 if __name__ == '__main__':
     d = sys.argv[1]
@@ -63,7 +82,12 @@ if __name__ == '__main__':
     if not rst:
         print('  Restart 없음 — 아직 첫 인쇄 전입니다'); sys.exit(1)
     r = analyze(rst[0])
-    print(f'  판독 시점  {cycles_of(d)}')
+    last, total, done = cycles_of(d)
+    if done and total is not None:
+        print(f'  판독 시점  **완주. 사이클 = {total}** (그 폴더에 도는 simulate 없음)')
+    else:
+        print(f'  판독 시점  **사이클 ≥** {last}   ⚠️ Restart 에는 사이클 표시가 없어')
+        print(f'             `.data` 마지막 인쇄를 씁니다 — **PrintEvery 만큼 뒤처질 수 있습니다**')
     print(f'  파일 시각  {__import__("time").strftime("%H:%M:%S", __import__("time").localtime(os.path.getmtime(rst[0])))}')
     print(f'  분자 {r["n"]}  L {r["L"]:.4f} Å')
     print(f'  O–O 첫 봉우리 **{r["peak"]:.2f} Å**   창 {WIN_PEAK}   '
