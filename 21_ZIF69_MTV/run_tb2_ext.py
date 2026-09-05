@@ -61,6 +61,28 @@ FFSRC = os.path.join(T.HERE, '..', '00_Migration', 'raspa_share', 'raspa',
 WORKERS = int(os.environ.get('TB2_WORKERS', '8'))
 
 
+def net_charge(sysdir):
+    """출력 머리말의 성분 순전하. **정의 파일을 바꾸는 진단의 확인 조건.**
+
+    09-05: 배포본 3자리 `water.def` 를 넣었더니 `Lw` 가 없어 순전하가 **+0.482**
+    가 됐고(우리 `pseudo_atoms.def` 는 TIP5P-Ew 배치라 음전하가 `Lw` 에 있음),
+    전하 골격 안 양이온이라 K_H 가 **29만 배**로 나왔습니다. RASPA 는 오류를
+    내지 않고 머리말에만 적었습니다. **정의 파일은 자기 짝의 `pseudo_atoms.def`
+    를 전제합니다 — 한쪽만 바꾸면 조용히 다른 분자가 됩니다.**
+    """
+    if not os.path.isdir(sysdir):
+        return None
+    files = sorted(x for x in os.listdir(sysdir) if x.endswith('.data'))
+    if len(files) != 1:
+        return None
+    for line in open(os.path.join(sysdir, files[0]), encoding='utf-8',
+                     errors='ignore'):
+        m = re.search(r'net charge of\s*([0-9.eE+-]+)', line)
+        if m:
+            return float(m.group(1))
+    return None
+
+
 def read_kh(sysdir, comp=None):
     """`Output/System_0` 에서 헨리 상수를 읽는다. **애매하면 거부한다.**
 
@@ -191,11 +213,18 @@ Component 0 MoleculeName              water
 """)
     subprocess.run([T.SIMULATE, 'simulation.input'], cwd=d,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
-    kh, ekh, why = read_kh(os.path.join(d, 'Output', 'System_0'), comp='water')
-    return {'name': name, 'water_sites': 3, 'KH': kh, 'KH_err': ekh, 'why': why,
+    sysdir = os.path.join(d, 'Output', 'System_0')
+    kh, ekh, why = read_kh(sysdir, comp='water')
+    q = net_charge(sysdir)
+    # **등록 확인 조건 (09-05 추가)**: 정의 파일을 바꾸는 진단은 순전하가 0 이어야 함
+    if q is None or abs(q) > 1e-6:
+        why = f'순전하 {q} — 0 이 아니므로 다른 분자입니다. K_H 를 쓰지 마십시오.'
+        kh = ekh = None
+    return {'name': name, 'water_sites': 3, 'net_charge': q, 'KH': kh, 'KH_err': ekh, 'why': why,
             'unit_cells': [na, nb, nc], 'ok': kh is not None,
             'WARN': '진단 전용 — 규약 물 정의(TIP5P-Ew 5자리)가 아님. '
-                    '어떤 결과 집합에도 넣지 말 것.'}
+                    '어떤 결과 집합에도 넣지 말 것. '
+                    '**순전하가 0 이 아니면 다른 분자이므로 무효.**'}
 
 
 def make_local_ff(rundir):
