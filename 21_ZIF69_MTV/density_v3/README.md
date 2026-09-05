@@ -22,7 +22,9 @@ T-4·T-6 도 COM 으로 판정합니다. 전원자 판(`DensityProfile_CO2.vtk`)
 ## 쓰는 법
 
 ```bash
-gunzip -k <조성>__q_on/VTK/System_0/COMDensityProfile_CO2.vtk.gz
+# 압축을 풀 때는 세대를 이름에 박아 푸십시오 — 같은 이름의 .vtk 가 이미 있으면(랩탑: 08-18 구판, 미추적)
+# gunzip -k 가 되묻고 `y`/`-f` 면 구판이 사라집니다 (PREREG 검사 5, 09-06 DENSITY_GRID_TWO_GENERATIONS_20260906.md)
+gunzip -kc <조성>__q_on/VTK/System_0/COMDensityProfile_CO2.vtk.gz > <조성>__q_on/VTK/System_0/COMDensityProfile_CO2.20260905_desktop.vtk
 ```
 
 `10_DensityMap/export_diff_vtk.py <폴더>` 로 ON−OFF 차분맵을 재생성할 수 있습니다
@@ -43,3 +45,10 @@ gunzip -k <조성>__q_on/VTK/System_0/COMDensityProfile_CO2.vtk.gz
   길이만으로 접으면 최대 24 Å 틀립니다(09-05 `092788e` 에서 고친 결함).
 - 전하 OFF 는 **LJ 만 남긴 가상의 계**입니다. 분해용 대조이지 물질이 아닙니다.
 - 값은 최대 1 로 정규화된 분수입니다. 최소단위의 역수가 최대 복셀 원계수입니다.
+
+## ⚠ 두 세대 (09-06, 랩탑 발견)
+랩탑 트리에는 같은 경로에 **08-18 랩탑 실행의 `.vtk`(미추적)** 와 **09-05 데스크탑 실행의 `.vtk.gz`(커밋본)** 가 공존합니다.
+`simulation.input` 은 09-05 것만 있어 `.vtk` 와 짝지으면 설정과 자료가 어긋납니다. **현행은 `.vtk.gz` 입니다.**
+데스크탑 트리에는 `.gz` 만 있습니다(09-06 03:4x 확인). 08-18 판의 `simulation.input`·로그는 데스크탑에 없습니다.
+두 실행의 차이(랩탑 실측): 장 상관 r 0.87~0.95 로 재현되지만 **단일 복셀 최댓값 위치는 최대 23 Å 이동, 상위 10 봉우리 일치 47/100** —
+자리를 지목하는 주장(T-4 류)에 단일 복셀 통계를 쓰지 마십시오. 같은 구조·설정이었는지 미확인이라 "실행 잡음" 이라 부르지 않습니다.
