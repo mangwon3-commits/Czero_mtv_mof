@@ -61,6 +61,42 @@ FFSRC = os.path.join(T.HERE, '..', '00_Migration', 'raspa_share', 'raspa',
 WORKERS = int(os.environ.get('TB2_WORKERS', '8'))
 
 
+def read_kh(sysdir):
+    """`Output/System_0` 에서 헨리 상수를 읽는다. **애매하면 거부한다.**
+
+    [왜] 09-05 에 랩탑이 자기 분석기에서 `glob` + mtime 최신 집기가 **두 방향으로
+         다 틀리는 것**을 찾았습니다(엉뚱한 실행을 조용히 고르거나, 대조를 아예
+         안 잡거나). 제 파서도 같은 종류였습니다 — `os.listdir` 를 돌며
+         **마지막 일치를 덮어쓰기**로 취해서, 파일이 둘이면 **listdir 순서**가
+         값을 정합니다.
+
+    [왜 안 터졌나] RASPA 출력 파일명이 조건을 담습니다
+         (`output_<구조>_<셀>_<T>_<P>.data`). 같은 조건이면 **덮어써서** 하나만
+         남습니다. **즉 맞은 값이 나온 이유가 설계가 아니라 이름 규칙입니다** —
+         사이클이나 압력을 바꾸면 두 파일이 공존하고 그때 조용히 틀립니다.
+
+    [규약] 0개면 None, **2개 이상이면 거부하고 목록을 남긴다**, 1개면 읽는다.
+           한 파일 안에서는 **마지막 일치**를 씁니다(RASPA 가 최종 평균을
+           끝에 다시 찍기 때문).
+    """
+    if not os.path.isdir(sysdir):
+        return None, None, 'Output/System_0 없음'
+    files = sorted(x for x in os.listdir(sysdir) if x.endswith('.data'))
+    if not files:
+        return None, None, '.data 없음'
+    if len(files) > 1:
+        return None, None, ('.data 가 %d개라 거부: %s — 어느 실행의 값인지 '
+                            '정해지지 않습니다' % (len(files), ', '.join(files)))
+    kh = ekh = None
+    for line in open(os.path.join(sysdir, files[0]), encoding='utf-8',
+                     errors='ignore'):
+        if 'Average Henry coefficient:' in line:
+            m = re.search(r':\s*([0-9.eE+-]+)\s*\+/-\s*([0-9.eE+-]+)', line)
+            if m:
+                kh, ekh = float(m.group(1)), float(m.group(2))
+    return kh, ekh, (None if kh is not None else '헨리 상수 줄 없음')
+
+
 def run_gas(args):
     """대조용: 같은 자로 기체 하나를 Widom."""
     name, gas = args
@@ -96,17 +132,9 @@ Component 0 MoleculeName              {gas}
 """)
     subprocess.run([T.SIMULATE, 'simulation.input'], cwd=d,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
-    sysdir = os.path.join(d, 'Output', 'System_0')
-    kh = ekh = None
-    if os.path.isdir(sysdir):
-        for p in [os.path.join(sysdir, x) for x in os.listdir(sysdir)]:
-            for line in open(p, encoding='utf-8', errors='ignore'):
-                if 'Average Henry coefficient:' in line:
-                    m = re.search(r':\s*([0-9.eE+-]+)\s*\+/-\s*([0-9.eE+-]+)', line)
-                    if m:
-                        kh, ekh = float(m.group(1)), float(m.group(2))
+    kh, ekh, why = read_kh(os.path.join(d, 'Output', 'System_0'))
     return {'name': name, 'gas': gas, 'KH': kh, 'KH_err': ekh,
-            'unit_cells': [na, nb, nc], 'ok': kh is not None}
+            'unit_cells': [na, nb, nc], 'ok': kh is not None, 'why': why}
 
 
 def run_water3(name):
@@ -144,16 +172,8 @@ Component 0 MoleculeName              water
 """)
     subprocess.run([T.SIMULATE, 'simulation.input'], cwd=d,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
-    sysdir = os.path.join(d, 'Output', 'System_0')
-    kh = ekh = None
-    if os.path.isdir(sysdir):
-        for p in [os.path.join(sysdir, x) for x in os.listdir(sysdir)]:
-            for line in open(p, encoding='utf-8', errors='ignore'):
-                if 'Average Henry coefficient:' in line:
-                    m = re.search(r':\s*([0-9.eE+-]+)\s*\+/-\s*([0-9.eE+-]+)', line)
-                    if m:
-                        kh, ekh = float(m.group(1)), float(m.group(2))
-    return {'name': name, 'water_sites': 3, 'KH': kh, 'KH_err': ekh,
+    kh, ekh, why = read_kh(os.path.join(d, 'Output', 'System_0'))
+    return {'name': name, 'water_sites': 3, 'KH': kh, 'KH_err': ekh, 'why': why,
             'unit_cells': [na, nb, nc], 'ok': kh is not None,
             'WARN': '진단 전용 — 규약 물 정의(TIP5P-Ew 5자리)가 아님. '
                     '어떤 결과 집합에도 넣지 말 것.'}
@@ -223,22 +243,18 @@ Component 0 MoleculeName              water
     subprocess.run([T.SIMULATE, 'simulation.input'], cwd=d,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
     sysdir = os.path.join(d, 'Output', 'System_0')
-    kh = ekh = None
+    kh, ekh, why = read_kh(sysdir)
     hwhw = owhw = None
-    if os.path.isdir(sysdir):
-        for p in [os.path.join(sysdir, x) for x in os.listdir(sysdir)]:
-            txt = open(p, encoding='utf-8', errors='ignore').read()
-            for line in txt.splitlines():
-                if 'Average Henry coefficient:' in line:
-                    m = re.search(r':\s*([0-9.eE+-]+)\s*\+/-\s*([0-9.eE+-]+)', line)
-                    if m:
-                        kh, ekh = float(m.group(1)), float(m.group(2))
-                m2 = re.search(r'Hw\s*-\s*Hw\s*\[LENNARD_JONES\].*?p_0/k_B:\s*([0-9.]+)', line)
-                if m2:
-                    hwhw = float(m2.group(1))
-                m3 = re.search(r'Ow\s*-\s*Hw\s*\[LENNARD_JONES\].*?p_0/k_B:\s*([0-9.]+)', line)
-                if m3:
-                    owhw = float(m3.group(1))
+    if why is None or '헨리' in (why or ''):
+        f1 = sorted(x for x in os.listdir(sysdir) if x.endswith('.data'))[0]
+        for line in open(os.path.join(sysdir, f1), encoding='utf-8',
+                         errors='ignore'):
+            m2 = re.search(r'Hw\s*-\s*Hw\s*\[LENNARD_JONES\].*?p_0/k_B:\s*([0-9.]+)', line)
+            if m2:
+                hwhw = float(m2.group(1))
+            m3 = re.search(r'Ow\s*-\s*Hw\s*\[LENNARD_JONES\].*?p_0/k_B:\s*([0-9.]+)', line)
+            if m3:
+                owhw = float(m3.group(1))
     # **등록된 확인 조건** — 지역 힘장이 실제로 먹혔는가 (검사 9: 조용한 대체)
     applied = (hwhw in (None, 0.0)) and (owhw in (None, 0.0))
     return {'name': name, 'KH_water': kh, 'KH_water_err': ekh,
