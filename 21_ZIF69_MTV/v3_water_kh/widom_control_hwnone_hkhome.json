@@ -1,0 +1,42 @@
+{
+  "tag": "hkhome",
+  "cycles_init": 3000,
+  "cycles_production": 15000,
+  "WARN": "진단 전용. 지역 힘장 사본(Hw none/Lw none)으로 잰 값이며 규약 힘장이 아니다. 어떤 결과 집합·순위에도 넣지 말 것.",
+  "purpose": "D = K_H(현행)/K_H(수정) 로 Hw LJ 결함이 물 K_H 를 얼마나 움직이는지 뗀다. 판정 기준은 TB2_CONTROLS_20260905.md 에 측정 전 등록.",
+  "verify": "등록 확인 조건 — 출력에서 Hw-Hw 와 Ow-Hw 의 eps 가 0 이거나 NO VDW 여야 지역 사본이 먹은 것. ff_applied 참조.",
+  "rows": [
+    {
+      "name": "base",
+      "KH_water": 0.000617299,
+      "KH_water_err": 0.000138253,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ff_applied": false,
+      "HwHw_eps": 22.1417,
+      "OwHw_eps": 44.54915,
+      "ok": false,
+      "WARN": "진단 전용 — 규약 힘장이 아님(Hw none/Lw none 추가). ff_applied 가 false 면 지역 사본이 안 먹은 것이므로 K_H 를 쓰지 말 것."
+    }
+  ],
+  "denominator_rows": [
+    {
+      "name": "base",
+      "KH_water": 0.000579606,
+      "KH_water_err": 5.58428e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ff_applied": false,
+      "HwHw_eps": 22.1417,
+      "OwHw_eps": 44.54915,
+      "ok": false,
+      "WARN": "진단 전용 — 규약 힘장이 아님(Hw none/Lw none 추가). ff_applied 가 false 면 지역 사본이 안 먹은 것이므로 K_H 를 쓰지 말 것."
+    }
+  ]
+}

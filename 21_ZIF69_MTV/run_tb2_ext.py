@@ -237,24 +237,49 @@ Component 0 MoleculeName              water
 
 
 def make_local_ff(rundir):
-    """실행 폴더 안 UFF_MOF 지역 사본. `Hw none` / `Lw none` 두 줄만 더한다.
+    """실행 폴더 안에 **RASPA_DIR 트리**를 만들고 그 경로를 돌려준다.
 
-    !! 꼬리(`# general mixing rule` / `Lorentz-Berthelot`) **앞**에 넣습니다.
-       파일 끝에 붙이면 RASPA 가 그 두 줄을 항으로 읽어 **수정이 무시됩니다**
-       (랩탑 09-05 첫 시도가 그랬고 `Hw-Hw` 가 UFF 값 그대로 남았습니다).
+    !! 09-05 실패: `<rundir>/UFF_MOF/` 에 사본을 두고 `Forcefield UFF_MOF` 로
+       돌렸더니 **RASPA 가 그것을 안 보고 전역 힘장을 썼습니다**(출력 짝표가
+       `Hw-Hw 22.1417` 그대로). **지역 사본을 만든 것과 RASPA 가 그것을 읽는
+       것은 다릅니다** — 확인 조건이 그걸 잡았습니다.
+
+       RASPA 는 `$RASPA_DIR/share/raspa/{forcefield,molecules,structures}` 를
+       봅니다. 그래서 **그 구조를 그대로 만들고 `forcefield/UFF_MOF` 만 실물로
+       두고 나머지는 심볼릭 링크**합니다. 공용 파일은 안 건드립니다.
+
+    !! 항 목록 **뒤**의 `# general mixing rule` / `Lorentz-Berthelot` 꼬리
+       **앞**에 두 줄을 넣습니다. 뒤에 붙이면 RASPA 가 그것을 항으로 읽어
+       수정이 조용히 무시됩니다(랩탑 09-05).
     """
-    d = os.path.join(rundir, 'UFF_MOF')
+    share = os.path.abspath(os.path.join(FFSRC, '..', '..'))     # .../share/raspa
+    root = os.path.join(os.path.abspath(rundir), 'ffroot')
+    dst = os.path.join(root, 'share', 'raspa')
+    os.makedirs(dst, exist_ok=True)
+    for sub in os.listdir(share):
+        link = os.path.join(dst, sub)
+        if sub == 'forcefield' or os.path.lexists(link):
+            continue
+        os.symlink(os.path.join(share, sub), link)
+    ffdir = os.path.join(dst, 'forcefield')
+    os.makedirs(ffdir, exist_ok=True)
+    for sub in os.listdir(os.path.join(share, 'forcefield')):
+        link = os.path.join(ffdir, sub)
+        if sub == 'UFF_MOF' or os.path.lexists(link):
+            continue
+        os.symlink(os.path.join(share, 'forcefield', sub), link)
+    d = os.path.join(ffdir, 'UFF_MOF')
     os.makedirs(d, exist_ok=True)
     shutil.copy(os.path.join(FFSRC, 'pseudo_atoms.def'), d)
-    src = os.path.join(FFSRC, 'force_field_mixing_rules.def')
-    lines = open(src, encoding='utf-8').read().splitlines()
+    lines = open(os.path.join(FFSRC, 'force_field_mixing_rules.def'),
+                 encoding='utf-8').read().splitlines()
     tail = next(i for i, ln in enumerate(lines)
                 if ln.strip().startswith('# general mixing rule'))
-    lines[5] = str(int(lines[5].strip()) + 2)          # 6행 = 항 개수
+    lines[5] = str(int(lines[5].strip()) + 2)
     lines[tail:tail] = ['Hw             none', 'Lw             none']
     open(os.path.join(d, 'force_field_mixing_rules.def'), 'w',
          encoding='utf-8').write('\n'.join(lines) + '\n')
-    return d
+    return root
 
 
 def run_water_ff(name, local_ff):
@@ -270,8 +295,9 @@ def run_water_ff(name, local_ff):
     os.makedirs(d, exist_ok=True)
     shutil.copy(cif, os.path.join(d, fw + '.cif'))
     shutil.copy(T.WATER_DEF, os.path.join(d, 'water.def'))
+    env = None
     if local_ff:
-        make_local_ff(d)
+        env = dict(os.environ, RASPA_DIR=make_local_ff(d))
     na, nb, nc = T.unit_cells(cif)
     with open(os.path.join(d, 'simulation.input'), 'w') as f:
         f.write(f"""SimulationType                MonteCarlo
@@ -297,7 +323,7 @@ Component 0 MoleculeName              water
             WidomProbability          1.0
             CreateNumberOfMolecules   0
 """)
-    subprocess.run([T.SIMULATE, 'simulation.input'], cwd=d,
+    subprocess.run([T.SIMULATE, 'simulation.input'], cwd=d, env=env,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
     sysdir = os.path.join(d, 'Output', 'System_0')
     kh, ekh, why = read_kh(sysdir, comp='water')
@@ -312,8 +338,13 @@ Component 0 MoleculeName              water
             m3 = re.search(r'Ow\s*-\s*Hw\s*\[LENNARD_JONES\].*?p_0/k_B:\s*([0-9.]+)', line)
             if m3:
                 owhw = float(m3.group(1))
-    # **등록된 확인 조건** — 지역 힘장이 실제로 먹혔는가 (검사 9: 조용한 대체)
-    applied = (hwhw in (None, 0.0)) and (owhw in (None, 0.0))
+    # **등록된 확인 조건** — 분자·분모 각자의 짝표가 의도대로인가 (검사 9)
+    # !! 09-05: 이 if/else 를 넣는 편집이 **조용히 실패**했고(str.replace 미매칭)
+    #    구문 검사만 통과해 분모가 분자의 규칙으로 판정됐습니다. 그래서 assert 를 답니다.
+    if local_ff:
+        applied = (hwhw in (None, 0.0)) and (owhw in (None, 0.0))
+    else:
+        applied = hwhw is not None and abs(hwhw - 22.1417) < 1e-3
     return {'name': name, 'KH_water': kh, 'KH_water_err': ekh,
             'unit_cells': [na, nb, nc],
             'ff_applied': applied, 'HwHw_eps': hwhw, 'OwHw_eps': owhw,
@@ -440,3 +471,4 @@ def _dispatch(job):
 
 if __name__ == '__main__':
     sys.exit(main())
+

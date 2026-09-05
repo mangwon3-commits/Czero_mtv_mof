@@ -1,0 +1,88 @@
+{
+  "half": "EXT",
+  "tag": "hkhome",
+  "cycles_init": 3000,
+  "cycles_production": 15000,
+  "note": "관문 탈락 saIm 7종. ②-전용 — 기준 ① 과 후보 선정 제외. TB2_CRITERION_NOTE_20260905.md 등록 결정. 판정문에 병기 넷 필수(임계 여유 0.013 / 계열 표본 3 / 순위 잡음 / 관문 탈락).",
+  "rows": [
+    {
+      "name": "saIm0625",
+      "KH_water": 0.0048742,
+      "KH_water_err": 0.00121148,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "saIm0667",
+      "KH_water": 0.00440111,
+      "KH_water_err": 0.000610516,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "saIm075",
+      "KH_water": 0.00305984,
+      "KH_water_err": 0.00104517,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "saIm0875",
+      "KH_water": 0.0029752,
+      "KH_water_err": 0.00070059,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "saIm0917",
+      "KH_water": 0.00372359,
+      "KH_water_err": 0.000965291,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "saIm0958",
+      "KH_water": 0.0073536,
+      "KH_water_err": 0.002157,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    },
+    {
+      "name": "saIm100",
+      "KH_water": 0.0156492,
+      "KH_water_err": 0.0074884,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true
+    }
+  ],
+  "WARN_forcefield": "물 힘장 결함: UFF_MOF 혼합규칙에 Hw 항이 없어 RASPA 가 앞자리 일치로 H_(UFF 수소, eps 22.1417 K / sigma 2.57113 A)를 물려줬다. TIP5P 수소는 LJ 가 없어야 한다. **이 K_H 는 수소결합이 없는 물로 잰 값이다.** 확인: 출력 머리말 Hw-Hw p_0/k_B = 22.14170. 근거 문서 WATER_FF_CONFIRM_20260905.md / WATER_FF_DEFECT_20260905.md",
+  "WARN_output": "이 실행의 출력은 진행을 보여 주지 않는다: PrintEvery = NumberOfCycles 라 .data 가 처음과 끝에만 쓰인다. 실행 중 .data 정지는 정상이며 죽음의 신호가 아니다(완주한 실행에서 25분 침묵 확인). 살아 있음은 `pgrep -x simulate` 개수와 `ps -o etime,time` 의 CPU 시간 증가로 본다."
+}

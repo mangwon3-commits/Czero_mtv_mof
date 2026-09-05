@@ -1,0 +1,22 @@
+{
+  "tag": "hkhome",
+  "cycles_init": 3000,
+  "cycles_production": 15000,
+  "WARN": "진단 전용. 배포본 3자리 물(TraPPE/water.def)로 잰 값이며 규약 물 정의(TIP5P-Ew 5자리)가 아니다. 어떤 결과 집합·순위에도 넣지 말 것.",
+  "purpose": "문턱 5e-6 이 TIP4P(3자리) 기준이므로, R = K_H(5자리)/K_H(3자리) 로 물 모델의 몫을 뗀다. 판정 기준은 TB2_CONTROLS_20260905.md 에 측정 전 등록.",
+  "rows": [
+    {
+      "name": "base",
+      "water_sites": 3,
+      "KH": 165.757,
+      "KH_err": 13.5709,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ok": true,
+      "WARN": "진단 전용 — 규약 물 정의(TIP5P-Ew 5자리)가 아님. 어떤 결과 집합에도 넣지 말 것."
+    }
+  ]
+}
