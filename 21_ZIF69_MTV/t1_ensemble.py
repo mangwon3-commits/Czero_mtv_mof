@@ -3,8 +3,11 @@
 판정 규칙은 `ASSIGN_20260904.md` §2 D3 에 **수를 보기 전에** 등록됐습니다.
 여기서 규칙을 바꾸지 않습니다.
 
-    ±       앙상블은 **2.776 x SEM**(n=실현체 수). 배치 SD 는 병기만 하고
-            `±` 로 쓰지 않는다 (CLAUDE.md §2 — RASPA 의 ± 도 95% CI 다)
+    ±       앙상블은 **t(0.975, n-1) x SEM**. 배치 SD 는 병기만 하고 `±` 로 쓰지
+            않는다 (CLAUDE.md §2 — RASPA 의 ± 도 95% CI 다)
+            [09-04 정정, 랩탑 지적] 초판은 2.776 을 썼는데 그것은 **RASPA 5블록
+            (dof 4)** 의 자다. 실현체 6개의 앙상블 평균은 dof 5 라 2.5706 이다.
+            `ERROR_BARS.md` 211행에 이 규칙이 이미 등록돼 있었다. 판정은 불변
     동급    |Δ평균| < 1.5 x 합성 ±,  합성 ± = sqrt(±A² + ±B²)
     유보    단일 실현 대 앙상블은 **분모 비대칭** — 동급으로도 우세로도
             굳히지 않는다. 성립하는 비교는 앙상블-앙상블, 단일-단일 뿐
@@ -19,8 +22,15 @@ import re
 import sys
 from statistics import mean, stdev
 
+from scipy.stats import t as tdist
+
 HERE = os.path.dirname(os.path.abspath(__file__))
-T95 = 2.776          # t(0.975, 4) — 블록 5개
+T95_BLOCK = 2.776    # t(0.975, 4) — RASPA 5블록 전용. 앙상블에 쓰지 말 것
+
+
+def t95(n):
+    """표본 n 개의 평균에 대한 95% 배수 — dof = n-1 (ERROR_BARS.md 211행)."""
+    return float(tdist.ppf(0.975, n - 1))
 THRESH = 1.5         # 등록된 동급 문턱 (단위는 `±`)
 
 WET_DIRS = ('v3_humid_wc', 'v4_humid_wc', 'v3_humid_wc_ens')
@@ -60,8 +70,9 @@ def summarize(rows):
         sd = stdev(v)
         out['batch_sd'] = sd
         out['sem'] = sd / n ** 0.5
-        out['ci95'] = T95 * sd / n ** 0.5      # <- 이것이 `±`
-        out['pm_source'] = '앙상블 2.776 x SEM'
+        out['t95'] = t95(n)
+        out['ci95'] = t95(n) * sd / n ** 0.5   # <- 이것이 `±`
+        out['pm_source'] = f'앙상블 t(0.975,{n - 1})={t95(n):.4f} x SEM'
     else:
         out['batch_sd'] = None
         out['ci95'] = rows[0]['err95']          # RASPA 95% CI (통계오차만)
@@ -109,8 +120,8 @@ def main():
                 continue
             ex = []
             for k in (p_['a'], p_['b']):
-                stat = summ[k]['ci95'] if summ[k]['n'] == 1 else summ[k]['ci95']
-                ex.append((stat ** 2 + (T95 * sd0583 / summ[k]['n'] ** 0.5) ** 2) ** 0.5
+                stat = summ[k]['ci95']
+                ex.append((stat ** 2 + (T95_BLOCK * sd0583) ** 2) ** 0.5
                           if summ[k]['n'] == 1 else summ[k]['ci95'])
             comb = (ex[0] ** 2 + ex[1] ** 2) ** 0.5
             u = p_['delta'] / comb
@@ -120,7 +131,7 @@ def main():
 
     out = {'quantity': '습윤 TSA 작업 용량 (mol/kg)',
            'rule': 'ASSIGN_20260904 §2 D3 (결과 전 등록)',
-           't95': T95, 'threshold_units': THRESH,
+           't95_block_raspa': T95_BLOCK, 'threshold_units': THRESH,
            'duplicate_files_skipped': dupes,
            'compositions': summ, 'pairs': pairs,
            'sensitivity_batch_sd_from_saIm0583': {
