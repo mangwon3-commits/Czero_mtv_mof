@@ -61,7 +61,7 @@ FFSRC = os.path.join(T.HERE, '..', '00_Migration', 'raspa_share', 'raspa',
 WORKERS = int(os.environ.get('TB2_WORKERS', '8'))
 
 
-def read_kh(sysdir):
+def read_kh(sysdir, comp=None):
     """`Output/System_0` 에서 헨리 상수를 읽는다. **애매하면 거부한다.**
 
     [왜] 09-05 에 랩탑이 자기 분석기에서 `glob` + mtime 최신 집기가 **두 방향으로
@@ -76,8 +76,15 @@ def read_kh(sysdir):
          사이클이나 압력을 바꾸면 두 파일이 공존하고 그때 조용히 틀립니다.
 
     [규약] 0개면 None, **2개 이상이면 거부하고 목록을 남긴다**, 1개면 읽는다.
-           한 파일 안에서는 **마지막 일치**를 씁니다(RASPA 가 최종 평균을
-           끝에 다시 찍기 때문).
+
+    [한 파일 안의 다중 일치 — 09-05 검산] `Average Henry coefficient` 는 실물에서
+         **2줄**입니다: 값 없는 **머리말** 한 줄과 `[<성분>] ... 값 +/- 오차` 한 줄.
+         제가 처음 *"마지막 일치를 쓴다(RASPA 가 끝에 다시 찍으므로)"* 라고 적었는데
+         **틀렸습니다** — 다시 찍는 게 아니라 **파싱 가능한 줄이 하나뿐**이고
+         "마지막" 은 우연이었습니다. 랩탑이 이 층을 짚어 검산했습니다.
+
+         **그리고 성분이 둘이면 조용히 틀립니다** — `[water]` 와 `[CO2]` 가 각각
+         한 줄씩 나오고 마지막이 이깁니다. 그래서 **성분 이름을 명시해 맞춥니다.**
     """
     if not os.path.isdir(sysdir):
         return None, None, 'Output/System_0 없음'
@@ -87,14 +94,26 @@ def read_kh(sysdir):
     if len(files) > 1:
         return None, None, ('.data 가 %d개라 거부: %s — 어느 실행의 값인지 '
                             '정해지지 않습니다' % (len(files), ', '.join(files)))
-    kh = ekh = None
+    pat = re.compile(r'\[([^\]]+)\]\s*Average Henry coefficient:\s*'
+                     r'([0-9.eE+-]+)\s*\+/-\s*([0-9.eE+-]+)')
+    found = {}
     for line in open(os.path.join(sysdir, files[0]), encoding='utf-8',
                      errors='ignore'):
-        if 'Average Henry coefficient:' in line:
-            m = re.search(r':\s*([0-9.eE+-]+)\s*\+/-\s*([0-9.eE+-]+)', line)
-            if m:
-                kh, ekh = float(m.group(1)), float(m.group(2))
-    return kh, ekh, (None if kh is not None else '헨리 상수 줄 없음')
+        m = pat.search(line)
+        if m:
+            found[m.group(1)] = (float(m.group(2)), float(m.group(3)))
+    if not found:
+        return None, None, '헨리 상수 줄 없음'
+    if comp is not None:
+        if comp not in found:
+            return None, None, ('성분 %s 가 없습니다: %s' % (comp, list(found)))
+        kh, ekh = found[comp]
+        return kh, ekh, None
+    if len(found) > 1:
+        return None, None, ('성분이 %d개라 거부: %s — comp 를 지정하십시오'
+                            % (len(found), ', '.join(found)))
+    (kh, ekh), = found.values()
+    return kh, ekh, None
 
 
 def run_gas(args):
@@ -132,7 +151,7 @@ Component 0 MoleculeName              {gas}
 """)
     subprocess.run([T.SIMULATE, 'simulation.input'], cwd=d,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
-    kh, ekh, why = read_kh(os.path.join(d, 'Output', 'System_0'))
+    kh, ekh, why = read_kh(os.path.join(d, 'Output', 'System_0'), comp=gas)
     return {'name': name, 'gas': gas, 'KH': kh, 'KH_err': ekh,
             'unit_cells': [na, nb, nc], 'ok': kh is not None, 'why': why}
 
@@ -172,7 +191,7 @@ Component 0 MoleculeName              water
 """)
     subprocess.run([T.SIMULATE, 'simulation.input'], cwd=d,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
-    kh, ekh, why = read_kh(os.path.join(d, 'Output', 'System_0'))
+    kh, ekh, why = read_kh(os.path.join(d, 'Output', 'System_0'), comp='water')
     return {'name': name, 'water_sites': 3, 'KH': kh, 'KH_err': ekh, 'why': why,
             'unit_cells': [na, nb, nc], 'ok': kh is not None,
             'WARN': '진단 전용 — 규약 물 정의(TIP5P-Ew 5자리)가 아님. '
@@ -243,7 +262,7 @@ Component 0 MoleculeName              water
     subprocess.run([T.SIMULATE, 'simulation.input'], cwd=d,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=False)
     sysdir = os.path.join(d, 'Output', 'System_0')
-    kh, ekh, why = read_kh(sysdir)
+    kh, ekh, why = read_kh(sysdir, comp='water')
     hwhw = owhw = None
     if why is None or '헨리' in (why or ''):
         f1 = sorted(x for x in os.listdir(sysdir) if x.endswith('.data'))[0]
