@@ -8,7 +8,7 @@
     다른 것은 **지역 `force_field_mixing_rules.def` 에 두 줄을 더한 것뿐**입니다.
 
         Lw             none
-        Hw             none
+        Hw             lennard-jones    0.0       0.0
 
 [공용 힘장은 건드리지 않습니다]
     CLAUDE.md §1 이 물 모델을 고정값으로 걸어 두었습니다. 공용
@@ -19,6 +19,10 @@
     `NO VDW INTERACTION` 목록에 **`Ow-Hw`, `Hw-Hw` 가 들어가야** 합니다.
     안 들어가면 지역 사본이 무시된 것이고, 이 실행은 본 실행의 복제입니다.
     러너가 기동 직후 그 줄을 찍습니다.
+
+    ⚠️ 첫 시도는 두 줄을 **파일 끝**에 붙였다가 실패했습니다. 항 목록 뒤의
+    `Lorentz-Berthelot` 꼬리를 RASPA 가 항으로 읽어, `Hw-Hw` 가 UFF 값
+    22.14170 / 2.57113 그대로 남았습니다. **등록해 둔 확인 조건이 잡았습니다.**
 
 [등록한 예측 — 실행 전, COMMS/laptop.md 2026-09-05 13:4x]
     구조(주)  O–O 첫 봉우리 2.75~2.90 Å / g(2.82) ≥ 2.0 / 3.5 Å 배위수 4.0~5.2
@@ -44,14 +48,22 @@ def local_forcefield(d):
                 os.path.join(d, 'pseudo_atoms.def'))
     src = os.path.join(FF_SRC, 'force_field_mixing_rules.def')
     lines = open(src, encoding='utf-8').read().rstrip('\n').split('\n')
-    # 항 개수 줄을 찾아 2 늘리고, 맨 뒤에 두 줄을 붙인다.
+    # 항 개수 줄을 찾아 2 늘리고, 마지막 실제 항 다음에 두 줄을 넣는다.
     # (파일 주석: "define shortest matches first, so that more specific ones
     #  overwrites these" -> 뒤에 놓아야 H_ 를 덮습니다.)
     n_idx = next(i for i, ln in enumerate(lines)
                  if ln.strip().isdigit())
     n_old = int(lines[n_idx].strip())
     lines[n_idx] = str(n_old + 2)
-    lines += ['Lw             none', 'Hw             none']
+    # ⚠️ 파일 **끝에 붙이면 안 됩니다.** 항 목록 뒤에
+    #    `# general mixing rule for Lennard-Jones` / `Lorentz-Berthelot`
+    #    꼬리가 있어서, 뒤에 붙이면 RASPA 가 그 두 줄을 항으로 읽습니다.
+    #    (첫 시도에서 실제로 그렇게 됐고 `Hw-Hw` 가 UFF 값 그대로 남았습니다.)
+    #    **꼬리 바로 앞**, 즉 마지막 실제 항 다음에 넣습니다.
+    tail = next(i for i, ln in enumerate(lines)
+                if ln.strip().startswith('# general mixing rule'))
+    ins = ['Lw             none', 'Hw             lennard-jones    0.0       0.0']
+    lines[tail:tail] = ins
     with open(os.path.join(d, 'force_field_mixing_rules.def'), 'w') as f:
         f.write('\n'.join(lines) + '\n')
     return n_old, n_old + 2
