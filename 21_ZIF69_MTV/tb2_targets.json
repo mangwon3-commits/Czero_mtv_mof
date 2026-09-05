@@ -1,0 +1,52 @@
+{
+  "criterion": "LCD_drop_pct < 20",
+  "sources": [
+    "risk_results_v3.json",
+    "risk_results_v4mix.json",
+    "risk_results_v3grid.json"
+  ],
+  "excluded": "앙상블/반복 실현(e1~,r1~), v1/v2 판 risk_results.json",
+  "n": 32,
+  "names": [
+    "base",
+    "brbIm025",
+    "brbIm050",
+    "brbIm075",
+    "brbIm100",
+    "cf3Im025",
+    "cf3Im050",
+    "cf3Im075",
+    "cnbIm025",
+    "cnbIm050",
+    "cnbIm075",
+    "cnbIm100",
+    "fbIm025",
+    "fbIm050",
+    "fbIm075",
+    "fbIm100",
+    "mbIm025",
+    "mbIm050",
+    "mbIm075",
+    "mbIm100",
+    "ms50nb50",
+    "mslm025",
+    "mslm050",
+    "nbIm025",
+    "nbIm050",
+    "nbIm075",
+    "nbIm100",
+    "sa25nb75",
+    "sa50nb50",
+    "saIm025",
+    "saIm050",
+    "saIm0583"
+  ],
+  "failed": {
+    "mslm075": 21.67,
+    "saIm075": 20.26,
+    "saIm100": 22.5,
+    "saIm0625": 20.87,
+    "saIm0667": 20.65,
+    "saIm0875": 21.21
+  }
+}
