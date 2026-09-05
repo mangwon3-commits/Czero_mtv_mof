@@ -11,6 +11,7 @@ RT      = 8.314462618 * 298.15 / 1000.0
 TRUNC   = +0.2125      # 문헌 관례로 옮길 때 더함
 E_POL   = 3.983        # 보정 시 뺌
 REF, TOL = 44.0, 3.0
+CTL_LO, CTL_HI = 40.0, 48.0   # 대조 단일 창 (09-05 13:4x 등록, COMMS/laptop.md:1862)
 
 def parse_energy(txt):
     """`Average Adsorbate-Adsorbate energy:` 절에서 5블록·평균·± 를 뽑는다 [K].
@@ -100,13 +101,28 @@ def main(path=None):
         print(f'  [최소 이미지] <L> {m:.4f} ± σ {sd:.4f}  ->  <L>−3σ = {m-3*sd:.4f} '
               f'(하한 24)  -> {"통과" if m-3*sd > 24 else "**미달**"}   표본 {len(tail)}')
 
-    print(f'\n  판정 (|x−44| ≥ 3 이면 문구 교체)')
-    for lab, x in (('①', raw), ('④', raw+TRUNC-E_POL)):
-        d = abs(x - REF)
-        print(f'    {lab} |{x:.3f} − 44| = {d:.3f}  ->  {"교체" if d>=TOL else "유지"}')
-    a, b = abs(raw-REF) >= TOL, abs(raw+TRUNC-E_POL-REF) >= TOL
-    print(f'\n  => ' + (f'두 축 일치: {"교체" if a else "유지"}' if a == b
-                        else '**두 축이 갈림 -> 기준 미확정, 판정 보류 (저장소 문구 불변)**'))
+    # --- 덱 선택 -------------------------------------------------------------
+    # 09-06: 두 실행의 **등록 덱이 다릅니다.** 여기서 자동으로 고르되 **이름을 인쇄**합니다.
+    #   본 실행 `tb1_runs_n1000`  : ①/④ 두 조합에 |x−44| ≥ 3   (09-04 19:5x~20:2x 등록)
+    #   대조   `tb1_runs_ffctl`   : raw 단일 창 40~48 + 구조 3창 (09-05 13:4x 등록)
+    # 이 분기가 없던 판이 대조에 본 실행 덱을 대어 **없는 "보류" 를 인쇄**했습니다
+    # (TB1_VERDICT_20260905.md §4-1 의 붉은 상자).
+    deck = os.environ.get('TB1_DECK') or ('ctl' if 'ffctl' in os.path.abspath(path) else 'main')
+    if deck == 'ctl':
+        print(f'\n  판정 [덱 = **대조** — 09-05 13:4x 등록, raw 단일 창 40~48]')
+        print( '    ⚠️ 대조의 **주 판정은 구조 3창**입니다. 아래는 **부(열역학)** 뿐입니다.')
+        ok = CTL_LO <= raw <= CTL_HI
+        print(f'    ΔH_vap(raw) {raw:.3f}   창 {CTL_LO:g} ~ {CTL_HI:g}  ->  '
+              f'{"**안** — 갈래 (가) 쪽" if ok else "**밖** — 갈래 (나) 쪽"}')
+        print( '    (①/④ 덱은 대조에 등록된 적이 없습니다. 섞어 읽지 마십시오.)')
+    else:
+        print(f'\n  판정 [덱 = **본 실행** — 09-04 등록, |x−44| ≥ 3 이면 문구 교체]')
+        for lab, x in (('①', raw), ('④', raw+TRUNC-E_POL)):
+            d = abs(x - REF)
+            print(f'    {lab} |{x:.3f} − 44| = {d:.3f}  ->  {"교체" if d>=TOL else "유지"}')
+        a, b = abs(raw-REF) >= TOL, abs(raw+TRUNC-E_POL-REF) >= TOL
+        print(f'\n  => ' + (f'두 축 일치: {"교체" if a else "유지"}' if a == b
+                            else '**두 축이 갈림 -> 기준 미확정, 판정 보류 (저장소 문구 불변)**'))
     return 0
 
 
