@@ -11,7 +11,20 @@
          ② PV_liq 무시 (1 bar 에서 약 0.0018 kJ/mol)
          ③ 분극 자체에너지 보정 없음 (raw 보고)
 
-[사이클 — §1 흡착 규약이 아닙니다 (2026-09-04 사용자 승인, ASSIGN a16cdb1)]
+[재기동 — NVT (2026-09-05, ASSIGN 데스크탑 권장안 (가)+(다))]
+    1차 NPT 판은 상자가 27% 팽창해(밀도 0.729) 액체가 아니었습니다. 원인은 무작위
+    초기 배치의 겹침을 NPT 가 팽창으로 해소하고 재응축하지 못한 것입니다.
+    이번 판은 **NVT**(부피 이동 없음) 로 ρ=0.997 을 **부과**하고, 초기 배치는
+    1차 판의 평형 구조를 목표 밀도로 압축해 씁니다(최소 O–O 2.491 Å, 겹침 0).
+    ⚠️ **밀도를 부과했고 예측하지 않았습니다** — 44 와 비교할 때 이 차이가 남습니다.
+
+[사이클 — **§1 원래 규약으로 복귀** (2026-09-05)]
+    NVT 는 부피 이동이 없어 사이클당 1.93초(NPT 6.975초의 3.6배 빠름)입니다.
+    그래서 **§1 표의 5,000 + 15,000 이 10.73시간**으로 이 기기 실증 최장(17.49 h)
+    안에 들어갑니다. **09-04 의 사이클 축소는 NPT 비용 때문이었고, 그 이유가
+    사라졌으므로 §1 그대로 돌아갑니다 — 이탈이 없습니다.**
+
+[구판 기록 — 09-04 NPT 이탈 (이번 판에는 적용 안 됨)]
     초기화 **2,000** + 생산 **3,000**.
     사유는 성능이 아니라 **완주 가능성**입니다 — 등록 덱 5,000+15,000 은 실측
     사이클당 6.975초로 **38.76시간**이고 이 기기 실증 최장 연속 17.49 h 의
@@ -35,12 +48,13 @@ SIMULATE = shutil.which('simulate') or os.path.expanduser(
     '~/miniconda3/envs/czeromof/bin/simulate')
 
 N_MOL   = int(os.environ.get('TB1_N', '1000'))
-CYCLES  = int(os.environ.get('TB1_CYCLES', '3000'))
-INIT    = int(os.environ.get('TB1_INIT', '2000'))
+CYCLES  = int(os.environ.get('TB1_CYCLES', '15000'))
+INIT    = int(os.environ.get('TB1_INIT', '5000'))
 TEMP    = 298.15
 PRESS   = 100000.0          # 1 bar
 CUTOFF  = 12.0
-RHO0    = 0.997             # g/cm3, 초기 상자 씨앗값 (NPT 이므로 출발점일 뿐)
+RHO0    = 0.997             # g/cm3, **NVT 에서 부과하는 밀도** (예측 아님)
+SEED    = os.path.join(HERE, 'tb1_seed', 'restart_compressed')
 TAG     = os.environ.get('TB1_TAG', f'n{N_MOL}')
 RUNS    = os.path.join(HERE, f'tb1_runs_{TAG}')
 
@@ -54,7 +68,7 @@ def write_input(d, L):
 NumberOfCycles                {CYCLES}
 NumberOfInitializationCycles  {INIT}
 PrintEvery                    {max(1, CYCLES // 10)}
-RestartFile                   no
+RestartFile                   yes
 ContinueAfterCrash            yes
 WriteBinaryRestartFileEvery   500
 
@@ -68,13 +82,12 @@ BoxLengths                    {L:.5f} {L:.5f} {L:.5f}
 BoxAngles                     90 90 90
 ExternalTemperature           {TEMP}
 ExternalPressure              {PRESS}
-VolumeChangeProbability       0.01
 
 Component 0 MoleculeName              water
             MoleculeDefinition        TraPPE
             TranslationProbability    0.5
             RotationProbability       0.5
-            CreateNumberOfMolecules   {N_MOL}
+            CreateNumberOfMolecules   0
 """)
 
 def main():
@@ -82,11 +95,14 @@ def main():
     d = os.path.join(RUNS, 'hvap')
     os.makedirs(d, exist_ok=True)
     shutil.copy(WATER_DEF, os.path.join(d, 'water.def'))
+    ri = os.path.join(d, 'RestartInitial', 'System_0')
+    os.makedirs(ri, exist_ok=True)
+    shutil.copy(SEED, os.path.join(ri, f'restart_Box_1.1.1_{TEMP:.6f}_{PRESS:g}'))
     nsite = sum(1 for ln in open(os.path.join(d, 'water.def'), encoding='utf-8')
                 if len(ln.split()) > 4 and ln.split()[1] in ('Ow', 'Hw', 'Lw'))
     print(f'T-B1 ΔH_vap — 순수 물 상자 (골격 없음)', flush=True)
     print(f'  분자 수 {N_MOL}   초기 L {L:.3f} Å   (최소 이미지 하한 {2*CUTOFF:.0f} Å)', flush=True)
-    print(f'  NPT  {TEMP} K  {PRESS/1e5:.1f} bar   초기화 {INIT} + 생산 {CYCLES}', flush=True)
+    print(f'  **NVT** {TEMP} K, 밀도 {RHO0} g/cm³ **부과**   초기화 {INIT} + 생산 {CYCLES}', flush=True)
     print(f'  물 정의 사이트 {nsite}개 (TIP5P-Ew 는 5)', flush=True)
     if nsite != 5:
         print('  !! 5자리 물이 아닙니다. 중단.', flush=True); return 1
