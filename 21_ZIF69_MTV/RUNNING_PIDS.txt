@@ -1,0 +1,11 @@
+# 이 기기에서 도는 작업의 PID — 09-05. 찾지 말고 읽으십시오.
+# 이유: pgrep/pkill -f 는 자기 명령줄에 매칭됩니다(CLAUDE.md §4).
+#       09-05 에 랩탑이 경고를 적고 40분 뒤 그것으로 자기 셸을 죽였습니다.
+# 죽일 때:  ps -eo pid,args | grep -v grep | grep <패턴>   # 먼저 본다
+#           kill <PID>                                     # PID 로 죽인다
+#           bash bgstate.sh                                # 자식까지 확인
+# 기록 시각 2026-09-05 13:43:20
+47892  ppid=29408  run_tb2_water_kh.py B
+47893  ppid=47892  run_tb2_water_kh.py B
+47894  ppid=47892  run_tb2_water_kh.py B
+48782  ppid=29408  chain_tb2_ext.sh
