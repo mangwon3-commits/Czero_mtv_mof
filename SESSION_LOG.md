@@ -30,6 +30,16 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-05 22:49 · desktop (Fable 5.1, MAGI 종합)  [진행중]
+하는 일: **MAGI-001 결정에 따른 10건** — ① `saIm050e1~e5` 관문(risk, Zeo++ 9.5 GB/건, 워커 1) → ② `run_gcmc_v3.py`
+        10건(sa50nb50e1~5 · saIm050e1~5) `--out results_v3ens_mix10.json`, V3_WORKERS=6, nice 10. 체인 `.claude_work_magi001.sh`
+건드리는 파일: `21_ZIF69_MTV/{risk_v3ens0500.log, ens_mix10_gcmc.log, structures_v3ens0500_stage/, lmp_v3ens0500/, runs_v3/}`
+쓰는 코어: 관문 구간 1(lmp_serial) → GCMC 구간 6
+다음: 완주 후 LCD/PLD/AV null 검사 → §8-5 등록식(± 자 판정·σ 자 병기)으로 sa50nb50 대 saIm050, 2×2 비가법성 둘 다 보고.
+      첫 구조 완주 시각을 `MULTILIGAND §8-3` 에 기기 비용으로 기록. MAGI-002(nbIm050e1~5 빌드·saIm075 지위 정리) 등록 예정.
+      **관문 Zeo++ 가 도는 동안 다른 RASPA/risk 를 띄우지 마세요** (08-12 조합).
+근거 문서: `MAGI/MAGI-001_desktop-idle-10runs.md` §3~5 · `MULTILIGAND_20260905.md §8-5` · 노션 정리본 11-F~11-H 갱신 완료(22:54)
+
 ## 09-05 00:2x · desktop  [진행중] 배정 라운드 09-05 — 성능 대신 기제를 잰다
 
 하는 일: T-C2 취소로 난 자원을 **기제 분해**로 돌리는 라운드 등록.
