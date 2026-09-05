@@ -30,7 +30,7 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
-## 09-05 22:49 · desktop (Fable 5.1, MAGI 종합)  [진행중]
+## 09-05 22:49 · desktop (Fable 5.1, MAGI 종합)  [완료 06:23 — 판정 `MIX10_VERDICT_20260906.md`, 두 시험 모두 자에 따라 갈림]
 하는 일: **MAGI-001 결정에 따른 10건** — ① `saIm050e1~e5` 관문(risk, Zeo++ 9.5 GB/건, 워커 1) → ② `run_gcmc_v3.py`
         10건(sa50nb50e1~5 · saIm050e1~5) `--out results_v3ens_mix10.json`, V3_WORKERS=6, nice 10. 체인 `.claude_work_magi001.sh`
 건드리는 파일: `21_ZIF69_MTV/{risk_v3ens0500.log, ens_mix10_gcmc.log, structures_v3ens0500_stage/, lmp_v3ens0500/, runs_v3/}`
