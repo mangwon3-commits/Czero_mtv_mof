@@ -130,7 +130,12 @@ def main():
             print(f"  [{'ok' if r['ok'] else '실패'}] {r['name']:12s} "
                   f"K_H {r['KH_water']}", flush=True)
     f = os.path.join(OUT, f'water_kh_{half}_{tag}.json')
-    json.dump({'half': half, 'tag': tag, 'cycles': [INIT, CYCLES],
+    json.dump({'half': half, 'tag': tag,
+               # 배열 대신 키 이름으로 — 배열은 어느 쪽이 초기화인지 안 알려 준다.
+               # 09-05 에 '5000+2000' 이 반대로 읽힌 사례가 있었고, 독스트링·로그만
+               # 고치고 **산출물을 안 고치면** 그 함정이 파일에 그대로 남는다.
+               'NumberOfInitializationCycles': INIT,
+               'NumberOfCycles': CYCLES,
                'note': 'Widom 물 K_H. 문턱 5e-6 mmol/g/Pa 는 TIP4P 기준 — '
                        'TIP5P-Ew 값에 적용한다는 한정어 필수',
                'rows': sorted(rows, key=lambda x: x['name'])}, open(f, 'w'),

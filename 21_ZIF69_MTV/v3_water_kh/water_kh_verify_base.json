@@ -1,0 +1,21 @@
+{
+  "note": "검증 1건. 정식 산출은 A/B 실행분",
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "rows": [
+    {
+      "name": "base",
+      "KH_water": 0.000553499,
+      "KH_water_err": 4.21968e-05,
+      "unit": "mol/kg/Pa (= mmol/g/Pa)",
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "wall_seconds": 2693,
+      "concurrency": "Widom 1 + NVT 1",
+      "ok": true
+    }
+  ]
+}
