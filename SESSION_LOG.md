@@ -30,6 +30,13 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-06 11:3x · desktop (Fable 5.1)  [진행중]
+하는 일: **nbIm050e1~e5 체인** (`ASSIGN_NB050_20260906.md`, 사용자 결정 3(가)) — 빌드 → 이완(xtb 3워커) → 판정 → 전하 → 관문(Zeo++ 워커 1) → Widom/GCMC 5종(V3_WORKERS=6). `.claude_work_nb050.sh`, 로그 `nb050_chain.log`
+건드리는 파일: `structures_v2/ZIF69_nbIm050e*`, `relax_v3/`, `charged_v3/`(+charged_v3.json 재기록), `lmp_v3ens_nb050/`, `runs_v3/*nbIm050e*`, `results_v3ens_nb050.json`
+쓰는 코어: 이완 6(3×OMP2) → 관문 1 → GCMC 6.  완주 ≈ 20:00~22:30
+다음: 2×2 재판정(§8-5-4, 배치 단위 판정·단위 병기) → T-B2 40 Widom (`WATER_FIX §4`, 랩탑 러너 고침 뒤). **관문 구간에 다른 RASPA 금지.**
+병행: 랩탑 RH90 11종(v3w), laptop2 RH90 7종 + 옛 JSON 표기 — `WATER_FIX_20260906.md`.
+
 ## 09-05 22:49 · desktop (Fable 5.1, MAGI 종합)  [완료 06:23 — 판정 `MIX10_VERDICT_20260906.md`, 두 시험 모두 자에 따라 갈림]
 하는 일: **MAGI-001 결정에 따른 10건** — ① `saIm050e1~e5` 관문(risk, Zeo++ 9.5 GB/건, 워커 1) → ② `run_gcmc_v3.py`
         10건(sa50nb50e1~5 · saIm050e1~5) `--out results_v3ens_mix10.json`, V3_WORKERS=6, nice 10. 체인 `.claude_work_magi001.sh`
