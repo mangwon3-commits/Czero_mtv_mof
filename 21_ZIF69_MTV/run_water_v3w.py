@@ -54,8 +54,11 @@ FF_MD5 = '8e8ec933f9013c7e932da04dc256efd3'      # WATER_FIX_20260906.md §1 ①
 FF_TAG = 'UFF_MOF+HwLw_none_20260906'
 
 # --- 경로 재지정 (module 전역이라 함수 안에서 이 값을 읽습니다) --------------
-rw.HERE = os.path.join(HERE, 'v3w_water')
-rw.RUNS = os.path.join(HERE, 'water_runs_v3w')
+# [09-07] 접미사로 계열을 가릅니다. 기본값 '' 이면 원 계열 그대로입니다.
+#   V3W_SUFFIX=_rep  ->  v3w_water_rep/ · water_runs_v3w_rep/   (씨앗 반복)
+SUF = os.environ.get('V3W_SUFFIX', '')
+rw.HERE = os.path.join(HERE, 'v3w_water' + SUF)
+rw.RUNS = os.path.join(HERE, 'water_runs_v3w' + SUF)
 rw.CHARGED = os.path.join(HERE, 'charged_v3')
 rw.WATER_DEF = os.path.join(HERE, '..', '19_WaterCompetition', 'water.def')
 rw.RH_LIST = [0.90]

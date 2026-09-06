@@ -70,6 +70,11 @@ from ase.io import read          # noqa: E402
 CHUNKS = 5
 CHUNK_CYCLES = rw.CYCLES // CHUNKS          # 3000
 
+# [09-07] 실행 폴더 뿌리를 env 로 뺍니다. **기본값은 그대로**라 기존 호출은 안 바뀝니다.
+# 수정 힘장 계열(v3w)은 결함판 폴더를 이어받으면 안 되므로 새 뿌리가 필요합니다
+# (CLAUDE.md §3 — 이어받기는 힘장을 안 봅니다).
+RUNS_ROOT = os.environ.get('CHUNK_RUNS_ROOT', 'water_runs_chunked')
+
 # 템플릿 복사본이 원본과 갈라지지 않았는지 확인할 불변 줄들.
 # 물리·규약을 정하는 줄만 고릅니다 — 숫자가 바뀌면 결과가 바뀌는 것들입니다.
 _INVARIANTS = (
@@ -207,8 +212,7 @@ def main():
 
     _assert_template_matches()
 
-    base = os.path.join(HERE, 'water_runs_chunked',
-                        f'rh{int(a.rh*100):02d}_{a.name}')
+    base = os.path.join(HERE, RUNS_ROOT, f'rh{int(a.rh*100):02d}_{a.name}')
     cif = os.path.join(rw.CHARGED, a.name + '_DDEC6.cif')
 
     print(f'분할 실행 — {a.name} RH{int(a.rh*100)}%', flush=True)
