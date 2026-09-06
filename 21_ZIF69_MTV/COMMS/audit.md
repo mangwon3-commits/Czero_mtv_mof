@@ -5,6 +5,208 @@
 
 ---
 
+## 2026-09-06 00:15 UTC — 일일 감사
+
+**실행 조건**: 클라우드 저장소 체크아웃만으로 확인. 로컬 프로세스·메모리·
+미푸시 커밋은 볼 수 없음. 새 계산 없음(`regen_energy_v3.py` 는 실행하지
+않고 파이썬으로 그 글롭 패턴과 로직을 그대로 임포트해 대조함).
+`merge_water_batches.py` 는 기존 도구를 태그 붙은 파일만 넘겨 그대로
+호출함(⑥-(가), 손으로 다시 짜지 않음, 아래 4·5절 출력이 그 실제 실행
+결과). 아래 6개 점검 외 어떤 파일도 수정하지 않음.
+
+**방법 메모(경고 아님)**: 컨테이너 초기 체크아웃이 얕은 클론(depth 50)이라
+`git rev-list --left-right` 값이 처음에 134/62(발산으로 오판)로 나왔다.
+`git fetch --unshallow` 로 전체 이력(870커밋)을 받은 뒤 재계산하니
+461/0(순수 뒤처짐)으로 정정됐다. 얕은 클론에서 병합 베이스 계산이
+틀어질 수 있다는 것 자체가 검사기 함정이라 기록해 둔다 — 아래 수치는
+전부 unshallow 이후 값이다.
+
+### 1) 브랜치 정체
+
+`git fetch --all` (+`--unshallow`) 후 (기준 시각 2026-09-06 00:11 UTC =
+09:11 KST):
+
+| 브랜치 | 마지막 커밋 | 경과 | master 대비 뒤처짐 | master 대비 앞섬 |
+|---|---|---|---|---|
+| `origin/master` | `fdabdf1` 2026-09-06 06:36:42 KST | 2.6시간 | — | — |
+| `origin/laptop-20260822` | `fdabdf1` 2026-09-06 06:36:42 KST (master 와 동일 커밋) | 2.6시간 | 0커밋 | 0커밋 |
+| `origin/junseok-20260822` | `41fb1b7` 2026-08-29 00:54:23 KST | **200.3시간(8.3일)** | **461커밋** | 0커밋 |
+
+**경고: `junseok-20260822` 가 마지막 커밋 8.3일 경과, master 대비
+461커밋 뒤처짐** — 08-24 사고 기준(24커밋)의 19배. 09-05 감사(194커밋/
+7.3일) 대비 뒤처진 커밋 수가 크게 늘었지만, 이는 그 사이 `master` 가
+다른 가지(들)를 활발히 흡수하며 전진했기 때문이고(정상 동작),
+`junseok-20260822` 자신의 앞섬은 09-05 감사 때와 마찬가지로 계속
+**0커밋**이다 — 즉 그 가지에 남아 있던 고유 작업은 이미 전부 master 에
+흡수되어 있고, fast-forward 로 합류 가능한 상태다("가지 취합 지연"이
+아니라 그 가지 자체가 8일 넘게 새 작업 없이 방치돼 있다는 뜻). `laptop-20260822`
+는 master 와 완전히 동일한 커밋(0/0) — 09-05 감사가 기록한 19커밋
+뒤처짐에서 완전히 합류함, 경고 아님.
+
+(참고, 지시된 세 브랜치 밖: `origin/junseok`(날짜 미부착) `be2bede`
+2026-08-29 11:32:05 KST, 189.6시간(7.9일) 경과, master 대비 414커밋
+뒤처짐/0커밋 앞섬 — `junseok-20260822` 와 같은 시기에 같은 방향으로
+멈춰 있음. `origin/laptop2-20260825` `1c51ab1` 2026-09-06 06:28:22 KST,
+2.7시간 경과, master 대비 201커밋 뒤처짐/0커밋 앞섬 — 최근 커밋인데도
+뒤처짐이 큰 것은 master 가 병합 직후 다른 가지에서 더 전진했기 때문으로
+보이며, 0커밋 앞섬이라 실질적 발산은 없음.)
+
+### 2) 우편함 침묵
+
+각 우편함 파일을 **모든 브랜치**에서 찾은 가장 최근 커밋 기준으로 보고
+(경과 시간만 보고, 침묵을 "죽었다"로 단정하지 않음):
+
+| 파일 | 마지막 커밋 | 경과 |
+|---|---|---|
+| `COMMS/desktop.md` | `775309a` 2026-09-04 23:56:00 KST (master) | 33.2시간(1.4일) |
+| `COMMS/laptop.md` | `fdabdf1` 2026-09-06 06:36:42 KST (master/`laptop-20260822`) | 2.6시간 |
+| `COMMS/junseok.md` | `be2bede` 2026-08-29 11:32:05 KST (`origin/junseok`; `junseok-20260822` 는 더 오래된 `41fb1b7` 뿐) | **189.6시간(7.9일)** |
+| `COMMS/laptop2.md` | `7dbe5b7` 2026-09-05 07:08:29 KST (master) | 26.0시간(1.1일) |
+| `COMMS/cloud4c.md` | `84cfdde` 2026-09-04 17:49:13 KST (master) | 39.4시간(1.6일) |
+
+`COMMS/junseok.md` 침묵(7.9일)이 1절의 `junseok-20260822`·`junseok` 두
+브랜치 정체(8.3일·7.9일)와 계속 같은 방향으로 겹친다 — 09-05 감사(6.9일)
+대비 정확히 하루 늘어 새 활동이 없다는 뜻으로 읽힌다. "죽었다"고 단정하지
+않되 경고로 유지한다. 나머지 네 우편함은 모두 39.4시간 이내로 정상 범위.
+
+### 3) 결과 JSON 무결성
+
+`results_v3*.json`, `v3_wc/`, `v3_humid_wc/`, `v4_humid_wc/`, `v3_water_grid*/`
+아래 모든 `.json` 을 파이썬으로 파싱(`{"rows": [...]}` dict 는 `rows` 배열
+길이, 순수 리스트는 원소 수를 행수로 셈):
+
+| 파일 | 결과 | 행수 |
+|---|---|---|
+| `results_v3.json` | OK | 31 |
+| `results_v3_smoke.json` | OK | 1 |
+| `results_v3cliff.json` | OK | 2 |
+| `results_v3ens0583.json` | OK | 5 |
+| `results_v3ens075.json` | OK | 5 |
+| `results_v3ens_mix10.json` | OK | 10 |
+| `results_v3grid.json` | OK | 4 |
+| `results_v3pctl.json` | OK | 5 |
+| `v3_wc/working_capacity.json` | OK | 6 |
+| `v3_wc/working_capacity_g0583.json` | OK | 1 |
+| `v3_humid_wc/humid_working_capacity.json` | OK | 4 |
+| `v3_humid_wc/humid_working_capacity_ext.json` | OK | 1 |
+| `v3_humid_wc/humid_working_capacity_g0583.json` | OK | 1 |
+| `v3_humid_wc/humid_working_capacity_grid.json` | OK | 1 |
+| `v3_humid_wc/humid_working_capacity_mslm075.json` | OK | 1 |
+| `v4_humid_wc/humid_working_capacity_v4ext.json` | OK | 2 |
+| `v4_humid_wc/humid_working_capacity_v4m1.json` | OK | 1 |
+| `v3_water_grid/water_results.json` | OK | 4 |
+| `v3_water_grid/water_results_desktop4.json` | OK | 4 |
+| `v3_water_grid/water_results_junseok.json` | OK | 4 |
+| `v3_water_grid/water_results_laptop.json` | OK | 12 |
+| `v3_water_grid_cliff/water_results.json` | OK | 4 |
+| `v3_water_grid_cliff/water_results_desktopcliff.json` | OK | 4 |
+
+이상 없음 — 파싱 실패·0행 없음. **09-05 감사 대비 새 파일 1건**:
+`results_v3ens_mix10.json`(10행) — 커밋 `5c024e9`(MIX10 혼합 판정, 오늘
+이전 작업)로 추가됨. 새 파일도 정상 파싱, 0행 아님. 나머지 파일은
+09-05 감사 표와 목록·행수 동일.
+
+### 4) 출처 규약 위반
+
+`merge_water_batches.py` 를 태그 붙은 파일만 넘겨 직접 호출(⑥-(가), 손으로
+다시 짜지 않음):
+
+```
+$ python merge_water_batches.py v3_water_grid/water_results_desktop4.json \
+    v3_water_grid/water_results_laptop.json v3_water_grid/water_results_junseok.json
+교차 검증 쌍 4개 — saIm0875 RH0/25/50/90 모두 junseok·laptop 양쪽에 존재
+  RH0  junseok 1.2905±0.0333 vs laptop 1.3031±0.0215  -> 0.32σ 일관
+  RH25 junseok 1.1743±0.0222 vs laptop 1.1498±0.0240  -> 0.75σ 일관
+  RH50 junseok 1.0564±0.0373 vs laptop 1.0582±0.0423  -> 0.03σ 일관
+  RH90 junseok 0.9619±0.0181 vs laptop 0.9671±0.0482  -> 0.10σ 일관
+
+$ python merge_water_batches.py v3_water_grid_cliff/water_results_desktopcliff.json
+조성 2종 · 점 4개 · 파일 1개 (태그 파일이 이 디렉터리엔 하나뿐이라 중복·
+교차검증 대상 자체가 없음)
+```
+
+**값이 서로 다르므로 진짜 교차검증**이지 중복이 아님(4쌍 전부 0.03~0.75σ
+로 일관). 태그 붙은 파일 사이에서 값이 완전히 같은 (조성,RH) 중복은 없음.
+
+참고(경고 아님, 08-29 이후 매 감사와 동일): `v3_water_grid/`·
+`v3_water_grid_cliff/` 각각의 태그 없는 `water_results.json` 이 대응하는
+`water_results_desktop4.json`/`water_results_desktopcliff.json` 과 파이썬
+`json.load` 비교로 완전히 동일함(이어받기 체크포인트 사본). `machine_of()`
+가 태그 없는 파일을 구조적으로 거부하므로(코드 60~87행 확인)
+`merge_water_batches.py` 를 규약대로 쓰는 한 이중 계수로 이어지지 않음.
+저장소 안에서 `water_results*.json` 와일드카드로 두 파일을 함께 넘기는
+스크립트도 없음(`grep` 확인). `v3_water_grid/` 에는 이 상태를 설명하는
+`README.md` 가 있는 반면 `v3_water_grid_cliff/` 에는 같은 설명 문서가
+여전히 없음 — 지금은 도구가 태그 없는 파일을 거부해 위험이 실현되지
+않지만, 사람이 손으로 글롭해 들여다볼 경우 `v3_water_grid_cliff/` 쪽에서
+더 헷갈릴 여지(경고까지는 아니고 참고, 09-05 감사와 동일).
+
+### 5) 사전 등록 관문 대비 기록
+
+`v3_water_grid*/` 태그 파일을 4절과 같은 `merge_water_batches.py` 실행
+결과에서 그대로 가져와(직접 재구현 안 함) 문서 기재값과 대조:
+
+| 조성 | 출처 | RH0 | RH90 | 유지율 | 판정 | 문서 기재값 | 일치 |
+|---|---|---|---|---|---|---|---|
+| saIm0583 | desktop4 | 1.3188±0.0264 | 1.0010±0.0170 | 75.9% | 조건부 | `COMMS/desktop.md` 75.90±1.99% 조건부 | ✅ |
+| saIm0625 | laptop | 1.3804±0.0135 | 0.9902±0.0223 | 71.7% | 조건부 | `COMMS/desktop.md`/`laptop.md` 71.7% 조건부 | ✅ |
+| saIm0667 | laptop | 1.3682±0.0301 | 1.0269±0.0387 | 75.1% | 조건부 | `COMMS/desktop.md` 75.05~75.1% 조건부 | ✅ |
+| saIm0875 | junseok*/laptop | 1.2905±0.0333 / 1.3031±0.0215 | 0.9619±0.0181 / 0.9671±0.0482 | 74.5% / 74.2% | 조건부 | `COMMS/junseok.md`/`laptop.md` 74.5%·74.2% 조건부 | ✅ |
+| saIm0917 | desktopcliff | 1.3249±0.0258 | 0.9725±0.0143 | 73.4% | 조건부 | `COMMS/desktop.md` 73.41% 조건부 | ✅ |
+| saIm0958 | desktopcliff | 1.5205±0.0129 | 1.0032±0.0312 | 66.0% | 조건부 | `COMMS/desktop.md` 65.98% 조건부 | ✅ |
+
+* saIm0875 는 교차 검증 쌍이라 두 기기 값을 함께 적음(4절, 둘 다
+0.03~0.75σ 로 일관).
+
+이상 없음 — 6개 조성 전부 문서 기재와 재계산이 일치함(자료·문서 모두
+변경 없음, 09-05 감사와 동일). 관문 80/50/0 기준으로 전부 "50~80% 조건부"
+구간에 있고 "유효"·"종료" 경계를 넘는 곳은 없음. 어긋나는 곳을 찾지
+못함.
+
+### 6) WC 자료 공백
+
+`regen_energy_v3.py:load_wc()`/`NAMES` 를 직접 임포트해(재구현 안 함) 실제
+읽는 글롭 패턴(`v3_wc/*.json`, `v3_humid_wc/*.json`, `v4_humid_wc/*.json`)
+결과를 그대로 씀:
+
+| 조성 | 건조 WC | 습윤 WC | 재생에너지 계산에 포함되는가 |
+|---|---|---|---|
+| base | ✓ `working_capacity.json` | ✓ `humid_working_capacity.json` | ✓ |
+| saIm025 | ✓ 〃 | ✓ `humid_working_capacity_ext.json` | ✓ |
+| saIm050 | ✓ 〃 | ✓ `humid_working_capacity.json` | ✓ |
+| saIm075 | ✓ 〃 | ✓ 〃 | ✓ |
+| saIm100 | ✓ 〃 | ✓ 〃 | ✓ |
+| mslm075 | ✓ 〃 | ✓ `humid_working_capacity_mslm075.json` | ✓ |
+| **saIm0583 (승자 조성)** | ✓ `working_capacity_g0583.json` | ✓ `humid_working_capacity_g0583.json` | ✓ |
+| saIm0625 | — 없음 | ✓ `humid_working_capacity_grid.json` | ✗ (건조 없어 계산 불가) |
+| ms50nb50 | — 없음 | ✓ `v4_humid_wc/..._v4ext.json` | ✗ |
+| sa25nb75 | — 없음 | ✓ `v4_humid_wc/..._v4ext.json` | ✗ |
+| sa50nb50 | — 없음 | ✓ `v4_humid_wc/..._v4m1.json` | ✗ |
+
+건조·습윤이 둘 다 있는 조성 7개(base, saIm025, saIm050, saIm075, saIm100,
+mslm075, saIm0583)와 습윤만 있는 조성 4개(saIm0625, ms50nb50, sa25nb75,
+sa50nb50)로 나뉜다. 건조만 있고 습윤이 없는 조성은 없음.
+
+`load_wc()`/`NAMES` 를 직접 임포트해 확인: 산출되는 `NAMES` 가 위 표의
+"둘 다 있음" 7개와 정확히 일치(`saIm0625` 는 Q_st·습윤 WC 는 있어도 건조
+WC 가 없어 `NAMES` 에서 정확히 제외됨) — "한쪽만 있는데 완성된 행처럼
+보이는" 위험 없음(2026-08-27 수정으로 이미 닫힌 구멍, 오늘도 재확인).
+
+이상 없음(09-05 감사와 동일, 자료 변경 없음).
+
+---
+
+## 사람이 볼 것
+
+- 경고: `junseok-20260822`(+`junseok`) 브랜치가 8.3일/7.9일째 정지(461·414
+  커밋 뒤처짐, 08-24 기준의 19배), `COMMS/junseok.md` 도 7.9일째 침묵 —
+  09-05 대비 정확히 하루 늘어 회복 신호 없음.
+- 참고(경고 아님): `laptop-20260822` 가 master 와 완전히 합류(0/0);
+  `results_v3ens_mix10.json` 신규 추가(정상 파싱, 10행).
+- 나머지(JSON 무결성·출처 중복·사전 등록 관문·WC 자료 공백)는 이상 없음.
+
+---
+
 ## 2026-09-05 00:10 UTC — 일일 감사
 
 **실행 조건**: 클라우드 저장소 체크아웃만으로 확인. 로컬 프로세스·메모리·
