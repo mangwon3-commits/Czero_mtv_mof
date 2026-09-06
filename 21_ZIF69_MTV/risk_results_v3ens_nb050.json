@@ -1,0 +1,235 @@
+{
+  "criteria": {
+    "PLD_min": 3.3,
+    "LCD_drop_limit_pct": 20.0,
+    "AV_floor": 20.0,
+    "min_dist_limit": 0.7,
+    "LCD_reference": 7.63144
+  },
+  "rows": [
+    {
+      "name": "base",
+      "status": "ok",
+      "before": {
+        "LCD": 8.89809,
+        "PLD": 5.157,
+        "AV": 1232.2,
+        "min_dist": 1.074,
+        "n_atoms": 600,
+        "AV_per_cell": 1232.2
+      },
+      "after": {
+        "LCD": 7.63144,
+        "PLD": 5.26127,
+        "AV": 8137.52,
+        "min_dist": 1.079,
+        "n_atoms": 4800,
+        "supercell_rep": 8,
+        "AV_per_cell": 1017.2
+      },
+      "LCD_drop_pct": 0.0,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.854070553699785,
+      "converged": false
+    },
+    {
+      "name": "nbIm050",
+      "status": "ok",
+      "before": {
+        "LCD": 9.68335,
+        "PLD": 4.51496,
+        "AV": 1419.75,
+        "min_dist": 1.073,
+        "n_atoms": 624,
+        "AV_per_cell": 1419.8
+      },
+      "after": {
+        "LCD": 7.63864,
+        "PLD": 4.07019,
+        "AV": 6915.78,
+        "min_dist": 1.079,
+        "n_atoms": 4992,
+        "supercell_rep": 8,
+        "AV_per_cell": 864.5
+      },
+      "LCD_drop_pct": -0.09,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.394622011799584,
+      "converged": false
+    },
+    {
+      "name": "nbIm050e1",
+      "status": "ok",
+      "before": {
+        "LCD": 10.19185,
+        "PLD": 4.60679,
+        "AV": 1445.48,
+        "min_dist": 1.073,
+        "n_atoms": 624,
+        "AV_per_cell": 1445.5
+      },
+      "after": {
+        "LCD": 7.64605,
+        "PLD": 4.10428,
+        "AV": 6879.85,
+        "min_dist": 1.079,
+        "n_atoms": 4992,
+        "supercell_rep": 8,
+        "AV_per_cell": 860.0
+      },
+      "LCD_drop_pct": -0.19,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.455811533200176,
+      "converged": false
+    },
+    {
+      "name": "nbIm050e2",
+      "status": "ok",
+      "before": {
+        "LCD": 10.05416,
+        "PLD": 4.77926,
+        "AV": 1450.62,
+        "min_dist": 1.072,
+        "n_atoms": 624,
+        "AV_per_cell": 1450.6
+      },
+      "after": {
+        "LCD": 7.58799,
+        "PLD": 4.28194,
+        "AV": 6960.83,
+        "min_dist": 1.079,
+        "n_atoms": 4992,
+        "supercell_rep": 8,
+        "AV_per_cell": 870.1
+      },
+      "LCD_drop_pct": 0.57,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 1.15856605800036,
+      "converged": false
+    },
+    {
+      "name": "nbIm050e3",
+      "status": "ok",
+      "before": {
+        "LCD": 10.63611,
+        "PLD": 5.49359,
+        "AV": 1460.92,
+        "min_dist": 1.072,
+        "n_atoms": 624,
+        "AV_per_cell": 1460.9
+      },
+      "after": {
+        "LCD": 7.65514,
+        "PLD": 4.49434,
+        "AV": 7076.39,
+        "min_dist": 1.079,
+        "n_atoms": 4992,
+        "supercell_rep": 8,
+        "AV_per_cell": 884.5
+      },
+      "LCD_drop_pct": -0.31,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.755851742698724,
+      "converged": false
+    },
+    {
+      "name": "nbIm050e4",
+      "status": "ok",
+      "before": {
+        "LCD": 10.166,
+        "PLD": 4.88999,
+        "AV": 1455.2,
+        "min_dist": 1.072,
+        "n_atoms": 624,
+        "AV_per_cell": 1455.2
+      },
+      "after": {
+        "LCD": 7.49175,
+        "PLD": 4.08397,
+        "AV": 6939.49,
+        "min_dist": 1.079,
+        "n_atoms": 4992,
+        "supercell_rep": 8,
+        "AV_per_cell": 867.4
+      },
+      "LCD_drop_pct": 1.83,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.703331165001146,
+      "converged": false
+    },
+    {
+      "name": "nbIm050e5",
+      "status": "ok",
+      "before": {
+        "LCD": 10.15954,
+        "PLD": 4.81844,
+        "AV": 1450.62,
+        "min_dist": 1.072,
+        "n_atoms": 624,
+        "AV_per_cell": 1450.6
+      },
+      "after": {
+        "LCD": 7.5654,
+        "PLD": 4.20918,
+        "AV": 7213.86,
+        "min_dist": 1.077,
+        "n_atoms": 4992,
+        "supercell_rep": 8,
+        "AV_per_cell": 901.7
+      },
+      "LCD_drop_pct": 0.87,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.54748864909925,
+      "converged": false
+    }
+  ]
+}
