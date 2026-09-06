@@ -153,6 +153,31 @@ def main():
     return 0 if (stamp() == 0 and rc == 0) else 1
 
 
+def read_seed(name, rh):
+    """그 작업의 RASPA 난수 씨앗을 **출력 머리말에서** 회수합니다.
+
+    ⚠️ `run_water.py` 는 씨앗을 안 적습니다 — RASPA 기본값(시각 기반)이 쓰이고
+    산출물 JSON 에도 남지 않아 **어떤 실행도 재현이 불가능**합니다(09-06 실측:
+    같은 실행의 세 작업이 1788660534/534/535 = 착수 시각 초 단위).
+
+    ⚠️ **그래서 결과 JSON 을 쓰는 시점에 회수해야 합니다.** §7 이 결과 JSON 이
+    있으면 `*_runs*/` 를 지워도 된다고 하므로, 나중으로 미루면 **씨앗이 함께
+    사라집니다.** 폴더가 살아 있는 지금 찍습니다.
+    """
+    d = os.path.join(rw.RUNS, f'rh{int(rh * 100):02d}_{name}', 'Output', 'System_0')
+    if not os.path.isdir(d):
+        return None
+    for fn in sorted(x for x in os.listdir(d) if x.endswith('.data')):
+        with open(os.path.join(d, fn), encoding='utf-8', errors='ignore') as f:
+            for ln in f:
+                m = re.match(r'\s*Random number seed:\s*(\d+)', ln)
+                if m:
+                    return int(m.group(1))
+                if ln.startswith('Number of cycles'):   # 머리말을 지나면 없는 것
+                    break
+    return None
+
+
 def stamp():
     """산출물에 힘장 출처를 **행마다** 남깁니다.
 
@@ -173,9 +198,16 @@ def stamp():
     p = os.path.join(rw.HERE, 'water_results.json')
     if os.path.exists(p):
         rows = json.load(open(p, encoding='utf-8'))
+        nseed = 0
         for r in rows:
             r['forcefield'] = FF_TAG
             r['ff_check'] = chk
+            sd = read_seed(r['name'], r['RH'])
+            if sd is not None:
+                r['raspa_seed'] = sd
+                nseed += 1
+        print(f'  난수 씨앗 회수 {nseed}/{len(rows)}행 '
+              f'(러너가 안 적어 출력 머리말에서 읽습니다 — 폴더를 지우면 사라집니다)')
         json.dump(rows, open(p, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
         json.dump({'forcefield': FF_TAG, 'ff_md5': FF_MD5, 'ff_path': FF_PATH,
                    'ff_check': chk, 'series': 'v3w', 'host': socket.gethostname().lower(),
