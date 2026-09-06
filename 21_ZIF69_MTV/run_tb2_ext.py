@@ -367,11 +367,12 @@ def main():
     if missing:
         print(f'  !! CIF 없음: {missing}. 중단.', flush=True)
         return 1
-    n3 = sum(1 for ln in open(WATER3, encoding='utf-8')
-             if len(ln.split()) > 4 and ln.split()[1] in ('Ow', 'Hw', 'Lw'))
-    if n3 != 3:
-        print(f'  !! 대조용 배포본 물이 3자리가 아닙니다({n3}). 중단.', flush=True)
-        return 1
+    if '--controls' in sys.argv:
+        n3 = sum(1 for ln in open(WATER3, encoding='utf-8')
+                 if len(ln.split()) > 4 and ln.split()[1] in ('Ow', 'Hw', 'Lw'))
+        if n3 != 3:
+            print(f'  !! 대조용 배포본 물이 3자리가 아닙니다({n3}). 중단.', flush=True)
+            return 1
     print(f'T-B2 확장 — 관문 탈락 saIm {len(EXT)}종 (②-전용) + {CONTROL_STRUCT} 대조 2건'
           f'(CO2 Widom · 3자리 물 Widom), 워커 {WORKERS}', flush=True)
     print(f'  자: NumberOfCycles {T.CYCLES} / '
@@ -381,11 +382,26 @@ def main():
     print('  확장 대상: ' + ', '.join(EXT), flush=True)
 
     water_rows, gas_rows, w3_rows, hw_rows, cur_rows = [], [], [], [], []
-    jobs = ([('water', n) for n in EXT]
-            + [('gas', (CONTROL_STRUCT, CONTROL_GAS))]
-            + [('water3', CONTROL_STRUCT)]
-            + [('hwnone', CONTROL_STRUCT)]
-            + [('current', CONTROL_STRUCT)])
+    # ---- (8) 대조 분리 -----------------------------------------------------
+    # `WATER_FIX_20260906.md` §3 ②: **대조 4건 재실행 불필요.**
+    # 그리고 `hwnone`/`current` 쌍은 힘장 수정 뒤 **질문 자체가 사라졌습니다** —
+    # 그 둘은 *"지역 사본으로 Hw 를 끄면 K_H 가 얼마나 달라지는가"*(D = 8.63)를
+    # 물었는데, 이제 **`current` 가 곧 `hwnone`** 입니다. 그대로 돌리면 같은 것을
+    # 두 번 재고 비율 1.0 을 "결과" 처럼 적게 됩니다.
+    #    `--controls` 를 주면 옛 4건을 함께 돕니다(진단 목적, 기본 아님).
+    with_controls = '--controls' in sys.argv
+    jobs = [('water', n) for n in EXT]
+    if with_controls:
+        print('  ⚠️ --controls: 대조 4건을 함께 돕니다. `hwnone`/`current` 는 힘장 수정 뒤\n'
+              '     같은 힘장을 두 번 재는 것이라 비율 1.0 이 기대값입니다 — 진단으로만.',
+              flush=True)
+        jobs += ([('gas', (CONTROL_STRUCT, CONTROL_GAS))]
+                 + [('water3', CONTROL_STRUCT)]
+                 + [('hwnone', CONTROL_STRUCT)]
+                 + [('current', CONTROL_STRUCT)])
+    else:
+        print(f'  대조 4건 **제외** (WATER_FIX §3 ② "재실행 불필요"). '
+              f'필요하면 `--controls`. 이번 작업 {len(jobs)}건.', flush=True)
     with Pool(WORKERS) as p:
         for kind, r in p.imap_unordered(_dispatch, jobs, chunksize=1):
             {'water': water_rows, 'gas': gas_rows, 'water3': w3_rows,
