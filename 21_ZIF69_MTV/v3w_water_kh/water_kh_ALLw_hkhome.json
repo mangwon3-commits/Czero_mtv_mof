@@ -4,7 +4,7 @@
   "forcefield": "UFF_MOF+HwLw_none_20260906",
   "NumberOfInitializationCycles": 3000,
   "NumberOfCycles": 15000,
-  "note": "WATER_FIX_20260906 §3 ②. 수정 힘장(Hw none/Lw none). 대조 4건 미포함. 문턱 5e-6 은 TIP4P 기준 한정어 필수 | ff_check 는 fix_tb2w_ffcheck.py(콜론 정규식)로 재판독함",
+  "note": "WATER_FIX_20260906 §3 ②. 수정 힘장(Hw none/Lw none). 대조 4건 미포함. 문턱 5e-6 은 TIP4P 기준 한정어 필수 | ff_check 는 fix_tb2w_ffcheck.py(콜론 정규식)로 재판독함 | raspa_seed 는 출력 머리말에서 회수(09-06 23:2x); 러너가 씨앗을 안 적어 시각 기반",
   "rows": [
     {
       "name": "base",
@@ -23,7 +23,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788683951
     },
     {
       "name": "brbIm025",
@@ -42,7 +43,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788683950
     },
     {
       "name": "brbIm050",
@@ -61,7 +63,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788683950
     },
     {
       "name": "brbIm075",
@@ -80,7 +83,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788683951
     },
     {
       "name": "brbIm100",
@@ -99,7 +103,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788683950
     },
     {
       "name": "cf3Im025",
@@ -118,7 +123,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788683951
     },
     {
       "name": "cf3Im050",
@@ -137,7 +143,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788686517
     },
     {
       "name": "cf3Im075",
@@ -156,7 +163,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788686520
     },
     {
       "name": "cnbIm025",
@@ -175,7 +183,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788686525
     },
     {
       "name": "cnbIm050",
@@ -194,7 +203,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788686526
     },
     {
       "name": "cnbIm075",
@@ -213,7 +223,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788686533
     },
     {
       "name": "cnbIm100",
@@ -232,7 +243,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788686648
     },
     {
       "name": "fbIm025",
@@ -251,7 +263,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788689146
     },
     {
       "name": "fbIm050",
@@ -270,7 +283,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788689170
     },
     {
       "name": "fbIm075",
@@ -289,7 +303,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788689200
     },
     {
       "name": "fbIm100",
@@ -308,7 +323,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788689275
     },
     {
       "name": "mbIm025",
@@ -327,7 +343,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788689325
     },
     {
       "name": "mbIm050",
@@ -346,7 +363,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788689385
     },
     {
       "name": "mbIm075",
@@ -365,7 +383,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788691716
     },
     {
       "name": "mbIm100",
@@ -384,7 +403,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788691744
     },
     {
       "name": "ms50nb50",
@@ -403,7 +423,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788691770
     },
     {
       "name": "mslm025",
@@ -422,7 +443,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788691846
     },
     {
       "name": "mslm050",
@@ -441,7 +463,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788692004
     },
     {
       "name": "nbIm025",
@@ -460,7 +483,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788692110
     },
     {
       "name": "nbIm050",
@@ -479,7 +503,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788694544
     },
     {
       "name": "nbIm075",
@@ -498,7 +523,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788694628
     },
     {
       "name": "nbIm100",
@@ -517,7 +543,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788694630
     },
     {
       "name": "sa25nb75",
@@ -536,7 +563,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788694790
     },
     {
       "name": "sa50nb50",
@@ -555,7 +583,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788694845
     },
     {
       "name": "saIm025",
@@ -574,7 +603,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788694907
     },
     {
       "name": "saIm050",
@@ -593,7 +623,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788697277
     },
     {
       "name": "saIm0583",
@@ -612,7 +643,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788697437
     },
     {
       "name": "saIm0625",
@@ -631,7 +663,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788697501
     },
     {
       "name": "saIm0667",
@@ -650,7 +683,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788697629
     },
     {
       "name": "saIm075",
@@ -669,7 +703,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788697696
     },
     {
       "name": "saIm0875",
@@ -688,7 +723,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788697798
     },
     {
       "name": "saIm0917",
@@ -707,7 +743,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788700142
     },
     {
       "name": "saIm0958",
@@ -726,7 +763,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788700315
     },
     {
       "name": "saIm100",
@@ -745,7 +783,8 @@
         "ok": true
       },
       "water_sites_in_rundir": 5,
-      "ok": true
+      "ok": true,
+      "raspa_seed": 1788700408
     }
   ]
 }
