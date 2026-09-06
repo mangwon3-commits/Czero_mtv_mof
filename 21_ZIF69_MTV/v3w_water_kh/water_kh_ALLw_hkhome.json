@@ -1,0 +1,751 @@
+{
+  "half": "ALL+EXT",
+  "tag": "hkhome",
+  "forcefield": "UFF_MOF+HwLw_none_20260906",
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "note": "WATER_FIX_20260906 §3 ②. 수정 힘장(Hw none/Lw none). 대조 4건 미포함. 문턱 5e-6 은 TIP4P 기준 한정어 필수 | ff_check 는 fix_tb2w_ffcheck.py(콜론 정규식)로 재판독함",
+  "rows": [
+    {
+      "name": "base",
+      "KH_water": 7.13482e-05,
+      "KH_water_err": 8.90735e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "brbIm025",
+      "KH_water": 7.01873e-05,
+      "KH_water_err": 1.33183e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "brbIm050",
+      "KH_water": 6.93661e-05,
+      "KH_water_err": 1.33978e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "brbIm075",
+      "KH_water": 6.42785e-05,
+      "KH_water_err": 1.08651e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "brbIm100",
+      "KH_water": 6.16937e-05,
+      "KH_water_err": 5.78593e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "cf3Im025",
+      "KH_water": 4.31058e-05,
+      "KH_water_err": 1.36987e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "cf3Im050",
+      "KH_water": 6.58122e-05,
+      "KH_water_err": 1.52317e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "cf3Im075",
+      "KH_water": 8.08937e-05,
+      "KH_water_err": 9.86333e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "cnbIm025",
+      "KH_water": 3.25428e-05,
+      "KH_water_err": 2.94666e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "cnbIm050",
+      "KH_water": 3.74011e-05,
+      "KH_water_err": 3.56339e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "cnbIm075",
+      "KH_water": 5.26885e-05,
+      "KH_water_err": 4.63399e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "cnbIm100",
+      "KH_water": 7.35086e-05,
+      "KH_water_err": 3.63608e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "fbIm025",
+      "KH_water": 6.09258e-05,
+      "KH_water_err": 7.26086e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "fbIm050",
+      "KH_water": 5.66715e-05,
+      "KH_water_err": 5.72332e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "fbIm075",
+      "KH_water": 8.81566e-05,
+      "KH_water_err": 9.40546e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "fbIm100",
+      "KH_water": 8.88494e-05,
+      "KH_water_err": 5.30609e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "mbIm025",
+      "KH_water": 1.81253e-05,
+      "KH_water_err": 1.54502e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "mbIm050",
+      "KH_water": 9.25799e-05,
+      "KH_water_err": 1.0078e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "mbIm075",
+      "KH_water": 8.56496e-05,
+      "KH_water_err": 1.24887e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "mbIm100",
+      "KH_water": 0.000108038,
+      "KH_water_err": 1.09952e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "ms50nb50",
+      "KH_water": 0.000287279,
+      "KH_water_err": 0.000412174,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "mslm025",
+      "KH_water": 6.10742e-05,
+      "KH_water_err": 7.10367e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "mslm050",
+      "KH_water": 0.000136983,
+      "KH_water_err": 2.14035e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "nbIm025",
+      "KH_water": 2.70463e-05,
+      "KH_water_err": 1.60703e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "nbIm050",
+      "KH_water": 4.03233e-05,
+      "KH_water_err": 3.24032e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "nbIm075",
+      "KH_water": 0.000138778,
+      "KH_water_err": 2.64174e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "nbIm100",
+      "KH_water": 0.000129688,
+      "KH_water_err": 2.91107e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "sa25nb75",
+      "KH_water": 0.000144507,
+      "KH_water_err": 6.97346e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "sa50nb50",
+      "KH_water": 0.00047793,
+      "KH_water_err": 0.000212078,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm025",
+      "KH_water": 6.65637e-05,
+      "KH_water_err": 1.77709e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm050",
+      "KH_water": 0.000255883,
+      "KH_water_err": 0.000171525,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm0583",
+      "KH_water": 0.000469829,
+      "KH_water_err": 0.000141777,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm0625",
+      "KH_water": 0.000620956,
+      "KH_water_err": 0.000267458,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm0667",
+      "KH_water": 0.000710116,
+      "KH_water_err": 0.000228201,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm075",
+      "KH_water": 0.000357781,
+      "KH_water_err": 2.79375e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm0875",
+      "KH_water": 0.00174706,
+      "KH_water_err": 0.00271465,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm0917",
+      "KH_water": 0.000708039,
+      "KH_water_err": 0.000267831,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm0958",
+      "KH_water": 0.00166126,
+      "KH_water_err": 0.000439881,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    },
+    {
+      "name": "saIm100",
+      "KH_water": 0.00408198,
+      "KH_water_err": 0.00130193,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true
+    }
+  ]
+}
