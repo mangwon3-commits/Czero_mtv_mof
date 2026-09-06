@@ -52,15 +52,40 @@ halt() {
 #
 #   이제 **작업 디렉터리가 실제로 얹힌 파일시스템**을 보고, /mnt/c 는
 #   경고만 남깁니다.
+# [2026-09-07 — 08-19 에 제가 이 가드를 잘못 껐고, 그 대가를 치렀습니다]
+#
+#   08-19 06:47 에 이 가드가 "C: 여유 1938 MB" 로 파이프라인을 세웠습니다.
+#   저는 "계산은 /dev/sdd 에 쓰는데 엉뚱한 디스크를 본다" 며 게스트 쪽만
+#   보도록 고쳤습니다. **그 전제가 틀렸습니다.**
+#
+#       /dev/sdd = C:\Users\mangw\AppData\Local\wsl\{...}\ext4.vhdx
+#
+#   WSL 루트가 바로 **C: 에 있는 sparse VHDX** 입니다. C: 가 차면 그 파일이
+#   커지지 못하고, 게스트 안에서는 이렇게 보입니다.
+#
+#       df /        ->  920G 여유   (거짓말이 아니라 게스트의 시야)
+#       touch 파일  ->  Bus error
+#       grep 실행   ->  Input/output error
+#
+#   09-07 에 C: 여유가 10 MB 까지 떨어져 WSL 파일시스템이 통째로 쓰기
+#   불가가 됐고, claude 원격 제어가 뜨는 족족 즉사했습니다. 원인을 찾느라
+#   플래그·로그인·버전을 한참 뒤졌습니다 — **가드가 처음부터 옳았습니다.**
+#
+#   그래서 둘 다 봅니다. 그리고 **호스트 쪽이 진짜 관문**입니다.
+#   게스트 df 는 호스트가 꽉 차도 여유롭다고 답하므로 단독으로는 못 씁니다.
 disk_guard() {
   local free host
   free=$(df -BM "$P" 2>/dev/null | awk 'NR==2{gsub("M","",$4); print $4}')
   host=$(df -BM /mnt/c 2>/dev/null | awk 'NR==2{gsub("M","",$4); print $4}')
-  [ -n "$host" ] && [ "$host" -lt 5000 ] \
-    && say "  (참고) 윈도우 C: 여유 ${host} MB — 사람이 정리해야 합니다. 계산은 무관"
-  [ -z "$free" ] && return 0
-  say "  작업 디스크 여유 ${free} MB ($P)"
-  [ "$free" -lt 5000 ] && halt "작업 디스크 여유 ${free} MB. 새 계산을 띄우지 않습니다."
+  [ -n "$free" ] && say "  게스트 디스크 여유 ${free} MB ($P)"
+  if [ -n "$host" ]; then
+    say "  윈도우 C: 여유 ${host} MB  <- WSL 가상디스크가 여기 삽니다"
+    [ "$host" -lt 5000 ] && halt "C: 여유 ${host} MB. VHDX 가 못 커져 게스트 쓰기가 깨집니다."
+  else
+    say "  !! /mnt/c 를 못 읽었습니다. 호스트 여유를 확인하지 못한 채 진행합니다."
+  fi
+  [ -n "$free" ] && [ "$free" -lt 5000 ] \
+    && halt "게스트 디스크 여유 ${free} MB. 새 계산을 띄우지 않습니다."
   return 0
 }
 
