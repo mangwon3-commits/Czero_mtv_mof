@@ -31,7 +31,8 @@
 
 
 ## 09-06 23:0x · desktop (Fable 5.1)  [진행중]
-하는 일: **RH90 유지율 3종 (saIm0625·saIm0667·saIm075)** — 랩탑 2파도 몫을 §9 대로 이관. `run_water_v3w.py --only …`, 수정 힘장, 새 계열 `v3w_water/`·`water_runs_v3w/`. 로그 `rh90_desktop.log`
+하는 일: **물 밀도 격자 v3w 3종(base·nbIm025·saIm050, RH90, T-4·T-6)** — 사용자 지시 23:1x 착수, `.claude_work_density_v3w.sh`, 로그 `density_v3w_<조성>.log`, OUT `density_water_v3w/<조성>/`, RUNS `water_runs_density_v3w/`. 코어 3.
+        + **RH90 3종 (saIm0625·saIm0667·saIm075)** — 랩탑 큐와 중복(이관 착오): 씨앗·기기 동시 상이 쌍, 3 % 상한 비교로만(WATER_FIX §7). `run_water_v3w.py --only …`, 수정 힘장, 새 계열 `v3w_water/`·`water_runs_v3w/`. 로그 `rh90_desktop.log`
 건드리는 파일: `21_ZIF69_MTV/v3w_water/water_results_hkhome.json`, `water_runs_v3w/rh90_saIm0*`
 쓰는 코어: 3 (작업당 1 simulate)
 다음: 완주 시각을 COST_REFERENCE 에(데스크탑 RH90 첫 실측) · 유지율 = 새 CO₂ / `RH90_DENOMINATORS` 정본 분모.

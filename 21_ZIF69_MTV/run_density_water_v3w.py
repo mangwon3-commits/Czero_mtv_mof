@@ -6,7 +6,8 @@ run_density_water_v3.py 를 그대로 쓰되 출력·작업 폴더만 새 계열
 import os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import run_density_water_v3 as D
-D.OUT = os.path.join(HERE, 'density_water_v3w')
+# 대상마다 프로세스를 따로 띄우므로(러너는 순차) JSON 충돌을 피해 DW_SUB 로 결과 폴더를 가른다 — 병합은 종합자가.
+D.OUT = os.path.join(HERE, 'density_water_v3w', os.environ.get('DW_SUB', ''))
 D.rw.HERE = D.OUT
 D.rw.RUNS = os.path.join(HERE, 'water_runs_density_v3w')
 os.makedirs(D.OUT, exist_ok=True)
