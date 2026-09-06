@@ -36,6 +36,9 @@ import sys
 from collections import OrderedDict
 
 PATS = OrderedDict([
+    # v3w 는 **v3 앞에** 둡니다 — 뒤에 두면 `v3` 규칙이 먼저 물어 v3w 산출물이
+    # 결함 힘장 계열로 잡힙니다(WATER_FIX_20260906.md §2). 순서가 판정입니다.
+    ('v3w', re.compile(r'(^|[/_])v3w|_v3w([_./]|$)')),
     ('v4', re.compile(r'(^|[/_])v4|_v4([_./]|$)')),
     ('v3', re.compile(r'(^|[/_])v3|_v3([_./]|$)')),
     ('v2', re.compile(r'(^|[/_])v2|_v2([_./]|$)')),
