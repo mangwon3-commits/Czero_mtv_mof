@@ -30,6 +30,13 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-06 23:0x · desktop (Fable 5.1)  [진행중]
+하는 일: **RH90 유지율 3종 (saIm0625·saIm0667·saIm075)** — 랩탑 2파도 몫을 §9 대로 이관. `run_water_v3w.py --only …`, 수정 힘장, 새 계열 `v3w_water/`·`water_runs_v3w/`. 로그 `rh90_desktop.log`
+건드리는 파일: `21_ZIF69_MTV/v3w_water/water_results_hkhome.json`, `water_runs_v3w/rh90_saIm0*`
+쓰는 코어: 3 (작업당 1 simulate)
+다음: 완주 시각을 COST_REFERENCE 에(데스크탑 RH90 첫 실측) · 유지율 = 새 CO₂ / `RH90_DENOMINATORS` 정본 분모.
+완료: T-B2w 39/39 23:00 (`v3w_water_kh/water_kh_ALLw_hkhome.json`), nbIm050e1~5 17:39 (`NB050_VERDICT`).
+
 ## 09-06 10:59 · desktop (Fable 5.1)  [완료 17:39 — 판정 NB050_VERDICT. 17:39 부터 T-B2w 39 Widom 자동 착수(tb2w.log), ≈5~8 h]
 하는 일: **nbIm050e1~e5 체인** (`ASSIGN_NB050_20260906.md`, 사용자 결정 3(가)) — 빌드 → 이완(xtb 3워커) → 판정 → 전하 → 관문(Zeo++ 워커 1) → Widom/GCMC 5종(V3_WORKERS=6). `.claude_work_nb050.sh`, 로그 `nb050_chain.log`
 건드리는 파일: `structures_v2/ZIF69_nbIm050e*`, `relax_v3/`, `charged_v3/`(+charged_v3.json 재기록), `lmp_v3ens_nb050/`, `runs_v3/*nbIm050e*`, `results_v3ens_nb050.json`
