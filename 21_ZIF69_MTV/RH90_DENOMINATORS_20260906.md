@@ -59,3 +59,22 @@
   `base` 와 `mslm050` 은 v2 판이 있을 공산이 큽니다.
 - **분모를 새로 재계산할지** — `WATER_FIX §3` 이 *"RH0 행은 무관(물 분자 0)"* 으로
   이미 정했습니다. 재계산 안 합니다. 이 문서는 **있는 것 중 어느 것인지**만 정합니다.
+
+## 5. laptop2 7종 — 종합자 전수 조회 (09-06 18:1x, v3w RH90 결과 0건 시점) — **등록**
+
+`*water*/water_results*.json` 전수에서 RH=0 행을 조성별로 모았다. 규칙은 §1 그대로(v3 만, 값 같은 중복 무관) + 한 줄 추가:
+**같은 조성의 v3 값이 러너/기기별로 여럿이면, 과거 판정문이 인용한 파일을 정본으로 하고 나머지를 병기한다.**
+
+    조성       정본 분모 CO₂(RH0) mol/kg      파일                                   병기·주의
+    base       **0.5839 ± 0.0093**            v3_water/water_results.json            ⚠ v2 0.6711 존재(+14.9 %) — 쓰지 않음
+    saIm0875   **1.3031 ± 0.0215**            v3_water_grid/water_results_laptop.json 병기 junseok 1.2905±0.0333(0.32σ 일관, COMMS/audit.md:118);
+                                                                                     chunkref 1.2869 는 분할 규약 검증 실행(CHUNKED_PROTOCOL:315) — 분모 아님.
+                                                                                     정본 선택 근거: WATER_DISPLACEMENT_20260905.md:20 이 1.3031 인용
+    saIm0917   **1.3249 ± 0.0258**            v3_water_grid_cliff/water_results.json  단일
+    saIm0958   **1.5205 ± 0.0129**            v3_water_grid_cliff/water_results.json  단일
+    saIm100    **1.5410 ± 0.0225**            v3_water/water_results.json            ⚠ v2 2.3046 존재(+49.6 %) — 쓰지 않음. 유지율 60.6 % 의 분모
+    mslm050    **1.2438 ± 0.0087**            v3_water_mslm050/water_results.json    단일(junseok)
+    sa50nb50   **1.1257 ± 0.0110**            v4_water_mix/water_results.json        'v4' 는 혼합 계열 이름표이지 구조 버전이 아님(MULTILIGAND: v3 구조·동일 조건). 단일
+
+**글롭 함정 재현**: `base`·`saIm100` 은 `v2_water/` 가 정렬상 먼저 잡힌다. v2 를 쓰면 유지율이 각각 13 %·33 % 작게 나와 80/50 문턱 갈래가 바뀐다.
+
