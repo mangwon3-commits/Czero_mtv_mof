@@ -3,7 +3,7 @@ shifted
 # general rule tailcorrections
 no
 # number of defined interactions
-55
+57
 # type interaction, parameters.    IMPORTANT: define shortest matches first, so that more specific ones overwrites these
 O_             lennard-jones   30.1932   3.11815      // UFF Rappe et al. JACS 1992, 114, 10024
 N_             lennard-jones   34.7221   3.26069      // UFF Rappe et al. JACS 1992, 114, 10024
@@ -60,5 +60,7 @@ H_dmf          lennard-jones    8.0       2.2
 Ar             lennard-jones    124.070   3.380
 Kr             lennard-jones    166.4     3.636
 Xe             lennard-jones    221.0     4.1
+Hw             none
+Lw             none
 # general mixing rule for Lennard-Jones
 Lorentz-Berthelot
