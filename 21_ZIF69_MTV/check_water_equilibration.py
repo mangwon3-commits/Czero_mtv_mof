@@ -29,6 +29,14 @@ RUNS = os.path.join(HERE, "water_runs_v3w", "water_runs_chunked")
 NAMES = ["base", "saIm0875", "saIm0917", "saIm0958",
          "saIm100", "mslm050", "sa50nb50"]
 
+# 옛 결함-힘장 실행에도 **같은 코드**를 댈 수 있게 뿌리를 인자로 받는다.
+# 새 잣대를 옛 수에 대려면 잣대가 하나여야 한다 — 베껴 쓰면 그게 깨진다.
+ROOTS = {
+    "v3w":  (os.path.join(HERE, "water_runs_v3w", "water_runs_chunked"), NAMES),
+    "old":  (os.path.join(HERE, "water_runs_chunked"),
+             ["nbIm025", "nbIm075"]),      # 결함 힘장(Hw/Lw 누락) 시절
+}
+
 
 def blocks(path):
     """성분별 5블록 값을 시간순으로 읽는다. mol/kg 줄 바로 뒤의 Block[0..4]."""
@@ -83,8 +91,16 @@ def slope(y):
     return b, (b / se if se > 0 else 0.0), n - 2, my
 
 
-def main():
-    print("=== 물 평형 점검 (블록 시계열, 보고 항목) ===")
+def main(argv=None):
+    global RUNS
+    argv = list(argv if argv is not None else __import__("sys").argv[1:])
+    key = argv[0] if argv else "v3w"
+    if key not in ROOTS:
+        print(f"뿌리 이름은 {list(ROOTS)} 중 하나여야 한다 — 받은 값 {key!r}")
+        return 2
+    RUNS, names = ROOTS[key]
+    print(f"=== 물 평형 점검 (블록 시계열, 보고 항목) — 뿌리 '{key}' ===")
+    print(f"  {RUNS}")
     print("  조각 러너의 연속성 검사는 CO2 만 본다. 물이 오르는 중이면")
     print("  **유지율은 평형값이 아니라 상한**이다.")
     print()
@@ -92,7 +108,7 @@ def main():
           f"{'CO2 기울기/블록':>17}{'t':>7}")
     print("  " + "-" * 64)
     signs = []
-    for n in NAMES:
+    for n in names:
         w, c = series(n)
         sw, sc = slope(w), slope(c)
         if sw is None:
