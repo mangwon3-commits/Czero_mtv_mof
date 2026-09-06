@@ -39,8 +39,30 @@ SIMULATE = shutil.which('simulate') or os.path.expanduser(
 RUNS = os.path.join(HERE, 'tb2w_runs')
 OUT = os.path.join(HERE, 'v3w_water_kh')
 
-FF_PATH = os.path.expanduser(
-    '~/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def')
+def _ff_path():
+    """힘장 실물 경로. **기기마다 다릅니다.**
+
+    ⚠️ 초판은 `~/RASPA/simulations/...` 로 박혀 있었습니다. 이 러너를 다른 기기가
+    import 하면(데스크탑 `run_tb2w.py`) **그 기기의 RASPA 가 다른 곳에 있을 때
+    md5 관문이 파일을 못 찾아 `return 4` 로 착수를 막습니다.** 자동 착수 체인에서는
+    아무도 안 보고 있는 사이에 그렇게 됩니다.
+    RASPA 자신이 쓰는 `$RASPA_DIR` 를 먼저 봅니다.
+    """
+    cands = []
+    if os.environ.get('RASPA_DIR'):
+        cands.append(os.path.join(os.environ['RASPA_DIR'], 'share', 'raspa',
+                                  'forcefield', 'UFF_MOF',
+                                  'force_field_mixing_rules.def'))
+    cands.append(os.path.expanduser(
+        '~/RASPA/simulations/share/raspa/forcefield/UFF_MOF/'
+        'force_field_mixing_rules.def'))
+    for c in cands:
+        if os.path.exists(c):
+            return c
+    return cands[0]
+
+
+FF_PATH = _ff_path()
 FF_MD5 = '8e8ec933f9013c7e932da04dc256efd3'      # WATER_FIX §1 ①
 FF_TAG = 'UFF_MOF+HwLw_none_20260906'
 CONDA_PY = '~/miniconda3/envs/czeromof/bin/python'
