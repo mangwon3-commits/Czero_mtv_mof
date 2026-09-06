@@ -10,6 +10,9 @@ import run_density_water_v3 as D
 D.OUT = os.path.join(HERE, 'density_water_v3w', os.environ.get('DW_SUB', ''))
 D.rw.HERE = D.OUT
 D.rw.RUNS = os.path.join(HERE, 'water_runs_density_v3w')
+# 확장 덱(T4_PRIME §7 등록, 09-07 06:5x): DW_EXTRA="saIm100,sa50nb50,nbIm075" 처럼 주면 등록 대상에 더한다.
+if os.environ.get('DW_EXTRA'):
+    D.TARGETS = list(D.TARGETS) + [t for t in os.environ['DW_EXTRA'].split(',') if t and t not in D.TARGETS]
 os.makedirs(D.OUT, exist_ok=True)
 if __name__ == '__main__':
     sys.exit(D.main())
