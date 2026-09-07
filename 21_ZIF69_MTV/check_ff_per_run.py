@@ -19,11 +19,28 @@ runs 뿌리가 아니라 **실행 폴더마다** 부릅니다.
 
     python check_ff_per_run.py water_runs_density_v3w water_runs_v3w
 """
+import hashlib
 import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from run_water_v3w import read_ff_header          # noqa: E402  (자를 빌려 옵니다)
+
+# ⚠️ **이 파일을 러너 안에서 import 하지 마십시오. 명령줄로만 부르십시오.**
+#
+#   `run_water_v3w` 와 `run_density_water_v3` 는 **둘 다 `import run_water as rw`**
+#   를 하고 **모듈 전역** `rw.HERE` · `rw.RUNS` · `rw.CHARGED` 를 자기 계열로
+#   덮어씁니다. 그래서 밀도 계열 프로세스가 `run_water_v3w` 를 한 번 import 하면
+#   그 순간 **밀도 실행이 물 계열 폴더(`v3w_water/`·`water_runs_v3w/`)로 샙니다** —
+#   오류 없이, 조용히. (09-07 에 밀도 러너에 관문을 넣으려다 이 지뢰를 밟을 뻔했습니다.)
+#
+#   여기서는 import 전후로 그 전역을 **떠 놓고 되돌립니다.** 이 파일 자체는
+#   안전하지만, 러너 안에서 부르는 것은 여전히 권하지 않습니다.
+import run_water as _rw                            # noqa: E402
+_KEYS = ('HERE', 'RUNS', 'CHARGED', 'WATER_DEF', 'RH_LIST', 'MAX_WORKERS', 'TARGETS')
+_SAVED = {k: getattr(_rw, k, None) for k in _KEYS}
+from run_water_v3w import read_ff_header, FF_MD5, FF_PATH   # noqa: E402  (자를 빌려 옵니다)
+for _k, _v in _SAVED.items():                      # 훔쳐 온 자만 갖고 전역은 되돌립니다
+    setattr(_rw, _k, _v)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PAIRS = ('HwHw', 'OwHw', 'OwLw', 'LwLw')
@@ -53,8 +70,25 @@ def finished(d):
     return n
 
 
+def md5_gate():
+    """**파일 관문** — 공용 힘장 파일이 그 파일인가 (착수 **전**에 답합니다).
+
+    머리말 관문과 **다른 것을 잡습니다**(`FF_GATES_20260907.md`):
+        파일 관문    파일이 맞는가         <- 공용 힘장이 바뀌었나
+        머리말 관문  RASPA 가 그걸 읽었나  <- 지역 사본·경로가 가로챘나 (09-05 사례)
+    """
+    if not os.path.exists(FF_PATH):
+        print(f'  [파일 관문] **못 찾음** {FF_PATH}')
+        return False
+    m = hashlib.md5(open(FF_PATH, 'rb').read()).hexdigest()
+    ok = (m == FF_MD5)
+    print(f'  [파일 관문] {FF_PATH}\n              md5 {m}  '
+          f'({"**일치**" if ok else f"**불일치 — 기대 {FF_MD5}**"})')
+    return ok
+
+
 def main(roots):
-    rc = 0
+    rc = 0 if md5_gate() else 1
     for r in roots:
         p = r if os.path.isabs(r) else os.path.join(HERE, r)
         print(f'\n=== {os.path.relpath(p, HERE)}')
