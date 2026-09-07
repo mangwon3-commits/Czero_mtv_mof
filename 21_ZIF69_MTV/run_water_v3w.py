@@ -194,6 +194,25 @@ def stamp():
         if not ok:
             print('  !! 통과 못 한 행: '
                   + str([r['name'] for r in rows if not r['ff_check']['ok']]))
+        # [09-08] **기기별 태그 사본** — `run_water.py:359` 의 규약을 v3w 계열도 지킵니다. 공유 `water_results.json`
+        # 은 두 기기가 같은 경로에 쓰다 09-08 에 랩탑 11행이 데스크탑 3행에 덮일 뻔했습니다(`ecc6858`). 이 실행이 만든
+        # 행에 host 를 찍고, `water_results_<host>.json` 에 (name, RH) 기준으로 합쳐 둡니다 — 그것이 진짜 기록입니다.
+        host = socket.gethostname().lower()
+        mine = {(n, rh) for n, _ in rw.TARGETS for rh in rw.RH_LIST}
+        for r in rows:
+            if (r['name'], r['RH']) in mine:
+                r['host'] = host
+        tp = os.path.join(rw.HERE, f'water_results_{host}.json')
+        tagged = {}
+        if os.path.exists(tp):
+            for r in json.load(open(tp, encoding='utf-8')):
+                tagged[(r['name'], r['RH'])] = r
+        for r in rows:
+            if r.get('host') == host:
+                tagged[(r['name'], r['RH'])] = r
+        json.dump(sorted(tagged.values(), key=lambda r: (r['name'], r['RH'])),
+                  open(tp, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
+        print(f'  기기별 태그 사본 {os.path.basename(tp)}: {len(tagged)}행')
         json.dump(rows, open(p, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
         json.dump({'forcefield': FF_TAG, 'ff_md5': FF_MD5, 'ff_path': ff_gate_path,
                    'ff_all_rows_ok': ok, 'series': 'v3w', 'host': socket.gethostname().lower(),
