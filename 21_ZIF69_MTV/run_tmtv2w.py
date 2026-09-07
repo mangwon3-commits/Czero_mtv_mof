@@ -19,14 +19,17 @@
     CHARGED   charged_v3/           RH    [0.90, 0.0]   <- 비싼 것 먼저(§5 LPT)
     TARGETS   sa50nb50e1~e5 (구조는 이미 있습니다 — 빌드 0)
 
-⚠️ **RH0 에는 물 분자가 없어 `Hw`·`Lw` 쌍이 출력 머리말에 아예 안 나옵니다.**
-그래서 머리말 관문을 그대로 걸면 **멀쩡한 건조 자료를 실패로 찍습니다.**
-`ff_of()` 가 RH0 을 `해당 없음`으로 가릅니다 — CLAUDE.md §0 의 "검사기 오탐" 그대로입니다.
-RH0 은 물 힘장 수정과 무관하고(계에 물이 0), CLAUDE.md 도 **RH>0** 만 결함판으로 지정합니다.
+⚠️ **머리말 관문은 RH0 에도 그대로 겁니다** — 초판이 *"건조에는 물이 없으니 `Hw` 쌍도
+안 찍힐 것"* 이라고 **재보지 않고** 건너뛰게 해 뒀습니다. 틀렸습니다(`ff_of()` 의 🔴 참조).
+RASPA 는 성분이 계에 몇 개 있든 정의된 쌍 표를 전부 인쇄합니다. **관문은 걸리는 쪽으로 틀립니다.**
+
+RH0 자체는 물 힘장 수정과 무관합니다(계에 물 0, CLAUDE.md 도 **RH>0** 만 결함판으로 지정).
+그래도 관문을 거는 이유는 **결함판 파일로 돈 건조 실행을 조용히 통과시키지 않기 위해서**입니다.
 
 사용:
-    python run_tmtv2w.py               5 실현 x RH{90,0} = 10 건, 워커 4
+    python run_tmtv2w.py               5 실현 x RH{90,0} = 10 건, 워커 5
     python run_tmtv2w.py --gate-only   관문만 보고 **아무것도 안 돌립니다**
+    python run_tmtv2w.py --stamp-only  결과 JSON 에 힘장·씨앗만 다시 찍습니다
 """
 import json, os, sys
 
@@ -49,7 +52,8 @@ def wire():
     rw.CHARGED = os.path.join(HERE, 'charged_v3')
     rw.WATER_DEF = os.path.join(HERE, '..', '19_WaterCompetition', 'water.def')
     rw.RH_LIST = [0.90, 0.0]    # 비싼 것 먼저 — jobs 가 이 순서로 깔립니다(§5 LPT)
-    rw.MAX_WORKERS = 4          # 배정분(ASSIGN_20260907 §F-1). 8 로 올리지 마십시오
+    rw.MAX_WORKERS = 5          # 09-07 16:0x 4->5. 긴 작업(RH90) 5개가 워커 4 에서는 한 워커에 둘씩 겹쳐
+    #                           만기 35.0 h, 워커 5 면 19.3 h (등록값 17.5 h+RH0 1.8 h). 5+연장예비 2 = 7 <= 8 (§5)
     rw.TARGETS = list(TARGETS)
 
 
