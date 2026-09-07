@@ -31,7 +31,7 @@ RH0 자체는 물 힘장 수정과 무관합니다(계에 물 0, CLAUDE.md 도 *
     python run_tmtv2w.py --gate-only   관문만 보고 **아무것도 안 돌립니다**
     python run_tmtv2w.py --stamp-only  결과 JSON 에 힘장·씨앗만 다시 찍습니다
 """
-import json, os, sys
+import json, os, socket, sys
 
 import run_water as rw
 
@@ -95,10 +95,25 @@ def stamp():
             r['raspa_seed'] = sd
             nseed += 1
     json.dump(rows, open(p, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+
+    # **기기별 태그 사본** — `run_water.py:359` 의 규약(태그 사본이 진짜 기록)을
+    # 이 계열에서도 지킵니다. 09-08 에 `v3w_water/water_results.json` 을 두 기기가
+    # 같이 써서 8행이 지워질 뻔했습니다(git 이 막아 잡힘). 이 계열은 폴더가
+    # 갈라져 있어 지금은 안 겹치지만, 겹치기 시작한 뒤에 넣으면 늦습니다.
+    host = socket.gethostname().lower()
+    tagged = os.path.join(rw.HERE, f'water_results_{host}.json')
+    prior = json.load(open(tagged, encoding='utf-8')) if os.path.exists(tagged) else []
+    merged = {(r['name'], r['RH']): r for r in prior}
+    for r in rows:
+        merged[(r['name'], r['RH'])] = dict(r, host=host)
+    json.dump(sorted(merged.values(), key=lambda r: (r['name'], r['RH'])),
+              open(tagged, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    print(f'  기기 태그 사본 {os.path.basename(tagged)} — {len(merged)}행')
+
     side = os.path.join(rw.HERE, 'ff_provenance.json')
     json.dump({'forcefield': FF_TAG, 'md5': FF_MD5, 'path': _ffp(),
                'test': 'T-MTV-2w', 'registered': 'MAGI-002 §6-9-1',
-               'rows': len(rows), 'ff_ok_rows': nff},
+               'host': host, 'rows': len(rows), 'ff_ok_rows': nff},
               open(side, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(f'  난수 씨앗 회수 {nseed}/{len(rows)}행 · 힘장 확인 **{nff}/{len(rows)}행 통과**')
     return 0
