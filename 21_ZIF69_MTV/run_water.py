@@ -264,7 +264,16 @@ ExternalPressure              {p_tot:.4f}
     # 완주한 뒤에만 지운다. **CrashRestart 는 완주 전에 지우면 안 된다** —
     # 그게 재부팅을 견디는 유일한 수단이다. 다만 완주 뒤에는 반드시 지운다.
     # 남겨 두면 다음 실행이 끝난 계산을 '이어받으려' 할 수 있다.
-    for sub in ('VTK', 'Movies', 'Restart', 'CrashRestart'):
+    #
+    # [2026-09-07] **`Restart` 는 이제 남깁니다.** 이어받기 위험은 `CrashRestart`
+    # 에서 오고(`ContinueAfterCrash` 가 그것을 읽습니다), `Restart` 는 입력이
+    # `RestartFile no` 인 한 안 읽힙니다. 그런데 `Restart` 는 **사슬을 이어
+    # 붙이는 유일한 수단**입니다 — 09-07 사용자 승인(생산 연장, (가))이
+    # "재실행이 아니라 사슬 끝에서 계속" 인데, 이 줄이 그 자료를 완주 때마다
+    # 지우고 있었습니다. 랩탑 단일 9건이 그렇게 **연장 불가**가 됐습니다
+    # (`EXTEND_APPROVED_20260907.md`, `RESTART_LOSS_20260907.md`).
+    # 지우는 것은 그대로 둘 셋뿐입니다.
+    for sub in ('VTK', 'Movies', 'CrashRestart'):
         shutil.rmtree(os.path.join(d, sub), ignore_errors=True)
     return name, rh, res, 'ok'
 
