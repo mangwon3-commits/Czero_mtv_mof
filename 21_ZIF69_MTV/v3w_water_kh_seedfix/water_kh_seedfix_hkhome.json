@@ -1,0 +1,107 @@
+{
+  "tag": "seedfix",
+  "forcefield": "UFF_MOF+HwLw_none_20260906",
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "note": "ASSIGN_20260907.md — 씨앗 충돌 4건 재실행. 원본 water_kh_ALLw_hkhome.json 은 건드리지 않았습니다. 병합은 사람이 봅니다. 새 문턱 없음.",
+  "replaces_seeds": {
+    "brbIm050": 1788683950,
+    "brbIm100": 1788683950,
+    "brbIm075": 1788683951,
+    "cf3Im025": 1788683951
+  },
+  "rows": [
+    {
+      "name": "brbIm050",
+      "KH_water": 7.6411e-05,
+      "KH_water_err": 1.11529e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788750352
+    },
+    {
+      "name": "brbIm075",
+      "KH_water": 5.13245e-05,
+      "KH_water_err": 4.45359e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788753208
+    },
+    {
+      "name": "brbIm100",
+      "KH_water": 7.42824e-05,
+      "KH_water_err": 4.72785e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788750354
+    },
+    {
+      "name": "cf3Im025",
+      "KH_water": 4.22872e-05,
+      "KH_water_err": 2.64824e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788753219
+    }
+  ]
+}
