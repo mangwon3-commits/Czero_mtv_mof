@@ -177,7 +177,10 @@ def report(names):
 def gates(names):
     """돌리기 전에 보는 것들. 하나라도 걸리면 안 돈다."""
     print("=== 관문 ===", flush=True)
-    if v3w.ff_gate() is None:
+    # [09-07] `v3w.ff_gate()` 는 `e4fa98b` 에서 사라졌습니다(자는 `ff_gate.py` 한 자리).
+    # 공개 이름을 지울 때 호출자를 grep 하지 않은 누락 — 오늘 일곱째. 파일 관문을 ff_gate 에서.
+    from ff_gate import md5_gate
+    if not md5_gate()[0]:
         print("  !! 힘장 관문 실패 — 사슬 중간에 힘장이 바뀌면 조용히 망가진다.")
         return False
     print("  힘장 md5 ✓")

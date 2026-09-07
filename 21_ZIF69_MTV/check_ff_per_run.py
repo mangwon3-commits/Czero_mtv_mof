@@ -14,8 +14,8 @@ T-4′ 판정이 그 격자 위에 서 있는데 근거는 "런처가 맞는 RAS
 있었으므로(`run_water_v3w.read_ff_header` 독스트링) 이것으로는 부족합니다.
 
 자를 두 벌 두지 않습니다(`COMMS.md` ⑥ (가)) — 판정 함수는 만들지 않고
-`run_water_v3w.read_ff_header` 를 **그대로 부릅니다.** 다른 것은 하나뿐입니다:
-runs 뿌리가 아니라 **실행 폴더마다** 부릅니다.
+`ff_gate.read_ff_header` 를 **그대로 부릅니다**(09-07 오후부터 자는 `ff_gate.py` 한 자리).
+다른 것은 하나뿐입니다: runs 뿌리가 아니라 **실행 폴더마다** 부릅니다.
 
     python check_ff_per_run.py water_runs_density_v3w water_runs_v3w
 """
