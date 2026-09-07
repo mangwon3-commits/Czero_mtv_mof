@@ -21,37 +21,17 @@
     python run_water_v3w.py                 등록된 11종 전부
     python run_water_v3w.py --only saIm050  검증용 1건 (§4 가 시키는 첫 건)
 """
-import hashlib, json, os, re, socket, sys
+import json, os, re, socket, sys
 
 import run_water as rw
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-def _ff_path():
-    """힘장 실물 경로. **기기마다 다릅니다.**
-
-    ⚠️ 초판은 `~/RASPA/simulations/...` 로 박혀 있었습니다. 이 러너를 다른 기기가
-    import 하면(데스크탑 `run_tb2w.py`) **그 기기의 RASPA 가 다른 곳에 있을 때
-    md5 관문이 파일을 못 찾아 `return 4` 로 착수를 막습니다.** 자동 착수 체인에서는
-    아무도 안 보고 있는 사이에 그렇게 됩니다.
-    RASPA 자신이 쓰는 `$RASPA_DIR` 를 먼저 봅니다.
-    """
-    cands = []
-    if os.environ.get('RASPA_DIR'):
-        cands.append(os.path.join(os.environ['RASPA_DIR'], 'share', 'raspa',
-                                  'forcefield', 'UFF_MOF',
-                                  'force_field_mixing_rules.def'))
-    cands.append(os.path.expanduser(
-        '~/RASPA/simulations/share/raspa/forcefield/UFF_MOF/'
-        'force_field_mixing_rules.def'))
-    for c in cands:
-        if os.path.exists(c):
-            return c
-    return cands[0]
-
-
-FF_PATH = _ff_path()
-FF_MD5 = '8e8ec933f9013c7e932da04dc256efd3'      # WATER_FIX_20260906.md §1 ①
-FF_TAG = 'UFF_MOF+HwLw_none_20260906'
+# 힘장 관문은 **한 자리**에서만 옵니다 (`ff_gate.py`, 09-07 신설).
+# 상수를 러너마다 적으면 힘장을 또 고칠 때 한 곳만 고치는 사고가 납니다.
+# `ff_gate` 는 프로젝트 안의 무엇도 import 하지 않으므로 여기서 불러도 안전합니다.
+from ff_gate import ff_path as _ffp
+from ff_gate import (FF_MD5, FF_TAG, OWOW_EPS, ZERO_PAIRS,
+                     md5_gate, read_ff_header)
 
 # --- 계열 배선 --------------------------------------------------------------
 # ⚠️ **import 시점에 하지 않습니다.** `run_water` 는 여러 러너가 공유하는 모듈이고
@@ -91,60 +71,30 @@ def wire():
     rw.TARGETS = list(TARGETS)
 
 
-def ff_gate():
-    """착수 전 관문 — 실물 힘장이 등록된 판인지."""
-    if not os.path.exists(FF_PATH):
-        print(f'!! 힘장 파일 없음: {FF_PATH}'); return None
-    m = hashlib.md5(open(FF_PATH, 'rb').read()).hexdigest()
-    print(f'  힘장 {FF_PATH}\n       md5 {m}  ({"**일치**" if m == FF_MD5 else "**불일치 — 중단**"})')
-    return m if m == FF_MD5 else None
-
-
-def read_ff_header(rundir):
-    """완주 후 관문 — 출력 머리말에서 실제로 쓰인 쌍을 읽습니다.
-
-    ⚠️ 러너 설정이 아니라 **RASPA 가 인쇄한 것**을 봅니다. 09-05 에 지역 힘장이
-    안 먹은 채로 완주한 사례가 있었고(`widom_control_hwnone_hkhome.json` 의 note),
-    설정만 보면 그것을 못 잡습니다.
-    """
-    # ⚠️ RASPA 는 쌍 이름을 **오른쪽 정렬로 채웁니다** — 실제 줄은
-    #     `     Hw -      Hw [ZERO_POTENTIAL]`
-    # 이라 `'Hw - Hw' in ln` 은 **절대 안 맞습니다**(09-06 실측). 정규식으로 봅니다.
-    #
-    # ⚠️ 그리고 `22.14170` 을 grep 하는 방식은 **쓰면 안 됩니다.** 고친 판의
-    #    출력에도 그 수가 **12,246번** 나옵니다 — 골격 수소 `H_` 의 정당한 UFF
-    #    값이기 때문입니다. 결함은 그 수의 존재가 아니라 **`Hw` 쌍이 그 값을
-    #    갖는 것**이었습니다. 반드시 **쌍 이름으로** 보십시오.
-    RX = {'HwHw': re.compile(r'^\s*Hw\s+-\s+Hw\s'),
-          'OwHw': re.compile(r'^\s*Ow\s+-\s+Hw\s'),
-          'OwLw': re.compile(r'^\s*Ow\s+-\s+Lw\s'),
-          'LwLw': re.compile(r'^\s*Lw\s+-\s+Lw\s'),
-          'OwOw': re.compile(r'^\s*Ow\s+-\s+Ow\s')}
-    out = {}
-    for root, _, files in os.walk(rundir):
-        for fn in sorted(files):
-            if not fn.endswith('.data'):
-                continue
-            with open(os.path.join(root, fn), encoding='utf-8', errors='ignore') as f:
-                for ln in f:
-                    for k, rx in RX.items():
-                        if k not in out and rx.match(ln):
-                            if k == 'OwOw':
-                                g = re.findall(r'[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?', ln)
-                                out['OwOw'] = ln.strip()[:100]
-                                out['OwOw_eps'] = float(g[1]) if len(g) > 1 else None
-                            else:
-                                out[k] = ('ZERO_POTENTIAL' if 'ZERO_POTENTIAL' in ln
-                                          else ln.strip()[:100])
-                    if len(set(RX) & set(out)) == len(RX):
-                        return out
-            if len(set(RX) & set(out)) == len(RX):
-                return out
-    return out
-
-
 def main():
     wire()                      # 배선은 여기서만 (import 부작용 없음)
+    if '--gate-only' in sys.argv:
+        # 관문만 보고 **아무것도 안 돌립니다.**
+        # 09-07: 관문 출력을 보려고 `--only saIm050` 로 러너를 불렀다가
+        # `rw.main()` 이 그대로 돌았습니다. 캐시 경로라 계산은 안 떴지만
+        # **살아 있는 계열 폴더에 1행짜리 결과 JSON 을 썼습니다.**
+        # 관문을 보려고 러너를 부르는 일이 없도록 길을 따로 냅니다.
+        ok, _ = md5_gate()
+        bad = []
+        for n, _d in TARGETS:
+            d = os.path.join(rw.RUNS, f'rh{int(rw.RH_LIST[0] * 100):02d}_{n}')
+            if not os.path.isdir(d):
+                continue
+            c = read_ff_header(d)
+            good = (all(c.get(k) == 'ZERO_POTENTIAL' for k in ZERO_PAIRS)
+                    and c.get('OwOw_eps') is not None
+                    and abs(c['OwOw_eps'] - OWOW_EPS) < 1e-3)
+            print(f'  [머리말 관문] {n:<14} {"통과" if good else "**실패**"}')
+            if not good:
+                bad.append(n)
+        print(f'  -> 파일 관문 {"통과" if ok else "**실패**"} · 머리말 실패 {len(bad)}건'
+              + (f' {bad}' if bad else ''))
+        return 0 if (ok and not bad) else 1
     if '--stamp-only' in sys.argv:
         # 도는 프로세스는 import 시점의 함수를 쥐고 있어 이 파일을 고쳐도 안 바뀝니다
         # (CLAUDE.md §6). 그 실행이 남긴 잘못된 ff_check 를 **다시 찍기** 위한 길입니다.
@@ -161,7 +111,7 @@ def main():
     print(f'  HERE {rw.HERE}\n  RUNS {rw.RUNS}\n  CHARGED {rw.CHARGED}', flush=True)
     print(f'  RH {rw.RH_LIST} · 워커 {rw.MAX_WORKERS} · 대상 {len(rw.TARGETS)}종'
           f'{"  [--only]" if only else ""}: ' + ', '.join(n for n, _ in rw.TARGETS), flush=True)
-    if ff_gate() is None:
+    if not md5_gate()[0]:
         return 1
     for d in (rw.HERE, rw.RUNS):
         os.makedirs(d, exist_ok=True)
@@ -213,12 +163,12 @@ def stamp():
     def ff_of(name, rh):
         d = os.path.join(rw.RUNS, f'rh{int(rh * 100):02d}_{name}')
         c = read_ff_header(d)
-        c['ok'] = (all(c.get(k) == 'ZERO_POTENTIAL'
-                       for k in ('HwHw', 'OwHw', 'OwLw', 'LwLw'))
+        c['ok'] = (all(c.get(k) == 'ZERO_POTENTIAL' for k in ZERO_PAIRS)
                    and c.get('OwOw_eps') is not None
-                   and abs(c['OwOw_eps'] - 89.633) < 1e-3)
+                   and abs(c['OwOw_eps'] - OWOW_EPS) < 1e-3)
         return c
 
+    ff_gate_path = _ffp()
     p = os.path.join(rw.HERE, 'water_results.json')
     ok = False                    # 결과 파일이 없으면 통과가 아닙니다(초판은 여기서 터졌습니다)
     if not os.path.exists(p):
@@ -245,7 +195,7 @@ def stamp():
             print('  !! 통과 못 한 행: '
                   + str([r['name'] for r in rows if not r['ff_check']['ok']]))
         json.dump(rows, open(p, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
-        json.dump({'forcefield': FF_TAG, 'ff_md5': FF_MD5, 'ff_path': FF_PATH,
+        json.dump({'forcefield': FF_TAG, 'ff_md5': FF_MD5, 'ff_path': ff_gate_path,
                    'ff_all_rows_ok': ok, 'series': 'v3w', 'host': socket.gethostname().lower(),
                    'RH_LIST': rw.RH_LIST, 'targets': [n for n, _ in rw.TARGETS],
                    'note': '수정 힘장(Hw none/Lw none) 계열. v3 결함판과 섞지 말 것.'},
