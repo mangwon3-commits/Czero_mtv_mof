@@ -67,9 +67,25 @@ INDEX = os.path.join(HERE, "rebuild_index.json")
 
 COMP = {"saIm_aryl": 0.5, "nbIm_aryl": 0.5}     # build_v4mix.py:29 와 동일
 WANT = 24                   # 24자리 전부 치환 (SO3H 12 + NO2 12)
-N_TARGET = 5
+N_TARGET = int(os.environ.get("ENS_N_TARGET", 5))   # 09-07: 8 로 늘려 e6~e8 (§G-4 (ㄴ) 대비)
 PROD_SEED = 2               # 생산 sa50nb50 이 쓴 시드. 중복을 피한다
 MAX_SEED = 80               # 다항 추출이라 정확히 12/12 가 드물다
+
+# 🔴 **이미 채택된 실현의 시드도 제외해야 합니다** (09-07 랩탑, 착수 전 발견).
+# `PROD_SEED` 하나만 빼는 것으로는 부족합니다 — 태그가 `e{len(taken)+1}` 로 **자리 순서**에서
+# 나오는데, 재실행 때 기존 e1~e5 파일이 앞쪽 시드(0,1,3,4,5)를 소진해 버립니다. 그래서
+# `N_TARGET` 을 8 로 올리면 **시드 16 이 e6 으로 다시 뽑히고, 그것은 e1 과 같은 배열**입니다.
+# 같은 구조가 두 이름으로 앙상블에 들어가면 **실현 SD 가 가짜로 줄어듭니다** — 이 계산은
+# 바로 그 SD 를 재려는 것이므로 치명적입니다. 채택된 시드는 `rebuild_index.json` 에 있습니다.
+def _used_seeds():
+    try:
+        d = json.load(open(INDEX, encoding="utf-8"))
+    except Exception:                                            # noqa: BLE001
+        return set()
+    rows = d if isinstance(d, list) else d.get("rows", d.get("entries", []))
+    return {r["seed"] for r in rows
+            if isinstance(r, dict) and str(r.get("tag", "")).startswith("sa50nb50e")
+            and r.get("seed") is not None}
 
 # charged_v3/sa50nb50_DDEC6.cif 실측 (08-26). **Cl 키가 없습니다.**
 EXPECT_EL = {"C": 240, "H": 156, "N": 132, "O": 108, "S": 12, "Zn": 24}
@@ -139,6 +155,9 @@ def main():
         return 0
 
     os.makedirs(OUT, exist_ok=True)
+    used = _used_seeds()
+    print(f"  이미 채택된 시드 {sorted(used)} + 생산 {PROD_SEED} 를 제외합니다 "
+          f"(같은 배열이 다른 이름으로 들어가면 실현 SD 가 가짜로 줄어듭니다)")
     rows, taken, tried = [], [], 0
     for seed in range(MAX_SEED):
         if len(taken) >= N_TARGET:
@@ -146,6 +165,12 @@ def main():
         if seed == PROD_SEED:
             continue                    # 생산 실현과 같은 배열을 다시 만들지 않는다
         tag = f"sa50nb50e{len(taken) + 1}"
+        # 기존 실현은 파일 존재로 계수되고 그 시드는 아래 `used` 로 막힙니다.
+        # 둘을 같이 걸어야 합니다 — 파일만 보면 시드가 재사용되고, 시드만 보면
+        # 기존 실현이 계수되지 않아 태그가 밀립니다.
+        if seed in used and not os.path.exists(
+                os.path.join(OUT, f"ZIF69_{tag}.cif")):
+            continue
         out_cif = os.path.join(OUT, f"ZIF69_{tag}.cif")
         if os.path.exists(out_cif) and not a.force:
             if _validated(out_cif):

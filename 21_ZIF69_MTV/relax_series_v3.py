@@ -127,7 +127,8 @@ def main():
     os.makedirs(OUT, exist_ok=True)
     cifs = sorted(f for f in os.listdir(SRC) if f.endswith('.cif'))
     cifs = [os.path.join(SRC, f) for f in cifs]
-    print(f'  구조 {len(cifs)}종, 워커 3 x 스레드 2, nice 19', flush=True)
+    nw = int(os.environ.get('RELAX_WORKERS', 3))
+    print(f'  구조 {len(cifs)}종, 워커 {nw} x 스레드 2, nice 19', flush=True)
     print(f'  기준: C-H 1.05~1.12 / C-C폭 <0.08 / Zn-N 1.90~2.10 / '
           f'최소거리 >0.9 / 셀 고정\n', flush=True)
 
@@ -143,7 +144,9 @@ def main():
     #
     #   chunksize=1 로 하나씩 나눠 주면 노는 워커가 바로 다음 것을 집습니다.
     #   결과 순서가 섞이지만 이름으로 판정하므로 상관없습니다.
-    with mp.Pool(3) as pool:
+    # 09-07: 워커 수를 환경변수로. 기본 3 은 그대로이나, 이 기기에서 RASPA 가 돌 때
+    #        3 x 2 스레드 = 6 이면 8코어를 넘습니다(§5). e6~e8 이완은 RELAX_WORKERS=2.
+    with mp.Pool(int(os.environ.get('RELAX_WORKERS', 3))) as pool:
         rows = list(pool.imap_unordered(one, cifs, chunksize=1))
 
     bad = [r['name'] for r in rows if not r.get('skipped') and not r.get('pass')]
