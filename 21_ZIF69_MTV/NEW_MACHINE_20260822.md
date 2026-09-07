@@ -231,10 +231,10 @@ lscpu | grep -E "Model name|^CPU\(s\)|Thread"
 
 | 도구 | 데스크탑 | 랩탑 | laptop2 | 비고 |
 |---|---|---|---|---|
-| RASPA `simulate` | ✓ | ✓ | ✓ | 세 기기 md5 일치(수정 힘장) |
-| Zeo++ `network` | ✓ | ✓ | ✓ | 9.5 GB/건, RASPA 와 동시 금지 |
+| RASPA `simulate` | ✓ | ✓ `envs/czeromof/bin/simulate` | ✓ | 세 기기 md5 일치(수정 힘장) |
+| Zeo++ `network` | ✓ | ✓ `envs/czeromof/bin/network` | ✓ | 9.5 GB/건, RASPA 와 동시 금지 |
 | xtb (GFN-FF 이완) | ✓ `envs/spectra/bin/xtb` (`XTB_BIN` 기본값) | **✗ 없음** (`find /` 확인 09-07) | ✓ (e 계열 이완 실적) | 없는 기기에서 `relax_series_v3.py` 는 rc 127 을 "기준 미달" 로 찍음 — 결과 파일 백업 뒤 돌릴 것 |
-| PACMAN (DDEC6 전하) | ✓ | ? | ✓ | 미확인은 ? |
+| PACMAN (DDEC6 전하) | ✓ (CPU) | ✓ `envs/coremof_tools` PACMANCharge (**cuda**) | ✓ | 같은 모델이라 예측 동일하나, **한 앙상블의 전하는 한 기기에서** 매기고 산출물에 기기를 적음 |
 
 ## 결과를 읽는 규율
 
