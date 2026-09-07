@@ -139,7 +139,18 @@ def main():
         return 1
     for d in (rw.HERE, rw.RUNS):
         os.makedirs(d, exist_ok=True)
-    rc = rw.main()
+
+    # ⚠️ **RH 를 한 번에 주면 안 됩니다.** `run_water.main()` 은 작업을
+    #   `[(n, rh) for n, _ in TARGETS for rh in RH_LIST]` 로 깔아 **구조별로** 묶습니다.
+    #   그러면 RH90 5 건이 동시에 못 뜨고 (e1-90, e1-0, e2-90, e2-0, e3-90) 로 시작해
+    #   마지막 RH90 이 t=5.4 h 에나 출발합니다 — 만기 **24.7 h**.
+    #   단계를 갈라 **RH90 다섯을 먼저 동시에** 띄우면 17.5 + 1.8 = **19.3 h**.
+    #   (LPT 는 "비싼 것 먼저" 인데, 그 순서는 RH_LIST 가 아니라 **jobs 배열**이 정합니다.)
+    rc = 0
+    for phase in ([0.90], [0.0]):
+        rw.RH_LIST = phase
+        print(f'\n=== 단계 RH {phase[0]:.2f} — {len(rw.TARGETS)}건 동시 ===', flush=True)
+        rc |= rw.main()          # 이어받기가 앞 단계 완주분을 cached 로 건너뜁니다
     return 0 if (stamp() == 0 and rc == 0) else 1
 
 
