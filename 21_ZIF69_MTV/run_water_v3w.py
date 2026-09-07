@@ -53,17 +53,19 @@ FF_PATH = _ff_path()
 FF_MD5 = '8e8ec933f9013c7e932da04dc256efd3'      # WATER_FIX_20260906.md §1 ①
 FF_TAG = 'UFF_MOF+HwLw_none_20260906'
 
-# --- 경로 재지정 (module 전역이라 함수 안에서 이 값을 읽습니다) --------------
-# [09-07] 접미사로 계열을 가릅니다. 기본값 '' 이면 원 계열 그대로입니다.
+# --- 계열 배선 --------------------------------------------------------------
+# ⚠️ **import 시점에 하지 않습니다.** `run_water` 는 여러 러너가 공유하는 모듈이고
+# 그 전역(`HERE`·`RUNS`·`CHARGED`)을 여기서 덮으면, **이 파일을 import 한 것만으로**
+# 남의 프로세스 산출물이 제 계열 폴더로 샙니다 — 오류 없이.
+# 09-07 데스크탑 실측: 밀도 러너가 `run_water_v3w` 를 import 하면 그 순간
+# `.../water_runs_density_v3` 가 `.../water_runs_v3w` 로 바뀝니다.
+# 그래서 배선은 **`main()` 에서만** 합니다. `read_ff_header` 같은 함수를 밖에서
+# 가져다 써도 안전해집니다(`check_ff_per_run.py` 가 그렇게 씁니다).
+#
+# 접미사로 계열을 가릅니다. 기본값 '' 이면 원 계열 그대로입니다.
 #   V3W_SUFFIX=_rep  ->  v3w_water_rep/ · water_runs_v3w_rep/   (씨앗 반복)
 SUF = os.environ.get('V3W_SUFFIX', '')
-rw.HERE = os.path.join(HERE, 'v3w_water' + SUF)
-rw.RUNS = os.path.join(HERE, 'water_runs_v3w' + SUF)
-rw.CHARGED = os.path.join(HERE, 'charged_v3')
-rw.WATER_DEF = os.path.join(HERE, '..', '19_WaterCompetition', 'water.def')
-rw.RH_LIST = [0.90]
-rw.MAX_WORKERS = 8
-rw.TARGETS = [
+TARGETS = [
     ('saIm025',     'SO3H 25%'),
     ('saIm050',     'SO3H 50%'),
     ('saIm0583',    'SO3H 58.3%'),
@@ -76,6 +78,17 @@ rw.TARGETS = [
     ('saIm0667',    'SO3H 66.7%'),
     ('saIm075',     'SO3H 75% — 관문 미해결(STAGE2 판정문). 관찰용'),
 ]
+
+
+def wire():
+    """공유 모듈 `run_water` 의 전역을 이 계열로 맞춥니다. **main() 에서만.**"""
+    rw.HERE = os.path.join(HERE, 'v3w_water' + SUF)
+    rw.RUNS = os.path.join(HERE, 'water_runs_v3w' + SUF)
+    rw.CHARGED = os.path.join(HERE, 'charged_v3')
+    rw.WATER_DEF = os.path.join(HERE, '..', '19_WaterCompetition', 'water.def')
+    rw.RH_LIST = [0.90]
+    rw.MAX_WORKERS = 8
+    rw.TARGETS = list(TARGETS)
 
 
 def ff_gate():
@@ -131,6 +144,7 @@ def read_ff_header(rundir):
 
 
 def main():
+    wire()                      # 배선은 여기서만 (import 부작용 없음)
     if '--stamp-only' in sys.argv:
         # 도는 프로세스는 import 시점의 함수를 쥐고 있어 이 파일을 고쳐도 안 바뀝니다
         # (CLAUDE.md §6). 그 실행이 남긴 잘못된 ff_check 를 **다시 찍기** 위한 길입니다.
@@ -206,7 +220,12 @@ def stamp():
         return c
 
     p = os.path.join(rw.HERE, 'water_results.json')
-    if os.path.exists(p):
+    ok = False                    # 결과 파일이 없으면 통과가 아닙니다(초판은 여기서 터졌습니다)
+    if not os.path.exists(p):
+        print(f'  !! 결과 파일 없음: {p}\n'
+              f'     (계열 접미사 V3W_SUFFIX 를 확인하십시오. 아무것도 안 찍었습니다.)')
+        return 1
+    if True:
         rows = json.load(open(p, encoding='utf-8'))
         nseed = 0; nff = 0
         for r in rows:
