@@ -65,7 +65,8 @@ TARGETS = ["base", "saIm0875", "saIm0917", "saIm0958",
            "saIm100", "mslm050", "sa50nb50"]
 BASE_CHUNKS = 5          # 본 실행이 만든 조각 수
 MAX_ROUNDS = 4           # 상한 (MORNING_20260907 §2)
-WINDOW_CHUNKS = 5        # Δ40 창 = 마지막 5조각 = 15,000 사이클
+WINDOW_CYCLES = 15000    # Δ40 창 = **마지막 15,000 사이클** (§E, 등록문 문언)
+WINDOW_CHUNKS = 5        # (옛 이름 — 보고 문구에만 남김)
 
 
 # [09-07 랩탑] 사슬 뿌리를 env 로. **기본값은 그대로**라 laptop2 호출은 안 바뀝니다.
@@ -136,27 +137,87 @@ def molkg(name, ks):
     return sum(vals) / len(vals) if vals else float("nan")
 
 
+def chunk_cycles_per_block(name, k, nblocks):
+    """그 조각의 **블록 하나가 몇 사이클인가**. `simulation.input` 에서 뽑습니다."""
+    inp = os.path.join(root(name), f"chunk{k}", "simulation.input")
+    n = None
+    if os.path.exists(inp):
+        for ln in open(inp, encoding="utf-8", errors="ignore"):
+            q = ln.split()
+            if len(q) >= 2 and q[0] == "NumberOfCycles":
+                n = int(float(q[1]))
+    if n is None or not nblocks:
+        return None
+    return n // nblocks
+
+
 def window_series(name):
-    """마지막 WINDOW_CHUNKS 조각의 (물, CO2) 블록열."""
-    ks = done_chunks(name)[-WINDOW_CHUNKS:]
-    w, c = [], []
-    for k in ks:
+    """**마지막 15,000 사이클**의 (물, CO2) 블록열과 블록별 사이클.
+
+    ⚠️ 예전 판은 `WINDOW_CHUNKS = 5`, 즉 **조각 개수**로 창을 잡았습니다.
+    등록문(`MORNING §2` "이어 붙인 **마지막 15,000**", `EXTEND_APPROVED §2`)의
+    창은 **사이클**이고, 조각 개수 구현은 **조각이 모두 3,000 일 때만** 그것과
+    같았습니다. 단일 실행을 변환한 `chunk0`(15,000, 블록 3,000)이 섞이면
+    "마지막 5조각" 이 27,000 사이클이 되어 등록문과 달라집니다.
+    (`ASSIGN_20260907.md §E`, 09-07)
+    """
+    ks_all = done_chunks(name)
+    # **블록 단위**로 뒤에서부터 모읍니다. 조각 단위로 모으면 넘칩니다 —
+    # 변환된 chunk0(15,000) 하나가 통째로 들어와 창이 18,000 이 됩니다.
+    # 등록문의 창은 "마지막 **15,000**" 이므로 정확히 그만큼만 씁니다.
+    seq = []          # (값_물, 값_CO2, 그 블록의 사이클, 조각번호)
+    for k in ks_all:
         f = glob.glob(os.path.join(root(name), f"chunk{k}",
                                    "Output", "System_0", "*.data"))
+        if not f:
+            continue
         d = blocks(f[0])
-        if "water" in d:
-            w += d["water"]
-        if "CO2" in d:
-            c += d["CO2"]
-    return w, c, ks
+        bw_ = d.get("water", [])
+        bc_ = d.get("CO2", [])
+        cpb = chunk_cycles_per_block(name, k, len(bw_))
+        if cpb is None:
+            continue
+        for i, x in enumerate(bw_):
+            seq.append((x, bc_[i] if i < len(bc_) else float("nan"), cpb, k))
+    w, c, cw, used, acc = [], [], [], [], 0
+    for x, y, cpb, k in reversed(seq):
+        if acc + cpb > WINDOW_CYCLES:
+            break                       # 넘기지 않습니다 — 블록을 쪼개지 않습니다
+        w.insert(0, x); c.insert(0, y); cw.insert(0, cpb)
+        if k not in used:
+            used.insert(0, k)
+        acc += cpb
+    return w, c, used, cw
 
 
-def d40_band(v):
-    k = max(1, int(round(len(v) * 0.4)))
-    a = sum(v[:k]) / k
-    b = sum(v[-k:]) / k
+def d40_band(v, cyc=None):
+    """Δ40 — **사이클 기준** 앞 40 % 대 뒤 40 %.
+
+    `cyc` 가 없으면 블록이 균일하다고 보고 옛 방식과 같게 셉니다.
+    ⚠️ 경계가 블록 경계에 안 떨어지면 **계산을 거부**합니다(§E ③) —
+    반 토막 블록을 반올림으로 넘기면 앞뒤가 다른 사이클을 덮습니다.
+    """
     n = len(v)
-    m = sum(v) / n
+    if cyc is None:
+        cyc = [1] * n
+    total = sum(cyc)
+    target = total * 0.4
+    def take(idx):
+        acc, out = 0, []
+        for i in idx:
+            out.append(i); acc += cyc[i]
+            if acc >= target - 1e-9:
+                break
+        return out, acc
+    fi, fa = take(range(n))
+    bi, ba = take(range(n - 1, -1, -1))
+    if abs(fa - target) > 1e-6 or abs(ba - target) > 1e-6:
+        raise ValueError(
+            f"40 % 경계가 블록 경계에 안 떨어집니다 — 앞 {fa} · 뒤 {ba} · 목표 {target} "
+            f"사이클 (블록 길이 {sorted(set(cyc))}). §E ③ 대로 계산을 거부합니다.")
+    a = sum(v[i] * cyc[i] for i in fi) / fa
+    b = sum(v[i] * cyc[i] for i in bi) / ba
+    m = sum(v[i] * cyc[i] for i in range(n)) / total
     sd = math.sqrt(sum((x - m) ** 2 for x in v) / (n - 1))
     return 100 * (b - a) / a, 100 * 2.776 * sd / math.sqrt(n) / m, m
 
@@ -169,12 +230,12 @@ def report(names):
     print("  " + "-" * 52)
     allstop = True
     for n in names:
-        w, c, ks = window_series(n)
+        w, c, ks, cyc = window_series(n)
         if len(w) < 4:
             print(f"  {n:<10}{len(ks):>5}  블록 부족")
             allstop = False
             continue
-        dw, bw, _mw = d40_band(w)
+        dw, bw, _mw = d40_band(w, cyc)
         left = bw / 100 * molkg(n, ks)      # **mol/kg** 로 환산해서 적는다
         ok = abs(dw) < bw
         allstop &= ok
