@@ -16,7 +16,7 @@ def wire():
         if n not in have:
             v3w.rw.TARGETS = list(v3w.rw.TARGETS) + [(n, label)]
     v3w.rw.RH_LIST = [0.0, 0.9]          # RH0 분모 함께
-    v3w.rw.MAX_WORKERS = 4
+    v3w.rw.MAX_WORKERS = int(os.environ.get("V3W_WORKERS", "4"))
 v3w.wire = wire
 if __name__ == '__main__':
     sys.exit(v3w.main())
