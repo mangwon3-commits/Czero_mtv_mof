@@ -39,7 +39,11 @@ import subprocess
 import sys
 import time
 
-HERE_REAL = "/home/leehk/mof_project/21_ZIF69_MTV"
+# [09-07 랩탑] 절대 경로가 laptop2 로 박혀 있어 **다른 기기에서는 import 조차
+# 안 됐습니다**(`FileNotFoundError` on `os.chdir`). 승인된 연장은 세 기기가
+# 각자 자기 몫을 잇는 것이라(EXTEND_SCOPE_DECISION §1) 이 파일이 기기마다 돌아야
+# 합니다. 파일 위치에서 뽑으면 laptop2 에서는 **값이 그대로**입니다(같은 체크아웃).
+HERE_REAL = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE_REAL)
 os.chdir(HERE_REAL)
 
@@ -64,7 +68,17 @@ MAX_ROUNDS = 4           # 상한 (MORNING_20260907 §2)
 WINDOW_CHUNKS = 5        # Δ40 창 = 마지막 5조각 = 15,000 사이클
 
 
+# [09-07 랩탑] 사슬 뿌리를 env 로. **기본값은 그대로**라 laptop2 호출은 안 바뀝니다.
+#   laptop2   <HERE>/water_runs_v3w/water_runs_chunked/rh90_<조성>
+#   랩탑      <HERE>/water_runs_v3w_chunk/rh90_<조성>      (CHAIN_ROOT 로 지정)
+# 기기마다 사슬을 어디에 뒀는지가 달라서, 이것 없이는 랩탑에서 "조각 0" 으로
+# 조용히 나옵니다 — 실제로 --dry-run 이 그렇게 나왔습니다(있는 사슬을 못 봄).
+CHAIN_ROOT = os.environ.get("CHAIN_ROOT", "")
+
+
 def root(name):
+    if CHAIN_ROOT:
+        return os.path.join(HERE_REAL, CHAIN_ROOT, f"rh90_{name}")
     return os.path.join(rw.RUNS, "water_runs_chunked", f"rh90_{name}")
 
 
