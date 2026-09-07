@@ -30,7 +30,7 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
-## 09-07 18:4x · desktop  [진행중] e6~e8 이완을 데스크탑에서 (랩탑에 xtb 없음) · 기기별 도구 표 신설
+## 09-07 23:3x · desktop  [진행중] e6~e8 이완을 데스크탑에서 (랩탑에 xtb 없음) · 기기별 도구 표 신설
 
 랩탑이 sa50nb50e6·e7·e8 을 지었으나(시드 39·40·43, 시드 중복 함정 하나 막음 `2df9142`) xtb 가 없어 이완 불가 → 데스크탑에서
 `relax_series_v3.py` RELAX_WORKERS=1 nice 19 로 착수(결과 JSON 은 `relax_v3_results.before_e678_desktop_20260907.json` 으로 백업).
