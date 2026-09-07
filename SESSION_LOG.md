@@ -30,6 +30,27 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-07 13:0x · desktop  [완료] `ff_gate.py` 신설 — 힘장 상수·관문 함수를 한 자리로
+
+랩탑 제안(상수가 세 곳으로 갈라지면 한 곳만 고치는 사고가 난다)을 받아 만들었습니다.
+`check_ff_per_run.py` 를 승격하지 않은 이유는 그것이 `run_water_v3w` 를 import 하고 있어
+**의존이 원을 그리기** 때문입니다. 새 모듈은 **stdlib 만** 씁니다.
+
+    ff_gate.py   FF_MD5 · FF_TAG · OWOW_EPS · ZERO_PAIRS · ff_path() · md5_gate() · read_ff_header()
+
+    재배선 완료  check_ff_per_run.py · run_tb2_water_kh.py
+    남은 배선    run_water_v3w.py (랩탑이 오늘 고치는 중이라 그쪽) · 사슬·밀도(실행 빈 뒤)
+
+**대조**: 옮긴 `read_ff_header` 가 옛 판과 같은 값을 내는지 T-B2w 39행으로 검산 —
+**일치 39 / 다름 0**(재배선된 러너를 통해 부른 결과도 동일).
+
+**그 대조에서 자기 실수 하나**: 뿌리를 `tb2_runs/`(09-05 결함판 시대)로 잘못 줘서 "39행
+전부 다름" 이 나왔습니다. 열어 보니 그 폴더 출력은 실제로 `Hw-Hw LENNARD_JONES 22.14170`
+이라 **관문이 옳게 `ok=False`** 를 냈고 틀린 것은 제가 준 뿌리였습니다(T-B2w 는 `tb2w_runs/`).
+`run_tb2w.py` 가 CLAUDE.md §3 대로 계열을 가른 것이 그 자리에서 값을 했습니다.
+
+랩탑 `053a806` 수용(배선을 `wire()` 로 빼 import 부작용 제거, `stamp()` UnboundLocalError).
+
 ## 09-07 12:3x · desktop  [완료] 관문 둘의 정의 문서 · 도구에 파일 관문 · **경로 지뢰(오늘 다섯째)**
 
 랩탑이 정리한 구분을 파일로 남겼습니다 — `21_ZIF69_MTV/FF_GATES_20260907.md`

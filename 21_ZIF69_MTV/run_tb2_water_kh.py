@@ -62,9 +62,13 @@ def _ff_path():
     return cands[0]
 
 
+# 힘장 상수와 관문 함수는 `ff_gate.py` **한 자리**에 있습니다(`FF_GATES_20260907.md`).
+# 09-07 까지 `FF_MD5` 가 이 파일과 `run_water_v3w.py` 두 곳에 각각 적혀 있었습니다 —
+# 힘장을 또 고칠 때 **한 곳만 고치면 그 러너만 조용히 옛 기준으로 통과**시킵니다.
+# `ff_gate` 는 프로젝트 안의 무엇도 import 하지 않아 경로가 새지 않습니다.
+from ff_gate import FF_MD5, FF_TAG, read_ff_header   # noqa: E402
+
 FF_PATH = _ff_path()
-FF_MD5 = '8e8ec933f9013c7e932da04dc256efd3'      # WATER_FIX §1 ①
-FF_TAG = 'UFF_MOF+HwLw_none_20260906'
 CONDA_PY = '~/miniconda3/envs/czeromof/bin/python'
 
 CYCLES, INIT = 15000, 3000          # 저장소 Widom 관례
@@ -122,39 +126,8 @@ def read_kh(path, comp='water'):
     return mine[0][2], mine[0][3], None
 
 
-def read_ff_header(path):
-    """RASPA 가 **인쇄한** 쌍으로 힘장을 확인합니다 (WATER_FIX §1 ③).
-
-    ⚠️ 쌍 이름은 **오른쪽 정렬로 채워집니다** — 실제 줄이
-        `     Hw -      Hw [ZERO_POTENTIAL]`
-    이라 `'Hw - Hw' in ln` 은 **절대 안 맞습니다**(09-06 실측).
-
-    ⚠️ 그리고 **`22.14170` 을 grep 하지 마십시오.** 고친 판의 출력에도 그 수가
-       **12,246번** 나옵니다 — 골격 수소 `H_` 의 정당한 UFF 값입니다. 결함은 그
-       수의 존재가 아니라 **`Hw` 쌍이 그 값을 갖는 것**이었습니다.
-    """
-    RX = {a + b: re.compile(r'^\s*' + a + r'\s+-\s+' + b + r'\s')
-          for a, b in (('Hw', 'Hw'), ('Ow', 'Hw'), ('Ow', 'Lw'),
-                       ('Lw', 'Lw'), ('Ow', 'Ow'))}
-    out = {}
-    with open(path, encoding='utf-8', errors='ignore') as f:
-        for ln in f:
-            for k, rx in RX.items():
-                if k not in out and rx.match(ln):
-                    if k == 'OwOw':
-                        g = re.findall(r'[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?', ln)
-                        out['OwOw'] = ln.strip()[:100]
-                        out['OwOw_eps'] = float(g[1]) if len(g) > 1 else None
-                    else:
-                        out[k] = ('ZERO_POTENTIAL' if 'ZERO_POTENTIAL' in ln
-                                  else ln.strip()[:100])
-            if len(set(RX) & set(out)) == len(RX):
-                break
-    out['ok'] = (all(out.get(k) == 'ZERO_POTENTIAL'
-                     for k in ('HwHw', 'OwHw', 'OwLw', 'LwLw'))
-                 and out.get('OwOw_eps') is not None
-                 and abs(out['OwOw_eps'] - 89.633) < 1e-3)
-    return out
+# read_ff_header 는 `ff_gate` 로 옮겼습니다(09-07). 파일도 폴더도 받습니다.
+# 이 파일의 옛 판과 값이 같음을 T-B2w 39행으로 대조했습니다(일치 39 / 다름 0).
 
 
 def run_one(name):
