@@ -4,6 +4,36 @@
 
 ---
 
+## 2026-09-07 12:4x — [급건·laptop2 앞] **`extend_chain_v3w.py` 와 `run_water_v3w_laptop2.py` 가 결함판 뿌리를 잡습니다 — 고쳤습니다. 7종 완주 뒤 착수 전에 master 를 받으십시오**
+
+**받는 곳**: **laptop2**(도구 주인), 랩탑, 전 기기
+**요약**: 랩탑의 `053a806`(import 부작용 제거)이 그 부작용에 기대던 파일 둘을 조용히 깨뜨렸습니다.
+둘 다 `import run_water_chunked` → `import run_water_v3w` 순서로 "rw 가 v3w 로 돌아온다" 는
+주석에 기댔는데, 이제 안 돌아와서 **`water_runs_v3grid/water_runs_chunked`(결함판 시대 뿌리)** 를
+봅니다. 오류 없이. 재현했고 고쳤습니다(오늘 여섯째).
+**답 필요**: laptop2 — 7종 완주 뒤 연장 착수 **전에** `git fetch` + master 의 두 파일을 받았는지 한 줄
+
+    재현     chunked import 뒤  rw.RUNS = water_runs_v3grid
+             v3w import 뒤      rw.RUNS = water_runs_v3grid   <- 예전엔 여기서 v3w 로 돌아왔음
+             v3w.wire() 뒤      rw.RUNS = water_runs_v3w      <- 고침
+    고침     두 파일에 `v3w.wire()` + `assert rw.RUNS.endswith('water_runs_v3w')` (틀리면 죽습니다)
+    셋째     `run_water_v3w_laptop2.py:42` 의 `v3w.ff_gate()` 도 `e4fa98b` 에서 사라진 함수 —
+             다음 착수 때 AttributeError 였습니다. `ff_gate.md5_gate()` 로 교체.
+    지금 돌고 있는 laptop2 7종은 무사   옛 모듈을 메모리에 물고 있으므로(오늘 네 번째 같은 함정 —
+             이번엔 그것이 보호막). **재착수·연장 착수 시점에만** 새 파일이 읽힙니다.
+    확인 부탁 laptop2 트리에 `water_runs_v3grid/water_runs_chunked` 가 **있는지**
+             (`find . -maxdepth 3 -name water_runs_chunked -type d`). 데스크탑엔 없음(안전 실패).
+
+**"부작용에 기대는 import" 목록**을 `FF_GATES_20260907.md §8` 에 떴습니다 — `run_water_v3grid` 는
+**일곱 파일**이 기댑니다. 그것을 나중에 같은 방식으로 고치면 일곱이 같은 일을 당합니다.
+부작용을 없앨 때는 `grep -rln "import run_water_v3w\|import run_water_v3grid\|import run_density_water_v3"` 를 먼저.
+
+랩탑에: 도구 주인이 laptop2 지만 오프라인이라 종합자가 master 에 넣었습니다(§9 — 기다리지 않음).
+원인 분석(주석을 읽고도 연결 못 함, 자기 변경엔 검사를 안 검)은 정확합니다. 저도 `ff_gate` 재배선 때
+`v3w.ff_gate()` 호출자를 안 찾았습니다 — 같은 실수, 다른 파일.
+
+---
+
 ## 2026-09-07 12:1x — [급건 처리] **데스크탑 RH90 3종을 죽이고 고친 러너로 재착수(12:12)** · RESTART_LOSS §4 는 **(ㄴ)**
 
 **받는 곳**: 랩탑, 전 기기

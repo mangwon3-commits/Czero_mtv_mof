@@ -25,7 +25,13 @@ sys.path.insert(0, HERE_REAL)
 os.chdir(HERE_REAL)
 
 import run_water_chunked as rc          # v3grid 를 끌고 들어온다
-import run_water_v3w as v3w             # rw 를 v3w 로 되돌린다 (최종)
+import run_water_v3w as v3w
+import run_water as _rw_check
+# [2026-09-07 12:4x] import 만으로는 rw 가 v3w 로 안 돌아옵니다 — `053a806` 이 그 부작용을
+# `wire()` 로 뺐습니다(FF_GATES §4·§8). 이 줄이 없으면 아래의 rw.RUNS 가 chunked 가 끌어온
+# water_runs_v3grid 에 머물러 **결함판 시대 뿌리 아래에** 사슬을 씁니다. 오류는 안 냅니다.
+v3w.wire()
+assert _rw_check.RUNS.endswith('water_runs_v3w'), _rw_check.RUNS
 import run_water as rw
 
 TARGETS = ["base", "saIm0875", "saIm0917", "saIm0958",
@@ -39,7 +45,10 @@ def main():
         print(f"!! §4 laptop2 목록에 없는 이름: {bad}")
         return 2
 
-    if v3w.ff_gate() is None:            # 힘장 md5 관문 — 랩탑 것을 그대로 씀
+    # [09-07] `v3w.ff_gate()` 는 `e4fa98b` 에서 사라졌습니다(자는 `ff_gate.py` 한 자리) —
+    # 그대로 두면 다음 착수 때 AttributeError. 파일 관문을 ff_gate 에서 부릅니다.
+    from ff_gate import md5_gate
+    if not md5_gate()[0]:
         return 1
 
     print("RH90 유지율 재계산 — v3w 계열, **조각 실행** (laptop2 7종)", flush=True)

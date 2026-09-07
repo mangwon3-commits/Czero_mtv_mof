@@ -30,6 +30,14 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-07 12:4x · desktop  [완료] `extend_chain_v3w.py`·`run_water_v3w_laptop2.py` 가 결함판 뿌리를 잡던 것 고침 (여섯째)
+
+랩탑 `053a806` 이 `run_water_v3w` 의 import 부작용을 없앤 뒤, 그 부작용("rw 를 v3w 로 되돌린다")에
+기대던 두 파일이 `water_runs_v3grid/water_runs_chunked` 를 뿌리로 보게 됐습니다 — 재현 확인. 둘 다
+`v3w.wire()` + assert 로 고쳤고, `run_water_v3w_laptop2.py` 의 사라진 `v3w.ff_gate()` 호출도
+`ff_gate.md5_gate()` 로 바꿨습니다(제 재배선 때 호출자를 안 찾은 실수). 돌고 있는 laptop2 7종은
+옛 모듈이라 무사 — 연장 착수 전 master 수령 요망(우편함). `FF_GATES §8` 에 부작용 의존 목록.
+
 ## 09-07 12:3x · desktop  [완료] (ㄴ) 는 사용자 명시 승인으로 승격 · 랩탑 스냅숏 실물 확인 · 표기 규칙
 
 `EXTEND_SCOPE_DECISION_20260907.md`(랩탑 세션, "권고안 실행. PM6:00까지 별도 메시지 없으면 권고안

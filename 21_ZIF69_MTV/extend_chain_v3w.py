@@ -44,8 +44,17 @@ sys.path.insert(0, HERE_REAL)
 os.chdir(HERE_REAL)
 
 import run_water_chunked as rc          # v3grid 를 끌고 들어온다
-import run_water_v3w as v3w             # rw 를 v3w 로 되돌린다 (최종)
+import run_water_v3w as v3w
 import run_water as rw
+# [2026-09-07 12:4x] **여기서 rw 를 v3w 계열로 되돌립니다 — import 만으로는 안 됩니다.**
+# 예전에는 `import run_water_v3w` 가 import 시점에 rw.RUNS 를 덮어 "되돌리는" 부작용을
+# 했고 위 주석이 그것에 기대고 있었습니다. 09-07 `053a806` 이 그 부작용을 `wire()` 로
+# 뺐으므로(이유: 밀도 계열이 물 계열 폴더로 새던 지뢰, FF_GATES §4) 이 줄이 없으면
+# rw.RUNS 가 chunked 가 끌어온 **water_runs_v3grid** 에 머물고, 이 도구는
+# `water_runs_v3grid/water_runs_chunked` 를 뿌리로 봅니다 — 그 경로가 있으면 **결함판
+# 시대 사슬을 연장**하고, 없으면 "사슬 없음" 으로 멈춥니다. 오류는 안 냅니다(09-07 여섯째).
+v3w.wire()
+assert rw.RUNS.endswith('water_runs_v3w'), rw.RUNS   # 뿌리를 잘못 잡으면 여기서 죽습니다
 from check_water_equilibration import blocks   # 자는 하나
 
 TARGETS = ["base", "saIm0875", "saIm0917", "saIm0958",
