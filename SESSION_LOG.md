@@ -30,6 +30,77 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-07 09:1x · desktop  [진행중] C: 고갈 복구 · WSL 을 D: 로 이전 중
+
+### 무슨 일이 있었나 — C: 여유가 10 MB 까지 떨어졌습니다
+
+**WSL 루트 `/dev/sdd` 는 C: 에 있는 sparse VHDX 입니다**
+(`C:\Users\mangw\AppData\Local\wsl\{258c41b3-...}\ext4.vhdx`, 38.4 GB).
+C: 가 차서 이 파일이 커지지 못하자 게스트 안에서 **모든 쓰기가 실패**했습니다.
+
+    touch 파일   ->  Bus error
+    grep 실행    ->  Input/output error
+    df /         ->  920G 여유      <- 이것만 보면 절대 못 잡습니다
+
+claude 는 뜨자마자 세션 기록을 쓰므로 **원격 제어가 띄우는 족족 즉사**했습니다.
+플래그·로그인·버전을 한참 뒤진 뒤에야 디스크였음을 확인했습니다.
+
+**이 가드는 08-19 에 제가 껐던 것입니다.** `auto68.sh` 가 "C: 여유 1938 MB" 로
+멈춰 섰을 때 "계산은 /dev/sdd 에 쓰는데 엉뚱한 디스크를 본다" 며 게스트 쪽만
+보도록 고쳤는데, **/dev/sdd 가 바로 그 C: 의 VHDX** 였습니다. 커밋 `ab3e92d`
+로 되돌리고 CLAUDE.md 5절에도 적었습니다. **디스크 판정은 `df /mnt/c` 로
+하세요. 게스트 df 단독은 안 됩니다.**
+
+### 복구 경과
+
+1. Notion 앱 데이터 12.4 GB 를 D: 로 옮기고 정션 연결 (사용자 결정)
+   `C:\Users\mangw\AppData\Roaming\Notion` -> `D:\AppData\Roaming\Notion`
+   robocopy 114,801 파일 / 12.381 GB, 실패 0건, 대조 일치 후 원본 삭제
+2. C: 여유 0.01 -> 13.78 GB
+3. `wsl --shutdown` 후 재기동 — 파일시스템 무사(rw, 쓰기 정상)
+4. 원격 제어 재등록 확인
+
+### 지금 하는 일 — VHDX 를 D: 로 이전
+
+    powershell -ExecutionPolicy Bypass -File C:\Users\mangw\move_wsl_to_d.ps1
+
+**Claude Code 세션 안에서는 이 이동을 할 수 없습니다.** 세션의 작업 디렉터리가
+`\\wsl.localhost\Ubuntu\` 라서, `wsl --shutdown` 직후 3초 만에 다시 Running
+이 됩니다(세 번 시도, 전부 `WSL_E_DISTRO_NOT_STOPPED`). 틈을 0 으로 줄여도
+같았습니다. 그래서 **사용자가 Claude Code 를 닫고 직접 실행**합니다.
+
+`ClaudeWslHold`(5분마다 WSL 을 깨우는 예약 작업)는 스크립트가 끄고 `finally`
+로 반드시 되살립니다. 이동 실패 시 원본은 그대로 남습니다.
+
+**끝난 뒤 할 것:**
+
+    bash ~/mof_project/wireless.sh --force     # 원격 재등록
+    bash ~/mof_project/bgstate.sh              # 상태
+
+### T-B2w 는 다시 돌리지 마세요 — 이미 끝났습니다
+
+`tb2w.log` 마지막 줄이 `[OK] 0/39` 라 실패로 보이지만 **수정 전 줄**입니다.
+배치는 09-06 23:00 에 끝났고 결과 JSON 은 **23:07 에 다시 쓰였습니다.**
+
+    v3w_water_kh/water_kh_ALLw_hkhome.json
+    행 39 / ok 39 / ff_check ok 39 / K_H 있음 39
+    OwOw_eps = 89.633 (전 행), 물 자리 5 (TIP5P-Ew 맞음)
+
+원인은 `fix_tb2w_ffcheck.py` 가 적어 둔 그대로입니다 — 첫 판 `run_tb2w.py` 의
+정규식이 `p_0/k_B:` 의 **콜론을 못 읽어** `OwOw_eps=None -> ok=False` 로
+39행을 '실패' 로 찍었습니다. 힘장 자체는 정상입니다
+(`Ow lennard-jones 89.633 3.097`, `Hw none`, `Lw none`).
+
+**남은 확인거리:** 씨앗 중복 4건. 러너가 씨앗을 안 적어 출력 머리말의 시각
+기반으로 회수한 탓이고(JSON note 에도 있음), 같은 씨앗 쌍은 독립 표본이
+아닙니다. 이 값들을 분산·재현성 논거로 쓸 때는 그 4건을 빼거나 다시 도세요.
+
+### 계산 현황
+
+이동 직전 기준 **도는 계산 0건**입니다. 다음 배정은 `ASSIGN_NB050_20260906.md`
+와 `WATER_FIX_20260906.md §4` 를 보고 띄우세요(CLAUDE.md 9절: 기기를 놀리지
+않습니다).
+
 ## 09-06 23:0x · desktop (Fable 5.1)  [진행중]
 하는 일: **물 밀도 격자 v3w 3종(base·nbIm025·saIm050, RH90, T-4·T-6)** — 사용자 지시 23:1x 착수, `.claude_work_density_v3w.sh`, 로그 `density_v3w_<조성>.log`, OUT `density_water_v3w/<조성>/`, RUNS `water_runs_density_v3w/`. 코어 3.
         + **RH90 3종 (saIm0625·saIm0667·saIm075)** — 랩탑 큐와 중복(이관 착오): 씨앗·기기 동시 상이 쌍, 3 % 상한 비교로만(WATER_FIX §7). `run_water_v3w.py --only …`, 수정 힘장, 새 계열 `v3w_water/`·`water_runs_v3w/`. 로그 `rh90_desktop.log`
