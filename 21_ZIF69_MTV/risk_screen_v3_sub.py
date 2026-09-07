@@ -124,12 +124,11 @@ def main():
               "부릅니다.\n     lammps_mof 환경을 PATH 에 넣고 다시 부르십시오.")
         return 1
 
-    print(f"  안정성 관문 자기 산포 — base + nbIm050 계열 (총 {len(TARGETS)}종)")
+    print(f"  안정성 관문 — 부분집합 RISK_SUB_TAGS (총 {len(TARGETS)}종)")
     print(f"  대상     {' '.join(TARGETS)}")
 
-    if len(TARGETS) < 3 or "nbIm050" not in TARGETS:
-        print(f"  !! 대상이 {TARGETS} 입니다. base + nbIm050 + 실현 1개 이상이 "
-              f"필요합니다. 중단합니다.")
+    if len(TARGETS) < 2:                       # 부분집합 판: base + 대상 1개 이상이면 됩니다 (nbIm050 요구 제거, 09-08)
+        print(f"  !! 대상이 {TARGETS} 입니다. base + 대상 1개 이상이 필요합니다. 중단합니다.")
         return 1
     if TARGETS[0] != "base":
         print("  !! base 가 첫 대상이 아닙니다. 중단합니다.")
