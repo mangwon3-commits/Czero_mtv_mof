@@ -41,12 +41,21 @@ def series(rundir):
     ch = sorted(glob.glob(os.path.join(rundir, 'chunk*')),
                 key=lambda p: int(re.search(r'chunk(\d+)', p).group(1)))
     if ch:
-        b, ffs = [], []
+        # ⚠️ **미완 사슬을 완성된 것처럼 내면 안 됩니다.** 09-07 실측: 조각 2개만
+        # 있는 saIm050 이 "블록 5" 로 Δ40 +26.1 을 냈는데, 그건 조각 0 하나의
+        # 내부 Δ40 이지 사슬 값이 아닙니다. 조각 5개·블록 25 가 다 있어야 냅니다.
+        b, ffs, bad = [], [], []
         for c in ch:
             o = glob.glob(os.path.join(c, 'Output', 'System_0', '*.data'))
-            if not o: return None, None, f'{os.path.basename(c)} 출력 없음'
-            b += blocks(o[0]); ffs.append(ff_ok(o[0]))
-        return b, all(ffs), f'사슬 {len(ch)}조각 · 블록 {len(b)} · 힘장 {sum(ffs)}/{len(ffs)} 통과'
+            if not o: bad.append(os.path.basename(c) + ' 출력없음'); continue
+            bl = blocks(o[0])
+            if len(bl) < 5: bad.append(os.path.basename(c) + f' 블록{len(bl)}')
+            b += bl; ffs.append(ff_ok(o[0]))
+        note = f'사슬 {len(ch)}조각 · 블록 {len(b)} · 힘장 {sum(ffs)}/{len(ffs)} 통과'
+        if len(ch) < 5 or bad:
+            return None, all(ffs) if ffs else None, note + f'  **미완 — {len(ch)}/5 조각' + (
+                ', ' + ', '.join(bad) if bad else '') + '. Δ40 안 냅니다**'
+        return b, all(ffs), note
     o = glob.glob(os.path.join(rundir, 'Output', 'System_0', '*.data'))
     if not o: return None, None, '출력 없음'
     b = blocks(o[0])

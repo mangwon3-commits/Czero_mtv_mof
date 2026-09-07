@@ -191,29 +191,43 @@ def stamp():
     파일로 복사돼도 힘장 표기가 **따라갑니다.** 어젯밤 밀도 격자에서 곁의 설정
     파일이 자료와 떨어진 그 문제를, 곁에 두지 않는 쪽으로 막습니다.
     """
-    chk = read_ff_header(rw.RUNS)
-    ok = (all(chk.get(k) == 'ZERO_POTENTIAL' for k in ('HwHw', 'OwHw', 'OwLw', 'LwLw'))
-          and chk.get('OwOw_eps') is not None and abs(chk['OwOw_eps'] - 89.633) < 1e-3)
-    chk['ok'] = ok
-    print(f'\n  [힘장 확인 — 출력 머리말] {json.dumps(chk, ensure_ascii=False)}')
-    print(f'  -> {"**통과.** Hw-Hw 가 ZERO_POTENTIAL, Ow-Ow 89.633" if ok else "**실패 — 이 산출물의 K 값을 쓰지 마십시오**"}')
+    # ⚠️ **조성마다 따로 봅니다.** 초판은 `read_ff_header(rw.RUNS)` 로 runs 아래
+    # **아무 `.data` 하나**를 읽어 그 결과를 **모든 행에** 찍었습니다. 그러면
+    # 죽은/낡은 실행 파일 하나가 **관문을 대신 통과**시키고, 조성마다 힘장이
+    # 달라도 못 잡습니다(09-07 데스크탑이 디스크 사고 뒤 발견).
+    # `CLAUDE.md §3` 은 이어받기만 말하지만 **관문도 파일 존재를 봅니다.**
+    def ff_of(name, rh):
+        d = os.path.join(rw.RUNS, f'rh{int(rh * 100):02d}_{name}')
+        c = read_ff_header(d)
+        c['ok'] = (all(c.get(k) == 'ZERO_POTENTIAL'
+                       for k in ('HwHw', 'OwHw', 'OwLw', 'LwLw'))
+                   and c.get('OwOw_eps') is not None
+                   and abs(c['OwOw_eps'] - 89.633) < 1e-3)
+        return c
 
     p = os.path.join(rw.HERE, 'water_results.json')
     if os.path.exists(p):
         rows = json.load(open(p, encoding='utf-8'))
-        nseed = 0
+        nseed = 0; nff = 0
         for r in rows:
             r['forcefield'] = FF_TAG
-            r['ff_check'] = chk
+            c = ff_of(r['name'], r['RH'])
+            r['ff_check'] = c
+            nff += bool(c['ok'])
             sd = read_seed(r['name'], r['RH'])
             if sd is not None:
                 r['raspa_seed'] = sd
                 nseed += 1
         print(f'  난수 씨앗 회수 {nseed}/{len(rows)}행 '
               f'(러너가 안 적어 출력 머리말에서 읽습니다 — 폴더를 지우면 사라집니다)')
+        print(f'  힘장 확인 **{nff}/{len(rows)}행 통과** (조성마다 자기 출력으로)')
+        ok = (nff == len(rows))
+        if not ok:
+            print('  !! 통과 못 한 행: '
+                  + str([r['name'] for r in rows if not r['ff_check']['ok']]))
         json.dump(rows, open(p, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
         json.dump({'forcefield': FF_TAG, 'ff_md5': FF_MD5, 'ff_path': FF_PATH,
-                   'ff_check': chk, 'series': 'v3w', 'host': socket.gethostname().lower(),
+                   'ff_all_rows_ok': ok, 'series': 'v3w', 'host': socket.gethostname().lower(),
                    'RH_LIST': rw.RH_LIST, 'targets': [n for n, _ in rw.TARGETS],
                    'note': '수정 힘장(Hw none/Lw none) 계열. v3 결함판과 섞지 말 것.'},
                   open(os.path.join(rw.HERE, 'water_results_meta.json'), 'w',
