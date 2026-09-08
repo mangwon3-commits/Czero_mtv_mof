@@ -352,7 +352,12 @@ def main():
         return 2
 
     print("RH90 사슬 잇기 — 라운드 병렬, 전 조성 동일 조각 수", flush=True)
-    print(f"  뿌리 {os.path.dirname(root(names[0])) if names else '(없음)'}   (CHAIN_ROOT={CHAIN_ROOT or '기본'})", flush=True)   # [09-08] CHAIN_ROOT 를 반영해 찍음(옛 배너는 없는 경로를 찍었음)
+    # [09-08] CHAIN_ROOT 를 반영해 찍음(옛 배너는 없는 경로를 찍었음).
+    # [09-08 11:0x laptop2] `names` -> `a.names`. 배너 한 줄의 NameError 가 **모든 호출을 즉시 죽였다**
+    #   (`--help` 만 살아남는다 — argparse 가 먼저 빠져나가므로 사람이 눈치채기 어렵다).
+    #   무인 잇기가 이 판을 물었으면 세 기기가 라운드 1 종료 직후 **동시에** 죽고 30시간이 빈다.
+    #   점검표 4-1 과 같은 자리다: 실패가 조용하다. **잇기 전에 --dry-run 을 한 번 친다.**
+    print(f"  뿌리 {os.path.dirname(root(a.names[0])) if a.names else '(없음)'}   (CHAIN_ROOT={CHAIN_ROOT or '기본'})", flush=True)
     print(f"  라운드 {a.rounds} (조각당 {rc.CHUNK_CYCLES} 사이클, 창은 "
           f"마지막 {WINDOW_CHUNKS}조각 고정)", flush=True)
     print(flush=True)
