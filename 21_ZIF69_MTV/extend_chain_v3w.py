@@ -340,6 +340,11 @@ def main():
     ap.add_argument("--rounds", type=int, default=MAX_ROUNDS)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--names", nargs="*", default=TARGETS)
+    # [09-08] 무인 풀 동기용: 이 기기의 조성이 전부 정지해도 멈추지 않고 --rounds 만큼 돈다.
+    #   12종 풀 규칙("한 조성이라도 남으면 다 같이")은 기기 하나가 판정할 수 없으므로, 무인 구간에는 세 기기가
+    #   같은 --rounds 를 이 플래그로 돌려 조각 수를 맞추고, 정지 라운드는 사후 분석(처음 정지 충족 라운드 열)으로 읽는다.
+    #   상한 MAX_ROUNDS 는 그대로 걸린다. PLAN_30H_20260908.md.
+    ap.add_argument("--no-local-stop", action="store_true")
     a = ap.parse_args()
 
     if a.rounds > MAX_ROUNDS:
@@ -376,7 +381,7 @@ def main():
         t0 = time.time()
         run_round(a.names, k, False)
         print(f"  라운드 {r+1} 벽시계 {(time.time()-t0)/3600:.2f} h", flush=True)
-        if report(a.names):
+        if (not a.no_local_stop) and report(a.names):
             print(f"\n전 조성이 정지 조건을 만족했다. {r+1} 라운드에서 멈춘다.",
                   flush=True)
             break
