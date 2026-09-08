@@ -42,7 +42,15 @@ from ff_gate import (FF_MD5, FF_TAG, OWOW_EPS, ZERO_PAIRS,
 from run_water_v3w import read_seed
 
 SUF = '_mix'                    # 환경변수로 두지 않습니다 — 계열을 손으로 틀릴 자리를 없앱니다
-TARGETS = [(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i}') for i in range(1, 6)]
+
+# 등록 원판은 실현 5개(§6-9-1 ①). **09-08 확장: e6·e8 을 더해 n=7**
+# (`ASSIGN §H`, T-MTV-2w ① "자 재기" 의 연장 — 가설 시험이 아닙니다).
+#   · **`e7` 은 뺍니다** — ΔLCD 24.53 % 로 관문(<20) 탈락(`risk_results_v3sub.json`).
+#     e1~e5 는 LCD 로 거르지 않은 표본이고 e7 만 빼면 **혼합 n=7 은 LCD 조건부**가 되는데
+#     비교 상대인 단일 saIm0583 n=6 은 무조건부입니다. **판정문에 이 비대칭을 병기하십시오**(§G-4).
+#   · e1~e5 는 결과 JSON 에 있어 이어받기가 건너뜁니다 — 이번 실행은 **4작업**.
+TARGETS = ([(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i}') for i in range(1, 6)]
+           + [(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i} (09-08 확장)') for i in (6, 8)])
 
 
 def wire():
