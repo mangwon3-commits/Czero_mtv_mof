@@ -347,7 +347,7 @@ def main():
         return 2
 
     print("RH90 사슬 잇기 — 라운드 병렬, 전 조성 동일 조각 수", flush=True)
-    print(f"  뿌리 {os.path.join(rw.RUNS, 'water_runs_chunked')}", flush=True)
+    print(f"  뿌리 {os.path.dirname(root(names[0])) if names else '(없음)'}   (CHAIN_ROOT={CHAIN_ROOT or '기본'})", flush=True)   # [09-08] CHAIN_ROOT 를 반영해 찍음(옛 배너는 없는 경로를 찍었음)
     print(f"  라운드 {a.rounds} (조각당 {rc.CHUNK_CYCLES} 사이클, 창은 "
           f"마지막 {WINDOW_CHUNKS}조각 고정)", flush=True)
     print(flush=True)
