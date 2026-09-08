@@ -137,6 +137,19 @@ def molkg(name, ks):
     return sum(vals) / len(vals) if vals else float("nan")
 
 
+
+def _chunk_cycles(name, k):
+    """조각 k 의 simulation.input 에 적힌 NumberOfCycles (없으면 rc.CHUNK_CYCLES)."""
+    inp = os.path.join(root(name), f"chunk{k}", "simulation.input")
+    try:
+        for ln in open(inp, encoding="utf-8", errors="ignore"):
+            p = ln.split()
+            if len(p) >= 2 and p[0] == "NumberOfCycles":
+                return int(float(p[1]))
+    except OSError:
+        pass
+    return rc.CHUNK_CYCLES
+
 def chunk_cycles_per_block(name, k, nblocks):
     """그 조각의 **블록 하나가 몇 사이클인가**. `simulation.input` 에서 뽑습니다."""
     inp = os.path.join(root(name), f"chunk{k}", "simulation.input")
@@ -276,8 +289,12 @@ def gates(names):
                                      "Restart", "System_0", "restart*")) if ks else []
         lastlab = f"chunk{last}" if ks else "없음"
         bad = []
-        if len(ks) < BASE_CHUNKS:
-            bad.append(f"완주 조각 {len(ks)}/{BASE_CHUNKS} — 본 큐가 아직 안 끝났다")
+        # [09-08] 완주는 **조각 수가 아니라 사이클 수**로 잰다 — 변환된 chunk0(단일 실행 15,000 = 조각 1)은
+        # 조각 수로 재면 "1/5" 라 막히지만 사이클로는 본 큐와 같다(ASSIGN §D-1, snapshot_to_chunk0).
+        need = BASE_CHUNKS * rc.CHUNK_CYCLES
+        have = sum(_chunk_cycles(n, k) for k in ks)
+        if have < need:
+            bad.append(f"완주 {have}/{need} 사이클(조각 {len(ks)}) — 본 큐가 아직 안 끝났다")
         if not os.path.exists(cif):
             bad.append("전하 CIF 없음")
         if not rst:
@@ -330,7 +347,7 @@ def main():
         return 2
 
     print("RH90 사슬 잇기 — 라운드 병렬, 전 조성 동일 조각 수", flush=True)
-    print(f"  뿌리 {os.path.join(rw.RUNS, 'water_runs_chunked')}", flush=True)
+    print(f"  뿌리 {os.path.dirname(root(names[0])) if names else '(없음)'}   (CHAIN_ROOT={CHAIN_ROOT or '기본'})", flush=True)   # [09-08] CHAIN_ROOT 를 반영해 찍음(옛 배너는 없는 경로를 찍었음)
     print(f"  라운드 {a.rounds} (조각당 {rc.CHUNK_CYCLES} 사이클, 창은 "
           f"마지막 {WINDOW_CHUNKS}조각 고정)", flush=True)
     print(flush=True)
