@@ -137,6 +137,19 @@ def molkg(name, ks):
     return sum(vals) / len(vals) if vals else float("nan")
 
 
+
+def _chunk_cycles(name, k):
+    """조각 k 의 simulation.input 에 적힌 NumberOfCycles (없으면 rc.CHUNK_CYCLES)."""
+    inp = os.path.join(root(name), f"chunk{k}", "simulation.input")
+    try:
+        for ln in open(inp, encoding="utf-8", errors="ignore"):
+            p = ln.split()
+            if len(p) >= 2 and p[0] == "NumberOfCycles":
+                return int(float(p[1]))
+    except OSError:
+        pass
+    return rc.CHUNK_CYCLES
+
 def chunk_cycles_per_block(name, k, nblocks):
     """그 조각의 **블록 하나가 몇 사이클인가**. `simulation.input` 에서 뽑습니다."""
     inp = os.path.join(root(name), f"chunk{k}", "simulation.input")
@@ -276,8 +289,12 @@ def gates(names):
                                      "Restart", "System_0", "restart*")) if ks else []
         lastlab = f"chunk{last}" if ks else "없음"
         bad = []
-        if len(ks) < BASE_CHUNKS:
-            bad.append(f"완주 조각 {len(ks)}/{BASE_CHUNKS} — 본 큐가 아직 안 끝났다")
+        # [09-08] 완주는 **조각 수가 아니라 사이클 수**로 잰다 — 변환된 chunk0(단일 실행 15,000 = 조각 1)은
+        # 조각 수로 재면 "1/5" 라 막히지만 사이클로는 본 큐와 같다(ASSIGN §D-1, snapshot_to_chunk0).
+        need = BASE_CHUNKS * rc.CHUNK_CYCLES
+        have = sum(_chunk_cycles(n, k) for k in ks)
+        if have < need:
+            bad.append(f"완주 {have}/{need} 사이클(조각 {len(ks)}) — 본 큐가 아직 안 끝났다")
         if not os.path.exists(cif):
             bad.append("전하 CIF 없음")
         if not rst:
@@ -323,6 +340,11 @@ def main():
     ap.add_argument("--rounds", type=int, default=MAX_ROUNDS)
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--names", nargs="*", default=TARGETS)
+    # [09-08] 무인 풀 동기용: 이 기기의 조성이 전부 정지해도 멈추지 않고 --rounds 만큼 돈다.
+    #   12종 풀 규칙("한 조성이라도 남으면 다 같이")은 기기 하나가 판정할 수 없으므로, 무인 구간에는 세 기기가
+    #   같은 --rounds 를 이 플래그로 돌려 조각 수를 맞추고, 정지 라운드는 사후 분석(처음 정지 충족 라운드 열)으로 읽는다.
+    #   상한 MAX_ROUNDS 는 그대로 걸린다. PLAN_30H_20260908.md.
+    ap.add_argument("--no-local-stop", action="store_true")
     a = ap.parse_args()
 
     if a.rounds > MAX_ROUNDS:
@@ -330,7 +352,12 @@ def main():
         return 2
 
     print("RH90 사슬 잇기 — 라운드 병렬, 전 조성 동일 조각 수", flush=True)
-    print(f"  뿌리 {os.path.join(rw.RUNS, 'water_runs_chunked')}", flush=True)
+    # [09-08] CHAIN_ROOT 를 반영해 찍음(옛 배너는 없는 경로를 찍었음).
+    # [09-08 11:0x laptop2] `names` -> `a.names`. 배너 한 줄의 NameError 가 **모든 호출을 즉시 죽였다**
+    #   (`--help` 만 살아남는다 — argparse 가 먼저 빠져나가므로 사람이 눈치채기 어렵다).
+    #   무인 잇기가 이 판을 물었으면 세 기기가 라운드 1 종료 직후 **동시에** 죽고 30시간이 빈다.
+    #   점검표 4-1 과 같은 자리다: 실패가 조용하다. **잇기 전에 --dry-run 을 한 번 친다.**
+    print(f"  뿌리 {os.path.dirname(root(a.names[0])) if a.names else '(없음)'}   (CHAIN_ROOT={CHAIN_ROOT or '기본'})", flush=True)
     print(f"  라운드 {a.rounds} (조각당 {rc.CHUNK_CYCLES} 사이클, 창은 "
           f"마지막 {WINDOW_CHUNKS}조각 고정)", flush=True)
     print(flush=True)
@@ -359,7 +386,7 @@ def main():
         t0 = time.time()
         run_round(a.names, k, False)
         print(f"  라운드 {r+1} 벽시계 {(time.time()-t0)/3600:.2f} h", flush=True)
-        if report(a.names):
+        if (not a.no_local_stop) and report(a.names):
             print(f"\n전 조성이 정지 조건을 만족했다. {r+1} 라운드에서 멈춘다.",
                   flush=True)
             break
