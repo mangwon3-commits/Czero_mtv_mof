@@ -41,7 +41,11 @@ from ff_gate import (FF_MD5, FF_TAG, OWOW_EPS, ZERO_PAIRS,
                      md5_gate, read_ff_header)
 from run_water_v3w import read_seed
 
-SUF = '_mix'                    # 환경변수로 두지 않습니다 — 계열을 손으로 틀릴 자리를 없앱니다
+# 계열은 환경변수로 고를 수 있으나 **기본값은 원래 그대로**입니다 — 무인 인계
+# (`handoff_30h.sh`)가 이 파일을 인자 없이 부르므로 기본값이 바뀌면 그 실행이 깨집니다.
+#   기본        _mix      sa50nb50e1~e5(+e6·e8)   T-MTV-2w
+#   TMTV_SERIES=_sng050   saIm050e1~e5            T-MTV-2w′ (§9 등록, 단일의 둘째 조성)
+SUF = os.environ.get('TMTV_SERIES', '_mix')
 
 # 등록 원판은 실현 5개(§6-9-1 ①). **09-08 확장: e6·e8 을 더해 n=7**
 # (`ASSIGN §H`, T-MTV-2w ① "자 재기" 의 연장 — 가설 시험이 아닙니다).
@@ -49,8 +53,12 @@ SUF = '_mix'                    # 환경변수로 두지 않습니다 — 계열
 #     e1~e5 는 LCD 로 거르지 않은 표본이고 e7 만 빼면 **혼합 n=7 은 LCD 조건부**가 되는데
 #     비교 상대인 단일 saIm0583 n=6 은 무조건부입니다. **판정문에 이 비대칭을 병기하십시오**(§G-4).
 #   · e1~e5 는 결과 JSON 에 있어 이어받기가 건너뜁니다 — 이번 실행은 **4작업**.
-TARGETS = ([(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i}') for i in range(1, 6)]
-           + [(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i} (09-08 확장)') for i in (6, 8)])
+_SERIES = {
+    '_mix':    [(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i}') for i in range(1, 6)]
+             + [(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i} (09-08 확장)') for i in (6, 8)],
+    '_sng050': [(f'saIm050e{i}', f'SO3H 50 % 실현 {i} (T-MTV-2w′)') for i in range(1, 6)],
+}
+TARGETS = _SERIES[SUF]
 
 
 def wire():
@@ -60,7 +68,7 @@ def wire():
     rw.CHARGED = os.path.join(HERE, 'charged_v3')
     rw.WATER_DEF = os.path.join(HERE, '..', '19_WaterCompetition', 'water.def')
     rw.RH_LIST = [0.90, 0.0]    # 비싼 것 먼저 — jobs 가 이 순서로 깔립니다(§5 LPT)
-    rw.MAX_WORKERS = 5          # 09-07 16:0x 4->5. 긴 작업(RH90) 5개가 워커 4 에서는 한 워커에 둘씩 겹쳐
+    rw.MAX_WORKERS = int(os.environ.get('TMTV_WORKERS', 5))   # 09-07 16:0x 4->5. 긴 작업(RH90) 5개가 워커 4 에서는 한 워커에 둘씩 겹쳐
     #                           만기 35.0 h, 워커 5 면 19.3 h (등록값 17.5 h+RH0 1.8 h). 5+연장예비 2 = 7 <= 8 (§5)
     rw.TARGETS = list(TARGETS)
 
@@ -170,7 +178,10 @@ def main():
     #   단계를 갈라 **RH90 다섯을 먼저 동시에** 띄우면 17.5 + 1.8 = **19.3 h**.
     #   (LPT 는 "비싼 것 먼저" 인데, 그 순서는 RH_LIST 가 아니라 **jobs 배열**이 정합니다.)
     rc = 0
-    for phase in ([0.90], [0.0]):
+    # 단계 순서도 환경변수로. 기본은 비싼 것 먼저(LPT). 코어가 적을 때는
+    # 싼 RH0 을 먼저 채워 두는 편이 나은 경우가 있습니다(§9 자원 문단).
+    phases = ([0.0], [0.90]) if os.environ.get('TMTV_RH0_FIRST') else ([0.90], [0.0])
+    for phase in phases:
         rw.RH_LIST = phase
         print(f'\n=== 단계 RH {phase[0]:.2f} — {len(rw.TARGETS)}건 동시 ===', flush=True)
         rc |= rw.main()          # 이어받기가 앞 단계 완주분을 cached 로 건너뜁니다
