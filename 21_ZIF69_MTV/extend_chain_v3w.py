@@ -316,6 +316,24 @@ def run_round(names, k, dry):
         if dry:
             print(f"  [{n}] {d}  <- {prev}/Restart  (건조: 안 돈다)")
             continue
+        # [09-08 12:0x laptop2] **앞 조각이 완주했는지 먼저 본다.**
+        #
+        #   `carry_restart` 는 `Restart/System_0/restart*` 의 **존재만** 봅니다. 그런데 RASPA 는
+        #   `WriteBinaryRestartFileEvery 500` 으로 **실행 중에도** 그 파일을 씁니다(점검표 4-1).
+        #   라운드 0 -> 1 은 `gates()` 가 완주를 확인하지만, **라운드 사이에는 관문이 없었습니다.**
+        #
+        #   그래서 무인 구간에 조각 k-1 이 죽으면(RASPA 크래시·기기 딸꾹질) 라운드 k 가 그
+        #   **중간 배치**를 이어받습니다. 그리고 완주하고 수를 냅니다. 아무것도 안 알립니다 —
+        #   실패가 결과처럼 보이는 자리이고, 30시간 무인이면 아침에야 압니다.
+        #
+        #   판정 기준은 `done_chunks` 와 **같은 것**을 씁니다: 출력 + 완주 표지 + 알짜전하 0.
+        pf = glob.glob(os.path.join(prev, "Output", "System_0", "*.data"))
+        if not (pf and rw.finished(pf[0]) and rw.net_charge_ok(pf[0])):
+            print(f"  !! [{n}] 앞 조각 chunk{k-1} 이 **완주하지 않았다** — 이 조성을 건너뛴다.",
+                  flush=True)
+            print(f"     (Restart 파일이 있어도 실행 중 산출물일 수 있다. 점검표 4-1)",
+                  flush=True)
+            continue
         os.makedirs(d, exist_ok=True)
         shutil.copy(os.path.join(rw.CHARGED, n + "_DDEC6.cif"),
                     os.path.join(d, n + "_DDEC6.cif"))
