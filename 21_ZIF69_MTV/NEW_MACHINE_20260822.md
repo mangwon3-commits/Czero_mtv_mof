@@ -226,6 +226,17 @@ lscpu | grep -E "Model name|^CPU\(s\)|Thread"
 > `19_WaterCompetition/water.def` 의 **5자리**입니다. 바꿔치면 조용히
 > 다른 물로 계산되고 결과는 멀쩡해 보입니다.
 
+
+## 0-1. 기기별 도구 표 (2026-09-07 추가 — 랩탑에 xtb 가 없어 이완 배정이 한 번 왕복함)
+
+| 도구 | 데스크탑 | 랩탑 | laptop2 | 비고 |
+|---|---|---|---|---|
+| RASPA `simulate` | ✓ | ✓ `envs/czeromof/bin/simulate` | ✓ | 세 기기 md5 일치(수정 힘장) |
+| Zeo++ `network` | ✓ `envs/czeromof/bin/network` | ✓ `envs/czeromof/bin/network` | ✓ | 9.5 GB/건, RASPA 와 동시 금지 |
+| 관문 러너 `risk_screen*.py` | **`envs/lammps_mof/bin/python` (3.11)** + PATH 에 `lammps_mof/bin`(lammps-interface 가 맨 `python` 을 부름)과 `czeromof/bin`(network) | 〃 | 〃 | ⚠ czeromof(3.10)로 돌리면 `ProcessPoolExecutor(max_tasks_per_child)` 에서 죽고, PATH 에 `python` 이 없으면 **rc 0 으로 조용히 아무것도 안 함**(09-08 아침 세 번). 결과 파일 유무로 판정. 하네스 배경 작업으로 띄우면 메모리 감시가 Zeo++ 를 죽임 → `setsid nohup` 으로 |
+| xtb (GFN-FF 이완) | ✓ `envs/spectra/bin/xtb` (`XTB_BIN` 기본값) | **✗ 없음** (`find /` 확인 09-07) | ✓ (e 계열 이완 실적) | 없는 기기에서 `relax_series_v3.py` 는 rc 127 을 "기준 미달" 로 찍음 — 결과 파일 백업 뒤 돌릴 것 |
+| PACMAN (DDEC6 전하) | ✓ `envs/coremof_tools` **pip 1.4.2** (CPU) | ✓ `envs/coremof_tools` **pip 1.4.2** (**cuda**) | ✓ | ⚠ **CIF 머리말의 "PACMAN v1.3.9" 는 패키지 코드에 박힌 낡은 문자열**(`pmcharge.py:221`) — 판번호가 아님. 판은 `pip show PACMAN-charge` 로. `charged_v3` 는 데스크탑 68 + laptop2 22(09-03 T-B5, azbIm·bIm 계열) + 이후 추가 — 전부 pip 1.4.2 이고 **모델 파일 md5 셋(bader b4f79bca… · pbe 7e54fc0f… · ddec a89bde5f…)이 세 기기에서 일치**. 판정 기준은 기기가 아니라 **모델 md5 일치**. sa50nb50e1~e5 는 08-27 데스크탑, e6~e8 도 데스크탑 |
+
 ## 결과를 읽는 규율
 
 - **1σ를 병기하고, 차이가 1.5σ 미만이면 순위를 매기지 않습니다.**

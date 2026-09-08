@@ -1,0 +1,832 @@
+{
+  "half": "ALL+EXT",
+  "tag": "hkhome",
+  "forcefield": "UFF_MOF+HwLw_none_20260906",
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "note": "WATER_FIX_20260906 §3 ②. 수정 힘장(Hw none/Lw none). 대조 4건 미포함. 문턱 5e-6 은 TIP4P 기준 한정어 필수 | ff_check 는 fix_tb2w_ffcheck.py(콜론 정규식)로 재판독함 | raspa_seed 는 출력 머리말에서 회수(09-06 23:2x); 러너가 씨앗을 안 적어 시각 기반 | 2026-09-07 seedfix: 씨앗 충돌 4행(brbIm050·brbIm100·brbIm075·cf3Im025)을 같은 기기에서 재실행해 교체. 원본은 water_kh_ALLw_hkhome.json 그대로.",
+  "rows": [
+    {
+      "name": "base",
+      "KH_water": 7.13482e-05,
+      "KH_water_err": 8.90735e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788683951
+    },
+    {
+      "name": "brbIm025",
+      "KH_water": 7.01873e-05,
+      "KH_water_err": 1.33183e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788683950
+    },
+    {
+      "name": "brbIm050",
+      "KH_water": 7.6411e-05,
+      "KH_water_err": 1.11529e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788750352,
+      "seedfix_20260907": {
+        "old_seed": 1788683950,
+        "old_KH_water": 6.93661e-05,
+        "reason": "같은 초 착수로 씨앗 공유 (ASSIGN_20260907 A)"
+      }
+    },
+    {
+      "name": "brbIm075",
+      "KH_water": 5.13245e-05,
+      "KH_water_err": 4.45359e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788753208,
+      "seedfix_20260907": {
+        "old_seed": 1788683951,
+        "old_KH_water": 6.42785e-05,
+        "reason": "같은 초 착수로 씨앗 공유 (ASSIGN_20260907 A)"
+      }
+    },
+    {
+      "name": "brbIm100",
+      "KH_water": 7.42824e-05,
+      "KH_water_err": 4.72785e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788750354,
+      "seedfix_20260907": {
+        "old_seed": 1788683950,
+        "old_KH_water": 6.16937e-05,
+        "reason": "같은 초 착수로 씨앗 공유 (ASSIGN_20260907 A)"
+      }
+    },
+    {
+      "name": "cf3Im025",
+      "KH_water": 4.22872e-05,
+      "KH_water_err": 2.64824e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788753219,
+      "seedfix_20260907": {
+        "old_seed": 1788683951,
+        "old_KH_water": 4.31058e-05,
+        "reason": "같은 초 착수로 씨앗 공유 (ASSIGN_20260907 A)"
+      }
+    },
+    {
+      "name": "cf3Im050",
+      "KH_water": 6.58122e-05,
+      "KH_water_err": 1.52317e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788686517
+    },
+    {
+      "name": "cf3Im075",
+      "KH_water": 8.08937e-05,
+      "KH_water_err": 9.86333e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788686520
+    },
+    {
+      "name": "cnbIm025",
+      "KH_water": 3.25428e-05,
+      "KH_water_err": 2.94666e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788686525
+    },
+    {
+      "name": "cnbIm050",
+      "KH_water": 3.74011e-05,
+      "KH_water_err": 3.56339e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788686526
+    },
+    {
+      "name": "cnbIm075",
+      "KH_water": 5.26885e-05,
+      "KH_water_err": 4.63399e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788686533
+    },
+    {
+      "name": "cnbIm100",
+      "KH_water": 7.35086e-05,
+      "KH_water_err": 3.63608e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788686648
+    },
+    {
+      "name": "fbIm025",
+      "KH_water": 6.09258e-05,
+      "KH_water_err": 7.26086e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788689146
+    },
+    {
+      "name": "fbIm050",
+      "KH_water": 5.66715e-05,
+      "KH_water_err": 5.72332e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788689170
+    },
+    {
+      "name": "fbIm075",
+      "KH_water": 8.81566e-05,
+      "KH_water_err": 9.40546e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788689200
+    },
+    {
+      "name": "fbIm100",
+      "KH_water": 8.88494e-05,
+      "KH_water_err": 5.30609e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788689275
+    },
+    {
+      "name": "mbIm025",
+      "KH_water": 1.81253e-05,
+      "KH_water_err": 1.54502e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788689325
+    },
+    {
+      "name": "mbIm050",
+      "KH_water": 9.25799e-05,
+      "KH_water_err": 1.0078e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788689385
+    },
+    {
+      "name": "mbIm075",
+      "KH_water": 8.56496e-05,
+      "KH_water_err": 1.24887e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788691716
+    },
+    {
+      "name": "mbIm100",
+      "KH_water": 0.000108038,
+      "KH_water_err": 1.09952e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788691744
+    },
+    {
+      "name": "ms50nb50",
+      "KH_water": 0.000287279,
+      "KH_water_err": 0.000412174,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788691770
+    },
+    {
+      "name": "mslm025",
+      "KH_water": 6.10742e-05,
+      "KH_water_err": 7.10367e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788691846
+    },
+    {
+      "name": "mslm050",
+      "KH_water": 0.000136983,
+      "KH_water_err": 2.14035e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788692004
+    },
+    {
+      "name": "nbIm025",
+      "KH_water": 2.70463e-05,
+      "KH_water_err": 1.60703e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788692110
+    },
+    {
+      "name": "nbIm050",
+      "KH_water": 4.03233e-05,
+      "KH_water_err": 3.24032e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788694544
+    },
+    {
+      "name": "nbIm075",
+      "KH_water": 0.000138778,
+      "KH_water_err": 2.64174e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788694628
+    },
+    {
+      "name": "nbIm100",
+      "KH_water": 0.000129688,
+      "KH_water_err": 2.91107e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788694630
+    },
+    {
+      "name": "sa25nb75",
+      "KH_water": 0.000144507,
+      "KH_water_err": 6.97346e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788694790
+    },
+    {
+      "name": "sa50nb50",
+      "KH_water": 0.00047793,
+      "KH_water_err": 0.000212078,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788694845
+    },
+    {
+      "name": "saIm025",
+      "KH_water": 6.65637e-05,
+      "KH_water_err": 1.77709e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788694907
+    },
+    {
+      "name": "saIm050",
+      "KH_water": 0.000255883,
+      "KH_water_err": 0.000171525,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788697277
+    },
+    {
+      "name": "saIm0583",
+      "KH_water": 0.000469829,
+      "KH_water_err": 0.000141777,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788697437
+    },
+    {
+      "name": "saIm0625",
+      "KH_water": 0.000620956,
+      "KH_water_err": 0.000267458,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788697501
+    },
+    {
+      "name": "saIm0667",
+      "KH_water": 0.000710116,
+      "KH_water_err": 0.000228201,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788697629
+    },
+    {
+      "name": "saIm075",
+      "KH_water": 0.000357781,
+      "KH_water_err": 2.79375e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788697696
+    },
+    {
+      "name": "saIm0875",
+      "KH_water": 0.00174706,
+      "KH_water_err": 0.00271465,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788697798
+    },
+    {
+      "name": "saIm0917",
+      "KH_water": 0.000708039,
+      "KH_water_err": 0.000267831,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788700142
+    },
+    {
+      "name": "saIm0958",
+      "KH_water": 0.00166126,
+      "KH_water_err": 0.000439881,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788700315
+    },
+    {
+      "name": "saIm100",
+      "KH_water": 0.00408198,
+      "KH_water_err": 0.00130193,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "HwHw": "ZERO_POTENTIAL",
+        "OwHw": "ZERO_POTENTIAL",
+        "OwOw_eps": 89.633,
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1788700408
+    }
+  ],
+  "seedfix": {
+    "replaced": [
+      "brbIm050",
+      "brbIm075",
+      "brbIm100",
+      "cf3Im025"
+    ],
+    "source": "v3w_water_kh_seedfix/water_kh_seedfix_hkhome.json",
+    "assign": "ASSIGN_20260907.md A"
+  }
+}

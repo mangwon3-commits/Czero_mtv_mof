@@ -15,7 +15,7 @@ import run_tb2_ext as X               # noqa: E402
 T.RUNS = os.path.join(HERE, 'tb2w_runs')
 T.OUT = os.path.join(HERE, 'v3w_water_kh')
 FF_TAG = 'UFF_MOF+HwLw_none_20260906'
-PAIR = re.compile(r'^\s*(\w+)\s+-\s+(\w+)\s+\[(\w+)\](?:\s+p_0/k_B\s+([0-9.]+))?')
+PAIR = re.compile(r'^\s*(\w+)\s+-\s+(\w+)\s+\[(\w+)\](?:\s+p_0/k_B:?\s+([0-9.]+))?')   # 09-06 18:3x: 실제 머리말은 'p_0/k_B:  89.63300 [K]' (콜론) — 첫 판이 콜론을 빼먹어 Ow-Ow 를 못 읽고 39건을 '실패' 로 찍음
 
 def ff_check(name):
     """출력 머리말에서 물 쌍 4종이 ZERO_POTENTIAL 이고 Ow-Ow 가 89.633 인지."""

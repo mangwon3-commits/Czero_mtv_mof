@@ -1,0 +1,173 @@
+#!/usr/bin/env python
+"""**T-MTV-2w** — 혼합(sa50nb50)의 **습윤 배치 단위**를 잽니다 (`MAGI-002 §6-9-1` 등록분).
+
+왜 이 계산이 있는가: `MAGI-002 §6-7` 의 습윤 판정은 혼합의 배치 단위를 **재지 않고**
+단일(`saIm0583` 6 실현 = 3.8 p)의 것을 빌려 썼습니다. 혼합은 수정 힘장 물 자료가
+**배열 1 개뿐**이기 때문입니다(`sa50nb50e1~e5` 는 전부 결함판). §6-9 의 민감도 표가
+그 가정에 얼마나 걸리는지 보였고, 이 계산이 k 를 **실측으로** 확정합니다.
+
+    등록 3 항 (자료 0 건 상태에서 적음, `MAGI-002 §6-9-1`)
+      ① 주 산출은 5 실현의 **유지율 SD**. 분모는 각 실현의 RH0.
+      ② 그 값으로 §6-9 표의 k 를 확정하고 `saIm0958` 쌍 한정어를 확정/철회.
+      ③ **이 시험으로 §6-1·§6-7 의 결론을 바꾸지 않는다** — 자를 재는 계산이지
+         가설 시험이 아니다. 단 k >= 4.2 면 `sa50nb50 vs saIm100` 도 판정 불가로 내린다.
+
+`run_water_v3w.py` 를 못 쓰는 이유: 그쪽 `TARGETS` 는 등록된 랩탑 11 종이고
+`--only` 가 목록 밖 이름을 거부합니다(§4 목록만 돕니다). 계열도 갈라야 합니다.
+
+    HERE      v3w_water_mix/        RUNS  water_runs_v3w_mix/
+    CHARGED   charged_v3/           RH    [0.90, 0.0]   <- 비싼 것 먼저(§5 LPT)
+    TARGETS   sa50nb50e1~e5 (구조는 이미 있습니다 — 빌드 0)
+
+⚠️ **머리말 관문은 RH0 에도 그대로 겁니다** — 초판이 *"건조에는 물이 없으니 `Hw` 쌍도
+안 찍힐 것"* 이라고 **재보지 않고** 건너뛰게 해 뒀습니다. 틀렸습니다(`ff_of()` 의 🔴 참조).
+RASPA 는 성분이 계에 몇 개 있든 정의된 쌍 표를 전부 인쇄합니다. **관문은 걸리는 쪽으로 틀립니다.**
+
+RH0 자체는 물 힘장 수정과 무관합니다(계에 물 0, CLAUDE.md 도 **RH>0** 만 결함판으로 지정).
+그래도 관문을 거는 이유는 **결함판 파일로 돈 건조 실행을 조용히 통과시키지 않기 위해서**입니다.
+
+사용:
+    python run_tmtv2w.py               5 실현 x RH{90,0} = 10 건, 워커 5
+    python run_tmtv2w.py --gate-only   관문만 보고 **아무것도 안 돌립니다**
+    python run_tmtv2w.py --stamp-only  결과 JSON 에 힘장·씨앗만 다시 찍습니다
+"""
+import json, os, socket, sys
+
+import run_water as rw
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+from ff_gate import ff_path as _ffp
+from ff_gate import (FF_MD5, FF_TAG, OWOW_EPS, ZERO_PAIRS,
+                     md5_gate, read_ff_header)
+from run_water_v3w import read_seed
+
+SUF = '_mix'                    # 환경변수로 두지 않습니다 — 계열을 손으로 틀릴 자리를 없앱니다
+TARGETS = [(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i}') for i in range(1, 6)]
+
+
+def wire():
+    """공유 모듈 `run_water` 의 전역을 이 계열로. **main() 에서만**(import 부작용 금지)."""
+    rw.HERE = os.path.join(HERE, 'v3w_water' + SUF)
+    rw.RUNS = os.path.join(HERE, 'water_runs_v3w' + SUF)
+    rw.CHARGED = os.path.join(HERE, 'charged_v3')
+    rw.WATER_DEF = os.path.join(HERE, '..', '19_WaterCompetition', 'water.def')
+    rw.RH_LIST = [0.90, 0.0]    # 비싼 것 먼저 — jobs 가 이 순서로 깔립니다(§5 LPT)
+    rw.MAX_WORKERS = 5          # 09-07 16:0x 4->5. 긴 작업(RH90) 5개가 워커 4 에서는 한 워커에 둘씩 겹쳐
+    #                           만기 35.0 h, 워커 5 면 19.3 h (등록값 17.5 h+RH0 1.8 h). 5+연장예비 2 = 7 <= 8 (§5)
+    rw.TARGETS = list(TARGETS)
+
+
+def ff_of(name, rh):
+    """머리말 관문. **RH0 에도 그대로 겁니다.**
+
+    🔴 초판은 *"RH0 은 물이 없어 `Hw`·`Lw` 쌍이 안 찍히니 해당 없음"* 으로
+    **건너뛰었습니다. 틀렸습니다** — 09-07 15:5x 실측: 착수 45 초 뒤
+    `check_ff_per_run.py water_runs_v3w_mix` 가 `rh00_sa50nb50e1/e2` 에 대해
+    **`힘장 통과 · Hw/Lw none · Ow-Ow 89.633`** 을 찍었습니다. RASPA 는 성분이
+    계에 몇 개 있든 **정의된 성분의 쌍 표를 전부 인쇄**합니다.
+
+    건너뛰기가 오탐보다 나쁜 이유: 오탐은 멀쩡한 자료를 붙잡지만 이것은
+    **결함판으로 돈 RH0 을 조용히 통과**시킵니다. 관문은 걸리는 쪽으로 틀립니다.
+    """
+    d = os.path.join(rw.RUNS, f'rh{int(rh * 100):02d}_{name}')
+    c = read_ff_header(d)
+    c['ok'] = (all(c.get(k) == 'ZERO_POTENTIAL' for k in ZERO_PAIRS)
+               and c.get('OwOw_eps') is not None
+               and abs(c['OwOw_eps'] - OWOW_EPS) < 1e-3)
+    return c
+
+
+def stamp():
+    """산출물에 힘장 출처를 **행마다**(`run_water_v3w.stamp` 와 같은 이유)."""
+    p = os.path.join(rw.HERE, 'water_results.json')
+    if not os.path.exists(p):
+        print(f'  !! 결과 파일 없음: {p}  (아무것도 안 찍었습니다)')
+        return 1
+    rows = json.load(open(p, encoding='utf-8'))
+    nff = nseed = 0
+    for r in rows:
+        r['forcefield'] = FF_TAG
+        c = ff_of(r['name'], r['RH'])
+        r['ff_check'] = c
+        nff += bool(c['ok'])
+        sd = read_seed(r['name'], r['RH'])
+        if sd is not None:
+            r['raspa_seed'] = sd
+            nseed += 1
+    json.dump(rows, open(p, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+
+    # **기기별 태그 사본** — `run_water.py:359` 의 규약(태그 사본이 진짜 기록)을
+    # 이 계열에서도 지킵니다. 09-08 에 `v3w_water/water_results.json` 을 두 기기가
+    # 같이 써서 8행이 지워질 뻔했습니다(git 이 막아 잡힘). 이 계열은 폴더가
+    # 갈라져 있어 지금은 안 겹치지만, 겹치기 시작한 뒤에 넣으면 늦습니다.
+    host = socket.gethostname().lower()
+    tagged = os.path.join(rw.HERE, f'water_results_{host}.json')
+    prior = json.load(open(tagged, encoding='utf-8')) if os.path.exists(tagged) else []
+    merged = {(r['name'], r['RH']): r for r in prior}
+    for r in rows:
+        merged[(r['name'], r['RH'])] = dict(r, host=host)
+    json.dump(sorted(merged.values(), key=lambda r: (r['name'], r['RH'])),
+              open(tagged, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    print(f'  기기 태그 사본 {os.path.basename(tagged)} — {len(merged)}행')
+
+    side = os.path.join(rw.HERE, 'ff_provenance.json')
+    json.dump({'forcefield': FF_TAG, 'md5': FF_MD5, 'path': _ffp(),
+               'test': 'T-MTV-2w', 'registered': 'MAGI-002 §6-9-1',
+               'host': host, 'rows': len(rows), 'ff_ok_rows': nff},
+              open(side, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    print(f'  난수 씨앗 회수 {nseed}/{len(rows)}행 · 힘장 확인 **{nff}/{len(rows)}행 통과**')
+    return 0
+
+
+def main():
+    wire()
+    if '--stamp-only' in sys.argv:
+        # 도는 프로세스는 **import 시점의 `ff_of`** 를 쥐고 있습니다(CLAUDE.md §6).
+        # 위 🔴 고침 전에 띄운 실행은 RH0 행을 `not_applicable` 로 찍고 끝납니다.
+        # 완주 뒤 이 길로 **다시 찍으십시오** — 그래야 RH0 도 진짜 관문을 지납니다.
+        return stamp()
+    if '--gate-only' in sys.argv:
+        ok, _ = md5_gate()
+        bad = []
+        for n, _d in TARGETS:
+            for rh in rw.RH_LIST:
+                d = os.path.join(rw.RUNS, f'rh{int(rh * 100):02d}_{n}')
+                if not os.path.isdir(d):
+                    continue
+                c = ff_of(n, rh)
+                print(f'  [머리말 관문] {n:<12} RH{int(rh*100):>3}%  '
+                      f'{"해당 없음" if c.get("gate") == "not_applicable" else ("통과" if c["ok"] else "**실패**")}')
+                if not c['ok']:
+                    bad.append((n, rh))
+        print(f'  -> 파일 관문 {"통과" if ok else "**실패**"} · 머리말 실패 {len(bad)}건')
+        return 0 if (ok and not bad) else 1
+
+    print('T-MTV-2w — 혼합 sa50nb50 의 습윤 배치 단위 (MAGI-002 §6-9-1 등록)', flush=True)
+    print(f'  HERE {rw.HERE}\n  RUNS {rw.RUNS}\n  CHARGED {rw.CHARGED}', flush=True)
+    print(f'  RH {rw.RH_LIST} · 워커 {rw.MAX_WORKERS} · 대상 {len(rw.TARGETS)}종: '
+          + ', '.join(n for n, _ in rw.TARGETS), flush=True)
+    missing = [n for n, _ in rw.TARGETS
+               if not os.path.exists(os.path.join(rw.CHARGED, f'{n}_DDEC6.cif'))]
+    if missing:
+        print(f'!! 전하 CIF 없음: {missing}'); return 2
+    if not md5_gate()[0]:
+        return 1
+    for d in (rw.HERE, rw.RUNS):
+        os.makedirs(d, exist_ok=True)
+
+    # ⚠️ **RH 를 한 번에 주면 안 됩니다.** `run_water.main()` 은 작업을
+    #   `[(n, rh) for n, _ in TARGETS for rh in RH_LIST]` 로 깔아 **구조별로** 묶습니다.
+    #   그러면 RH90 5 건이 동시에 못 뜨고 (e1-90, e1-0, e2-90, e2-0, e3-90) 로 시작해
+    #   마지막 RH90 이 t=5.4 h 에나 출발합니다 — 만기 **24.7 h**.
+    #   단계를 갈라 **RH90 다섯을 먼저 동시에** 띄우면 17.5 + 1.8 = **19.3 h**.
+    #   (LPT 는 "비싼 것 먼저" 인데, 그 순서는 RH_LIST 가 아니라 **jobs 배열**이 정합니다.)
+    rc = 0
+    for phase in ([0.90], [0.0]):
+        rw.RH_LIST = phase
+        print(f'\n=== 단계 RH {phase[0]:.2f} — {len(rw.TARGETS)}건 동시 ===', flush=True)
+        rc |= rw.main()          # 이어받기가 앞 단계 완주분을 cached 로 건너뜁니다
+    return 0 if (stamp() == 0 and rc == 0) else 1
+
+
+if __name__ == '__main__':
+    sys.exit(main())
