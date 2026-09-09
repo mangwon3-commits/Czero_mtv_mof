@@ -57,6 +57,10 @@ _SERIES = {
     '_mix':    [(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i}') for i in range(1, 6)]
              + [(f'sa50nb50e{i}', f'saIm 12 + nbIm 12 실현 {i} (09-08 확장)') for i in (6, 8)],
     '_sng050': [(f'saIm050e{i}', f'SO3H 50 % 실현 {i} (T-MTV-2w′)') for i in range(1, 6)],
+    # T-MTV-2w″ (ASSIGN §M) — 단일 배치 단위의 **셋째** 점. 지금은 3.8 p(saIm0583)와
+    # 8.7 p(saIm050) 두 점뿐이라 "조성마다 다른가" 를 점 둘로 말하는 중입니다.
+    # LCD 관문 −0.31~+1.83 %, **무조건부**(다른 둘과 같은 조건).
+    '_sng_nb050': [(f'nbIm050e{i}', f'NO2 50 % 실현 {i} (T-MTV-2w″)') for i in range(1, 6)],
 }
 TARGETS = _SERIES[SUF]
 
