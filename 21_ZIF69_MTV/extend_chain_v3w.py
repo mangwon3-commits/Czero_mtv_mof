@@ -64,7 +64,11 @@ from check_water_equilibration import blocks   # 자는 하나
 TARGETS = ["base", "saIm0875", "saIm0917", "saIm0958",
            "saIm100", "mslm050", "sa50nb50"]
 BASE_CHUNKS = 5          # 본 실행이 만든 조각 수
-MAX_ROUNDS = 4           # 상한 (MORNING_20260907 §2)
+MAX_ROUNDS = 5           # 상한 (MORNING_20260907 §2 에서 4 -> **5**,
+                         #        사용자 재승인 09-09 12:0x · §E-2 / ASSIGN §Q)
+#   코드의 상한은 **등록된 상한과 같아야 한다.** 등록이 5 로 바뀌었는데 코드가 4 를
+#   말하면 그 둘이 갈라진 것을 알아채는 건 또 사후다(§0). --rounds 1 로 도는 이번
+#   호출에는 걸리지 않지만, 그래서 더 조용히 어긋난다.
 WINDOW_CYCLES = 15000    # Δ40 창 = **마지막 15,000 사이클** (§E, 등록문 문언)
 WINDOW_CHUNKS = 5        # (옛 이름 — 보고 문구에만 남김)
 
@@ -164,7 +168,7 @@ def chunk_cycles_per_block(name, k, nblocks):
     return n // nblocks
 
 
-def window_series(name):
+def window_series(name, upto=None):
     """**마지막 15,000 사이클**의 (물, CO2) 블록열과 블록별 사이클.
 
     ⚠️ 예전 판은 `WINDOW_CHUNKS = 5`, 즉 **조각 개수**로 창을 잡았습니다.
@@ -175,6 +179,14 @@ def window_series(name):
     (`ASSIGN_20260907.md §E`, 09-07)
     """
     ks_all = done_chunks(name)
+    # [09-09 laptop2] `upto` — **그 조각까지만** 보고 창을 잡습니다.
+    #   무인 구간에 라운드별 보고가 안 찍혀(`--no-local-stop` 단락 평가) Δ40 궤적에 구멍이
+    #   났고, 조각은 디스크에 다 있으니 사후 복원이 됩니다. 그때 필요한 것이 "조각 K 시점의
+    #   창" 입니다. 랩탑이 `done_chunks` 를 몽키패치해서 하려다 `cpb` 가 1 로 들어와 거부됐는데,
+    #   **거부가 맞았습니다** — 패치가 블록 사이클 정보를 지웠고, 그대로 통과했으면 앞뒤가 다른
+    #   사이클을 덮은 수가 나왔을 것입니다. 우회 대신 정식 인자를 둡니다.
+    if upto is not None:
+        ks_all = [k for k in ks_all if k <= upto]
     # **블록 단위**로 뒤에서부터 모읍니다. 조각 단위로 모으면 넘칩니다 —
     # 변환된 chunk0(15,000) 하나가 통째로 들어와 창이 18,000 이 됩니다.
     # 등록문의 창은 "마지막 **15,000**" 이므로 정확히 그만큼만 씁니다.
@@ -260,6 +272,53 @@ def report(names):
     print(f"  라운드 판정: **{'전 조성 정지' if allstop else '계속'}**"
           " (한 조성이라도 남으면 다 같이 간다)")
     return allstop
+
+
+def series_report(names):
+    """조각 K 마다의 Δ40·폭 궤적. **계산하지 않습니다 — 이미 있는 출력만 읽습니다.**
+
+    각 점은 "그 조각까지 왔을 때의 마지막 15,000 사이클" 창입니다. 창이 겹치므로
+    (5조각 중 4조각 공유) **연속 점은 강하게 상관돼 있습니다** — 점들의 산포를
+    독립 측정의 산포로 읽으면 실제보다 작게 봅니다(`ASSIGN §N`).
+    """
+    print("=== 조각별 Δ40 궤적 (창 = 그 조각까지의 마지막 15,000 사이클) ===")
+    print("  계산하지 않습니다. 이미 있는 출력만 읽습니다.")
+    print()
+    for n in names:
+        ks = done_chunks(n)
+        cells = []
+        for k in ks:
+            w, c, used, cw = window_series(n, upto=k)
+            if len(w) < 4:
+                continue
+            # ⚠️ `d40_band` 는 **셋**(Δ40, 폭, 평균)을 돌려줍니다. 처음에 둘로 받았더니
+            #    파이썬이 ValueError 를 냈고, 아래 except 가 그것을 삼켜 **전 조성 전 조각을
+            #    "거부" 로 찍었습니다.** 관문이 막은 것처럼 보였지만 제 실수였습니다.
+            #    넓은 except 가 코딩 실수를 판정으로 둔갑시키는 자리 — 그래서 **이유를 같이
+            #    찍습니다.** 이유 없는 "거부" 는 다시 이 함정에 빠집니다.
+            try:
+                dw, bw, _m = d40_band(w, cw)
+            except ValueError as e:
+                cells.append(f"c{k}:거부({str(e).splitlines()[0][:40]})")
+                continue
+            # ⚠️ **이른 조각은 창이 짧습니다.** 창은 "마지막 15,000 사이클" 인데 조각이
+            #    아직 그만큼 없으면 있는 만큼만 덮습니다(c0 이면 3,000). 3,000 짜리 Δ40 과
+            #    15,000 짜리 Δ40 은 **같은 이름의 다른 양**입니다(점검표 5-2).
+            #    그래서 짧은 창에는 사이클 수를 붙여 **눈에 보이게** 합니다. 안 붙이면
+            #    궤적의 앞부분을 뒷부분과 나란히 읽게 됩니다.
+            tot = sum(cw)
+            mark = "" if tot >= WINDOW_CYCLES else f"[{tot//1000}k]"
+            cells.append(f"c{k}:{dw:+.1f}({bw:.1f}){mark}")
+        print(f"  {n:<10} " + "  ".join(cells))
+    print()
+    print("  형식: c<조각>:Δ40%(폭%). 창이 4/5 를 공유하므로 연속 점은 상관돼 있습니다 —")
+    print("  점들의 SD 를 독립 측정의 산포로 읽으면 **실제보다 작게** 봅니다(ASSIGN §N).")
+    print("  '거부' 는 40 % 경계가 블록 경계에 안 떨어진 것입니다(§E ③) — 오류가 아니라 관문입니다.")
+    print()
+    print(f"  ⚠️ **[Nk] 는 창이 {WINDOW_CYCLES:,} 사이클에 못 미친 점입니다** — 조각이 아직 없어서입니다.")
+    print("     3,000 짜리 Δ40 과 15,000 짜리 Δ40 은 **같은 이름의 다른 양**입니다(점검표 5-2).")
+    print("     궤적의 단조 감쇠를 볼 때 **표시 없는 점끼리만** 견주십시오.")
+    return 0
 
 
 def gates(names):
@@ -363,10 +422,14 @@ def main():
     #   같은 --rounds 를 이 플래그로 돌려 조각 수를 맞추고, 정지 라운드는 사후 분석(처음 정지 충족 라운드 열)으로 읽는다.
     #   상한 MAX_ROUNDS 는 그대로 걸린다. PLAN_30H_20260908.md.
     ap.add_argument("--no-local-stop", action="store_true")
+    # [09-09 laptop2] 조각별 Δ40 궤적을 찍고 끝냅니다(계산 없음).
+    #   `ASSIGN §Q ①`(Δ40 계열 병기·단조 감쇠로 판단)이 요구하는 것이 이 표입니다.
+    ap.add_argument("--series", action="store_true",
+                    help="조각 K 마다의 Δ40·폭을 찍고 끝낸다(계산 없음)")
     a = ap.parse_args()
 
     if a.rounds > MAX_ROUNDS:
-        print(f"!! 상한 {MAX_ROUNDS} 라운드 (MORNING_20260907 §2)")
+        print(f"!! 상한 {MAX_ROUNDS} 라운드 (ASSIGN §Q, 09-09 재승인)")
         return 2
 
     print("RH90 사슬 잇기 — 라운드 병렬, 전 조성 동일 조각 수", flush=True)
@@ -379,6 +442,9 @@ def main():
     print(f"  라운드 {a.rounds} (조각당 {rc.CHUNK_CYCLES} 사이클, 창은 "
           f"마지막 {WINDOW_CHUNKS}조각 고정)", flush=True)
     print(flush=True)
+
+    if a.series:
+        return series_report(a.names)
 
     passed = gates(a.names)
     if not passed and not a.dry_run:
@@ -404,7 +470,20 @@ def main():
         t0 = time.time()
         run_round(a.names, k, False)
         print(f"  라운드 {r+1} 벽시계 {(time.time()-t0)/3600:.2f} h", flush=True)
-        if (not a.no_local_stop) and report(a.names):
+        # [09-08 무인 / 09-09 laptop2 고침] **보고는 항상 한다. 끄는 것은 정지뿐이다.**
+        #
+        #   `--no-local-stop` 을 `(not a.no_local_stop) and report(...)` 로 걸면 파이썬이
+        #   단락 평가로 **report() 자체를 건너뜁니다.** 그래서 무인 30시간 동안 라운드별
+        #   Δ40 표가 **한 줄도 안 남았습니다.**
+        #
+        #   그런데 `PLAN_30H §1` 은 정확히 그 표에 기대고 있습니다 — *"정지 라운드는 라운드마다
+        #   로그에 남으므로(report()), 사후에 12종 표에서 풀 정지 라운드를 읽습니다."*
+        #   즉 **플래그가 그 계획의 전제를 조용히 지웠습니다.** 계산은 옳게 돌았고 자료도
+        #   출력에 다 남아 사후 복원이 되지만, 로그만 보면 아무 문제가 없어 보입니다.
+        #
+        #   플래그의 뜻은 "이 기기 판정으로 멈추지 마라" 이지 "재지 마라" 가 아닙니다.
+        stop_now = report(a.names)
+        if (not a.no_local_stop) and stop_now:
             print(f"\n전 조성이 정지 조건을 만족했다. {r+1} 라운드에서 멈춘다.",
                   flush=True)
             break
