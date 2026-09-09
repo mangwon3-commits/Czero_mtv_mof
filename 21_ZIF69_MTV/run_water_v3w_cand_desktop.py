@@ -11,8 +11,9 @@ _wire = v3w.wire
 def wire():
     _wire()
     have = {n for n, _ in v3w.rw.TARGETS}
+    extra = [(n, f'{n} (env V3W_EXTRA, ASSIGN §J 습윤 표 채우기)') for n in os.environ.get('V3W_EXTRA', '').split(',') if n]
     for n, label in (('sa25nb75', 'SO3H 25% + NO2 75% (후보 ⑨)'), ('ms50nb50', 'SO2CH3 50% + NO2 50% (후보 ⑨)'),
-                     ('mslm025', 'SO2CH3 25% — 구경 창(4.3~4.8 Å) 안의 비양성자성 술포닐 (⑩, 랩탑 §6-13 등록)')):
+                     ('mslm025', 'SO2CH3 25% — 구경 창(4.3~4.8 Å) 안의 비양성자성 술포닐 (⑩, 랩탑 §6-13 등록)')) + tuple(extra):
         if n not in have:
             v3w.rw.TARGETS = list(v3w.rw.TARGETS) + [(n, label)]
     v3w.rw.RH_LIST = [0.0, 0.9]          # RH0 분모 함께
