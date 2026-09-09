@@ -206,7 +206,7 @@ def main():
         ck = check(out_cif)
         ok = (len(au["orphans"]) + len(au["h_orphans"]) == 0
               and au["detached_atoms"] == 0 and ck["pass"])
-        print(f"  [{tag}] 시드 {seed}  S=12 Cl=0 원소일치  융합 {ck['fused']} "
+        print(f"  [{tag}] 시드 {seed}  S={el.get('S',0)} Cl={el.get('Cl',0)} 원소일치  융합 {ck['fused']} "
               f"금지접촉 {ck['forbidden_contacts']} 고아 {len(au['orphans'])} "
               f"-> {'채택' if ok else '기각'}", flush=True)
         if not ok:
