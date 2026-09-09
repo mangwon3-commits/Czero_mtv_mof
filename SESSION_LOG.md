@@ -30,6 +30,8 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-09 12:0x · desktop  [진행중] 사용자: ZIF-69 밖 신규 골격 재탐색(Opus 탐색·Fable 해석) + MAGI-003(셋 다 공격자) → MAGI/MAGI-003_new-frameworks.md 등록, 랩탑·laptop2 R1 지시, 데스크탑 워크플로 wf_c7f327ca-e05
+
 ## 09-09 11:4x · desktop  [진행중] laptop2 R5 착수 11:36:31(PID 430, 7종, ~17:40) — 12종 R5 전부 등록·가동/대기(랩탑 2종 진행, 데스크탑 3종은 simulate≤5 대기)
 
 ## 09-09 11:3x · desktop  [정정] ASSIGN §M~§Q 시각 라벨 오기(30~70분 앞섬, laptop2 지적) → 커밋 시각으로 정정; §Q 출처 = 사용자 메시지 10:05:17 KST · 커밋 543c757
