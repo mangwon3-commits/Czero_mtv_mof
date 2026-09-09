@@ -404,7 +404,20 @@ def main():
         t0 = time.time()
         run_round(a.names, k, False)
         print(f"  라운드 {r+1} 벽시계 {(time.time()-t0)/3600:.2f} h", flush=True)
-        if (not a.no_local_stop) and report(a.names):
+        # [09-08 무인 / 09-09 laptop2 고침] **보고는 항상 한다. 끄는 것은 정지뿐이다.**
+        #
+        #   `--no-local-stop` 을 `(not a.no_local_stop) and report(...)` 로 걸면 파이썬이
+        #   단락 평가로 **report() 자체를 건너뜁니다.** 그래서 무인 30시간 동안 라운드별
+        #   Δ40 표가 **한 줄도 안 남았습니다.**
+        #
+        #   그런데 `PLAN_30H §1` 은 정확히 그 표에 기대고 있습니다 — *"정지 라운드는 라운드마다
+        #   로그에 남으므로(report()), 사후에 12종 표에서 풀 정지 라운드를 읽습니다."*
+        #   즉 **플래그가 그 계획의 전제를 조용히 지웠습니다.** 계산은 옳게 돌았고 자료도
+        #   출력에 다 남아 사후 복원이 되지만, 로그만 보면 아무 문제가 없어 보입니다.
+        #
+        #   플래그의 뜻은 "이 기기 판정으로 멈추지 마라" 이지 "재지 마라" 가 아닙니다.
+        stop_now = report(a.names)
+        if (not a.no_local_stop) and stop_now:
             print(f"\n전 조성이 정지 조건을 만족했다. {r+1} 라운드에서 멈춘다.",
                   flush=True)
             break
