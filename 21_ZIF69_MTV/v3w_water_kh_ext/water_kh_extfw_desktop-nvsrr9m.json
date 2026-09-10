@@ -1,0 +1,234 @@
+{
+  "test": "T-NF-0k",
+  "registration": "TNF0K_REGISTRATION_20260911.md",
+  "tag": "desktop-nvsrr9m",
+  "forcefield": "UFF_MOF+HwLw_none_20260906",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "ff_path": "/home/skyjun/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def",
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "temperature_K": 298.0,
+  "cutoff_A": 12.0,
+  "pressure_Pa": 1e-05,
+  "comparison_axis": "v3w_water_kh/water_kh_ALLw_hkhome_seedfixed.json",
+  "note": "외부 골격 무한희석 물 K_H. 32조성 축과 **같은 자**. 판정 규칙은 등록문 §6 (R>=10 갈래B / R<3 갈래A / 그 사이 미결). 단일 링커 정렬 구조라 배치 단위는 해당 없음 — 자는 ± 1.5배.",
+  "seed_collision": null,
+  "rows": [
+    {
+      "name": "zif71",
+      "KH_water": 1.02914e-06,
+      "KH_water_err": 2.22197e-08,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 1,
+      "raspa_seed": 1789066108
+    },
+    {
+      "name": "zif71",
+      "KH_water": 9.88512e-07,
+      "KH_water_err": 4.08147e-08,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 2,
+      "raspa_seed": 1789066111
+    },
+    {
+      "name": "zif71",
+      "KH_water": 1.00652e-06,
+      "KH_water_err": 1.55515e-08,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 3,
+      "raspa_seed": 1789066114
+    },
+    {
+      "name": "zif90",
+      "KH_water": 2.69854e-06,
+      "KH_water_err": 4.66394e-08,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 1,
+      "raspa_seed": 1789066981
+    },
+    {
+      "name": "zif90",
+      "KH_water": 2.70944e-06,
+      "KH_water_err": 3.00589e-08,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 2,
+      "raspa_seed": 1789066988
+    },
+    {
+      "name": "zif90",
+      "KH_water": 2.70273e-06,
+      "KH_water_err": 6.04221e-08,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 3,
+      "raspa_seed": 1789066996
+    },
+    {
+      "name": "zif93",
+      "KH_water": 4.70548e-06,
+      "KH_water_err": 2.04136e-07,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 1,
+      "raspa_seed": 1789066103
+    },
+    {
+      "name": "zif93",
+      "KH_water": 4.68503e-06,
+      "KH_water_err": 2.17431e-07,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 2,
+      "raspa_seed": 1789066106
+    },
+    {
+      "name": "zif93",
+      "KH_water": 4.56282e-06,
+      "KH_water_err": 1.78354e-07,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 3,
+      "raspa_seed": 1789066109
+    }
+  ]
+}
