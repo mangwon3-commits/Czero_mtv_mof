@@ -1,0 +1,39 @@
+RH90 유지율 재계산 — **v3w 계열** (수정 힘장)
+  HERE /home/leehk/mof_project/21_ZIF69_MTV/v3w_water_ruler_sa25nb75e5
+  RUNS /home/leehk/mof_project/21_ZIF69_MTV/water_runs_v3w_ruler_sa25nb75e5
+  CHARGED /home/leehk/mof_project/21_ZIF69_MTV/charged_v3
+  RH [0.0, 0.9] · 워커 1 · 대상 1종  [--only]: sa25nb75e5
+  [파일 관문] /home/leehk/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+구조 1개 x RH 2단계 중 실행 2개
+CO2 0.15 bar 고정, 298 K, TIP5P-Ew(5사이트), 15000 사이클
+
+RH90 유지율 재계산 — **v3w 계열** (수정 힘장)
+  HERE /home/leehk/mof_project/21_ZIF69_MTV/v3w_water_ruler_sa25nb75e5
+  RUNS /home/leehk/mof_project/21_ZIF69_MTV/water_runs_v3w_ruler_sa25nb75e5
+  CHARGED /home/leehk/mof_project/21_ZIF69_MTV/charged_v3
+  RH [0.0, 0.9] · 워커 1 · 대상 1종  [--only]: sa25nb75e5
+  [파일 관문] /home/leehk/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+구조 1개 x RH 2단계 중 실행 2개
+CO2 0.15 bar 고정, 298 K, TIP5P-Ew(5사이트), 15000 사이클
+
+  [이어받기 시도] rh00_sa25nb75e5 — 체크포인트에서 분자 배치를 복원합니다 (진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).
+  [              ok] RH  0% sa25nb75e5 CO2  0.9534  H2O   0.0000
+  [              ok] RH 90% sa25nb75e5 CO2  0.8875  H2O   0.1700
+
+============================================================================================================
+구조                                  RH         CO2 [mol/kg]         H2O [mol/kg]               건조대비   H2O/CO2
+------------------------------------------------------------------------------------------------------------
+sa25nb75e5 (env V3W_EXTRA, ASSIGN §J 습윤 표 채우기)    0%      0.9534 ± 0.0029      0.0000 ± 0.0000      100.0% (0.0σ)      0.00
+sa25nb75e5 (env V3W_EXTRA, ASSIGN §J 습윤 표 채우기)   90%      0.8875 ± 0.0127      0.1700 ± 0.0054       93.1% (5.1σ)      0.19
+
+[OK] water_results.json — 이번 실행 2행, 보존 0행, 합계 2행
+
+판정 기준(19_WaterCompetition 과 동일, 계산 전 확정):
+  RH90 유지율 80% 이상 -> 유효 / 50~80% -> 조건부(전처리 건조 비용) / 50% 미만 -> 종료
+  차이의 유의성은 1.5σ 를 기준으로 본다.
+  난수 씨앗 회수 2/2행 (러너가 안 적어 출력 머리말에서 읽습니다 — 폴더를 지우면 사라집니다)
+  힘장 확인 **2/2행 통과** (조성마다 자기 출력으로)
+  기기별 태그 사본 water_results_desktop-js1ib6u.json: 2행
+  2행에 forcefield·ff_check 를 찍고 사이드카를 남겼습니다.
