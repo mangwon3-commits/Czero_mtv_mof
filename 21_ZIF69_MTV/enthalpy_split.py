@@ -10,7 +10,9 @@
 import json, os, re, statistics as st, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RUNS = os.path.join(HERE, 'khext_runs')
+# 외부 골격(T-NF-0k)과 우리 조성(보충 실행)이 서로 다른 폴더에 있습니다.
+# 한쪽만 읽으면 (가) 비교의 분모가 조용히 빠집니다 — 실제로 초판이 그랬습니다.
+RUNS_DIRS = [os.path.join(HERE, 'khext_runs'), os.path.join(HERE, 'khours_runs')]
 R_KJ = 8.314462618e-3            # kJ/mol/K
 T_K = 298.0
 RT = R_KJ * T_K                  # 2.478 kJ/mol
@@ -48,28 +50,31 @@ def read_dH(path, comp='water'):
 
 
 def main():
-    if not os.path.isdir(RUNS):
-        print(f'  실행 폴더 없음: {RUNS}'); return 1
-    raw, nblocks = {}, {}
-    for rep in ('r1', 'r2', 'r3'):
-        base = os.path.join(RUNS, rep)
-        if not os.path.isdir(base):
-            continue
-        for d in sorted(os.listdir(base)):
-            if not d.startswith('widom_water_'):
-                continue
-            name = d[len('widom_water_'):]
-            od = os.path.join(base, d, 'Output', 'System_0')
-            outs = [os.path.join(od, x) for x in os.listdir(od)
-                    if x.endswith('.data')] if os.path.isdir(od) else []
-            if len(outs) != 1:
-                continue
-            h = read_dH(outs[0])
-            if h:
-                raw.setdefault(name, []).append(h[1])
-                nblocks.setdefault(name, []).append(h[2])   # 실행별 95% CI
-    if not raw:
-        print('  <U_gh> 블록을 못 찾았습니다. 출력 형식 확인 필요.'); return 1
+    live = [d for d in RUNS_DIRS if os.path.isdir(d)]
+    if not live:
+        print(f'  실행 폴더 없음: {RUNS_DIRS}'); return 1
+    raw, nblocks, src = {}, {}, {}
+    for RUNS in live:
+      for rep in ('r1', 'r2', 'r3'):
+          base = os.path.join(RUNS, rep)
+          if not os.path.isdir(base):
+              continue
+          for d in sorted(os.listdir(base)):
+              if not d.startswith('widom_water_'):
+                  continue
+              name = d[len('widom_water_'):]
+              od = os.path.join(base, d, 'Output', 'System_0')
+              outs = [os.path.join(od, x) for x in os.listdir(od)
+                      if x.endswith('.data')] if os.path.isdir(od) else []
+              if len(outs) != 1:
+                  continue
+              h = read_dH(outs[0])
+              if h:
+                  raw.setdefault(name, []).append(h[1])
+                  nblocks.setdefault(name, []).append(h[2])   # 실행별 95% CI
+                  src.setdefault(name, set()).add(os.path.basename(RUNS))
+      if not raw:
+          print('  <U_gh> 블록을 못 찾았습니다. 출력 형식 확인 필요.'); return 1
 
     A = {n: {'mean': sum(v) / len(v), 'sd': st.stdev(v) if len(v) > 1 else 0.0,
              'n': len(v), 'vals': v,
