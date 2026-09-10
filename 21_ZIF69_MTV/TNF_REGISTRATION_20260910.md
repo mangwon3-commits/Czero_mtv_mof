@@ -37,3 +37,16 @@
     순서     T-NF-1 앞단 → (xtb 비면) T-NF-0 앞단 → T-NF-2 앞단. GCMC 는 전하 CIF 푸시 뒤 각 기기 배정대로. 관문(Zeo++)은 해당 기기 RASPA 0 창.
     실패     앞단 단계별 rc·검사값을 `tnf_chain.log` 에 남기고 다음 재료로 넘어간다. 결과를 본 뒤 문턱을 고치지 않는다.
     결과     `TNF_RESULTS_20260910.md` 에 판정 표(등록식 그대로). 사용자 복귀(09-12) 전까지 §6-6 의 분기대로만 다음 배정.
+
+## 5. 착수 기록 (09-10 13:4x, 데스크탑 — 결과 전)
+    T-NF-1  **미착수 — 구조 미확보.** MUF-16 CIF 는 Europe PMC 부록(zip 15개, CIF 없음)·Springer MOESM(403)·CoRE MOF 2019(2021 기탁이라 부재)·COD(0건)·Zenodo(403) 어디에도 없고,
+            CCDC(1948901~1948905, DataCite DOI 확인)는 captcha 라 사람이 내려받아야 한다. **또 하나: Co 진공 판은 존재하지 않는다** — SI 표 기준 무게스트 단결정은 Mn(1948905)뿐, Co 는 as-synth 이수화물(1948901)뿐.
+            사용자 복귀(09-12) 뒤 결정: (a) 1948901 에서 세공 물(O15)만 제거 · (b) Mn 진공 판(다른 시험) 중 하나. 정제도 R1 0.1185 라 무질서 열 검사 필수. 그때까지 T-NF-1 은 "미착수".
+    T-NF-2  **미착수 — 구조 미확보.** ZIF-94/SIM-1 CIF 는 RASPA 배포본(ZIF-71/90/93/96/97 만)·CoRE MOF 2019 전수(12,020건; SOD 크기 Zn(C5H5N2O)2 없음)·COD 에 없음. 등록 §3 분기대로 건너뜀. ZIF-93(같은 링커·RHO)은 다른 구조라 대체하지 않는다.
+    T-NF-0  **착수.** 구조는 RASPA 배포본(`00_Migration/raspa_share/.../ZIF-71.cif`, `ZIF-90.cif`; 출처 Banerjee 2008 / Morris 2008) → `external_cif/`(감사 `audit.json`·`PROVENANCE.md`).
+            ZIF-71: Pm-3m → P1 816원자, 최소거리 0.949(riding C-H), 복제 **1×1×1**(수직 폭 28.55 Å ≥ 24). ZIF-90: P1 252원자, **결함 — 알데히드 C-H 0.686 Å ×24**(불가능한 길이) → GFN-FF 이완 뒤 재측정 필수, 이완 전 CIF 로 GCMC·PACMAN 금지; 복제 2×2×2.
+            기존 이완·전하 스크립트는 재사용 불가(`REUSE_V3_SCRIPTS_FOR_NONZIF69_20260910.md`: judge 가 Zn-N 기준으로 죽고 관문이 base 를 강제) → 새 도구 `relax_tnf.py`(측정만, 판정 없음)·`charge_tnf.py`(charge_v3 와 같은 PACMAN 호출)·`run_tnf.py`(범용 러너; v3w 입력과 diff 로 T·압력·UnitCells 외 동일 확인; P_sat 등록표 298 K 3169 / 303 K 4247 / 373 K 3169 고정).
+            **기기 재배정**(T-NF-1·2 부재로 데스크탑이 비므로): ZIF-71 물 5점 × 씨앗 2 = 10건 → **데스크탑**(사슬이 관문 뒤 자동 착수); ZIF-90 10건 → **랩탑**(전하 CIF 푸시 뒤 우편함 배정). laptop2 는 배정 없음.
+            사슬 `.claude_work_tnf_chain.sh`(PID 162384, 13:42:53 착수; dry pass 2회 통과, 로그 `tnf_chain.log`). 순서: zif90 이완→전하→관문(RASPA 0)→입력 확인[ready] → zif71 이완→전하→관문→**생산 착수**.
+    러너 주의(run_tnf 작성자 기록)  RH 는 이상기체 분압비(RASPA 가 PR 상태식으로 φ 계산, 15 kPa 급에서 φ≈1); P_sat 은 실험 표값(TIP5P-Ew 자체 포화압 아님) → T-NF-0 의 x 축(RH)이 모델 포화압과 어긋날 수 있음 — ×2 문턱은 로딩에 걸리므로 "어느 RH 에서 견주는가" 를 결과에 병기.
+    실측 앵커  ZIF-71·ZIF-90 물 등온 수치(Ortiz 2014/2015 JPCC 계열)는 아직 미추출 — 결과 전에 별도 확보(그림 값이면 정성 비교로 강등, §2 규칙).
