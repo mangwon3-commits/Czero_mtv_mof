@@ -1,0 +1,434 @@
+{
+  "test": "T-NF-0v",
+  "registration": "TNF0V_REGISTRATION_20260911.md",
+  "tag": "desktop-nvsrr9m",
+  "forcefield": "UFF_MOF+HwLw_none_20260906",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "temperature_K": 298.0,
+  "cutoff_A": 12.0,
+  "he_lj_reference": {
+    "eps_K": 10.9,
+    "sigma_A": 2.64,
+    "source": "UFF_MOF force_field_mixing_rules.def 40행"
+  },
+  "note": "헬륨 Widom Rosenbluth 무게 = 공극률. helium.def 경로가 TraPPE 지만 LJ 는 UFF_MOF 에서 옵니다 — \"TraPPE 헬륨\" 이라 쓰면 틀립니다. 정규화 대상은 v3w_water_kh_ext + water_kh_ALLw_hkhome_seedfixed.",
+  "seed_collision": null,
+  "rows": [
+    {
+      "name": "base",
+      "rep": 1,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 7896.503999999915,
+      "density_g_cm3": 1.1466204508548246,
+      "n_atoms": 600,
+      "phi": 0.43397,
+      "phi_err": 0.001085,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069870,
+      "ok": true
+    },
+    {
+      "name": "base",
+      "rep": 2,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 7896.503999999915,
+      "density_g_cm3": 1.1466204508548246,
+      "n_atoms": 600,
+      "phi": 0.433635,
+      "phi_err": 0.001041,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069876,
+      "ok": true
+    },
+    {
+      "name": "mbIm025",
+      "rep": 1,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 7774.013999999916,
+      "density_g_cm3": 1.1288341571956042,
+      "n_atoms": 618,
+      "phi": 0.479649,
+      "phi_err": 0.001065,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789070230,
+      "ok": true
+    },
+    {
+      "name": "mbIm025",
+      "rep": 2,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 7774.013999999916,
+      "density_g_cm3": 1.1288341571956042,
+      "n_atoms": 618,
+      "phi": 0.479496,
+      "phi_err": 0.001472,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789070266,
+      "ok": true
+    },
+    {
+      "name": "mbIm050",
+      "rep": 1,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 7651.5239999999185,
+      "density_g_cm3": 1.111047863536384,
+      "n_atoms": 636,
+      "phi": 0.427905,
+      "phi_err": 0.001239,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069824,
+      "ok": true
+    },
+    {
+      "name": "mbIm050",
+      "rep": 2,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 7651.5239999999185,
+      "density_g_cm3": 1.111047863536384,
+      "n_atoms": 636,
+      "phi": 0.428331,
+      "phi_err": 0.001394,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069837,
+      "ok": true
+    },
+    {
+      "name": "nbIm050",
+      "rep": 1,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 8023.1639999999215,
+      "density_g_cm3": 1.1650122538989667,
+      "n_atoms": 624,
+      "phi": 0.487246,
+      "phi_err": 0.00056,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069615,
+      "ok": true
+    },
+    {
+      "name": "nbIm050",
+      "rep": 2,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 8023.1639999999215,
+      "density_g_cm3": 1.1650122538989667,
+      "n_atoms": 624,
+      "phi": 0.486949,
+      "phi_err": 0.00174,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069629,
+      "ok": true
+    },
+    {
+      "name": "saIm050",
+      "rep": 1,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 8443.883999999924,
+      "density_g_cm3": 1.2261033590365882,
+      "n_atoms": 648,
+      "phi": 0.45615,
+      "phi_err": 0.000944,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069245,
+      "ok": true
+    },
+    {
+      "name": "saIm050",
+      "rep": 2,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 8443.883999999924,
+      "density_g_cm3": 1.2261033590365882,
+      "n_atoms": 648,
+      "phi": 0.456442,
+      "phi_err": 0.001521,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069254,
+      "ok": true
+    },
+    {
+      "name": "saIm100",
+      "rep": 1,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 8991.263999999925,
+      "density_g_cm3": 1.305586267218351,
+      "n_atoms": 696,
+      "phi": 0.409567,
+      "phi_err": 0.001376,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069168,
+      "ok": true
+    },
+    {
+      "name": "saIm100",
+      "rep": 2,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 11435.74002346415,
+      "cell_mass_amu": 8991.263999999925,
+      "density_g_cm3": 1.305586267218351,
+      "n_atoms": 696,
+      "phi": 0.410179,
+      "phi_err": 0.000755,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789069176,
+      "ok": true
+    },
+    {
+      "name": "zif71",
+      "rep": 1,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "cell_volume_A3": 23280.714377045802,
+      "cell_mass_amu": 16189.919999999878,
+      "density_g_cm3": 1.1547753307619895,
+      "n_atoms": 816,
+      "phi": 0.477176,
+      "phi_err": 0.00074,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789068967,
+      "ok": true
+    },
+    {
+      "name": "zif71",
+      "rep": 2,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "cell_volume_A3": 23280.714377045802,
+      "cell_mass_amu": 16189.919999999878,
+      "density_g_cm3": 1.1547753307619895,
+      "n_atoms": 816,
+      "phi": 0.477846,
+      "phi_err": 0.000393,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789068970,
+      "ok": true
+    },
+    {
+      "name": "zif90",
+      "rep": 1,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 5152.169837625876,
+      "cell_mass_amu": 3066.504000000003,
+      "density_g_cm3": 0.9883311013348877,
+      "n_atoms": 252,
+      "phi": 0.4919,
+      "phi_err": 0.00033,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789068971,
+      "ok": true
+    },
+    {
+      "name": "zif90",
+      "rep": 2,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "cell_volume_A3": 5152.169837625876,
+      "cell_mass_amu": 3066.504000000003,
+      "density_g_cm3": 0.9883311013348877,
+      "n_atoms": 252,
+      "phi": 0.492315,
+      "phi_err": 0.000473,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789068974,
+      "ok": true
+    },
+    {
+      "name": "zif93",
+      "rep": 1,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "cell_volume_A3": 22801.209057387146,
+      "cell_mass_amu": 13612.607999999904,
+      "density_g_cm3": 0.9913626652613052,
+      "n_atoms": 1296,
+      "phi": 0.444881,
+      "phi_err": 0.001267,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789068965,
+      "ok": true
+    },
+    {
+      "name": "zif93",
+      "rep": 2,
+      "unit_cells": [
+        1,
+        1,
+        1
+      ],
+      "cell_volume_A3": 22801.209057387146,
+      "cell_mass_amu": 13612.607999999904,
+      "density_g_cm3": 0.9913626652613052,
+      "n_atoms": 1296,
+      "phi": 0.4448,
+      "phi_err": 0.001487,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789068968,
+      "ok": true
+    }
+  ]
+}
