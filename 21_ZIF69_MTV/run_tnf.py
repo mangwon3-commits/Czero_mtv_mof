@@ -211,7 +211,8 @@ def job_dir(cfg, rh):
     (`CLAUDE.md §3`) **이름이 유일한 방벽**입니다."""
     return os.path.join(cfg['runs_root'],
                         f'rh{int(round(rh * 100)):02d}_{cfg["tag"]}'
-                        f'_{cfg["temp"]:g}K_co2{cfg["pco2"]:g}bar')
+                        f'_{cfg["temp"]:g}K_co2{cfg["pco2"]:g}bar'
+                        + (f'_pre{cfg["preload"]}' if cfg.get('preload') else ''))
 
 
 def write_input(cfg, rh):
@@ -239,7 +240,7 @@ def write_input(cfg, rh):
                   + f"Component {n} MoleculeName              water\n"
                   f"            MoleculeDefinition        TraPPE\n"
                   f"            MolFraction               {p_h2o / p_tot:.6f}\n"
-                  f"{MOVES}")
+                  f"{MOVES.replace('CreateNumberOfMolecules   0', 'CreateNumberOfMolecules   ' + str(cfg.get('preload') or 0))}")
 
     na, nb, nc = cfg['reps']
     txt = f"""SimulationType                MonteCarlo
@@ -347,7 +348,7 @@ def row(cfg, rh, res, d, want_water, status):
         'tag': cfg['tag'], 'framework': cfg['fw'], 'cif': cfg['cif'],
         'cif_md5': cfg['cif_md5'],
         'T': cfg['temp'], 'pco2_bar': cfg['pco2'], 'RH': rh,
-        'psat_Pa': cfg['psat'], 'psat_source': cfg['psat_src'],
+        'psat_Pa': cfg['psat'], 'psat_source': cfg['psat_src'], 'preload_water': cfg.get('preload') or 0,
         'p_h2o_Pa': round(cfg['psat'] * rh, 4),
         'p_tot_Pa': round(cfg['pco2'] * 1e5 + cfg['psat'] * rh, 4),
         'CO2_molkg': co2[0], 'CO2_err': co2[1],
@@ -375,6 +376,8 @@ def main(argv=None):
     ap.add_argument('--rh', default='0,50,70,90', help='퍼센트, 쉼표 구분')
     ap.add_argument('--psat', type=float, default=None,
                     help='Pa. 주지 않으면 T 에서 (298->3169, 303->4247, 그 밖은 Buck)')
+    ap.add_argument('--preload-water', type=int, default=0,
+                    help='물 분자를 미리 넣고 시작(상자 전체 개수; T-NF-0c 탈착 방향 진단용). 0 = 기본')
     ap.add_argument('--workers', type=int, default=4)
     ap.add_argument('--seed-stagger', type=float, default=5.0,
                     help='초. 같은 초에 뜬 작업은 같은 RASPA 씨앗을 받습니다')
@@ -421,7 +424,7 @@ def main(argv=None):
         print('!! 힘장 파일 관문 실패 — 아무것도 돌리지 않습니다 '
               f'(기대 {FF_MD5}, 실제 {md5}).'); return 2
 
-    cfg = {'cif': cif, 'fw': fw, 'tag': a.tag, 'temp': a.temp, 'pco2': a.pco2,
+    cfg = {'cif': cif, 'fw': fw, 'tag': a.tag, 'temp': a.temp, 'pco2': a.pco2, 'preload': a.preload_water,
            'psat': psat, 'psat_src': psrc, 'reps': reps, 'widths': widths,
            'runs_root': runs_root, 'workers': max(1, a.workers),
            'stagger': a.seed_stagger, 'ff_path': ff_path(),
