@@ -12,19 +12,29 @@
     미확인    같은 파일 안 독립 대조(GCMC `Enthalpy of adsorption` 절)는 Widom 전용 실행에서 −nan 이라 불가. (1) 의 산술만으로 결론은 선다.
 
 ## 2. 범위 (종합자 grep, 06:22)
-    러너 9파일  21_ZIF69_MTV/run_aryl_gcmc.py:278 · 21_ZIF69_MTV/charge_and_run.py:234 · 07_Bracketed_MTV/run_widom_batch.py:141,142(**CO₂·N₂ 둘 다**) ·
-                13_PACMAN/run_raspa_ddec6.py:140 · 14_Strategies/run_raspa_strat.py:140 · 14_Strategies/oms_sensitivity.py:150 · 17_NestEffect/run_raspa_nest.py:140 · 18_PoreNarrowing/charge_and_run.py:212
-                (+ Melchior 가 든 run_gcmc_v2.py:129 · run_gcmc_v3.py:163 — 데스크탑 grep 패턴에 안 잡힘, 확인 필요)
+    러너 **10곳**(종합자 9 + Melchior 산출물 기준 재훑기 06:24: `rg.R_GAS*rg.TEMP` 모듈한정 호출이 상수 표현식 grep 에 안 잡혔음)
+      kc[2] 계열  21_ZIF69_MTV/run_aryl_gcmc.py:278 · run_gcmc_v2.py:129 · run_gcmc_v3.py:163 · run_candidate_gcmc.py:64(→ candidate_results.json) · charge_and_run.py:234
+      kc[1] 계열  13_PACMAN/run_raspa_ddec6.py:140 · 14_Strategies/run_raspa_strat.py:140 · 14_Strategies/oms_sensitivity.py:150(u) · 17_NestEffect/run_raspa_nest.py:140 · 18_PoreNarrowing/charge_and_run.py:212
+      u_c/u_n     07_Bracketed_MTV/run_widom_batch.py:141,142(**CO₂·N₂**)
+      ⚠ 튜플 첨자가 계열마다 다름(kc[2]/kc[1]/u) — **일괄 치환 금지**, 줄마다 손으로.
+    러너 아닌 곳 셋(코드만 고치면 안 따라옴)
+      ① 07_Bracketed_MTV/run_widom_batch.py:140 주석 `# Qst = -(U_gh - U_h) - RT` — **틀린 식을 명시한 주석**(오타가 아니라 개념 오류의 증거). 같이 고칠 것.
+      ② 21_ZIF69_MTV/regen_energy.py:64 하드코딩 `QST = {'base': 21.08, 'saIm050': 25.17, 'saIm075': 26.63}` — 재생에너지는 Q_st 절대값에 직접 걸림. **이 수는 results_v3.json(22.42/28.51)과 다르므로 출처(v2?) 확인 뒤** 2RT 를 더할지 판단.
+      ③ 20_ParentScan/cavity_model.py:137 `예상 Qst = 14.04 × 증폭비 + 9.84` — 계수가 틀린 Q_st 에 맞춰졌다면 Q_st 를 고치는 순간 모형이 어긋남. **"JSON 에 상수 더하기" 로 안 끝나는 지점.**
     결과 JSON   `Qst_CO2` 보유 **20개**(results_v3·v3grid·v3cliff·v3ens0583/075/nb050·v3pctl·v4mix·aryl_results·candidate_results·zif69_results·v3_smoke 등)
     문서        Q_st/지렛대 언급 md **52개**, 절대값 인용 줄 **33**(22.42·28.51·29.51·31.07·지렛대 배수·TSA/VSA)
     하류        `tsa_vsa_lever.py:137` `lev = exp(Q_st/R·(1/298−1/373))` — Q_st 가 지수 안 → 공통 배수 **1.495**: base 지렛대 6.2→9.2, saIm050 10.1→15.1; TSA/VSA 절대 배수 base 2.1→3.1, saIm050 3.4→5.0.
 
 ## 3. 바뀌는 것 / 안 바뀌는 것
     불변   조성 간 Q_st **차**(치환 축 대 모체 배치 단위 등 모든 차 기반 판정) · 순위 · K_H · 선택도 · 로딩 · 지렛대의 조성 간 **비** · "TSA 지렛대는 Q_st 와 함께 커지고 VSA 는 고정" 논지의 모양
+    이동   **Q_st 목표대(30~40, `QST_WINDOW_20260822`)도 같은 Q_st 로 유도된 내부 모형이다**(laptop2 6d8ffee, 06:27): 회귀 ln K_H = −13.979 + 0.4511·(Q_st/RT) · 반트호프 b(T) = b(298)·exp[(Q_st/R)(1/T−1/298)] · 목적함수 E = Q_st + 67.5/WC → 허용 창 30.2~46.3.
+           회귀 항은 절편이 상쇄하지만 **반트호프의 exp 안 Q_st 는 상쇄되지 않아**(같은 물질이 28.75→33.7 이면 b(373)/b(298) 0.0969→0.0648, WC 커짐) E_new(Q) ≠ E_old(Q−Δ)+Δ. → **목표대는 단순 평행이동으로 못 옮기고 보정과 함께 다시 유도해야 한다. 그 전까지 목표대 대비 판정은 "판정 불가".**
+           금지 오독: "보정하면 saIm0583 29.31→34.27 로 목표대 안" — FINAL_VERDICT_20260821 이 인정한 유일한 한계("Q_st 28.75 로 목표대에 못 듦, 주어진 제약 안의 최선")를 지우는 읽기. 다만 DECISION_RULE 은 "Q_st 는 지표 후보가 아님", V5 는 "하드컷 아님" 이라 흔들리는 것은 관문·순위가 아니라 서술 문장 하나(그리고 MAGI-004 §6 (i) 의 이음새).
     이동   Q_st **절대값** 전부 +4.955 (base 22.42→27.38 · saIm050 28.51→33.47 · saIm0583 29.31→34.27 · saIm100 31.07→36.03) · 벤치마크 대역 대조(V5 "하단" 문구) · TSA 지렛대·TSA/VSA **절대 배수** · 그 수를 인용한 포스터·판정 문장
 
 ## 4. 조치 — **사용자 결정(09-12) 전 실행 금지** (결과 뒤 자 변경이 아니라 상수 정정이지만 20 JSON·장표를 건드림)
-    권고(첫 줄)  (a) 러너 9파일 식을 `−u + R_GAS*TEMP` 로 고치고 머리말에 이 문서 링크 (b) JSON 은 **덮어쓰지 않고** 사이드카 키 `Qst_CO2_rt_corrected = Qst_CO2 + 4.9554` + `WARN_qst_rt` 추가(물 힘장 `WARN_forcefield` 관례) (c) 문서의 절대값 인용 33줄에 "(+4.96 보정 전)" 각주 일괄 (d) 포스터 Q_st·지렛대 절대 수 갱신 (e) CLAUDE.md §0 에 다섯 번째 결함으로 추가(경위: 상수 오프셋은 차이 검사를 통과한다)
+    권고(첫 줄)  (a) 러너 10곳 식을 `−u + R_GAS*TEMP` 로 고치고 머리말에 이 문서 링크 (b) JSON 은 **덮어쓰지 않고** 사이드카 키 `Qst_CO2_rt_corrected = Qst_CO2 + 4.9554` + `WARN_qst_rt` 추가(물 힘장 `WARN_forcefield` 관례) (c) 문서의 절대값 인용 33줄에 "(+4.96 보정 전)" 각주 일괄 (d) 포스터 Q_st·지렛대 절대 수 갱신 (e) CLAUDE.md §0 에 다섯 번째 결함으로 추가(경위: 상수 오프셋은 차이 검사를 통과한다) (f) 러너 아닌 곳 셋(주석·하드코딩·모형 계수) 별도 처리 (g) **`QST_WINDOW` 목표대 재유도**(보정 Q_st 로 회귀·반트호프·E 다시) — 그 전까지 목표대 대비 문장은 판정 불가로 표기
+    감사 방법   상수 표현식(`R_GAS * TEMP`)으로 찾으면 별칭·모듈한정·상수 재정의에 뚫린다 — **산출물(`qst… =`)로 훑는다**(Melchior). 이번에 그 차이가 3곳(run_gcmc_v2/v3·run_candidate_gcmc)이었다.
     대안         (b′) JSON 값을 직접 고치고 git 이력으로 원본 보존 — 사이드카보다 단순하나 "결과 파일 사후 수정" 전례를 만든다.
     금지         결정 전 어느 JSON·장표도 고치지 않는다. 새로 내는 Q_st 는 이 문서를 인용해 "보정 전/후" 를 병기.
 
