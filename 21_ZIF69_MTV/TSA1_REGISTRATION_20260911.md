@@ -14,7 +14,7 @@
     부 판정축(습윤, ㉦ 단서)   RH90 유지율 = CO₂(RH90)/CO₂(RH0) · RH90 물 흡착량
     정본 자   **짝 차이의 SD 형**: d_k = X(mslm050e_k) − X(saIm050e_k), 자 = SD(d)(표본, n=짝 수), 판정 |mean d| ≥ 1.5·SD(d) → "다른 짝을 뽑아도 부호가 유지되는가"(RULER_DECISION §7 의 SD 형을 짝에 적용).
     병기 자   SE 형 SD(d)/√n · 독립 앙상블 SD 형 √(SD_m² + SD_s²)(MAGI-004 §6-4 원 등록식) · 단위(±) — **세 값 병기**(§7 병기 의무).
-    saIm050e_k 값  건조: results_v3ens0500(기존) · RH90: T_MTV_2W §11-3(69.8·86.9·80.1·90.2·90.3 %) — **재계산하지 않고 그대로**(같은 §1 조건, 수정 힘장 v3w 계열인지 확인해 인용; 아니면 v3w 로 재실행).
+    saIm050e_k 값  건조: results_v3ens0500(기존) · RH90: T_MTV_2W §11-3(69.8·86.9·80.1·90.2·90.3 %) — **재계산하지 않고 그대로** — 확인(14:49, Melchior 159ce0d): v3w_water_sng050 열 행 전부 힘장 UFF_MOF+HwLw_none_20260906(수정 힘장) → 그대로 인용.
     자의 불확도 열  각 판정에 "유지 확률"(dof = n−1 χ², 척도불변 사전) 병기 — 값 인용 시 사전 조건 명시.
 
 ## 3. 예측 (자료 0건)
@@ -28,4 +28,4 @@
 
 ## 5. 배정
     데스크탑  빌드·이완·판정·전하(사슬 `.claude_work_tsa1.sh`, 로그 `tsa1_chain.log`) — 지금. 관문은 RASPA 0 기기(데스크탑 B·D 종료 뒤 또는 랩탑 T-NF-0e 뒤).
-    GCMC      건조 5종(run_gcmc_v3.py --only mslm050e1~5 --out results_v3ens_mslm050.json) · RH90 5종(run_water_v3w 계열) — 관문 뒤 빈 기기(데스크탑 야간 / laptop2 2차 뒤). 결과 전 재배정 가능, 문턱은 불변.
+    GCMC      건조 5종(run_gcmc_v3.py --only mslm050e1~5 --out results_v3ens_mslm050.json) · RH90 5종(`run_water_mslm050.py` — run_water_v3w 의 형제 러너, V3W_SUFFIX 를 import 전에 고정, 전하 CIF 없으면 시작 안 함; Melchior 159ce0d) — 관문 뒤 빈 기기(데스크탑 야간 / laptop2 2차 뒤). 결과 전 재배정 가능, 문턱은 불변.
