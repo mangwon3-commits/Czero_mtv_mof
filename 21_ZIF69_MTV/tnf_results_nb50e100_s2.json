@@ -1,0 +1,47 @@
+[
+  {
+    "tag": "nb50e100_s2",
+    "framework": "nbIm050_DDEC6",
+    "cif": "/home/skyjun/mof_project/21_ZIF69_MTV/charged_v3/nbIm050_DDEC6.cif",
+    "cif_md5": "4a5c0c3889a67b8d36b38388d5c1fadc",
+    "T": 298.0,
+    "pco2_bar": 0.15,
+    "RH": 0.9,
+    "psat_Pa": 3169.0,
+    "psat_source": "--psat 로 지정",
+    "preload_water": 1486,
+    "p_h2o_Pa": 2852.1,
+    "p_tot_Pa": 17852.1,
+    "CO2_molkg": 0.8094848458,
+    "CO2_err": 0.0086608501,
+    "H2O_molkg": 0.1136357954,
+    "H2O_err": 0.0156722288,
+    "seed": 1789133551,
+    "unitcells": [
+      2,
+      2,
+      2
+    ],
+    "cell_widths_A": [
+      22.5894,
+      22.5894,
+      19.4082
+    ],
+    "forcefield": "UFF_MOF+HwLw_none_20260906",
+    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+    "ff_path": "/home/skyjun/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def",
+    "ff_check": {
+      "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+      "OwOw_eps": 89.633,
+      "OwHw": "ZERO_POTENTIAL",
+      "OwLw": "ZERO_POTENTIAL",
+      "HwHw": "ZERO_POTENTIAL",
+      "LwLw": "ZERO_POTENTIAL",
+      "ok": true
+    },
+    "status": "ok",
+    "host": "desktop-nvsrr9m",
+    "series": "T-NF (TNF_REGISTRATION_20260910.md)",
+    "supercell_rule": "축별 수직 폭 >= 24 A 최소 정수 복제 (등록문 §0 예외 — 2x2x2 를 박지 않음)"
+  }
+]
