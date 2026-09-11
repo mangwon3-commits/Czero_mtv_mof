@@ -6,6 +6,7 @@
 ## 1. 구조 — 짝 설계
     빌더    `build_ensemble_mslm050.py`(mslm025 빌더의 12/24 판) — **시드 1~5**. 같은 시드·같은 WANT=12·같은 site_map 이면 saIm050e{k}(시드 1~5, rebuild_index) 와 **같은 12자리**가 뽑힌다 → mslm050e{k} 는 saIm050e{k} 의 짝(치환기만 다름).
     시드 기각 시  e 번호 = 시드라 짝은 시드 번호로 맞춘다. 기각된 시드의 짝은 빠지고(짝 n 감소), 6 이상 시드의 실현은 **독립 분석에만** 쓴다.
+    검수(17:46, Melchior 착수 전)  다섯 실현 조성 C252Cl12H180N120O72S12Zn24·672원자·md5 전부 다름·순전하 ±0.00006; saIm050(C240H156O84, 648)과의 차 −12 O·+12 C·+24 H = 12자리 × (−SO₃H→−SO₂CH₃) 정확. 짝: 빌더 메타 `chosen_sites` 로 다섯 짝 전부 동일·실현끼리 다름. ⚠ 배열 동일성은 **이완 뒤 좌표가 아니라 빌더 메타로** 묻는다(이완이 전 원자를 움직여 좌표 대조는 0/12 로 "다름" 을 냄 — 규약 후보 ⑬).
     앞단    relax_series_v3.py(xtb GFN-FF, 셀 고정, RELAX_WORKERS=2 — 데스크탑 빈 코어 4) → judge_relax_v3.py 5/5 → charge_v3.py(PACMAN DDEC6) → 관문 risk_screen_v3_sub.py(RISK_SUB_TAGS=base,mslm050,mslm050e1~5; **RASPA 0 인 기기에서만**, Zeo++ 9.5 GB/건) — LCD 감소 20 % 초과 실현은 표본에서 빼지 않고 표기(NB050 관행).
     조건    §1 고정값 전부(5,000+15,000 · UFF_MOF · García-Sánchez CO₂ · TIP5P-Ew Hw/Lw none · DDEC6 · Ewald 1e-6 · 12 Å · 2×2×2).
 
@@ -14,7 +15,8 @@
     부 판정축(습윤, ㉦ 단서)   RH90 유지율 = CO₂(RH90)/CO₂(RH0) · RH90 물 흡착량
     정본 자   **짝 차이의 SD 형**: d_k = X(mslm050e_k) − X(saIm050e_k), 자 = SD(d)(표본, n=짝 수), 판정 |mean d| ≥ 1.5·SD(d) → "다른 짝을 뽑아도 부호가 유지되는가"(RULER_DECISION §7 의 SD 형을 짝에 적용).
     병기 자   SE 형 SD(d)/√n · 독립 앙상블 SD 형 √(SD_m² + SD_s²)(MAGI-004 §6-4 원 등록식) · 단위(±) — **세 값 병기**(§7 병기 의무).
-    saIm050e_k 값  건조: results_v3ens0500(기존) · RH90: T_MTV_2W §11-3(69.8·86.9·80.1·90.2·90.3 %) — **재계산하지 않고 그대로**(같은 §1 조건, 수정 힘장 v3w 계열인지 확인해 인용; 아니면 v3w 로 재실행).
+    saIm050e_k 값  건조: results_v3ens0500(기존) · RH90: T_MTV_2W §11-3(69.8·86.9·80.1·90.2·90.3 %) — **재계산하지 않고 그대로** — 확인(14:49, Melchior 159ce0d): v3w_water_sng050 열 행 전부 힘장 UFF_MOF+HwLw_none_20260906(수정 힘장) → 그대로 인용.
+    ⚠ 집계 규칙(14:49, Melchior 경고)  saIm050e·nbIm050e·sa50nb50e 계열은 `water_results_<기기>.json` **태그 사본**이 있어 glob 로 모으면 n=5 가 n=10 이 된다(SD 는 그대로, dof 두 배 → 문턱이 헐거워짐). **판정은 열거된 다섯 값(§11-3)만으로, glob 금지**(규약 후보 ⑧).
     자의 불확도 열  각 판정에 "유지 확률"(dof = n−1 χ², 척도불변 사전) 병기 — 값 인용 시 사전 조건 명시.
 
 ## 3. 예측 (자료 0건)
@@ -28,4 +30,4 @@
 
 ## 5. 배정
     데스크탑  빌드·이완·판정·전하(사슬 `.claude_work_tsa1.sh`, 로그 `tsa1_chain.log`) — 지금. 관문은 RASPA 0 기기(데스크탑 B·D 종료 뒤 또는 랩탑 T-NF-0e 뒤).
-    GCMC      건조 5종(run_gcmc_v3.py --only mslm050e1~5 --out results_v3ens_mslm050.json) · RH90 5종(run_water_v3w 계열) — 관문 뒤 빈 기기(데스크탑 야간 / laptop2 2차 뒤). 결과 전 재배정 가능, 문턱은 불변.
+    GCMC      건조 5종(run_gcmc_v3.py --only mslm050e1~5 --out results_v3ens_mslm050.json) · RH90 5종(`run_water_mslm050.py` — run_water_v3w 의 형제 러너, V3W_SUFFIX 를 import 전에 고정, 전하 CIF 없으면 시작 안 함; Melchior 159ce0d) — 관문 뒤 빈 기기(데스크탑 야간 / laptop2 2차 뒤). 결과 전 재배정 가능, 문턱은 불변.
