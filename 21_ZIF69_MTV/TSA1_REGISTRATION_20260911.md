@@ -6,6 +6,7 @@
 ## 1. 구조 — 짝 설계
     빌더    `build_ensemble_mslm050.py`(mslm025 빌더의 12/24 판) — **시드 1~5**. 같은 시드·같은 WANT=12·같은 site_map 이면 saIm050e{k}(시드 1~5, rebuild_index) 와 **같은 12자리**가 뽑힌다 → mslm050e{k} 는 saIm050e{k} 의 짝(치환기만 다름).
     시드 기각 시  e 번호 = 시드라 짝은 시드 번호로 맞춘다. 기각된 시드의 짝은 빠지고(짝 n 감소), 6 이상 시드의 실현은 **독립 분석에만** 쓴다.
+    검수(17:46, Melchior 착수 전)  다섯 실현 조성 C252Cl12H180N120O72S12Zn24·672원자·md5 전부 다름·순전하 ±0.00006; saIm050(C240H156O84, 648)과의 차 −12 O·+12 C·+24 H = 12자리 × (−SO₃H→−SO₂CH₃) 정확. 짝: 빌더 메타 `chosen_sites` 로 다섯 짝 전부 동일·실현끼리 다름. ⚠ 배열 동일성은 **이완 뒤 좌표가 아니라 빌더 메타로** 묻는다(이완이 전 원자를 움직여 좌표 대조는 0/12 로 "다름" 을 냄 — 규약 후보 ⑬).
     앞단    relax_series_v3.py(xtb GFN-FF, 셀 고정, RELAX_WORKERS=2 — 데스크탑 빈 코어 4) → judge_relax_v3.py 5/5 → charge_v3.py(PACMAN DDEC6) → 관문 risk_screen_v3_sub.py(RISK_SUB_TAGS=base,mslm050,mslm050e1~5; **RASPA 0 인 기기에서만**, Zeo++ 9.5 GB/건) — LCD 감소 20 % 초과 실현은 표본에서 빼지 않고 표기(NB050 관행).
     조건    §1 고정값 전부(5,000+15,000 · UFF_MOF · García-Sánchez CO₂ · TIP5P-Ew Hw/Lw none · DDEC6 · Ewald 1e-6 · 12 Å · 2×2×2).
 
