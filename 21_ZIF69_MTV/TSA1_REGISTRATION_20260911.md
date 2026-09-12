@@ -31,3 +31,8 @@
 ## 5. 배정
     데스크탑  빌드·이완·판정·전하(사슬 `.claude_work_tsa1.sh`, 로그 `tsa1_chain.log`) — 지금. 관문은 RASPA 0 기기(데스크탑 B·D 종료 뒤 또는 랩탑 T-NF-0e 뒤).
     GCMC      건조 5종(run_gcmc_v3.py --only mslm050e1~5 --out results_v3ens_mslm050.json) · RH90 5종(`run_water_mslm050.py` — run_water_v3w 의 형제 러너, V3W_SUFFIX 를 import 전에 고정, 전하 CIF 없으면 시작 안 함; Melchior 159ce0d) — 관문 뒤 빈 기기(데스크탑 야간 / laptop2 2차 뒤). 결과 전 재배정 가능, 문턱은 불변.
+
+## 6. 진행 기록
+    09-11 13:43→17:42  앞단(빌드·이완·판정·전하) 5/5, 데스크탑. 검수(Melchior) 조성·짝 전부 통과.
+    09-12 06:39→10:4x  **관문 통과 7/7**(랩탑, Zeo++, RASPA 0; b301b91): LCD 감소 base 0.0 · mslm050 6.7 · e1 14.5 · e2 14.7 · e3 14.1 · **e4 7.9** · e5 14.4 % — 20 % 초과 없음 → 다섯 실현 전부 짝 검정에 들어감. 전 행 12루프 상한의 미수렴 표지(v3 base 행과 같은 상태). 사전검사 추가(러너와 같은 탐색 규칙), 3.10 shim 은 되돌림.
+    다음  건조 GCMC 5종(run_gcmc_v3.py --only mslm050e1~5 --out results_v3ens_mslm050.json) → RH90 5종(run_water_mslm050.py). 판정은 §2 자로 종합자.

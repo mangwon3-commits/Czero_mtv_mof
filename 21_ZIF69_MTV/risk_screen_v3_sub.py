@@ -76,6 +76,53 @@ sys.argv = ["risk_screen.py", "risk_v3sub_index.json", "v3sub"]
 sys.path.insert(0, HERE)
 import risk_screen as rs  # noqa: E402
 
+
+# ---------------------------------------------------------------------------
+# [2026-09-12] 사전검사 — **틀린 인터프리터로 돌면 크게, 즉시 죽습니다.**
+#
+#   `risk_screen.py:229` 는 `sys.executable` 로 `lammps-interface` 를 부릅니다.
+#   그 모듈은 **`lammps_mof` 환경에만** 있습니다(`czeromof` 에는 없음).
+#   `czeromof`(3.10) 로 돌리면 실제로 이렇게 됩니다:
+#     ① `ProcessPoolExecutor(max_tasks_per_child=)` 가 3.11+ 인자라 **TypeError 즉사**
+#     ② 그 TypeError 를 shim 으로 막으면 — 제가 06:34 에 그렇게 했습니다 —
+#        **45초를 돌다 전 구조에서 `lammps-interface 실패: Traceba`(300자 잘림)** 로
+#        조용히 실패합니다. **고친 것이 아니라 신호를 지운 것입니다.**
+#
+#   그래서 shim 을 넣지 않고 **여기서 막습니다.** `CLAUDE.md §0`:
+#   *"실패가 결과처럼 보이는 것"* 을 만들지 않는 것이 이 저장소의 규율입니다.
+#   (`risk_screen_v3ens075.py` 의 shim 은 그 파일 사정이고 여기 옮기면 안 됩니다.)
+# ---------------------------------------------------------------------------
+def _preflight():
+    import importlib
+    missing = []
+    for m in ("lammps_interface", "ase", "numpy"):
+        try:
+            importlib.import_module(m)
+        except ImportError:
+            missing.append(m)
+    # ⚠️ `network` 와 `lmp_serial` 은 **다른 환경에 갈려 있습니다** —
+    #    `lammps_interface` 는 `lammps_mof`, `network`(Zeo++)는 `czeromof`.
+    #    `risk_screen.py:101` 이 그래서 `which() or ~/…/czeromof/bin/network` 로
+    #    대체합니다. **사전검사도 같은 규칙을 써야 합니다** — PATH 만 보면
+    #    러너는 멀쩡히 도는데 검사가 막습니다(06:38 에 제가 그렇게 막았습니다).
+    _net = shutil.which("network") or os.path.expanduser(
+        "~/miniconda3/envs/czeromof/bin/network")
+    if not (os.path.exists(_net) and os.access(_net, os.X_OK)):
+        missing.append("실행파일 network (Zeo++; PATH 에도 czeromof 대체경로에도 없음)")
+    if not shutil.which("lmp_serial"):
+        missing.append("실행파일 lmp_serial")
+    if missing:
+        print("", flush=True)
+        print("  !! 사전검사 실패 — 이 인터프리터로는 관문을 못 돌립니다.", flush=True)
+        print("     python  = %s  (%d.%d)" % (sys.executable, *sys.version_info[:2]), flush=True)
+        print("     없는 것 : %s" % ", ".join(missing), flush=True)
+        print("     맞는 환경: ~/miniconda3/envs/lammps_mof/bin/python", flush=True)
+        print("  ** 아무것도 안 돌리고 중단합니다. **", flush=True)
+        sys.exit(2)
+
+
+_preflight()
+
 rs.STRUCT = STAGE
 rs.BASE_SRC = os.path.join(STAGE, "ZIF69_base.cif")
 
