@@ -38,3 +38,4 @@
 
 ## 7. 진행 기록
     [18:58] 등록(자료 0건). 사용자에게 권고(첫 줄) — 30분 무응답이면 실행하고 여기 적는다.
+    [19:32] **무응답 30분 → 권고안 실행. 착수 19:31**(데스크탑, 30분 규칙 예약 d2042dee): RASPA 0·mslm050e 폴더 없음·C: 여유 41 G 확인, 파일 관문 md5 8e8ec933 일치, 15작업 워커 8, simulate 8(각 555 MB, 가용 13.8 GB). 드라이버 **PID 682564**(ppid 1129 = 집합 밖; 워커 682580~682587, 착수 60초 뒤 확인). 머리말 관문 첫 Output ads_mslm050e1: OwOw_eps 89.633 Hw/Lw ['ZERO_POTENTIAL', 'ZERO_POTENTIAL', 'ZERO_POTENTIAL', 'ZERO_POTENTIAL']. 결과 humid_working_capacity_w2_mslm050e_desk.json, 로그 .claude_work_wc_mslm050e.out, 감시 bwk6dnlju(결과 파일·일 기반).
