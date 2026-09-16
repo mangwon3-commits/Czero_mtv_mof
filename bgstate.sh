@@ -54,7 +54,7 @@ hdr "=== 1. 지금 도는 것 ==="
 PIDS=$(ps -eo pid=,comm=,args= | awk '
   $2=="simulate" || $2=="lmp_serial" || $2=="xtb" || $2=="network" {print $1; next}
   $2=="python" || $2=="python3" {
-    if ($0 ~ /run_water|run_wc|run_density|run_gcmc|relax_|risk_|regen_|queue_/) print $1
+    if ($0 ~ /run_water|run_wc|run_humid|run_density|run_gcmc|relax_|risk_|regen_|queue_/) print $1
   }')
 
 if [ -z "$PIDS" ]; then
