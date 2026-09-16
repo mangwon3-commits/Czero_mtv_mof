@@ -30,6 +30,12 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-16 14:19 · laptop (Melchior)  [진행중] T-RT-1 실온도(323 K) 절대 WC 착수 — 등록 REALTEMP_WC_REGISTRATION_20260916 §7 그대로 16종 48작업(saIm050e1~5 · saIm0583e1~5 · sa50nb50e1~5 · base), ads 323 K RH90 → tsa 373 K / vsa 323 K 0.05 bar. **드라이버 PID 183208**, 착수 14:19:35 KST, 워커 8(simulate 8 = 물리 8코어 포화). DRYRUN §7-2 여덟 항목 전부 일치(md5 8e8ec933 · P_H2O 11114.1 · run_one_323 · fork · 기존 .data 0/48 · RH 90.0/11.0/90.0 · 48작업), 머리말 관문 첫 Output 통과(Ow-Ow 89.633 · Hw/Lw 넷 ZERO_POTENTIAL). 인터프리터 czeromof 3.10 — 이 기기 __pycache__ 의 run_water/run_humid_wc/ff_gate 가 전부 cpython-310(러너를 실제로 돌린 것), cpython-311 은 risk_screen(Zeo++ 경로)뿐. 기본 python 3.14 는 ase 없음.
+건드리는 파일: 21_ZIF69_MTV/humid_wc_runs_v3w_323/ · v3w_humid_wc_323/humid_wc_323_laptop.json · .claude_work_wc323_laptop.out · COMMS/laptop.md
+쓰는 코어: 8 (물리 8 전부 — 이 기기에 다른 계산 띄우지 마십시오)
+다음: 첫 ads 완주 실측으로 ETA 갱신(그 전엔 등록 §2 의 28~52 h 범위뿐), 완주 시 결과 JSON + status.jsonl + .out 을 같은 커밋으로 master 푸시.
+우편함 보고 착수분 커밋 de0e309 (laptop-20260822).
+
 ## 09-16 08:08 · desktop  [재개·완료] 나흘 공백 뒤 재개. 2차 앙상블 습윤 WC 전부 수합(saIm050e 0.807±0.096 · saIm0583e 0.825±0.057 · sa50nb50e 0.759±0.063 — 앙상블끼리 못 가름, 공동 1위; 생산 실현 1위 6/6) → WC_RECOMPUTE_RESULT §7(병기, 이의 대기 20:00). T-SA-1 건조: 선택도 짝 차 +16(짝 SD 형 1.67) — 공여 H 를 떼면 건조 선택도 오름, "강한 극성기 동등" 주어 불가 → TSA1_VERDICT_20260916(부분). T-T1 saIm050 재측정으로 옮겨짐 확정(R 0.961). T-SA-1 RH90 5종 데스크탑 착수. 랩탑 종료. [08:35] §AG(saIm050e2 기기 항 분리) laptop2 08:30 착수(재부팅 뒤, ETA 09-17 00~06시) — ASSIGN §AG. [14:14] 사용자 "send computation to laptop" → T-RT-1 실온도 절대 WC 등록(REALTEMP_WC_REGISTRATION_20260916, 16종 48작업, 래퍼 run_humid_wc_v3w_323.py, 독립 검토 반영) → 랩탑 착수 지시 — ASSIGN §AH. 13:04~14:07 사용자 지시로 에이전트 전부 중단(계산은 계속). [08:39] 노션 현황 정리본 09-16 판 갱신(제목·한 줄·§1 2차 앙상블 공동 1위·§3 saIm050 확정·§5 진행 중(T-SA-1 RH90, §AG)·§6 결정 항목(B.7, C.4, 규약 후보 ⑮⑯)·§7·§8 나흘 공백).
 ## 09-12 08:25 · desktop  [기록] 노션 현황 정리본 09-12 판으로 갱신(결함 둘·T-T1·T-NF-0e 완결·진행 계산·결정 14건) https://app.notion.com/p/3d74d27e904681bea342dc8be631a465
 ## 09-12 01:45 · desktop  [완료] T-T1(323 K·RH90 한 점, 12건) 판정: saIm050·nbIm050 옮겨짐, base 경계(온도가 해침 −5 %), 건조 용량 절반 — TEMP_POINT_VERDICT_20260912.md(등록자 검산 대기). §AF G(sa50nb50e4·e5) 착수.
