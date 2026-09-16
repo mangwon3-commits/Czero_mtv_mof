@@ -4887,3 +4887,83 @@ GCMC 가 쓴 것은 이완 후 구조이므로, **이상치라고 부를 근거�
             우리 `mslm` 이 그 자리이고 전하도 근접(설폰 O −0.411) — **극성 거의 유지, 양성자만 제거**
 
     검색 봉인 준수: 스윕 원문 없음, 실제 인용만 등급과 함께.
+
+## 2026-09-16 14:19 — T-RT-1 실온도(323 K) 절대 WC **착수** (Melchior, 랩탑)
+
+**받는 곳**: 데스크탑(종합자)
+**요약**: 등록 `REALTEMP_WC_REGISTRATION_20260916.md` §7 그대로 16종 48작업 착수.
+DRYRUN 전 항목 일치, 머리말 관문 통과. **답 필요**: 아니오 — 착수 보고입니다.
+
+### 1. 착수 사실
+
+    드라이버 PID   **183208**
+    착수 시각      **2026-09-16 14:19:35 KST**  (`date` 출력)
+    워커           8  ·  착수 직후 `pgrep -xc simulate` = **8**
+    결과 파일      v3w_humid_wc_323/humid_wc_323_laptop.json  (HWC_323_MACHINE=laptop)
+    로그           ../.claude_work_wc323_laptop.out
+    머지 커밋      **d5c761f** (master 65e1ee1 → laptop-20260822)
+
+PID 는 §7-3 규칙대로 `ps -eo pid,ppid,args | grep '[r]un_humid_wc_v3w_323'` 의
+**ppid 가 매칭 집합 밖인 행**으로 잡았습니다 — 9행 중 183208 하나만 ppid(105139)가
+집합 밖이고, 나머지 8행은 전부 ppid 183208 인 워커입니다. `$!` 도 `pgrep -f | head -1` 도 안 썼습니다.
+
+### 2. §7-0 인터프리터 — 이 기기는 czeromof 3.10 입니다 (데스크탑과 같음)
+
+    python      /home/skyjun/miniconda3/envs/czeromof/bin/python (3.10.20)
+    simulate    /home/skyjun/miniconda3/envs/czeromof/bin/simulate
+    RASPA_DIR   /home/skyjun/RASPA/simulations
+    water.def   /home/skyjun/mof_project/19_WaterCompetition/water.def
+
+**고른 근거**(짐작 아님): 이 기기 `21_ZIF69_MTV/__pycache__/` 의 바이트코드 태그가
+`run_water.cpython-310.pyc` · `run_humid_wc.cpython-310.pyc` · `ff_gate.cpython-310.pyc`
+— **RASPA 러너를 실제로 import 한 인터프리터가 3.10** 입니다. `cpython-311` 은
+`risk_screen` 하나뿐이고 그것은 Zeo++/LAMMPS 경로(lammps_mof, `tsa1_gate.log` 09-12)라
+RASPA 러너가 아닙니다. czeromof·lammps_mof 둘 다 ase 3.29.0 이 있어 ase 유무로는
+갈리지 않았고, 바이트코드 태그가 갈랐습니다. 기본 `python`(miniconda3 3.14.6)과
+`/usr/bin/python3`(3.14.4)은 **ase 없음** — 등록문 §7-0 이 경고한 그 자리입니다.
+
+### 3. DRYRUN(§7-2) — 여덟 항목 전부 일치
+
+    파일 관문 md5   8e8ec933f9013c7e932da04dc256efd3  **일치**
+    자식 대조       P_H2O 11114.1 Pa · 조건 3 · 사이클 5000+15000 · run_one=**run_one_323** · start_method **fork**
+    simulate        RASPA 환경(czeromof) 안 · water.def = 19_WaterCompetition/water.def
+    기존 .data      **0/48** (첫 착수, 다른 조건 잔존물 0)
+    작업 수         **48** (대상 16 × 조건 3), 순서 = 등록 §2 목록 순서
+
+    ads  CO2 0.15 bar  323.0 K  H2O 11114.1 Pa -> RH **90.0 %**
+    tsa  CO2 0.15 bar  373.0 K  H2O 11114.1 Pa -> RH **11.0 %**
+    vsa  CO2 0.05 bar  323.0 K  H2O 11114.1 Pa -> RH **90.0 %**
+
+**하나도 다르지 않아** 착수했습니다.
+
+### 4. 머리말 관문(§7-4) — 첫 Output 에서 통과
+
+첫 Output: `humid_wc_runs_v3w_323/ads_saIm0583e4/Output/System_0/output_saIm0583e4_DDEC6_2.2.2_323.000000_26114.1.data`
+(26114.1 Pa = CO₂ 15,000 + H₂O 11,114.1)
+
+    Ow - Ow  [LENNARD_JONES] p_0/k_B  **89.63300** K, p_1 3.09700 A
+    Ow - Hw  [ZERO_POTENTIAL]      Ow - Lw  [ZERO_POTENTIAL]
+    Hw - Hw  [ZERO_POTENTIAL]      Hw - Lw  [ZERO_POTENTIAL]      Lw - Lw  [ZERO_POTENTIAL]
+
+골격 원자 대 Hw/Lw 도 ZERO_POTENTIAL 입니다(예: `He - Hw`, `CH4_sp3 - Hw`) — 09-06 수정판이
+이 기기 `$RASPA_DIR` 사본에도 들어 있습니다.
+
+### 5. 착수 전 상태
+
+`bash bgstate.sh`: 도는 것 없음(RASPA 0 · Zeo++ 0), 부하 0.00, 메모리 가용 22 GB,
+WSL 912G · **C: 168G 여유**(CLAUDE.md §5 대로 `df /mnt/c` 로 확인).
+
+`git pull origin master` 는 **분기**라 자동 병합이 안 됐습니다 — laptop-20260822 이 34 앞 74 뒤.
+병합 충돌은 `FLUEGAS_CONDITION_20260911.md` **add/add 하나**뿐이었고, master 판이 이 브랜치 판에
+**세 줄(14:43 · 14:45 · 01:45 기록)을 덧붙인 것일 뿐 삭제가 없어** master 판으로 해소했습니다
+(`git diff` 로 순수 추가임을 확인한 뒤 해소 — 랩탑 쪽에서 잃은 줄 없음).
+
+### 6. ETA
+
+등록 §2 의 **28~52 h** 범위 그대로 둡니다. **첫 ads 완주 실측 전에는 이 범위뿐**이고,
+실측이 나오면 그때 갱신해 보고합니다(보고 2/3).
+
+### 7. 다음 보고
+
+세 번만 합니다 — **착수(이 글)** · 첫 ads 완주 · 완주 또는 이상.
+판정문은 쓰지 않습니다(§3 자 판정은 종합자, 검산 Melchior·Balthasar).
