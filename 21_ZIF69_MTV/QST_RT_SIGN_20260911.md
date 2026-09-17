@@ -10,6 +10,12 @@
     저장소 식 −u − RT = 11.9770 − 2.4777 = **9.4993** → 차 **4.9554 = 2RT**
     파서      `'<U_gh>_1-<U_h>_0:' in line` → 괄호 첫 수(음부호 포함) = u = ΔU. 읽기 확정.
     미확인    같은 파일 안 독립 대조(GCMC `Enthalpy of adsorption` 절)는 Widom 전용 실행에서 −nan 이라 불가. (1) 의 산술만으로 결론은 선다.
+    **[09-18 02:10 소스 확인 — 미확인 해소]** RASPA2 GitHub(iRASPA/RASPA2 master `6498ab1`) `src/statistics.c` 4662~4688행:
+        fprintf "Average adsorption energy <U_gh>_1-<U_h>_0 obtained from Widom-insertion:"
+        fprintf "(Note: the total heat of adsorption is dH=<U_gh>_1-<U_h>_0 - <U_g> - RT)"
+        괄호값 = avg * KELVIN_TO_KJ_PER_MOL   ← **단위환산일 뿐**, dH 가 아님(파서 읽기 확정과 일치)
+      강체 손님 <U_g>=0 → dH = ΔU − RT → **Q_st = −dH = −ΔU + RT.** 저장소 옛 식 −ΔU − RT 는 소스 주석과 부호가 반대. (1) 의 산술이 소스로 닫힘.
+      덤: 같은 블록의 `ERROR_CONFIDENCE_INTERVAL_95` 가 CLAUDE.md §2 "± 는 95 % 신뢰구간" 의 소스 근거. 우리 설치본은 RASPA 2.0.41(2021, conda) — 같은 계열.
 
 ## 2. 범위 (종합자 grep, 06:22)
     러너 **10곳**(종합자 9 + Melchior 산출물 기준 재훑기 06:24: `rg.R_GAS*rg.TEMP` 모듈한정 호출이 상수 표현식 grep 에 안 잡혔음)
@@ -41,3 +47,17 @@
 ## 5. 왜 살아남았나
     상수 오프셋은 차이 기반 검사·순위 검사·재현성 검사를 전부 통과한다. 절대값은 문헌 대역 안이었다. 러너 식이 디렉터리 여섯에 복사돼 "여러 곳이 같은 값" 이 검증처럼 보였다.
     잡힌 경로: T-NF-0q 가 물 Widom 에너지를 **응집 에너지(ΔH_vap)와 절대값으로** 견주려다 RT 규약을 다시 유도함 — 절대값을 요구하는 비교가 처음 생긴 자리.
+
+## 6. 조치 실행 — **사용자 결정 2026-09-18 "일단 부호 결함 조치해"** (종합자, 2026-09-18 00:29)
+    (a) 러너 10곳 + widom_batch 2줄 → `−u + R_GAS*TEMP` 로 정정, 각 줄에 이 문서 링크 주석. 산출물(`qst… =`) 기준 grep 으로 잔존 0 확인(Melchior 방식). 컴파일 검사 통과.
+        run_aryl_gcmc·run_candidate_gcmc 의 "비교 기준 Qst 31.07" 출력 문자열 → 36.03(보정 후; 보정 전 31.07) 병기.
+        ⚠ `21_ZIF69_MTV/charge_and_run.py`·`18_PoreNarrowing/charge_and_run.py` 는 root 소유였음 — 디렉터리 권한으로 파일 교체(os.replace), 소유가 mangwon1 로 바뀜.
+        **돌고 있는 러너(run_humid_wc*, relax, charge_v3, risk_screen)는 Q_st 를 계산하지 않음** — grep 0. 데스크탑 T-RT-1b·랩탑 T-RT-1·laptop2 §AK 무영향.
+    (b) JSON **21개**(§2 는 20개라 했으나 `results_tb5.json` 이 하나 더, 그리고 `oms_sensitivity.json` 은 키가 `Qst`) — 원값 **그대로**, 사이드카 `Qst_CO2_rt_corrected`/`Qst_N2_rt_corrected`/`Qst_rt_corrected` = 원값 + **4.955420**(2·R·298.0 — 러너 TEMP 가 전부 298.0, 298.15 아님) **212개 키** + 파일당 `WARN_qst_rt`. 검산 base 22.4196 → 27.3750.
+    (c) md **35줄**(18파일)에 "⟨Q_st 절대값은 RT 부호 정정 전, +4.96 — QST_RT_SIGN_20260911⟩" 꼬리표 — COMMS/·SESSION_LOG 는 역사 기록이라 제외. 대상 수: 22.42·28.51·29.31·29.51·31.07.
+    (e) CLAUDE.md §0 다섯 번째 결함으로 추가(4건 → 5건).
+    (f) ① widom_batch 주석·docstring 정정. ② `regen_energy.py` QST 하드코딩(21.08/25.17/26.63): 출처 미확인(results_v3 22.42/28.51 과 다름, NEXT_STEPS 에 26.63/31.07 이 v2 이전 수로 등장) — **값 안 건드리고 인용 금지 주석**. ③ `cavity_model.py` 계수 — 보정 전 척도임을 주석. `tsa_vsa_lever.py` ROWS — 보정 전, ×1.495 주석.
+    **안 한 것(별도 등록 필요)**
+    (d) 포스터·장표 Q_st·지렛대 절대 수 갱신 — 장표 파일이 이 저장소 밖(노션·PDF). 노션 현황 정리본·발표 가이드는 이미 "Q_st 는 차이로만, 목표대 판정 안 함" 으로 적혀 있어 당장 틀린 문장은 없음.
+    (g) **`QST_WINDOW` 목표대 재유도** — 회귀·반트호프·E 를 보정 Q_st 로 다시. 자료 0건 등록이 필요한 별도 일. 그 전까지 "목표대 진입/미달" 은 판정 불가 그대로(CLAUDE.md §0 에 박음).
+        **[09-18 00:4x 실행]** `QST_WINDOW_RT_20260918.md` · `qst_window_rt.py`: 옛 표 재현 → 보정 척도 최적 41~43, 하한 35~36.5(+5.0, 평행이동과 거의 같음). **물질도 창도 같이 +5** — saIm050·0583 은 여전히 아래(33.5·34.3 대 35.5), saIm100 안. §3 의 "금지 오독" 확인됨. 관문 읽기(권고 35~45 평행이동)는 사용자 안건 §5.

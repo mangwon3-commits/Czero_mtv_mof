@@ -7,7 +7,7 @@
 
 [중요] Widom 삽입은 본질적으로 '무한희석' 방법이다. 여기서 얻는 것은
     - K_H : 헨리 상수 (무한희석)
-    - Q_st: 무한희석 등량흡착열 = -(<U_gh> - <U_h>) - RT
+    - Q_st: 무한희석 등량흡착열 = -(<U_gh> - <U_h>) + RT  (09-18 부호 정정 — QST_RT_SIGN_20260911.md; 09-17 까지는 −RT 로 2RT 낮게 냈다)
   특정 압력(예: 0.15 bar)에서의 Q_st는 유한 로딩 상태이므로 GCMC가 따로 필요하다.
   다만 flue gas의 CO2 분압 0.15 bar는 로딩이 낮아 무한희석 값이 좋은 근사가 된다.
 """
@@ -137,9 +137,9 @@ def main():
         kh_c, _, u_c, _, _ = co2
         kh_n, _, u_n, _, _ = n2
         sel = (kh_c / kh_n) if (kh_c and kh_n) else float('nan')
-        # Qst = -(U_gh - U_h) - RT   [kJ/mol]
-        qst_c = (-u_c - R_GAS * TEMP) if u_c is not None else float('nan')
-        qst_n = (-u_n - R_GAS * TEMP) if u_n is not None else float('nan')
+        # Qst = -(U_gh - U_h) + RT   [kJ/mol]  — RASPA dH = ΔU − RT, Q = −dH. 옛 주석은 −RT 였고 개념 오류의 증거였다
+        qst_c = (-u_c + R_GAS * TEMP) if u_c is not None else float('nan')
+        qst_n = (-u_n + R_GAS * TEMP) if u_n is not None else float('nan')
         print(f'{name:<30} {kh_c if kh_c else float("nan"):>11.4e} '
               f'{kh_n if kh_n else float("nan"):>11.4e} {sel:>8.2f} '
               f'{qst_c:>10.2f} {qst_n:>9.2f}')
