@@ -206,3 +206,11 @@ ZIF-71(0.9491)·ZIF-8(0.9295)의 최소거리는 **정상**입니다 — X-ray r
     판        등록 §1 의 1순위(Co 진공 판)가 아니라 **2순위(as-synth → 게스트 물 제거)**. 활성화 판이 1948903~1948905 중에 있으면 그것으로 교체(사용자에게 요청함).
     확인한 것 같은 업로드에 온 1948902 는 MUF-16(**Mn**) as-synth(물 3) — 금속이 달라 안 씀. 755255 는 Pd NHC 착물(C37H45ClN2O2Pd) — 무관, 폐기.
     다음      T-NF-1 앞단(원소·고아 감사 → 게스트 물 제거 → 이완 → PACMAN → Zeo++)은 **아직 안 돌림**. 데스크탑 T-RT-1b(RASPA 8) 중이라 Zeo++ 단계는 RASPA 0 창에서. 착수는 별도 지시.
+
+### 2-2 보완 (2026-09-18 02:15, 종합자) — ZIF-94 는 **CCDC 기탁 자체가 없는 것으로 보임**
+    근거  Yaghi 그룹의 2023 ZIF 총설(Inorg. Chem. 62, 20861, "Structural Chemistry of ZIFs") Table 1 "Composition, CCDC Code, Topology…" 이 보고된 ZIF 전부의 CCDC 코드를 싣는데
+          **ZIF-94 행이 없다**(ZIF-90 WOJGEI · ZIF-93 POVNEW · ZIF-95 NOFQAB · ZIF-96 POVNOG · ZIF-97 POVNAS 는 있음). 각주: "ref 20(ZIF-91·92)은 CCDC 코드 없음, 구조는 시뮬레이션".
+          ZIF-94 원 보고(Morris 외, JPCC 2012, 116, 24084, 10.1021/jp307170a)는 ZIF-7/11/93/94 CO₂ 비교 논문 — 단결정이 아니라 PXRD+모형으로 구조를 얻었을 가능성이 큼(SI 미확인, pubs.acs.org 403).
+          CCDC Access Structures 검색(DOI · 화합물명 ZIF-94) 결과 0 표시. 사용자도 CSD 에서 못 찾음(09-18).
+    결론  "기탁 CIF 확보" 경로는 닫힘. 남은 경로 둘: (a) JPCC 2012 SI 또는 SIM-1 원 논문(Aguado 외, NJC 2011) SI 에 좌표/CIF 가 있는지 — **사용자(학교 계정)가 확인**. (b) 등록 §3 의 대안 "ZIF-8 SOD 모체 링커 치환 구축" — 빌더 개발 필요, 별도 등록.
+    ZIF-94 물 실측 앵커(Gao 2018 RSC Adv, SIM-1 298 K 물 등온)는 그대로 유효 — 구조만 없음.
