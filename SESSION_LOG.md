@@ -30,6 +30,11 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-18 00:2x · desktop  [수리] §AK ① 빌드가 laptop2 에서 rdkit 부재로 실패 → 데스크탑이 빌드해 푸시(5/5), 사슬은 ① 건너뜀·xtb 검사 추가
+
+laptop2 czeromof 에 rdkit 없음(`czeromof.yml:197` 명세 이탈). 환경 설치 대신 (ㄴ) 데스크탑 빌드 — CPU 거의 안 써 RASPA 8 옆에서 nice 19. 시드 1~5 전부 채택, 624원자·원소 일치.
+`chain_saim025e.sh`: CIF 5개 있으면 ① 건너뜀, ②-앞 `XTB_BIN` 존재 검사(relax_series_v3.py:98 의 "랩탑에 xtb 가 없어 0단계로 죽음" 재발 방지). laptop2 는 pull 뒤 같은 줄로 재기동.
+
 ## 09-18 00:18 · desktop  [착수] T-RT-1b(mslm050e 323 K, 15작업) 00:16 착수 PID 10450 · §AL · laptop2 §AK 지시문 사용자에게 전달
 
 사용자 "권고안대로" → 등록 `REALTEMP_WC_1B_REGISTRATION_20260918.md`(자료 0건, T-RT-1 §1·§3·§5·§6 상속, 대상만 mslm050e) → DRYRUN 통과 → 착수.

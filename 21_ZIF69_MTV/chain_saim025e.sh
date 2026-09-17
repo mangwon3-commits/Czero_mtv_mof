@@ -33,10 +33,22 @@ if [ "$(pgrep -x simulate | wc -l)" -gt 0 ]; then
 fi
 
 # --- ① 빌드 (시드 1~, 검사 통과분 5개) -----------------------------------
-say "① 빌드 saIm025e1~e5"
-"$CZ" -u build_ensemble_025.py >> "$L" 2>&1 || die "빌드 실패 rc=$?"
-n=$(ls structures_v2/ZIF69_saIm025e*.cif 2>/dev/null | wc -l); say "빌드 CIF $n/5"
-[ "$n" -ge 5 ] || die "빌드 5/5 아님"
+# 09-18 00:2x: laptop2 czeromof 에 rdkit 이 없어(czeromof.yml:197 명세 이탈) ①이 2초 만에 죽었다.
+# 데스크탑이 빌드해 structures_v2 에 푸시했으므로 CIF 5개가 이미 있으면 ①을 건너뛴다(빌더는 import 에서 죽는다).
+n=$(ls structures_v2/ZIF69_saIm025e*.cif 2>/dev/null | wc -l)
+if [ "$n" -ge 5 ]; then
+  say "① 빌드 건너뜀 — CIF $n/5 이미 있음(데스크탑 빌드, master 푸시분)"
+else
+  say "① 빌드 saIm025e1~e5"
+  "$CZ" -u build_ensemble_025.py >> "$L" 2>&1 || die "빌드 실패 rc=$?"
+  n=$(ls structures_v2/ZIF69_saIm025e*.cif 2>/dev/null | wc -l); say "빌드 CIF $n/5"
+  [ "$n" -ge 5 ] || die "빌드 5/5 아님"
+fi
+
+# --- ②-앞 xtb 확인 (relax_fixcell.py 는 XTB_BIN, 기본 ~/miniconda3/envs/spectra/bin/xtb) --------
+XTB="${XTB_BIN:-$HOME/miniconda3/envs/spectra/bin/xtb}"
+[ -x "$XTB" ] || die "xtb 없음: $XTB — XTB_BIN=<경로> 로 주고 다시 기동(relax_series_v3.py:98 의 랩탑 사례)"
+export XTB_BIN="$XTB"; say "xtb $XTB"
 
 # --- ② 이완 (xtb GFN-FF) --------------------------------------------------
 say "② 이완 RELAX_WORKERS=$RW"
