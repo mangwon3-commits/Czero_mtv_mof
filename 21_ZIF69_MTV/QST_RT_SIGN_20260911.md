@@ -10,6 +10,12 @@
     저장소 식 −u − RT = 11.9770 − 2.4777 = **9.4993** → 차 **4.9554 = 2RT**
     파서      `'<U_gh>_1-<U_h>_0:' in line` → 괄호 첫 수(음부호 포함) = u = ΔU. 읽기 확정.
     미확인    같은 파일 안 독립 대조(GCMC `Enthalpy of adsorption` 절)는 Widom 전용 실행에서 −nan 이라 불가. (1) 의 산술만으로 결론은 선다.
+    **[09-18 02:10 소스 확인 — 미확인 해소]** RASPA2 GitHub(iRASPA/RASPA2 master `6498ab1`) `src/statistics.c` 4662~4688행:
+        fprintf "Average adsorption energy <U_gh>_1-<U_h>_0 obtained from Widom-insertion:"
+        fprintf "(Note: the total heat of adsorption is dH=<U_gh>_1-<U_h>_0 - <U_g> - RT)"
+        괄호값 = avg * KELVIN_TO_KJ_PER_MOL   ← **단위환산일 뿐**, dH 가 아님(파서 읽기 확정과 일치)
+      강체 손님 <U_g>=0 → dH = ΔU − RT → **Q_st = −dH = −ΔU + RT.** 저장소 옛 식 −ΔU − RT 는 소스 주석과 부호가 반대. (1) 의 산술이 소스로 닫힘.
+      덤: 같은 블록의 `ERROR_CONFIDENCE_INTERVAL_95` 가 CLAUDE.md §2 "± 는 95 % 신뢰구간" 의 소스 근거. 우리 설치본은 RASPA 2.0.41(2021, conda) — 같은 계열.
 
 ## 2. 범위 (종합자 grep, 06:22)
     러너 **10곳**(종합자 9 + Melchior 산출물 기준 재훑기 06:24: `rg.R_GAS*rg.TEMP` 모듈한정 호출이 상수 표현식 grep 에 안 잡혔음)
