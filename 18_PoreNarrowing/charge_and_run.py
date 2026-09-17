@@ -209,7 +209,7 @@ def main():
         kn = res[name].get(('widom', 'N2'), (None,) * 3)
         gc = res[name].get(('gcmc', 'CO2'), (None,) * 3)
         sel = (kc[0] / kn[0]) if (kc[0] and kn[0]) else float('nan')
-        qst = (-kc[1] - R_GAS * TEMP) if kc[1] is not None else float('nan')
+        qst = (-kc[1] + R_GAS * TEMP) if kc[1] is not None else float('nan')
         load = gc[2] if gc[2] is not None else float('nan')
         g = geo.get(base, {})
         af = (g.get('after') or {})

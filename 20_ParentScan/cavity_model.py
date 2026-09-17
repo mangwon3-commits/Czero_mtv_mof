@@ -134,6 +134,7 @@ def main():
               + ('   ' + ', '.join(flags) if flags else ''))
 
     print(f'\n(증폭은 평면 벽 대비. ZIF-8 = {ref:.2f}배가 기준선)')
+    # ⚠ 09-18: 계수 14.04·9.84 는 RT 부호 정정(QST_RT_SIGN_20260911.md) 이전 Q_st 에 맞춘 것 — 이 모형의 '예상 Qst' 는 보정 전 척도다. 보정 Q_st 와 직접 견주지 말 것.
     print('예상 Qst = 14.04 x (증폭비) + SO3H 정전기분 9.84 kJ/mol')
     print('목표 30~40 kJ/mol\n')
 

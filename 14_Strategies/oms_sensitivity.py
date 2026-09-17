@@ -147,7 +147,7 @@ Component 0 MoleculeName              CO2
                 u = float(m.group(1))
     for s in ('VTK', 'Movies', 'Restart'):
         shutil.rmtree(os.path.join(d, s), ignore_errors=True)
-    return kh, (-u - R_GAS * TEMP) if u is not None else None
+    return kh, (-u + R_GAS * TEMP) if u is not None else None  # Q_st = −ΔU + RT (RASPA dH 정의; 09-18 부호 정정, 21_ZIF69_MTV/QST_RT_SIGN_20260911.md)
 
 
 def main():

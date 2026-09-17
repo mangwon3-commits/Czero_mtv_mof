@@ -126,7 +126,7 @@ def main():
             print(f'{tag:<12} 출력 부족')
             rows.append({'name': tag, 'status': 'incomplete'})
             continue
-        qst, eqst = -kc[2] - rg.R_GAS * rg.TEMP, kc[3]
+        qst, eqst = -kc[2] + rg.R_GAS * rg.TEMP, kc[3]  # Q_st = −ΔU + RT (RASPA dH 정의; 09-18 부호 정정, 21_ZIF69_MTV/QST_RT_SIGN_20260911.md)
         sel = kc[0] / kn[0]
         esel = sel * np.sqrt((kc[1] / kc[0]) ** 2 + (kn[1] / kn[0]) ** 2)
         g = geo.get(tag, {})

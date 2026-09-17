@@ -30,6 +30,12 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-18 00:29 · desktop  [결함 조치] Q_st RT 부호 정정 실행 — 사용자 결정 "일단 부호 결함 조치해" (QST_RT_SIGN §6)
+
+러너 10곳+widom 2줄 `−u + RT` 로, JSON 21개는 원값 보존 + `*_rt_corrected`(+4.955420, 212키) + `WARN_qst_rt`, md 35줄 꼬리표, CLAUDE.md §0 다섯째 결함, 비러너 셋 주석.
+돌고 있는 계산은 Q_st 를 안 내므로 무영향. **남은 것**: (d) 장표 절대 수 · (g) 목표대 재유도(별도 등록) — 그 전까지 "목표대 진입" 판정 금지.
+root 소유 파일 둘(charge_and_run.py ×2)은 교체 방식으로 고쳐 소유가 바뀜.
+
 ## 09-18 00:2x · desktop  [수리] §AK ① 빌드가 laptop2 에서 rdkit 부재로 실패 → 데스크탑이 빌드해 푸시(5/5), 사슬은 ① 건너뜀·xtb 검사 추가
 
 laptop2 czeromof 에 rdkit 없음(`czeromof.yml:197` 명세 이탈). 환경 설치 대신 (ㄴ) 데스크탑 빌드 — CPU 거의 안 써 RASPA 8 옆에서 nice 19. 시드 1~5 전부 채택, 624원자·원소 일치.

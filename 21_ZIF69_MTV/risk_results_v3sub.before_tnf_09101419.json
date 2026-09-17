@@ -1,0 +1,75 @@
+{
+  "criteria": {
+    "PLD_min": 3.3,
+    "LCD_drop_limit_pct": 20.0,
+    "AV_floor": 20.0,
+    "min_dist_limit": 0.7,
+    "LCD_reference": 7.63144
+  },
+  "rows": [
+    {
+      "name": "base",
+      "status": "ok",
+      "before": {
+        "LCD": 8.89809,
+        "PLD": 5.157,
+        "AV": 1232.2,
+        "min_dist": 1.074,
+        "n_atoms": 600,
+        "AV_per_cell": 1232.2
+      },
+      "after": {
+        "LCD": 7.63144,
+        "PLD": 5.26127,
+        "AV": 8137.52,
+        "min_dist": 1.079,
+        "n_atoms": 4800,
+        "supercell_rep": 8,
+        "AV_per_cell": 1017.2
+      },
+      "LCD_drop_pct": 0.0,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.854070553699785,
+      "converged": false
+    },
+    {
+      "name": "zif90",
+      "status": "ok",
+      "before": {
+        "LCD": 10.83359,
+        "PLD": 3.46348,
+        "AV": 901.887,
+        "min_dist": 1.077,
+        "n_atoms": 252,
+        "AV_per_cell": 901.9
+      },
+      "after": {
+        "LCD": 10.27976,
+        "PLD": 3.31525,
+        "AV": 5478.8,
+        "min_dist": 1.081,
+        "n_atoms": 2016,
+        "supercell_rep": 8,
+        "AV_per_cell": 684.9
+      },
+      "LCD_drop_pct": -34.7,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 11,
+      "final_EDiff": 8.68021743372083e-09,
+      "converged": true
+    }
+  ]
+}

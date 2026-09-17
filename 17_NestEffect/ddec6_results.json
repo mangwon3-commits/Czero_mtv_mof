@@ -1,11 +1,15 @@
 [
   {
+    "WARN_qst_rt": "RT 부호 결함: 이 파일의 Qst_CO2/Qst_N2/Qst 는 −ΔU−RT 로 계산돼 2RT = 4.9554 kJ/mol 낮다. 보정값은 *_rt_corrected 키(원값 + 4.9554). 원값은 그대로 둔다(사후 수정 금지). 21_ZIF69_MTV/QST_RT_SIGN_20260911.md, 2026-09-18 사용자 결정."
+  },
+  {
     "name": "amIm025_clIm025_mIm050",
     "KH_CO2": 1.42533e-05,
     "KH_N2": 2.00648e-06,
     "selectivity": 7.103634225110641,
     "Qst_CO2": 13.758417067236001,
-    "loading_015bar": 0.2178239766
+    "loading_015bar": 0.2178239766,
+    "Qst_CO2_rt_corrected": 18.713836787564002
   },
   {
     "name": "amIm025_mIm050_nIm025",
@@ -13,7 +17,8 @@
     "KH_N2": 1.98194e-06,
     "selectivity": 8.714037760981665,
     "Qst_CO2": 14.992461219535999,
-    "loading_015bar": 0.2588297432
+    "loading_015bar": 0.2588297432,
+    "Qst_CO2_rt_corrected": 19.947880939864
   },
   {
     "name": "amIm050_nIm050",
@@ -21,7 +26,8 @@
     "KH_N2": 2.0136e-06,
     "selectivity": 19.603198251887168,
     "Qst_CO2": 22.964969210036,
-    "loading_015bar": 0.5494077175
+    "loading_015bar": 0.5494077175,
+    "Qst_CO2_rt_corrected": 27.920388930364
   },
   {
     "name": "amrIm012_mIm075_nIm012",
@@ -29,7 +35,8 @@
     "KH_N2": 2.23691e-06,
     "selectivity": 8.214635367538255,
     "Qst_CO2": 14.969047117636,
-    "loading_015bar": 0.2807435222
+    "loading_015bar": 0.2807435222,
+    "Qst_CO2_rt_corrected": 19.924466837964
   },
   {
     "name": "amrIm025_clIm025_mIm050",
@@ -37,7 +44,8 @@
     "KH_N2": 2.05369e-06,
     "selectivity": 7.572856662884856,
     "Qst_CO2": 14.527982730036,
-    "loading_015bar": 0.2395196833
+    "loading_015bar": 0.2395196833,
+    "Qst_CO2_rt_corrected": 19.483402450364
   },
   {
     "name": "amrIm025_mIm050_nIm025",
@@ -45,7 +53,8 @@
     "KH_N2": 2.01413e-06,
     "selectivity": 9.638553618683998,
     "Qst_CO2": 16.201695975636,
-    "loading_015bar": 0.2944009331
+    "loading_015bar": 0.2944009331,
+    "Qst_CO2_rt_corrected": 21.157115695964
   },
   {
     "name": "mIm075_saIm025",
@@ -53,7 +62,8 @@
     "KH_N2": 2.3362e-06,
     "selectivity": 16.84393459464087,
     "Qst_CO2": 20.793800533036,
-    "loading_015bar": 0.5819557812
+    "loading_015bar": 0.5819557812,
+    "Qst_CO2_rt_corrected": 25.749220253363998
   },
   {
     "name": "mIm100",
@@ -61,6 +71,7 @@
     "KH_N2": 2.44376e-06,
     "selectivity": 7.235653255638852,
     "Qst_CO2": 14.068882504435999,
-    "loading_015bar": 0.2761413411
+    "loading_015bar": 0.2761413411,
+    "Qst_CO2_rt_corrected": 19.024302224764
   }
 ]
