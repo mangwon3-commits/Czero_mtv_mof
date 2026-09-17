@@ -30,6 +30,13 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-18 00:18 · desktop  [착수] T-RT-1b(mslm050e 323 K, 15작업) 00:16 착수 PID 10450 · §AL · laptop2 §AK 지시문 사용자에게 전달
+
+사용자 "권고안대로" → 등록 `REALTEMP_WC_1B_REGISTRATION_20260918.md`(자료 0건, T-RT-1 §1·§3·§5·§6 상속, 대상만 mslm050e) → DRYRUN 통과 → 착수.
+simulate 8, 머리말 관문 통과(Ow-Ow 89.633 · Hw ZERO_POTENTIAL), 가용 12 GB, C: 42 G. 감시 일 기반(`humid_wc_323_mslm050e_desk.json.status.jsonl`). ETA 09-19 낮~저녁.
+Q1(온도 짝)은 323·298 둘 다 데스크탑이라 T-RT-1 의 기기 항 ⚠ 가 없음. Q2 는 T-RT-1 뒤 덧붙임.
+laptop2 §AK 는 사용자가 세션을 열어 직접 착수 — 지시문(확인 셋·기동 줄·PID 추적 금지·§8·§9 사후 검산 부탁) 전달.
+
 ## 09-18 00:13 · desktop  [수합·지연 고지] §AJ 술포닐 앙상블 판정(WC §9: 덩어리에 듦, 4/4 적중) · §8 이의 창 종료(허용) · **데스크탑 6시간 유휴**
 
 ### 지연 고지 — 먼저
