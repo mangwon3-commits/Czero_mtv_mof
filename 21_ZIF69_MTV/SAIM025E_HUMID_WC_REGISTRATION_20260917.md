@@ -86,3 +86,6 @@ laptop2 는 §AI 완주(09-17 05:55) 이후 유휴이고 등록된 미착수 배
 
 ## 7. 진행 기록
     [09-17 12:5x] 등록(자료 0건). 사용자 승인 "셋 묶어 착수해"(12:3x) — 30분 규칙 대기 없음.
+    [09-18 00:16] laptop2 착수 → **① 빌드 2초 만에 실패**: `ModuleNotFoundError: rdkit`(laptop2 czeromof 가 `czeromof.yml:197 rdkit==2026.3.4` 명세에서 이탈). 확인 셋 통과, 부분 산출물 없음. laptop2 가 환경을 손대지 않고 보고 — 옳음.
+    [09-18 00:20] **(ㄴ) 데스크탑 빌드**(nice 19, RASPA 8 옆): 시드 1~5 전부 채택, 5/5, 원자 624·원소 일치·융합 0·금지접촉 0·고아 0, `rebuild_index` 109→114. `structures_v2/ZIF69_saIm025e1~5.cif`+meta 를 master 에 푸시.
+    [09-18 00:22] `chain_saim025e.sh` 수정(어디서도 돌지 않는 상태): CIF 5개 있으면 ① 건너뜀 · ②-앞에 `XTB_BIN` 존재 검사(기본 `~/miniconda3/envs/spectra/bin/xtb`). laptop2 는 pull 뒤 같은 기동 줄로 ②부터.
