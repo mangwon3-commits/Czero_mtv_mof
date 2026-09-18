@@ -30,6 +30,18 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 09-18 10:13 · 랩탑(Melchior)  [진행중]
+하는 일: **T-RT-1 재개** — 습윤 WC 실온도판(323 K). 09-18 03:26 뒤 재부팅으로 중단된
+  1차 실행(완주 28/48)을 등록 §7-7 그대로 **같은 명령**으로 이어 돌립니다. 남은 20작업
+  (중단 8 = CrashRestart 1회 이어받기, 미착수 12). DRYRUN 재통과 · 기존 .data 36/48 ·
+  다른 조건 잔존물 0 · 파일 관문 md5 일치.
+건드리는 파일: 21_ZIF69_MTV/humid_wc_runs_v3w_323/ (실행 폴더, git 무시),
+  v3w_humid_wc_323/humid_wc_323_laptop.json{,.status.jsonl}, .claude_work_wc323_laptop.out
+쓰는 코어: **8** (simulate 8, 드라이버 PID 364389). 이 기기는 다른 작업을 받지 마세요.
+다음: ETA 09-19 12~13시. 완주하면 결과 JSON·status.jsonl·.out 을 **같은 커밋**으로
+  master 에 푸시하고 해시를 우편함에 적습니다(등록 §7-6). master 병합은 그 뒤에 —
+  7b3b094 이 run_aryl_gcmc.py 를 고치므로 실행 중 병합은 규약 섞기입니다(CLAUDE.md §3).
+
 ## 09-16 14:19 · laptop (Melchior)  [진행중] T-RT-1 실온도(323 K) 절대 WC 착수 — 등록 REALTEMP_WC_REGISTRATION_20260916 §7 그대로 16종 48작업(saIm050e1~5 · saIm0583e1~5 · sa50nb50e1~5 · base), ads 323 K RH90 → tsa 373 K / vsa 323 K 0.05 bar. **드라이버 PID 183208**, 착수 14:19:35 KST, 워커 8(simulate 8 = 물리 8코어 포화). DRYRUN §7-2 여덟 항목 전부 일치(md5 8e8ec933 · P_H2O 11114.1 · run_one_323 · fork · 기존 .data 0/48 · RH 90.0/11.0/90.0 · 48작업), 머리말 관문 첫 Output 통과(Ow-Ow 89.633 · Hw/Lw 넷 ZERO_POTENTIAL). 인터프리터 czeromof 3.10 — 이 기기 __pycache__ 의 run_water/run_humid_wc/ff_gate 가 전부 cpython-310(러너를 실제로 돌린 것), cpython-311 은 risk_screen(Zeo++ 경로)뿐. 기본 python 3.14 는 ase 없음.
 건드리는 파일: 21_ZIF69_MTV/humid_wc_runs_v3w_323/ · v3w_humid_wc_323/humid_wc_323_laptop.json · .claude_work_wc323_laptop.out · COMMS/laptop.md
 쓰는 코어: 8 (물리 8 전부 — 이 기기에 다른 계산 띄우지 마십시오)
