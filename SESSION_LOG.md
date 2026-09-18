@@ -38,6 +38,12 @@
 
 ## 09-18 02:10 · desktop  [소스 확인] Q_st RT 부호 — RASPA2 소스(iRASPA/RASPA2 `6498ab1` statistics.c:4664) 주석 "dH = <U_gh>−<U_h> − <U_g> − RT", 괄호는 단위환산 → −ΔU + RT 확정. QST_RT_SIGN §1 "미확인" 해소. (사용자가 github.com/iraspa 를 찾아 준 덕)
 
+## 09-18 11:46 · desktop  [인계] §AK ⑤ 관문 데스크탑 인계(RASPA 0 창 감시기 PID 18198) · ⑥ laptop2 선착수 허용(등록 §0 보완) · laptop2 배정 경계 기록
+
+laptop2 앞단 5/5(이완 4h57m·판정 pass·전하 5/5, 3c81d1a) → ⑤ rc=2 실행 불가(lammps_mof 없음). 데스크탑이 ⑤: CLAUDE.md §5 대로 `simulate` 0 3분 연속 뒤 착수(T-RT-1b 12/15, 곧 창). 결과 rc=0 이면 자동 커밋·푸시.
+⑥ 은 laptop2 가 지금 띄움 — ⑤ 통과 전 결과 안 읽음·탈락 실현 폐기·매몰비용 불사용(MAGI §9-6). laptop2 환경 이탈 둘(rdkit·lammps_mof) → ASSIGN §AK 에 배정 경계 한 줄.
+T-RT-1b: 12/15 ok(ads 4건이 6 h 안에 끝남 — 323 K 견적 15 h 보다 훨씬 빠름, 술포닐 물이 적어서일 것; 판정 아님), 3작업 진행.
+
 ## 09-18 00:34 · desktop  [재유도] Q_st 목표대를 보정 척도로 — `QST_WINDOW_RT_20260918.md` (사용자 "일단 목표대로 유도해볼래?")
 
 옛 모형 재현(36.0/36.7/37.1/37.6/38.0 ✓) → 보정: 회귀 절편 A−2B(정확), 반트호프·E 에 참 Q_st. **최적 41~43, 하한 35~36.5, 에너지 상한 50~53.**
