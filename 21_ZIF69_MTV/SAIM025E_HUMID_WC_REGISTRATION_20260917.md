@@ -18,6 +18,8 @@ laptop2 는 §AI 완주(09-17 05:55) 이후 유휴이고 등록된 미착수 배
 
 사슬 스크립트 `chain_saim025e.sh` 가 이 순서를 고정하고 각 단계에서 개수를 검사합니다.
 **⑤ 가 rc≠0 이면 ⑥ 을 띄우지 않고 멈춥니다** — 관문 밖 구조로 WC 를 돌리면 "관문 안 비교" 가 깨집니다.
+    **[09-18 11:46 보완 — 자료 0건(WC 결과 없음) 시점]** laptop2 에 `lammps_mof`(lammps_interface·lmp_serial) 가 없어 ⑤ 가 **rc=2(실행 불가, 탈락 아님)** 로 멈췄고, ⑤ 는 데스크탑이 인계합니다(RASPA 0 창에서, `.claude_work_gate_saim025e.sh`).
+    그 사이 **⑥ 을 laptop2 에서 먼저 띄울 수 있습니다**(MAGI §9-6 "먼저 띄우기" 의 조건 그대로): ⑤ 통과 전에는 ⑥ 결과를 **읽지 않고**, ⑤ 에서 어느 실현이 탈락하면 그 실현의 WC 는 **읽지 않고 폐기**하며, 이미 돈 계산은 **중단·판정에서 매몰비용으로 쓰지 않습니다.** 관문 밖 구조의 수가 판정에 섞이는 일은 이 규칙으로 막힙니다 — 낭비될 수 있는 것은 계산 시간뿐입니다.
 
 ### 빌더 검산 (자료 0건 시점에 적음)
 
@@ -89,3 +91,6 @@ laptop2 는 §AI 완주(09-17 05:55) 이후 유휴이고 등록된 미착수 배
     [09-18 00:16] laptop2 착수 → **① 빌드 2초 만에 실패**: `ModuleNotFoundError: rdkit`(laptop2 czeromof 가 `czeromof.yml:197 rdkit==2026.3.4` 명세에서 이탈). 확인 셋 통과, 부분 산출물 없음. laptop2 가 환경을 손대지 않고 보고 — 옳음.
     [09-18 00:20] **(ㄴ) 데스크탑 빌드**(nice 19, RASPA 8 옆): 시드 1~5 전부 채택, 5/5, 원자 624·원소 일치·융합 0·금지접촉 0·고아 0, `rebuild_index` 109→114. `structures_v2/ZIF69_saIm025e1~5.cif`+meta 를 master 에 푸시.
     [09-18 00:22] `chain_saim025e.sh` 수정(어디서도 돌지 않는 상태): CIF 5개 있으면 ① 건너뜀 · ②-앞에 `XTB_BIN` 존재 검사(기본 `~/miniconda3/envs/spectra/bin/xtb`). laptop2 는 pull 뒤 같은 기동 줄로 ②부터.
+    [09-18 00:23] laptop2 재기동(① 건너뜀 확인, xtb spectra/bin) → ② 이완 4h57m(00:23→05:20) rc=0 · ③ 판정 e1~e5 pass · ④ 전하 5/5 → master `3c81d1a`. 앞단 견적 4~8 h, 실측 5h04m.
+    [09-18 05:27] **⑤ rc=2 — 실행 불가**(laptop2 에 lammps_mof 없음; 관문 스크립트 사전검사가 스스로 멈춤, 구조 평가 0건). rdkit 과 같은 계열의 환경 이탈. 사슬은 설계대로 ⑥ 미착수.
+    [09-18 11:46] 데스크탑 인계: 감시기 `.claude_work_gate_saim025e.sh`(PID 18198) — `simulate` 0 이 3분 연속이면 ⑤ 착수(RISK_SUB_TAGS base,saIm025,saIm025e1~5; lammps_mof python; 워커는 스크립트가 MemAvailable 로 계산), rc=0 이면 결과 자동 커밋·푸시. T-RT-1b 가 3작업 남아(12/15) 몇 시간 안에 창이 열림. §0 보완대로 laptop2 는 ⑥ 선착수.
