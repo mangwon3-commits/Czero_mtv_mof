@@ -2018,3 +2018,8 @@ RASPA 가 끝난 뒤에 돌립니다.**
 
 습윤 작업 용량 9/9, 재생 에너지 수지, 조교님 배경자료 PDF.
 **단 위 결함으로 수치가 무효화됐습니다.** PDF 는 방법론·위상 중심으로 축소했습니다.
+
+## 2026-09-19 15:45 · desktop  postman ③ 결함(안 맞는 글롭 → add rc=128, 푸시 0건) 수정 · T-NF-1 사슬이 덮어쓴 risk_v3sub_index.json 복원(8행)
+
+postman.sh (5) 판 md5 `efafea6a`. 세 기기 재기동 권고(COMMS/desktop.md 15:45). 랩탑 둘 브랜치 14:41 이후 커밋 0 — 15:0x 답변 미수신 추정, SendMessage + 우편함.
+risk_results_v3sub.json 은 사슬 백업(before_tnf1_09191531, HEAD 와 동일)에서 복원, 색인은 HEAD 7행 + muf16 병합. 사슬 자체는 §6 대로 안 건드림 — 다음 T-NF 사슬 설계에서 색인 비켜 두기.
