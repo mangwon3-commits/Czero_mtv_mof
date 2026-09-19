@@ -19,9 +19,12 @@ import run_kh_ext as K                                          # noqa: E402
 NAME = 'muf16'
 K.FRAMEWORKS = [NAME]
 K.N_REP = int(os.environ.get('KHX_NREP', 3))
-K.RUNS_ROOT = os.path.join(HERE, 'tnf1w_khw_runs')              # 기존 khext_runs 와 분리 (CLAUDE.md §3)
 K.T.WORKERS = int(os.environ.get('KHX_WORKERS', 3))
-OUT = os.path.join(HERE, 'tnf_widom_water_muf16.json')          # postman 패턴 tnf_widom_*.json
+# (T-NF-1w-2, 09-19 23:1x) 온도를 환경변수로 — 기본 298 K(T-NF-1w (a) 와 같은 파일 이름·폴더). 다른 온도면 폴더·출력 이름에 온도를 붙여 298 K 판을 덮지 않는다.
+K.T.TEMP = float(os.environ.get('KHX_TEMP', 298.0))
+_sfx = '' if abs(K.T.TEMP - 298.0) < 1e-6 else f'_{int(round(K.T.TEMP))}K'
+K.RUNS_ROOT = os.path.join(HERE, f'tnf1w_khw_runs{_sfx}')      # 기존 khext_runs 와 분리 (CLAUDE.md §3)
+OUT = os.path.join(HERE, f'tnf_widom_water_muf16{_sfx}.json')   # postman 패턴 tnf_widom_*.json
 
 
 def main():
