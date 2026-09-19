@@ -1,0 +1,75 @@
+{
+  "criteria": {
+    "PLD_min": 3.3,
+    "LCD_drop_limit_pct": 20.0,
+    "AV_floor": 20.0,
+    "min_dist_limit": 0.7,
+    "LCD_reference": 7.63144
+  },
+  "rows": [
+    {
+      "name": "base",
+      "status": "ok",
+      "before": {
+        "LCD": 8.89809,
+        "PLD": 5.157,
+        "AV": 1232.2,
+        "min_dist": 1.074,
+        "n_atoms": 600,
+        "AV_per_cell": 1232.2
+      },
+      "after": {
+        "LCD": 7.63144,
+        "PLD": 5.26127,
+        "AV": 8137.52,
+        "min_dist": 1.079,
+        "n_atoms": 4800,
+        "supercell_rep": 8,
+        "AV_per_cell": 1017.2
+      },
+      "LCD_drop_pct": 0.0,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.854070553699785,
+      "converged": false
+    },
+    {
+      "name": "muf16",
+      "status": "ok",
+      "before": {
+        "LCD": 3.6676,
+        "PLD": 2.94388,
+        "AV": 0.0,
+        "min_dist": 0.984,
+        "n_atoms": 468,
+        "AV_per_cell": 0.0
+      },
+      "after": {
+        "LCD": 4.64728,
+        "PLD": 3.14252,
+        "AV": 0.0,
+        "min_dist": 0.968,
+        "n_atoms": 1872,
+        "supercell_rep": 4,
+        "AV_per_cell": 0.0
+      },
+      "LCD_drop_pct": 39.1,
+      "checks": {
+        "PLD": false,
+        "LCD_drop": false,
+        "AV": false,
+        "min_dist": true
+      },
+      "pass": false,
+      "outer_loops": 12,
+      "final_EDiff": 0.610123121479774,
+      "converged": false
+    }
+  ]
+}
