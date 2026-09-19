@@ -275,7 +275,7 @@ def main():
         if not (kc and kn and gc) or kc[0] is None or kn[0] is None or gc[4] is None:
             print(f'{tag:<12} 출력 부족')
             continue
-        qst, eqst = -kc[2] - R_GAS * TEMP, kc[3]
+        qst, eqst = -kc[2] + R_GAS * TEMP, kc[3]  # Q_st = −ΔU + RT (RASPA dH 정의; 09-18 부호 정정, 21_ZIF69_MTV/QST_RT_SIGN_20260911.md)
         sel = kc[0] / kn[0]
         esel = sel * np.sqrt((kc[1] / kc[0]) ** 2 + (kn[1] / kn[0]) ** 2)
         g = idx.get(tag, {})
@@ -293,7 +293,7 @@ def main():
     with open(os.path.join(HERE, 'aryl_results.json'), 'w', encoding='utf-8') as f:
         json.dump(rows, f, indent=2, ensure_ascii=False)
     print('\n[OK] aryl_results.json')
-    print('비교 기준: −SO₃H 100% = Qst 31.07 ± 0.72, 선택도 102.22 ± 9.92, '
+    print('비교 기준: −SO₃H 100% = Qst 36.03 ± 0.72(RT 보정 후; 보정 전 31.07), 선택도 102.22 ± 9.92, '
           '로딩 2.1556 ± 0.0352')
     print('차이가 1.5σ 미만이면 순위를 매기지 마세요.')
     return 0

@@ -1,5 +1,8 @@
 [
   {
+    "WARN_qst_rt": "RT 부호 결함: 이 파일의 Qst_CO2/Qst_N2/Qst 는 −ΔU−RT 로 계산돼 2RT = 4.9554 kJ/mol 낮다. 보정값은 *_rt_corrected 키(원값 + 4.9554). 원값은 그대로 둔다(사후 수정 금지). 21_ZIF69_MTV/QST_RT_SIGN_20260911.md, 2026-09-18 사용자 결정."
+  },
+  {
     "name": "clIm050_mIm025_saIm025__closed",
     "label": "Cl 50% + SO3H 25%",
     "phase": "closed",
@@ -10,7 +13,8 @@
     "KH_N2": 1.79664e-06,
     "selectivity": 16.037993142755365,
     "Qst_CO2": 20.231291676936,
-    "loading_015bar": 0.4126971367
+    "loading_015bar": 0.4126971367,
+    "Qst_CO2_rt_corrected": 25.186711397264
   },
   {
     "name": "clIm050_mIm025_saIm025__open",
@@ -23,7 +27,8 @@
     "KH_N2": 1.3176e-06,
     "selectivity": 9.318002428658167,
     "Qst_CO2": 15.588098471436,
-    "loading_015bar": 0.1909443319
+    "loading_015bar": 0.1909443319,
+    "Qst_CO2_rt_corrected": 20.543518191764
   },
   {
     "name": "clIm050_mIm050__closed",
@@ -36,7 +41,8 @@
     "KH_N2": 1.85451e-06,
     "selectivity": 7.072865608705264,
     "Qst_CO2": 13.697913325736002,
-    "loading_015bar": 0.1951881698
+    "loading_015bar": 0.1951881698,
+    "Qst_CO2_rt_corrected": 18.653333046064002
   },
   {
     "name": "clIm050_mIm050__open",
@@ -49,7 +55,8 @@
     "KH_N2": 1.42e-06,
     "selectivity": 12.778098591549297,
     "Qst_CO2": 20.110053052235997,
-    "loading_015bar": 0.2614884764
+    "loading_015bar": 0.2614884764,
+    "Qst_CO2_rt_corrected": 25.065472772563997
   },
   {
     "name": "clIm050_saIm050__closed",
@@ -62,7 +69,8 @@
     "KH_N2": 1.77007e-06,
     "selectivity": 23.48907105368714,
     "Qst_CO2": 22.733776618535998,
-    "loading_015bar": 0.6258711309
+    "loading_015bar": 0.6258711309,
+    "Qst_CO2_rt_corrected": 27.689196338863997
   },
   {
     "name": "clIm075_mIm025__closed",
@@ -75,7 +83,8 @@
     "KH_N2": 1.60773e-06,
     "selectivity": 6.797099015381935,
     "Qst_CO2": 13.433068896036,
-    "loading_015bar": 0.1643409447
+    "loading_015bar": 0.1643409447,
+    "Qst_CO2_rt_corrected": 18.388488616364
   },
   {
     "name": "clIm075_mIm025__open",
@@ -88,7 +97,8 @@
     "KH_N2": 1.20418e-06,
     "selectivity": 11.810111445132788,
     "Qst_CO2": 19.543930939036,
-    "loading_015bar": 0.2053414691
+    "loading_015bar": 0.2053414691,
+    "Qst_CO2_rt_corrected": 24.499350659363998
   },
   {
     "name": "clIm100__closed",
@@ -101,7 +111,8 @@
     "KH_N2": 1.39537e-06,
     "selectivity": 6.337222385460487,
     "Qst_CO2": 12.923169445736,
-    "loading_015bar": 0.1345750399
+    "loading_015bar": 0.1345750399,
+    "Qst_CO2_rt_corrected": 17.878589166064
   },
   {
     "name": "clIm100__open",
@@ -114,7 +125,8 @@
     "KH_N2": 1.01233e-06,
     "selectivity": 11.040470992660497,
     "Qst_CO2": 19.393558296635998,
-    "loading_015bar": 0.1669382416
+    "loading_015bar": 0.1669382416,
+    "Qst_CO2_rt_corrected": 24.348978016963997
   },
   {
     "name": "mIm050_saIm050__closed",
@@ -127,7 +139,8 @@
     "KH_N2": 2.31241e-06,
     "selectivity": 28.438295976924508,
     "Qst_CO2": 25.125785907536,
-    "loading_015bar": 0.7406318693
+    "loading_015bar": 0.7406318693,
+    "Qst_CO2_rt_corrected": 30.081205627863998
   },
   {
     "name": "mIm100__closed",
@@ -140,7 +153,8 @@
     "KH_N2": 2.44213e-06,
     "selectivity": 7.2358965329446026,
     "Qst_CO2": 14.041021018936002,
-    "loading_015bar": 0.2723426585
+    "loading_015bar": 0.2723426585,
+    "Qst_CO2_rt_corrected": 18.996440739264003
   },
   {
     "name": "mIm100__open",
@@ -153,6 +167,7 @@
     "KH_N2": 2.07646e-06,
     "selectivity": 11.18865761921732,
     "Qst_CO2": 18.135053775735997,
-    "loading_015bar": 0.3301558616
+    "loading_015bar": 0.3301558616,
+    "Qst_CO2_rt_corrected": 23.090473496063996
   }
 ]

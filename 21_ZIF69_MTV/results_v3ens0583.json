@@ -26,7 +26,8 @@
       "Qst_CO2_err": 0.3674612225,
       "loading_015bar": 1.1750051337,
       "loading_015bar_err": 0.0177991186,
-      "status": "ok"
+      "status": "ok",
+      "Qst_CO2_rt_corrected": 34.263586606864
     },
     {
       "name": "saIm0583e2",
@@ -45,7 +46,8 @@
       "Qst_CO2_err": 0.5530497054,
       "loading_015bar": 1.0387676174,
       "loading_015bar_err": 0.0124302587,
-      "status": "ok"
+      "status": "ok",
+      "Qst_CO2_rt_corrected": 33.968683700864
     },
     {
       "name": "saIm0583e3",
@@ -64,7 +66,8 @@
       "Qst_CO2_err": 0.1629114798,
       "loading_015bar": 1.2062020683,
       "loading_015bar_err": 0.0145093988,
-      "status": "ok"
+      "status": "ok",
+      "Qst_CO2_rt_corrected": 33.884475274364
     },
     {
       "name": "saIm0583e4",
@@ -83,7 +86,8 @@
       "Qst_CO2_err": 0.42429143,
       "loading_015bar": 1.2449446486,
       "loading_015bar_err": 0.0117465682,
-      "status": "ok"
+      "status": "ok",
+      "Qst_CO2_rt_corrected": 35.949564840464
     },
     {
       "name": "saIm0583e5",
@@ -102,7 +106,9 @@
       "Qst_CO2_err": 0.1202441978,
       "loading_015bar": 1.1466345213,
       "loading_015bar_err": 0.0108201352,
-      "status": "ok"
+      "status": "ok",
+      "Qst_CO2_rt_corrected": 33.247885398663996
     }
-  ]
+  ],
+  "WARN_qst_rt": "RT 부호 결함: 이 파일의 Qst_CO2/Qst_N2/Qst 는 −ΔU−RT 로 계산돼 2RT = 4.9554 kJ/mol 낮다. 보정값은 *_rt_corrected 키(원값 + 4.9554). 원값은 그대로 둔다(사후 수정 금지). 21_ZIF69_MTV/QST_RT_SIGN_20260911.md, 2026-09-18 사용자 결정."
 }

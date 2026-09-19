@@ -231,7 +231,7 @@ def main():
         if not (kc and kn and gc):
             print(f'{base:<22} 출력 부족')
             continue
-        qst = -kc[2] - R_GAS * TEMP
+        qst = -kc[2] + R_GAS * TEMP  # Q_st = −ΔU + RT (RASPA dH 정의; 09-18 부호 정정, 21_ZIF69_MTV/QST_RT_SIGN_20260911.md)
         eqst = kc[3]
         sel = kc[0] / kn[0]
         esel = sel * np.sqrt((kc[1] / kc[0]) ** 2 + (kn[1] / kn[0]) ** 2)

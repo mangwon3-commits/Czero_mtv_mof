@@ -1,5 +1,8 @@
 [
   {
+    "WARN_qst_rt": "RT 부호 결함: 이 파일의 Qst_CO2/Qst_N2/Qst 는 −ΔU−RT 로 계산돼 2RT = 4.9554 kJ/mol 낮다. 보정값은 *_rt_corrected 키(원값 + 4.9554). 원값은 그대로 둔다(사후 수정 금지). 21_ZIF69_MTV/QST_RT_SIGN_20260911.md, 2026-09-18 사용자 결정."
+  },
+  {
     "name": "cf3Im025",
     "group": "-CF3",
     "frac": 0.25,
@@ -15,7 +18,8 @@
     "Qst_CO2": 22.880556827836,
     "Qst_CO2_err": 0.160937382,
     "loading_015bar": 0.7899575801,
-    "loading_015bar_err": 0.0130707669
+    "loading_015bar_err": 0.0130707669,
+    "Qst_CO2_rt_corrected": 27.835976548164
   },
   {
     "name": "cf3Im050",
@@ -33,7 +37,8 @@
     "Qst_CO2": 24.500534407935998,
     "Qst_CO2_err": 0.1515433735,
     "loading_015bar": 0.9172861906,
-    "loading_015bar_err": 0.0063568008
+    "loading_015bar_err": 0.0063568008,
+    "Qst_CO2_rt_corrected": 29.455954128263997
   },
   {
     "name": "mslm025",
@@ -51,6 +56,7 @@
     "Qst_CO2": 21.454718238635998,
     "Qst_CO2_err": 0.128903208,
     "loading_015bar": 0.7044592995,
-    "loading_015bar_err": 0.0125049223
+    "loading_015bar_err": 0.0125049223,
+    "Qst_CO2_rt_corrected": 26.410137958963997
   }
 ]
