@@ -1,0 +1,231 @@
+"""작업 용량 — 흡착/탈착 두 조건의 로딩 차이를 GCMC 로 직접 계산한다.
+
+[이 파일은 복원본이다]
+    2026-08-18 랩탑 인계 꾸러미(`MTV-ZIF_계산지원`)에 `run_wc_v3.py` 는 들어 있는데
+    그것이 import 하는 이 모듈이 빠져 있었다. CHECKSUMS.txt 에도 없으므로 전송
+    사고가 아니라 꾸러미를 만들 때 빠진 것이다. 마감이 걸려 있어 기다리지 않고
+    같은 배치의 다른 러너에서 규약을 복원했다.
+
+    복원 근거 — 아래 값은 추정이 아니라 같은 폴더의 코드에서 그대로 가져온 것이다.
+
+        run_aryl_gcmc.py : GCMC_CYCLES, GCMC_INIT = 15000, 5000
+        run_water.py     : CYCLES, INIT         = 15000, 5000
+
+    run_aryl_gcmc.py 의 docstring 이 사이클을 15000 으로 고정한 이유를 밝혀 둔다 --
+    5000 에서는 로딩 상대오차가 8.6~11% 라 조성 간 순위가 무의미했고, 다른 배치와
+    나란히 놓으려면 사이클이 같아야 한다. 그래서 여기서도 15000 을 쓴다.
+
+    unit_cells / parse / occupied_by_other 는 새로 쓰지 않고 run_aryl_gcmc 에서
+    **그대로 import** 한다. ZIF-69 는 육방정계(gamma=120도)라 격자상수 나누기로
+    반복수를 정하면 최소거리규약이 깨지는데, 그 처리가 이미 그쪽에 있다.
+
+    !! 원본이 도착하면 CONDITIONS 와 사이클 수를 먼저 대조할 것.
+       실행 폴더에 _SETTINGS_USED.json 을 남겨 두므로 그것과 비교하면 된다.
+       일치하면 이미 끝난 작업은 캐시로 그대로 회수된다.
+
+[작업 용량이란]
+    흡착탑은 채웠다 비우는 것을 반복한다. 실제로 쓸 수 있는 양은 '가득 찼을 때의
+    흡착량'이 아니라 **흡착 조건과 재생 조건의 차이**다. Q_st 가 너무 크면 잘
+    붙지만 안 떨어져서 작업 용량이 오히려 준다 -- 목표대를 30~40 kJ/mol 로 잡은
+    근거가 이것이다(15_Target/optimal_qst.py).
+
+        흡착   0.15 bar / 298 K      배가스 CO2 분압
+        VSA-1  0.10 bar / 298 K      약한 진공 재생
+        VSA-2  0.05 bar / 298 K      강한 진공 재생
+        TSA    0.15 bar / 373 K      승온 재생
+
+        WC(VSA-1) = N(0.15,298) - N(0.10,298)
+        WC(VSA-2) = N(0.15,298) - N(0.05,298)
+        WC(TSA)   = N(0.15,298) - N(0.15,373)
+"""
+import glob
+import json
+import os
+import shutil
+import subprocess
+import sys
+from concurrent.futures import ProcessPoolExecutor
+
+# 규약을 새로 쓰지 않고 빌려 온다. 육방정계 반복수 계산이 여기 들어 있다.
+from run_aryl_gcmc import SIMULATE, occupied_by_other, parse, unit_cells
+
+from ase.io import read
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+CHARGED = os.path.join(HERE, 'charged')
+RUNS = os.path.join(HERE, 'wc_runs')
+RESULT = os.path.join(HERE, 'working_capacity.json')
+
+CUTOFF = 12.0
+CYCLES, INIT = 15000, 5000
+
+# (이름, 압력[Pa], 온도[K]) — 첫 항목이 흡착 조건이고 나머지가 재생 조건이다.
+CONDITIONS = [
+    ('ads',   0.15e5, 298.0),
+    ('vsa1',  0.10e5, 298.0),
+    ('vsa2',  0.05e5, 298.0),
+    ('tsa',   0.15e5, 373.0),
+]
+REGEN = ['vsa1', 'vsa2', 'tsa']
+
+TARGETS = []
+MAX_WORKERS = int(os.environ.get('WC_WORKERS', '8'))
+
+
+def run_one(job):
+    name, cond = job
+    label, press, temp = cond
+    d = os.path.join(RUNS, f'{label}_{name}')
+
+    # 끝난 작업은 출력을 읽어 회수한다. 절전이든 정전이든 다시 띄우면 이어진다.
+    done = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
+    if done:
+        r = parse(done[0])
+        if r[4] is not None:
+            return name, label, r, 'cached'
+
+    # 같은 디렉터리에서 다른 세션이 돌고 있으면 손대지 않는다.
+    # (RASPA 둘이 한 폴더에 같은 이름으로 쓰면 크래시가 아니라 틀린 숫자가 나온다)
+    if occupied_by_other(d):
+        return name, label, None, '다른세션실행중'
+
+    os.makedirs(d, exist_ok=True)
+    cif = os.path.join(CHARGED, name + '_DDEC6.cif')
+    tag = name + '_DDEC6'
+    shutil.copy(cif, os.path.join(d, tag + '.cif'))
+    na, nb, nc = unit_cells(read(cif), CUTOFF)
+
+    with open(os.path.join(d, 'simulation.input'), 'w') as f:
+        f.write(f"""SimulationType                MonteCarlo
+NumberOfCycles                {CYCLES}
+NumberOfInitializationCycles  {INIT}
+PrintEvery                    {CYCLES}
+RestartFile                   no
+
+Forcefield                    UFF_MOF
+CutOff                        {CUTOFF}
+UseChargesFromCIFFile         yes
+ChargeMethod                  Ewald
+EwaldPrecision                1e-6
+
+Framework 0
+FrameworkName                 {tag}
+UnitCells                     {na} {nb} {nc}
+ExternalTemperature           {temp}
+ExternalPressure              {press}
+
+Component 0 MoleculeName              CO2
+            MoleculeDefinition        TraPPE
+            TranslationProbability    0.5
+            RotationProbability       0.3
+            ReinsertionProbability    0.1
+            SwapProbability           1.0
+            CreateNumberOfMolecules   0
+""")
+    try:
+        subprocess.run([SIMULATE, 'simulation.input'], cwd=d,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                       timeout=28800, check=False)
+    except subprocess.TimeoutExpired:
+        return name, label, None, 'timeout'
+    outs = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
+    if not outs:
+        return name, label, None, 'no-output'
+    r = parse(outs[0])
+    # 한 작업이 30 MB 다. 24작업이면 잔해만 700 MB 이므로 바로 지운다.
+    for sub in ('VTK', 'Movies', 'Restart'):
+        shutil.rmtree(os.path.join(d, sub), ignore_errors=True)
+    return name, label, r, 'ok'
+
+
+def _star(a):
+    return run_one(a)
+
+
+def _err(a, b):
+    """독립 오차의 차이 전파."""
+    if a is None or b is None:
+        return None
+    return (a ** 2 + b ** 2) ** 0.5
+
+
+def main():
+    missing = [t for t in TARGETS
+               if not os.path.exists(os.path.join(CHARGED, t + '_DDEC6.cif'))]
+    if missing:
+        print(f'[중단] 구조 없음: {missing}', flush=True)
+        return 1
+
+    os.makedirs(RUNS, exist_ok=True)
+    # 복원본이라는 사실과 실제로 쓴 설정을 남긴다. 원본이 오면 이것과 대조한다.
+    with open(os.path.join(RUNS, '_SETTINGS_USED.json'), 'w', encoding='utf-8') as f:
+        json.dump({
+            'note': 'run_working_capacity.py 는 복원본. 원본 도착 시 이 설정을 대조할 것.',
+            'cycles': CYCLES, 'init': INIT, 'cutoff': CUTOFF,
+            'forcefield': 'UFF_MOF', 'molecule_definition': 'TraPPE',
+            'charges': 'UseChargesFromCIFFile yes / Ewald 1e-6',
+            'conditions': [{'label': c[0], 'pressure_Pa': c[1], 'temperature_K': c[2]}
+                           for c in CONDITIONS],
+            'targets': TARGETS,
+        }, f, indent=2, ensure_ascii=False)
+
+    jobs = [(t, c) for t in TARGETS for c in CONDITIONS]
+    print(f'구조 {len(TARGETS)}종 x 조건 {len(CONDITIONS)}개 = {len(jobs)}작업', flush=True)
+    print(f'{CYCLES} 사이클, UFF_MOF, DDEC6 전하, 워커 {MAX_WORKERS}\n', flush=True)
+
+    res = {}
+    with ProcessPoolExecutor(max_workers=MAX_WORKERS) as ex:
+        for name, label, r, st in ex.map(_star, jobs):
+            res.setdefault(name, {})[label] = r
+            load = f'{r[4]:.4f}' if (r and r[4] is not None) else '--'
+            print(f'  [{st:>14}] {label:<5} {name:<10} 로딩 {load}', flush=True)
+
+    print('\n' + '=' * 104)
+    print(f'{"구조":<10} {"흡착 0.15/298":>18} {"VSA-1 0.10":>14} {"VSA-2 0.05":>14} '
+          f'{"TSA 373K":>14} {"":>2}')
+    print(f'{"":<10} {"[mol/kg]":>18} {"WC [mol/kg]":>14} {"WC [mol/kg]":>14} '
+          f'{"WC [mol/kg]":>14}')
+    print('-' * 104)
+
+    rows = []
+    for t in TARGETS:
+        d = res.get(t, {})
+        a = d.get('ads')
+        if not a or a[4] is None:
+            print(f'{t:<10} 흡착 조건 출력 없음 — 작업 용량 계산 불가')
+            rows.append({'name': t, 'ok': False})
+            continue
+        n_ads, e_ads = a[4], a[5]
+        row = {'name': t, 'ok': True,
+               'loading_ads_molkg': n_ads, 'loading_ads_err': e_ads}
+        cells = []
+        for lab in REGEN:
+            b = d.get(lab)
+            if not b or b[4] is None:
+                row[f'loading_{lab}_molkg'] = None
+                row[f'WC_{lab}_molkg'] = None
+                cells.append('--')
+                continue
+            wc = n_ads - b[4]
+            ew = _err(e_ads, b[5])
+            row[f'loading_{lab}_molkg'] = b[4]
+            row[f'loading_{lab}_err'] = b[5]
+            row[f'WC_{lab}_molkg'] = wc
+            row[f'WC_{lab}_err'] = ew
+            row[f'WC_{lab}_frac'] = wc / n_ads if n_ads else None
+            cells.append(f'{wc:>7.4f}±{ew:.4f}' if ew is not None else f'{wc:>7.4f}')
+        print(f'{t:<10} {n_ads:>10.4f}±{e_ads:<6.4f} '
+              + ' '.join(f'{c:>14}' for c in cells))
+        rows.append(row)
+
+    with open(RESULT, 'w', encoding='utf-8') as f:
+        json.dump(rows, f, indent=2, ensure_ascii=False)
+    print(f'\n[OK] {RESULT}')
+    print('작업 용량 = 흡착 조건 로딩 - 재생 조건 로딩. 차이가 1.5σ 미만이면 '
+          '순위를 매기지 마세요.')
+    return 0
+
+
+if __name__ == '__main__':
+    TARGETS = TARGETS or ['base']
+    sys.exit(main())

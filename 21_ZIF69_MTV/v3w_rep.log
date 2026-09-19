@@ -1,0 +1,33 @@
+RH90 유지율 재계산 — **v3w 계열** (수정 힘장)
+  HERE /home/skyjun/mof_project/21_ZIF69_MTV/v3w_water_rep
+  RUNS /home/skyjun/mof_project/21_ZIF69_MTV/water_runs_v3w_rep
+  CHARGED /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3
+  RH [0.9] · 워커 8 · 대상 3종  [--only]: saIm025, saIm050, saIm0583
+  힘장 /home/skyjun/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+       md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+구조 3개 x RH 1단계 중 실행 3개
+CO2 0.15 bar 고정, 298 K, TIP5P-Ew(5사이트), 15000 사이클
+
+  [              ok] RH 90% saIm025    CO2  0.9424  H2O   0.1882
+  [              ok] RH 90% saIm050    CO2  1.1276  H2O   0.3370
+  [              ok] RH 90% saIm0583   CO2  1.1789  H2O   0.6791
+
+============================================================================================================
+구조                                  RH         CO2 [mol/kg]         H2O [mol/kg]               건조대비   H2O/CO2
+------------------------------------------------------------------------------------------------------------
+SO3H 25%                           90%      0.9424 ± 0.0054      0.1882 ± 0.0708        nan% (nanσ)      0.20
+
+SO3H 50%                           90%      1.1276 ± 0.0247      0.3370 ± 0.0782        nan% (nanσ)      0.30
+
+SO3H 58.3%                         90%      1.1789 ± 0.0318      0.6791 ± 0.1997        nan% (nanσ)      0.58
+
+[OK] water_results.json — 이번 실행 3행, 보존 0행, 합계 3행
+
+판정 기준(19_WaterCompetition 과 동일, 계산 전 확정):
+  RH90 유지율 80% 이상 -> 유효 / 50~80% -> 조건부(전처리 건조 비용) / 50% 미만 -> 종료
+  차이의 유의성은 1.5σ 를 기준으로 본다.
+
+  [힘장 확인 — 출력 머리말] {"OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ", "OwOw_eps": 89.633, "OwHw": "ZERO_POTENTIAL", "OwLw": "ZERO_POTENTIAL", "HwHw": "ZERO_POTENTIAL", "LwLw": "ZERO_POTENTIAL", "ok": true}
+  -> **통과.** Hw-Hw 가 ZERO_POTENTIAL, Ow-Ow 89.633
+  난수 씨앗 회수 3/3행 (러너가 안 적어 출력 머리말에서 읽습니다 — 폴더를 지우면 사라집니다)
+  3행에 forcefield·ff_check 를 찍고 사이드카를 남겼습니다.

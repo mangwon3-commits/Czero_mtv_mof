@@ -1,7 +1,7 @@
 [
   {
     "name": "base",
-    "set": "Cl 24 (음성 대조 — 첨가 치환기 없음)",
+    "set": "Cl(음성대조)",
     "n_atoms": 24,
     "shell_voxels": 159840,
     "shell_pct": 21.93,
@@ -12,6 +12,7 @@
       "null_max": 0.003362611453168203,
       "k_ge_T": 45,
       "p_onesided": 0.22885572139303484,
+      "p_depletion_descriptive": 0.7761194029850746,
       "ratio_to_null_med": 1.4139122316735007
     },
     "CO2": {
@@ -21,12 +22,13 @@
       "null_max": 0.005589621773255813,
       "k_ge_T": 190,
       "p_onesided": 0.9502487562189055,
+      "p_depletion_descriptive": 0.05472636815920398,
       "ratio_to_null_med": 0.5476118512692815
     }
   },
   {
     "name": "nbIm025",
-    "set": "첨가 나이트로 N 6 + O 12",
+    "set": "첨가나이트로",
     "n_atoms": 18,
     "shell_voxels": 69008,
     "shell_pct": 9.47,
@@ -37,6 +39,7 @@
       "null_max": 0.002224606407818278,
       "k_ge_T": 181,
       "p_onesided": 0.9054726368159204,
+      "p_depletion_descriptive": 0.09950248756218906,
       "ratio_to_null_med": 0.42978690509708106
     },
     "CO2": {
@@ -46,12 +49,13 @@
       "null_max": 0.004031641632035505,
       "k_ge_T": 63,
       "p_onesided": 0.31840796019900497,
+      "p_depletion_descriptive": 0.6865671641791045,
       "ratio_to_null_med": 1.255057832773332
     }
   },
   {
     "name": "saIm050",
-    "set": "S 12 + 술폰산 O 36",
+    "set": "술폰산",
     "n_atoms": 48,
     "shell_voxels": 173800,
     "shell_pct": 23.84,
@@ -62,6 +66,7 @@
       "null_max": 0.000532875330448025,
       "k_ge_T": 113,
       "p_onesided": 0.5671641791044776,
+      "p_depletion_descriptive": 0.43781094527363185,
       "ratio_to_null_med": 0.9443198502818416
     },
     "CO2": {
@@ -71,6 +76,7 @@
       "null_max": 0.001850032892434396,
       "k_ge_T": 0,
       "p_onesided": 0.004975124378109453,
+      "p_depletion_descriptive": 1.0,
       "ratio_to_null_med": 1.696371630859642
     }
   }

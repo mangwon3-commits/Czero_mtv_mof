@@ -1,0 +1,19 @@
+  [파일 관문] /home/skyjun/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  물 정의 사이트 5개 (TIP5P-Ew 는 5)
+T-NF-0k 외부 골격 물 K_H — 골격 3 x 반복 3 = 9건, 워커 6, 3초 어긋내기
+  자(32조성 축과 동일): NumberOfCycles 15000 / NumberOfInitializationCycles 3000, UFF_MOF, 컷오프 12.0, 298.0 K, Ewald 1e-6
+  RUNS /home/skyjun/mof_project/21_ZIF69_MTV/khext_runs/r*
+  OUT  /home/skyjun/mof_project/21_ZIF69_MTV/v3w_water_kh_ext
+  [ok] zif71    r1  K_H 1.02914e-06  ± 2.22197e-08  씨앗 1789066108
+  [ok] zif71    r2  K_H 9.88512e-07  ± 4.08147e-08  씨앗 1789066111
+  [ok] zif71    r3  K_H 1.00652e-06  ± 1.55515e-08  씨앗 1789066114
+  [ok] zif93    r2  K_H 4.68503e-06  ± 2.17431e-07  씨앗 1789066106
+  [ok] zif93    r3  K_H 4.56282e-06  ± 1.78354e-07  씨앗 1789066109
+  [ok] zif93    r1  K_H 4.70548e-06  ± 2.04136e-07  씨앗 1789066103
+  [ok] zif90    r1  K_H 2.69854e-06  ± 4.66394e-08  씨앗 1789066981
+  [ok] zif90    r2  K_H 2.70944e-06  ± 3.00589e-08  씨앗 1789066988
+  [ok] zif90    r3  K_H 2.70273e-06  ± 6.04221e-08  씨앗 1789066996
+
+[OK] 9/9 -> /home/skyjun/mof_project/21_ZIF69_MTV/v3w_water_kh_ext/water_kh_extfw_desktop-nvsrr9m.json
+  씨앗: 골격 안에서 전부 다름 — 반복은 독립입니다.

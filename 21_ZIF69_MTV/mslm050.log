@@ -1,0 +1,22 @@
+습윤 작업 용량 v3 — mslm050 (건조 스크린 비-saIm 최고)
+  CHARGED  /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3
+  RUNS     /home/skyjun/mof_project/21_ZIF69_MTV/humid_wc_runs_v3mslm050
+  RESULT   /home/skyjun/mof_project/21_ZIF69_MTV/v3_humid_wc/humid_working_capacity_mslm050.json
+  TARGETS  ['mslm050']
+  MAX_WORKERS 3
+
+습윤 작업 용량 — 물 분압 2852.1 Pa 고정, 작업 3개, 워커 3
+  ads  CO2  0.15 bar  298.0 K  -> RH  90.0%
+  tsa  CO2  0.15 bar  373.0 K  -> RH   2.8%
+  vsa  CO2  0.05 bar  298.0 K  -> RH  90.0%
+
+  [              ok] ads  mslm050  CO2 0.9195  물 1.045
+  [              ok] tsa  mslm050  CO2 0.1793  물 0.126
+  [              ok] vsa  mslm050  CO2 0.3575  물 1.168
+
+====================================================================================================
+조성                    흡착 CO2            TSA 잔류            VSA 잔류       WC(TSA)       WC(VSA)
+----------------------------------------------------------------------------------------------------
+mslm050        0.9195±0.0289     0.1793±0.0081     0.3575±0.0096 0.7402±0.0300 0.5619±0.0304
+
+[OK] humid_working_capacity_mslm050.json
