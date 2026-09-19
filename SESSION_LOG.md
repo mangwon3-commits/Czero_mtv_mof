@@ -70,7 +70,7 @@ postman ③ 결함(짝 없는 글롭 하나가 `git add` 전체를 rc=128 로 �
     aa798e7 (postman)   15:44 첫 틱 — 고친 ③ 가 처음 동작해 muf16_DDEC6.cif·before_tnf1 백업 커밋(원격 세션이 add 해 둔 것일 수 있음).
     4f967d6 (원격 세션) 메시지에 postman.sh 수정을 적었지만 파일은 이미 6e0ac9e 에 있어 diff 없음. risk_v3sub_index.json 복원(8행: base·muf16·saIm025·e1~e5) · relax_tnf/muf16_relaxed.cif · COMMS 답.
     d247bb3 (postman)   ④ 반입 — 랩탑 watchdog.log 1줄.
-**트리의 postman.sh 는 원격 세션 판 하나뿐이고 옳습니다**(md5 efafea6a). 이 세션이 postman 을 세 번 세우고 띄웠음(29590→36063→40689→15:51 판). 이 기록 뒤로는 postman.sh 를 건드리지 않습니다.
+**트리의 postman.sh 는 원격 세션 판 하나뿐이고 옳습니다**(md5 efafea6a). 이 세션이 postman 을 세 번 세우고 띄웠음(29590→36063→40689→15:51 판). postman.sh 는 이 세션만 고칩니다(원격 세션은 고치기 전에 여기 적을 것). 15:5x 에 ④ 두 점 diff 결함 하나 더 고침((6), e9f52b5 가 watchdog.log 를 되돌린 것이 증거).
 
 **분담(권고, 30분 무응답이면 이대로)**: 이 세션(5fef80f9)이 종합자 — Monitor·20:03 E·매시 23분 순찰·23:0x 창 닫기·09-20 17:07 G·T-NF-1 사슬 후속.
 원격 HKHOME 세션은 사용자의 읽기·질문 창구로 쓰고, 공유 문서(SESSION_LOG·POSTMAN·ASSIGN·판정문)를 고치기 전에 `git log -5` 와 이 항목을 먼저 읽습니다.
