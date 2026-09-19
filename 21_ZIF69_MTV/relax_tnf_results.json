@@ -1,5 +1,86 @@
 [
   {
+    "tag": "muf16",
+    "src": "/home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/MUF-16_Co_activated_P1.cif",
+    "skipped": false,
+    "error": "RuntimeError: xtb 종료코드 139 — xtb_step.log 확인",
+    "steps": 0,
+    "minutes": 0.0,
+    "fmax_reached": null,
+    "wrote_cif": false,
+    "out": null,
+    "cell_moved": 0.0,
+    "dmin_before": 0.8203457104580173,
+    "dmin_after": 0.8203457104580173,
+    "before": {
+      "metals": [
+        "Co"
+      ],
+      "CH_median": 0.9295837610345735,
+      "CH_n": 24,
+      "aromCC_width": 0.046391584838711974,
+      "aromCC_n": 48,
+      "aromCC_range": [
+        1.3668809614066029,
+        1.4132725462453148,
+        48
+      ],
+      "otherCC_range": [
+        1.4518856841139676,
+        1.5330525542122548,
+        16
+      ],
+      "metal_N": {
+        "Co": [
+          2.1929884221540124,
+          2.1929884221540186,
+          8
+        ]
+      },
+      "metal_O": {
+        "Co": [
+          2.086889978821664,
+          2.089570015518241,
+          16
+        ]
+      }
+    },
+    "after": {
+      "metals": [
+        "Co"
+      ],
+      "CH_median": 0.9295837610345735,
+      "CH_n": 24,
+      "aromCC_width": 0.046391584838711974,
+      "aromCC_n": 48,
+      "aromCC_range": [
+        1.3668809614066029,
+        1.4132725462453148,
+        48
+      ],
+      "otherCC_range": [
+        1.4518856841139676,
+        1.5330525542122548,
+        16
+      ],
+      "metal_N": {
+        "Co": [
+          2.1929884221540124,
+          2.1929884221540186,
+          8
+        ]
+      },
+      "metal_O": {
+        "Co": [
+          2.086889978821664,
+          2.089570015518241,
+          16
+        ]
+      }
+    },
+    "note": "측정값입니다. 등록문 §1 앞단에는 이완 통과 문턱이 없습니다 (CLAUDE.md §2 — 결과를 보고 문턱을 만들지 않습니다)."
+  },
+  {
     "tag": "zif71",
     "src": "/home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/ZIF-71_RASPAdist_P1.cif",
     "skipped": false,

@@ -59,7 +59,7 @@ cleanup_stage() { local f; for f in $STAGED; do [ -f "$f" ] && { rm -f "$f"; say
 trap cleanup_stage EXIT INT TERM
 
 TAG=muf16
-CIF=external_cif/MUF-16_Co_activated_P1.cif
+CIF=external_cif/MUF-16_Co_activated_P1_1x3x1.cif   # 15:1x: 원시셀(b 4.42 Å)은 xtb GFN-FF 가 위상 생성에서 segfault(139, 0.2 s) — 1x3x1(13.27 Å)·1x6x1 은 정상(~/.claude_work/xtb_probe). 격자 벡터가 GFN-FF 이웃 컷오프보다 짧으면 죽는 도구 한계. 468 원자, RASPA 는 unit_cells() 로 2 2 1 = 원시 2 6 1 과 동일(등록 §0).
 T=293; PCO2=0.165; RH=0,50,82,100; PSAT=2339          # MUF16_ANCHORS §4 (가)
 T2=298; RH2=100; PSAT2=3169                            # 물 등온 앵커 ③ 는 298 K — 한 점 추가
 
