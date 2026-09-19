@@ -58,6 +58,24 @@
 - [15:12] postman desktop 재기동. 데스크탑에서는 ensure_guards 의 wsl_keepalive.sh 가 상시 돌아 repo_bash_running 이 늘 참 → pull 영구 건너뜀이었음 → 저장소 밖 감시자 셋 제외(53ab72f). 지금은 T-NF-1 사슬(저장소 bash)이 돌아 설계대로 pull 을 건너뜀(§6).
 - Monitor(받은편지함, 지속) · Cron 매시 23분 순찰 · Cron 20:03 T-RT-1b 이의 창 처리 등록(세션 한정, 7일 만료).
 
+### 15:5x 진행 — 데스크탑 세션 둘이 같은 트리에서 일하고 있음 (기록 15:51)
+
+**원격 HKHOME 세션(`--remote-control HKHOME-desktop`, pid 30478, 세션 371f688f / session_01TLgHtnUQzn)은 막혀 있지 않습니다.**
+15:38 에 사용자가 랩탑의 15:1x 보고를 그 세션에 붙여 넣었고, 그 세션은 15:38~15:47 에 도구 호출 10여 건을 정상 실행해
+postman ③ 결함(짝 없는 글롭 하나가 `git add` 전체를 rc=128 로 죽이고 `2>/dev/null` 이 삼킴)을 **찾아 고쳤습니다**
+(`for p in $RESULT_PATTERNS; do [ -e "$p" ] && git add "$p"`). 15:1x 에 "막힘" 으로 보인 것은 11:0x 세션(pid 1530, 분류기 잠김)이고 그 세션은 이제 없습니다.
+
+같은 15:43~15:48 에 이 세션(5fef80f9, Monitor·Cron 보유)도 같은 결함을 고치려 했습니다. 결과로 이력이 꼬였습니다 —
+    6e0ac9e (이 세션)   메시지 "fix" · 내용 = 원격 세션이 트리에 막 적어 둔 postman.sh 수정 + 결과 파일 6건. 이 세션의 패치는 셸 인용 사고로 파일에 닿지 않았고, `git add postman.sh` 가 원격 세션의 수정을 집어 갔음.
+    aa798e7 (postman)   15:44 첫 틱 — 고친 ③ 가 처음 동작해 muf16_DDEC6.cif·before_tnf1 백업 커밋(원격 세션이 add 해 둔 것일 수 있음).
+    4f967d6 (원격 세션) 메시지에 postman.sh 수정을 적었지만 파일은 이미 6e0ac9e 에 있어 diff 없음. risk_v3sub_index.json 복원(8행: base·muf16·saIm025·e1~e5) · relax_tnf/muf16_relaxed.cif · COMMS 답.
+    d247bb3 (postman)   ④ 반입 — 랩탑 watchdog.log 1줄.
+**트리의 postman.sh 는 원격 세션 판 하나뿐이고 옳습니다**(md5 efafea6a). 이 세션이 postman 을 세 번 세우고 띄웠음(29590→36063→40689→15:51 판). 이 기록 뒤로는 postman.sh 를 건드리지 않습니다.
+
+**분담(권고, 30분 무응답이면 이대로)**: 이 세션(5fef80f9)이 종합자 — Monitor·20:03 E·매시 23분 순찰·23:0x 창 닫기·09-20 17:07 G·T-NF-1 사슬 후속.
+원격 HKHOME 세션은 사용자의 읽기·질문 창구로 쓰고, 공유 문서(SESSION_LOG·POSTMAN·ASSIGN·판정문)를 고치기 전에 `git log -5` 와 이 항목을 먼저 읽습니다.
+두 세션이 같은 파일을 같은 5분 안에 고치면 postman 이 한쪽의 add 를 자기 커밋으로 가져갑니다(aa798e7) — **postman 이 도는 기기에서 손으로 add 했으면 바로 commit.**
+
 ## 09-19 11:0x · 랩탑(Melchior)  [완료] T-RT-1 완주 48/48 + 랩탑에 쌓여 있던 미업로드 결과 일괄 반출
 
 하는 일: **업로드**. 사용자 지시("HKHOME 한테 계산 결과 다 업로드해").
