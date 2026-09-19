@@ -1,0 +1,66 @@
+{
+  "test": "T-NF-1w (b)",
+  "registration": "TNF_REGISTRATION_20260910.md §9",
+  "tag": "muf16",
+  "host": "hkhome",
+  "he_lj": {
+    "eps_K": 10.9,
+    "sigma_A": 2.64,
+    "source": "UFF_MOF force_field_mixing_rules.def (helium.def 는 기하만)"
+  },
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "temperature_K": 298.0,
+  "cutoff_A": 12.0,
+  "comparison_axis": "v3w_helium_void/*.json (T-NF-0v, 외부 3 + 우리 6)",
+  "note": "K_H^vol = K_H × rho / phi 정규화용. 판정 없음(기록).",
+  "seed_collision": null,
+  "rows": [
+    {
+      "name": "muf16",
+      "rep": 1,
+      "unit_cells": [
+        2,
+        2,
+        1
+      ],
+      "cell_volume_A3": 5203.103167414641,
+      "cell_mass_amu": 5030.534327999952,
+      "density_g_cm3": 1.6054647599207614,
+      "n_atoms": 468,
+      "phi": 0.157125,
+      "phi_err": 0.001522,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789817877,
+      "ok": true
+    },
+    {
+      "name": "muf16",
+      "rep": 2,
+      "unit_cells": [
+        2,
+        2,
+        1
+      ],
+      "cell_volume_A3": 5203.103167414641,
+      "cell_mass_amu": 5030.534327999952,
+      "density_g_cm3": 1.6054647599207614,
+      "n_atoms": 468,
+      "phi": 0.157161,
+      "phi_err": 0.001044,
+      "he_pair": {
+        "eps": 10.9,
+        "sigma": 2.64,
+        "ok": true,
+        "line": "He -      He [LENNARD_JONES] p_0/k_B:  10.90000 [K], p_1: 2.64000 [A], shift/k_B:  -0.00494280 [K], tailcorrection: no"
+      },
+      "raspa_seed": 1789817880,
+      "ok": true
+    }
+  ]
+}
