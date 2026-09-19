@@ -52,6 +52,45 @@
 - G 노션(발표 가이드 §1·§7 · 현황 정리본 09-20 판) — 판정 허용 뒤.
 - 원격 HKHOME 새 대화 붙이기(`wireless.sh --force`) — 이 세션 정리 뒤.
 
+## 09-19 11:0x · 랩탑(Melchior)  [완료] T-RT-1 완주 48/48 + 랩탑에 쌓여 있던 미업로드 결과 일괄 반출
+
+하는 일: **업로드**. 사용자 지시("HKHOME 한테 계산 결과 다 업로드해").
+  ① **T-RT-1 완주 48/48** — 09-18 19:52, 착수 대비 **77.5 h**. 등록 §2 의 28~52 h 도
+     09-17 갱신 55~76 h 도 넘었습니다(A 갈래 75.6 h 가 맞고 B 는 다시 빗나감).
+     `v3w_humid_wc_323/humid_wc_323_laptop.json` complete=true · 결측 0 · 머리말 관문 48/48 ok.
+  ② **미업로드 결과 121파일(25.3 MB)** — 08-19~09-12 사이에 이 기기에서만 있던 것들.
+     master 가 hkhome 판을 가진 셋은 덮지 않고 기기 태그 사본으로 올렸습니다(선례 9db11a3).
+  ③ **.gitignore 에 실행 디렉터리 29경로** — `git add -A` 한 번이면 **11.5 GB** 가 올라가는
+     상태였습니다(08-28·08-29 가 세 번 경고한 그 누락, 네 번째). 결과 추적을 27건 전부
+     확인한 뒤 넣어 **11.5 GB → 2 MB**.
+건드리는 파일: 위 세 커밋 + 이 로그 + COMMS/laptop.md
+쓰는 코어: 0 (계산 없음. 추출용 delta40.py 한 번만 nice 19)
+다음: **이 기기는 비었습니다**(simulate 0, 부하 0.1). §9 대로 다음 배정을 받을 수 있습니다.
+  남은 위험: `water_runs_v3w_chunk/` per-chunk 출력 1.5 GB 와 density_v3 원시 격자 330 MB 는
+  **이 랩탑에만** 있고 백업이 없습니다(둘 다 씨앗이 달라 재계산으로 복원 안 됨).
+  숫자만 `v3w_water_chunk/EXTRACT_20260919.md` 로 꺼내 뒀습니다.
+
+
+## 09-18 10:13 · 랩탑(Melchior)  [진행중]
+하는 일: **T-RT-1 재개** — 습윤 WC 실온도판(323 K). 09-18 03:26 뒤 재부팅으로 중단된
+  1차 실행(완주 28/48)을 등록 §7-7 그대로 **같은 명령**으로 이어 돌립니다. 남은 20작업
+  (중단 8 = CrashRestart 1회 이어받기, 미착수 12). DRYRUN 재통과 · 기존 .data 36/48 ·
+  다른 조건 잔존물 0 · 파일 관문 md5 일치.
+건드리는 파일: 21_ZIF69_MTV/humid_wc_runs_v3w_323/ (실행 폴더, git 무시),
+  v3w_humid_wc_323/humid_wc_323_laptop.json{,.status.jsonl}, .claude_work_wc323_laptop.out
+쓰는 코어: **8** (simulate 8, 드라이버 PID 364389). 이 기기는 다른 작업을 받지 마세요.
+다음: ETA 09-19 12~13시. 완주하면 결과 JSON·status.jsonl·.out 을 **같은 커밋**으로
+  master 에 푸시하고 해시를 우편함에 적습니다(등록 §7-6). master 병합은 그 뒤에 —
+  7b3b094 이 run_aryl_gcmc.py 를 고치므로 실행 중 병합은 규약 섞기입니다(CLAUDE.md §3).
+
+## 09-16 14:19 · laptop (Melchior)  [진행중] T-RT-1 실온도(323 K) 절대 WC 착수 — 등록 REALTEMP_WC_REGISTRATION_20260916 §7 그대로 16종 48작업(saIm050e1~5 · saIm0583e1~5 · sa50nb50e1~5 · base), ads 323 K RH90 → tsa 373 K / vsa 323 K 0.05 bar. **드라이버 PID 183208**, 착수 14:19:35 KST, 워커 8(simulate 8 = 물리 8코어 포화). DRYRUN §7-2 여덟 항목 전부 일치(md5 8e8ec933 · P_H2O 11114.1 · run_one_323 · fork · 기존 .data 0/48 · RH 90.0/11.0/90.0 · 48작업), 머리말 관문 첫 Output 통과(Ow-Ow 89.633 · Hw/Lw 넷 ZERO_POTENTIAL). 인터프리터 czeromof 3.10 — 이 기기 __pycache__ 의 run_water/run_humid_wc/ff_gate 가 전부 cpython-310(러너를 실제로 돌린 것), cpython-311 은 risk_screen(Zeo++ 경로)뿐. 기본 python 3.14 는 ase 없음.
+건드리는 파일: 21_ZIF69_MTV/humid_wc_runs_v3w_323/ · v3w_humid_wc_323/humid_wc_323_laptop.json · .claude_work_wc323_laptop.out · COMMS/laptop.md
+쓰는 코어: 8 (물리 8 전부 — 이 기기에 다른 계산 띄우지 마십시오)
+다음: 완주 시 결과 JSON + status.jsonl + .out 을 같은 커밋으로 master 푸시.
+[09-17 05:30] 첫 ads 완주(saIm0583e4 15.17 h) — 6/48, 전부 ok. **ETA 갱신 55~76 h → 09-18 21시~09-19 18시**, 등록 §2 의 28~52 h 를 넘습니다(323 K·RH90 물 분압 11,114 Pa = 298 K 의 3.9배, T-T1 대로 물 흡착이 늘어 ads·vsa 가 길어짐). 상자 분자 수는 이 계열에서 비용 대리 지표로 안 듣습니다(적은 조성이 더 오래). 보고 2/3 COMMS/laptop.md.
+우편함 보고 착수분 커밋 de0e309 (laptop-20260822).
+
+## 09-16 08:08 · desktop  [재개·완료] 나흘 공백 뒤 재개. 2차 앙상블 습윤 WC 전부 수합(saIm050e 0.807±0.096 · saIm0583e 0.825±0.057 · sa50nb50e 0.759±0.063 — 앙상블끼리 못 가름, 공동 1위; 생산 실현 1위 6/6) → WC_RECOMPUTE_RESULT §7(병기, 이의 대기 20:00). T-SA-1 건조: 선택도 짝 차 +16(짝 SD 형 1.67) — 공여 H 를 떼면 건조 선택도 오름, "강한 극성기 동등" 주어 불가 → TSA1_VERDICT_20260916(부분). T-T1 saIm050 재측정으로 옮겨짐 확정(R 0.961). T-SA-1 RH90 5종 데스크탑 착수. 랩탑 종료. [08:35] §AG(saIm050e2 기기 항 분리) laptop2 08:30 착수(재부팅 뒤, ETA 09-17 00~06시) — ASSIGN §AG. [14:14] 사용자 "send computation to laptop" → T-RT-1 실온도 절대 WC 등록(REALTEMP_WC_REGISTRATION_20260916, 16종 48작업, 래퍼 run_humid_wc_v3w_323.py, 독립 검토 반영) → 랩탑 착수 지시 — ASSIGN §AH. 13:04~14:07 사용자 지시로 에이전트 전부 중단(계산은 계속). [08:39] 노션 현황 정리본 09-16 판 갱신(제목·한 줄·§1 2차 앙상블 공동 1위·§3 saIm050 확정·§5 진행 중(T-SA-1 RH90, §AG)·§6 결정 항목(B.7, C.4, 규약 후보 ⑮⑯)·§7·§8 나흘 공백).
 ## 09-18 02:02 · desktop  [문헌·자료] MUF-16 실측 앵커 정리(`MUF16_ANCHORS_20260918.md`) · CIF 1948901 반입 · T-NF-1 등록 보완 안건
 
 사용자 업로드 acsami.1c01156 독해: CO₂ 1.08 mol/kg @0.165 bar·293 K, **Q_st 영피복 32.3**(Widom 절대값 앵커, RT 정정 뒤 첫 대조 기회), **물 5.49 mol/kg @RH100·298 K**(㉦ 단서 시험), RH82 파과 단기 무손상.

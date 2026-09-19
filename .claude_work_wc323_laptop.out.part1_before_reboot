@@ -1,0 +1,48 @@
+습윤 작업 용량 v3w — 실온도 판(323 K 흡착 · 373 K TSA · 323 K VSA)
+  [파일 관문] /home/skyjun/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  파일 관문 md5 8e8ec933f9013c7e932da04dc256efd3 일치
+  자식 대조   P_H2O 11114.1 Pa · 조건 3 · 사이클 5000+15000 · run_one=run_one_323 · start_method fork — 일치
+  python      /home/skyjun/miniconda3/envs/czeromof/bin/python (3.10.20)
+  simulate    /home/skyjun/miniconda3/envs/czeromof/bin/simulate
+  RASPA_DIR   /home/skyjun/RASPA/simulations
+  water.def   /home/skyjun/mof_project/19_WaterCompetition/water.def
+  CHARGED      /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3
+  RUNS         /home/skyjun/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w_323
+  RESULT       /home/skyjun/mof_project/21_ZIF69_MTV/v3w_humid_wc_323/humid_wc_323_laptop.json
+  TARGETS      ['saIm050e1', 'saIm0583e4', 'saIm0583e1', 'sa50nb50e2', 'saIm0583e3', 'saIm050e5', 'saIm050e3', 'sa50nb50e4', 'saIm0583e2', 'saIm050e4', 'sa50nb50e3', 'saIm050e2', 'saIm0583e5', 'sa50nb50e5', 'sa50nb50e1', 'base']
+  MAX_WORKERS  8
+  기존 .data  0/48 작업 (0 이면 첫 착수, >0 이면 재개 — 다른 조건 잔존물 0)
+  ads  CO2  0.15 bar  323.0 K  H2O  11114.1 Pa -> RH  90.0 %
+  tsa  CO2  0.15 bar  373.0 K  H2O  11114.1 Pa -> RH  11.0 %
+  vsa  CO2  0.05 bar  323.0 K  H2O  11114.1 Pa -> RH  90.0 %
+
+습윤 작업 용량 — 물 분압 11114.1 Pa 고정, 작업 48개, 워커 8
+  ads  CO2  0.15 bar  323.0 K  -> RH  90.0%
+  tsa  CO2  0.15 bar  373.0 K  -> RH  11.0%
+  vsa  CO2  0.05 bar  323.0 K  -> RH  90.0%
+
+  [              ok] ads  saIm050e1 CO2 0.4582  물 1.861
+  [              ok] tsa  saIm050e1 CO2 0.1793  물 0.339
+  [              ok] vsa  saIm050e1 CO2 0.1888  물 2.037
+  [              ok] ads  saIm0583e4 CO2 0.5411  물 1.322
+  [              ok] tsa  saIm0583e4 CO2 0.1804  물 0.174
+  [              ok] vsa  saIm0583e4 CO2 0.2146  물 1.711
+  [              ok] ads  saIm0583e1 CO2 0.4760  물 1.429
+  [              ok] tsa  saIm0583e1 CO2 0.1610  물 0.224
+  [              ok] vsa  saIm0583e1 CO2 0.1914  물 1.667
+  [              ok] ads  sa50nb50e2 CO2 0.4861  물 1.303
+  [              ok] tsa  sa50nb50e2 CO2 0.1667  물 0.289
+  [              ok] vsa  sa50nb50e2 CO2 0.2132  물 1.291
+  [              ok] ads  saIm0583e3 CO2 0.5112  물 1.111
+  [              ok] tsa  saIm0583e3 CO2 0.1679  물 0.160
+  [              ok] vsa  saIm0583e3 CO2 0.2065  물 1.117
+  [              ok] ads  saIm050e5 CO2 0.5514  물 0.996
+  [              ok] tsa  saIm050e5 CO2 0.1726  물 0.126
+  [              ok] vsa  saIm050e5 CO2 0.2260  물 0.952
+  [              ok] ads  saIm050e3 CO2 0.4897  물 1.333
+  [              ok] tsa  saIm050e3 CO2 0.1675  물 0.270
+  [              ok] vsa  saIm050e3 CO2 0.2008  물 1.372
+  [              ok] ads  sa50nb50e4 CO2 0.5377  물 0.970
+  [              ok] tsa  sa50nb50e4 CO2 0.1879  물 0.229
+  [              ok] vsa  sa50nb50e4 CO2 0.2325  물 1.104

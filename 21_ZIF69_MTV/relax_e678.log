@@ -1,0 +1,13 @@
+  구조 94종, 워커 2 x 스레드 2, nice 19
+  기준: C-H 1.05~1.12 / C-C폭 <0.08 / Zn-N 1.90~2.10 / 최소거리 >0.9 / 셀 고정
+
+  [실패] ZIF69_sa50nb50e7 결과 CIF 를 쓰지 않습니다 — RuntimeError: xtb 종료코드 127 — xtb_step.log 확인
+  [실패] ZIF69_sa50nb50e7   0.0분    0단계  C-H 0.949  C-C폭 0.192  Zn-N 1.970~2.002
+  [실패] ZIF69_sa50nb50e6 결과 CIF 를 쓰지 않습니다 — RuntimeError: xtb 종료코드 127 — xtb_step.log 확인
+  [실패] ZIF69_sa50nb50e6   0.0분    0단계  C-H 0.949  C-C폭 0.192  Zn-N 1.970~2.002
+  [실패] ZIF69_sa50nb50e8 결과 CIF 를 쓰지 않습니다 — RuntimeError: xtb 종료코드 127 — xtb_step.log 확인
+  [실패] ZIF69_sa50nb50e8   0.0분    0단계  C-H 0.949  C-C폭 0.192  Zn-N 1.970~2.002
+
+  전체 0.00 시간
+  !! 기준 미달 3종: ZIF69_sa50nb50e7 ZIF69_sa50nb50e6 ZIF69_sa50nb50e8
+     이 구조들은 v3 GCMC 에 넣기 전에 개별로 봐야 합니다.

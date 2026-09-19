@@ -20,8 +20,9 @@ STATE="$ROOT/.postman_state_$MACHINE"; mkdir -p "$STATE"
 RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json'
 say(){ echo "[$(date '+%m-%d %H:%M:%S')] $*" >> "$LOG"; }
 inbox(){ echo "[$(date '+%m-%d %H:%M')] $*" >> "$INBOX"; touch "$FLAG"; }
-repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh | grep -qE "$ROOT|^bash [^/]"; }
+repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh | grep -vE "wsl_keepalive|lammps_watchdog|ensure_guards" | grep -qE "$ROOT|^bash [^/]"; }
 runner_running(){ pgrep -x simulate >/dev/null || pgrep -f "python[0-9.]* .*run_[A-Za-z0-9_]*\.py" >/dev/null; }
+# (4) 15:1x 데스크탑 실측 — ensure_guards 가 띄우는 wsl_keepalive.sh 가 상시 돌아 repo_bash_running 이 늘 참이 됐음(pull 영구 건너뜀). 저장소 밖 감시자 셋은 제외.
 tracked_dirty(){ git status --porcelain --untracked-files=no | grep -vE "^ M \.claude/" | grep -q .; }
 # (3) 첫 틱 범람 방지 — 이미 있는 로그는 지금 크기부터 증분만 본다
 for f in "$ROOT"/.claude_work_*.out "$ROOT"/21_ZIF69_MTV/*_chain.log; do

@@ -1,0 +1,40 @@
+  구조 폴더 /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3
+  실행 폴더 /home/skyjun/mof_project/21_ZIF69_MTV/runs_v3
+  결과 파일 /home/skyjun/mof_project/21_ZIF69_MTV/results_v3ens_mslm050.json
+
+구조 5종. 먼저 Zeo++ (LCD/PLD/AV)
+  RASPA 0건 가동 중, 메모리 여유 21 GB -> Zeo++ 워커 1
+
+
+5종 x (Widom CO2 + Widom N2 + GCMC) = 15작업 (워커 6)
+0.15 bar, 298 K, 15000 사이클, UFF_MOF, DDEC6 전하
+
+  [       ok] widom CO2 mslm050e1_DDEC6
+  [       ok] widom N2  mslm050e1_DDEC6
+  [       ok] widom CO2 mslm050e2_DDEC6
+  [       ok] widom N2  mslm050e2_DDEC6
+  [       ok] widom CO2 mslm050e3_DDEC6
+  [       ok] widom N2  mslm050e3_DDEC6
+  [       ok] widom CO2 mslm050e4_DDEC6
+  [       ok] widom N2  mslm050e4_DDEC6
+  [       ok] widom CO2 mslm050e5_DDEC6
+  [       ok] widom N2  mslm050e5_DDEC6
+  [       ok] gcmc  CO2 mslm050e1_DDEC6
+  [       ok] gcmc  CO2 mslm050e2_DDEC6
+  [       ok] gcmc  CO2 mslm050e3_DDEC6
+  [       ok] gcmc  CO2 mslm050e4_DDEC6
+  [       ok] gcmc  CO2 mslm050e5_DDEC6
+
+==========================================================================================================================
+조성           작용기          LCD     PLD       AV      Qst (kJ/mol)           CO2/N2          0.15bar 로딩
+--------------------------------------------------------------------------------------------------------------------------
+mslm050e1    -SO2CH3    8.528   4.656    788.5      29.20 ± 0.34     73.87 ± 2.92      0.9789 ± 0.0343
+mslm050e2    -SO2CH3    8.029   3.874    818.8      29.47 ± 0.16     78.15 ± 2.11      1.1080 ± 0.0117
+mslm050e3    -SO2CH3    7.969   4.020    918.3      29.74 ± 0.27     64.75 ± 2.81      1.1052 ± 0.0107
+mslm050e4    -SO2CH3    7.952   4.066   1000.1      31.50 ± 0.21     80.50 ± 3.86      1.2015 ± 0.0168
+mslm050e5    -SO2CH3    7.403   3.974    832.0      28.95 ± 0.26     68.39 ± 3.12      1.1641 ± 0.0125
+
+[OK] results_v3ens_mslm050.json
+
+주: v2 와의 차이는 **이완 때문**입니다 — 규약은 동일합니다.
+    차이가 1.5σ 미만이면 순위를 매기지 않습니다.

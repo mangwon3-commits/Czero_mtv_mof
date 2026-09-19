@@ -1,0 +1,56 @@
+RH90 유지율 재계산 — **v3w 계열** (수정 힘장)
+  HERE /home/skyjun/mof_project/21_ZIF69_MTV/v3w_water
+  RUNS /home/skyjun/mof_project/21_ZIF69_MTV/water_runs_v3w
+  CHARGED /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3
+  RH [0.9] · 워커 8 · 대상 11종: saIm025, saIm050, saIm0583, saIm0583e1, saIm0583e2, saIm0583e3, saIm0583e4, saIm0583e5, saIm0625, saIm0667, saIm075
+  힘장 /home/skyjun/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+       md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+구조 11개 x RH 1단계 중 실행 11개
+CO2 0.15 bar 고정, 298 K, TIP5P-Ew(5사이트), 15000 사이클
+
+  [              ok] RH 90% saIm025    CO2  0.9409  H2O   0.1525
+  [              ok] RH 90% saIm050    CO2  1.1318  H2O   0.3141
+  [              ok] RH 90% saIm0583   CO2  1.1514  H2O   0.7895
+  [              ok] RH 90% saIm0583e1 CO2  0.9287  H2O   1.2187
+  [              ok] RH 90% saIm0583e2 CO2  0.9052  H2O   0.9589
+  [              ok] RH 90% saIm0583e3 CO2  1.0096  H2O   0.9042
+  [              ok] RH 90% saIm0583e4 CO2  1.0458  H2O   1.1547
+  [              ok] RH 90% saIm0583e5 CO2  1.0074  H2O   0.5880
+  [              ok] RH 90% saIm0625   CO2  1.1477  H2O   1.0340
+  [              ok] RH 90% saIm0667   CO2  1.0845  H2O   1.5813
+  [              ok] RH 90% saIm075    CO2  1.1655  H2O   0.9356
+
+============================================================================================================
+구조                                  RH         CO2 [mol/kg]         H2O [mol/kg]               건조대비   H2O/CO2
+------------------------------------------------------------------------------------------------------------
+SO3H 25%                           90%      0.9409 ± 0.0181      0.1525 ± 0.0354        nan% (nanσ)      0.16
+
+SO3H 50%                           90%      1.1318 ± 0.0343      0.3141 ± 0.0654        nan% (nanσ)      0.28
+
+SO3H 58.3%                         90%      1.1514 ± 0.0245      0.7895 ± 0.0699        nan% (nanσ)      0.69
+
+SO3H 58.3% 실현 1                    90%      0.9287 ± 0.0267      1.2187 ± 0.0126        nan% (nanσ)      1.31
+
+SO3H 58.3% 실현 2                    90%      0.9052 ± 0.0207      0.9589 ± 0.0598        nan% (nanσ)      1.06
+
+SO3H 58.3% 실현 3                    90%      1.0096 ± 0.0089      0.9042 ± 0.1188        nan% (nanσ)      0.90
+
+SO3H 58.3% 실현 4                    90%      1.0458 ± 0.0209      1.1547 ± 0.1064        nan% (nanσ)      1.10
+
+SO3H 58.3% 실현 5                    90%      1.0074 ± 0.0181      0.5880 ± 0.0771        nan% (nanσ)      0.58
+
+SO3H 62.5%                         90%      1.1477 ± 0.0328      1.0340 ± 0.2179        nan% (nanσ)      0.90
+
+SO3H 66.7%                         90%      1.0845 ± 0.0417      1.5813 ± 0.2571        nan% (nanσ)      1.46
+
+SO3H 75% — 관문 미해결(STAGE2 판정문). 관찰용   90%      1.1655 ± 0.0401      0.9356 ± 0.1067        nan% (nanσ)      0.80
+
+[OK] water_results.json — 이번 실행 11행, 보존 0행, 합계 11행
+
+판정 기준(19_WaterCompetition 과 동일, 계산 전 확정):
+  RH90 유지율 80% 이상 -> 유효 / 50~80% -> 조건부(전처리 건조 비용) / 50% 미만 -> 종료
+  차이의 유의성은 1.5σ 를 기준으로 본다.
+
+  [힘장 확인 — 출력 머리말] {"OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ", "OwOw_eps": 89.633, "OwHw": "ZERO_POTENTIAL", "OwLw": "ZERO_POTENTIAL", "HwHw": "ZERO_POTENTIAL", "LwLw": "ZERO_POTENTIAL", "ok": true}
+  -> **통과.** Hw-Hw 가 ZERO_POTENTIAL, Ow-Ow 89.633
+  11행에 forcefield·ff_check 를 찍고 사이드카를 남겼습니다.
