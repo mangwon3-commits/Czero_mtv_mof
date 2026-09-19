@@ -1,0 +1,103 @@
+습윤 작업 용량 v3w — 실온도 판(323 K 흡착 · 373 K TSA · 323 K VSA)
+  [파일 관문] /home/skyjun/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  파일 관문 md5 8e8ec933f9013c7e932da04dc256efd3 일치
+  자식 대조   P_H2O 11114.1 Pa · 조건 3 · 사이클 5000+15000 · run_one=run_one_323 · start_method fork — 일치
+  python      /home/skyjun/miniconda3/envs/czeromof/bin/python (3.10.20)
+  simulate    /home/skyjun/miniconda3/envs/czeromof/bin/simulate
+  RASPA_DIR   (없음 — ~/RASPA/simulations 기본)
+  water.def   /home/skyjun/mof_project/19_WaterCompetition/water.def
+  CHARGED      /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3
+  RUNS         /home/skyjun/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w_323
+  RESULT       /home/skyjun/mof_project/21_ZIF69_MTV/v3w_humid_wc_323/humid_wc_323_laptop.json
+  TARGETS      ['saIm050e1', 'saIm0583e4', 'saIm0583e1', 'sa50nb50e2', 'saIm0583e3', 'saIm050e5', 'saIm050e3', 'sa50nb50e4', 'saIm0583e2', 'saIm050e4', 'sa50nb50e3', 'saIm050e2', 'saIm0583e5', 'sa50nb50e5', 'sa50nb50e1', 'base']
+  MAX_WORKERS  8
+  기존 .data  36/48 작업 (0 이면 첫 착수, >0 이면 재개 — 다른 조건 잔존물 0)
+  ads  CO2  0.15 bar  323.0 K  H2O  11114.1 Pa -> RH  90.0 %
+  tsa  CO2  0.15 bar  373.0 K  H2O  11114.1 Pa -> RH  11.0 %
+  vsa  CO2  0.05 bar  323.0 K  H2O  11114.1 Pa -> RH  90.0 %
+
+습윤 작업 용량 — 물 분압 11114.1 Pa 고정, 작업 48개, 워커 8
+  ads  CO2  0.15 bar  323.0 K  -> RH  90.0%
+  tsa  CO2  0.15 bar  373.0 K  -> RH  11.0%
+  vsa  CO2  0.05 bar  323.0 K  -> RH  90.0%
+
+  [          cached] ads  saIm050e1 CO2 0.4582  물 1.861
+  [          cached] tsa  saIm050e1 CO2 0.1793  물 0.339
+  [          cached] vsa  saIm050e1 CO2 0.1888  물 2.037
+  [          cached] ads  saIm0583e4 CO2 0.5411  물 1.322
+  [          cached] tsa  saIm0583e4 CO2 0.1804  물 0.174
+  [          cached] vsa  saIm0583e4 CO2 0.2146  물 1.711
+  [          cached] ads  saIm0583e1 CO2 0.4760  물 1.429
+  [          cached] tsa  saIm0583e1 CO2 0.1610  물 0.224
+  [          cached] vsa  saIm0583e1 CO2 0.1914  물 1.667
+  [          cached] ads  sa50nb50e2 CO2 0.4861  물 1.303
+  [          cached] tsa  sa50nb50e2 CO2 0.1667  물 0.289
+  [          cached] vsa  sa50nb50e2 CO2 0.2132  물 1.291
+  [          cached] ads  saIm0583e3 CO2 0.5112  물 1.111
+  [          cached] tsa  saIm0583e3 CO2 0.1679  물 0.160
+  [          cached] vsa  saIm0583e3 CO2 0.2065  물 1.117
+  [          cached] ads  saIm050e5 CO2 0.5514  물 0.996
+  [          cached] tsa  saIm050e5 CO2 0.1726  물 0.126
+  [이어받기 시도] ads_saIm0583e2 — 체크포인트에서 분자 배치를 복원합니다 (진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).
+  [          cached] vsa  saIm050e5 CO2 0.2260  물 0.952
+  [          cached] ads  saIm050e3 CO2 0.4897  물 1.333
+  [          cached] tsa  saIm050e3 CO2 0.1675  물 0.270
+  [          cached] vsa  saIm050e3 CO2 0.2008  물 1.372
+  [          cached] ads  sa50nb50e4 CO2 0.5377  물 0.970
+  [          cached] tsa  sa50nb50e4 CO2 0.1879  물 0.229
+  [이어받기 시도] vsa_saIm0583e2 — 체크포인트에서 분자 배치를 복원합니다 (진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).
+  [이어받기 시도] ads_saIm050e4 — 체크포인트에서 분자 배치를 복원합니다 (진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).
+  [이어받기 시도] vsa_saIm050e4 — 체크포인트에서 분자 배치를 복원합니다 (진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).
+  [          cached] vsa  sa50nb50e4 CO2 0.2325  물 1.104
+  [이어받기 시도] ads_sa50nb50e3 — 체크포인트에서 분자 배치를 복원합니다 (진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).
+  [이어받기 시도] ads_saIm050e2 — 체크포인트에서 분자 배치를 복원합니다 (진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).
+  [이어받기 시도] vsa_sa50nb50e3 — 체크포인트에서 분자 배치를 복원합니다 (진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).
+  [이어받기 시도] vsa_saIm050e2 — 체크포인트에서 분자 배치를 복원합니다 (진행도가 아니라 배치만 복원되므로 생산 사이클은 다시 돕니다).
+  [              ok] ads  saIm0583e2 CO2 0.4375  물 1.226
+  [          cached] tsa  saIm0583e2 CO2 0.1375  물 0.165
+  [              ok] vsa  saIm0583e2 CO2 0.1756  물 1.299
+  [              ok] ads  saIm050e4 CO2 0.5071  물 1.047
+  [          cached] tsa  saIm050e4 CO2 0.1591  물 0.156
+  [              ok] vsa  saIm050e4 CO2 0.1937  물 1.335
+  [              ok] ads  sa50nb50e3 CO2 0.5436  물 0.837
+  [          cached] tsa  sa50nb50e3 CO2 0.1902  물 0.191
+  [              ok] vsa  sa50nb50e3 CO2 0.2346  물 0.979
+  [              ok] ads  saIm050e2 CO2 0.4711  물 0.843
+  [          cached] tsa  saIm050e2 CO2 0.1523  물 0.109
+  [              ok] vsa  saIm050e2 CO2 0.1792  물 0.937
+  [              ok] ads  saIm0583e5 CO2 0.5121  물 0.705
+  [              ok] tsa  saIm0583e5 CO2 0.1607  물 0.124
+  [              ok] vsa  saIm0583e5 CO2 0.1972  물 0.773
+  [              ok] ads  sa50nb50e5 CO2 0.4321  물 0.493
+  [              ok] tsa  sa50nb50e5 CO2 0.1312  물 0.062
+  [              ok] vsa  sa50nb50e5 CO2 0.1719  물 0.570
+  [              ok] ads  sa50nb50e1 CO2 0.4211  물 0.186
+  [              ok] tsa  sa50nb50e1 CO2 0.1273  물 0.043
+  [              ok] vsa  sa50nb50e1 CO2 0.1635  물 0.291
+  [              ok] ads  base     CO2 0.2816  물 0.272
+  [              ok] tsa  base     CO2 0.0902  물 0.056
+  [              ok] vsa  base     CO2 0.0982  물 0.337
+
+====================================================================================================
+조성                    흡착 CO2            TSA 잔류            VSA 잔류       WC(TSA)       WC(VSA)
+----------------------------------------------------------------------------------------------------
+saIm050e1      0.4582±0.0066     0.1793±0.0074     0.1888±0.0064 0.2789±0.0100 0.2693±0.0092
+saIm0583e4     0.5411±0.0188     0.1804±0.0101     0.2146±0.0058 0.3607±0.0213 0.3265±0.0197
+saIm0583e1     0.4760±0.0199     0.1610±0.0041     0.1914±0.0093 0.3150±0.0204 0.2846±0.0220
+sa50nb50e2     0.4861±0.0198     0.1667±0.0042     0.2132±0.0059 0.3194±0.0202 0.2729±0.0206
+saIm0583e3     0.5112±0.0150     0.1679±0.0054     0.2065±0.0059 0.3433±0.0159 0.3047±0.0161
+saIm050e5      0.5514±0.0096     0.1726±0.0118     0.2260±0.0045 0.3788±0.0152 0.3253±0.0106
+saIm050e3      0.4897±0.0237     0.1675±0.0066     0.2008±0.0091 0.3221±0.0246 0.2889±0.0254
+sa50nb50e4     0.5377±0.0186     0.1879±0.0071     0.2325±0.0059 0.3498±0.0199 0.3052±0.0195
+saIm0583e2     0.4375±0.0120     0.1375±0.0038     0.1756±0.0050 0.3001±0.0126 0.2619±0.0130
+saIm050e4      0.5071±0.0132     0.1591±0.0099     0.1937±0.0058 0.3479±0.0165 0.3134±0.0145
+sa50nb50e3     0.5436±0.0118     0.1902±0.0099     0.2346±0.0096 0.3534±0.0154 0.3090±0.0152
+saIm050e2      0.4711±0.0060     0.1523±0.0081     0.1792±0.0090 0.3189±0.0101 0.2919±0.0108
+saIm0583e5     0.5121±0.0083     0.1607±0.0043     0.1972±0.0064 0.3514±0.0094 0.3149±0.0105
+sa50nb50e5     0.4321±0.0185     0.1312±0.0068     0.1719±0.0134 0.3009±0.0197 0.2602±0.0228
+sa50nb50e1     0.4211±0.0176     0.1273±0.0065     0.1635±0.0026 0.2938±0.0188 0.2577±0.0178
+base           0.2816±0.0082     0.0902±0.0050     0.0982±0.0067 0.1914±0.0096 0.1834±0.0106
+
+[OK] humid_wc_323_laptop.json
+  완주 48/48 · 머리말 관문 전부 통과 · machine=laptop · 씨앗 기록 → humid_wc_323_laptop.json
