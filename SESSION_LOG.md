@@ -58,6 +58,19 @@
 - [15:12] postman desktop 재기동. 데스크탑에서는 ensure_guards 의 wsl_keepalive.sh 가 상시 돌아 repo_bash_running 이 늘 참 → pull 영구 건너뜀이었음 → 저장소 밖 감시자 셋 제외(53ab72f). 지금은 T-NF-1 사슬(저장소 bash)이 돌아 설계대로 pull 을 건너뜀(§6).
 - Monitor(받은편지함, 지속) · Cron 매시 23분 순찰 · Cron 20:03 T-RT-1b 이의 창 처리 등록(세션 한정, 7일 만료).
 
+## 09-19 15:5x · 랩탑(Melchior)  [진행중] T-RT-1d 착수(§AN, saIm025e 323 K 15작업)
+
+하는 일: **T-RT-1d** — 저술폰산 앙상블 `saIm025e1~e5` 의 실온도(323 K) 절대 작업 용량.
+  등록 `REALTEMP_WC_1D_REGISTRATION_20260919.md` §7 그대로. DRYRUN 여덟 항목 통과
+  (md5 8e8ec933 · P_H2O 11114.1 · 조건 3 · 5000+15000 · run_one_323 · fork · 기존 .data 0/15 · RH 90/11/90).
+  머리말 관문은 첫 Output(vsa_saIm025e2)에서 확인 — Ow-Ow 89.633, Hw/Lw 다섯 쌍 전부 ZERO_POTENTIAL.
+건드리는 파일: humid_wc_runs_v3w_323/(실행 폴더, git 무시) · v3w_humid_wc_323/humid_wc_323_saIm025e_laptop.json
+  · .claude_work_wc323_sa025e_laptop.out
+쓰는 코어: **8** (드라이버 PID 620440, simulate 8). **이 기기에 다른 계산을 보내지 마십시오.**
+다음: ETA 12~20 h(등록 §2). 첫 ads 완주로 갱신. 결과 JSON 은 postman 이 올립니다.
+  같이 한 것: postman 새 판 재기동(옛 PID 612430 정지 → 새 PID 616267), T-RT-1 판정 검산
+  (96칸 + 자 전부 재현, 이의 없음), **제 소요 보고 정정(77.5 h → 53.55 h)**.
+
 ### 15:5x 진행 — 데스크탑 세션 둘이 같은 트리에서 일하고 있음 (기록 15:51)
 
 **원격 HKHOME 세션(`--remote-control HKHOME-desktop`, pid 30478, 세션 371f688f / session_01TLgHtnUQzn)은 막혀 있지 않습니다.**
@@ -81,6 +94,8 @@ postman ③ 결함(짝 없는 글롭 하나가 `git add` 전체를 rc=128 로 �
 하는 일: **업로드**. 사용자 지시("HKHOME 한테 계산 결과 다 업로드해").
   ① **T-RT-1 완주 48/48** — 09-18 19:52, 착수 대비 **77.5 h**. 등록 §2 의 28~52 h 도
      09-17 갱신 55~76 h 도 넘었습니다(A 갈래 75.6 h 가 맞고 B 는 다시 빗나감).
+     **[09-19 16:0x 정정]** 77.5 h 는 오산이고 실측 **53.55 h** — 등록을 1.5 h 넘고 갱신 대역에는 못 미칩니다.
+     갈래도 반대로, **B(55.0 h)가 가깝습니다**. COMMS/laptop.md 16:0x 절.
      `v3w_humid_wc_323/humid_wc_323_laptop.json` complete=true · 결측 0 · 머리말 관문 48/48 ok.
   ② **미업로드 결과 121파일(25.3 MB)** — 08-19~09-12 사이에 이 기기에서만 있던 것들.
      master 가 hkhome 판을 가진 셋은 덮지 않고 기기 태그 사본으로 올렸습니다(선례 9db11a3).
