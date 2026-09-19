@@ -60,6 +60,9 @@ PID 로 죽이십시오(§4).
                브랜치의 더 오래된 판을 master 에 덮어썼습니다(e9f52b5 가 watchdog.log 한 줄을 지움). 지금은 `git log cur ^last ^HEAD` 로
                **master 에 없는 커밋이 만진 파일만** 반입합니다. 결과 JSON 은 기기별 파일이라 실제 피해는 watchdog.log 뿐이었습니다.
 
+    (8) **④ 가 브랜치에만 있는 새 파일을 못 봄(09-20 06:0x).** RESULT_PATTERNS 의 글롭이 postman 을 돌리는 기기의 트리에서 먼저 풀려, 브랜치가 새로 만든 파일(1D 결과 JSON)은
+               pathspec 에 아예 안 들어갔음 — 3.5 h 미반입, 손으로 가져옴. set -f 로 패턴을 그대로 git 에 넘김. ③ 의 [ -e ] 루프는 로컬 파일이라 영향 없음.
+
 **띄우기 전에 `git status --porcelain -uno` 를 한 번 보십시오**(laptop2 교훈 — 앞단 산출물
 `charged_v3.json`·`relax_v3_results.json` 이 RESULT_PATTERNS 밖이라 dirty 로 남아 pull 을 막았습니다).
 
@@ -86,6 +89,6 @@ PID 로 죽이십시오(§4).
 
 ## 지금 상태
 
-    데스크탑   09-19 15:5x 재기동((6) 판) — master, ④ 반입 담당
+    데스크탑   09-20 06:0x 재기동((8) 판) — master, ④ 반입 담당
     랩탑       09-19 14:34 기동(14:34 판, PID 612430) — 재기동 권고
     laptop2    09-19 14:34 기동(14:34 판, PID 426) — 재기동 권고

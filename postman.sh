@@ -42,7 +42,8 @@ while :; do
         if [ "$BR" = "master" ] && [ "$rb" != "origin/master" ]; then
           # (6) 15:5x 데스크탑 실측 — last..cur 두 점 diff 는 브랜치가 병합해 들여온 master 커밋의 파일까지 집어, 브랜치의 (더 오래된) 판을
           #     master 위에 덮어썼음(e9f52b5: watchdog.log 한 줄 삭제). master 에 없는 커밋(^HEAD)이 만진 파일만 반입. 병합 커밋은 파일을 안 냄.
-          files=$(git log --name-only --format= "$cur" "^$last" ^HEAD -- $RESULT_PATTERNS 2>/dev/null | sort -u | grep -v COMMS/)
+          # (8) 09-20 06:0x — 글롭이 **이 트리에서** 풀려 브랜치에만 있는 새 파일(1D JSON)이 pathspec 에서 빠졌음(3.5 h 미반입). set -f 로 패턴을 그대로 git 에 넘겨 git 이 브랜치 트리에서 푼다.
+          set -f; files=$(git log --name-only --format= "$cur" "^$last" ^HEAD -- $RESULT_PATTERNS 2>/dev/null | sort -u | grep -v COMMS/); set +f
           if [ -n "$files" ]; then echo "$files" | xargs -r git checkout "$cur" -- 2>>"$LOG" && git add $files && \
             git commit -q -m "[postman:$MACHINE] $rb 결과 반입 ($(git rev-parse --short "$cur"))" && git push -q origin master 2>>"$LOG" && inbox "[반입] $rb → master: $(echo "$files" | tr '\n' ' ')"; fi
         fi
