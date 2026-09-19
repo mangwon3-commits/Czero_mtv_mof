@@ -2123,3 +2123,8 @@ RASPA 가 끝난 뒤에 돌립니다.**
 
 postman.sh (5) 판 md5 `efafea6a`. 세 기기 재기동 권고(COMMS/desktop.md 15:45). 랩탑 둘 브랜치 14:41 이후 커밋 0 — 15:0x 답변 미수신 추정, SendMessage + 우편함.
 risk_results_v3sub.json 은 사슬 백업(before_tnf1_09191531, HEAD 와 동일)에서 복원, 색인은 HEAD 7행 + muf16 병합. 사슬 자체는 §6 대로 안 건드림 — 다음 T-NF 사슬 설계에서 색인 비켜 두기.
+
+## 2026-09-20 00:08 · desktop  사용자 승인 A·B·C — §AS(가+다, 데스크탑) · §AT(mslm025e→sa25nb75e, laptop2) · §AU(saIm075e, 랩탑) 등록·사슬 배포
+
+등록 3건(QSTN · ENS298_MSLM025E_SA25NB75E · ENS298_SAIM075E, 자료 0건). 사슬 3개는 각 기기의 323 K 드라이버·simulate 가 3분 연속 0 일 때 스스로 착수 — 새벽 유휴 방지.
+(가) 비용은 §AR 의 8~10 h 가 아니라 ZIF 2×2×2 실측 기준 18~27 h 로 등록(09-20 23:00 을 넘겨 유휴 없음). T-C10 앞단은 빌더 파생 필요 → 낮 세션 몫.
