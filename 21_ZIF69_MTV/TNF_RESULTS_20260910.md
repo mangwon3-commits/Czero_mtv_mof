@@ -165,7 +165,7 @@
     파일          tnf_results_muf16_s{1,2}.json · tnf_results_muf16_298rh100_s{1,2}.json · tnf_widom_muf16.json · risk_results_tnf_muf16.json · relax_tnf_results.json · charged_tnf.json (전부 master, postman 자동 반입 54d8201·da5ad65·bbec133).
     **[03:3x] 이의 창 종료 → 확정.** 03:35 까지 세 브랜치 COMMS(laptop·laptop2·audit)에 T-NF-1/MUF-16/㉣ 관련 이의 0건(검산 회신도 없음 — 두 기기 모두 323 K 배치·§AT/§AU 착수 중이었음; 뒤늦은 검산은 정정으로 받음). ①② 통과 · ③ 1/50 실패(㉦) · ㉠′ 부호 통과(단서) · ㉣ 발동 그대로 확정.
 
-## T-NF-1w · MUF-16 물 항 진단 + CO₂ 등온 — 등록 §9 판정 1~7 그대로 (데스크탑, 09-19 19:43→21:03 계산; 판정 21:0x 종합자; **이의 창 09-20 05:0x 까지(8 h)**, 검산 Melchior/Balthasar)
+## T-NF-1w · MUF-16 물 항 진단 + CO₂ 등온 — 등록 §9 판정 1~7 그대로 (데스크탑, 09-19 19:43→21:03 계산; 판정 21:0x 종합자; **확정 05:0x(이의 창 09-20 05:0x 종료·이의 0건)**, 검산 Melchior/Balthasar)
     자료   골격 charged_v3/muf16_DDEC6.cif(md5 8d3fba10, T-NF-1 과 동일) · UnitCells 2 2 1 · 힘장 md5 8e8ec933 · 씨앗 25건 충돌 0. 결과 14 JSON(물 등온 2 · 사전 적재 2 · CO₂ 8 · Widom 2), postman 자동 반입.
     (a) 물 Widom 298 K ×3   K_H 2.555e-05 / 2.716e-05 / 2.570e-05 mol/kg/Pa (평균 2.614e-05, 실행 SD 8.90e-07) · <U_gh>−<U_h> -29.54/-30.02/-29.74 kJ/mol → **Q_st(H₂O) = −ΔU + RT = 32.02/32.50/32.21, 평균 32.25 ± 0.24(SD)**.
         판정 1  32.25 대 실측 55 → 비 **0.59** → **≥ 0.5 → 교차항 크기 통과**. ΔH_vap 43.33 대비 74 %(0q 표: 우리 6조성 61~107 %, 외부 셋 31~43 %).
@@ -187,6 +187,7 @@
                  DFT 대조 표적(MAGI-005)이 더 좁아짐: **MUF-16 의 비배위 COOH·N–H 한 자리 물 결합에너지 대 우리 Widom 32.2** — 실측 Q_st 54~56 이 있는 첫 표적.
     바꾸는 것 / 안 바꾸는 것   ZIF-69 32조성 순위·유지율 판정 불변(T-NF-0k 문장 그대로: 순위 보존, 폭 압축). 신규 골격 습윤 수는 ㉦ 단서(T-NF-1). 문턱·등록 변경 없음.
     파일   tnf_widom_water_muf16.json · tnf_widom_he_muf16.json · tnf_results_muf16_water298_s{1,2}.json · tnf_results_muf16_water298_pre110_s{1,2}.json · tnf_results_muf16_co2_293K_{0.05,0.10,0.50,1.00}bar_s{1,2}.json · 실행 폴더 tnf1w_*_runs(Widom 출력의 <U_gh> 는 여기서만 읽힘 — 지우지 말 것).
+    **[05:0x] 이의 창 종료 → 확정.** 05:06 까지 세 브랜치 COMMS 에 T-NF-1w 이의 0건(검산 회신 없음 — 뒤늦은 검산은 정정으로). 판정 1~7 그대로 확정: 결손은 에너지 쪽(교차항 0.59배), CO₂ 등온 통과.
 
 ## T-NF-1q · MUF-16 CO₂ 등온 273/308 K → 적재별 Q_st — 등록 §10 판정 1~3 그대로 (데스크탑, 09-19 21:07→22:24; 판정 22:2x 종합자; **이의 창 09-20 06:2x 까지(8 h)**, 검산 Melchior/Balthasar)
     자료   273 K·308 K 각 5압력 × 씨앗 2 = 20건(이번) + 293 K 5압력(T-NF-1 RH0 · T-NF-1w (e), 수 불변). 씨앗 30건 충돌 0 · 힘장 md5 8e8ec933 · UnitCells 2 2 1. ± = 두 씨앗 평균의 95 % CI.
