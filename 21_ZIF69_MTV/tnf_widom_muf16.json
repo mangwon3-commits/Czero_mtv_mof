@@ -1,0 +1,44 @@
+{
+ "tag": "muf16",
+ "cif": "charged_v3/muf16_DDEC6.cif",
+ "temp_K": 293.0,
+ "unit_cells": [
+  2,
+  2,
+  1
+ ],
+ "n_atoms_cell": 468,
+ "widom_cycles": 15000,
+ "widom_init": 3000,
+ "forcefield_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "qst_sign": "-dU + RT (QST_RT_SIGN_20260911)",
+ "rows": [
+  {
+   "rep": 1,
+   "runs": "tnf_widom_runs_muf16_s1",
+   "status": "ok",
+   "raspa_seed": 1789802341,
+   "KH_CO2": 0.000104577,
+   "KH_CO2_err": 5.11915e-06,
+   "dU": -31.6681514053,
+   "dU_err": 0.1688971875,
+   "Qst_CO2": 34.104288952374,
+   "Qst_CO2_err": 0.1688971875
+  },
+  {
+   "rep": 2,
+   "runs": "tnf_widom_runs_muf16_s2",
+   "status": "ok",
+   "raspa_seed": 1789802348,
+   "KH_CO2": 0.000105328,
+   "KH_CO2_err": 5.35781e-06,
+   "dU": -31.7277725933,
+   "dU_err": 0.1858652251,
+   "Qst_CO2": 34.163910140374,
+   "Qst_CO2_err": 0.1858652251
+  }
+ ],
+ "Qst_mean": 34.134099546374,
+ "seed_collisions": 0,
+ "note": "등록 §0 슈퍼셀 예외 — ZIF-69 v3 표와 나란히 순위 매기지 않음. 앵커 ② 대조는 TNF_RESULTS."
+}
