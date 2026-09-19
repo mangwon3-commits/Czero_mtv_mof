@@ -1,0 +1,28 @@
+RH90 유지율 재계산 — **v3w 계열** (수정 힘장)
+  HERE /home/skyjun/mof_project/21_ZIF69_MTV/v3w_water_cand_cnbIm100
+  RUNS /home/skyjun/mof_project/21_ZIF69_MTV/water_runs_v3w_cand_cnbIm100
+  CHARGED /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3
+  RH [0.0, 0.9] · 워커 1 · 대상 1종  [--only]: cnbIm100
+  [파일 관문] /home/skyjun/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+구조 1개 x RH 2단계 중 실행 2개
+CO2 0.15 bar 고정, 298 K, TIP5P-Ew(5사이트), 15000 사이클
+
+  [              ok] RH  0% cnbIm100   CO2  0.7538  H2O   0.0000
+  [              ok] RH 90% cnbIm100   CO2  0.7040  H2O   0.4372
+
+============================================================================================================
+구조                                  RH         CO2 [mol/kg]         H2O [mol/kg]               건조대비   H2O/CO2
+------------------------------------------------------------------------------------------------------------
+cnbIm100 (env V3W_EXTRA, ASSIGN §J 습윤 표 채우기)    0%      0.7538 ± 0.0134      0.0000 ± 0.0000      100.0% (0.0σ)      0.00
+cnbIm100 (env V3W_EXTRA, ASSIGN §J 습윤 표 채우기)   90%      0.7040 ± 0.0211      0.4372 ± 0.0822       93.4% (2.0σ)      0.62
+
+[OK] water_results.json — 이번 실행 2행, 보존 0행, 합계 2행
+
+판정 기준(19_WaterCompetition 과 동일, 계산 전 확정):
+  RH90 유지율 80% 이상 -> 유효 / 50~80% -> 조건부(전처리 건조 비용) / 50% 미만 -> 종료
+  차이의 유의성은 1.5σ 를 기준으로 본다.
+  난수 씨앗 회수 2/2행 (러너가 안 적어 출력 머리말에서 읽습니다 — 폴더를 지우면 사라집니다)
+  힘장 확인 **2/2행 통과** (조성마다 자기 출력으로)
+  기기별 태그 사본 water_results_desktop-nvsrr9m.json: 2행
+  2행에 forcefield·ff_check 를 찍고 사이드카를 남겼습니다.

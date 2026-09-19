@@ -1,0 +1,18 @@
+T-NF GCMC 드라이버 — 등록문 TNF_REGISTRATION_20260910.md
+  CIF   /home/skyjun/mof_project/21_ZIF69_MTV/charged_v3/zif90_DDEC6.cif
+  골격  zif90_DDEC6
+  RUNS  /home/skyjun/mof_project/21_ZIF69_MTV/tnf_runs_zif90_s1
+  OUT   /home/skyjun/mof_project/21_ZIF69_MTV/tnf_results_zif90_s1.json
+  조건  298 K · CO2 0 bar · RH 20,30,40,50,60,80
+  P_sat 3169.0 Pa  [저장소 등록값 (298 K)]  ->  p_H2O RH20=633.8 · RH30=950.7 · RH40=1267.6 · RH50=1584.5 · RH60=1901.4 · RH80=2535.2 Pa
+  복제  UnitCells 2 2 2  (수직 폭 17.27/17.27/17.27 A -> 34.54/34.54/34.54 A >= 24 A, 등록문 §0)
+  [순수 물] CO2 성분을 뺍니다 (T-NF-0 류)
+  [파일 관문] /home/skyjun/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  [              ok] RH 40% CO2 None  H2O 0.0034427687  seed 1789015915  ff_ok True
+  [              ok] RH 50% CO2 None  H2O 0.0044345687  seed 1789015910  ff_ok True
+  [              ok] RH 60% CO2 None  H2O 0.0054046306  seed 1789015905  ff_ok True
+  [              ok] RH 80% CO2 None  H2O 0.0090919527  seed 1789015900  ff_ok True
+  [              ok] RH 20% CO2 None  H2O 0.001722743  seed 1789016561  ff_ok True
+  [              ok] RH 30% CO2 None  H2O 0.0026140043  seed 1789016541  ff_ok True
+[OK] /home/skyjun/mof_project/21_ZIF69_MTV/tnf_results_zif90_s1.json — 이번 실행 6행, 합계 6행 (실패 0 · 머리말 관문 실패 0)

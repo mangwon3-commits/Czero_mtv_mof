@@ -1,0 +1,71 @@
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 21.4 GB, Zeo++ 9.5 GB/건)
+  안정성 관문 — 부분집합 RISK_SUB_TAGS (총 7종)
+  대상     base mslm050 mslm050e1 mslm050e2 mslm050e3 mslm050e4 mslm050e5
+  staging  7종 -> /home/skyjun/mof_project/21_ZIF69_MTV/structures_v3sub_stage
+  STRUCT   /home/skyjun/mof_project/21_ZIF69_MTV/structures_v3sub_stage
+  결과     /home/skyjun/mof_project/21_ZIF69_MTV/risk_results_v3sub.json
+  워커     1  (Zeo++ 9.5 GB/건, 가용 21.4 GB)
+  python   /home/skyjun/miniconda3/envs/lammps_mof/bin/python
+  대상 7종
+
+대상: risk_v3sub_index.json -> 7종, 작업 /home/skyjun/mof_project/21_ZIF69_MTV/lmp_v3sub
+구조 7개 UFF4MOF 이완 + Zeo++
+
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 21.4 GB, Zeo++ 9.5 GB/건)
+    base: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] base
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 21.2 GB, Zeo++ 9.5 GB/건)
+    mslm050: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] mslm050
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 21.2 GB, Zeo++ 9.5 GB/건)
+    mslm050e1: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] mslm050e1
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 21.2 GB, Zeo++ 9.5 GB/건)
+    mslm050e2: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] mslm050e2
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 21.2 GB, Zeo++ 9.5 GB/건)
+    mslm050e3: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] mslm050e3
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 21.2 GB, Zeo++ 9.5 GB/건)
+    mslm050e4: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] mslm050e4
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 21.2 GB, Zeo++ 9.5 GB/건)
+    mslm050e5: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/skyjun/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] mslm050e5
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 21.2 GB, Zeo++ 9.5 GB/건)
+
+==============================================================================================================================
+조성             PLD(전)     AV(전)   LCD(전)   LCD(후)    LCD감소%      최소거리    루프      EDiff  판정
+------------------------------------------------------------------------------------------------------------------------------
+base            5.157    1232.2    8.898    7.631       0.0     1.079    12      0.854  통과 *덜수렴
+mslm050         3.940     451.7    7.498    7.122       6.7     1.075    12      0.474  통과 *덜수렴
+mslm050e1       4.656     788.5    8.528    6.523      14.5     1.075    12       1.04  통과 *덜수렴
+mslm050e2       3.874     818.8    8.029    6.508      14.7     1.076    12      0.986  통과 *덜수렴
+mslm050e3       4.020     918.3    7.969    6.555      14.1     1.077    12       1.04  통과 *덜수렴
+mslm050e4       4.066    1000.1    7.952    7.029       7.9     1.076    12       2.85  통과 *덜수렴
+mslm050e5       3.974     832.0    7.403    6.530      14.4     1.074    12       1.18  통과 *덜수렴
+
+[OK] risk_results_v3sub.json
+
+주: PLD/AV 는 이완 **전**, LCD 감소·최소거리는 이완 **후** 값으로 판정했습니다 (MIGRATION.md 3-6).
