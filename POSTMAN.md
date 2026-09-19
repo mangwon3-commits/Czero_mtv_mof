@@ -56,6 +56,10 @@ PID 로 죽이십시오(§4).
                러너 밑에서 바뀔 경로 → runner_running() 추가(simulate 또는 run_*.py 살아 있으면 pull 건너뜀).
     (3) 둘 다   첫 틱에 09-03 tb5_chain.log 의 옛 !! 줄 범람 → 기동 시 sz_* 를 현재 크기로 미리 채움.
 
+    (6) **④ 반입이 master 를 되돌릴 수 있었음(15:5x).** `git diff last cur` 두 점은 브랜치가 병합해 들여온 master 커밋의 파일까지 집어
+               브랜치의 더 오래된 판을 master 에 덮어썼습니다(e9f52b5 가 watchdog.log 한 줄을 지움). 지금은 `git log cur ^last ^HEAD` 로
+               **master 에 없는 커밋이 만진 파일만** 반입합니다. 결과 JSON 은 기기별 파일이라 실제 피해는 watchdog.log 뿐이었습니다.
+
 **띄우기 전에 `git status --porcelain -uno` 를 한 번 보십시오**(laptop2 교훈 — 앞단 산출물
 `charged_v3.json`·`relax_v3_results.json` 이 RESULT_PATTERNS 밖이라 dirty 로 남아 pull 을 막았습니다).
 
@@ -82,6 +86,6 @@ PID 로 죽이십시오(§4).
 
 ## 지금 상태
 
-    데스크탑   09-19 15:0x 기동(이 판) — master, ④ 반입 담당
+    데스크탑   09-19 15:5x 재기동((6) 판) — master, ④ 반입 담당
     랩탑       09-19 14:34 기동(14:34 판, PID 612430) — 재기동 권고
     laptop2    09-19 14:34 기동(14:34 판, PID 426) — 재기동 권고

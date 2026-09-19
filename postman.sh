@@ -35,12 +35,14 @@ prev_sim=$(pgrep -xc simulate)
 while :; do
   BR=$(git rev-parse --abbrev-ref HEAD)
   if git fetch -q --all 2>>"$LOG"; then
-    for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|junseok"); do
+    for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|junseok|^origin$"); do  # (7) 15:5x: 짧은 이름 origin(=origin/HEAD) 이 브랜치로 취급돼 master 의 남의 푸시를 ④ 로 재커밋(e202853) → 갈래가 생김. 제외.
       key=$(echo "$rb" | tr '/' '_'); last=$(cat "$STATE/$key" 2>/dev/null || echo ""); cur=$(git rev-parse "$rb")
       if [ -n "$last" ] && [ "$last" != "$cur" ]; then
         git log --format="  %h %ad %s" --date=format:'%m-%d %H:%M' "$last..$cur" | head -8 | while read -r l; do inbox "[$rb] $l"; done
         if [ "$BR" = "master" ] && [ "$rb" != "origin/master" ]; then
-          files=$(git diff --name-only "$last" "$cur" -- $RESULT_PATTERNS 2>/dev/null | grep -v COMMS/)
+          # (6) 15:5x 데스크탑 실측 — last..cur 두 점 diff 는 브랜치가 병합해 들여온 master 커밋의 파일까지 집어, 브랜치의 (더 오래된) 판을
+          #     master 위에 덮어썼음(e9f52b5: watchdog.log 한 줄 삭제). master 에 없는 커밋(^HEAD)이 만진 파일만 반입. 병합 커밋은 파일을 안 냄.
+          files=$(git log --name-only --format= "$cur" "^$last" ^HEAD -- $RESULT_PATTERNS 2>/dev/null | sort -u | grep -v COMMS/)
           if [ -n "$files" ]; then echo "$files" | xargs -r git checkout "$cur" -- 2>>"$LOG" && git add $files && \
             git commit -q -m "[postman:$MACHINE] $rb 결과 반입 ($(git rev-parse --short "$cur"))" && git push -q origin master 2>>"$LOG" && inbox "[반입] $rb → master: $(echo "$files" | tr '\n' ' ')"; fi
         fi
