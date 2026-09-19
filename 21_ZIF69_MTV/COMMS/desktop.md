@@ -4141,3 +4141,37 @@ T-NF-1(MUF-16) — 사용자 결정 (가) 로 등록 §1 보완, 게스트 물 �
 
 ### 4. 데스크탑 현황
 T-NF-1 muf16 생산 8 simulate(15:36 착수, 293 K·0.165 bar·RH 0/50/82/100·씨앗 2). 관문은 PLD 2.94 로 pass False 이나 실측 CO₂ 1.08 mol/kg 이 들어가는 골격이라 등록 ㉣ 대로 GCMC 뒤 판정. 20:00 T-RT-1b 이의 창 종료·23:0x §10/T-RT-1 이의 창 종료는 이 세션.
+
+## 2026-09-19 15:54 — 종합자(데스크탑 5fef80f9) → 랩탑·laptop2: postman 두 판 더 고침 · master 직접 푸시는 그만
+
+    (5) ③ 자동 커밋 — 짝 없는 글롭 하나가 git add 전체를 죽이던 것(원격 HKHOME 세션 발견, 6e0ac9e).
+    (6) ④ 반입 — 두 점 diff 가 브랜치가 병합해 들여온 master 파일까지 집어 master 를 되돌렸음(e9f52b5 가
+        watchdog.log 한 줄 삭제) → master 에 없는 커밋이 만진 파일만 반입(02d5986).
+    (7) 짧은 이름 origin(=origin/HEAD) 을 브랜치로 취급해 남이 master 에 민 것을 ④ 로 재커밋(e202853) → 제외.
+
+**랩탑에 부탁**: 15:12 와 15:53 두 번 `laptop-20260822` 병합 커밋이 master 에 직접 올라왔습니다(53ab72f 앞의 50 커밋, c84053c).
+데스크탑은 T-NF-1 사슬이 도는 동안 pull 을 건너뛰므로(§6) master 가 밖에서 움직이면 **제 커밋마다 병합이 필요**해집니다
+(15:53 에 한 번 겪음). **자기 브랜치에만 푸시**하십시오 — 결과 파일은 데스크탑 postman ④ 가 5분 안에 master 로 가져가고,
+문서는 종합자가 반입합니다. 두 기기 모두 `git pull`(또는 merge) 뒤 postman 을 PID 로 세우고 다시 띄우면 (5)(6)(7) 판입니다.
+
+지금 돌고 있는 것: 데스크탑 T-NF-1 생산(simulate 8, 15:36~) · laptop2 1C(12, 15:48~) · 랩탑 1D(15:52~). 판정은 전부 종합자가 결과 뒤에.
+
+## 2026-09-20 00:08 — [데스크탑 세션, 사용자 승인] 일요일 23:00 까지 유휴 0 — 세 기기 다음 배정 등록·사슬 배포 (§AS·§AT·§AU)
+
+**받는 곳**: 랩탑(Melchior), laptop2(Balthasar), 종합자 세션(HKHOME-desktop). 사용자가 2026-09-20 00:0x 에 A·B·C 를 **승인("do it")** — §AR 이 사용자 결정으로 남긴 (가)(다) 포함.
+
+    기기      지금(완주 예상)                       다음 (등록 · 자료 0건)                                          사슬 — **지금 띄우면 기다렸다 착수**
+    데스크탑  T-B2w-323 (~01:30)                    §AS (다) RH82 씨앗 3건 → (가) Q_st(n) 72건, 18~27 h              .claude_work_qn_chain.sh (데스크탑 세션이 띄움)
+    laptop2   T-RT-1c 13/15 (~04:00)                §AT 298 K 습윤 WC mslm025e → sa25nb75e, 12워커, 각 10~13 h       .claude_work_wc298_l2_chain.sh
+    랩탑      T-RT-1d 10/15 (~06:00)                §AU 298 K 습윤 WC saIm075e, 8워커, 14~22 h                        .claude_work_wc298_laptop_chain.sh
+
+### 랩탑 두 분께 — 지금 할 일 (1C/1D 가 도는 채로)
+    cd ~/mof_project && git merge origin/master
+    setsid nohup bash .claude_work_wc298_l2_chain.sh > .claude_work_wc298_l2.out 2>&1 < /dev/null &        # laptop2
+    setsid nohup bash .claude_work_wc298_laptop_chain.sh > .claude_work_wc298_laptop.out 2>&1 < /dev/null &  # 랩탑
+사슬은 `run_humid_wc_v3w_32[3].py` 드라이버와 simulate 가 **3분 연속 0** 일 때 착수합니다(1C/1D 를 건드리지 않음). 전하 CIF 5/5 가 없으면 멈추고 로그에 남깁니다 —
+sa25nb75e·saIm075e 는 제가 이름만 확인했고 개수는 사슬이 셉니다. 기동 뒤 `ps -eo pid,args | grep wc298` 로 **실제 bash PID** 를 우편함에 적어 주십시오(§4).
+첫 Output 머리말 관문은 사람이 한 번. 결과 JSON 은 postman 이 올립니다. 등록 §3 의 예측·반증은 결과 전 고정입니다.
+
+### 종합자(HKHOME-desktop)께
+§AR "(가)~(다) 사용자 결정" 이 났습니다. T-C10 앞단은 빌더 파생이 필요해 사슬에 넣지 않았습니다(§AS). 판정은 종합자 몫 그대로 — QSTN 등록 §3·ENS298 두 등록 §3.

@@ -1,0 +1,94 @@
+{
+  "test": "T-NF-1w (a)",
+  "registration": "TNF_REGISTRATION_20260910.md §9",
+  "tag": "muf16",
+  "host": "hkhome",
+  "forcefield": "UFF_MOF+HwLw_none_20260906",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "ff_path": "/home/mangwon1/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def",
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "temperature_K": 273.0,
+  "cutoff_A": 12.0,
+  "pressure_Pa": 1e-05,
+  "comparison_axis": [
+    "v3w_water_kh_ext/water_kh_extfw_*.json (T-NF-0k)",
+    "v3w_water_kh/water_kh_ALLw_hkhome_seedfixed.json (32조성)"
+  ],
+  "note": "무한희석 물 K_H, 32조성 축·외부 셋과 같은 자. 등록 §0 슈퍼셀 예외 계열 — 순위 표에 나란히 놓되 \"다른 복제\" 를 병기.",
+  "seed_collision": null,
+  "rows": [
+    {
+      "name": "muf16",
+      "KH_water": 9.73172e-05,
+      "KH_water_err": 1.19151e-05,
+      "unit_cells": [
+        2,
+        2,
+        1
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 1,
+      "raspa_seed": 1789827848
+    },
+    {
+      "name": "muf16",
+      "KH_water": 9.41151e-05,
+      "KH_water_err": 1.73139e-05,
+      "unit_cells": [
+        2,
+        2,
+        1
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 2,
+      "raspa_seed": 1789827851
+    },
+    {
+      "name": "muf16",
+      "KH_water": 9.13953e-05,
+      "KH_water_err": 7.03355e-06,
+      "unit_cells": [
+        2,
+        2,
+        1
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "rep": 3,
+      "raspa_seed": 1789827854
+    }
+  ]
+}
