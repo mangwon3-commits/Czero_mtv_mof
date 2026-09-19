@@ -1,0 +1,787 @@
+{
+  "test": "T-B2w-323",
+  "registration": "TB2W_323_REGISTRATION_20260919.md",
+  "tag": "hkhome",
+  "temperature_K": 323.0,
+  "forcefield": "UFF_MOF+HwLw_none_20260906",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "ff_path": "/home/mangwon1/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def",
+  "NumberOfInitializationCycles": 3000,
+  "NumberOfCycles": 15000,
+  "cutoff_A": 12.0,
+  "comparison_axis": "v3w_water_kh/water_kh_ALLw_hkhome_seedfixed.json (298 K, 같은 자)",
+  "seed_duplicates": [
+    1789829338
+  ],
+  "note": "323 K 물 K_H. 298 K 판과 같은 자. 비 K_H(298)/K_H(323) 은 등록 §3.",
+  "rows": [
+    {
+      "name": "base",
+      "KH_water": 2.59174e-05,
+      "KH_water_err": 3.89242e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789829338,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "brbIm025",
+      "KH_water": 2.69867e-05,
+      "KH_water_err": 1.89667e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789829338,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "brbIm050",
+      "KH_water": 2.69742e-05,
+      "KH_water_err": 3.76596e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789829341,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "brbIm075",
+      "KH_water": 2.24648e-05,
+      "KH_water_err": 2.06632e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789829345,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "brbIm100",
+      "KH_water": 2.31419e-05,
+      "KH_water_err": 2.20897e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789829348,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "cf3Im025",
+      "KH_water": 1.73204e-05,
+      "KH_water_err": 1.63055e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789829351,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "cf3Im050",
+      "KH_water": 2.74384e-05,
+      "KH_water_err": 1.81656e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789829354,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "cf3Im075",
+      "KH_water": 3.10914e-05,
+      "KH_water_err": 4.2174e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789829357,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "cnbIm025",
+      "KH_water": 1.29337e-05,
+      "KH_water_err": 1.13242e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789832157,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "cnbIm050",
+      "KH_water": 1.49362e-05,
+      "KH_water_err": 1.39045e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789832163,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "cnbIm075",
+      "KH_water": 2.1975e-05,
+      "KH_water_err": 5.92572e-07,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789832177,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "cnbIm100",
+      "KH_water": 3.05866e-05,
+      "KH_water_err": 1.18002e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789832204,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "fbIm025",
+      "KH_water": 2.17458e-05,
+      "KH_water_err": 1.65677e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789832310,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "fbIm050",
+      "KH_water": 2.24166e-05,
+      "KH_water_err": 3.15597e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789832391,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "fbIm075",
+      "KH_water": 2.80543e-05,
+      "KH_water_err": 2.63703e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789832519,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "fbIm100",
+      "KH_water": 3.12049e-05,
+      "KH_water_err": 5.74179e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789832628,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "mbIm025",
+      "KH_water": 8.13703e-06,
+      "KH_water_err": 3.68433e-07,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789835053,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "mbIm050",
+      "KH_water": 3.123e-05,
+      "KH_water_err": 3.54573e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789835140,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "mbIm075",
+      "KH_water": 2.88181e-05,
+      "KH_water_err": 6.98747e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789835179,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "mbIm100",
+      "KH_water": 3.44939e-05,
+      "KH_water_err": 4.2668e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789835184,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "ms50nb50",
+      "KH_water": 4.62957e-05,
+      "KH_water_err": 2.50361e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789835214,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "mslm025",
+      "KH_water": 2.23901e-05,
+      "KH_water_err": 3.33852e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789835261,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "mslm050",
+      "KH_water": 4.73453e-05,
+      "KH_water_err": 3.76229e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789835376,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "nbIm025",
+      "KH_water": 1.10656e-05,
+      "KH_water_err": 5.98024e-07,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789835464,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "nbIm050",
+      "KH_water": 1.54919e-05,
+      "KH_water_err": 1.49119e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789838036,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "nbIm075",
+      "KH_water": 4.06139e-05,
+      "KH_water_err": 9.70385e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789838193,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "nbIm100",
+      "KH_water": 3.4785e-05,
+      "KH_water_err": 7.01418e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789838314,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "sa25nb75",
+      "KH_water": 3.77787e-05,
+      "KH_water_err": 9.94884e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789838325,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "sa50nb50",
+      "KH_water": 0.00011192,
+      "KH_water_err": 3.3986e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789838390,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "saIm025",
+      "KH_water": 2.36201e-05,
+      "KH_water_err": 2.63091e-06,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789838440,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "saIm050",
+      "KH_water": 6.17193e-05,
+      "KH_water_err": 1.39208e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789838609,
+      "temperature_K": 323.0
+    },
+    {
+      "name": "saIm0583",
+      "KH_water": 0.000130735,
+      "KH_water_err": 2.33538e-05,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "forcefield": "UFF_MOF+HwLw_none_20260906",
+      "ff_check": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "water_sites_in_rundir": 5,
+      "ok": true,
+      "raspa_seed": 1789838633,
+      "temperature_K": 323.0
+    }
+  ]
+}
