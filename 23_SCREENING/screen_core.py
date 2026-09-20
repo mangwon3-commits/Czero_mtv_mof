@@ -8,7 +8,7 @@
     D1 위치 인덱스   `df.iloc[:, 9]`(GEMC 열) · `widom[0]/widom[1]`(CO2/N2). 열 순서가 바뀌면 조용히 틀린 값이 나옵니다.
                      이 저장소는 같은 유형(부착 원자 고정 인덱스 4)으로 08-14 에 v1 치환 결과를 전량 폐기했습니다.
                      → 여기서는 **이름으로 찾고, 못 찾으면 예외를 냅니다.**
-    D2 맨 except     `except: return NaN` 이 스무 곳 넘게 있어 **실패가 결측으로 보입니다**(CLAUDE.md §0 의 핵심 결함 유형).
+    D2 맨 except     `except:` 가 **97곳**(`except Exception` 은 별도 11곳) — **실패가 결측으로 보입니다**(CLAUDE.md §0 의 핵심 결함 유형).
                      → 여기서는 실패를 세어 `report()` 에 남기고, 조용히 0/NaN 으로 만들지 않습니다.
     D3 사후 문턱     3중 관문(stable & PLD≥3.3 & weak) → 0개 → 그 뒤에 PLD 창 3.3~3.6 / 3.7~4.2 를 만들고
                      다시 PLD≥3.4 · VF≥0.2 를 더했습니다. **자료를 본 뒤 문턱이 움직였습니다**(§2 위반).
@@ -17,6 +17,15 @@
                      → `rank()` 는 오차 열이 있으면 **1.5배 규칙**(CLAUDE.md §2)을 적용하고, 없으면 "순위 없음" 으로 돌려줍니다.
     D5 임의 가중치   점수 0.6×선택도 + 0.4×용량, 상위 5 % 클리핑. 근거가 "정상 물질 점수가 바닥에 깔리는 것 방지" 였습니다.
                      → 점수화는 **선택 사항**으로 빼고 기본은 원자료 축(K_H, 선택도)을 그대로 씁니다.
+    D6 항상 거짓 관문 (2026-09-20 추가 — 원본 zip 을 열고 나서야 잡힘, 가장 큰 것)
+                     1순위 `node_stability == 'stable'` 이 **전 레코드에서 거짓**입니다. 그 필드에는 위상 기호
+                     (pcu·dia·sql·unstable…)가 들어 있고 `'stable'` 이라는 값 자체가 CR 17,202 건 중 **0건**입니다.
+                     원본이 본 "생존자 0명" 은 관문이 엄해서가 아니라 **관문이 성립하지 않아서**였습니다.
+                     그 0 을 보고 관문을 버렸으므로, 뒤따른 63+52=115 종은 **안정성 검사를 한 번도 안 거쳤습니다**
+                     (실제로 115 중 unstable 6 · mismatch 3 이 들어 있습니다).
+                     → CLAUDE.md §0 "나쁜 결과를 보면 검사기부터 의심하라" 가 정확히 이 자리입니다.
+                     → 고친 관문으로 다시 걸면 교집합 **6,604종**(위상 미상 통과) / **4,587종**(미상 탈락).
+                     상세·검증 경로: `ZIP_FINDINGS_20260920.md`
 
 사용:
     python3 screen_core.py --meta data/CR_meta_data_SI.json
@@ -33,10 +42,23 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # ---------------------------------------------------------------------------
 # 문턱 — 한 곳에 모으고, 각각 어디서 왔는지 적습니다 (D3)
 # ---------------------------------------------------------------------------
+#
+# ⚠ 1순위 관문은 2026-09-20 에 **고쳤습니다** — 원본은 항상 거짓이었습니다(D6).
+#   `CrystalNets.all_nodes`(신판 `Topology.AllNode`)에 들어 있는 것은 **위상 기호**입니다:
+#   unknown 6536 · pcu 1370 · dia 1149 · sql 1011 · unstable 342 · hcb 307 … 고유값 361종.
+#   CR 전체 17,202 레코드에서 **`'stable'` 은 0건** — `== 'stable'` 은 통과자가 나올 수 없습니다.
+#   (검증: CoRE-MOF-Tools-main.zip / CoREMOF/data/CR.json, ASR+FSR+Ion. ZIP_FINDINGS_20260920.md §3)
+#   그래서 "안정" 은 **"unstable/mismatch 가 아님"** 으로 읽습니다.
+NODE_BAD = ("unstable", "mismatch")      # 뼈대 판정이 실패했다고 CoRE 가 표시한 값
+NODE_UNKNOWN = ("unknown", "unnamed")    # 위상을 못 붙인 것 — 통과/탈락을 **선택**해야 하는 자리
+
 GATES = {
-    "node_stable": dict(
-        value="stable", field="CrystalNets.all_nodes",
-        source="원본 노트북 1순위. CoRE 제공 판정을 그대로 씀."),
+    "node_not_unstable": dict(
+        value=NODE_BAD, field="CrystalNets.all_nodes | Topology.AllNode",
+        unknown_passes=True,
+        source="원본 노트북 1순위를 고친 것(2026-09-20). 원본 `== 'stable'` 은 전 레코드에서 거짓.",
+        caveat="`unknown/unnamed` 이 CR 의 38 % 입니다. 통과시키면 교집합 6,604 · 탈락시키면 4,587 — "
+               "**어느 쪽을 쓸지 먼저 등록하십시오.** 여기 기본값(통과)은 등록이 아니라 기본값입니다."),
     "PLD_min": dict(
         value=3.3, field="Zeopp.PLD",
         source="원본 노트북 2순위. CO2 운동 지름 3.3 Å.",
@@ -72,6 +94,27 @@ def dig(rec, path, *, required=True, default=None):
     return cur
 
 
+def first_of(rec, paths, *, default=None):
+    """스키마가 두 판입니다 — **둘 다 이름으로** 시도하고 먼저 맞는 것을 씁니다.
+
+    옛 판 `CR_meta_data_SI.json`: `Zeopp.PLD` · `CrystalNets.all_nodes` · `water.water_classification`
+    신 판 `CoREMOF/data/CR.json`: `PLD`(평평) · `Topology.AllNode` · `WaterClass`
+    (신판은 CoRE-MOF-Tools-main.zip 안에 있습니다. 위치가 아니라 이름이 바뀐 것이므로 별칭으로 흡수합니다.)
+    """
+    for p in paths:
+        v = dig(rec, p, required=False, default=None)
+        if v is not None:
+            return v
+    return default
+
+
+# Widom K_H 가 이 값을 넘으면 **삽입이 발산한 것**으로 봅니다(물리적으로 불가능한 크기).
+# CR 실측: ASR 최대 1.877e+22 mmol/g/Pa. 1 Pa 에서 1e22 mol/kg 은 뜻이 없습니다.
+# 원본 노트북은 이 행들을 거르지 않고 순위에 넣었습니다. 문턱 자체는 **자료를 보기 전에 고를 수 없으므로**
+# 기본은 "거르지 않고 표시만" 입니다 — 거르려면 등록하고 `--widom-max` 로 주십시오.
+WIDOM_SANITY_MAX = 1.0          # mmol/g/Pa. 이보다 크면 '발산 의심' 으로 **표시**합니다.
+
+
 def widom_pair(rec, *, co2_key="CO2", n2_key="N2"):
     """Widom 값을 **이름으로** 꺼냅니다.
 
@@ -84,14 +127,38 @@ def widom_pair(rec, *, co2_key="CO2", n2_key="N2"):
     if isinstance(w, dict):
         return w.get(co2_key), w.get(n2_key), "by-name"
     if isinstance(w, (list, tuple)) and len(w) >= 2:
-        return w[0], w[1], "by-position(UNVERIFIED)"
+        a, b = w[0], w[1]
+        # CR 실측: 8,857 ASR 중 4건이 이 모양을 깹니다 — `[None, None]` 2건, `[{id: val}, {id: val}]` 2건.
+        # 원본의 `widom[0]/widom[1]` 은 맨 except 에 먹혀 NaN 이 됩니다(D1+D2 합작).
+        if isinstance(a, dict) and isinstance(b, dict):
+            a, b = next(iter(a.values()), None), next(iter(b.values()), None)
+            return a, b, "by-position(UNVERIFIED,unwrapped)"
+        if a is None or b is None:
+            raise Missing("Widom 값이 None")
+        return a, b, "by-position(UNVERIFIED)"
     raise Missing("Widom")
 
 
-def load_core(path):
+def load_core(path, *, sets=("ASR", "FSR", "Ion")):
+    """옛 판과 신 판을 둘 다 읽습니다.
+
+    옛 판 `CR_meta_data_SI.json` : {mof_id: record, ...} 평평한 사전.
+    신 판 `CoREMOF/data/CR.json` : {'unit': {...}, 'ASR': {...}, 'FSR': {...}, 'Ion': {...}}
+        ASR = All Solvent Removed · FSR = Free Solvent Removed · Ion = 이온성.
+        **셋은 같은 골격의 다른 정리판입니다** — 섞으면 한 물질이 여러 번 세어집니다.
+        그래서 키에 계열을 붙여 돌려주고, 부르는 쪽이 계열을 나눌 수 있게 합니다.
+    """
     with open(path, encoding="utf-8") as fh:
         raw = json.load(fh)
-    return raw if isinstance(raw, dict) else {str(i): r for i, r in enumerate(raw)}
+    if not isinstance(raw, dict):
+        return {str(i): r for i, r in enumerate(raw)}
+    if any(s in raw for s in sets):                      # 신 판
+        out = {}
+        for s in sets:
+            for k, v in (raw.get(s) or {}).items():
+                out[f"{s}/{k}"] = v
+        return out
+    return raw
 
 
 def extract(core, *, gates=GATES):
@@ -100,19 +167,22 @@ def extract(core, *, gates=GATES):
     for key, rec in core.items():
         row = {"key": key}
         try:
-            row["PLD"] = float(dig(rec, "Zeopp.PLD"))
-            row["LCD"] = float(dig(rec, "Zeopp.LCD", required=False, default=0.0) or 0.0)
-            row["VF"] = float(dig(rec, "Zeopp.VF", required=False, default=0.0) or 0.0)
-            row["dimension"] = dig(rec, "Zeopp.dimension", required=False, default=None)
+            pld = first_of(rec, ("Zeopp.PLD", "PLD"))
+            if pld is None:
+                raise Missing("Zeopp.PLD | PLD")
+            row["PLD"] = float(pld)
+            row["LCD"] = float(first_of(rec, ("Zeopp.LCD", "LCD")) or 0.0)
+            row["VF"] = float(first_of(rec, ("Zeopp.VF", "VF")) or 0.0)
+            row["dimension"] = first_of(rec, ("Zeopp.dimension", "Dimension"))
         except (Missing, TypeError, ValueError) as exc:
             fails[f"Zeopp:{exc}"] += 1
             continue
-        row["node"] = dig(rec, "CrystalNets.all_nodes", required=False, default=None)
+        row["node"] = first_of(rec, ("CrystalNets.all_nodes", "Topology.AllNode"))
         if row["node"] is None:
-            fails["CrystalNets.all_nodes 없음"] += 1
-        row["water"] = dig(rec, "water.water_classification", required=False, default=None)
+            fails["all_nodes/AllNode 없음"] += 1
+        row["water"] = first_of(rec, ("water.water_classification", "WaterClass"))
         if row["water"] is None:
-            fails["water_classification 없음"] += 1
+            fails["water_classification/WaterClass 없음"] += 1
         try:
             kh_co2, kh_n2, how = widom_pair(rec)
             row["KH_CO2"], row["KH_N2"], row["widom_how"] = kh_co2, kh_n2, how
@@ -127,13 +197,26 @@ def extract(core, *, gates=GATES):
 
 def apply_gates(rows, gates=GATES):
     """관문을 **하나씩 따로** 세고, 교집합도 셉니다(원본 '병목 진단'의 정리판)."""
+    g = gates["node_not_unstable"]
+    unknown_ok = g.get("unknown_passes", True)
+
+    def node_ok(r):
+        a = r["node"]
+        if a is None:
+            return False
+        if a in NODE_BAD:
+            return False
+        if a in NODE_UNKNOWN:
+            return unknown_ok
+        return True
+
     per = {
-        "node_stable": [r for r in rows if r["node"] == gates["node_stable"]["value"]],
+        "node_not_unstable": [r for r in rows if node_ok(r)],
         "PLD_min": [r for r in rows if r["PLD"] >= gates["PLD_min"]["value"]],
         "water_weak": [r for r in rows if r["water"] == gates["water_weak"]["value"]],
     }
     passed = [r for r in rows
-              if r["node"] == gates["node_stable"]["value"]
+              if node_ok(r)
               and r["PLD"] >= gates["PLD_min"]["value"]
               and r["water"] == gates["water_weak"]["value"]]
     return per, passed
