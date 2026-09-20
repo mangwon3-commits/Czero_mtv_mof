@@ -2185,3 +2185,14 @@ risk_results_v3sub.json 은 사슬 백업(before_tnf1_09191531, HEAD 와 동일)
 ★ **비지배 집합이 n=1 입니다 — saIm100 이 두 축 모두에서 최고.** 즉 **이 두 축에는 상충이 없습니다**(선택도와 K_H 가 술폰산 함량을 따라 같이 오름). 상충은 물 축에서 나타나며 그게 fig8 입니다. 그림에 선 대신 동그라미로 표시하고 범례에 명시.
 부수: `log_ticks()` 가 한두 자릿수 안이면 2·5 배수에도 라벨을 붙이도록 보완(원래 10⁻⁴ 하나만 나왔음) · 이름표 상하 번갈아 밀기(saIm0875 94.7 대 saIm075 94.5 로 사실상 같은 자리라 겹침).
 T-BR-1 진행: 21:46 기준 24 중 2 완주(건당 ~8분, 워커 2) → **약 23:15 완료 예상.**
+
+## 2026-09-21 00:02 · desktop  **D8 — 노트북의 "CO₂ 작업 용량" 은 물 등온선이었습니다**
+
+사용자 질문("내가 보낸 자료로부터 미리 계산했던 로그가 남아있을 텐데")을 따라 `notebook_outputs_20260920.txt` 를 팠더니 **공정 성능 층 전체가 `water.GEMC`(TIP4P 물, `Molecules/Supercell`)를 CO₂ 등온선으로 읽고 있었습니다.** 기록: `23_SCREENING/D8_GEMC_IS_WATER_20260921.md`.
+경로: 셀 27 `extract_isotherm_data` 가 `gemc_dict['GEMC']`(물)를 `Isotherm_Data` 로 만들고 → 셀 28·30·31·32·35·36(및 71 Sips)이 `P_adsorption=0.15 bar (배가스 CO2 분압)` 으로 평가. `q_max_physical=(GPV×1.03/44.01)×1000` 은 **CO₂ 액체밀도·분자량**으로 잡은 상한인데 거기에 **물** 기울기를 꽂음.
+겹친 결함 셋: (ㄱ) 기체가 다름 (ㄴ) `Molecules/Supercell` → `mmol/g` **미환산**(같은 레코드에 `_simltn_size` 부피와 `Density` 가 있어 환산 가능한데 안 함) (ㄷ) GEMC 압력 0.1~1000 Pa = 최대 **0.0432 bar** 인데 **0.15 bar** 에서 값을 냄 — **3.5배 바깥 외삽**, 그것도 포화하는 양에.
+**재현 완료**: 창 115종에 셀 35 계산을 그대로 돌려 상위 10개 `q_ads`(11.568 · 8.885 · 9.810 · 8.563 · 9.303 · 9.834 · 9.874 · 7.555 · 9.933 · 11.889)와 `q_max` 전부 **소수 셋째 자리까지 일치**. 경로 확정.
+물리적 반증은 **우리 자료가 자**입니다: 우리 0.15 bar 건조 CO₂ 최대 **1.543** mmol/g, MUF-16 0.165 bar **1.1174** 대 실측 **1.08** → 배율 **1.035**. 그 눈금에서 7~12 mmol/g 은 0.15 bar CO₂ 로 측정된 적 없는 값. 물이라면 자연스러운 크기(1000 Pa 에서 2.68 molecules/supercell).
+**못 쓰는 것**: q_ads/q_des/Working_Capacity/Recovery/Performance·DAC·FlueGas_Score/Tier 1·2 랭킹/`Fully_Calibrated_PseudoLangmuir_Metrics.csv`·`Final|Fixed|Hybrid_VSA_Process_Metrics.csv`·`Verified_Langmuir_MOFs.csv`·`Tier1_Tier2_Survival_Frontier.pdf` 계열.
+**쓸 수 있는 것**: `Widom`=[K_H(CO₂),K_H(N₂)] (진짜 CO₂/N₂ — **fig9 의 두 축**) · 기하(PLD·LCD·VF·GPV) · WaterClass + 되찾은 문턱 · **GEMC 물 등온선은 물로서는 정본**(단위 환산하면 우리 물 K_H 와 같은 양) · HeatCapacity·Stability.
+→ **기존 MOF 와의 비교는 가능합니다.** 단 노트북 공정 층을 거치지 말고 Widom·물 등온선에서 직접 가야 하고, 남은 장애물은 힘장 오프셋 하나(T-BR-1 이 재는 중, 00:02 기준 20/24). ⚠ **작업 용량 축 비교만은 불가** — CoRE 에 **CO₂ 등온선이 아예 없습니다**(노트북이 만든 게 아니라 없는 것을 외삽한 것). 그 축을 쓰려면 CO₂ 등온선을 우리가 계산해야 합니다(갈래 B 확장).
