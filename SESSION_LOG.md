@@ -2196,3 +2196,25 @@ T-BR-1 진행: 21:46 기준 24 중 2 완주(건당 ~8분, 워커 2) → **약 23
 **못 쓰는 것**: q_ads/q_des/Working_Capacity/Recovery/Performance·DAC·FlueGas_Score/Tier 1·2 랭킹/`Fully_Calibrated_PseudoLangmuir_Metrics.csv`·`Final|Fixed|Hybrid_VSA_Process_Metrics.csv`·`Verified_Langmuir_MOFs.csv`·`Tier1_Tier2_Survival_Frontier.pdf` 계열.
 **쓸 수 있는 것**: `Widom`=[K_H(CO₂),K_H(N₂)] (진짜 CO₂/N₂ — **fig9 의 두 축**) · 기하(PLD·LCD·VF·GPV) · WaterClass + 되찾은 문턱 · **GEMC 물 등온선은 물로서는 정본**(단위 환산하면 우리 물 K_H 와 같은 양) · HeatCapacity·Stability.
 → **기존 MOF 와의 비교는 가능합니다.** 단 노트북 공정 층을 거치지 말고 Widom·물 등온선에서 직접 가야 하고, 남은 장애물은 힘장 오프셋 하나(T-BR-1 이 재는 중, 00:02 기준 20/24). ⚠ **작업 용량 축 비교만은 불가** — CoRE 에 **CO₂ 등온선이 아예 없습니다**(노트북이 만든 게 아니라 없는 것을 외삽한 것). 그 축을 쓰려면 CO₂ 등온선을 우리가 계산해야 합니다(갈래 B 확장).
+
+## 2026-09-21 03:03 — T-BR-1 판정: **철회**. 발표 차트에 CoRE 성능 축을 쓰지 않습니다 (데스크탑)
+
+T-BR-1(CoRE 12구조를 우리 프로토콜로 Widom 재계산)이 **00:51 에 12/12 성공**으로 완주했고,
+등록 `21_ZIF69_MTV/BRIDGE_CORE_REGISTRATION_20260920.md §5` 의 포기 기준에 검사했습니다.
+
+    K_H(CO2)  β = +0.333  |β−1| = 0.667   중앙배율 4.75x  잔차 s 0.359  Spearman ρ +0.483
+    선택도     β = −0.184  |β−1| = 1.184   중앙배율 0.595x 잔차 s 0.232  Spearman ρ −0.406
+    → §5 (ㄱ) 두 축 모두 걸림 → **철회**
+
+배율이 구조마다 0.23~22.1배(96배 범위)로 흩어지고, 선택도는 **방향이 뒤집힙니다**(CoRE 상위 3개가 우리 하위권).
+우리 쪽 통계오차는 0.3~1.2 % 라 오차가 아닙니다. 검사기부터 의심했고(CLAUDE.md §0) CIF 전하·입력·슈퍼셀·dU
+전부 정상 — 우리 32조성 입력과 글자 그대로 같습니다.
+
+**철회한 것**: `23_SCREENING/GATES23_20260920.md §3` 의 이전 논증 (×7.51 → 91.3 %/99.6 % 백분위). 그 절 머리에 배너를 달았습니다.
+**안 바뀐 것**: 우리 32조성 판정·Q_st 목표대·WC/T-RT·1.5 규칙 순위·D8·관문 통계 (등록 §6).
+**발표 차트**: 현재 세 그림(fig7·fig8·fig9)이 이미 철회 구성입니다 — CoRE 구름을 덧그리지 않습니다. 덧붙일 것도 지울 것도 없음.
+**부수 주의**: 물 문턱도 CoRE 눈금(TIP4P)의 수이므로 saIm100 의 1.7배 여유는 결정적이지 않습니다.
+GATES23 §2 가 이미 "3배 안이면 보류" 로 saIm100 을 보류 처리해 둔 것이 옳았습니다. 방향 논증은 부호라서 그대로 섭니다.
+
+    새 파일  21_ZIF69_MTV/BRIDGE_CORE_RESULT_20260921.md · 21_ZIF69_MTV/analyze_bridge_core.py
+    고친 것  23_SCREENING/GATES23_20260920.md (§3 철회 배너) · tools/make_figs_screening.py (머리말)
