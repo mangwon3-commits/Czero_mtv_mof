@@ -65,8 +65,18 @@ def log_ticks(ax, axis='y'):
     a = ax.yaxis if axis == 'y' else ax.xaxis
     lo, hi = (ax.get_ylim() if axis == 'y' else ax.get_xlim())
     exps = list(range(int(np.floor(np.log10(lo))), int(np.ceil(np.log10(hi))) + 1))
-    a.set_ticks([10.0 ** e for e in exps])
-    a.set_ticklabels(['$10^{%d}$' % e for e in exps])
+    ticks = [10.0 ** e for e in exps]
+    labs = ['$10^{%d}$' % e for e in exps]
+    if sum(1 for t in ticks if lo <= t <= hi) < 3:          # 한두 자릿수 안이면 라벨이 너무 성깁니다
+        ticks, labs = [], []
+        for e in exps:
+            for m in (1, 2, 5):
+                v = m * 10.0 ** e
+                if lo <= v <= hi:
+                    ticks.append(v)
+                    labs.append('$10^{%d}$' % e if m == 1 else r'$%d{\times}10^{%d}$' % (m, e))
+    a.set_ticks(ticks)
+    a.set_ticklabels(labs)
     a.set_minor_locator(LogLocator(base=10.0, subs=tuple(np.arange(2, 10) * 0.1) + tuple(range(2, 10))))
     a.set_minor_formatter(NullFormatter())          # 소눈금에 라벨이 붙으면 같은 버그를 또 만납니다
     if axis == 'y':
@@ -189,3 +199,95 @@ log_ticks(ax, 'y')
 finish(fig, 'fig8_screen_tradeoff.png')
 
 print('  (오차 막대는 RASPA 95 % 신뢰구간 — 문턱 1.5 단위는 순위에만 씁니다)')
+
+
+# ── 그림 9 : Frontier 맵 — **원본 노트북의 방식** ───────────────────────────
+#
+# 원본(`MOF_Screening.ipynb` 셀 81 `draw_quadrant_frontier`)의 방식을 그대로 씁니다:
+#   x = CO2 친화도(Widom K_H) · y = CO2/N2 선택도 · **양쪽 로그** · 점선 격자(which='both')
+#   색 = 범주 · 마커 = 두 번째 범주 · 상위 물질에 이름표 · 범례는 그림 바깥 오른쪽
+#
+# 바꾼 것과 그 이유:
+#   · 4분할(Core/Robust × DAC/FlueGas) **안 함** — 사용자 지시. 그 분할은 금속·위상 목록으로
+#     내습성을 정하는 사후 규칙이었고(D3), 우리 조성은 전부 Zn 이라 가르는 뜻도 없습니다.
+#   · 색: 금속 → **-SO3H 치환율**. 우리는 전부 Zn 이라 금속이 정보를 안 담습니다.
+#   · 마커: OMS → 치환기 계열. 우리 구조에 열린 금속 자리가 없습니다.
+#   · **오차 막대를 넣습니다** — 원본에는 없었습니다(D4). RASPA 95 % 신뢰구간입니다.
+#   · 이름표: "점수 상위 3개" → **비지배 집합(파레토 전선) 전부**.
+#     원본의 점수는 0.6×선택도 + 0.4×용량 + 상위 5 % 클리핑이라 가중치 근거가 없었습니다(D5).
+#     비지배는 가중치가 필요 없습니다 — 어떤 가중치를 써도 최적은 이 집합 안에 있습니다.
+#   · 제목 없음 — 이 저장소 방침(`make_figs.py` 머리말).
+import seaborn as sns                                  # noqa: E402
+
+sns.set_theme(style='whitegrid')
+plt.rcParams['font.family'] = fm.FontProperties(fname=FP).get_name()
+plt.rcParams['axes.unicode_minus'] = False
+plt.rcParams['font.size'] = 9
+
+pts = [n for n in ours if ours[n].get('selectivity') and ours[n].get('KH_CO2')]
+X = {n: ours[n]['KH_CO2'] for n in pts}
+Y = {n: ours[n]['selectivity'] for n in pts}
+
+
+def pareto(names):
+    """비지배 집합 — 두 축 모두에서 자기보다 나은 것이 없는 조성."""
+    out = []
+    for n in names:
+        if not any(X[m] > X[n] and Y[m] > Y[n] for m in names if m != n):
+            out.append(n)
+    return sorted(out, key=lambda n: X[n])
+
+
+front = pareto(pts)
+
+fig, ax = plt.subplots(figsize=(6.6, 4.2))
+for fi, (_, lab, mk) in enumerate(FAM):
+    sel = [n for n in pts if family(n) == fi]
+    if not sel:
+        continue
+    x = [X[n] for n in sel]
+    y = [Y[n] for n in sel]
+    ax.errorbar(x, y, yerr=[ours[n].get('selectivity_err') or 0 for n in sel],
+                xerr=[ours[n].get('KH_CO2_err') or 0 for n in sel],
+                fmt='none', ecolor=GREY, elinewidth=0.7, capsize=1.5, zorder=2)
+    if fi == 0:
+        sc = ax.scatter(x, y, c=[sub_pct(n) or 0 for n in sel], cmap='YlOrBr',
+                        vmin=0, vmax=100, s=60, marker=mk, edgecolor='#5A3A0E',
+                        linewidth=0.7, zorder=3, label=lab)
+        cb = fig.colorbar(sc, ax=ax, pad=0.012, fraction=0.04)
+        cb.set_label(SUB, fontsize=8)
+        cb.ax.tick_params(labelsize=7.5)
+    else:
+        ax.scatter(x, y, s=44, marker=mk, color=(SAGE if fi == 1 else NAVY),
+                   edgecolor='white', linewidth=0.5, zorder=3, label=lab)
+
+# 비지배 집합. 두 축이 같은 방향으로 움직이면(우리 경우) 집합이 한 점으로 줄어듭니다 —
+# 그 자체가 결과입니다: **이 두 축에는 상충이 없습니다.** 상충은 물 축에서 나타납니다(fig8).
+if len(front) > 1:
+    ax.plot([X[n] for n in front], [Y[n] for n in front], '-', color='#B03A2E',
+            linewidth=1.1, alpha=0.85, zorder=1, label=f'비지배 전선 (n={len(front)})')
+else:
+    n0 = front[0]
+    ax.scatter([X[n0]], [Y[n0]], s=210, facecolor='none', edgecolor='#B03A2E',
+               linewidth=1.3, zorder=1, label=f'비지배 (n=1) — 두 축 모두 최고')
+
+label_me = sorted(set(sorted(pts, key=lambda n: -Y[n])[:5]) | set(front),
+                  key=lambda n: -Y[n])
+# 이름표가 서로 겹칩니다(saIm0875 / saIm075 가 선택도 94.7 대 94.5 로 사실상 같은 자리).
+# 위·아래로 번갈아 밀어 둡니다 — 값은 그대로, 읽기만 돕습니다.
+for k, n in enumerate(label_me):
+    dy = 6 if k % 2 == 0 else -11
+    ax.annotate(n, (X[n], Y[n]), xytext=(7, dy), textcoords='offset points',
+                fontsize=7.2, color='#5A2A1E')
+
+ax.set_xscale('log')
+ax.set_yscale('log')
+ax.set_xlabel('CO$_2$ 친화도  Widom $K_H$ (mmol g$^{-1}$ Pa$^{-1}$)')
+ax.set_ylabel('선택도  CO$_2$ / N$_2$')
+ax.grid(True, which='both', ls='--', alpha=0.4)
+ax.set_xlim(min(X.values()) * 0.7, max(X.values()) * 2.2)
+ax.set_ylim(min(Y.values()) * 0.75, max(Y.values()) * 1.9)
+ax.legend(bbox_to_anchor=(1.18, 1.0), loc='upper left', frameon=False, fontsize=7.8)
+log_ticks(ax, 'x')
+log_ticks(ax, 'y')
+finish(fig, 'fig9_frontier.png')
