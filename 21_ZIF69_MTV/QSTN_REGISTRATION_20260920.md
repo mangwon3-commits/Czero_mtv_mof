@@ -29,3 +29,4 @@ T-NF-1q 가 MUF-16 에서 "영피복 Q_st 는 Widom 과 0.2 로 맞고, 적재�
     사슬 `.claude_work_qn_chain.sh`(데스크탑): T-B2w-323 드라이버(run_tb2w_323.py)·simulate·network 0 → DRYRUN(UnitCells·온도·압력 찍음) → (다) 3건 → (가) 72건 슬롯 8. 로그 `qn_chain.log`. 결과는 postman 이 올림. 판정은 종합자, 검산 Melchior/Balthasar.
 ## 6. 진행 기록
     [2026-09-20 00:07] 등록(자료 0건). 사슬 기동 — 대기 상태로 T-B2w-323 종료를 기다림.
+    [09-20 04:30] (다) 3/3 완주 04:2x(§AS 03:42 착수, 42 분) → TNF_RESULTS T-NF-1 절에 n=5 덧붙임: RH82/RH0 0.952~1.007, 부호 통과 유지, SE 0.0104. (가) 72건 진행 중.
