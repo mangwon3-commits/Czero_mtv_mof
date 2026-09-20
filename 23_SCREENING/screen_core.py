@@ -5,8 +5,12 @@
     관문을 통과시키고, 우리 ZIF-69 조성(`21_ZIF69_MTV/results_v3.json`)을 같은 축에 얹습니다.
 
 [왜 다시 썼나 — 원본 노트북의 결함 다섯]
-    D1 위치 인덱스   `df.iloc[:, 9]`(GEMC 열) · `widom[0]/widom[1]`(CO2/N2). 열 순서가 바뀌면 조용히 틀린 값이 나옵니다.
+    D1 위치 인덱스   `df.iloc[:, 9]` · `widom[0]/widom[1]`. 열 순서가 바뀌면 조용히 틀린 값이 나옵니다.
                      이 저장소는 같은 유형(부착 원자 고정 인덱스 4)으로 08-14 에 v1 치환 결과를 전량 폐기했습니다.
+                     확인해 보니 `iloc[:, 9]` 는 **`water` 열**입니다(이름표는 `GEMC_data` 였음).
+                     `water = {GEMC, water_classification, Widom}` 이라 값은 맞게 나왔고,
+                     `[0]=CO2 · [1]=N2` 순서도 **크기로는 맞습니다**(`WIDOM_ORDER_EVIDENCE`).
+                     그러나 **맞은 것과 확인된 것은 다릅니다** — 신판은 이 구조가 평평해져 같은 코드가 곧바로 깨집니다.
                      → 여기서는 **이름으로 찾고, 못 찾으면 예외를 냅니다.**
     D2 맨 except     `except:` 가 **97곳**(`except Exception` 은 별도 11곳) — **실패가 결측으로 보입니다**(CLAUDE.md §0 의 핵심 결함 유형).
                      → 여기서는 실패를 세어 `report()` 에 남기고, 조용히 0/NaN 으로 만들지 않습니다.
@@ -25,6 +29,8 @@
                      (실제로 115 중 unstable 6 · mismatch 3 이 들어 있습니다).
                      → CLAUDE.md §0 "나쁜 결과를 보면 검사기부터 의심하라" 가 정확히 이 자리입니다.
                      → 고친 관문으로 다시 걸면 교집합 **6,604종**(위상 미상 통과) / **4,587종**(미상 탈락).
+                       노트북의 실제 입력 `CR_meta_data_SI.json`(2,737)만 보면 **754종**입니다(원본 0종).
+                       사후 창은 이 모듈이 그대로 재현합니다 — N2-Sieving 63 · High-Flux 52, 노트북 수치와 일치.
                      상세·검증 경로: `ZIP_FINDINGS_20260920.md`
 
 사용:
@@ -114,6 +120,21 @@ def first_of(rec, paths, *, default=None):
 # 기본은 "거르지 않고 표시만" 입니다 — 거르려면 등록하고 `--widom-max` 로 주십시오.
 WIDOM_SANITY_MAX = 1.0          # mmol/g/Pa. 이보다 크면 '발산 의심' 으로 **표시**합니다.
 
+# 순서 [CO2, N2] 에 대해 2026-09-20 에 모은 증거. **스키마 확인은 여전히 아닙니다** — 크기 논증입니다.
+WIDOM_ORDER_EVIDENCE = """
+  기체 이름은 배포본 어디에도 없습니다(zip 전체에서 "Widom" 2회, 둘 다 단위 문자열 'mmol/g/Pa').
+  (a) 물이 아님:  같은 레코드의 water.GEMC(물 등온선, Henry 영역 확인된 626건)와 견주면
+                  GEMC물/w0 중앙비 13.6(잔차 0.71 자릿수) · GEMC물/w1 중앙비 134(0.85) — 둘 다 물이 아닙니다.
+  (b) 크기가 맞음: 우리 CO2 Widom K_H 217행(중앙 1.09e-04 mmol/g/Pa, 같은 단위)과
+                  CoRE w0 중앙 6.4e-05 → **1.7배**,  CoRE w1 중앙 8.1e-06 → **13.5배**.
+                  순서가 뒤라면 우리 32조성 전 범위가 CoRE CO2 중앙값 위에 놓여야 합니다 — 그럴 수 없습니다.
+  (c) 비의 크기:  w0/w1 중앙 8.26 — CO2/N2 Henry 선택도의 통상 대역(5~50) 안. 뒤집으면 N2 가 CO2 의 8배가 됩니다.
+  한계:  힘장이 다릅니다(CoRE UFF+TraPPE / 우리 UFF_MOF+Garcia-Sanchez 2009). 이것은 **자릿수 대조**이지 교정이 아닙니다.
+         절대 확인은 CR CIF 몇 개에 CO2·N2 Widom 을 직접 돌려 저장값과 맞추는 것입니다(아직 안 함).
+  또한 OMS 가 있으면 w0/w1 이 **줄어듭니다**(6.17 대 9.73) — 고전 힘장이 열린 금속 자리의 CO2 화학을 못 담기 때문으로
+  보이며, 이 자료로 OMS 물질의 선택도를 논하지 말아야 할 이유입니다.
+"""
+
 
 def widom_pair(rec, *, co2_key="CO2", n2_key="N2"):
     """Widom 값을 **이름으로** 꺼냅니다.
@@ -121,9 +142,9 @@ def widom_pair(rec, *, co2_key="CO2", n2_key="N2"):
     원본은 `widom[0]/widom[1]` 로 위치를 믿었습니다. CoRE 스키마가 리스트라면
     순서를 가정하는 대신 **가정했다는 사실을 돌려주어** 호출한 쪽이 검증하게 합니다.
     """
-    w = dig(rec, "GEMC.Widom", required=False)
-    if w is None:
-        w = dig(rec, "Widom", required=False)
+    # 옛 판은 `water` 블록 **안에** 들어 있습니다: water = {GEMC, water_classification, Widom}.
+    # (그래서 노트북의 `iloc[:, 9]` 가 실제로는 `water` 열이고, 이름표만 `GEMC_data` 였습니다 — D1.)
+    w = first_of(rec, ("water.Widom", "GEMC.Widom", "Widom"))
     if isinstance(w, dict):
         return w.get(co2_key), w.get(n2_key), "by-name"
     if isinstance(w, (list, tuple)) and len(w) >= 2:
@@ -307,14 +328,31 @@ def main():
     for k, v in per.items():
         print(f"  {k:12s} {len(v)}개")
     print(f"  3중 관문 교집합  {len(passed)}개")
+
+    # 원본의 사후 창 — **관문 대신** 쓰였습니다. 재현해서 나란히 보여 줍니다(D3·D6).
+    w_n2 = WINDOWS_POST_HOC["N2_sieving"]["PLD"]
+    w_hf = WINDOWS_POST_HOC["high_flux"]
+    weak = [r for r in rows if r["water"] == GATES["water_weak"]["value"]]
+    n2 = [r for r in weak if w_n2[0] <= r["PLD"] <= w_n2[1]]
+    hf = [r for r in weak if w_hf["PLD"][0] <= r["PLD"] <= w_hf["PLD"][1]
+          and (r.get("LCD") or 0) >= w_hf["LCD_min"]]
+    print(f"  [사후 창 재현]  N2-Sieving(PLD {w_n2[0]}~{w_n2[1]} & weak) {len(n2)}개 · "
+          f"High-Flux(PLD {w_hf['PLD'][0]}~{w_hf['PLD'][1]} & LCD>={w_hf['LCD_min']} & weak) {len(hf)}개")
+    bad_n2 = [r for r in n2 if r["node"] in NODE_BAD]
+    bad_hf = [r for r in hf if r["node"] in NODE_BAD]
+    unk = [r for r in n2 + hf if r["node"] in NODE_UNKNOWN]
+    print(f"    그중 뼈대 unstable/mismatch  N2 {len(bad_n2)}개 · HF {len(bad_hf)}개 · 위상 미상 {len(unk)}개"
+          f"  ← 창은 뼈대를 안 봅니다(D6)")
     if fails:
         print("  못 뽑은 것(조용히 넘기지 않습니다):")
         for k, v in fails.most_common(8):
             print(f"    {v:6d}  {k}")
     hows = collections.Counter(r["widom_how"] for r in rows if r["widom_how"])
-    if hows.get("by-position(UNVERIFIED)"):
-        print(f"  ⚠ Widom 을 **위치로** 읽은 행 {hows['by-position(UNVERIFIED)']}개 — "
-              f"CO2 가 [0] 인지 스키마로 확인하기 전에는 선택도를 인용하지 마십시오(D1).")
+    npos = sum(v for k, v in hows.items() if k and k.startswith("by-position"))
+    if npos:
+        print(f"  ⚠ Widom 을 **위치로** 읽은 행 {npos}개 — 스키마에 기체 이름이 없습니다(D1).")
+        print("    순서 [CO2, N2] 는 **크기로 지지**되지만 스키마 확인은 아닙니다:")
+        print(WIDOM_ORDER_EVIDENCE.rstrip())
     return 0
 
 
