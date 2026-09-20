@@ -1,0 +1,2119 @@
+# MOF Screening.ipynb 의 **글자 출력만** 뽑은 것 (그림 생략). 2026-09-20 20:5x
+# 원본 25 MB 를 저장소에서 내리기 전에 증거를 남긴 것입니다. 코드는 MOF_Screening_original_stripped.ipynb 에 동일(md5 fd97c0a0…).
+
+======================================================================
+# 셀 0
+import pandas as pd
+
+# 1. JSON 파일 불러오기 (용량이 커서 약간의 시간이 걸릴 수 있습니다)
+----------------------------------------------------------------------
+🎉 데이터 불러오기 대성공!
+총 확보된 원본 MOF 개수: 2737개
+
+                                                                          RACs  \
+ja0c07257_si_005_ASR_pacman  {'Metal': {'D_mc-I-0-all': 0.0, 'D_mc-I-1-all'...   
+ja0c07257_si_011_ASR_pacman  {'Metal': {'D_mc-I-0-all': 0.0, 'D_mc-I-1-all'...   
+ja0c07257_si_012_ASR_pacman  {'Metal': {'D_mc-I-0-all': 0.0, 'D_mc-I-1-all'...   
+ja0c07257_si_003_ASR_pacman  {'Metal': {'D_mc-I-0-all': 0.0, 'D_mc-I-1-all'...   
+ja0c07257_si_007_ASR_pacman  {'Metal': {'D_mc-I-0-all': 0.0, 'D_mc-I-1-all'...   
+
+                                                                     reference  \
+ja0c07257_si_005_ASR_pacman  {'DOI': '10.1021/ja0c07257', 'year': 'unknown'...   
+ja0c07257_si_011_ASR_pacman  {'DOI': '10.1021/ja0c07257', 'year': 'unknown'...   
+ja0c07257_si_012_ASR_pacman  {'DOI': '10.1021/ja0c07257', 'year': 'unknown'...   
+ja0c07257_si_003_ASR_pacman  {'DOI': '10.1021/ja0c07257', 'year': 'unknown'...   
+ja0c07257_si_007_ASR_pacman  {'DOI': '10.1021/ja0c07257', 'year': 'unknown'...   
+
+                                                                structure_info  \
+ja0c07257_si_005_ASR_pacman  {'average_mass': 9.254867877, 'charge': 'PACMA...   
+ja0c07257_si_011_ASR_pacman  {'average_mass': 9.254867877, 'charge': 'PACMA...   
+ja0c07257_si_012_ASR_pacman  {'average_mass': 9.254867877, 'charge': 'PACMA...   
+ja0c07257_si_003_ASR_pacman  {'average_mass': 8.981723133, 'charge': 'PACMA...   
+ja0c07257_si_007_ASR_pacman  {'average_mass': 9.254867877, 'charge': 'PACMA...   
+
+                                                                            id  \
+ja0c07257_si_005_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+ja0c07257_si_011_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+ja0c07257_si_012_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+ja0c07257_si_003_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].c1ccc...   
+ja0c07257_si_007_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+
+                                                                         Zeopp  \
+ja0c07257_si_005_ASR_pacman  {'LCD': 4.88768, 'PLD': 3.8223000000000003, 'L...   
+ja0c07257_si_011_ASR_pacman  {'LCD': 6.91079, 'PLD': 4.88428, 'LFPD': 6.910...   
+ja0c07257_si_012_ASR_pacman  {'LCD': 6.99121, 'PLD': 4.89555, 'LFPD': 6.991...   
+ja0c07257_si_003_ASR_pacman  {'LCD': 6.56429, 'PLD': 5.06226, 'LFPD': 6.564...   
+ja0c07257_si_007_ASR_pacman  {'LCD': 7.0044, 'PLD': 5.10639, 'LFPD': 7.0044...   
+
+                                                                   CrystalNets  \
+ja0c07257_si_005_ASR_pacman  {'single_nodes': 'unstable', 'all_nodes': 'uns...   
+ja0c07257_si_011_ASR_pacman  {'single_nodes': 'unstable', 'all_nodes': 'uns...   
+ja0c07257_si_012_ASR_pacman  {'single_nodes': 'unstable', 'all_nodes': 'uns...   
+ja0c07257_si_003_ASR_pacman  {'single_nodes': 'unstable', 'all_nodes': 'uns...   
+ja0c07257_si_007_ASR_pacman  {'single_nodes': 'unstable', 'all_nodes': 'uns...   
+
+                                                                         metal  \
+ja0c07257_si_005_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_011_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_012_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_003_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_007_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+
+                                                                 heat_capacity  \
+ja0c07257_si_005_ASR_pacman  {'300K': 0.901236205, '350K': 1.038390004, '40...   
+ja0c07257_si_011_ASR_pacman  {'300K': 0.917392324, '350K': 1.064623119, '40...   
+ja0c07257_si_012_ASR_pacman  {'300K': 0.9188845560000001, '350K': 1.0609454...   
+ja0c07257_si_003_ASR_pacman  {'300K': 0.9128992340000001, '350K': 1.0552854...   
+ja0c07257_si_007_ASR_pacman  {'300K': 0.9162462050000001, '350K': 1.0611180...   
+
+                                                                     stability  \
+ja0c07257_si_005_ASR_pacman  {'thermal': '496.5', 'solvent': '0.8030595', '...   
+ja0c07257_si_011_ASR_pacman  {'thermal': '470', 'solvent': '0.8159822', 'wa...   
+ja0c07257_si_012_ASR_pacman  {'thermal': '471.9', 'solvent': '0.81953955', ...   
+ja0c07257_si_003_ASR_pacman  {'thermal': '510.9', 'solvent': '0.88703537', ...   
+ja0c07257_si_007_ASR_pacman  {'thermal': '470.3', 'solvent': '0.8135283', '...   
+
+                                                                         water  
+ja0c07257_si_005_ASR_pacman  {'GEMC': ['# Gibbs Ensemble Monte Carlo Simula...  
+ja0c07257_si_011_ASR_pacman  {'GEMC': ['# Gibbs Ensemble Monte Carlo Simula...  
+ja0c07257_si_012_ASR_pacman  {'GEMC': ['# Gibbs Ensemble Monte Carlo Simula...  
+ja0c07257_si_003_ASR_pacman  {'GEMC': ['# Gibbs Ensemble Monte Carlo Simula...  
+ja0c07257_si_007_ASR_pacman  {'GEMC': ['# Gibbs Ensemble Monte Carlo Simula...  
+======================================================================
+# 셀 1
+import pprint
+
+# 1. 원본 데이터(df)에서 첫 번째(0번째) MOF 데이터 하나만 통째로 끄집어내어 사전(Dictionary)으로 만듭니다.
+----------------------------------------------------------------------
+🔬 === [{'common_name': 'nan', 'mofid-v1': '[Co].n1ccc(cc1)C1=C2C=CC(=C(c3ccncc3)C3=NC(=C(C4=CC=C(C(=C5N=C1C=C5)c1ccncc1)[N]4)c1ccncc1)C=C3)[N]2 MOFid-v1.ERROR.cat0;ja0c07257_si_005_ASR_pacman', 'mofid-v2': '[Co1_Type-1].[N][=C][C][=C][Branch1][Branch1][C][=C][Ring1][=Branch1][C][=C][C][=C][C][=Branch2][=Branch1][C][=C][Branch1][=Branch2][C][=C][C][=N][C][=C][Ring1][=Branch1][C][=N][C][=Branch2][Ring2][N][=C][Branch2][Ring1][S][C][=C][C][=C][Branch2][Ring1][=Branch1][C][=Branch1][O][=C][N][=C][Ring2][Ring1][Branch2][C][=C][Ring1][Branch1][C][=C][C][=N][C][=C][Ring1][=Branch1][NH0][Ring1][P][C][=C][C][=N][C][=C][Ring1][=Branch1][C][=C][Ring2][Ring1][=N][NH0][Ring2][Ring2][=Branch2] MOFid-v2.ERROR.cat0;ja0c07257_si_005_ASR_pacman'}] MOF 정밀 해부 결과 === 
+
+{'RACs': {'Metal': {'D_mc-I-0-all': 0.0,
+                    'D_mc-I-1-all': 0.0,
+                    'D_mc-I-2-all': 0.0,
+                    'D_mc-I-3-all': 0.0,
+                    'D_mc-S-0-all': 0.0,
+                    'D_mc-S-1-all': 3.06,
+                    'D_mc-S-2-all': 5.88,
+                    'D_mc-S-3-all': 11.4,
+                    'D_mc-T-0-all': 0.0,
+                    'D_mc-T-1-all': 18.0,
+                    'D_mc-T-2-all': 36.0,
+                    'D_mc-T-3-all': 68.0,
+                    'D_mc-Z-0-all': 0.0,
+                    'D_mc-Z-1-all': 120.0,
+                    'D_mc-Z-2-all': 252.0,
+                    'D_mc-Z-3-all': 440.0,
+                    'D_mc-chi-0-all': 0.0,
+                    'D_mc-chi-1-all': -6.96,
+                    'D_mc-chi-2-all': -8.04,
+                    'D_mc-chi-3-all': -12.0,
+                    'f-I-0-all': 19.0,
+                    'f-I-1-all': 36.0,
+                    'f-I-2-all': 66.0,
+                    'f-I-3-all': 120.0,
+                    'f-S-0-all': 12.0774,
+                    'f-S-1-all': 25.2,
+                    'f-S-2-all': 47.2746,
+                    'f-S-3-all': 69.3,
+                    'f-T-0-all': 102.0,
+                    'f-T-1-all': 288.0,
+                    'f-T-2-all': 426.0,
+                    'f-T-3-all': 360.0,
+                    'f-Z-0-all': 1455.0,
+                    'f-Z-1-all': 3276.0,
+                    'f-Z-2-all': 5790.0,
+                    'f-Z-3-all': 5040.0,
+                    'f-chi-0-all': 137.014,
+                    'f-chi-1-all': 254.6304,
+                    'f-chi-2-all': 470.334,
+                    'f-chi-3-all': 930.24,
+                    'mc-I-0-all': 1.0,
+                    'mc-I-1-all': 6.0,
+                    'mc-I-2-all': 12.0,
+                    'mc-I-3-all': 20.0,
+                    'mc-S-0-all': 1.5876000000000001,
+                    'mc-S-1-all': 5.67,
+                    'mc-S-2-all': 11.6424,
+                    'mc-S-3-all': 17.388,
+                    'mc-T-0-all': 36.0,
+                    'mc-T-1-all': 108.0,
+                    'mc-T-2-all': 216.0,
+                    'mc-T-3-all': 312.0,
+                    'mc-Z-0-all': 729.0,
+                    'mc-Z-1-all': 1134.0,
+                    'mc-Z-2-all': 1944.0,
+                    'mc-Z-3-all': 2700.0,
+                    'mc-chi-0-all': 3.5343999999999998,
+                    'mc-chi-1-all': 34.2912,
+                    'mc-chi-2-all': 57.528,
+                    'mc-chi-3-all': 93.248},
+          'Linker': {'D_lc-I-0-all': 0.0,
+                     'D_lc-I-1-all': 0.0,
+                     'D_lc-I-2-all': 0.0,
+                     'D_lc-I-3-all': 0.0,
+                     'D_lc-S-0-all': 0.0,
+                     'D_lc-S-1-all': -0.04,
+                     'D_lc-S-2-all': 0.1867,
+                     'D_lc-S-3-all': 0.7000000000000001,
+                     'D_lc-T-0-all': 0.0,
+                     'D_lc-T-1-all': -2.0,
+                     'D_lc-T-2-all': -2.6667,
+                     'D_lc-T-3-all': -1.0,
+                     'D_lc-Z-0-all': 0.0,
+                     'D_lc-Z-1-all': 2.0,
+                     'D_lc-Z-2-all': 7.3333,
+                     'D_lc-Z-3-all': 15.0,
+                     'D_lc-alpha-0-all': 0.0,
+                     'D_lc-alpha-1-all': -7.8,
+                     'D_lc-alpha-2-all': -11.0714,
+                     'D_lc-alpha-3-all': -5.9142,
+                     'D_lc-chi-0-all': 0.0,
+                     'D_lc-chi-1-all': 0.98,
+                     'D_lc-chi-2-all': 2.1933,
+                     'D_lc-chi-3-all': 3.15,
+                     'lc-I-0-all': 1.0,
+                     'lc-I-1-all': 2.0,
+                     'lc-I-2-all': 4.0,
+                     'lc-I-3-all': 5.0,
+                     'lc-S-0-all': 0.5625,
+                     'lc-S-1-all': 1.155,
+                     'lc-S-2-all': 2.11,
+                     'lc-S-3-all': 2.2875,
+                     'lc-T-0-all': 4.0,
+                     'lc-T-1-all': 12.0,
+                     'lc-T-2-all': 21.3333,
+                     'lc-T-3-all': 22.0,
+                     'lc-Z-0-all': 49.0,
+                     'lc-Z-1-all': 84.0,
+                     'lc-Z-2-all': 144.6667,
+                     'lc-Z-3-all': 140.0,
+                     'lc-alpha-0-all': 54.76,
+                     'lc-alpha-1-all': 167.24,
+                     'lc-alpha-2-all': 300.9684,
+                     'lc-alpha-3-all': 317.5652,
+                     'lc-chi-0-all': 9.2416,
+                     'lc-chi-1-all': 15.504,
+                     'lc-chi-2-all': 30.2987,
+                     'lc-chi-3-all': 36.632,
+                     'f-lig-I-0': 72.0,
+                     'f-lig-I-1': 160.0,
+                     'f-lig-I-2': 256.0,
+                     'f-lig-I-3': 320.0,
+                     'f-lig-S-0': 31.5016,
+                     'f-lig-S-1': 79.5872,
+                     'f-lig-S-2': 121.3568,
+                     'f-lig-S-3': 138.5072,
+                     'f-lig-T-0': 416.0,
+                     'f-lig-T-1': 1056.0,
+                     'f-lig-T-2': 1568.0,
+                     'f-lig-T-3': 1768.0,
+                     'f-lig-Z-0': 1856.0,
+                     'f-lig-Z-1': 4512.0,
+                     'f-lig-Z-2': 6640.0,
+                     'f-lig-Z-3': 7112.0,
+                     'f-lig-chi-0': 450.1928,
+                     'f-lig-chi-1': 1037.544,
+                     'f-lig-chi-2': 1656.184,
+                     'f-lig-chi-3': 2011.136},
+          'Function-group': {'D_func-I-0-all': 0.0,
+                             'D_func-I-1-all': 0.0,
+                             'D_func-I-2-all': 0.0,
+                             'D_func-I-3-all': 0.0,
+                             'D_func-S-0-all': 0.0,
+                             'D_func-S-1-all': -0.04,
+                             'D_func-S-2-all': 0.72,
+                             'D_func-S-3-all': 0.74,
+                             'D_func-T-0-all': 0.0,
+                             'D_func-T-1-all': -2.0,
+                             'D_func-T-2-all': 0.0,
+                             'D_func-T-3-all': 1.0,
+                             'D_func-Z-0-all': 0.0,
+                             'D_func-Z-1-all': 2.0,
+                             'D_func-Z-2-all': 14.0,
+                             'D_func-Z-3-all': 13.0,
+                             'D_func-alpha-0-all': 0.0,
+                             'D_func-alpha-1-all': -7.8,
+                             'D_func-alpha-2-all': -2.0142,
+                             'D_func-alpha-3-all': 1.8858000000000001,
+                             'D_func-chi-0-all': 0.0,
+                             'D_func-chi-1-all': 0.98,
+                             'D_func-chi-2-all': 2.66,
+                             'D_func-chi-3-all': 2.17,
+                             'func-I-0-all': 1.0,
+                             'func-I-1-all': 2.0,
+                             'func-I-2-all': 4.0,
+                             'func-I-3-all': 3.0,
+                             'func-S-0-all': 0.5625,
+                             'func-S-1-all': 1.155,
+                             'func-S-2-all': 1.71,
+                             'func-S-3-all': 1.1325,
+                             'func-T-0-all': 4.0,
+                             'func-T-1-all': 12.0,
+                             'func-T-2-all': 16.0,
+                             'func-T-3-all': 10.0,
+                             'func-Z-0-all': 49.0,
+                             'func-Z-1-all': 84.0,
+                             'func-Z-2-all': 98.0,
+                             'func-Z-3-all': 56.0,
+                             'func-alpha-0-all': 54.76,
+                             'func-alpha-1-all': 167.24,
+                             'func-alpha-2-all': 233.9452,
+                             'func-alpha-3-all': 150.3252,
+                             'func-chi-0-all': 9.2416,
+                             'func-chi-1-all': 15.504,
+                             'func-chi-2-all': 28.88,
+                             'func-chi-3-all': 21.128}},
+ 'reference': {'DOI': '10.1021/ja0c07257', 'year': 'unknown', 'source': 'SI'},
+ 'structure_info': {'average_mass': 9.254867877,
+                    'charge': 'PACMAN-DDEC6',
+                    'n_atoms': 146,
+                    'unmodified': False,
+                    'extension': 'All Solvent Removed',
+                    'space_group': {'hall': '-C 2yc', 'number': 15},
+                    'memo': None},
+ 'id': {'common_name': 'nan',
+        'mofid-v1': '[Co].n1ccc(cc1)C1=C2C=CC(=C(c3ccncc3)C3=NC(=C(C4=CC=C(C(=C5N=C1C=C5)c1ccncc1)[N]4)c1ccncc1)C=C3)[N]2 '
+                    'MOFid-v1.ERROR.cat0;ja0c07257_si_005_ASR_pacman',
+        'mofid-v2': '[Co1_Type-1].[N][=C][C][=C][Branch1][Branch1][C][=C][Ring1][=Branch1][C][=C][C][=C][C][=Branch2][=Branch1][C][=C][Branch1][=Branch2][C][=C][C][=N][C][=C][Ring1][=Branch1][C][=N][C][=Branch2][Ring2][N][=C][Branch2][Ring1][S][C][=C][C][=C][Branch2][Ring1][=Branch1][C][=Branch1][O][=C][N][=C][Ring2][Ring1][Branch2][C][=C][Ring1][Branch1][C][=C][C][=N][C][=C][Ring1][=Branch1][NH0][Ring1][P][C][=C][C][=N][C][=C][Ring1][=Branch1][C][=C][Ring2][Ring1][=N][NH0][Ring2][Ring2][=Branch2] '
+                    'MOFid-v2.ERROR.cat0;ja0c07257_si_005_ASR_pacman'},
+ 'Zeopp': {'LCD': 4.88768,
+           'PLD': 3.8223000000000003,
+           'LFPD': 4.88768,
+           'density': 1.07248,
+           'ASA': 224.911,
+           'GSA': 1002.37,
+           'VSA': 1075.02,
+           'NASA': 0.0,
+           'NGSA': 0.0,
+           'NVSA': 0.0,
+           'PV': 1052.35,
+           'VF': 0.503,
+           'GPV': 0.469006,
+           'NPV': 0.0,
+           'NGPV': 0.0,
+           'dimension': 2,
+           'NVF': 0.0},
+ 'CrystalNets': {'single_nodes': 'unstable',
+                 'all_nodes': 'unstable',
+                 'catenation': 1,
+                 'dimension': 3},
+ 'metal': {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_type': None},
+ 'heat_capacity': {'300K': 0.901236205, '350K': 1.038390004, '400K': 1.115864154},
+ 'stability': {'thermal': '496.5', 'solvent': '0.8030595', 'water': 'unknown'},
+ 'water': {'GEMC': ['# Gibbs Ensemble Monte Carlo Simulation Software: MCCCS‒MN (Monte Carlo for '
+                    'Complex Chemical Systems‒Minnesota)\n',
+                    '# Setting: cutoff=9 Å, simulation cycles: 5E3 + 1.5E4 + 2.5E4\n',
+                    'data_aif\n',
+                    "_adsnt_material_id '0000[Co][nan]2[ASR]1'\n",
+                    '_exptl_temperature 298\n',
+                    '_simltn_code ASR_3572_GEMC_Completed\n',
+                    '_simltn_date 2024-11-19\n',
+                    '_simltn_forcefield_adsorbent UFF4MOF\n',
+                    '_simltn_forcefield_adsorptive TIP4P\n',
+                    "_simltn_size 'N of unitcells: 8.0, Volume (cm3): 2.09e-21'\n",
+                    '_units_loading Molecules/Supercell\n',
+                    '_units_pressure Pa\n',
+                    '_units_temperature K\n',
+                    'loop_\n',
+                    '_adsorp_pressure\n',
+                    '_adsorp_p0\n',
+                    '_adsorp_amount\n',
+                    '0.1 4540 3e-06\n',
+                    '1.0 4540 0.000109\n',
+                    '10.0 4540 0.001159\n',
+                    '100.0 4540 0.012584\n',
+                    '1000.0 4540 0.125726'],
+           'water_classification': 'weak',
+           'Widom': [6.2518e-06, 6.28624e-08]}}
+
+======================================================================
+# 셀 2
+import pandas as pd
+
+# ---------------------------------------------------------
+----------------------------------------------------------------------
+경고: 뼈대 정보 열('crystalnets')을 찾을 수 없어 모두 'unknown'으로 처리합니다.
+
+🎯 3중 필터링 완료!
+혹독한 조건을 모두 통과한 최정예 MOF 개수: 0개
+아쉽게도 모든 조건을 만족하는 MOF가 없습니다.
+
+======================================================================
+# 셀 3
+# === 범인 찾기: 각 조건별로 생존자가 몇 명인지 따로따로 세어보기 ===
+
+print("🔍 [ 스크리닝 병목 현상 진단 리포트 ]\n")
+----------------------------------------------------------------------
+🔍 [ 스크리닝 병목 현상 진단 리포트 ]
+
+1. [안정성] 관절이 튼튼한(stable) MOF: 0개
+2. [크  기] 입구가 충분히 넓은(PLD >= 3.3) MOF: 2233개
+3. [소수성] 물을 잘 튕겨내는(weak) MOF: 955개
+
+⚠️ [주의] 뼈대 정보가 누락된(unknown) MOF: 2737개
+⚠️ [주의] 수분 저항성 정보가 누락된(unknown) MOF: 738개
+
+======================================================================
+# 셀 4
+import pandas as pd
+
+# ---------------------------------------------------------
+----------------------------------------------------------------------
+
+ 3중 필터링을 완수했습니다
+전체 2,737개 중, 조건을 모두 통과한 최정예 MOF 개수: 0개
+
+아쉽게도 이 2,737개의 SI 데이터 안에는 조건을 모두 만족하는 유니콘 물질이 없습니다. 세상이 만만치 않죠?
+다음 스텝으로 넘어가기 위해 조건을 살짝 완화해 보거나, 본편 데이터(CSD)를 가져와야 합니다.
+
+======================================================================
+# 셀 5
+# === 🔍 0개 사태 원인 규명: 스크리닝 부검 리포트 ===
+
+print(" [ 충족 조건별 재스크리닝 ] \n")
+----------------------------------------------------------------------
+ [ 충족 조건별 재스크리닝 ] 
+
+1. [안정성] 뼈대가 튼튼한(stable) MOF: 0개
+2. [크  기] 입구가 넓은(PLD >= 3.3) MOF: 2233개
+3. [소수성] 물을 잘 튕겨내는(weak) MOF: 955개
+
+👉 1단계 통과 (튼튼함): 0개 생존
+👉 2단계 통과 (튼튼함 + 넓은 입구): 0개 생존
+👉 3단계 통과 (튼튼함 + 넓은 입구 + 방수): 0개 (최종)
+
+======================================================================
+# 셀 6
+# === 1. CrystalNets 데이터의 민낯 파헤치기 ===
+
+# 딕셔너리에서 'all_nodes' 값을 안전하게 꺼내오는 함수
+----------------------------------------------------------------------
+🔬 [ 뼈대 안정성 데이터(all_nodes) 종류별 개수 확인 ]
+
+raw_node_status
+unnamed    884
+sql        388
+pcu        178
+unname     101
+hcb        100
+          ... 
+tfw          1
+etb          1
+nof          1
+hwx          1
+bsn          1
+Name: count, Length: 153, dtype: int64
+
+======================================================================
+# 셀 7
+import pandas as pd
+
+# 1. 추출 (안정성 추출은 포기하고, 크기와 수분 저항성만 뺍니다)
+----------------------------------------------------------------------
+🚨 [ 안정성 조건 임시 해제 스크리닝 ] 🚨
+
+입구(PLD>=3.3)와 소수성(weak)만으로 살아남은 MOF 개수: 795개
+
+                                                                            id  \
+ja0c07257_si_005_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+ja0c07257_si_011_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+ja0c07257_si_012_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+ja0c07257_si_003_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].c1ccc...   
+ja0c07257_si_007_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+ja0c07257_si_008_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+ja0c07257_si_010_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Co].n1ccc...   
+ja206917z_si_001_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Cr].[Mn]....   
+c7ta02760e2_4_ASR_pacman     {'common_name': 'nan', 'mofid-v1': '[Cu][Cu].[...   
+cm501138g_si_005_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Cu][Cu].[...   
+
+                                                                         metal  \
+ja0c07257_si_005_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_011_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_012_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_003_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_007_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_008_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c07257_si_010_ASR_pacman  {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja206917z_si_001_ASR_pacman  {'metal_type': 'Cr,Mn', 'has_OMS': 'No', 'OMS_...   
+c7ta02760e2_4_ASR_pacman     {'metal_type': 'Cu', 'has_OMS': 'No', 'OMS_typ...   
+cm501138g_si_005_ASR_pacman  {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+
+                             PLD_value water_class  
+ja0c07257_si_005_ASR_pacman    3.82230        weak  
+ja0c07257_si_011_ASR_pacman    4.88428        weak  
+ja0c07257_si_012_ASR_pacman    4.89555        weak  
+ja0c07257_si_003_ASR_pacman    5.06226        weak  
+ja0c07257_si_007_ASR_pacman    5.10639        weak  
+ja0c07257_si_008_ASR_pacman    4.92736        weak  
+ja0c07257_si_010_ASR_pacman    4.92588        weak  
+ja206917z_si_001_ASR_pacman    4.72231        weak  
+c7ta02760e2_4_ASR_pacman       3.66848        weak  
+cm501138g_si_005_ASR_pacman    6.58166        weak  
+======================================================================
+# 셀 8
+# === 🚀 질문자님의 아이디어: '매직 윈도우' 스크리닝 ===
+
+# 아까 795개가 살아남았던 final_candidates 명단에서 한 번 더 걸러냅니다.
+----------------------------------------------------------------------
+🚨 [ 매직 윈도우 (3.3 ≤ PLD ≤ 3.6) 도입 결과 ] 🚨
+
+질소(N2)를 완벽히 차단할 수 있는 구조적 크기를 가진 MOF: 63개 생존!
+
+                                                                                      id  \
+cg050585esi20051105_115011_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Cu][Cu].[...   
+ja202154j_si_002_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...   
+cg400183s_si_002_2_ASR_pacman          {'common_name': 'nan', 'mofid-v1': 'NC1=NN=C([...   
+cg400183s_si_002_3_ASR_pacman          {'common_name': 'nan', 'mofid-v1': 'NC1=N[N]C=...   
+cg500121f_si_004_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'NC1=NC=N[N...   
+ic5028256_si_002_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...   
+ja6b09155_si_006_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'Cc1cc(C2=C...   
+ic6b00001_si_004_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'C[Si]1(CCc...   
+am6b14554_si_003_2_ASR_pacman          {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+am6b14554_si_003_3_ASR_pacman          {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+
+                                                                                   metal  \
+cg050585esi20051105_115011_ASR_pacman  {'metal_type': 'Cu', 'has_OMS': 'No', 'OMS_typ...   
+ja202154j_si_002_ASR_pacman            {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+cg400183s_si_002_2_ASR_pacman          {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+cg400183s_si_002_3_ASR_pacman          {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+cg500121f_si_004_ASR_pacman            {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ic5028256_si_002_ASR_pacman            {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+ja6b09155_si_006_ASR_pacman            {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ic6b00001_si_004_ASR_pacman            {'metal_type': 'Cu,Si', 'has_OMS': 'Yes', 'OMS...   
+am6b14554_si_003_2_ASR_pacman          {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+am6b14554_si_003_3_ASR_pacman          {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+
+                                       PLD_value water_class  
+cg050585esi20051105_115011_ASR_pacman    3.55155        weak  
+ja202154j_si_002_ASR_pacman              3.40958        weak  
+cg400183s_si_002_2_ASR_pacman            3.52855        weak  
+cg400183s_si_002_3_ASR_pacman            3.59683        weak  
+cg500121f_si_004_ASR_pacman              3.49250        weak  
+ic5028256_si_002_ASR_pacman              3.32550        weak  
+ja6b09155_si_006_ASR_pacman              3.57101        weak  
+ic6b00001_si_004_ASR_pacman              3.45765        weak  
+am6b14554_si_003_2_ASR_pacman            3.53847        weak  
+am6b14554_si_003_3_ASR_pacman            3.44314        weak  
+======================================================================
+# 셀 9
+import pandas as pd
+
+# (어제까지의 코드가 실행되어 'magic_window_candidates' 명단이 63개로 잘 남아있다고 가정합니다)
+----------------------------------------------------------------------
+ [ 최정예 63개 MOF 중심 금속(Metal) 분포 확인 ]
+
+metal
+{'metal_type': 'Co', 'has_OMS': 'No', 'OMS_type': None}        15
+{'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_type': 'Zn'}       10
+{'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_type': 'Cu'}       10
+{'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_type': None}         7
+{'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_type': None}         7
+{'metal_type': 'Co', 'has_OMS': 'Yes', 'OMS_type': 'Co'}        4
+{'metal_type': 'Cu', 'has_OMS': 'No', 'OMS_type': None}         3
+{'metal_type': 'Cu,Si', 'has_OMS': 'Yes', 'OMS_type': 'Cu'}     1
+{'metal_type': 'Cd', 'has_OMS': 'Yes', 'OMS_type': 'Cd'}        1
+{'metal_type': 'V', 'has_OMS': 'No', 'OMS_type': None}          1
+{'metal_type': 'Ce', 'has_OMS': 'No', 'OMS_type': None}         1
+{'metal_type': 'La', 'has_OMS': 'No', 'OMS_type': None}         1
+{'metal_type': 'Mn', 'has_OMS': 'No', 'OMS_type': None}         1
+{'metal_type': 'Ni', 'has_OMS': 'No', 'OMS_type': None}         1
+Name: count, dtype: int64
+--------------------------------------------------
+ 최종 63개의 명단이 'MAGIC_WINDOW_63_MOFS.csv' 파일로 저장되었습니다.
+
+======================================================================
+# 셀 10
+import pandas as pd
+
+# === 🚀 질문자님의 아이디어: '매직 윈도우' 스크리닝 ===
+----------------------------------------------------------------------
+🚨 [ 매직 윈도우 (3.3 ≤ PLD ≤ 3.6) 도입 결과 ] 🚨
+
+질소를 완벽히 차단할 수 있는 구조적 크기를 가진 MOF: 63개 생존!
+
+                                                                                      id  \
+cg050585esi20051105_115011_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Cu][Cu].[...   
+ja202154j_si_002_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...   
+cg400183s_si_002_2_ASR_pacman          {'common_name': 'nan', 'mofid-v1': 'NC1=NN=C([...   
+cg400183s_si_002_3_ASR_pacman          {'common_name': 'nan', 'mofid-v1': 'NC1=N[N]C=...   
+cg500121f_si_004_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'NC1=NC=N[N...   
+ic5028256_si_002_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...   
+ja6b09155_si_006_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'Cc1cc(C2=C...   
+ic6b00001_si_004_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'C[Si]1(CCc...   
+am6b14554_si_003_2_ASR_pacman          {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+am6b14554_si_003_3_ASR_pacman          {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+ja8b09631_si_002_ASR_pacman            {'common_name': 'nan', 'mofid-v1': '[Cd].c1ccc...   
+cm8b00681_si_002_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...   
+cm8b00681_si_004_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...   
+cm8b00681_si_005_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...   
+cm8b00681_si_006_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...   
+cm8b00681_si_007_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...   
+c8dt04180f2_ASR_pacman                 {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+c9ra07737e2_3_ASR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+c8ce01003j2_4_ASR_pacman               {'common_name': 'nan', 'mofid-v1': '[Cu][Cu].[...   
+c8dt04214d2_1_ASR_pacman               {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   
+c9sc04043a2_3_ASR_pacman               {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   
+c8ta12092g2_ASR_pacman                 {'common_name': 'nan', 'mofid-v1': '[Co].n1n[n...   
+c8ta10631b2_ASR_pacman                 {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...   
+ja0c00368_si_002_1_ASR_pacman          {'common_name': 'nan', 'mofid-v1': '* MOFid-v1...   
+ja0c00368_si_002_2_ASR_pacman          {'common_name': 'nan', 'mofid-v1': '* MOFid-v1...   
+d0cc04543h2_2_ASR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+d1sc00205h2_1_ASR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+d0ce00175a2_1_ASR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+d1cc04371d2_ASR_pacman                 {'common_name': 'nan', 'mofid-v1': 'Nn1c(nnc1c...   
+d2dt02383k2_1_ASR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+ja202154j_si_002_FSR_pacman            {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...   
+cg400183s_si_002_2_FSR_pacman          {'common_name': 'nan', 'mofid-v1': 'NC1=NN=C([...   
+cg400183s_si_002_3_FSR_pacman          {'common_name': 'nan', 'mofid-v1': 'NC1=N[N]C=...   
+cg500121f_si_004_FSR_pacman            {'common_name': 'nan', 'mofid-v1': 'NC1=NC=N[N...   
+ic5028256_si_002_FSR_pacman            {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...   
+c5ce01473e2_2_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[Zn].n1ccc...   
+ja6b09155_si_006_FSR_pacman            {'common_name': 'nan', 'mofid-v1': 'Cc1cc(C2=C...   
+jz6b02458_si_004_25_FSR_pacman         {'common_name': 'nan', 'mofid-v1': 'C1CN2CCN1C...   
+c6qi00506c2_2_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+am6b14554_si_003_3_FSR_pacman          {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+c6dt03883b2_3_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   
+cm8b00681_si_004_FSR_pacman            {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...   
+cm8b00681_si_005_FSR_pacman            {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...   
+c8dt04180f2_FSR_pacman                 {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+c8ce01868e2_3_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   
+c9ra07737e2_3_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+c8ce01003j2_4_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[Cu][Cu].[...   
+c8ce01868e2_5_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   
+c9sc04043a2_3_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   
+c8ta12092g2_FSR_pacman                 {'common_name': 'nan', 'mofid-v1': '[Co].n1n[n...   
+c8ta10631b2_FSR_pacman                 {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...   
+ja0c00368_si_002_2_FSR_pacman          {'common_name': 'nan', 'mofid-v1': '* MOFid-v1...   
+am9b22410_si_002_FSR_pacman            {'common_name': 'nan', 'mofid-v1': 'O=CN(C)C.[...   
+d0cc04543h2_2_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+d1sc00205h2_1_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+d0ce00175a2_1_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+d1cc04371d2_FSR_pacman                 {'common_name': 'nan', 'mofid-v1': 'Nn1c(nnc1c...   
+d3ce00557g2_4_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+d2dt02383k2_1_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...   
+d2se00527a2_FSR_pacman                 {'common_name': 'nan', 'mofid-v1': 'C1CN2CCN1C...   
+d2ce01382g2_2_FSR_pacman               {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   
+d3qi01092a2_1_FSR_pacman               {'common_name': 'nan', 'mofid-v1': 'C1=NC=C2C(...   
+d3qi01092a2_2_FSR_pacman               {'common_name': 'nan', 'mofid-v1': 'C1=NC=C2C(...   
+
+                                                                                   metal  \
+cg050585esi20051105_115011_ASR_pacman  {'metal_type': 'Cu', 'has_OMS': 'No', 'OMS_typ...   
+ja202154j_si_002_ASR_pacman            {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+cg400183s_si_002_2_ASR_pacman          {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+cg400183s_si_002_3_ASR_pacman          {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+cg500121f_si_004_ASR_pacman            {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ic5028256_si_002_ASR_pacman            {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+ja6b09155_si_006_ASR_pacman            {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ic6b00001_si_004_ASR_pacman            {'metal_type': 'Cu,Si', 'has_OMS': 'Yes', 'OMS...   
+am6b14554_si_003_2_ASR_pacman          {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+am6b14554_si_003_3_ASR_pacman          {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+ja8b09631_si_002_ASR_pacman            {'metal_type': 'Cd', 'has_OMS': 'Yes', 'OMS_ty...   
+cm8b00681_si_002_ASR_pacman            {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+cm8b00681_si_004_ASR_pacman            {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+cm8b00681_si_005_ASR_pacman            {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+cm8b00681_si_006_ASR_pacman            {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+cm8b00681_si_007_ASR_pacman            {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+c8dt04180f2_ASR_pacman                 {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+c9ra07737e2_3_ASR_pacman               {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+c8ce01003j2_4_ASR_pacman               {'metal_type': 'Cu', 'has_OMS': 'No', 'OMS_typ...   
+c8dt04214d2_1_ASR_pacman               {'metal_type': 'V', 'has_OMS': 'No', 'OMS_type...   
+c9sc04043a2_3_ASR_pacman               {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+c8ta12092g2_ASR_pacman                 {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+c8ta10631b2_ASR_pacman                 {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c00368_si_002_1_ASR_pacman          {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+ja0c00368_si_002_2_ASR_pacman          {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+d0cc04543h2_2_ASR_pacman               {'metal_type': 'Co', 'has_OMS': 'Yes', 'OMS_ty...   
+d1sc00205h2_1_ASR_pacman               {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+d0ce00175a2_1_ASR_pacman               {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+d1cc04371d2_ASR_pacman                 {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+d2dt02383k2_1_ASR_pacman               {'metal_type': 'Co', 'has_OMS': 'Yes', 'OMS_ty...   
+ja202154j_si_002_FSR_pacman            {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+cg400183s_si_002_2_FSR_pacman          {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+cg400183s_si_002_3_FSR_pacman          {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+cg500121f_si_004_FSR_pacman            {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ic5028256_si_002_FSR_pacman            {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+c5ce01473e2_2_FSR_pacman               {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+ja6b09155_si_006_FSR_pacman            {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+jz6b02458_si_004_25_FSR_pacman         {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+c6qi00506c2_2_FSR_pacman               {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+am6b14554_si_003_3_FSR_pacman          {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+c6dt03883b2_3_FSR_pacman               {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+cm8b00681_si_004_FSR_pacman            {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+cm8b00681_si_005_FSR_pacman            {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+c8dt04180f2_FSR_pacman                 {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+c8ce01868e2_3_FSR_pacman               {'metal_type': 'Ce', 'has_OMS': 'No', 'OMS_typ...   
+c9ra07737e2_3_FSR_pacman               {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+c8ce01003j2_4_FSR_pacman               {'metal_type': 'Cu', 'has_OMS': 'No', 'OMS_typ...   
+c8ce01868e2_5_FSR_pacman               {'metal_type': 'La', 'has_OMS': 'No', 'OMS_typ...   
+c9sc04043a2_3_FSR_pacman               {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+c8ta12092g2_FSR_pacman                 {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+c8ta10631b2_FSR_pacman                 {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja0c00368_si_002_2_FSR_pacman          {'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_ty...   
+am9b22410_si_002_FSR_pacman            {'metal_type': 'Mn', 'has_OMS': 'No', 'OMS_typ...   
+d0cc04543h2_2_FSR_pacman               {'metal_type': 'Co', 'has_OMS': 'Yes', 'OMS_ty...   
+d1sc00205h2_1_FSR_pacman               {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+d0ce00175a2_1_FSR_pacman               {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+d1cc04371d2_FSR_pacman                 {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+d3ce00557g2_4_FSR_pacman               {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+d2dt02383k2_1_FSR_pacman               {'metal_type': 'Co', 'has_OMS': 'Yes', 'OMS_ty...   
+d2se00527a2_FSR_pacman                 {'metal_type': 'Ni', 'has_OMS': 'No', 'OMS_typ...   
+d2ce01382g2_2_FSR_pacman               {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+d3qi01092a2_1_FSR_pacman               {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+d3qi01092a2_2_FSR_pacman               {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+
+                                       PLD_value water_class  
+cg050585esi20051105_115011_ASR_pacman    3.55155        weak  
+ja202154j_si_002_ASR_pacman              3.40958        weak  
+cg400183s_si_002_2_ASR_pacman            3.52855        weak  
+cg400183s_si_002_3_ASR_pacman            3.59683        weak  
+cg500121f_si_004_ASR_pacman              3.49250        weak  
+ic5028256_si_002_ASR_pacman              3.32550        weak  
+ja6b09155_si_006_ASR_pacman              3.57101        weak  
+ic6b00001_si_004_ASR_pacman              3.45765        weak  
+am6b14554_si_003_2_ASR_pacman            3.53847        weak  
+am6b14554_si_003_3_ASR_pacman            3.44314        weak  
+ja8b09631_si_002_ASR_pacman              3.39104        weak  
+cm8b00681_si_002_ASR_pacman              3.30626        weak  
+cm8b00681_si_004_ASR_pacman              3.30997        weak  
+cm8b00681_si_005_ASR_pacman              3.38120        weak  
+cm8b00681_si_006_ASR_pacman              3.36172        weak  
+cm8b00681_si_007_ASR_pacman              3.37160        weak  
+c8dt04180f2_ASR_pacman                   3.55888        weak  
+c9ra07737e2_3_ASR_pacman                 3.52134        weak  
+c8ce01003j2_4_ASR_pacman                 3.34203        weak  
+c8dt04214d2_1_ASR_pacman                 3.52093        weak  
+c9sc04043a2_3_ASR_pacman                 3.38023        weak  
+c8ta12092g2_ASR_pacman                   3.51737        weak  
+c8ta10631b2_ASR_pacman                   3.53190        weak  
+ja0c00368_si_002_1_ASR_pacman            3.31385        weak  
+ja0c00368_si_002_2_ASR_pacman            3.37072        weak  
+d0cc04543h2_2_ASR_pacman                 3.42236        weak  
+d1sc00205h2_1_ASR_pacman                 3.51969        weak  
+d0ce00175a2_1_ASR_pacman                 3.35545        weak  
+d1cc04371d2_ASR_pacman                   3.58966        weak  
+d2dt02383k2_1_ASR_pacman                 3.43271        weak  
+ja202154j_si_002_FSR_pacman              3.40958        weak  
+cg400183s_si_002_2_FSR_pacman            3.52855        weak  
+cg400183s_si_002_3_FSR_pacman            3.59683        weak  
+cg500121f_si_004_FSR_pacman              3.49250        weak  
+ic5028256_si_002_FSR_pacman              3.32550        weak  
+c5ce01473e2_2_FSR_pacman                 3.58882        weak  
+ja6b09155_si_006_FSR_pacman              3.57101        weak  
+jz6b02458_si_004_25_FSR_pacman           3.58624        weak  
+c6qi00506c2_2_FSR_pacman                 3.52180        weak  
+am6b14554_si_003_3_FSR_pacman            3.44314        weak  
+c6dt03883b2_3_FSR_pacman                 3.55910        weak  
+cm8b00681_si_004_FSR_pacman              3.30997        weak  
+cm8b00681_si_005_FSR_pacman              3.38120        weak  
+c8dt04180f2_FSR_pacman                   3.55888        weak  
+c8ce01868e2_3_FSR_pacman                 3.42014        weak  
+c9ra07737e2_3_FSR_pacman                 3.52134        weak  
+c8ce01003j2_4_FSR_pacman                 3.34203        weak  
+c8ce01868e2_5_FSR_pacman                 3.38214        weak  
+c9sc04043a2_3_FSR_pacman                 3.38023        weak  
+c8ta12092g2_FSR_pacman                   3.51737        weak  
+c8ta10631b2_FSR_pacman                   3.53190        weak  
+ja0c00368_si_002_2_FSR_pacman            3.37072        weak  
+am9b22410_si_002_FSR_pacman              3.53716        weak  
+d0cc04543h2_2_FSR_pacman                 3.42236        weak  
+d1sc00205h2_1_FSR_pacman                 3.51969        weak  
+d0ce00175a2_1_FSR_pacman                 3.35545        weak  
+d1cc04371d2_FSR_pacman                   3.58966        weak  
+d3ce00557g2_4_FSR_pacman                 3.50634        weak  
+d2dt02383k2_1_FSR_pacman                 3.43271        weak  
+d2se00527a2_FSR_pacman                   3.53473        weak  
+d2ce01382g2_2_FSR_pacman                 3.53540        weak  
+d3qi01092a2_1_FSR_pacman                 3.44353        weak  
+d3qi01092a2_2_FSR_pacman                 3.42380        weak  
+
+✅ 데이터 추출 성공! 폴더에 'Magic_Window_63_MOFS.csv' 파일이 생성되었습니다.
+이 파일을 더블클릭해서 엑셀로 여시면 63개 전체 데이터를 편하게 보실 수 있습니다.
+
+======================================================================
+# 셀 11
+import pandas as pd
+
+# 1. 기존에 합쳐둔 통합 데이터(df)에서 LCD(내부 동굴 크기) 데이터 추가 추출
+----------------------------------------------------------------------
+ [ 플랜 B: 호리병(Bottle-neck) 구조 스크리닝 결과 ] 
+
+입구는 좁고 속은 뻥 뚫린 대용량 소수성 MOF: 56개 생존!
+
+                                                                                      id  \
+cg050585esi20051105_115011_ASR_pacman  {'common_name': 'nan', 'mofid-v1': '[Cu][Cu].[...   
+ja202154j_si_002_ASR_pacman            {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...   
+cg400183s_si_002_2_ASR_pacman          {'common_name': 'nan', 'mofid-v1': 'NC1=NN=C([...   
+c4qi00138a2_ASR_pacman                 {'common_name': 'nan', 'mofid-v1': 'O=P(c1cccc...   
+c7nj00188f2_3_ASR_pacman               {'common_name': 'nan', 'mofid-v1': 'Cc1nccn1CC...   
+ja6b10455_si_002_ASR_pacman            {'common_name': 'nan', 'mofid-v1': '[Ni].[O-]C...   
+am7b04265_si_002_ASR_pacman            {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   
+am6b11797_si_001_1_ASR_pacman          {'common_name': 'nan', 'mofid-v1': 'C(Cn1cncc1...   
+c7nj02904g2_2_ASR_pacman               {'common_name': 'nan', 'mofid-v1': '[Mn].[O-]C...   
+c8dt04180f2_ASR_pacman                 {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   
+
+                                                                                   metal  \
+cg050585esi20051105_115011_ASR_pacman  {'metal_type': 'Cu', 'has_OMS': 'No', 'OMS_typ...   
+ja202154j_si_002_ASR_pacman            {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+cg400183s_si_002_2_ASR_pacman          {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+c4qi00138a2_ASR_pacman                 {'metal_type': 'Co', 'has_OMS': 'Yes', 'OMS_ty...   
+c7nj00188f2_3_ASR_pacman               {'metal_type': 'Co', 'has_OMS': 'No', 'OMS_typ...   
+ja6b10455_si_002_ASR_pacman            {'metal_type': 'Ni', 'has_OMS': 'No', 'OMS_typ...   
+am7b04265_si_002_ASR_pacman            {'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_typ...   
+am6b11797_si_001_1_ASR_pacman          {'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_ty...   
+c7nj02904g2_2_ASR_pacman               {'metal_type': 'Mn', 'has_OMS': 'Yes', 'OMS_ty...   
+c8dt04180f2_ASR_pacman                 {'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_typ...   
+
+                                       PLD_value  LCD_value water_class  
+cg050585esi20051105_115011_ASR_pacman    3.55155    5.55616        weak  
+ja202154j_si_002_ASR_pacman              3.40958   11.46282        weak  
+cg400183s_si_002_2_ASR_pacman            3.52855    5.65164        weak  
+c4qi00138a2_ASR_pacman                   3.83703    5.93349        weak  
+c7nj00188f2_3_ASR_pacman                 3.62698    5.14896        weak  
+ja6b10455_si_002_ASR_pacman              3.66829    5.21863        weak  
+am7b04265_si_002_ASR_pacman              3.70658    6.62246        weak  
+am6b11797_si_001_1_ASR_pacman            3.80955    5.16535        weak  
+c7nj02904g2_2_ASR_pacman                 3.69453    5.32496        weak  
+c8dt04180f2_ASR_pacman                   3.55888    5.71543        weak  
+======================================================================
+# 셀 12
+# === 🔬 GEMC 시뮬레이션 알맹이 데이터 끝까지 까보기 ===
+
+# (주의: 저 데이터가 'CO2'라는 이름의 열에 들어있다고 가정했습니다.
+----------------------------------------------------------------------
+!! NameError: name 'combined_df' is not defined
+======================================================================
+# 셀 13
+import pandas as pd
+
+# 1. G열(index 6) 및 필요한 물리량 데이터 추출
+----------------------------------------------------------------------
+✅ G열 데이터 로드 완료
+🎯 [그룹 1] 매직 윈도우(고순도) 후보: 63개
+🚀 [그룹 2] 고용량 호리병(고속/대용량) 후보: 52개
+
+======================================================================
+# 셀 14
+import pandas as pd
+import matplotlib.pyplot as plt
+----------------------------------------------------------------------
+✅ 두 파일 모두 성공적으로 불러왔습니다!
+
+📊 [ 금속 분포 비교표 ]
+
+                                                    Magic Window (Narrow)  \
+metal                                                                       
+{'metal_type': 'Co', 'has_OMS': 'No', 'OMS_type...                     15   
+{'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_typ...                     10   
+{'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_typ...                     10   
+{'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_type...                      7   
+{'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_type...                      7   
+{'metal_type': 'Co', 'has_OMS': 'Yes', 'OMS_typ...                      4   
+{'metal_type': 'Cu', 'has_OMS': 'No', 'OMS_type...                      3   
+{'metal_type': 'Cu,Si', 'has_OMS': 'Yes', 'OMS_...                      1   
+{'metal_type': 'Cd', 'has_OMS': 'Yes', 'OMS_typ...                      1   
+{'metal_type': 'V', 'has_OMS': 'No', 'OMS_type'...                      1   
+{'metal_type': 'Ni', 'has_OMS': 'No', 'OMS_type...                      0   
+{'metal_type': 'Eu', 'has_OMS': 'No', 'OMS_type...                      0   
+{'metal_type': 'Gd', 'has_OMS': 'No', 'OMS_type...                      0   
+
+                                                    Bottleneck (Wide)  
+metal                                                                  
+{'metal_type': 'Co', 'has_OMS': 'No', 'OMS_type...                 11  
+{'metal_type': 'Zn', 'has_OMS': 'Yes', 'OMS_typ...                 12  
+{'metal_type': 'Cu', 'has_OMS': 'Yes', 'OMS_typ...                  2  
+{'metal_type': 'Zn', 'has_OMS': 'No', 'OMS_type...                  4  
+{'metal_type': 'Cd', 'has_OMS': 'No', 'OMS_type...                  5  
+{'metal_type': 'Co', 'has_OMS': 'Yes', 'OMS_typ...                  3  
+{'metal_type': 'Cu', 'has_OMS': 'No', 'OMS_type...                  1  
+{'metal_type': 'Cu,Si', 'has_OMS': 'Yes', 'OMS_...                  0  
+{'metal_type': 'Cd', 'has_OMS': 'Yes', 'OMS_typ...                  0  
+{'metal_type': 'V', 'has_OMS': 'No', 'OMS_type'...                  0  
+{'metal_type': 'Ni', 'has_OMS': 'No', 'OMS_type...                  6  
+{'metal_type': 'Eu', 'has_OMS': 'No', 'OMS_type...                  3  
+{'metal_type': 'Gd', 'has_OMS': 'No', 'OMS_type...                  2  
+<Figure size 1200x600 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 15
+# === 📊 GEMC 시뮬레이션 성적표 구조 파악하기 ===
+
+# 호리병 그룹(52개) 중에서 첫 번째로 살아남은 녀석의 G열 데이터 하나만 쏙 뽑아봅니다.
+----------------------------------------------------------------------
+🔍 [ GEMC 데이터 내부 구조(Key) 확인 ]
+
+▶ metal_type: Co
+▶ has_OMS: No
+▶ OMS_type: None
+
+======================================================================
+# 셀 16
+import pandas as pd
+
+# ---------------------------------------------------------
+----------------------------------------------------------------------
+✅ J열 타겟팅 완료! 그룹 재설정 완료!
+
+🔍 [ 찐 GEMC 데이터 내부 구조(Key) 확인 ]
+
+▶ GEMC: ['# Gibbs Ensemble Monte Carlo Simulation Software: MCCCS‒MN (Monte Carlo for Complex Chemical Systems‒Minnesota)\n', '# Setting: cutoff=9 Å, simulation cycles: 5E3 + 1.5E4 + 2.5E4\n', 'data_aif\n', "_adsnt_material_id '2012[Co][sqp]3[ASR]2'\n", '_exptl_temperature 298\n', '_simltn_code ASR_3260_GEMC_Completed\n', '_simltn_date 2024-11-19\n', '_simltn_forcefield_adsorbent UFF4MOF\n', '_simltn_forcefield_adsorptive TIP4P\n', "_simltn_size 'N of unitcells: 4.0, Volume (cm3): 2.43e-21'\n", '_units_loading Molecules/Supercell\n', '_units_pressure Pa\n', '_units_temperature K\n', 'loop_\n', '_adsorp_pressure\n', '_adsorp_p0\n', '_adsorp_amount\n', '0.1 4540 1e-05\n', '1.0 4540 8.5e-05\n', '10.0 4540 0.000885\n', '100.0 4540 0.011185\n', '1000.0 4540 0.189845']
+▶ water_classification: weak
+▶ Widom: [7.29701e-06, 6.347039999999999e-07]
+
+======================================================================
+# 셀 17
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+----------------------------------------------------------------------
+✅ 데이터 로드 완료!
+
+!! KeyError: 'GEMC_data'
+======================================================================
+# 셀 18
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+----------------------------------------------------------------------
+🔄 [ 성능 지표(Widom) 추출 및 차트 준비 중... ]
+
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\1965901214.py:67: UserWarning: Glyph 45824 (\N{HANGUL SYLLABLE DAE}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\1965901214.py:67: UserWarning: Glyph 50857 (\N{HANGUL SYLLABLE YONG}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\1965901214.py:67: UserWarning: Glyph 47049 (\N{HANGUL SYLLABLE RYANG}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\1965901214.py:67: UserWarning: Glyph 51648 (\N{HANGUL SYLLABLE JI}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\1965901214.py:67: UserWarning: Glyph 54364 (\N{HANGUL SYLLABLE PYO}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\1965901214.py:67: UserWarning: Glyph 44256 (\N{HANGUL SYLLABLE GO}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\1965901214.py:67: UserWarning: Glyph 49692 (\N{HANGUL SYLLABLE SUN}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\1965901214.py:67: UserWarning: Glyph 46020 (\N{HANGUL SYLLABLE DO}) missing from font(s) DejaVu Sans.
+  plt.tight_layout()
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 44256 (\N{HANGUL SYLLABLE GO}) missing from font(s) DejaVu Sans.
+  fig.canvas.print_figure(bytes_io, **kw)
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 49692 (\N{HANGUL SYLLABLE SUN}) missing from font(s) DejaVu Sans.
+  fig.canvas.print_figure(bytes_io, **kw)
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 46020 (\N{HANGUL SYLLABLE DO}) missing from font(s) DejaVu Sans.
+  fig.canvas.print_figure(bytes_io, **kw)
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 51648 (\N{HANGUL SYLLABLE JI}) missing from font(s) DejaVu Sans.
+  fig.canvas.print_figure(bytes_io, **kw)
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 54364 (\N{HANGUL SYLLABLE PYO}) missing from font(s) DejaVu Sans.
+  fig.canvas.print_figure(bytes_io, **kw)
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 45824 (\N{HANGUL SYLLABLE DAE}) missing from font(s) DejaVu Sans.
+  fig.canvas.print_figure(bytes_io, **kw)
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 50857 (\N{HANGUL SYLLABLE YONG}) missing from font(s) DejaVu Sans.
+  fig.canvas.print_figure(bytes_io, **kw)
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 47049 (\N{HANGUL SYLLABLE RYANG}) missing from font(s) DejaVu Sans.
+  fig.canvas.print_figure(bytes_io, **kw)
+
+<Figure size 1200x800 with 1 Axes>
+[image/png 생략]
+📊 분석 완료!
+- 매직 윈도우 유효 데이터: 63개
+- 호리병 구조 유효 데이터: 52개
+
+======================================================================
+# 셀 19
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+----------------------------------------------------------------------
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+
+🔄 [ 성능 지표(Widom) 추출 및 차트 준비 중... ]
+
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\560056430.py:72: UserWarning: Glyph 10145 (\N{BLACK RIGHTWARDS ARROW}) missing from font(s) Malgun Gothic.
+  plt.tight_layout()
+C:\Users\skyjun\AppData\Local\Temp\ipykernel_33932\560056430.py:72: UserWarning: Glyph 65039 (\N{VARIATION SELECTOR-16}) missing from font(s) Malgun Gothic.
+  plt.tight_layout()
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 10145 (\N{BLACK RIGHTWARDS ARROW}) missing from font(s) Malgun Gothic.
+  fig.canvas.print_figure(bytes_io, **kw)
+C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 65039 (\N{VARIATION SELECTOR-16}) missing from font(s) Malgun Gothic.
+  fig.canvas.print_figure(bytes_io, **kw)
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+
+<Figure size 1200x800 with 1 Axes>
+[image/png 생략]
+📊 분석 완료!
+- 매직 윈도우 유효 데이터: 63개
+- 호리병 구조 유효 데이터: 52개
+
+======================================================================
+# 셀 20
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+----------------------------------------------------------------------
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+
+🔄 [ Extracting Performance Data (Widom) & Preparing Chart... ]
+
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+
+<Figure size 1200x800 with 1 Axes>
+[image/png 생략]
+📊 Analysis Complete!
+- Magic Window Valid Data: 63
+- Bottleneck Valid Data: 52
+
+======================================================================
+# 셀 21
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+----------------------------------------------------------------------
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+
+🔄 Processing N2-Sieving and High-Flux groups...
+
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+Font 'default' does not have a glyph for '\u2212' [U+2212], substituting with a dummy symbol.
+
+<Figure size 1200x800 with 1 Axes>
+[image/png 생략]
+📊 Final Report:
+- N2_Sieving_Group_63_MOFs.csv saved.
+- High_Flux_Bottleneck_52_MOFs.csv saved.
+
+======================================================================
+# 셀 22
+!pip install seaborn
+----------------------------------------------------------------------
+Collecting seaborn
+  Downloading seaborn-0.13.2-py3-none-any.whl.metadata (5.4 kB)
+Requirement already satisfied: numpy!=1.24.0,>=1.20 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from seaborn) (2.4.4)
+Requirement already satisfied: pandas>=1.2 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from seaborn) (3.0.2)
+Requirement already satisfied: matplotlib!=3.6.1,>=3.4 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from seaborn) (3.10.9)
+Requirement already satisfied: contourpy>=1.0.1 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.3.3)
+Requirement already satisfied: cycler>=0.10 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (0.12.1)
+Requirement already satisfied: fonttools>=4.22.0 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (4.62.1)
+Requirement already satisfied: kiwisolver>=1.3.1 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (1.5.0)
+Requirement already satisfied: packaging>=20.0 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (26.0)
+Requirement already satisfied: pillow>=8 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (12.2.0)
+Requirement already satisfied: pyparsing>=3 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (3.3.2)
+Requirement already satisfied: python-dateutil>=2.7 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from matplotlib!=3.6.1,>=3.4->seaborn) (2.9.0.post0)
+Requirement already satisfied: tzdata in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from pandas>=1.2->seaborn) (2026.2)
+Requirement already satisfied: six>=1.5 in C:\Users\skyjun\anaconda3\envs\core_mof\Lib\site-packages (from python-dateutil>=2.7->matplotlib!=3.6.1,>=3.4->seaborn) (1.17.0)
+Downloading seaborn-0.13.2-py3-none-any.whl (294 kB)
+Installing collected packages: seaborn
+Successfully installed seaborn-0.13.2
+
+======================================================================
+# 셀 23
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Extracting Multi-dimensional Data...
+
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+📊 Visualization Complete! Total valid MOFs plotted: 115
+
+======================================================================
+# 셀 24
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+<Figure size 2400x800 with 3 Axes>
+[image/png 생략]
+======================================================================
+# 셀 25
+# 현재까지 가공한 완벽한 원본 통합 데이터(df)를 피클로 영구 보존!
+combined_df.to_pickle('MOF_Project_Master_Data.pkl')
+print("✅ 마스터 데이터가 피클로 안전하게 저장되었습니다!")
+----------------------------------------------------------------------
+✅ 마스터 데이터가 피클로 안전하게 저장되었습니다!
+
+======================================================================
+# 셀 26
+import pandas as pd
+import numpy as np
+import ast
+----------------------------------------------------------------------
+🔄 CSV 데이터 기반으로 마스터 데이터 복구 중...
+✅ 데이터 복구 완벽하게 성공! 총 115개의 MOF 데이터가 장전되었습니다.
+
+======================================================================
+# 셀 27
+import pandas as pd
+import numpy as np
+import ast
+----------------------------------------------------------------------
+🔄 115개 정예 MOF에서 등온선(Isotherm) 데이터 추출을 시작합니다...
+✅ 추출 완료! 총 115개 중 115개의 MOF에서 완벽한 등온선 데이터를 확보했습니다.
+
+🧪 [샘플 확인] MOF 화학종: Cu (OMS: No)
+   - 압력 포인트들: [1.e-01 1.e+00 1.e+01 1.e+02 1.e+03] ...
+   - 흡착량 포인트들: [1.30000e-05 1.71000e-04 3.42500e-03 3.13730e-02 5.54804e-01] ...
+
+======================================================================
+# 셀 28
+import pandas as pd
+import numpy as np
+from scipy.optimize import curve_fit
+----------------------------------------------------------------------
+🚀 2단계: 115개 MOF 대상 VSA 공정 성능(Working Capacity & Energy) 계산 시작...
+--------------------------------------------------
+✅ 총 분석 대상: 115개
+🎯 성공적으로 피팅된 MOF (Working Capacity 도출 완료): 18개
+⚠️ 랭뮤어 피팅 실패 (데이터 누락/비정상 등온선): 97개
+
+[참고] 피팅 실패 명단 (최대 5개만 표시):
+ - {'common_name': 'nan', 'mofid-v1': '[Cu][Cu].[O-]C(=O)C1CCC(CC1)C(=O)[O-].n1ccc(cc1)c1ccncc1 MOFid-v1.pcu.cat1;cg050585esi20051105_115011_ASR_pacman', 'mofid-v2': '[C4Cu2O8_Type-1].[O-1][C][=Branch1][C][=O][C][C][C][C][Branch1][Branch1][C][C][Ring1][=Branch1][C][=Branch1][C][=O][O-1].[N][=C][C][=C][Branch1][Branch1][C][=C][Ring1][=Branch1][C][=C][C][=N][C][=C][Ring1][=Branch1] MOFid-v2.pcu.cat1;cg050585esi20051105_115011_ASR_pacman'}
+ - {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N]1.[Zn] MOFid-v1.sod.cat0.NO_REF;ja202154j_si_002_ASR_pacman', 'mofid-v2': '[Zn1_Type-1].[C][C][=N][C][=C][NH0][Ring1][Branch1].[C][C][=N][CH1][C][=N][Ring1][Branch1] MOFid-v2.sod.cat0;ja202154j_si_002_ASR_pacman'}
+ - {'common_name': 'nan', 'mofid-v1': 'NC1=NN=C([N]1)N.[O-]C(=O)c1cccc(c1)C(=O)[O-].[Zn] MOFid-v1.ERROR.cat0;cg400183s_si_002_2_ASR_pacman', 'mofid-v2': '[Zn1_Type-1].[N][C][=N][N][=C][Branch1][Ring2][NH0][Ring1][Branch1][N].[O-1][C][=Branch1][C][=O][C][=C][C][=C][C][=Branch1][Ring2][=C][Ring1][=Branch1][C][=Branch1][C][=O][O-1] MOFid-v2.ERROR.cat0;cg400183s_si_002_2_ASR_pacman'}
+ - {'common_name': 'nan', 'mofid-v1': 'NC1=NC=N[N]1.NC1=NN=C[N]1.NC1=N[N]C=N1.NC1=[N]=CN=N1.[Co].[O-]C(=O)c1cccc(c1)c1cccc(c1)C(=O)[O-] MOFid-v1.ERROR.cat0;cg500121f_si_004_ASR_pacman', 'mofid-v2': 'unknown'}
+ - {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N]1.CC1=N[CH]C=N1.[Zn] MOFid-v1.sod.cat0;ic5028256_si_002_ASR_pacman', 'mofid-v2': '[Zn1_Type-1].[C][C][=N][C][=C][NH0][Ring1][Branch1].[C][C][=N][CH1][C][=N][Ring1][Branch1] MOFid-v2.sod.cat0;ic5028256_si_002_ASR_pacman'}
+--------------------------------------------------
+💾 'Final_VSA_Process_Metrics.csv' 파일이 저장되었습니다.
+
+                                              MOF_ID      Chemistry  \
+0  {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...  Cu (OMS: Yes)   
+1  {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...  Cu (OMS: Yes)   
+2  {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   Mn (OMS: No)   
+3  {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...  Zn (OMS: Yes)   
+4  {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   Cd (OMS: No)   
+
+           Filter_Type  q_ads (Capacity at 0.15bar)  \
+0  N2-Sieving (Narrow)                        0.002   
+1  N2-Sieving (Narrow)                        0.002   
+2     High-Flux (Wide)                        0.002   
+3     High-Flux (Wide)                        0.001   
+4  N2-Sieving (Narrow)                        0.002   
+
+   q_des (Capacity at 0.01bar)  Working_Capacity (mmol/g)  Recovery (%)  \
+0                          0.0                      0.002          93.3   
+1                          0.0                      0.002          93.3   
+2                          0.0                      0.002          93.3   
+3                          0.0                      0.001          93.3   
+4                          0.0                      0.001          93.3   
+
+   Selectivity  Overall_Performance_Score  
+0        11.68                       0.02  
+1         5.03                       0.01  
+2         9.72                       0.01  
+3        11.03                       0.01  
+4         2.49                       0.00  
+======================================================================
+# 셀 29
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+----------------------------------------------------------------------
+🔍 97개의 실패 원인을 정밀 분석 중입니다...
+
+--------------------------------------------------
+📊 [실패 원인 통계 리포트]
+ - 에러 C: 곡선이 아닌 완벽한 직선형 (q_m 발산): 92개
+ - 정상 피팅 성공: 20개
+ - 에러 D: 알고리즘 수렴 실패 (데이터 노이즈 심각): 3개
+--------------------------------------------------
+
+📉 대표적인 실패 등온선 샘플 4개를 시각화합니다.
+
+<Figure size 1200x1000 with 4 Axes>
+[image/png 생략]
+======================================================================
+# 셀 30
+import pandas as pd
+import numpy as np
+from scipy.optimize import curve_fit
+----------------------------------------------------------------------
+🚀 [하이브리드 모드] 115개 MOF 대상 VSA 공정 성능 계산 시작...
+--------------------------------------------------
+✅ 하이브리드 피팅 완료! 성공한 MOF 개수: 115개
+💾 'Hybrid_VSA_Process_Metrics.csv' 저장 완료.
+--------------------------------------------------
+
+                                              MOF_ID     Chemistry  \
+0  {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...  Zr (OMS: No)   
+1  {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...  Zn (OMS: No)   
+2  {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...  Zn (OMS: No)   
+3  {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...  Zn (OMS: No)   
+4  {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...  Zn (OMS: No)   
+
+           Filter_Type   Fitting_Model  q_ads_0.15bar  q_des_0.01bar  \
+0     High-Flux (Wide)  Henry (Linear)          1.148          0.077   
+1  N2-Sieving (Narrow)  Henry (Linear)          0.330          0.022   
+2  N2-Sieving (Narrow)  Henry (Linear)          0.288          0.019   
+3  N2-Sieving (Narrow)  Henry (Linear)          0.345          0.023   
+4  N2-Sieving (Narrow)  Henry (Linear)          0.298          0.020   
+
+   Working_Capacity_mmol/g  Recovery_%  Selectivity  Performance_Score  
+0                    1.072        93.3       123.78             132.67  
+1                    0.308        93.3       269.02              82.81  
+2                    0.269        93.3       266.92              71.72  
+3                    0.322        93.3       197.53              63.53  
+4                    0.278        93.3       211.88              58.85  
+======================================================================
+# 셀 31
+import pandas as pd
+import numpy as np
+from scipy.optimize import curve_fit
+----------------------------------------------------------------------
+🚀 [하이브리드 모드] 115개 MOF 대상 VSA 공정 성능 계산 시작...
+--------------------------------------------------
+✅ 하이브리드 피팅 완료! 성공한 MOF 개수: 115개
+💾 'Hybrid_VSA_Process_Metrics.csv' 저장 완료.
+--------------------------------------------------
+
+                                              MOF_ID     Chemistry  \
+0  {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...  Zr (OMS: No)   
+1  {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...  Zn (OMS: No)   
+2  {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...  Zn (OMS: No)   
+3  {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...  Zn (OMS: No)   
+4  {'common_name': 'nan', 'mofid-v1': 'CC1=NC=C[N...  Zn (OMS: No)   
+
+           Filter_Type   Fitting_Model  q_ads_0.15bar  q_des_0.01bar  \
+0     High-Flux (Wide)  Henry (Linear)          1.148          0.077   
+1  N2-Sieving (Narrow)  Henry (Linear)          0.330          0.022   
+2  N2-Sieving (Narrow)  Henry (Linear)          0.288          0.019   
+3  N2-Sieving (Narrow)  Henry (Linear)          0.345          0.023   
+4  N2-Sieving (Narrow)  Henry (Linear)          0.298          0.020   
+
+   Working_Capacity_mmol/g  Recovery_%  Selectivity  Performance_Score  
+0                    1.072        93.3       123.78             132.67  
+1                    0.308        93.3       269.02              82.81  
+2                    0.269        93.3       266.92              71.72  
+3                    0.322        93.3       197.53              63.53  
+4                    0.278        93.3       211.88              58.85  
+======================================================================
+# 셀 32
+import pandas as pd
+import numpy as np
+from scipy.optimize import curve_fit
+----------------------------------------------------------------------
+🚀 [버그 수정본] 115개 MOF 대상 VSA 공정 성능 계산 시작...
+--------------------------------------------------
+✅ 압력 단위(Pa->bar) 버그 완벽 수정! 성공한 MOF 개수: 115개
+💾 'Fixed_VSA_Process_Metrics.csv' 저장 완료.
+--------------------------------------------------
+
+                                              MOF_ID     Chemistry  \
+0  {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...  Cd (OMS: No)   
+1  {'common_name': 'nan', 'mofid-v1': 'C1CN2CCN1C...  Co (OMS: No)   
+2  {'common_name': 'nan', 'mofid-v1': 'O=N(=O)c1c...  Ni (OMS: No)   
+3  {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...  Co (OMS: No)   
+4  {'common_name': 'nan', 'mofid-v1': '[Co].[O-]C...  Co (OMS: No)   
+
+           Filter_Type   Fitting_Model  q_ads_0.15bar  q_des_0.01bar  \
+0  N2-Sieving (Narrow)  Henry (Linear)        475.283         31.686   
+1  N2-Sieving (Narrow)  Henry (Linear)        941.875         62.792   
+2     High-Flux (Wide)  Henry (Linear)        700.189         46.679   
+3  N2-Sieving (Narrow)  Henry (Linear)        224.300         14.953   
+4  N2-Sieving (Narrow)  Henry (Linear)        249.335         16.622   
+
+   Working_Capacity_mmol/g  Recovery_%  Selectivity  Performance_Score  
+0                  443.598        93.3        50.41           22363.76  
+1                  879.083        93.3        10.23            8993.35  
+2                  653.510        93.3        13.43            8775.97  
+3                  209.347        93.3        41.00            8582.52  
+4                  232.712        93.3        34.11            7938.41  
+======================================================================
+# 셀 33
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🔍 [정밀 분석] Langmuir 곡선 피팅이 완료된 검증된 MOF만 추출합니다...
+
+--------------------------------------------------
+✅ 검증된 Langmuir MOF 개수: 21개
+--------------------------------------------------
+[핵심 지표 통계 요약]
+       q_ads_0.15bar  Working_Capacity_mmol/g  Selectivity  Performance_Score
+count         21.000                   21.000       21.000             21.000
+mean           8.203                    5.270       22.922             63.565
+std            8.804                    6.312       42.661             88.601
+min            0.463                    0.265        2.490              0.660
+25%            1.845                    0.642        5.030              9.290
+50%            4.846                    2.830       11.680             38.110
+75%           11.059                    8.017       17.020             75.280
+max           36.261                   25.952      189.770            376.050
+--------------------------------------------------
+
+<Figure size 1000x600 with 1 Axes>
+[image/png 생략]
+
+🏆 [검증된 Langmuir 랭킹 Top 5]
+
+                                              MOF_ID      Chemistry  \
+0  {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...  Cu (OMS: Yes)   
+1  {'common_name': 'nan', 'mofid-v1': '[Cd].[O-]C...   Cd (OMS: No)   
+2  {'common_name': 'nan', 'mofid-v1': 'O=C(c1ccnc...  Cu (OMS: Yes)   
+3  {'common_name': 'nan', 'mofid-v1': 'OC(=O)c1cc...   Co (OMS: No)   
+4  {'common_name': 'nan', 'mofid-v1': '[O-]C(=O)c...   Gd (OMS: No)   
+
+   q_ads_0.15bar  Working_Capacity_mmol/g  Selectivity  Performance_Score  
+0         36.261                   25.952        14.49             376.05  
+1         20.581                   15.799         2.50              39.43  
+2         17.645                    9.662        11.68             112.83  
+3          9.071                    8.366        27.71             231.81  
+4         14.068                    8.059         4.73              38.11  
+======================================================================
+# 셀 34
+import pandas as pd
+
+# 1. 아까 저장한 Langmuir 데이터 불러오기
+----------------------------------------------------------------------
+🛡️ 물리적 필터 통과: 16개의 완벽한 타겟 확보!
+
+🏆 [현실성 100% 반영된 진짜 최종 랭킹 Top 5]
+
+       Chemistry          Filter_Type  q_ads_0.15bar  Working_Capacity_mmol/g  \
+3   Co (OMS: No)     High-Flux (Wide)          9.071                    8.366   
+5  Zn (OMS: Yes)  N2-Sieving (Narrow)          9.282                    8.017   
+7  Zn (OMS: Yes)     High-Flux (Wide)         10.874                    6.985   
+8  Zn (OMS: Yes)     High-Flux (Wide)         11.059                    5.432   
+9  Zn (OMS: Yes)     High-Flux (Wide)          4.756                    4.210   
+
+   Selectivity  Performance_Score  
+3        27.71             231.81  
+5         4.53              36.35  
+7        11.03              77.06  
+8        11.91              64.67  
+9        18.27              76.93  
+======================================================================
+# 셀 35
+import pandas as pd
+import numpy as np
+import ast
+----------------------------------------------------------------------
+🚀 물리적 한계(Pore Volume)가 적용된 '유사-랭뮤어(Pseudo-Langmuir)' 외삽 모델 가동 중...
+
+✅ 물리적 보정 완료! 총 115개의 MOF 데이터가 완벽하게 복구되었습니다.
+
+       Chemistry  GPV (cm3/g)  Physical_q_max  q_ads_0.15bar  \
+0  Co (OMS: Yes)        0.696           16.28         11.568   
+1   Zn (OMS: No)        0.499           11.68          8.885   
+2   Zn (OMS: No)        0.499           11.68          9.810   
+3  Zn (OMS: Yes)        0.498           11.65          8.563   
+4   Dy (OMS: No)        0.474           11.10          9.303   
+5  Co (OMS: Yes)        0.481           11.26          9.834   
+6  Zn (OMS: Yes)        0.480           11.24          9.874   
+7   Co (OMS: No)        0.482           11.28          7.555   
+8  Zn (OMS: Yes)        0.480           11.24          9.933   
+9  Cd (OMS: Yes)        0.548           12.83         11.889   
+
+   Working_Capacity_mmol/g  Selectivity  
+0                    9.279         5.06  
+1                    6.844         2.08  
+2                    6.787        11.77  
+3                    6.743         4.54  
+4                    6.451         3.32  
+5                    6.295         6.03  
+6                    6.223        11.03  
+7                    6.212        13.44  
+8                    6.157         8.90  
+9                    6.024         7.89  
+======================================================================
+# 셀 36
+import pandas as pd
+import numpy as np
+import ast
+----------------------------------------------------------------------
+🚀 1. 원본 데이터 로드 및 Pseudo-Langmuir 열역학 보정 가동 중...
+✅ 엑셀 데이터 저장 완료!
+📈 2. 산점도 그래픽 생성 중...
+✅ 고해상도 그래프 저장 완료!
+⚠️ PDF 생성 생략: 'weasyprint' 라이브러리가 설치되지 않았습니다. (pip install weasyprint)
+🎉 모든 결론 도출 및 파일 생성이 완료되었습니다!
+
+<Figure size 1000x800 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 37
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+----------------------------------------------------------------------
+🚀 1. 데이터 로드 및 금속(Metal) 색상 동기화 중...
+📈 2. 산점도 그래픽 생성 중...
+✅ 금속 색상 동기화 그래프(PNG) 저장 완료!
+📄 3. 색상 매칭 HTML 테이블 생성 중...
+✅ 완벽하게 색상이 동기화된 HTML 표 생성 완료!
+
+💡 [PDF 변환 팁]
+생성된 'High_Flux_Color_Table.html' 파일을 크롬/엣지 브라우저에서 더블 클릭하여 여신 후, [Ctrl + P (인쇄)] -> [대상: PDF로 저장], [설정: 배경 그래픽 포함 체크] 하시면 완벽한 PDF 보고서가 완성됩니다!
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 39
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 1. 금속(Metal) 색상 동기화 및 초고해상도(600DPI) 세팅 중...
+📈 개별 초고해상도 PDF/PNG 그래프 생성을 시작합니다...
+
+✅ 대형 캔버스 & 범례 조정 600DPI 저장 완료: Frontier_a_N2_Sieving_Only_Large.pdf
+✅ 대형 캔버스 & 범례 조정 600DPI 저장 완료: Frontier_b_High_Flux_Only_Large.pdf
+✅ 대형 캔버스 & 범례 조정 600DPI 저장 완료: Frontier_c_Combined_Large.pdf
+
+🎉 네이처(Nature) 급 초고해상도 3종 세트가 완벽한 비율로 추출되었습니다!
+
+======================================================================
+# 셀 40
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+----------------------------------------------------------------------
+🚀 1. 데이터 로드 및 금속(Metal) 색상 동기화 중...
+📈 2. 산점도 그래픽 생성 중...
+✅ 금속 색상 동기화 그래프(PNG) 저장 완료!
+📄 3. 색상 매칭 HTML 테이블 생성 중...
+✅ 완벽하게 색상이 동기화된 HTML 표 생성 완료!
+
+💡 [PDF 변환 팁]
+생성된 'High_Flux_Color_Table.html' 파일을 크롬/엣지 브라우저에서 더블 클릭하여 여신 후, [Ctrl + P (인쇄)] -> [대상: PDF로 저장], [설정: 배경 그래픽 포함 체크] 하시면 완벽한 PDF 보고서가 완성됩니다!
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 41
+import pandas as pd
+import requests
+import ast
+----------------------------------------------------------------------
+🔍 1. 원본 데이터에서 115개 MOF의 DOI 추출 중...
+총 65개의 고유 논문 DOI가 발견되었습니다. API 텍스트 마이닝을 시작합니다...
+
+
+논문 초록(Abstract) 분석 진행률: 100%|██████████| 65/65 [01:31<00:00,  1.41s/it]
+
+✅ 문헌 기반 소수성 마이닝이 완벽하게 끝났습니다!
+결과물 [MOF_Literature_Hydrophobicity_Check.xlsx]를 열어서 '🎯' 표시가 붙은 진짜 상용화 타겟을 확인하세요!
+
+
+
+======================================================================
+# 셀 42
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 1. 고성능 데이터 로드 및 Tier 1 교차 검증 중...
+🎯 최종 Tier 1 생존 타겟: 13개 추출 완료!
+
+📈 2. 초고해상도(600DPI) 산점도 그래프 생성을 시작합니다...
+🎉 성공! 모든 논문 피규어와 100% 색상이 일치하는 그래프가 출력되었습니다: Tier1_Humidity_Survival_Frontier_ColorSynced.pdf
+
+======================================================================
+# 셀 43
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 1. 최종 성능 지표 데이터 로드 및 Tier 1+2 병합 중...
+🎯 중복 제거 후 최종 Tier 1 & 2 생존 타겟: 20개 확보 완료!
+
+📄 세부 열역학 지표 엑셀 파일 저장 완료: Tier1_Tier2_Anti_Humidity_Targets.xlsx
+📈 2. 초고해상도(600DPI) 산점도 그래프 생성을 시작합니다...
+🎉 성공! Tier 1 & 2 결합 그래프 출력 완료: Tier1_Tier2_Survival_Frontier.pdf
+
+======================================================================
+# 셀 44
+import json
+import pandas as pd
+import matplotlib.pyplot as plt
+----------------------------------------------------------------------
+🔍 1. 전체 2,737개 메타데이터 로드 및 Tier 1 스크리닝 중...
+
+!! FileNotFoundError: [Errno 2] No such file or directory: 'CR_meta_data_SI (1).json'
+======================================================================
+# 셀 45
+import json
+import pandas as pd
+import matplotlib.pyplot as plt
+----------------------------------------------------------------------
+🔍 1. 전체 2,737개 메타데이터 로드 및 Tier 1 스크리닝 중...
+
+!! FileNotFoundError: [Errno 2] No such file or directory: 'CR_meta_data_SI .json'
+======================================================================
+# 셀 46
+import json
+import pandas as pd
+import matplotlib.pyplot as plt
+----------------------------------------------------------------------
+🔍 1. 전체 2,737개 메타데이터 로드 및 Tier 1 스크리닝 중...
+🎯 최종 Tier 1 고유 원석: 41개 추출 완료!
+
+📄 전체 리스트 엑셀 저장 완료: All_Database_Tier1_Screening_Results.xlsx
+📈 2. 기하학적 분포(PLD vs LCD) 산점도 그래프 생성을 시작합니다...
+🎉 성공! 스크리닝 분포 그래프 출력 완료: Tier1_Screening_Geometric_Distribution.pdf
+
+======================================================================
+# 셀 47
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 1. 세 그룹의 데이터 로드 및 색상 영구 동기화 시작...
+✅ 중복 제거 완료. 색상 동기화 패치 완료!
+📈 1/4. 종합 프론티어 (All Groups)
+
+<Figure size 1600x1200 with 1 Axes>
+[image/png 생략]
+📈 2/4. High Flux 전용 프론티어
+
+<Figure size 1600x1200 with 1 Axes>
+[image/png 생략]
+📈 3/4. N2 Sieving 전용 프론티어
+
+<Figure size 1600x1200 with 1 Axes>
+[image/png 생략]
+📈 4/4. Tier 1 & 2 (고습도 생존) 프론티어
+
+<Figure size 1600x1200 with 1 Axes>
+[image/png 생략]
+🎉 모든 시각화 및 파일 저장이 완료되었습니다!
+
+======================================================================
+# 셀 48
+import os
+
+print("현재 작업 폴더 경로:", os.getcwd())
+----------------------------------------------------------------------
+현재 작업 폴더 경로: C:\Users\skyjun\Downloads\CoRE-MOF-Tools-main\CoRE-MOF-Tools-main
+
+[현재 폴더에 있는 CSV/Excel 파일 목록]
+- All_Database_Tier1_Screening_Results.xlsx
+- Bottleneck_MOFS.csv
+- Final_VSA_Process_Metrics.csv
+- Fixed_VSA_Process_Metrics.csv
+- Fully_Calibrated_PseudoLangmuir_Metrics.csv
+- High_Flux_Bottleneck_52_MOFs.csv
+- High_Flux_Final_Metrics.xlsx
+- Hybrid_VSA_Process_Metrics.csv
+- MAGIC_WINDOW_63_MOFS.csv
+- MOF_Literature_Hydrophobicity_Check.xlsx
+- N2_Sieving_Final_Metrics.xlsx
+- N2_Sieving_Group_63_MOFs.csv
+- Target_Group_1_MagicWindow.csv
+- Target_Group_2_HighCapacity.csv
+- Tier1_Tier2_Anti_Humidity_Targets.xlsx
+- Tier1_Ultimate_Targets_ColorSynced.xlsx
+- Verified_Langmuir_MOFs.csv
+
+======================================================================
+# 셀 49
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 1. 데이터 로드 및 완벽한 색상/마커 동기화 시작...
+📈 개별 대형 PDF/PNG 그래프 생성을 시작합니다...
+
+
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+
+🎉 네이처(Nature) 급 저널에 제출해도 손색없는 600DPI 초고해상도 출력이 완료되었습니다!
+
+======================================================================
+# 셀 50
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 금속 색상 고정 및 범례 레이아웃 최적화 작업을 시작합니다...
+📈 최종 필터링된 그래프 생성을 시작합니다...
+
+
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+
+🎉 모든 그래프의 색상 동기화 및 범례 교정이 완료되었습니다!
+
+======================================================================
+# 셀 51
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 축 레이블 수정 및 범례 겹침 현상 해결을 위한 최종 시각화 시작...
+📈 최종 필터링된 그래프 생성을 시작합니다...
+
+
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+
+🎉 축 레이블 및 범례 교정이 완료된 초고해상도 그래프가 도출되었습니다!
+
+======================================================================
+# 셀 52
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 [최종 교정] SI 단위 환산 및 범례 레이아웃 최적화 시작...
+
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 53
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 금속 색상 영구 고정 및 물리량/범례 최적화 시각화를 시작합니다...
+📈 개별 그룹 및 종합 프론티어 도출을 시작합니다...
+
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+
+🎉 모든 요구사항이 반영된 고해상도 시각화가 완료되었습니다!
+
+======================================================================
+# 셀 54
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+----------------------------------------------------------------------
+🚀 금속 색상 고정 및 물리량/범례 최적화 최종 시각화 시작...
+
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+<Figure size 2400x1800 with 1 Axes>
+[image/png 생략]
+
+🎉 모든 요구사항이 반영된 최종 시각화가 완료되었습니다!
+
+======================================================================
+# 셀 55
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+!! KeyError: 'Zeopp'
+======================================================================
+# 셀 56
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+!! KeyError: 'Zeopp'
+======================================================================
+# 셀 57
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Extracting Multi-dimensional Data...
+
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+📊 Visualization Complete! Total unique valid MOFs plotted: 58
+
+======================================================================
+# 셀 58
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+✅ 로직 수정 완료! 총 확보된 유효 타겟 개수: 115개
+
+📈 1/4. [종합 프론티어] 모든 데이터 출력 중...
+
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+📈 2/4. [Tier 1 전용] Ultimate Target 출력 중...
+
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+📈 3/4. [High-Flux 전용] Wide Bottleneck 출력 중...
+
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+📈 4/4. [N2-Sieving 전용] Narrow Bottleneck 출력 중...
+
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+🎉 모든 개별 및 종합 그래프 도출 완료! (작업 폴더 내 600DPI 파일 확인)
+
+======================================================================
+# 셀 59
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 모든 데이터를 GEMC_data(Widom) 기준으로 통일 추출 중...
+📊 최종 유효 타겟 개수: 115 (중복 제외 고유 재료 수)
+
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 60
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 모든 데이터를 GEMC_data(Widom) 기준으로 통일 추출 중...
+✅ 로직 수정 완료! 총 확보된 유효 타겟 개수: 115개
+
+📈 1/4. [종합 프론티어] 모든 데이터 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 2/4. [Tier 1 전용] Ultimate Target 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 3/4. [High-Flux 전용] Wide Bottleneck 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 4/4. [N2-Sieving 전용] Narrow Bottleneck 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+🎉 모든 개별 및 종합 그래프 도출 완료! (작업 폴더 내 600DPI 파일 확인)
+
+======================================================================
+# 셀 61
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 모든 데이터를 GEMC_data(Widom) 기준으로 통일 추출 중...
+📊 최종 유효 타겟 개수: 115 (중복 제외 고유 재료 수)
+
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+<Figure size 1400x900 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 62
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 모든 데이터를 GEMC_data(Widom) 기준으로 통일 추출 중...
+✅ 로직 수정 완료! 총 확보된 유효 타겟 개수: 115개
+
+📈 1/4. [종합 프론티어] 모든 데이터 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 2/4. [Tier 1 전용] Ultimate Target 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 3/4. [High-Flux 전용] Wide Bottleneck 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 4/4. [N2-Sieving 전용] Narrow Bottleneck 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+🎉 모든 개별 및 종합 그래프 도출 완료! (작업 폴더 내 600DPI 파일 확인)
+
+======================================================================
+# 셀 63
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Base 데이터 기준 물리량 계산 중...
+✅ Tier 1 VIP 태깅 완료! (좌표 어긋남 원천 차단)
+📊 최종 점 개수: 115개 (115개 오차 없음)
+📈 1/4. 종합 프론티어 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 2/4. Tier 1 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 3/4. High-Flux 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 4/4. N2-Sieving 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 64
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 절대 지문 생성 및 물리량 추출 중...
+📊 최종 점 개수: 70개 (어긋남 절대 불가)
+📈 1/4. 종합 프론티어 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 2/4. Tier 1 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 3/4. High-Flux 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 4/4. N2-Sieving 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 65
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 데이터 정밀 파싱 및 115개 복원 중...
+📊 최종 점 개수: 115개 (115개 복원 및 미스매치 차단 완료!)
+📈 1/4. 종합 프론티어 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 2/4. Tier 1 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 3/4. High-Flux 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 4/4. N2-Sieving 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 66
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Base 데이터 기준 물리량 100% 동기화 중...
+✅ 분기 제어 성공! Tier 1 좌표를 병합하지 않고 마커 속성만 변경했습니다.
+📊 최종 확보된 유효 타겟 개수: 115개 (115개 유지)
+📈 종합 프론티어 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 67
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 정규표현식(Regex)을 통한 데이터 100% 구출 중...
+✅ Tier 1 VIP 태깅 완료! (총 13개 중 매칭 성공)
+📊 최종 데이터 개수 검증: 115개 (115개 복원 완료!)
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 68
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Base 데이터 기준 물리량 100% 동기화 중...
+✅ 분기 제어 성공! 13개의 타겟 마커를 네모로 변경했습니다.
+📊 최종 확보된 유효 타겟 개수: 115개 (115개 유지 확인 완료!)
+📈 1/4. 종합 프론티어 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 2/4. Tier 1 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 3/4. High-Flux 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 4/4. N2-Sieving 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+======================================================================
+# 셀 69
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Base 데이터 기준 물리량 100% 동기화 중...
+🔹 1차 정제 후 데이터: 115개
+🛡️ 위양성(1D/2D 등) 필터링 후 진성 3D 다공성 타겟: 61개 생존!
+✅ Tier 1 분기 제어 성공!
+📈 1/4. 종합 프론티어 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 2/4. Tier 1 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 3/4. High-Flux 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 4/4. N2-Sieving 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+🏁 모든 작업이 성공적으로 완료되었습니다!
+
+======================================================================
+# 셀 70
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Base 데이터 기준 물리량 100% 동기화 중...
+🔹 1차 정제 후 데이터: 115개
+🛡️ 위양성(1D/2D 등) 필터링 후 진성 3D 다공성 타겟: 61개 생존!
+💧 비열(Cp) 및 내습성(Water Stability) 데이터 동기화 중...
+✅ Tier 1 분기 제어 성공!
+📈 1/4. 종합 프론티어 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 2/4. Tier 1 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 3/4. High-Flux 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+📈 4/4. N2-Sieving 전용 출력 중...
+
+<Figure size 1680x1080 with 1 Axes>
+[image/png 생략]
+🏁 모든 작업이 성공적으로 완료되었습니다!
+
+======================================================================
+# 셀 71
+import json
+import numpy as np
+import pandas as pd
+----------------------------------------------------------------------
+🔄 [CR_meta_data_SI.json] 기반 Sips 피팅 및 극단적 재료 스크리닝을 시작합니다...
+
+
+======================================================================
+# 셀 72
+import pandas as pd
+import numpy as np
+import ast
+----------------------------------------------------------------------
+🔄 기본 물리량, 비열(Cp) 및 내습성(Water) 데이터 동기화 중...
+🛡️ 1D/2D 밀집상 제거 완료. 생존 타겟: 25개
+
+🏆 [Practical Robust Scoring V3] 최종 Top 10 결과:
+ Rank Short_ID  Capacity_at_0.0026bar  Capacity_at_1.0bar  Final_Score Water_Class  Cp
+    1   CG0505           2.866890e-08            0.000011          NaN     unknown NaN
+    2   JA2021           3.731494e-09            0.000001          NaN     unknown NaN
+    3   CG4001           1.920573e-08            0.000007          NaN     unknown NaN
+    4   CG4001           1.836591e-07            0.000071          NaN     unknown NaN
+    5   CG5001           4.094168e-08            0.000016          NaN     unknown NaN
+    6   JA6B09           1.525826e-08            0.000006          NaN     unknown NaN
+    7   C8DT04           7.281066e-08            0.000028          NaN     unknown NaN
+    8   C8TA10           4.505800e-08            0.000017          NaN     unknown NaN
+    9   D0CC04           6.205784e-07            0.000239          NaN     unknown NaN
+   10   D1SC00           1.558437e-07            0.000060          NaN     unknown NaN
+
+✅ 모든 연산 완료! 'Practical_Ranked_Validation.csv' 파일이 생성되었습니다.
+
+======================================================================
+# 셀 73
+import pandas as pd
+import numpy as np
+import ast
+----------------------------------------------------------------------
+!! SyntaxError: unmatched ']' (3225735493.py, line 51)
+======================================================================
+# 셀 74
+import pandas as pd
+import numpy as np
+import ast
+----------------------------------------------------------------------
+🏆 [Group A] 자체 내습성 완벽 방어 소재 (Flue Gas 최적화 - True Robust Top 3)
+| Short_ID   | Metal   | Topology   | OMS   |   K_H_Widom |       PV |   FlueGas_Score |   DAC_Score |
+|:-----------|:--------|:-----------|:------|------------:|---------:|----------------:|------------:|
+| C5CP03     | Zr      | fcu        | No    | 0           | 1344.25  |         7.46896 |     3.88386 |
+| C8CE01     | Ce      | scu        | No    | 2.46436e-05 |  675.172 |         6.56651 |     9.03115 |
+
+⚠️ [Group B] 코어(Core) 타겟용 OMS 포함 소재 (DAC 최적화 - True Weak Top 3)
+| Short_ID   | Metal   | Topology   | OMS   |   K_H_Widom |      PV |   FlueGas_Score |   DAC_Score |
+|:-----------|:--------|:-----------|:------|------------:|--------:|----------------:|------------:|
+| C6QI00     | Cd      | pcu        | No    | 0.000342237 | 663.381 |         52.8867 |    105.501  |
+| D3QI01     | Zn      | srs        | No    | 0.000298733 | 509.38  |         45.4944 |     91.7418 |
+| D0CC04     | Co      | unnamed    | Yes   | 0.000238684 | 959.537 |         39.7509 |     75.0693 |
+
+======================================================================
+# 셀 75
+import pandas as pd
+import numpy as np
+import ast
+----------------------------------------------------------------------
+!! ValueError: These `markers` levels are missing values: {'Yes', 'No'}
+<Figure size 1100x800 with 0 Axes>
+======================================================================
+# 셀 76
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Base 데이터 기준 물리/화학량 파싱 중...
+🛡️ 1D/2D 병목 제거 후 진성 3D 다공성 타겟: 34개 생존!
+📈 평가 스코어 기반 프론티어 맵 출력 중...
+
+!! ValueError: These `markers` levels are missing values: {'Yes', 'No'}
+<Figure size 1400x1000 with 0 Axes>
+======================================================================
+# 셀 77
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Base 데이터 기준 물리/화학량 파싱 중...
+🛡️ 1D/2D 병목 제거 후 진성 3D 다공성 타겟: 34개 생존!
+📈 평가 스코어 기반 프론티어 맵 출력 중...
+
+!! ValueError: These `markers` levels are missing values: {'No', 'Yes'}
+<Figure size 1400x1000 with 0 Axes>
+======================================================================
+# 셀 78
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+🔄 Base 데이터 기준 물리/화학량 파싱 중...
+🛡️ 1D/2D 병목 제거 후 진성 3D 다공성 타겟: 34개 생존!
+✅ 데이터 처리 완료. 'Final_MOF_Evaluations_Robust2.0.csv'로 저장되었습니다.
+📈 평가 스코어 기반 프론티어 맵 그리기 중...
+
+<Figure size 1400x1000 with 1 Axes>
+[image/png 생략]
+🏁 모든 작업이 성공적으로 완료되었습니다!
+
+======================================================================
+# 셀 79
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+📈 1/2. DAC 코어 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+📈 2/2. Flue Gas 직투입 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+🏁 모든 그래프 출력이 성공적으로 완료되었습니다!
+
+======================================================================
+# 셀 80
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+📈 1/4. [Core - DAC] 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+📈 2/4. [Core - Flue Gas] 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+📈 3/4. [Robust - DAC] 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+📈 4/4. [Robust - Flue Gas] 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+🏁 4대 그룹 독립 그래프 출력이 성공적으로 완료되었습니다!
+
+======================================================================
+# 셀 81
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+----------------------------------------------------------------------
+✅ 전체 성능 평가표가 'MOF_Comprehensive_Performance_Scores.csv'로 저장되었습니다.
+📈 1/4. [Core - DAC] 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+📈 2/4. [Core - Flue Gas] 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+📈 3/4. [Robust - DAC] 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+📈 4/4. [Robust - Flue Gas] 타겟 프론티어 맵 출력 중...
+
+<Figure size 1200x900 with 1 Axes>
+[image/png 생략]
+🏁 4대 그룹 개별 그래프 및 성능 CSV 추출이 완벽하게 완료되었습니다!

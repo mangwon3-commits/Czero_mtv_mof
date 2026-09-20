@@ -55,8 +55,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 #   CR 전체 17,202 레코드에서 **`'stable'` 은 0건** — `== 'stable'` 은 통과자가 나올 수 없습니다.
 #   (검증: CoRE-MOF-Tools-main.zip / CoREMOF/data/CR.json, ASR+FSR+Ion. ZIP_FINDINGS_20260920.md §3)
 #   그래서 "안정" 은 **"unstable/mismatch 가 아님"** 으로 읽습니다.
-NODE_BAD = ("unstable", "mismatch")      # 뼈대 판정이 실패했다고 CoRE 가 표시한 값
-NODE_UNKNOWN = ("unknown", "unnamed")    # 위상을 못 붙인 것 — 통과/탈락을 **선택**해야 하는 자리
+#   표식은 다섯뿐이고 **판마다 철자가 다릅니다** — 위상 기호 같지 않은 값을 전부 세어 확인했습니다:
+#     옛 판(2,737)  unnamed 884 · unname 101 · unstable 62 · mismatch 18
+#     신 판(17,202) unknown 6536 · unstable 342 · mismatch 71
+#   `sqc27`·`sqc1099` 류는 **진짜 위상 식별자**(TopCryst)이므로 통과가 맞습니다 — 표식으로 오인하지 마십시오.
+NODE_BAD = ("unstable", "mismatch")               # 뼈대 판정이 실패했다고 CoRE 가 표시한 값
+NODE_UNKNOWN = ("unknown", "unnamed", "unname")   # 위상을 못 붙인 것 — 통과/탈락을 **선택**해야 하는 자리
+                                                  # ('unname' 은 옛 판에만, 'unknown' 은 신 판에만 나옵니다)
 
 GATES = {
     "node_not_unstable": dict(

@@ -1,39 +1,46 @@
-<img src="https://raw.githubusercontent.com/Chung-Research-Group/CoRE-MOF-Tools/main/logo.png" alt="CoRE MOF Tools logo" width="500"/>
+# MTV-ZIF CO₂ 포집 계산 연구
 
-[![Static Badge](https://img.shields.io/badge/chemrxiv-2024.nvmnr.v2-brightgreen?style=flat)](https://doi.org/10.26434/chemrxiv-2024-nvmnr-v2)
-[![Docs](https://img.shields.io/badge/API-Docs-blue?logo=readthedocs&logoColor=white)](https://coremof-tools.readthedocs.io/en/latest/index.html#)
-![GitHub repo size](https://img.shields.io/github/repo-size/Chung-Research-Group/CoRE-MOF-Tools?logo=github&logoColor=white&label=Repo%20Size)
-[![PyPI](https://img.shields.io/pypi/v/CoREMOF-tools?logo=pypi&logoColor=white)](https://pypi.org/project/CoREMOF-tools?logo=pypi&logoColor=white)
-[![Requires Python 3.9](https://img.shields.io/badge/Python-3.9-blue.svg?logo=python&logoColor=white)](https://python.org/downloads)
-[![GitHub license](https://img.shields.io/github/license/Chung-Research-Group/CoRE-MOF-Tools)](https://github.com/mtap-research/CoRE-MOF-Tools/blob/main/LICENSE)
-[![Downloads](https://pepy.tech/badge/CoREMOF-tools)](https://pepy.tech/project/CoREMOF-tools)
-[![GitHub issues](https://img.shields.io/github/issues/Chung-Research-Group/CoRE-MOF-Tools.svg)](https://GitHub.com/Chung-Research-Group/CoRE-MOF-Tools/issues/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15055758.svg)](https://doi.org/10.5281/zenodo.15055758)
+ZIF-69 골격의 **혼합 링커(MTV) 치환**이 습한 조건에서 CO₂ 작업 용량을 바꾸는지를
+분자 시뮬레이션으로 재는 프로젝트입니다. 여러 기기·여러 세션이 이 저장소 하나를 나눠 씁니다.
 
-**Develop by [Guobin Zhao](https://github.com/sxm13)**
+## 먼저 읽을 것
 
-#### Installation                                                                                    
-This API includes tools developed to collect, curate, and classify Computation-Ready, Experimental MOF database.    
-a. You need to install the [CSD software and python API](https://downloads.ccdc.cam.ac.uk/documentation/API/installation_notes.html) before downloading the full CoRE MOF database.                                                            
-b. For using CoREMOF.calculation.Zeopp, you need to input `conda install -c conda-forge zeopp-lsmo` to install Zeo++.   
-c. For using CoREMOF.get_mofid, you need to install MOFid following the [manual](https://snurr-group.github.io/mofid/compiling/#installation).                    
-d. For using CoREMOF.mof_check, you need to install MOFChecker by input `pip install git+https://github.com/sxm13/mofchecker_2.0.git@main`. 
+    CLAUDE.md            이 저장소에서 일하는 방법 — **고정값, 결과를 읽는 규율, 자원 한도, 이미 데인 것들**
+    SESSION_LOG.md       무슨 일이 언제 있었는지 (시간순, 맨 아래가 최신)
+    48H_COMPUTE_PLAN.md  실행 계약 (기기별 분담·순서·한도)
+    TOOLING.md           WSL + 윈도우 환경에서의 셸 호출
 
-#### Examples                                                                                     
-Available at [Github](https://github.com/Chung-Research-Group/CoRE-MOF-Tools/tree/main/tests/examples) and [CoRE MOF Website](https://mof-db.pusan.ac.kr/API) to view examples.                         
-                            
+새 기기라면 `21_ZIF69_MTV/NEW_MACHINE_20260822.md` 하나로 환경 구축부터 검증까지 끝납니다.
+기기별 배정은 날짜가 붙어 늘어나므로 `ls -t 21_ZIF69_MTV/ASSIGN*.md | head -1` 로 최신을 확인하십시오.
 
-#### Citation                                          
-- [CoRE MOF](https://doi.org/10.1016/j.matt.2025.102140): Zhao G, Brabson L, Chheda S, Huang J, Kim H, Liu K, et al. CoRE MOF DB: a curated experimental metal-organic framework database with machine-learned properties for integrated material-process screening. Matter, 8 (2025), 102140.                        
-- [Zeo++](https://www.sciencedirect.com/science/article/pii/S1387181111003738): T.F. Willems, C.H. Rycroft, M. Kazi, J.C. Meza, and M. Haranczyk, Algorithms and tools for high-throughput geometry- based analysis of crystalline porous materials, Microporous and Mesoporous Materials, 149 (2012), 134-141.                            
-- [Heat capacity](https://doi.org/10.1038/s41563-022-01374-3): Models from Moosavi, S.M., Novotny, B.A., Ongari, D. et al.A data-science approach to predict the heat capacity of nanoporous materials. Nat. Mater. 21 (2022), 1419-1425.
-- [Water stability](https://pubs.acs.org/doi/full/10.1021/jacs.4c05879): Terrones G G, Huang S P, Rivera M P, et al. Metal-organic framework stability in water and harsh environments from data-driven models trained on the diverse WS24 data set. Journal of the American Chemical Society, 146 (2024), 20333-20348.
-- [Activation and thermal stability](https://pubs.acs.org/doi/full/10.1021/jacs.1c07217): Nandy A, Duan C, Kulik H J. Using machine learning and data mining to leverage community knowledge for the engineering of stable metal-organic frameworks. Journal of the American Chemical Society, 143 (2021), 17535-17547.
-- [MOFid-v1](https://pubs.acs.org/doi/full/10.1021/acs.cgd.9b01050): Bucior B J, Rosen A S, Haranczyk M, et al. Identification schemes for metal-organic frameworks to enable rapid search and cheminformatics analysis. Crystal Growth & Design, 19 (2019), 6682-6697.
-- [PACMAN-charge](https://pubs.acs.org/doi/10.1021/acs.jctc.4c00434): Zhao G, Chung Y G. PACMAN: A Robust Partial Atomic Charge Predicter for Nanoporous Materials Based on Crystal Graph Convolution Networks. Journal of Chemical Theory and Computation, 20 (2024), 5368-5380.
-- [Revised Autocorrelation](https://pubs.acs.org/doi/10.1021/acs.jpca.7b08750): Jon Paul Janet and Heather J. Kulik. Resolving Transition Metal Chemical Space: Feature Selection for Machine Learning and Structure-Property Relationships. The Journal of Physical Chemistry A. 121 (2017), 8939-8954. 
-- [Topology](https://doi.org/10.21468/SciPostChem.1.2.005): Zoubritzky L, Coudert F X. CrystalNets. jl: identification of crystal topologies. SciPost Chemistry, 1 (2022), 005.
-- [Chen_Manz](https://doi.org/10.1039/D0RA02498H): Chen T, Manz T.A. Identifying misbonded atoms in the 2019 CoRE metal–organic framework database. RSC Adv, 10 (2025), 26944-26951.
-- [MOFChecker](https://doi.org/10.1039/D5DD00109A): JIN X, Jablonka K, Moubarak E, Li Y, Smit B. MOFChecker: An algorithm for Validating and Correcting Metal-Organic Framework (MOF) Structures. Digital Discovery, 4 (2025), 1560-1569.
-- [MOSAEC](https://pubs.acs.org/doi/10.1021/jacs.5c04914): White A, Gibaldi M, Burner J, Mayo RA, Woo T. High Structural Error Rates in "Computation-Ready" MOF Databases Discovered by Checking Metal Oxidation States. JACS, 147 (2025), 17579-17583.                                    
-- [MOFClassifier](https://pubs.acs.org/doi/10.1021/jacs.5c10126): Zhao G, Zhao P, Chung Y. G. MOFClassifier: A Machine Learning Approach for Validating Computation-Ready Metal-Organic Frameworks. JACS, 147 (2025), 33343-33349.  
+## 방법 (바꾸면 안 되는 값 — `CLAUDE.md §1`)
+
+    엔진        RASPA GCMC · 초기화 5,000 + 생산 15,000 사이클 · 2×2×2 단위셀 · 컷오프 12 Å · Ewald 1e-6
+    골격 힘장   UFF_MOF
+    CO₂         García-Sánchez 2009  (ε 29.933 K · σ 2.745 Å · q_C +0.6512)
+                ⚠ 정의 파일 경로가 `molecules/TraPPE/CO2.def` 지만 **TraPPE 가 아닙니다.** 그렇게 적으면 틀립니다.
+    물          TIP5P-Ew (5자리) · 혼합 규칙에 `Hw none` / `Lw none` (2026-09-06 수정)
+    전하        PACMAN DDEC6 (CIF 에 포함)
+
+## 결과를 읽는 규율 (`CLAUDE.md §2`)
+
+    · RASPA 의 `±` 는 1σ 가 아니라 **95 % 신뢰구간**(2.776 × SEM)입니다. 이 저장소는 그것을 **"단위"** 라 부릅니다.
+    · 차이가 **1.5 단위** 미만이면 **순위를 매기지 않습니다.**
+    · 배치(앙상블) 비교는 자가 다릅니다 — 실현 표본 SD 기준의 **"배치 단위"**. 문턱은 같은 1.5.
+      **어느 비교든 두 값을 나란히 적습니다** (예: `1.90 배치 단위 · 0.68 단위`).
+    · **판정 기준은 계산을 돌리기 전에 등록합니다.** 결과를 보고 기준을 고치지 않습니다.
+    · v1/v2/v3 는 서로 다른 구조에서 나왔습니다. **버전을 넘나들며 인용하지 마십시오.**
+
+## 폴더
+
+    21_ZIF69_MTV/     본체 — 구조 생성·전하·GCMC·Widom·판정문. 대부분의 작업이 여기 있습니다.
+    23_SCREENING/     CoRE MOF 스크리닝 정리본과 감사 (외부 자료 — `upstream/` 참조)
+    01~22_*           단계별 중간 산출물 (CIF 정리, Zeo++, PACMAN, 밀도 격자 등)
+
+## 외부 자료와 라이선스
+
+`23_SCREENING/upstream/` 은 **CoRE-MOF-Tools(CC-BY-4.0, Guobin Zhao 외)** 의 파일입니다 —
+우리 것이 아니며 출처 표시를 위해 보관합니다. 같은 폴더의 `README-왜여기있나.md` 를 보십시오.
+
+**이 저장소 자체의 라이선스는 아직 정해지지 않았습니다.**
+정하기 전까지는 기본 저작권이 적용됩니다(명시적 허락 없이 재사용 불가).
