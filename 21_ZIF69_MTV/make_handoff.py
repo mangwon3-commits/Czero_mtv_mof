@@ -42,6 +42,40 @@ def queue(pick):
     return sorted(s, key=lambda p: -int(p.get('NAtoms') or 0))
 
 
+
+def premise_gate(q, done, pick):
+    """★ 꼬리 논리의 **전제**를 laptop2 의 완주분으로 검증한다(랩탑 09-21 15:0x 추가).
+
+    이 스크립트 전체가 "laptop2 대기열 = pick 순서를 NAtoms 내림차순 안정정렬" 위에 서 있다.
+    그 전제는 laptop2 가 **옛 코드로 돌고 있을 때만** 참이다 — 만약 그쪽이 N_super 정렬
+    (ddf73bf) 이후에 재기동했다면 대기열이 달라지고, 그러면 "꼬리" 가 꼬리가 아니라서
+    **정면으로 겹칩니다.** 겹침은 오염이 아니라 낭비지만, 7 h 단축을 노리고 7 h 를 버립니다.
+
+    전제는 마침 **이 스크립트가 돌 수 있게 되는 순간**(laptop2 결과 JSON 도착)에 검증
+    가능해진다 — 완주분이 어느 정렬의 앞머리와 맞는지 보면 된다. 그래서 관문으로 만든다.
+    """
+    n = len(done)
+    if n < 8:
+        print(f'  .. 전제 검증 보류 — laptop2 완주 {n}종으로는 정렬을 못 가립니다(8종 이상 필요).')
+        return True
+    l2 = [p for p in pick if p.get('assign') == 'laptop2']
+    heads = {
+        'NAtoms 내림차순(전제)': [p['file'] for p in sorted(l2, key=lambda x: -int(x.get('NAtoms') or 0))][:n],
+        'N_super 내림차순(새 자)': [p['file'] for p in sorted(l2, key=lambda x: -int(x.get('N_super') or 0))][:n],
+    }
+    hit = {k: len(set(v) & done) for k, v in heads.items()}
+    for k, v in hit.items():
+        print(f'  전제 검증  {k:24} 완료분과 겹침 {v}/{n}')
+    if hit['NAtoms 내림차순(전제)'] >= hit['N_super 내림차순(새 자)']:
+        return True
+    print('  !! **전제가 깨졌습니다** — laptop2 대기열이 NAtoms 순이 아닙니다'
+          '(새 코드로 재기동했을 가능성). 꼬리가 꼬리가 아니므로 이 목록은 겹칩니다.',
+          flush=True)
+    print('     laptop2 에 실제 정렬을 묻고 `queue()` 를 맞춘 뒤 다시 도십시오.'
+          ' (그래도 강행하려면 `--force-premise`.)', flush=True)
+    return '--force-premise' in sys.argv
+
+
 def main():
     pick = json.load(open(os.path.join(HERE, 'core_pop_pick.json'), encoding='utf-8'))
     q = queue(pick)
@@ -59,6 +93,9 @@ def main():
         print('   (정말 빈 상태에서 만들려면 `--force`.)', flush=True)
         if '--force' not in sys.argv:
             return 2
+
+    if not premise_gate(q, done, pick):
+        return 3
 
     rest = [p for p in q if p['file'] not in done]
     t2 = lambda p: 2 * K2 * p['N_super'] ** B / 60
