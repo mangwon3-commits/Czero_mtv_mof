@@ -30,7 +30,8 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-B = 0.651                      # T-BR-1 24점 실측 지수 (cost_scan_core_pop.py)
+B = 0.651                      # T-BR-1 **구조 12점** 실측 지수 (cost_scan_core_pop.py) · 95 % CI [0.500, 0.801]
+PAIRS = 10                     # §9-6 겹치는 짝 — 기기 항 검정용(laptop2 완주분에서 크기 분위로)
 K2 = 13.10 / 396 ** B          # laptop2 분/작업 (자기 실측 눈금, 12워커)
 K1 = 18.03 / 1520 ** B         # laptop  분/작업 (자기 실측 눈금, 8워커)
 W2, W1 = 12, 8
@@ -162,6 +163,28 @@ def main():
             best = (m, k, a, b)
     m, k, a, b = best
     tail = rest[len(rest) - k:]
+
+    # ★ §9-6 겹치는 짝 — **기기 항을 보려면 같은 구조를 두 기기에서 재야 합니다**(랩탑 09-21 15:3x).
+    #   배수가 튼튼했던 이유가 구조 성질의 약분인데, 서로 다른 구조로 두 기기를 견주면 구조 사이 퍼짐
+    #   21 % 가 그대로 들어와 경합 차이 8 % 를 덮습니다. 지금 설계로는 겹치는 짝이 **0** 입니다.
+    #   **laptop2 가 이미 끝낸 것** 중에서 고르므로 충돌 위험이 없습니다(그쪽은 다시 안 돕니다).
+    donep = [p for p in queue(pick) if p['file'] in done]
+    donep.sort(key=lambda p: p['N_super'])
+    pairs = []
+    if len(donep) >= PAIRS:
+        idx = [round((i + 0.5) * len(donep) / PAIRS) for i in range(PAIRS)]   # 크기 분위로 고르게
+        seen = set()
+        for i in idx:
+            q_ = donep[min(i, len(donep) - 1)]
+            if q_['file'] not in seen:
+                seen.add(q_['file']); pairs.append(dict(q_, pair=True))
+    else:
+        print(f'  .. 겹치는 짝 보류 — laptop2 완주 {len(donep)}종 < {PAIRS}종')
+    if pairs:
+        extra = sum(t1(q_) for q_ in pairs) / W1
+        print(f'  겹치는 짝 **{len(pairs)}종** 추가 (N_super {pairs[0]["N_super"]}~{pairs[-1]["N_super"]}) '
+              f'· 랩탑에 +{extra:.2f} h · 기기 항 검정용')
+    tail = tail + pairs
 
     print(f'남은 {len(rest)}종 · 랩탑이 받을 **꼬리 {k}종**')
     print(f'  랩탑 {a:.2f} h · laptop2 {b:.2f} h · 두 기기 동시 종료까지 **{m:.2f} h**')
