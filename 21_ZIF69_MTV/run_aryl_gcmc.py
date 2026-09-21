@@ -114,6 +114,28 @@ def occupied_by_other(d):
     return False
 
 
+def finished(path):
+    """RASPA 가 **끝까지** 돌았는가. `run_tnf.py:178` 과 같은 조건.
+
+    2026-09-21 laptop2(Balthasar)가 찾은 것: 아래 이어받기가 `any(x is not None ...)` 였다.
+    여섯 값 중 **하나라도** 있으면 `cached` 라, 사이클이 덜 찬 중간 평균이 완주값으로
+    결과에 들어가고 **행에는 아무 표지가 없다**(status 는 ok, 오차는 중간 블록이라 오히려 좁다).
+    이 저장소가 반복해서 데인 그 유형이다 — **실패가 결과처럼 보이는 것**(CLAUDE.md §0).
+    """
+    try:
+        with open(path, encoding='utf-8', errors='ignore') as f:
+            return 'Simulation finished' in f.read()
+    except OSError:
+        return False
+
+
+def primary(mode, r):
+    """그 모드가 **반드시** 내놓아야 하는 값. widom -> 헨리 상수, gcmc -> 적재량."""
+    if r is None:
+        return None
+    return r[0] if mode == 'widom' else r[4]
+
+
 def run_one(job):
     cif, gas, mode = job
     name = os.path.basename(cif).replace('.cif', '')
@@ -121,9 +143,9 @@ def run_one(job):
 
     # 끝난 실행은 재사용한다. 8시간짜리 묶음이라 중간에 끊기면 처음부터가 아깝다.
     done = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
-    if done:
+    if done and finished(done[0]):
         r = parse(done[0])
-        if any(x is not None for x in r):
+        if primary(mode, r) is not None:
             return name, gas, mode, r, 'cached'
 
     # 다른 세션이 **바로 이 디렉터리**에서 이미 돌고 있으면 손대지 않는다.
@@ -184,7 +206,13 @@ Component 0 MoleculeName              {gas}
     outs = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
     if not outs:
         return name, gas, mode, None, 'no-output'
+    # `subprocess.run(..., check=False)` 이므로 RASPA 가 죽어도 여기로 온다.
+    # 이어받기와 **같은 관문**을 걸지 않으면 중간값이 'ok' 로 나간다(2026-09-21 보강).
+    if not finished(outs[0]):
+        return name, gas, mode, None, '미완주'
     res = parse(outs[0])
+    if primary(mode, res) is None:
+        return name, gas, mode, None, '값없음'
     for sub in ('VTK', 'Movies', 'Restart'):
         shutil.rmtree(os.path.join(d, sub), ignore_errors=True)
     return name, gas, mode, res, 'ok'
