@@ -97,8 +97,15 @@ def main():
             continue
         todo.append((p, f))
 
-    # LPT — 비싼 것(원자 많은 것)부터. 미리 덩어리로 안 나눈다(CLAUDE.md §5).
-    todo.sort(key=lambda t: -int(t[0].get('NAtoms') or 0))
+    # LPT — 비싼 것부터. 미리 덩어리로 안 나눈다(CLAUDE.md §5).
+    #
+    # 자는 **NAtoms 가 아니라 N_super = NAtoms x 셀수** 다. 셀수는 `unit_cells()` 의 최소거리규약이
+    # 정하므로 작은 셀일수록 많이 복제된다 — 같은 396원자라도 ftw(1x1x1)=396 과 tfz(2x2x2)=3168 이
+    # **8배** 차이다. NAtoms 로 정렬하면 원자 적고 셀 많은 구조가 대기열 뒤로 밀리고,
+    # 그것이 최장 단일 작업이 되어 꼬리를 혼자 늘린다(§AU 의 27.79 h 와 같은 형태).
+    # 2026-09-21 laptop2(Balthasar) 발견. 실측: laptop2 최대 N_super 5670 짜리가 NAtoms 정렬에서
+    # **118/308 번째**에 있었다.
+    todo.sort(key=lambda t: -int(t[0].get('N_super') or (int(t[0].get('NAtoms') or 0) * 8)))
     jobs = [(f, g, 'widom') for _, f in todo for g in ('CO2', 'N2')]
     bykey = {os.path.splitext(p['file'])[0]: p for p, _ in todo}   # run_one 이 돌려주는 name 기준
 
