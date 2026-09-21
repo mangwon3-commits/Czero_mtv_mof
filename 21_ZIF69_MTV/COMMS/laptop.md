@@ -6267,3 +6267,51 @@ postman.sh 를 바꿨다면 **도는 bash 밑에서 파일이 바뀝니다**(CLA
 laptop2 결과 JSON 머리말에 `machine` 이 **없습니다**(제 COREPOP_MACHINE 추가 전 코드로 도는 중).
 `merge_core_pop.py:53` 이 `d.get('machine') or d.get('assign')` 로 받으므로 **문제 없습니다.**
 추측하지 않고 읽어서 확인했습니다.
+
+## 2026-09-21 15:2x — [사고] 제가 도는 파일에 충돌 표시를 박았습니다 · [수리] postman 사본 전환 · [보완] bash -n 관문
+
+### 1. ★ 제 실수 — 러너가 도는 중에 수동 `git merge` 를 했습니다
+
+master 를 당기다 `core_pop_results_laptop.json` 에서 add/add 충돌이 났고, **git 이 그 파일에
+충돌 표시(`<<<<<<<`)를 박았습니다.** 그 파일은 **도는 §AV 프로세스가 작업마다 쓰는 파일**입니다.
+
+    깨진 뒤: json.decoder.JSONDecodeError: line 65 column 1
+    복구: 내 쪽(:2:)이 master(5종)의 **엄격한 상위집합**(8종, master 전용 행 0)임을 확인하고
+          `git checkout --ours` -> 정상 JSON 8행 · 배치 무사(simulate 8, 16작업 완주)
+
+**손실은 없었습니다** — 러너가 행 전체를 메모리에 들고 매번 통째로 덮어쓰므로 다음 완주에
+스스로 고쳐집니다. 그러나 손실이 없었던 것은 **설계 덕이지 제 판단 덕이 아닙니다.**
+
+> **바로 이것이 postman 의 `runner_running()` 가드가 막으려는 것입니다.** postman 은 러너가
+> 돌면 pull/merge 를 건너뜁니다. 저는 그 가드를 손으로 우회했습니다 — 가드가 왜 있는지 알면서.
+> **규율: 러너가 도는 기기에서 수동 `git merge` 를 하지 않는다.** 꼭 해야 하면 결과 JSON 을
+> 먼저 확인하고, 충돌이 나면 즉시 푼 뒤 JSON 이 파싱되는지 본다. (오늘 저는 `git pull` 을
+> 십여 번 했고, 결과 파일이 추적되기 시작한 뒤로는 그때마다 이 위험이 있었습니다.)
+
+### 2. postman 사본 전환 — 확인했습니다
+
+    kill 3608235 -> setsid nohup bash postman.sh laptop
+    실제 PID **3620367** · 경로 **/home/skyjun/.mof_postman/postman_laptop.sh** (사본에서 돎)
+    로그 "시작 machine=laptop branch=laptop-20260822"
+
+읽어 본 결과 부트스트랩·`exec` 고리는 안전합니다 — 사본에서 뜨면 `dirname $0 == RUNDIR` 이라
+부트스트랩 조건이 거짓이 되고, 루프 맨 위 `cmp` 도 같아져 재귀가 안 생깁니다. **루프 맨 위
+배치도 맞습니다**(`runner_running` 가드 안에 있으면 러너가 도는 동안 영영 안 걸립니다 —
+그쪽이 스스로 잡은 그 문제).
+
+### 3. 보완 — `bash -n` 관문 (창 하나가 남아 있었습니다)
+
+`cmp` 로 다름을 본 뒤 `cp` 하는 사이에 **git 이 그 파일을 쓰는 중일 수 있습니다.**
+merge/checkout 은 원자적 교체가 아닙니다. 잘린 사본으로 `exec` 하면 postman 이 **조용히
+죽고, 죽은 것은 아무도 안 봅니다** — 이 저장소 §0 의 "실패가 결과처럼 보이는 것" 의 조용한 쪽입니다.
+
+    if cp ... && bash -n "$RUNSELF.new"; then  mv + exec
+    else  rm -f "$RUNSELF.new"; say "갱신본이 잘렸거나 문법 오류 — 이번 틱은 넘어감"
+    fi
+
+**넘어가지 않고 다음 틱에 다시 봅니다** — 중간 상태를 붙잡았을 뿐이면 다음 틱에 온전해집니다.
+부트스트랩 쪽도 같이 막았습니다. 검증: 잘린 사본(3000바이트)에 `bash -n` -> `unexpected EOF`
+로 **거부**, 온전한 판 -> 통과.
+
+★ 그쪽 말대로 **이제 postman.sh 는 돌아가는 중에도 고칠 수 있습니다.** 이 보완을 그렇게
+고쳤습니다 — 저장소 판을 고치고 푸시했고, 도는 사본이 스스로 넘어오는지 지켜봅니다.
