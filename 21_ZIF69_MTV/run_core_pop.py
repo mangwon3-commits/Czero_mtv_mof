@@ -111,9 +111,14 @@ def main():
 
     os.makedirs(rg.RUNS, exist_ok=True)
     part, n = {}, 0
-    from concurrent.futures import ProcessPoolExecutor
+    # `ex.map` 은 **순서대로만** 내줍니다 — 첫 작업이 느리면 뒤의 결과가 다 끝나고도
+    # 안 나와서 "작업마다 저장" 이 거짓말이 됩니다. 24시간짜리 묶음이라 그러면 안 됩니다.
+    # `submit` + `as_completed` 로 **끝나는 대로** 받습니다(CLAUDE.md §5 의 imap_unordered 취지).
+    from concurrent.futures import ProcessPoolExecutor, as_completed
     with ProcessPoolExecutor(max_workers=WORKERS) as ex:
-        for name, gas, mode, r, stt in ex.map(rg._star, jobs):
+        futs = [ex.submit(rg._star, j) for j in jobs]
+        for fu in as_completed(futs):
+            name, gas, mode, r, stt = fu.result()
             n += 1
             part.setdefault(name, {})[gas] = r
             p = bykey.get(name, {})
