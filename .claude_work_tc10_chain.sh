@@ -11,6 +11,11 @@ cd "$(dirname "$0")/21_ZIF69_MTV" || exit 1
 pick(){ for p in "$@"; do [ -x "$p" ] && { echo "$p"; return; }; done; echo ""; }
 CZ="${CZ:-$(pick "$HOME/miniconda3/envs/czeromof/bin/python" "$HOME/anaconda3/envs/czeromof/bin/python")}"
 CT="${CT:-$(pick "$HOME/miniconda3/envs/coremof_tools/bin/python" "$HOME/anaconda3/envs/coremof_tools/bin/python")}"
+# ⑤관문(risk_screen_v3_sub.py)은 lammps_interface·lmp_serial 이 필요하고 그건 **lammps_mof** 환경에 있습니다.
+#   09-21 17:09 에 이 사슬이 $CZ 로 관문을 띄워 rc=2 로 멈췄고 데스크탑이 6시간 놀았습니다.
+#   (기전은 09-18 05:2x 에 laptop2 가 이미 적어 둔 것 — "데스크탑에는 마침 있어서 안 걸린다" 가
+#    더 이상 참이 아니게 되자 터졌습니다. 항목이 사흘간 열린 채였습니다.)
+LM="${LM:-$(pick "$HOME/miniconda3/envs/lammps_mof/bin/python" "$HOME/anaconda3/envs/lammps_mof/bin/python")}"
 XTB="${XTB_BIN:-$HOME/miniconda3/envs/spectra/bin/xtb}"
 RW="${RELAX_WORKERS:-2}"; WW="${HWC_V3W_WORKERS:-8}"
 TAGS="saIm0583e6,saIm0583e7,saIm0583e8,saIm0583e9,saIm0583e10"
@@ -23,6 +28,9 @@ nsim(){ pgrep -xc simulate; }
 say "================ T-C10 사슬 시작  CZ=$CZ  RELAX_WORKERS=$RW  WC 워커=$WW ================"
 [ -n "$CZ" ] || die "czeromof 파이썬 없음"
 [ -n "$CT" ] || die "coremof_tools 파이썬 없음"
+[ -n "$LM" ] || die "lammps_mof 파이썬 없음 — ⑤관문이 이 환경을 씁니다"
+"$LM" -c 'import lammps_interface' 2>/dev/null || die "lammps_interface 임포트 실패 ($LM)"
+[ -x "$(dirname "$LM")/lmp_serial" ] || die "lmp_serial 없음 ($(dirname "$LM"))"
 [ -x "$XTB" ] || die "xtb 없음: $XTB"
 export XTB_BIN="$XTB"; export PATH="$(dirname "$CZ"):$PATH"
 
@@ -68,7 +76,7 @@ say "simulate·network 0 (3분 연속) 확인 — 관문 착수"
 [ -f risk_results_v3sub.json ] && cp -a risk_results_v3sub.json "risk_results_v3sub.before_tc10_$(date +%m%d%H%M).json"
 [ -f risk_v3sub_index.json ] && cp -a risk_v3sub_index.json "risk_v3sub_index.before_tc10_$(date +%m%d%H%M).json"
 RISK_SUB_TAGS="base,saIm0583,saIm0583e6,saIm0583e7,saIm0583e8,saIm0583e9,saIm0583e10" \
-  nice -n 10 "$CZ" -u risk_screen_v3_sub.py >> "$L" 2>&1; rc=$?
+  PATH="$(dirname "$LM"):$PATH" nice -n 10 "$LM" -u risk_screen_v3_sub.py >> "$L" 2>&1; rc=$?
 say "관문 rc=$rc — 통과 여부는 종합자가 읽습니다(등록 §4)"
 [ "$rc" -eq 0 ] || die "관문 rc=$rc — WC 를 안 띄우고 멈춤"
 cp -a risk_results_v3sub.json risk_results_tc10.json 2>/dev/null
