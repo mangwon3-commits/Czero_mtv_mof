@@ -39,6 +39,19 @@ say(){ echo "[$(date '+%m-%d %H:%M:%S')] $*" >> "$LOG"; }
 inbox(){ echo "[$(date '+%m-%d %H:%M')] $*" >> "$INBOX"; touch "$FLAG"; }
 repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh | grep -vE "wsl_keepalive|lammps_watchdog|ensure_guards" | grep -qE "$ROOT|^bash [^/]"; }
 runner_running(){ pgrep -x simulate >/dev/null || pgrep -f "python[0-9.]* .*run_[A-Za-z0-9_]*\.py" >/dev/null; }
+# (10) 09-21 15:3x laptop2 지적 — ★ **깨진 결과 파일을 올리지 않습니다.**
+#      러너가 쓰는 중인 결과 JSON 에 git 이 충돌 표시를 박을 수 있고(§6, 랩탑 실측), 러너가 다음 쓰기로
+#      덮어 복구하기까지 **최대 한 작업 길이(13~50분)** 가 걸립니다. 그 창에서 **postman 이 5분마다
+#      그 깨진 파일을 master 로 밀어냅니다** — 사람이 안 보는 사이에. 그래서 올리기 전에 봅니다.
+#      충돌 표시는 확정 증거이고, 괄호 끝맞춤은 잘림을 싸게 잡습니다(파이썬 없이도 됩니다).
+file_broken(){
+  grep -qE '^(<<<<<<<|=======$|>>>>>>>)' "$1" && return 0
+  case "$1" in *.json)
+      head -c 200 "$1" | tr -d '[:space:]' | grep -qE '^[[{]' || return 0
+      tail -c 200 "$1" | tr -d '[:space:]' | grep -qE '[]}]$' || return 0 ;;
+  esac
+  return 1
+}
 # (4) 15:1x 데스크탑 실측 — ensure_guards 가 띄우는 wsl_keepalive.sh 가 상시 돌아 repo_bash_running 이 늘 참이 됐음(pull 영구 건너뜀). 저장소 밖 감시자 셋은 제외.
 tracked_dirty(){ git status --porcelain --untracked-files=no | grep -vE "^ M \.claude/" | grep -q .; }
 # (3) 첫 틱 범람 방지 — 이미 있는 로그는 지금 크기부터 증분만 본다
@@ -47,7 +60,10 @@ for f in "$ROOT"/.claude_work_*.out "$ROOT"/21_ZIF69_MTV/*_chain.log; do
   [ -f "$STATE/sz_$k" ] || stat -c %s "$f" > "$STATE/sz_$k"
 done
 [ -f "$STATE/tick" ] || touch "$STATE/tick"
-say "시작 machine=$MACHINE branch=$(git rev-parse --abbrev-ref HEAD)"; inbox "postman 시작 ($MACHINE)"
+say "시작 machine=$MACHINE branch=$(git rev-parse --abbrev-ref HEAD) 판=$(md5sum "$RUNSELF" 2>/dev/null | cut -c1-8)"
+# (9-2) 도는 판의 md5 를 남깁니다 — laptop2: **"보호가 실제로 그 기기에 도착했는지 그 기기가 확인해야 한다."**
+#       보낸 쪽은 볼 수 없는 자리입니다. 같은 형태로 오늘 세 번 났습니다(패턴·자기복사판·(10) 관문).
+inbox "postman 시작 ($MACHINE) 판 $(md5sum "$RUNSELF" 2>/dev/null | cut -c1-8)"
 prev_sim=$(pgrep -xc simulate)
 while :; do
   # (9) 저장소 판이 바뀌었으면 사본을 새로 떠서 넘어간다. **루프 맨 위**에 둡니다 —
@@ -55,18 +71,21 @@ while :; do
   #     (= 대개의 시간) 영영 안 걸렸습니다. 저장소 판은 postman 의 pull 말고도 사람·다른 세션의
   #     merge 로 바뀝니다. `if…fi` 는 bash 가 통째로 읽은 뒤 실행하고 교체는 mv(원자적 rename)라
   #     돌던 파일은 안 바뀝니다.
-  if [ -f "$ROOT/postman.sh" ] && ! cmp -s "$ROOT/postman.sh" "$RUNSELF"; then
-    say "postman.sh 갱신 감지 — 사본을 새로 떠서 재기동"; inbox "postman 자체 갱신 -> 재기동"
-    # (10) 랩탑 09-21 15:2x — `cmp` 와 `cp` 사이에 git 이 그 파일을 **쓰는 중**일 수 있습니다
-    #      (merge/checkout 는 원자적 교체가 아닙니다). 잘린 사본으로 exec 하면 postman 이 죽고,
-    #      죽은 것은 아무도 안 봅니다(이 저장소 §0 의 "실패가 결과처럼 보이는 것" 의 조용한 쪽).
-    #      `bash -n` 으로 문법을 먼저 보고, 아니면 **넘어가지 않고 다음 틱에 다시 봅니다.**
-    if cp -f "$ROOT/postman.sh" "$RUNSELF.new" && bash -n "$RUNSELF.new" 2>>"$LOG"; then
-      mv -f "$RUNSELF.new" "$RUNSELF" && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
-    else
-      rm -f "$RUNSELF.new"; say "갱신본이 잘렸거나 문법 오류 — 이번 틱은 넘어감(다음 틱에 다시 봄)"
-    fi
-  fi
+  # (9-2) 09-21 15:3x laptop2 발견 — ★ **작업트리와 견주면 안 됩니다.**
+  #   작업트리는 pull/merge 로만 바뀌는데 그 pull 을 postman 자신이 `runner_running` 가드로 건너뜁니다.
+  #   그래서 **러너가 도는 기기에서는 (9)가 영영 안 걸리고, 러너가 도는 기기가 바로 보호가 필요한 기기**입니다.
+  #   laptop2 실측: origin/master fe4a3bf0 / 작업트리 cb16a7b7 / 사본 cb16a7b7 — 둘이 같아 갱신이 안 걸림.
+  #   -> **`origin/master` 판과 견줍니다.** fetch 는 가드 밖이라 러너가 돌아도 돕니다.
+  #      작업트리를 건드리지 않으므로 §6 위험도 없습니다.
+  NEWSELF="$RUNDIR/.new_$MACHINE"
+  if git show origin/master:postman.sh > "$NEWSELF" 2>>"$LOG" && [ -s "$NEWSELF" ] \
+     && ! cmp -s "$NEWSELF" "$RUNSELF"; then
+    if bash -n "$NEWSELF" 2>>"$LOG"; then
+      say "postman.sh 갱신 감지(origin/master $(md5sum "$NEWSELF" | cut -c1-8)) — 사본을 새로 떠서 재기동"
+      inbox "postman 자체 갱신 -> 재기동 (판 $(md5sum "$NEWSELF" | cut -c1-8))"
+      mv -f "$NEWSELF" "$RUNSELF" && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
+    else say "!! origin/master 판이 잘렸거나 문법 오류 — 이번 틱은 넘어감"; rm -f "$NEWSELF"; fi
+  else rm -f "$NEWSELF"; fi
   BR=$(git rev-parse --abbrev-ref HEAD)
   if git fetch -q --all 2>>"$LOG"; then
     for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|junseok|^origin$"); do  # (7) 15:5x: 짧은 이름 origin(=origin/HEAD) 이 브랜치로 취급돼 master 의 남의 푸시를 ④ 로 재커밋(e202853) → 갈래가 생김. 제외.
@@ -91,6 +110,12 @@ while :; do
   # (5) 15:4x 데스크탑 실측 — 안 맞는 글롭이 하나라도 있으면(예: tnf_widom_*.json 이 아직 없음) git add 가 rc=128 로
   #     **아무것도 안 올림**. ③ 이 조용히 죽어 있었음(15:07 기동 뒤 푸시 0건). 패턴별로 add 하고 실패는 로그에.
   for p in $RESULT_PATTERNS; do [ -e "$p" ] && { git add "$p" 2>>"$LOG" || say "add 실패 $p"; }; done
+  # (10) 깨진 것은 스테이지에서 도로 뺍니다. **다음 틱에 다시 봅니다** — 러너가 덮어쓰면 저절로 풀립니다.
+  for f in $(git diff --cached --name-only); do
+    [ -f "$f" ] || continue
+    if file_broken "$f"; then git restore --staged "$f" 2>/dev/null || git reset -q HEAD -- "$f"
+      say "!! 깨진 결과 파일 — 올리지 않음: $f"; inbox "!! **깨진 결과 파일 반려** $f (러너가 덮어쓰면 다음 틱에 올라갑니다)"; fi
+  done
   if ! git diff --cached --quiet; then n=$(git diff --cached --name-only | wc -l)
     git commit -q -m "[postman:$MACHINE] 결과 파일 자동 반입 ${n}건" && git push -q origin "$BR" 2>>"$LOG" && inbox "[푸시] $BR ← 결과 ${n}건 $(git log -1 --format=%h)" || inbox "!! 자동 커밋/푸시 실패"; fi
   sim=$(pgrep -xc simulate); [ "$sim" != "$prev_sim" ] && { inbox "[simulate] $prev_sim → $sim"; prev_sim=$sim; }
