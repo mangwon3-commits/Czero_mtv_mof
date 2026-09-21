@@ -49,14 +49,32 @@ def scan():
 
 def main():
     rows = scan()
-    xs = np.log([n for n, _, _, _ in rows])
-    ys = np.log([t for _, _, _, t in rows])
-    b, a = np.polyfit(xs, ys, 1)
-    r = float(np.corrcoef(xs, ys)[0, 1])
-    print(f'T-BR-1 크기 주사  n={len(rows)} · N_super {rows[0][0]}~{rows[-1][0]} · 2워커')
+    print(f'T-BR-1 크기 주사  값 {len(rows)}개 · N_super {rows[0][0]}~{rows[-1][0]} · 2워커')
     for n, g, nm, t in rows:
         print(f'  {n:6} {g:>3} {t:6.1f} 분  {nm}')
-    print(f'\n**지수 b = {b:.3f}**   (로그-로그 r = {r:+.3f})')
+
+    # ★ **독립 추출은 구조 12개이지 값 24개가 아닙니다** (2026-09-21 랩탑 Melchior 지적).
+    #   CO2 와 N2 는 **같은 구조의 두 기체**라 크기 축에서 같은 점입니다. 24로 세면 자유도가
+    #   22 가 되어 신뢰구간을 **1.6배 좁게** 봅니다. 구조당 평균을 내어 n=12 로 적합합니다.
+    agg = {}
+    for n, g, nm, t in rows:
+        agg.setdefault((n, nm), []).append(t)
+    pts = [(n, float(np.mean(v))) for (n, nm), v in agg.items()]
+    xs = np.log([n for n, _ in pts])
+    ys = np.log([t for _, t in pts])
+    b, a = np.polyfit(xs, ys, 1)
+    r = float(np.corrcoef(xs, ys)[0, 1])
+    m = len(pts)
+    resid = ys - (b * xs + a)
+    sd = float(np.sqrt(resid @ resid / (m - 2)))
+    se = sd / math.sqrt(float(((xs - xs.mean()) ** 2).sum()))
+    from scipy.stats import t as tdist
+    tc = float(tdist.ppf(0.975, m - 2))
+    lo, hi = b - tc * se, b + tc * se
+    print(f'\n**지수 b = {b:.3f}**  95 % CI **[{lo:.3f}, {hi:.3f}]**  '
+          f'(독립 추출 **구조 {m}개**, dof {m-2}, r = {r:+.3f})')
+    print(f'  선형(1.0) 은 구간 {"안" if lo <= 1.0 <= hi else "**밖 — 기각**"}'
+          f' · 0.12 도 구간 {"안" if lo <= 0.12 <= hi else "**밖 — 기각**"}')
     print(f'  데스크탑 2워커 예측: 396 {math.exp(a)*396**b:.1f}분 · 1520 {math.exp(a)*1520**b:.1f} · '
           f'3200 {math.exp(a)*3200**b:.1f} · 5670 {math.exp(a)*5670**b:.1f}\n')
 
@@ -74,6 +92,14 @@ def main():
         print(f'         작업합 {tot:.1f} h · ÷{w} = {div:.2f} h · 최장 단일 {mx:.2f} h · '
               f'묶는 쪽 **{"작업합/워커" if div > mx else "최장 단일"}**')
         print(f'         완주 예상 **{(st + dt.timedelta(hours=eta)).strftime("%m-%d %H:%M")}**')
+        # 지수 CI 를 ETA 로 전파 — 점추정 하나로 적지 않습니다
+        span = []
+        for bb in (lo, hi):
+            kk = aT / aN ** bb
+            span.append(sum(2 * kk * p['N_super'] ** bb for p in s) / 60 / w)
+        print(f'         **지수 CI 전파 시 {min(span):.1f} ~ {max(span):.1f} h** '
+              f'({(st+dt.timedelta(hours=min(span))).strftime("%m-%d %H:%M")} ~ '
+              f'{(st+dt.timedelta(hours=max(span))).strftime("%m-%d %H:%M")})')
     print('\n감도 (각자 자기 눈금 고정)')
     print(f'{"지수":>6} {"laptop h":>10} {"laptop2 h":>11}')
     for bb in (0.4, 0.5, b, 0.75, 0.9, 1.0):
