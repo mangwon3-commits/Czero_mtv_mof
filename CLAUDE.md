@@ -216,6 +216,7 @@
 | azbIm · "월등" 정의 · 사전 등록 시험 T-1~T-C10 | `21_ZIF69_MTV/DESIGN_STUDY_20260903.md` |
 | T-SRCC (순위 보존 검정, 부트스트랩 ρ) | `21_ZIF69_MTV/SRCC_TEST_20260904.md` |
 | 파일 관문 · 머리말 관문 (힘장 관문 둘, `ff_gate.py`) | `21_ZIF69_MTV/FF_GATES_20260907.md` |
+| **기기별 능력 경계** (무엇을 줄 수 있고 못 주는가) | `21_ZIF69_MTV/MACHINE_CAPABILITIES.md` |
 | 「단위」·「배치 단위」 두 자와 **분모 식** | `21_ZIF69_MTV/RULER_DECISION_20260828.md §7` |
 | T-BR-1 (CoRE 눈금 ↔ 우리 눈금 다리) · 철회 판정 | `21_ZIF69_MTV/BRIDGE_CORE_REGISTRATION_20260920.md` · `BRIDGE_CORE_RESULT_20260921.md` |
 | §AV · 「CoRE 모집단(우리 자)」 · **모집단 524 / 새로 도는 것 512** | `21_ZIF69_MTV/COREPOP_REGISTRATION_20260921.md` |
