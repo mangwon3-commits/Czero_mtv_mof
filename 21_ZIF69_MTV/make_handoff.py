@@ -36,10 +36,16 @@ K1 = 18.03 / 1520 ** B         # laptop  분/작업 (자기 실측 눈금, 8워�
 W2, W1 = 12, 8
 
 
-def queue(pick):
-    """도는 laptop2 프로세스의 대기열 순서를 그대로 재현한다(안정정렬)."""
+def queue(pick, order='NAtoms'):
+    """도는 laptop2 프로세스의 대기열 순서를 그대로 재현한다(안정정렬).
+
+    `order` 는 `premise_gate` 가 완주분으로 **확인한** 자입니다 — 기본은 전제(NAtoms)이고,
+    증거가 N_super 를 가리키면 그쪽으로 바뀝니다(laptop2 가 새 코드로 재기동한 경우).
+    """
     s = [p for p in pick if p.get('assign') == 'laptop2']
-    return sorted(s, key=lambda p: -int(p.get('NAtoms') or 0))
+    key = (lambda p: -int(p.get('NAtoms') or 0)) if order == 'NAtoms' else \
+          (lambda p: -int(p.get('N_super') or 0))
+    return sorted(s, key=key)
 
 
 
@@ -65,19 +71,60 @@ def premise_gate(q, done, pick):
     }
     hit = {k: len(set(v) & done) for k, v in heads.items()}
     for k, v in hit.items():
-        print(f'  전제 검증  {k:24} 완료분과 겹침 {v}/{n}')
-    if hit['NAtoms 내림차순(전제)'] >= hit['N_super 내림차순(새 자)']:
-        return True
-    print('  !! **전제가 깨졌습니다** — laptop2 대기열이 NAtoms 순이 아닙니다'
-          '(새 코드로 재기동했을 가능성). 꼬리가 꼬리가 아니므로 이 목록은 겹칩니다.',
-          flush=True)
-    print('     laptop2 에 실제 정렬을 묻고 `queue()` 를 맞춘 뒤 다시 도십시오.'
-          ' (그래도 강행하려면 `--force-premise`.)', flush=True)
-    return '--force-premise' in sys.argv
+        print(f'  전제 검증  {k:24} 완료분과 겹침 {v}/{n} = {v/n*100:.0f} %')
+
+    best = max(hit, key=hit.get)
+
+    # ① **둘 다 안 맞으면 막는다** (데스크탑 09-21 15:1x 보탬).
+    #    랩탑의 원판은 두 후보를 **서로** 견주기만 해서, 둘 다 형편없어도 NAtoms 쪽이 조금만
+    #    높으면 통과했습니다. laptop2 가 우리가 모르는 순서로 돌고 있으면(다른 pick 파일,
+    #    다른 워커, 손으로 좁힌 목록) 꼬리 논리 자체가 성립하지 않습니다. 절대 문턱을 둡니다.
+    if hit[best] < 0.75 * n:
+        print(f'  !! **어느 정렬로도 설명이 안 됩니다**(최고 {hit[best]}/{n} < 75 %). '
+              f'laptop2 가 우리가 모르는 순서로 돌고 있습니다.', flush=True)
+        print('     꼬리 논리가 성립하지 않습니다. laptop2 에 실제 대기열을 물으십시오.'
+              ' (강행하려면 `--force-premise` — 권하지 않습니다.)', flush=True)
+        return '--force-premise' in sys.argv
+
+    # ② **N_super 쪽이 이기면 막지 말고 그 자를 쓴다** (데스크탑 보탬).
+    #    막으면 7 h 단축을 통째로 잃습니다. laptop2 가 새 코드로 재기동했다는 뜻일 뿐이고,
+    #    그 경우의 올바른 꼬리는 **N_super 내림차순의 꼬리**입니다 — 우리가 그 순서도 압니다.
+    if best != 'NAtoms 내림차순(전제)':
+        print(f'  ** 전제와 다릅니다 — laptop2 대기열이 **{best}** 입니다'
+              f'(새 코드로 재기동한 것으로 보입니다).', flush=True)
+        print('     막지 않고 **그 자의 꼬리**로 뽑습니다. 꼬리 논리는 그대로 섭니다.', flush=True)
+        premise_gate.order = 'N_super'
+    return True
+
+
+def own_share_gate(pick):
+    """★ **랩탑이 자기 204종을 먼저 끝냈는가.** (데스크탑 09-21 15:1x 추가)
+
+    §9-1 의 발동 조건이 바로 이것인데 스크립트가 **안 보고 있었습니다.** 지금(15:07) 돌려 보니
+    laptop2 완주 4종 기준으로 **172종**을 넘기라고 나옵니다 — 랩탑이 자기 몫을 도는 중에
+    그걸 받으면 자기 204종이 늦어지고 재배분의 목적이 뒤집힙니다.
+    """
+    mine = [p for p in pick if p.get('assign') == 'laptop']
+    f = os.path.join(HERE, 'core_pop_results_laptop.json')
+    if not os.path.exists(f):
+        print(f'!! core_pop_results_laptop.json 이 없습니다 — 랩탑 몫 0/{len(mine)}.', flush=True)
+        print('   §9-1 발동 조건은 **랩탑이 자기 204종을 완주한 뒤** 입니다.', flush=True)
+        return '--force-own' in sys.argv
+    d = json.load(open(f, encoding='utf-8'))
+    ok = sum(1 for r in d.get('rows', []) if r.get('status') == 'ok')
+    if ok < len(mine):
+        print(f'!! 랩탑 자기 몫 **{ok}/{len(mine)}** — 아직 완주 전입니다.', flush=True)
+        print('   §9-1 발동 조건은 자기 몫 완주입니다. 끝난 뒤 다시 도십시오.'
+              ' (강행하려면 `--force-own`.)', flush=True)
+        return '--force-own' in sys.argv
+    print(f'  랩탑 자기 몫 {ok}/{len(mine)} 완주 — 발동 조건 충족.')
+    return True
 
 
 def main():
     pick = json.load(open(os.path.join(HERE, 'core_pop_pick.json'), encoding='utf-8'))
+    if not own_share_gate(pick):
+        return 4
     q = queue(pick)
 
     done = set()
@@ -96,6 +143,10 @@ def main():
 
     if not premise_gate(q, done, pick):
         return 3
+    # 관문이 증거로 **다른 자**를 확인했으면 대기열을 그 자로 다시 세웁니다.
+    if getattr(premise_gate, 'order', 'NAtoms') != 'NAtoms':
+        q = queue(pick, premise_gate.order)
+        print(f'  대기열을 {premise_gate.order} 자로 다시 세웠습니다.')
 
     rest = [p for p in q if p['file'] not in done]
     t2 = lambda p: 2 * K2 * p['N_super'] ** B / 60
