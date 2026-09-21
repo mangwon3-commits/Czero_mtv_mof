@@ -20,6 +20,9 @@
     COREPOP_ASSIGN   'laptop' | 'laptop2' | 'desktop'   (pick 의 assign 과 대조. 필수)
     COREPOP_WORKERS  동시 RASPA 개수 (기본 = 물리 코어 수 - 0; 기기가 비어 있을 때만 크게)
     COREPOP_OUT      결과 경로 (기본 core_pop_results_<assign>.json)
+    COREPOP_PICK     대상 목록 파일 (기본 core_pop_pick.json) — §9-1 재배분에서 목록을 좁힐 때
+    COREPOP_MACHINE  **잰 기기** (기본 = ASSIGN). 재배분으로 남의 몫을 대신 돌 때 반드시 자기 기기를
+                     주십시오 — 안 그러면 '전달자가 측정자로 기록' 됩니다(check_header_v3w.py 머리말의 교훈).
 
 [이어받기]
     `run_one` 의 실행폴더 이어받기(완주한 `.data` 재사용)를 그대로 쓴다. 결과 JSON 도 매 작업마다
@@ -36,8 +39,9 @@ import run_aryl_gcmc as rg  # noqa: E402
 
 ASSIGN = os.environ.get('COREPOP_ASSIGN', '').strip()
 WORKERS = int(os.environ.get('COREPOP_WORKERS', '8'))
+MACHINE = os.environ.get('COREPOP_MACHINE', '').strip() or ASSIGN   # 잰 기기. 재배분 때 assign 과 갈린다
 CIFS = os.path.join(HERE, 'core_pop_cifs')
-PICK = os.path.join(HERE, 'core_pop_pick.json')
+PICK = os.environ.get('COREPOP_PICK') or os.path.join(HERE, 'core_pop_pick.json')
 OUT = os.environ.get('COREPOP_OUT') or os.path.join(HERE, f'core_pop_results_{ASSIGN}.json')
 
 rg.MAX_WORKERS = WORKERS
@@ -68,7 +72,7 @@ def write(rows, note=''):
     json.dump({
         'test': '§AV core-pop',
         'registration': 'COREPOP_REGISTRATION_20260921.md',
-        'assign': ASSIGN, 'workers': WORKERS,
+        'assign': ASSIGN, 'machine': MACHINE, 'workers': WORKERS,
         'note': ('외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. '
                  '우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것. ' + note),
         'protocol': PROTOCOL,

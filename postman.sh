@@ -11,13 +11,16 @@
 #       run_*.py 가 살아 있으면 pull/merge 건너뜀.
 #   (3) 첫 틱에 옛 로그 범람 — $STATE/sz_* 가 없으면 old=0 이라 로그 전체를 훑음(두 기기 다 09-03 tb5 줄이 올라옴)
 #       → 기동 시 현재 크기로 미리 채움.
+#   (8) 09-21 15:1x laptop2 지적 — §AV 결과(core_pop_results_*.json)가 RESULT_PATTERNS 에 없어 master 에
+#       영영 안 올라갔음. §9-1 재배분이 그 파일을 읽어야 발동하므로 **재배분이 통째로 막힐 뻔했음.**
+#       core_pop_results_*.json 과 bridge_core_results.json 추가. (돌던 판은 PID 로 정지 후 편집 — §6)
 # 판정·착수·문서 편집은 하지 않습니다. pkill -f 없음(CLAUDE.md §4). 죽일 때는 PID 로.
 set -u
 MACHINE="${1:-$(hostname)}"; INTERVAL="${POSTMAN_INTERVAL:-300}"
 cd "$(dirname "$0")" || exit 1; ROOT=$(pwd)
 INBOX="$ROOT/.postman_inbox_$MACHINE"; LOG="$ROOT/.postman_$MACHINE.log"; FLAG="$ROOT/.postman_flag"
 STATE="$ROOT/.postman_state_$MACHINE"; mkdir -p "$STATE"
-RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json'
+RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json'
 say(){ echo "[$(date '+%m-%d %H:%M:%S')] $*" >> "$LOG"; }
 inbox(){ echo "[$(date '+%m-%d %H:%M')] $*" >> "$INBOX"; touch "$FLAG"; }
 repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh | grep -vE "wsl_keepalive|lammps_watchdog|ensure_guards" | grep -qE "$ROOT|^bash [^/]"; }
