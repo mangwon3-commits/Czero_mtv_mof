@@ -120,29 +120,36 @@ def main():
         for fu in as_completed(futs):
             name, gas, mode, r, stt = fu.result()
             n += 1
-            part.setdefault(name, {})[gas] = r
+            part.setdefault(name, {})[gas] = (r, stt)     # 실패 사유(stt)까지 들고 간다
+            print(f'  [{stt:>9}] {gas:<3} {name}   ({n}/{len(jobs)})', flush=True)
+            if len(part[name]) < 2:
+                continue                                  # 두 기체가 다 와야 행을 만든다
+
             p = bykey.get(name, {})
-            kc, kn = part[name].get('CO2'), part[name].get('N2')
+            (kc, sc), (kn, sn) = part[name]['CO2'], part[name]['N2']
             row = {'file': name + '.cif', 'key': p.get('key'), 'set': p.get('set'), 'topo': p.get('topo'), 'metal': p.get('metal'),
                    'PLD': p.get('PLD'), 'LCD': p.get('LCD'), 'VF': p.get('VF'), 'GPV': p.get('GPV'),
                    'NAtoms': p.get('NAtoms'),
                    'core_KH_CO2': p.get('KH_CO2'), 'core_KH_N2': p.get('KH_N2'),
-                   'core_selectivity': p.get('sel'), 'status': 'ok'}
+                   'core_selectivity': p.get('sel'),
+                   'run_status': {'CO2': sc, 'N2': sn},   # 'ok' | 'cached' | '미완주' | 'timeout' | ...
+                   'status': 'ok'}
+            # `run_one` 은 실패하면 r 자체를 None 으로 돌려준다('미완주'·'timeout'·'no-output'·
+            # '값없음'·'다른세션실행중'). 옛 판의 `elif kc is not None` 은 그 경우를 **놓쳐서**
+            # 값 없는 행이 status='ok' 로 남았다. `else` 여야 한다.
             if kc and kc[0] is not None:
                 row['KH_CO2'], row['KH_CO2_err'] = kc[0], kc[1]
                 row['dU_CO2'], row['dU_CO2_err'] = kc[2], kc[3]
-            elif kc is not None:
-                row['status'] = 'CO2 실패'
+            else:
+                row['status'] = f'CO2 실패({sc})'
             if kn and kn[0] is not None:
                 row['KH_N2'], row['KH_N2_err'] = kn[0], kn[1]
-            elif kn is not None:
-                row['status'] = ('둘 다 실패' if row['status'] != 'ok' else 'N2 실패')
+            else:
+                row['status'] = (f'둘 다 실패({sc}/{sn})' if row['status'] != 'ok' else f'N2 실패({sn})')
             if row.get('KH_CO2') and row.get('KH_N2'):
                 row['selectivity'] = row['KH_CO2'] / row['KH_N2']
-            if len(part[name]) == 2:          # 두 기체가 다 끝난 구조만 확정 기록
-                rows[name + '.cif'] = row
-                write(rows)
-            print(f'  [{stt:>9}] {gas:<3} {name}   ({n}/{len(jobs)})', flush=True)
+            rows[name + '.cif'] = row
+            write(rows)
 
     write(rows)
     ok = sum(1 for r in rows.values() if r['status'] == 'ok')
