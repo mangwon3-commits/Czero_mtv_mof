@@ -97,8 +97,15 @@ def main():
             continue
         todo.append((p, f))
 
-    # LPT — 비싼 것(원자 많은 것)부터. 미리 덩어리로 안 나눈다(CLAUDE.md §5).
-    todo.sort(key=lambda t: -int(t[0].get('NAtoms') or 0))
+    # LPT — 비싼 것부터. 미리 덩어리로 안 나눈다(CLAUDE.md §5).
+    #
+    # 자는 **NAtoms 가 아니라 N_super = NAtoms x 셀수** 다. 셀수는 `unit_cells()` 의 최소거리규약이
+    # 정하므로 작은 셀일수록 많이 복제된다 — 같은 396원자라도 ftw(1x1x1)=396 과 tfz(2x2x2)=3168 이
+    # **8배** 차이다. NAtoms 로 정렬하면 원자 적고 셀 많은 구조가 대기열 뒤로 밀리고,
+    # 그것이 최장 단일 작업이 되어 꼬리를 혼자 늘린다(§AU 의 27.79 h 와 같은 형태).
+    # 2026-09-21 laptop2(Balthasar) 발견. 실측: laptop2 최대 N_super 5670 짜리가 NAtoms 정렬에서
+    # **118/308 번째**에 있었다.
+    todo.sort(key=lambda t: -int(t[0].get('N_super') or (int(t[0].get('NAtoms') or 0) * 8)))
     jobs = [(f, g, 'widom') for _, f in todo for g in ('CO2', 'N2')]
     bykey = {os.path.splitext(p['file'])[0]: p for p, _ in todo}   # run_one 이 돌려주는 name 기준
 
@@ -120,29 +127,36 @@ def main():
         for fu in as_completed(futs):
             name, gas, mode, r, stt = fu.result()
             n += 1
-            part.setdefault(name, {})[gas] = r
+            part.setdefault(name, {})[gas] = (r, stt)     # 실패 사유(stt)까지 들고 간다
+            print(f'  [{stt:>9}] {gas:<3} {name}   ({n}/{len(jobs)})', flush=True)
+            if len(part[name]) < 2:
+                continue                                  # 두 기체가 다 와야 행을 만든다
+
             p = bykey.get(name, {})
-            kc, kn = part[name].get('CO2'), part[name].get('N2')
+            (kc, sc), (kn, sn) = part[name]['CO2'], part[name]['N2']
             row = {'file': name + '.cif', 'key': p.get('key'), 'set': p.get('set'), 'topo': p.get('topo'), 'metal': p.get('metal'),
                    'PLD': p.get('PLD'), 'LCD': p.get('LCD'), 'VF': p.get('VF'), 'GPV': p.get('GPV'),
                    'NAtoms': p.get('NAtoms'),
                    'core_KH_CO2': p.get('KH_CO2'), 'core_KH_N2': p.get('KH_N2'),
-                   'core_selectivity': p.get('sel'), 'status': 'ok'}
+                   'core_selectivity': p.get('sel'),
+                   'run_status': {'CO2': sc, 'N2': sn},   # 'ok' | 'cached' | '미완주' | 'timeout' | ...
+                   'status': 'ok'}
+            # `run_one` 은 실패하면 r 자체를 None 으로 돌려준다('미완주'·'timeout'·'no-output'·
+            # '값없음'·'다른세션실행중'). 옛 판의 `elif kc is not None` 은 그 경우를 **놓쳐서**
+            # 값 없는 행이 status='ok' 로 남았다. `else` 여야 한다.
             if kc and kc[0] is not None:
                 row['KH_CO2'], row['KH_CO2_err'] = kc[0], kc[1]
                 row['dU_CO2'], row['dU_CO2_err'] = kc[2], kc[3]
-            elif kc is not None:
-                row['status'] = 'CO2 실패'
+            else:
+                row['status'] = f'CO2 실패({sc})'
             if kn and kn[0] is not None:
                 row['KH_N2'], row['KH_N2_err'] = kn[0], kn[1]
-            elif kn is not None:
-                row['status'] = ('둘 다 실패' if row['status'] != 'ok' else 'N2 실패')
+            else:
+                row['status'] = (f'둘 다 실패({sc}/{sn})' if row['status'] != 'ok' else f'N2 실패({sn})')
             if row.get('KH_CO2') and row.get('KH_N2'):
                 row['selectivity'] = row['KH_CO2'] / row['KH_N2']
-            if len(part[name]) == 2:          # 두 기체가 다 끝난 구조만 확정 기록
-                rows[name + '.cif'] = row
-                write(rows)
-            print(f'  [{stt:>9}] {gas:<3} {name}   ({n}/{len(jobs)})', flush=True)
+            rows[name + '.cif'] = row
+            write(rows)
 
     write(rows)
     ok = sum(1 for r in rows.values() if r['status'] == 'ok')
