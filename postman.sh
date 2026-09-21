@@ -14,10 +14,23 @@
 #   (8) 09-21 15:1x laptop2 지적 — §AV 결과(core_pop_results_*.json)가 RESULT_PATTERNS 에 없어 master 에
 #       영영 안 올라갔음. §9-1 재배분이 그 파일을 읽어야 발동하므로 **재배분이 통째로 막힐 뻔했음.**
 #       core_pop_results_*.json 과 bridge_core_results.json 추가. (돌던 판은 PID 로 정지 후 편집 — §6)
+#   (9) 09-21 15:2x 랩탑 Melchior 발견 — ★ **postman 이 자기 발을 밟습니다.** 5분마다 pull/merge 를 하는데
+#       그 pull 이 `postman.sh` **자신을** 덮어쓸 수 있고, bash 는 스크립트를 **바이트 오프셋으로** 읽으므로
+#       돌던 판이 엉뚱한 줄을 실행합니다(CLAUDE.md §6). 실측: 랩탑의 도는 프로세스가 09-19 15:46 기동인데
+#       파일 mtime 이 09-20 10:03 — **29시간을 운으로 버텼습니다.** 세 기기가 같은 노출이었습니다.
+#       해법(종합자 결정, 랩탑이 낸 두 길의 합): **저장소 밖 사본을 돌린다.** git 이 건드릴 수 없는 자리라
+#       창이 아예 없습니다. 그리고 **틱마다 저장소 판과 견줘 다르면 사본을 새로 떠서 `exec`** 하므로
+#       (가)의 낡음 문제도 없습니다. 교체는 `mv`(원자적 rename)라 돌던 프로세스는 옛 inode 를 계속 씁니다.
 # 판정·착수·문서 편집은 하지 않습니다. pkill -f 없음(CLAUDE.md §4). 죽일 때는 PID 로.
 set -u
 MACHINE="${1:-$(hostname)}"; INTERVAL="${POSTMAN_INTERVAL:-300}"
-cd "$(dirname "$0")" || exit 1; ROOT=$(pwd)
+ROOT="${POSTMAN_ROOT:-$(cd "$(dirname "$0")" && pwd)}"
+RUNDIR="$HOME/.mof_postman"; RUNSELF="$RUNDIR/postman_$MACHINE.sh"
+if [ "$(cd "$(dirname "$0")" && pwd)" != "$RUNDIR" ]; then   # (9) 저장소 안에서 떴으면 밖 사본으로 넘어간다
+  mkdir -p "$RUNDIR" && cp -f "$0" "$RUNSELF.new" && mv -f "$RUNSELF.new" "$RUNSELF"
+  POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
+fi
+cd "$ROOT" || exit 1
 INBOX="$ROOT/.postman_inbox_$MACHINE"; LOG="$ROOT/.postman_$MACHINE.log"; FLAG="$ROOT/.postman_flag"
 STATE="$ROOT/.postman_state_$MACHINE"; mkdir -p "$STATE"
 RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json'
@@ -36,6 +49,16 @@ done
 say "시작 machine=$MACHINE branch=$(git rev-parse --abbrev-ref HEAD)"; inbox "postman 시작 ($MACHINE)"
 prev_sim=$(pgrep -xc simulate)
 while :; do
+  # (9) 저장소 판이 바뀌었으면 사본을 새로 떠서 넘어간다. **루프 맨 위**에 둡니다 —
+  #     처음엔 pull 블록 뒤에 뒀는데 그 블록이 `runner_running` 가드 안이라, 러너가 도는 동안
+  #     (= 대개의 시간) 영영 안 걸렸습니다. 저장소 판은 postman 의 pull 말고도 사람·다른 세션의
+  #     merge 로 바뀝니다. `if…fi` 는 bash 가 통째로 읽은 뒤 실행하고 교체는 mv(원자적 rename)라
+  #     돌던 파일은 안 바뀝니다.
+  if [ -f "$ROOT/postman.sh" ] && ! cmp -s "$ROOT/postman.sh" "$RUNSELF"; then
+    say "postman.sh 갱신 감지 — 사본을 새로 떠서 재기동"; inbox "postman 자체 갱신 -> 재기동"
+    cp -f "$ROOT/postman.sh" "$RUNSELF.new" && mv -f "$RUNSELF.new" "$RUNSELF" \
+      && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
+  fi
   BR=$(git rev-parse --abbrev-ref HEAD)
   if git fetch -q --all 2>>"$LOG"; then
     for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|junseok|^origin$"); do  # (7) 15:5x: 짧은 이름 origin(=origin/HEAD) 이 브랜치로 취급돼 master 의 남의 푸시를 ④ 로 재커밋(e202853) → 갈래가 생김. 제외.
