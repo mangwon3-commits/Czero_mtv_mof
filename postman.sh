@@ -27,8 +27,9 @@ MACHINE="${1:-$(hostname)}"; INTERVAL="${POSTMAN_INTERVAL:-300}"
 ROOT="${POSTMAN_ROOT:-$(cd "$(dirname "$0")" && pwd)}"
 RUNDIR="$HOME/.mof_postman"; RUNSELF="$RUNDIR/postman_$MACHINE.sh"
 if [ "$(cd "$(dirname "$0")" && pwd)" != "$RUNDIR" ]; then   # (9) 저장소 안에서 떴으면 밖 사본으로 넘어간다
-  mkdir -p "$RUNDIR" && cp -f "$0" "$RUNSELF.new" && mv -f "$RUNSELF.new" "$RUNSELF"
-  POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
+  mkdir -p "$RUNDIR" && cp -f "$0" "$RUNSELF.new" && bash -n "$RUNSELF.new" \
+    && mv -f "$RUNSELF.new" "$RUNSELF" && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
+  rm -f "$RUNSELF.new"; echo "!! 사본 뜨기 실패(문법 오류거나 복사 실패) — 저장소 판으로 계속" >&2
 fi
 cd "$ROOT" || exit 1
 INBOX="$ROOT/.postman_inbox_$MACHINE"; LOG="$ROOT/.postman_$MACHINE.log"; FLAG="$ROOT/.postman_flag"
@@ -56,8 +57,15 @@ while :; do
   #     돌던 파일은 안 바뀝니다.
   if [ -f "$ROOT/postman.sh" ] && ! cmp -s "$ROOT/postman.sh" "$RUNSELF"; then
     say "postman.sh 갱신 감지 — 사본을 새로 떠서 재기동"; inbox "postman 자체 갱신 -> 재기동"
-    cp -f "$ROOT/postman.sh" "$RUNSELF.new" && mv -f "$RUNSELF.new" "$RUNSELF" \
-      && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
+    # (10) 랩탑 09-21 15:2x — `cmp` 와 `cp` 사이에 git 이 그 파일을 **쓰는 중**일 수 있습니다
+    #      (merge/checkout 는 원자적 교체가 아닙니다). 잘린 사본으로 exec 하면 postman 이 죽고,
+    #      죽은 것은 아무도 안 봅니다(이 저장소 §0 의 "실패가 결과처럼 보이는 것" 의 조용한 쪽).
+    #      `bash -n` 으로 문법을 먼저 보고, 아니면 **넘어가지 않고 다음 틱에 다시 봅니다.**
+    if cp -f "$ROOT/postman.sh" "$RUNSELF.new" && bash -n "$RUNSELF.new" 2>>"$LOG"; then
+      mv -f "$RUNSELF.new" "$RUNSELF" && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
+    else
+      rm -f "$RUNSELF.new"; say "갱신본이 잘렸거나 문법 오류 — 이번 틱은 넘어감(다음 틱에 다시 봄)"
+    fi
   fi
   BR=$(git rev-parse --abbrev-ref HEAD)
   if git fetch -q --all 2>>"$LOG"; then
