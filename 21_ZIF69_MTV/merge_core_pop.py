@@ -28,11 +28,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 PICK = os.path.join(HERE, 'core_pop_pick.json')
 OUT = os.path.join(HERE, 'core_pop_merged.json')
 
-SOURCES = [
-    ('laptop2', 'core_pop_results_laptop2.json'),
-    ('laptop', 'core_pop_results_laptop.json'),
-    ('desktop', 'bridge_core_results.json'),
-]
+# 기기별 결과 파일은 **찾아서** 씁니다 — §9-1 재배분이 생기면
+# `core_pop_results_laptop2_by_laptop.json` 처럼 새 파일이 늘어나기 때문입니다.
+# 잰 기기는 파일 이름이 아니라 **머리말의 `machine`** 에서 읽습니다(없으면 `assign`).
+GLOB = 'core_pop_results_*.json'
+EXTRA = ['bridge_core_results.json']          # T-BR-1 12종 — desktop
 # 프로토콜 비교에서 뺄 키: 설명 문자열이라 값이 아니다.
 DESCRIPTIVE = {'co2'}
 
@@ -41,12 +41,16 @@ def main():
     pick = {p['file']: p for p in json.load(open(PICK, encoding='utf-8'))}
     ref, rows, missing = None, {}, []
 
-    for host, fname in SOURCES:
-        path = os.path.join(HERE, fname)
-        if not os.path.exists(path):
-            missing.append((host, fname))
-            continue
+    import glob
+    files = sorted(glob.glob(os.path.join(HERE, GLOB))) + \
+            [os.path.join(HERE, f) for f in EXTRA if os.path.exists(os.path.join(HERE, f))]
+    if not files:
+        print('!! 합칠 결과 파일이 하나도 없습니다.', flush=True)
+        return 2
+    for path in files:
+        fname = os.path.basename(path)
         d = json.load(open(path, encoding='utf-8'))
+        host = d.get('machine') or d.get('assign') or ('desktop' if 'bridge' in fname else '?')
         proto = {k: v for k, v in d['protocol'].items() if k not in DESCRIPTIVE}
         if ref is None:
             ref, ref_host = proto, host
@@ -71,8 +75,9 @@ def main():
             n += 1
         print(f'  {host:8} {fname:34} 성공 {n:4} / 기록 {len(d["rows"]):4}', flush=True)
 
-    if missing:
-        print('\n아직 없는 갈래:', ', '.join(f'{h}({f})' for h, f in missing), flush=True)
+    done_assign = {p['assign'] for p in pick.values()}
+    seen = {r['host'] for r in rows.values()}
+    print(f"\n합친 파일 {len(files)}개 · 기기 {sorted(seen)}", flush=True)
 
     got = len(rows)
     want = len(pick)
@@ -91,7 +96,7 @@ def main():
                  '프로토콜 동일성을 이 스크립트가 검사했다.'),
         'protocol': ref,
         'n': got, 'n_pool': want,
-        'sources': {h: f for h, f in SOURCES},
+        'sources': sorted(os.path.basename(f) for f in files),
         'rows': sorted(rows.values(), key=lambda r: r['file']),
     }, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(f'저장 {OUT}', flush=True)
