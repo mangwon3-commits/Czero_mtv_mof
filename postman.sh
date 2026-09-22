@@ -71,21 +71,6 @@ while :; do
   #     (= 대개의 시간) 영영 안 걸렸습니다. 저장소 판은 postman 의 pull 말고도 사람·다른 세션의
   #     merge 로 바뀝니다. `if…fi` 는 bash 가 통째로 읽은 뒤 실행하고 교체는 mv(원자적 rename)라
   #     돌던 파일은 안 바뀝니다.
-  # (9-2) 09-21 15:3x laptop2 발견 — ★ **작업트리와 견주면 안 됩니다.**
-  #   작업트리는 pull/merge 로만 바뀌는데 그 pull 을 postman 자신이 `runner_running` 가드로 건너뜁니다.
-  #   그래서 **러너가 도는 기기에서는 (9)가 영영 안 걸리고, 러너가 도는 기기가 바로 보호가 필요한 기기**입니다.
-  #   laptop2 실측: origin/master fe4a3bf0 / 작업트리 cb16a7b7 / 사본 cb16a7b7 — 둘이 같아 갱신이 안 걸림.
-  #   -> **`origin/master` 판과 견줍니다.** fetch 는 가드 밖이라 러너가 돌아도 돕니다.
-  #      작업트리를 건드리지 않으므로 §6 위험도 없습니다.
-  NEWSELF="$RUNDIR/.new_$MACHINE"
-  if git show origin/master:postman.sh > "$NEWSELF" 2>>"$LOG" && [ -s "$NEWSELF" ] \
-     && ! cmp -s "$NEWSELF" "$RUNSELF"; then
-    if bash -n "$NEWSELF" 2>>"$LOG"; then
-      say "postman.sh 갱신 감지(origin/master $(md5sum "$NEWSELF" | cut -c1-8)) — 사본을 새로 떠서 재기동"
-      inbox "postman 자체 갱신 -> 재기동 (판 $(md5sum "$NEWSELF" | cut -c1-8))"
-      mv -f "$NEWSELF" "$RUNSELF" && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
-    else say "!! origin/master 판이 잘렸거나 문법 오류 — 이번 틱은 넘어감"; rm -f "$NEWSELF"; fi
-  else rm -f "$NEWSELF"; fi
   BR=$(git rev-parse --abbrev-ref HEAD)
   if git fetch -q --all 2>>"$LOG"; then
     for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|junseok|^origin$"); do  # (7) 15:5x: 짧은 이름 origin(=origin/HEAD) 이 브랜치로 취급돼 master 의 남의 푸시를 ④ 로 재커밋(e202853) → 갈래가 생김. 제외.
@@ -103,6 +88,26 @@ while :; do
       fi; echo "$cur" > "$STATE/$key"
     done
   else say "fetch 실패"; fi
+  # (9-3) 09-21 15:4x — 판정을 **fetch 뒤**로 옮겼습니다(랩탑이 넘긴 판단).
+  #   앞에 있으면 직전 틱이 받아 온 ref 를 써서 새 판이 **최대 두 틱(~10분)** 뒤에 넘어갔습니다.
+  #   랩탑 우려("fetch 실패한 틱에서 판정이 통째로 건너뛰어진다")는 **배치로 피합니다** —
+  #   `if git fetch …; then … fi` **블록 밖**에 두었으므로 fetch 가 실패해도 판정은 돕니다
+  #   (그 틱은 낡은 ref 로 보는 것뿐, 예전과 같음). 두 걱정을 동시에 없앱니다.
+  # (9-2) 09-21 15:3x laptop2 발견 — ★ **작업트리와 견주면 안 됩니다.**
+  #   작업트리는 pull/merge 로만 바뀌는데 그 pull 을 postman 자신이 `runner_running` 가드로 건너뜁니다.
+  #   그래서 **러너가 도는 기기에서는 (9)가 영영 안 걸리고, 러너가 도는 기기가 바로 보호가 필요한 기기**입니다.
+  #   laptop2 실측: origin/master fe4a3bf0 / 작업트리 cb16a7b7 / 사본 cb16a7b7 — 둘이 같아 갱신이 안 걸림.
+  #   -> **`origin/master` 판과 견줍니다.** fetch 는 가드 밖이라 러너가 돌아도 돕니다.
+  #      작업트리를 건드리지 않으므로 §6 위험도 없습니다.
+  NEWSELF="$RUNDIR/.new_$MACHINE"
+  if git show origin/master:postman.sh > "$NEWSELF" 2>>"$LOG" && [ -s "$NEWSELF" ] \
+     && ! cmp -s "$NEWSELF" "$RUNSELF"; then
+    if bash -n "$NEWSELF" 2>>"$LOG"; then
+      say "postman.sh 갱신 감지(origin/master $(md5sum "$NEWSELF" | cut -c1-8)) — 사본을 새로 떠서 재기동"
+      inbox "postman 자체 갱신 -> 재기동 (판 $(md5sum "$NEWSELF" | cut -c1-8))"
+      mv -f "$NEWSELF" "$RUNSELF" && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
+    else say "!! origin/master 판이 잘렸거나 문법 오류 — 이번 틱은 넘어감"; rm -f "$NEWSELF"; fi
+  else rm -f "$NEWSELF"; fi
   if repo_bash_running || runner_running; then say "저장소 bash/러너 실행 중 — pull 건너뜀"; elif tracked_dirty; then say "추적 파일 수정 — pull 건너뜀"; else
     if [ "$BR" = "master" ]; then git pull -q --ff-only origin master 2>>"$LOG" || inbox "!! master ff-pull 실패"
     else git merge -q --no-edit origin/master 2>>"$LOG" || { git merge --abort 2>/dev/null; inbox "!! origin/master merge 충돌"; }; fi

@@ -30,7 +30,8 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-B = 0.651                      # T-BR-1 24점 실측 지수 (cost_scan_core_pop.py)
+B = 0.651                      # T-BR-1 **구조 12점** 실측 지수 (cost_scan_core_pop.py) · 95 % CI [0.500, 0.801]
+PAIRS = 10                     # §9-6 겹치는 짝 — 기기 항 검정용(laptop2 완주분에서 크기 분위로)
 K2 = 13.10 / 396 ** B          # laptop2 분/작업 (자기 실측 눈금, 12워커)
 K1 = 18.03 / 1520 ** B         # laptop  분/작업 (자기 실측 눈금, 8워커)
 W2, W1 = 12, 8
@@ -152,16 +153,38 @@ def main():
     t2 = lambda p: 2 * K2 * p['N_super'] ** B / 60
     t1 = lambda p: 2 * K1 * p['N_super'] ** B / 60
 
+    # ★ §9-6 겹치는 짝 — **기기 항을 보려면 같은 구조를 두 기기에서 재야 합니다**(랩탑 09-21 15:3x).
+    #   배수가 튼튼했던 이유가 구조 성질의 약분인데, 서로 다른 구조로 두 기기를 견주면 구조 사이 퍼짐
+    #   21 % 가 그대로 들어와 경합 차이 8 % 를 덮습니다. 지금 설계로는 겹치는 짝이 **0** 입니다.
+    #   **laptop2 가 이미 끝낸 것** 중에서 고르므로 충돌 위험이 없습니다(그쪽은 다시 안 돕니다).
+    donep = [p for p in queue(pick) if p['file'] in done]
+    donep.sort(key=lambda p: p['N_super'])
+    pairs = []
+    if len(donep) >= PAIRS:
+        idx = [round((i + 0.5) * len(donep) / PAIRS) for i in range(PAIRS)]   # 크기 분위로 고르게
+        seen = set()
+        for i in idx:
+            q_ = donep[min(i, len(donep) - 1)]
+            if q_['file'] not in seen:
+                seen.add(q_['file']); pairs.append(dict(q_, pair=True))
+    else:
+        print(f'  .. 겹치는 짝 보류 — laptop2 완주 {len(donep)}종 < {PAIRS}종')
+    if pairs:
+        print(f'  겹치는 짝 **{len(pairs)}종** 추가 (N_super {pairs[0]["N_super"]}~{pairs[-1]["N_super"]}) '
+              f'· 랩탑에 +{sum(t1(q_) for q_ in pairs)/W1:.2f} h · 기기 항 검정용 · **k 계산에 포함**')
+    # (11) 랩탑 09-21 15:4x — 짝을 **k 계산 안에** 넣습니다. 원판은 k 를 고른 **뒤**에 짝을 붙여서
+    #      랩탑만 extra 만큼 늦어지고, 화면의 "동시 종료" 가 그만큼 틀렸습니다. extra 는 k 와 무관하므로
+    #      (짝은 laptop2 완주분에서 고름) 균형식에 상수로 넣으면 그만입니다.
+    extra = sum(t1(q_) for q_ in pairs) / W1
     best = None
     for k in range(len(rest) + 1):
-        tail = rest[len(rest) - k:]
-        a = sum(t1(p) for p in tail) / W1          # 랩탑이 도는 시간
-        b = sum(t2(p) for p in rest[:len(rest) - k]) / W2   # laptop2 가 남기는 시간
+        a = sum(t1(p) for p in rest[len(rest) - k:]) / W1 + extra   # 랩탑: 꼬리 + 짝
+        b = sum(t2(p) for p in rest[:len(rest) - k]) / W2           # laptop2: 남기는 몫
         m = max(a, b)
         if best is None or m < best[0]:
             best = (m, k, a, b)
     m, k, a, b = best
-    tail = rest[len(rest) - k:]
+    tail = rest[len(rest) - k:] + pairs
 
     print(f'남은 {len(rest)}종 · 랩탑이 받을 **꼬리 {k}종**')
     print(f'  랩탑 {a:.2f} h · laptop2 {b:.2f} h · 두 기기 동시 종료까지 **{m:.2f} h**')

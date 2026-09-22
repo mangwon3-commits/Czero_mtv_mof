@@ -39,7 +39,7 @@ DESCRIPTIVE = {'co2'}
 
 def main():
     pick = {p['file']: p for p in json.load(open(PICK, encoding='utf-8'))}
-    ref, rows, missing = None, {}, []
+    ref, rows, missing, pairs = None, {}, [], {}
 
     import glob
     files = sorted(glob.glob(os.path.join(HERE, GLOB))) + \
@@ -68,10 +68,17 @@ def main():
             p = pick.get(f)
             if p is None:                     # 풀 밖의 행은 넣지 않는다
                 continue
-            rows[f] = dict(r, host=host, assign=p['assign'],
-                           VF=p.get('VF'), GPV=p.get('GPV'),
-                           core_KH_N2=p.get('KH_N2'), core_KH_CO2=p.get('KH_CO2'),
-                           core_selectivity=p.get('sel'))
+            row = dict(r, host=host, assign=p['assign'],
+                       VF=p.get('VF'), GPV=p.get('GPV'),
+                       core_KH_N2=p.get('KH_N2'), core_KH_CO2=p.get('KH_CO2'),
+                       core_selectivity=p.get('sel'))
+            # §9-6 겹치는 짝: **같은 구조를 두 기기에서** 잰 것. 모집단에는 하나만 넣고
+            # 둘 다 `pairs` 로 따로 냅니다 — 기기 항을 보려면 짝이 있어야 합니다(랩탑).
+            if f in rows and rows[f]['host'] != host:
+                pairs.setdefault(f, {})[rows[f]['host']] = rows[f]
+                pairs[f][host] = row
+            else:
+                rows[f] = row
             n += 1
         print(f'  {host:8} {fname:34} 성공 {n:4} / 기록 {len(d["rows"]):4}', flush=True)
 
@@ -98,7 +105,20 @@ def main():
         'n': got, 'n_pool': want,
         'sources': sorted(os.path.basename(f) for f in files),
         'rows': sorted(rows.values(), key=lambda r: r['file']),
+        'pairs': {f: {h: {'KH_CO2': v.get('KH_CO2'), 'KH_N2': v.get('KH_N2'),
+                          'selectivity': v.get('selectivity'), 'N_super': v.get('NAtoms')}
+                      for h, v in d.items()} for f, d in pairs.items()},
     }, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    if pairs:
+        import statistics as st
+        rr = []
+        for f, d in pairs.items():
+            hs = sorted(d)
+            if len(hs) == 2 and d[hs[0]].get('KH_CO2') and d[hs[1]].get('KH_CO2'):
+                rr.append(d[hs[0]]['KH_CO2'] / d[hs[1]]['KH_CO2'])
+        print(f'\n§9-6 겹치는 짝 {len(pairs)}종'
+              + (f' · K_H 비 중앙 {st.median(rr):.4f} (1.0 이면 기기 항 없음) '
+                 f'· 범위 {min(rr):.4f}~{max(rr):.4f}' if rr else ''), flush=True)
     print(f'저장 {OUT}', flush=True)
     return 0
 
