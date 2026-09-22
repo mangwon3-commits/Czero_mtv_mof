@@ -57,9 +57,17 @@ def load_prior():
     return {r['file']: r for r in d.get('rows', [])}
 
 
+PROGRESS = {'done': 0, 'total': 0, 'stage': '', 'last': ''}
+
+
 def write(rows):
+    # ★ **작업 단위 진행을 결과 파일 머리말에 넣습니다**(2026-09-23 laptop2 지적).
+    #   §AV 에서는 진행이 `.claude_work_*.out` 에만 있었고 그 파일이 RESULT_PATTERNS 밖이라
+    #   **master 에서 보면 구조 하나에 20~40분씩 행이 안 늘어나는 구간**이 생겼습니다.
+    #   종합자가 그걸 "정지" 로 읽어 같은 일을 두 기기가 돌았습니다. 결과 파일은 패턴 안이니 여기 씁니다.
     json.dump({'test': '§AW core-wc', 'registration': 'COREWC_REGISTRATION_20260923.md',
                'assign': ASSIGN, 'machine': MACHINE, 'workers': WORKERS,
+               'progress': dict(PROGRESS),
                'note': ('외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. '
                         '우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.'),
                'protocol': PROTOCOL,
@@ -94,6 +102,7 @@ def main():
             continue
         jobs = [(os.path.join(CIFS, p['file']), 'CO2', 'gcmc') for p in todo]
         n = 0
+        PROGRESS.update(stage=f'{P:g}bar', total=len(jobs), done=0)
         with ProcessPoolExecutor(max_workers=WORKERS) as ex:
             futs = [ex.submit(rg._star, j) for j in jobs]
             for fu in as_completed(futs):
@@ -107,6 +116,7 @@ def main():
                     'our_KH_CO2': p.get('our_KH_CO2'), 'our_selectivity': p.get('our_selectivity'),
                     'machine': MACHINE, 'run_status': {}})
                 row['run_status'][f'{P:g}bar'] = stt
+                PROGRESS.update(done=n, last=f'{P:g}bar {name} [{stt}]')
                 if r and r[4] is not None:
                     row[key], row[key + '_err'] = r[4], r[5]
                 write(rows)
