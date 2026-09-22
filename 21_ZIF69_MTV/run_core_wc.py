@@ -86,6 +86,21 @@ def main():
     rows = load_prior()
     bykey = {os.path.splitext(p['file'])[0]: p for p in pick}
 
+    # (랩탑 09-23 01:1x) CIF 가 없는 대상을 **말없이 건너뛰지 않습니다.** 아래 todo 는
+    # `os.path.exists` 로 거르는데, 그러면 n 이 조용히 줄어 "36종 배정" 과 "35종 완주" 가
+    # 아무 데도 안 적힙니다 — 실패가 결과처럼 보이는 것(CLAUDE.md §0)의 조용한 쪽입니다.
+    # (종합자 09-23 01:3x 정정) **master 의 `core_pop_cifs.zip` 은 524개입니다** — 09-21 15:0x
+    # 커밋 `c54daf0` 에서 T-BR-1 의 12종을 넣어 `pick 524행 = 묶음 524개`로 자기완결시켰습니다.
+    # 그 12종이 빠진 512개 판으로 **푼 뒤 다시 안 푼 기기**에서 이 경고가 납니다.
+    # -> 그 경우 zip 을 다시 푸십시오:
+    #    python -c "import zipfile;zipfile.ZipFile('core_pop_cifs.zip').extractall('core_pop_cifs')"
+    # 경고 자체는 그대로 둡니다 — **n 이 조용히 줄어드는 것**을 막는 것이 요지이고 그건 맞습니다.
+    nocif = [p['file'] for p in pick if not os.path.exists(os.path.join(CIFS, p['file']))]
+    if nocif:
+        print(f'!! CIF 없음 {len(nocif)}종 — 이번 실행에서 빠집니다(n 이 {len(pick)} 이 아니라 '
+              f'{len(pick) - len(nocif)} 입니다): {", ".join(nocif)}', flush=True)
+        print('   CIF 를 받으면 같은 명령을 다시 치십시오 — 나머지는 이어받고 이것만 돕니다.', flush=True)
+
     from concurrent.futures import ProcessPoolExecutor, as_completed
     for P in PRESSURES:
         rg.PRESSURE = P * 1e5                      # RASPA 는 Pa

@@ -13,7 +13,7 @@
 |---|---|---|
 | **desktop** (HKHOME) | 전부 — RASPA · Zeo++ · LAMMPS 관문 · xtb · PACMAN · rdkit | (현재 알려진 제약 없음) |
 | **laptop2** | **RASPA GCMC·Widom · xtb 이완 · PACMAN 전하** | **rdkit 빌드 · LAMMPS 위험도 관문** · **Zeo++ 대량** |
-| **laptop** | (그 기기가 채울 것) | (그 기기가 채울 것) |
+| **laptop** | **RASPA GCMC·Widom · Zeo++(소량) · rdkit 빌드 · LAMMPS 위험도 관문** | **xtb 이완**(환경 자체가 없음) · **Zeo++ 대량** |
 
 ## 2. desktop (HKHOME) — 2026-09-21 23:2x 실측
 
@@ -44,11 +44,34 @@
 구조로 주십시오. §AK 가 그 형태였고 ②③④⑥ 은 laptop2 에서 전부 완주했습니다.
 **사슬 스크립트를 통째로 주면 5시간 뒤 중단됩니다** — 09-18 에 실제로 그랬습니다.
 
-## 4. laptop — **그 기기가 채울 자리**
+## 4. laptop — 2026-09-23 01:0x 실측 (그 기기가 직접 잰 값)
 
-추측으로 쓰지 않습니다. 랩탑 세션이 다음 보고 때 §2·§3 형식으로 한 줄 주면 여기에 올립니다.
-지금 아는 것: 물리 8코어(`SESSION_LOG` 08-18), `~/.mof_postman/postman_laptop.sh` 로 postman 구동,
-§AU(습윤 WC 15작업)·§AV(RASPA Widom) 완주 실적.
+    CPU   AMD Ryzen 9 5900HS · **물리 8 / 논리 16** · RAM 23 GB
+    환경  czeromof · coremof_tools · **lammps_mof** · ghcli  — **`spectra` 환경이 없습니다**
+    힘장  UFF_MOF `force_field_mixing_rules.def` md5 **8e8ec933**…  (파일 관문 통과)
+    RASPA `simulate` 는 **czeromof 안**에 있습니다(`envs/czeromof/bin/simulate`, 도는 프로세스의
+          `/proc/<pid>/exe` 로 확인). `~/RASPA/simulations/bin/` 에는 없으니 그 경로를 가정하지 마십시오.
+
+    ✅ **RASPA GCMC·Widom**   §AU(습윤 WC 15작업 28h23m) · §AV(Widom 408작업 18h15m, 204/204 실패 0) 완주
+    ✅ **rdkit 빌드**          `czeromof` 에서 실동작 확인(벤젠 6원자). **laptop2 에 없는 것입니다.**
+    ✅ **LAMMPS 위험도 관문**   `lammps_mof` 에서 `lammps_interface`·`ase`·`numpy` import 되고
+                              `lmp_serial` 은 **`~/.local/bin/lmp_serial`** 에 있습니다(환경 bin 이 아님 — PATH 로 잡힘).
+                              **laptop2 에 없는 것입니다.** 데스크탑 §2 주의대로 `czeromof` 로 부르면 거부됩니다.
+    ⚠ **Zeo++**               `czeromof/bin/network` **있고 응답합니다.** 다만 v3 구조 9.5 GB/건 · RAM 23 GB 라
+                              **동시 2건이 상한**이고, §5 대로 RASPA 와 동시 실행 금지. **대량은 주지 마십시오.**
+    ❌ **xtb 이완**            `spectra` 환경이 없고 어느 환경에도 `xtb` 바이너리가 없습니다.
+
+    처리량(실측)  Widom CO₂/N₂ 408작업 · 8워커 · 작업합 145.2 h → 벽시계 **18.25 h**
+                  비용 = f(N_super), **b = 0.733 ± 0.035**(구조 204개, 범위 9.7배 — §AV 실측)
+                  최장 단일 작업 0.64 h → 묶는 쪽은 **작업합/워커**(CLAUDE.md §5 규약)
+    ⚠ **경합 배수는 아직 모릅니다.** 같은 구조를 워커 수만 바꿔 돌린 짝이 없습니다.
+      laptop2 처럼 "유효 몇 개분" 을 적으려면 그 짝이 먼저 필요합니다 — **추측으로 적지 않습니다.**
+
+### 앞단이 붙은 배정을 줄 때
+**①빌드(rdkit)·⑤관문(LAMMPS) 둘 다 여기서 됩니다** — laptop2 와 갈리는 지점입니다.
+사슬을 통째로 줘도 그 두 단계에서 멈추지 않습니다. 다만 **단계마다 인터프리터가 다릅니다**:
+⑤ 는 `lammps_mof`, 나머지는 `czeromof`. 09-22 에 데스크탑 T-C10 이 이것을 섞어 6시간 놀았습니다.
+**xtb 이완이 붙으면** 그 단계만 다른 기기가 하고 결과를 푸시하는 구조로 주십시오.
 
 ## 5. 열려 있는 결정 — **사용자 몫**
 
