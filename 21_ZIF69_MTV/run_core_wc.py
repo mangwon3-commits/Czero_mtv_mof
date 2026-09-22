@@ -78,6 +78,17 @@ def main():
     rows = load_prior()
     bykey = {os.path.splitext(p['file'])[0]: p for p in pick}
 
+    # (랩탑 09-23 01:1x) CIF 가 없는 대상을 **말없이 건너뛰지 않습니다.** 아래 todo 는
+    # `os.path.exists` 로 거르는데, 그러면 n 이 조용히 줄어 "36종 배정" 과 "35종 완주" 가
+    # 아무 데도 안 적힙니다 — 실패가 결과처럼 보이는 것(CLAUDE.md §0)의 조용한 쪽입니다.
+    # 실제로 §AW 72종 중 **3종이 T-BR-1 의 12종 출신**이라 `core_pop_cifs.zip`(512 = 524−12)에
+    # CIF 가 애초에 없습니다(laptop 1 · laptop2 2).
+    nocif = [p['file'] for p in pick if not os.path.exists(os.path.join(CIFS, p['file']))]
+    if nocif:
+        print(f'!! CIF 없음 {len(nocif)}종 — 이번 실행에서 빠집니다(n 이 {len(pick)} 이 아니라 '
+              f'{len(pick) - len(nocif)} 입니다): {", ".join(nocif)}', flush=True)
+        print('   CIF 를 받으면 같은 명령을 다시 치십시오 — 나머지는 이어받고 이것만 돕니다.', flush=True)
+
     from concurrent.futures import ProcessPoolExecutor, as_completed
     for P in PRESSURES:
         rg.PRESSURE = P * 1e5                      # RASPA 는 Pa
