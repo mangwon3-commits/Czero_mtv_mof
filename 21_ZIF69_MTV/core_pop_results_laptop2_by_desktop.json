@@ -1,0 +1,101 @@
+{
+ "test": "§AV core-pop",
+ "registration": "COREPOP_REGISTRATION_20260921.md",
+ "assign": "laptop2",
+ "machine": "desktop",
+ "workers": 8,
+ "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것. ",
+ "protocol": {
+  "widom_cycles": 15000,
+  "widom_init": 3000,
+  "forcefield": "UFF_MOF",
+  "cutoff": 12.0,
+  "temp_K": 298.0,
+  "charges": "UseChargesFromCIFFile (CoRE CIF 의 PACMAN DDEC6)",
+  "supercell": "숫자 고정이 아니라 unit_cells() 규칙 — 등록 §1",
+  "co2": "García-Sánchez 2009 (경로는 TraPPE/CO2.def 지만 TraPPE 가 아님 — CLAUDE.md §1)"
+ },
+ "rows": [
+  {
+   "file": "2016_Co__sql_2_FSR_27.cif",
+   "key": "2016[Co][sql]2[FSR]27",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Co",
+   "PLD": 3.84403,
+   "LCD": 4.2228,
+   "VF": 0.4446,
+   "GPV": 0.344445,
+   "NAtoms": 40,
+   "core_KH_CO2": 4.62115e-05,
+   "core_KH_N2": 1.4831e-06,
+   "core_selectivity": 31.158721596655656,
+   "run_status": {
+    "CO2": "ok",
+    "N2": "ok"
+   },
+   "status": "ok",
+   "KH_CO2": 0.00768951,
+   "KH_CO2_err": 0.00012939,
+   "dU_CO2": -39.0178601351,
+   "dU_CO2_err": 0.0768531133,
+   "KH_N2": 2.62905e-05,
+   "KH_N2_err": 2.24114e-07,
+   "selectivity": 292.48245563986995
+  },
+  {
+   "file": "2016_Co__sql_2_FSR_28.cif",
+   "key": "2016[Co][sql]2[FSR]28",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Co",
+   "PLD": 3.83077,
+   "LCD": 4.21121,
+   "VF": 0.4438,
+   "GPV": 0.343365,
+   "NAtoms": 40,
+   "core_KH_CO2": 3.40242e-05,
+   "core_KH_N2": 8.7884e-07,
+   "core_selectivity": 38.714896909562604,
+   "run_status": {
+    "CO2": "ok",
+    "N2": "ok"
+   },
+   "status": "ok",
+   "KH_CO2": 0.00657168,
+   "KH_CO2_err": 4.79326e-05,
+   "dU_CO2": -38.5743241791,
+   "dU_CO2_err": 0.0387065499,
+   "KH_N2": 2.52482e-05,
+   "KH_N2_err": 2.33091e-07,
+   "selectivity": 260.2831092909594
+  },
+  {
+   "file": "2019_Al__bpq_3_ASR_3.cif",
+   "key": "2019[Al][bpq]3[ASR]3",
+   "set": "ASR",
+   "topo": "rna",
+   "metal": "Al",
+   "PLD": 6.93763,
+   "LCD": 7.04136,
+   "VF": 0.5874,
+   "GPV": 0.605641,
+   "NAtoms": 38,
+   "core_KH_CO2": 3.1255e-06,
+   "core_KH_N2": 8.56482e-09,
+   "core_selectivity": 364.92302231687296,
+   "run_status": {
+    "CO2": "ok",
+    "N2": "ok"
+   },
+   "status": "ok",
+   "KH_CO2": 0.000117545,
+   "KH_CO2_err": 8.38954e-07,
+   "dU_CO2": -21.018402129,
+   "dU_CO2_err": 0.031172155,
+   "KH_N2": 7.50189e-06,
+   "KH_N2_err": 1.46512e-08,
+   "selectivity": 15.668718149692944
+  }
+ ]
+}
