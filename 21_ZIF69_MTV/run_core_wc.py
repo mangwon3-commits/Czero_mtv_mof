@@ -57,9 +57,17 @@ def load_prior():
     return {r['file']: r for r in d.get('rows', [])}
 
 
+PROGRESS = {'done': 0, 'total': 0, 'stage': '', 'last': ''}
+
+
 def write(rows):
+    # ★ **작업 단위 진행을 결과 파일 머리말에 넣습니다**(2026-09-23 laptop2 지적).
+    #   §AV 에서는 진행이 `.claude_work_*.out` 에만 있었고 그 파일이 RESULT_PATTERNS 밖이라
+    #   **master 에서 보면 구조 하나에 20~40분씩 행이 안 늘어나는 구간**이 생겼습니다.
+    #   종합자가 그걸 "정지" 로 읽어 같은 일을 두 기기가 돌았습니다. 결과 파일은 패턴 안이니 여기 씁니다.
     json.dump({'test': '§AW core-wc', 'registration': 'COREWC_REGISTRATION_20260923.md',
                'assign': ASSIGN, 'machine': MACHINE, 'workers': WORKERS,
+               'progress': dict(PROGRESS),
                'note': ('외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. '
                         '우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.'),
                'protocol': PROTOCOL,
@@ -81,8 +89,12 @@ def main():
     # (랩탑 09-23 01:1x) CIF 가 없는 대상을 **말없이 건너뛰지 않습니다.** 아래 todo 는
     # `os.path.exists` 로 거르는데, 그러면 n 이 조용히 줄어 "36종 배정" 과 "35종 완주" 가
     # 아무 데도 안 적힙니다 — 실패가 결과처럼 보이는 것(CLAUDE.md §0)의 조용한 쪽입니다.
-    # 실제로 §AW 72종 중 **3종이 T-BR-1 의 12종 출신**이라 `core_pop_cifs.zip`(512 = 524−12)에
-    # CIF 가 애초에 없습니다(laptop 1 · laptop2 2).
+    # (종합자 09-23 01:3x 정정) **master 의 `core_pop_cifs.zip` 은 524개입니다** — 09-21 15:0x
+    # 커밋 `c54daf0` 에서 T-BR-1 의 12종을 넣어 `pick 524행 = 묶음 524개`로 자기완결시켰습니다.
+    # 그 12종이 빠진 512개 판으로 **푼 뒤 다시 안 푼 기기**에서 이 경고가 납니다.
+    # -> 그 경우 zip 을 다시 푸십시오:
+    #    python -c "import zipfile;zipfile.ZipFile('core_pop_cifs.zip').extractall('core_pop_cifs')"
+    # 경고 자체는 그대로 둡니다 — **n 이 조용히 줄어드는 것**을 막는 것이 요지이고 그건 맞습니다.
     nocif = [p['file'] for p in pick if not os.path.exists(os.path.join(CIFS, p['file']))]
     if nocif:
         print(f'!! CIF 없음 {len(nocif)}종 — 이번 실행에서 빠집니다(n 이 {len(pick)} 이 아니라 '
@@ -105,6 +117,7 @@ def main():
             continue
         jobs = [(os.path.join(CIFS, p['file']), 'CO2', 'gcmc') for p in todo]
         n = 0
+        PROGRESS.update(stage=f'{P:g}bar', total=len(jobs), done=0)
         with ProcessPoolExecutor(max_workers=WORKERS) as ex:
             futs = [ex.submit(rg._star, j) for j in jobs]
             for fu in as_completed(futs):
@@ -118,6 +131,7 @@ def main():
                     'our_KH_CO2': p.get('our_KH_CO2'), 'our_selectivity': p.get('our_selectivity'),
                     'machine': MACHINE, 'run_status': {}})
                 row['run_status'][f'{P:g}bar'] = stt
+                PROGRESS.update(done=n, last=f'{P:g}bar {name} [{stt}]')
                 if r and r[4] is not None:
                     row[key], row[key + '_err'] = r[4], r[5]
                 write(rows)
