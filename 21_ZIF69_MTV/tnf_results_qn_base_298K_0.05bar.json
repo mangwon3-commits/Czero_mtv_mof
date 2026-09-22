@@ -1,0 +1,42 @@
+[
+  {
+    "tag": "qn_base_298K_0.05bar",
+    "framework": "base_DDEC6",
+    "cif": "/home/mangwon1/mof_project/21_ZIF69_MTV/charged_v3/base_DDEC6.cif",
+    "cif_md5": "1ca570db578ee691402586fef046659a",
+    "T": 298.0,
+    "pco2_bar": 0.05,
+    "RH": 0.0,
+    "psat_Pa": 3169.0,
+    "psat_source": "저장소 등록값 (298 K)",
+    "preload_water": 0,
+    "p_h2o_Pa": 0.0,
+    "p_tot_Pa": 5000.0,
+    "CO2_molkg": 0.226953495,
+    "CO2_err": 0.0060743385,
+    "H2O_molkg": 0.0,
+    "H2O_err": null,
+    "seed": 1789969410,
+    "unitcells": [
+      2,
+      2,
+      2
+    ],
+    "cell_widths_A": [
+      22.5894,
+      22.5894,
+      19.4082
+    ],
+    "forcefield": "UFF_MOF+HwLw_none_20260906",
+    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+    "ff_path": "/home/mangwon1/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def",
+    "ff_check": {
+      "ok": null,
+      "note": "물 성분 없음 — Hw/Lw 쌍이 인쇄되지 않아 머리말 관문의 대상이 아닙니다. 파일 관문(md5)만으로 받칩니다."
+    },
+    "status": "ok",
+    "host": "hkhome",
+    "series": "T-NF (TNF_REGISTRATION_20260910.md)",
+    "supercell_rule": "축별 수직 폭 >= 24 A 최소 정수 복제 (등록문 §0 예외 — 2x2x2 를 박지 않음)"
+  }
+]
