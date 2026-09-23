@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 46,
+  "done": 47,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2020_Fe__tbo_3_ASR_2 [ok]"
+  "last": "0.15bar 0000_CrMn__qtz_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -26,6 +26,24 @@
   "co2": "García-Sánchez 2009 (경로는 TraPPE/CO2.def 지만 TraPPE 가 아님 — CLAUDE.md §1)"
  },
  "rows": [
+  {
+   "file": "0000_CrMn__qtz_3_ASR_1.cif",
+   "key": "0000[CrMn][qtz]3[ASR]1",
+   "set": "ASR",
+   "topo": "qtz",
+   "metal": "Cr,Mn",
+   "PLD": 4.72231,
+   "LCD": 5.82674,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.1348812134,
+   "n_0.15bar_err": 0.0066724324
+  },
   {
    "file": "0000_In__ctn_3_ASR_1.cif",
    "key": "0000[In][ctn]3[ASR]1",
