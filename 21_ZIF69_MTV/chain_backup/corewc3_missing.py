@@ -36,7 +36,10 @@ def take(txt):
         return
     nfile += 1
     for r in rows:
-        cells += len(r.get('run_status') or {})
+        # ⚠ 개수만 세면 **재시도를 못 봅니다** (laptop2 2026-09-24 04:5x):
+        #   같은 칸이 'timeout' → 'ok' 로 **바뀔 뿐** 개수는 그대로입니다.
+        #   그래서 상태 문자열 길이를 더해 **내용이 바뀌면 값이 바뀌게** 합니다.
+        cells += sum(1 + len(str(v)) for v in (r.get('run_status') or {}).values())
         vals += (r.get('n_0.15bar') is not None) + (r.get('n_0.01bar') is not None)
         if r.get('n_0.15bar') is not None and r.get('n_0.01bar') is not None:
             done.add(r['file'])

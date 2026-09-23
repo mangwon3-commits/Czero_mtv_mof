@@ -82,10 +82,17 @@ say "simulate 재정지 확인 — 메움 감시 시작"
 # ───────────────────────────────────────────────────────────────────────────
 
 # 생존 문턱 둘 — 랩탑 11:3x 의 정리대로 두 지표는 **전량 실패 중인 기기**에서 갈립니다.
-#   주  `run_status` 칸이 **3 h** 안 늘면 죽음   (실패해도 오르므로 **중복을 덜 냅니다**)
-#   보조 `값` 칸이 **6 h** 안 늘면 죽음          (주 지표만 두면 **남이 전량 실패에 빠졌을 때
+#   주  `run_status` 지표가 **9 h** 안 바뀌면 죽음  (실패해도 오르므로 **중복을 덜 냅니다**)
+#   보조 `값` 칸이 **10 h** 안 늘면 죽음            (주 지표만 두면 **남이 전량 실패에 빠졌을 때
 #        run_status 만 계속 올라 아무도 안 메웁니다** — 10:39 에 제가 172종을 3분 만에
 #        전부 `[no-output]` 낸 그 상태. 랩탑 지표가 덮지만 그쪽이 같이 죽으면 남는 자리입니다.)
+# ★ 문턱을 **짐작하지 않고 러너에서 유도**했습니다 (2026-09-24, laptop2 지적).
+#   `run_aryl_gcmc.py:203` 의 `timeout=28800` — **단일 작업은 8 h 를 넘을 수 없습니다.**
+#   그러므로 **9 h 무변화는 "도는 것이 없다" 를 뜻합니다.** 3 h 는 짧았습니다:
+#   laptop2 의 `2024_Cd__dia_3_FSR_1`(N_super 4928)이 0.15 bar 에서 8 h 에 잘려 **혼자 재시도 중**인데,
+#   재시도는 같은 칸이 timeout→ok 로 **바뀔 뿐**이라 개수 지표가 안 움직이고, 그 5.5 h 동안
+#   3 h 문턱이면 메움이 깨어 **같은 구조를 겹쳐 돕니다.**
+#   (지표 자체도 내용 민감하게 고쳤습니다 — corewc3_missing.py 의 `1 + len(status)`.)
 prevc=-1; prevv=-1; sc=0; sv=0; n=0
 while :; do
   ensure_postman
@@ -95,10 +102,10 @@ while :; do
   case "${n:-x}${cells:-x}${vals:-x}" in *[!0-9]*) say "지표 계산 실패 ('$out') — 15분 뒤 다시"; sleep 900; continue;; esac
   [ "$cells" = "$prevc" ] && sc=$((sc+1)) || sc=0; prevc=$cells
   [ "$vals"  = "$prevv" ] && sv=$((sv+1)) || sv=0; prevv=$vals
-  say "남은 ${n}종 · run_status ${cells}(정지 ${sc}/12) · 값 ${vals}(정지 ${sv}/24)"
+  say "남은 ${n}종 · run_status ${cells}(정지 ${sc}/36) · 값 ${vals}(정지 ${sv}/40)"
   [ "$n" = "0" ] && { say "남은 것 0 — 조용히 종료"; exit 0; }
   now=$(date +%s)
-  if { [ "$now" -ge "$T1" ] && { [ "$sc" -ge 12 ] || [ "$sv" -ge 24 ]; }; } || [ "$now" -ge "$T2" ]; then break; fi
+  if { [ "$now" -ge "$T1" ] && { [ "$sc" -ge 36 ] || [ "$sv" -ge 40 ]; }; } || [ "$now" -ge "$T2" ]; then break; fi
   sleep 900
 done
 
@@ -114,7 +121,7 @@ if [ -z "${GD:-}" ]; then
 fi
 say "환경 관문 통과 — RASPA_DIR=$GD"
 
-say "메움 착수 ${n}종 (run_status ${prevc} 정지 ${sc}/12 · 값 ${prevv} 정지 ${sv}/24)"
+say "메움 착수 ${n}종 (run_status ${prevc} 정지 ${sc}/36 · 값 ${prevv} 정지 ${sv}/40)"
 export PATH="$HOME/miniconda3/envs/czeromof/bin:$PATH" RASPA_DIR="$GD"
 cd "$R" || exit 1
 export COREWC_ASSIGN=desktop COREWC_MACHINE=desktop COREWC_WORKERS=8
