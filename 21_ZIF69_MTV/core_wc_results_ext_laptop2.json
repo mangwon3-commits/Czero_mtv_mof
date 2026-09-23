@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 78,
+  "done": 84,
   "total": 109,
   "stage": "0.01bar",
-  "last": "0.01bar 2020_Cu__ant_2_ASR_1 [ok]"
+  "last": "0.01bar 2019_Ni__pcu_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -405,10 +405,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.9956153854,
-   "n_0.15bar_err": 0.0263552297
+   "n_0.15bar_err": 0.0263552297,
+   "n_0.01bar": 0.0683107533,
+   "n_0.01bar_err": 0.0015194393
   },
   {
    "file": "2016_Co__sql_2_FSR_14.cif",
@@ -993,10 +996,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 4.4370563358,
-   "n_0.15bar_err": 0.095237337
+   "n_0.15bar_err": 0.095237337,
+   "n_0.01bar": 0.7302477049,
+   "n_0.01bar_err": 0.0261599929
   },
   {
    "file": "2019_Cu__nbo_3_ASR_1.cif",
@@ -1089,10 +1095,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 3.3407280736,
-   "n_0.15bar_err": 0.0281575081
+   "n_0.15bar_err": 0.0281575081,
+   "n_0.01bar": 0.2835928586,
+   "n_0.01bar_err": 0.0086260547
   },
   {
    "file": "2019_V__bpq_3_ASR_2.cif",
@@ -1332,10 +1341,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.3810892473,
-   "n_0.15bar_err": 0.0246389416
+   "n_0.15bar_err": 0.0246389416,
+   "n_0.01bar": 0.093243909,
+   "n_0.01bar_err": 0.0019450997
   },
   {
    "file": "2020_Cu__ant_2_ASR_1.cif",
@@ -1533,10 +1545,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.8751766949,
-   "n_0.15bar_err": 0.021564001
+   "n_0.15bar_err": 0.021564001,
+   "n_0.01bar": 0.1192615605,
+   "n_0.01bar_err": 0.0022077678
   },
   {
    "file": "2020_Zn__fgl_3_ASR_2.cif",
@@ -2215,10 +2230,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 2.251361473,
-   "n_0.15bar_err": 0.0545246113
+   "n_0.15bar_err": 0.0545246113,
+   "n_0.01bar": 0.1589837091,
+   "n_0.01bar_err": 0.0051283812
   }
  ]
 }
