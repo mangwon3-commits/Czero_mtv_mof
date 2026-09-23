@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 134,
+  "done": 136,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2017_Zn__dia_3_ASR_4 [ok]"
+  "last": "0.15bar 2020_Cu__tbo_3_ASR_4 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1807,6 +1807,42 @@
    },
    "n_0.15bar": 2.6654032532,
    "n_0.15bar_err": 0.0342105065
+  },
+  {
+   "file": "2020_Cu__tbo_3_ASR_1.cif",
+   "key": "2020[Cu][tbo]3[ASR]1",
+   "set": "ASR",
+   "topo": "tbo",
+   "metal": "Cu",
+   "PLD": 6.68271,
+   "LCD": 13.26988,
+   "N_super": 1248,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6427256525,
+   "n_0.15bar_err": 0.0125091346
+  },
+  {
+   "file": "2020_Cu__tbo_3_ASR_4.cif",
+   "key": "2020[Cu][tbo]3[ASR]4",
+   "set": "ASR",
+   "topo": "tbo",
+   "metal": "Cu",
+   "PLD": 6.57882,
+   "LCD": 13.17246,
+   "N_super": 1248,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.693180553,
+   "n_0.15bar_err": 0.0166992337
   },
   {
    "file": "2020_Fe__tbo_3_FSR_1.cif",
