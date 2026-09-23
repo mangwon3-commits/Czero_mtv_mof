@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 57,
+  "done": 58,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2018_Cu__kgm_2_ASR_1 [ok]"
+  "last": "0.15bar 2018_Cu__kgm_2_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -313,6 +313,24 @@
    },
    "n_0.15bar": 1.049062774,
    "n_0.15bar_err": 0.0313542951
+  },
+  {
+   "file": "2018_Cu__kgm_2_FSR_1.cif",
+   "key": "2018[Cu][kgm]2[FSR]1",
+   "set": "FSR",
+   "topo": "kgm",
+   "metal": "Cu",
+   "PLD": 4.71526,
+   "LCD": 6.55349,
+   "N_super": 2208,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.0245905006,
+   "n_0.15bar_err": 0.0083028174
   },
   {
    "file": "2018_Ni__sql_2_FSR_1.cif",
