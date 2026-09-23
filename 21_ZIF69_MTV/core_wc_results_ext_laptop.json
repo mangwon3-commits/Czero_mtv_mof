@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 109,
+  "done": 113,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2010_Zn__pts_3_ASR_1 [ok]"
+  "last": "0.15bar 2020_Cu__sql_2_FSR_6 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -477,6 +477,24 @@
    "n_0.15bar_err": 0.0308620554
   },
   {
+   "file": "2017_Cd__hcb_2_ASR_1.cif",
+   "key": "2017[Cd][hcb]2[ASR]1",
+   "set": "ASR",
+   "topo": "hcb",
+   "metal": "Cd",
+   "PLD": 4.45124,
+   "LCD": 6.93233,
+   "N_super": 1512,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.6655859714,
+   "n_0.15bar_err": 0.0799643505
+  },
+  {
    "file": "2017_Cd__hcb_2_ASR_2.cif",
    "key": "2017[Cd][hcb]2[ASR]2",
    "set": "ASR",
@@ -529,6 +547,24 @@
    },
    "n_0.15bar": 0.8801990658,
    "n_0.15bar_err": 0.0198072503
+  },
+  {
+   "file": "2017_Cd__pts_3_ASR_1.cif",
+   "key": "2017[Cd][pts]3[ASR]1",
+   "set": "ASR",
+   "topo": "tfi",
+   "metal": "Cd",
+   "PLD": 5.97827,
+   "LCD": 6.66243,
+   "N_super": 1472,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.1491590877,
+   "n_0.15bar_err": 0.0257234949
   },
   {
    "file": "2017_Co__qtz_3_ASR_1.cif",
@@ -709,6 +745,24 @@
    },
    "n_0.15bar": 1.980891291,
    "n_0.15bar_err": 0.0212773393
+  },
+  {
+   "file": "2017_Zn__pcu_3_ASR_1.cif",
+   "key": "2017[Zn][pcu]3[ASR]1",
+   "set": "ASR",
+   "topo": "pcu",
+   "metal": "Zn",
+   "PLD": 6.50826,
+   "LCD": 8.64973,
+   "N_super": 1408,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.0138931271,
+   "n_0.15bar_err": 0.0451108489
   },
   {
    "file": "2017_Zn__sql_3_FSR_2.cif",
@@ -1411,6 +1465,24 @@
    },
    "n_0.15bar": 0.9471055153,
    "n_0.15bar_err": 0.0169080423
+  },
+  {
+   "file": "2020_Cu__sql_2_FSR_6.cif",
+   "key": "2020[Cu][sql]2[FSR]6",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Cu",
+   "PLD": 3.98035,
+   "LCD": 6.3821,
+   "N_super": 1440,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.9914415975,
+   "n_0.15bar_err": 0.0299280163
   },
   {
    "file": "2020_Cu__sql_2_ION_1.cif",
