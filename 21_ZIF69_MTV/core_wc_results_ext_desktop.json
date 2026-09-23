@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 159,
+  "done": 160,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2016_Co__pts_3_FSR_8 [ok]"
+  "last": "0.01bar 2016_Fe__hcb_2_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -876,10 +876,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.1791022174,
-   "n_0.15bar_err": 0.0042315195
+   "n_0.15bar_err": 0.0042315195,
+   "n_0.01bar": 0.0115362616,
+   "n_0.01bar_err": 0.0003935475
   },
   {
    "file": "2016_Ni__nbo_3_ASR_1.cif",
