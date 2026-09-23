@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 98,
+  "done": 102,
   "total": 171,
   "stage": "0.01bar",
-  "last": "0.01bar 2017_Ni__dia_3_FSR_3 [ok]"
+  "last": "0.01bar 2019_Cd__ins_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -153,10 +153,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.758760524,
-   "n_0.15bar_err": 0.0258724802
+   "n_0.15bar_err": 0.0258724802,
+   "n_0.01bar": 0.0811280502,
+   "n_0.01bar_err": 0.0043230817
   },
   {
    "file": "2014_Co__dmc_3_FSR_1.cif",
@@ -609,10 +612,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.6171121156,
-   "n_0.15bar_err": 0.0354358206
+   "n_0.15bar_err": 0.0354358206,
+   "n_0.01bar": 0.0395751371,
+   "n_0.01bar_err": 0.0016886236
   },
   {
    "file": "2016_Co__sql_2_FSR_24.cif",
@@ -1542,10 +1548,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.4524614151,
-   "n_0.15bar_err": 0.0135945436
+   "n_0.15bar_err": 0.0135945436,
+   "n_0.01bar": 0.169221133,
+   "n_0.01bar_err": 0.0090472002
   },
   {
    "file": "2019_Cd__pts_3_ASR_1.cif",
@@ -1755,10 +1764,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.2212811201,
-   "n_0.15bar_err": 0.0231563307
+   "n_0.15bar_err": 0.0231563307,
+   "n_0.01bar": 0.1101329722,
+   "n_0.01bar_err": 0.004047876
   },
   {
    "file": "2019_Ni__pcu_3_FSR_1.cif",
