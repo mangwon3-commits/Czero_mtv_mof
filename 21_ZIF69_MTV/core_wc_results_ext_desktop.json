@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 166,
+  "done": 168,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2016_Co__sql_2_FSR_10 [ok]"
+  "last": "0.01bar 2016_Co__sql_2_FSR_15 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -771,10 +771,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 3.6375277511,
-   "n_0.15bar_err": 0.0441578048
+   "n_0.15bar_err": 0.0441578048,
+   "n_0.01bar": 2.2535869985,
+   "n_0.01bar_err": 0.0309827315
   },
   {
    "file": "2016_Co__sql_2_FSR_17.cif",
@@ -789,10 +792,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 3.3740690261,
-   "n_0.15bar_err": 0.0419501417
+   "n_0.15bar_err": 0.0419501417,
+   "n_0.01bar": 2.1868706696,
+   "n_0.01bar_err": 0.0278540694
   },
   {
    "file": "2016_Co__sql_2_FSR_21.cif",
