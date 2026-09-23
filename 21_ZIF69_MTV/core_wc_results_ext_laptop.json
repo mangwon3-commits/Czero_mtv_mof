@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 114,
+  "done": 115,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2019_Zn__fsc_3_FSR_1 [ok]"
+  "last": "0.15bar 2018_Co__nia_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -817,6 +817,24 @@
    },
    "n_0.15bar": 2.1723009209,
    "n_0.15bar_err": 0.0181733765
+  },
+  {
+   "file": "2018_Co__nia_3_ASR_1.cif",
+   "key": "2018[Co][nia]3[ASR]1",
+   "set": "ASR",
+   "topo": "nia-d",
+   "metal": "Co",
+   "PLD": 4.66988,
+   "LCD": 8.93138,
+   "N_super": 1408,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.1927175029,
+   "n_0.15bar_err": 0.0210216488
   },
   {
    "file": "2018_Co__sql_2_FSR_1.cif",
