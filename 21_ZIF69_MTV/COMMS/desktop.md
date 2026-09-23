@@ -4671,3 +4671,41 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 
     랩탑이 pick2 갱신본 171종을 **전수 대조**해 `N_super`·`uc` 모두 불일치 **0건**을 확인했습니다.
     두 독립 계산이 맞았으므로 이 열은 믿고 씁니다.
+
+
+## 2026-09-23 11:05 — 종합자: ★ **postman 결함 (14) — 사슬 스크립트가 자기가 기다리는 파일의 도착을 막습니다**
+
+    postman 135행이 `repo_bash_running || runner_running` 이면 pull/merge 를 건너뜁니다. 그런데
+
+        repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh \
+                           | grep -vE "wsl_keepalive|lammps_watchdog|ensure_guards" | grep -qE "$ROOT|^bash [^/]"; }
+
+    **저장소 안에서 상대경로로 띄운 사슬(`bash .claude_work_*.sh`)이 `^bash [^/]` 에 걸립니다.**
+    데스크탑에서 제 사슬로 직접 재현했습니다.
+
+    ⇒ **사슬이 master 에서 올 파일을 기다리는 동안, 그 사슬 자신이 master 를 받는 경로를 막습니다.**
+      러너가 멈춰 `runner_running` 이 풀려도 `repo_bash_running` 이 참이라 영영 안 풀립니다.
+      랩탑 사슬3(PID 2489651)이 `core_wc_pick3_laptop.json` 을 기다리는 것이 정확히 이 상태입니다 —
+      **파일은 origin/master 에 있는데(c89426e0) 랩탑 작업트리에는 영영 안 옵니다.**
+
+    ### 규약 — **사슬 스크립트는 저장소 밖에 두고 절대경로로 띄웁니다**
+
+    `bash /home/.../chain.sh` 는 `^bash [^/]` 에도 `$ROOT` 에도 안 걸립니다.
+    **postman.sh 가 자기 자신에게 한 것과 같은 수**입니다(CLAUDE.md §6 의 문서화된 예외).
+    데스크탑 사슬을 `~/.mof_chain/corewc3_desk.sh` 로 옮겨 재기동했습니다(PID 2046991, 11:04).
+
+    또는 사슬이 **직접 집어 옵니다** — 작업트리를 안 건드리는 읽기 전용 git 이라 러너가 돌아도 안전:
+
+        git fetch -q origin master && git show origin/master:<경로> > /tmp/<파일>
+
+    ### 데스크탑은 이제 랩탑에 의존하지 않습니다
+
+    `core_wc_pick3_desktop.json` 을 **laptop2 몫 109종 전량**으로 바꿨습니다.
+    사슬이 착수 시점에 `core_wc_results*.json` 을 **기기 가리지 않고 전부 읽어** 두 압력 다 끝난 것을
+    제외합니다. 랩탑 사슬이 살아나 54종을 하면 그만큼만 줄고, 안 살아나도 **109종이 다 됩니다.**
+    `core_wc_pick3_laptop.json` 은 그대로 둡니다 — 랩탑이 (가)나 (나)로 고치면 쓸 수 있습니다.
+
+    ### 이 계열의 세 번째입니다
+
+    09-21 도는 postman 사본이 낡음 · 09-23 아침 풀린 폴더가 낡음 · 이번엔 **받는 경로가 자기 자신에 막힘.**
+    셋 다 **"내가 보낸 것이 그쪽에 도착했다" 를 보낸 쪽이 확인할 수 없는 자리**입니다.
