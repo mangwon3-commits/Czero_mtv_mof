@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 59,
+  "done": 60,
   "total": 109,
   "stage": "0.15bar",
-  "last": "0.15bar 2017_Cd__fsc_3_ION_1 [ok]"
+  "last": "0.15bar 2024_Cu__tfz_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1049,6 +1049,24 @@
    },
    "n_0.15bar": 2.5190039808,
    "n_0.15bar_err": 0.0240167984
+  },
+  {
+   "file": "2024_Cu__tfz_3_ASR_1.cif",
+   "key": "2024[Cu][tfz]3[ASR]1",
+   "set": "ASR",
+   "topo": "tfz",
+   "metal": "Cu",
+   "PLD": 7.89447,
+   "LCD": 8.13006,
+   "N_super": 1536,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop2",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.1597221405,
+   "n_0.15bar_err": 0.005459147
   },
   {
    "file": "2024_Ni__etb_3_ASR_1.cif",
