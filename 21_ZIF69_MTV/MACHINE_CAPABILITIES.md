@@ -81,7 +81,7 @@
     **laptop2 는 설치하지 않습니다** — 환경 변경은 CLAUDE.md §9 의 "30분 규칙을 쓰지 않는 셋" 중 ①입니다.
     09-18 부터 열려 있습니다.
 
-## 6. Junseok (원격지) — 2026-09-24 07:5x 실측 (그 기기가 직접 잰 값)
+## 6. Junseok (원격지) — 2026-09-24 07:3x 실측 (그 기기가 직접 잰 값)
 
     CPU   AMD Ryzen 5 7500F · **물리 6 / 논리 12** · WSL 메모리 23 GiB (.wslconfig 24GB · 호스트 31.5 GB)
     환경  czeromof (py 3.10) · **lammps_mof** (py 3.11.15) — **`coremof_tools` · `spectra` 환경이 없습니다**
