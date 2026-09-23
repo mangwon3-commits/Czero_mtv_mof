@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 103,
+  "done": 104,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2010_Ga__ctn_3_FSR_2 [ok]"
+  "last": "0.15bar 2020_Cd__kgd_2_ASR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1141,6 +1141,24 @@
    },
    "n_0.15bar": 1.47777653,
    "n_0.15bar_err": 0.0325647518
+  },
+  {
+   "file": "2020_Cd__kgd_2_ASR_2.cif",
+   "key": "2020[Cd][kgd]2[ASR]2",
+   "set": "ASR",
+   "topo": "kgd",
+   "metal": "Cd",
+   "PLD": 4.12981,
+   "LCD": 6.26168,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.1418796814,
+   "n_0.15bar_err": 0.0271112317
   },
   {
    "file": "2020_Cd__kgd_2_ASR_3.cif",
