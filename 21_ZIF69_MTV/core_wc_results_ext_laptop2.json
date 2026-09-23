@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 67,
+  "done": 68,
   "total": 109,
   "stage": "0.15bar",
-  "last": "0.15bar 2013_ZnCr__lon_3_ASR_1 [ok]"
+  "last": "0.15bar 2023_Sc__bpq_3_FSR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1123,6 +1123,24 @@
    },
    "n_0.15bar": 2.8127481001,
    "n_0.15bar_err": 0.0191449228
+  },
+  {
+   "file": "2023_Sc__bpq_3_FSR_2.cif",
+   "key": "2023[Sc][bpq]3[FSR]2",
+   "set": "FSR",
+   "topo": "rna",
+   "metal": "Sc",
+   "PLD": 5.71238,
+   "LCD": 5.90322,
+   "N_super": 1488,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop2",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.7119384469,
+   "n_0.15bar_err": 0.0316905333
   },
   {
    "file": "2024_Cd__dia_3_FSR_1.cif",
