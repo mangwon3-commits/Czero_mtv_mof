@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 119,
+  "done": 121,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2020_Mg__nia_3_ASR_2 [ok]"
+  "last": "0.15bar 2017_Cu__rob_3_FSR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -477,6 +477,24 @@
    "n_0.15bar_err": 0.0308620554
   },
   {
+   "file": "2017_Ag__sqc_2_ASR_1.cif",
+   "key": "2017[Ag][sqc]2[ASR]1",
+   "set": "ASR",
+   "topo": "sqc1390",
+   "metal": "Ag",
+   "PLD": 9.77424,
+   "LCD": 10.66855,
+   "N_super": 1392,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.2014097227,
+   "n_0.15bar_err": 0.0040600112
+  },
+  {
    "file": "2017_Ag__sqc_3_ASR_1.cif",
    "key": "2017[Ag][sqc]3[ASR]1",
    "set": "ASR",
@@ -673,6 +691,24 @@
    },
    "n_0.15bar": 0.4967800503,
    "n_0.15bar_err": 0.0063261621
+  },
+  {
+   "file": "2017_Cu__rob_3_FSR_2.cif",
+   "key": "2017[Cu][rob]3[FSR]2",
+   "set": "FSR",
+   "topo": "rob",
+   "metal": "Cu",
+   "PLD": 5.31106,
+   "LCD": 5.60617,
+   "N_super": 1392,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.7689918775,
+   "n_0.15bar_err": 0.0215060045
   },
   {
    "file": "2017_Fe__kag_3_ASR_1.cif",
