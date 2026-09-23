@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 146,
+  "done": 149,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2017_Cd__sql_2_FSR_3 [ok]"
+  "last": "0.15bar 2023_Cd__rtl_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -529,6 +529,24 @@
    },
    "n_0.15bar": 0.4339606411,
    "n_0.15bar_err": 0.0095125393
+  },
+  {
+   "file": "2016_Co__sql_2_FSR_1.cif",
+   "key": "2016[Co][sql]2[FSR]1",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Co",
+   "PLD": 7.92646,
+   "LCD": 8.18028,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.9954945705,
+   "n_0.15bar_err": 0.0359285522
   },
   {
    "file": "2016_Ni__nbo_3_ASR_1.cif",
@@ -1375,6 +1393,24 @@
    },
    "n_0.15bar": 0.6155660943,
    "n_0.15bar_err": 0.0218462528
+  },
+  {
+   "file": "2019_V__bpq_3_ASR_4.cif",
+   "key": "2019[V][bpq]3[ASR]4",
+   "set": "ASR",
+   "topo": "rna",
+   "metal": "V",
+   "PLD": 5.97028,
+   "LCD": 7.16507,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.4807502614,
+   "n_0.15bar_err": 0.0094271642
   },
   {
    "file": "2019_Zn__bcg_3_ASR_1.cif",
@@ -2365,6 +2401,24 @@
    },
    "n_0.15bar": 1.1965662266,
    "n_0.15bar_err": 0.0363528029
+  },
+  {
+   "file": "2023_Cd__rtl_3_FSR_1.cif",
+   "key": "2023[Cd][rtl]3[FSR]1",
+   "set": "FSR",
+   "topo": "rtl",
+   "metal": "Cd",
+   "PLD": 3.87939,
+   "LCD": 4.96397,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.8182991303,
+   "n_0.15bar_err": 0.0823343258
   },
   {
    "file": "2023_In__neb_3_ASR_2.cif",
