@@ -110,6 +110,30 @@ Component 0 MoleculeName              CO2
 """)
 
 
+def finished(path):
+    """RASPA 가 **끝까지 갔다는 표지**. `run_aryl_gcmc.finished()` · `run_tnf.py:178` 과 같은 조건.
+
+    2026-09-24 Junseok 발견 — 이 모듈이 CLAUDE.md §0 의 **09-21 무늬** 그대로였습니다:
+    이어받기는 `.data` + VTK 의 **존재만** 보고, 신규 실행은 `subprocess.run(check=False)` 뒤
+    값만 보고 `ok` 를 냈습니다. `WriteDensityProfile3DVTKGridEvery 500` 이라
+    **끊긴 실행에도 VTK 가 남으므로** 이어받기가 중간 실행을 완주로 회수할 수 있었습니다.
+
+    **지금까지 막아 준 것은 설계가 아니라 우연이었습니다** — `loading_from` 이 찾는
+    `Average loading absolute [mol/kg framework]` 줄이 완주 출력에서 **딱 한 번,
+    끝에서 124줄 앞**(실측: 239957/240088)에만 나와서 끊긴 실행은 `None` 이 됐습니다.
+    09-19 `run_humid_wc` 의 *"파서가 최종 요약 줄을 요구한 우연이 보호"* 와 같은 상태입니다.
+    **값이 아니라 표지가 자입니다.**
+
+    확인: 기존 완주분 16개(`density_v3` 12 + `density_v3_gap` 4) **전부 표지 있음** —
+    이 관문을 넣어도 회수되던 것이 안 잃습니다.
+    """
+    try:
+        with open(path, encoding='utf-8', errors='ignore') as f:
+            return 'Simulation finished' in f.read()
+    except OSError:
+        return False
+
+
 def loading_from(path):
     for line in open(path, encoding='utf-8', errors='ignore'):
         if 'Average loading absolute [mol/kg framework]' in line:
@@ -128,7 +152,7 @@ def run_one(job):
     # 이미 끝난 실행은 재사용한다. 밀도 격자가 남아 있어야 하므로 VTK 존재도 본다.
     done = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
     vtk = glob.glob(os.path.join(d, 'VTK', 'System_0', '*DensityProfile*'))
-    if done and vtk:
+    if done and vtk and finished(done[0]):          # ← 표지를 요구합니다(2026-09-24). 존재만으로는 안 됩니다.
         v, e = loading_from(done[0])
         if v is not None:
             return tag, label, v, e, 'cached'
@@ -149,6 +173,8 @@ def run_one(job):
     outs = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
     if not outs:
         return tag, label, None, None, '출력 없음'
+    if not finished(outs[0]):                       # ← `check=False` 라 RASPA 가 죽어도 여기로 옵니다.
+        return tag, label, None, None, '미완주'      #    VTK 는 남겨 둡니다 — 다음 실행이 표지를 보고 다시 돕니다.
     v, e = loading_from(outs[0])
     # VTK 는 **지우지 않는다.** 이 계산의 산출물이다.
     for sub in ('Movies', 'Restart'):
