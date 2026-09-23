@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 138,
+  "done": 139,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2019_Cu__rtl_3_ASR_1 [ok]"
+  "last": "0.15bar 2015_Cd__sql_2_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -295,6 +295,24 @@
    },
    "n_0.15bar": 0.266757774,
    "n_0.15bar_err": 0.0113836627
+  },
+  {
+   "file": "2015_Cd__sql_2_ASR_1.cif",
+   "key": "2015[Cd][sql]2[ASR]1",
+   "set": "ASR",
+   "topo": "sql",
+   "metal": "Cd",
+   "PLD": 3.57485,
+   "LCD": 5.25157,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.1139790294,
+   "n_0.15bar_err": 0.0436291313
   },
   {
    "file": "2015_CrMn__nod_3_ASR_1.cif",
