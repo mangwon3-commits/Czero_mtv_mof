@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 92,
+  "done": 97,
   "total": 109,
   "stage": "0.01bar",
-  "last": "0.01bar 2022_Zn__kgd_2_ASR_1 [ok]"
+  "last": "0.01bar 2017_Zn__sql_2_ASR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -759,10 +759,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 3.1327812914,
-   "n_0.15bar_err": 0.0838586445
+   "n_0.15bar_err": 0.0838586445,
+   "n_0.01bar": 0.2698743009,
+   "n_0.01bar_err": 0.0065455479
   },
   {
    "file": "2018_Cd__dia_3_ASR_4.cif",
@@ -1029,10 +1032,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.676786669,
-   "n_0.15bar_err": 0.0134609329
+   "n_0.15bar_err": 0.0134609329,
+   "n_0.01bar": 0.0523513054,
+   "n_0.01bar_err": 0.0024258838
   },
   {
    "file": "2019_Cu__ssa_3_ASR_1.cif",
@@ -1068,10 +1074,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.6625542321,
-   "n_0.15bar_err": 0.0074502353
+   "n_0.15bar_err": 0.0074502353,
+   "n_0.01bar": 0.0665809054,
+   "n_0.01bar_err": 0.0012498757
   },
   {
    "file": "2019_Mn__bpq_3_ASR_1.cif",
@@ -1275,10 +1284,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.8464003056,
-   "n_0.15bar_err": 0.0144418066
+   "n_0.15bar_err": 0.0144418066,
+   "n_0.01bar": 0.0549638108,
+   "n_0.01bar_err": 0.0016172948
   },
   {
    "file": "2020_Cd__sql_2_ASR_3.cif",
@@ -1461,10 +1473,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.6684335764,
-   "n_0.15bar_err": 0.0086545666
+   "n_0.15bar_err": 0.0086545666,
+   "n_0.01bar": 0.0643008081,
+   "n_0.01bar_err": 0.0025355987
   },
   {
    "file": "2020_FeAl__rna_3_FSR_1.cif",
