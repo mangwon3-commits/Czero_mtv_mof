@@ -102,7 +102,13 @@ while :; do
         done
         files=$(printf '%s' "$files" | sed '/^$/d')
         if [ -n "$files" ]; then echo "$files" | xargs -r git checkout "$cur" -- 2>>"$LOG" && git add $files && \
-          git commit -q -m "[postman:$MACHINE] $rb 결과 반입 ($(git rev-parse --short "$cur"))" && git push -q origin master 2>>"$LOG" && inbox "[반입] $rb → master: $(echo "$files" | tr '\n' ' ')"; fi
+          git commit -q -m "[postman:$MACHINE] $rb 결과 반입 ($(git rev-parse --short "$cur"))" && \
+          { git push -q origin master 2>>"$LOG" || { \
+              # (13) 2026-09-23 — push 가 거절되면 **이후 매 바퀴 ff-pull 이 실패해 반입이 영구 정지**합니다.
+              #      10:32~10:33 데스크탑 실측(laptop2 손 커밋 fc7dc3e8 과 ④ 반입이 경주). postman 은 자기 반입
+              #      커밋을 rebase 하지 않았습니다. 한 번 rebase 하고 다시 밉니다 — 실패하면 우편함에 적고 넘어갑니다.
+              say "push 거절 — rebase 재시도"; git pull --rebase -q origin master 2>>"$LOG" && git push -q origin master 2>>"$LOG"; }; } \
+          && inbox "[반입] $rb → master: $(echo "$files" | tr '\n' ' ')"; fi
       fi
     done
   else say "fetch 실패"; fi
