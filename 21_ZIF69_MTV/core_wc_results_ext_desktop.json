@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 5,
+  "done": 8,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2013_ZnCr__lon_3_ASR_6 [ok]"
+  "last": "0.01bar 2015_Zn__hww_3_ION_4 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -426,10 +426,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.4302895061,
-   "n_0.15bar_err": 0.0167327229
+   "n_0.15bar_err": 0.0167327229,
+   "n_0.01bar": 0.0284473248,
+   "n_0.01bar_err": 0.001266487
   },
   {
    "file": "2015_Zn__pcu_3_ASR_1.cif",
@@ -498,10 +501,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.24137088,
-   "n_0.15bar_err": 0.0085969868
+   "n_0.15bar_err": 0.0085969868,
+   "n_0.01bar": 0.0162854603,
+   "n_0.01bar_err": 0.0006482229
   },
   {
    "file": "2015_Zn__sql_2_ASR_3.cif",
@@ -1740,10 +1746,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.3714014886,
-   "n_0.15bar_err": 0.0453585725
+   "n_0.15bar_err": 0.0453585725,
+   "n_0.01bar": 0.1432562558,
+   "n_0.01bar_err": 0.0050635577
   },
   {
    "file": "2019_Zn__mog_3_ASR_3.cif",
