@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 98,
+  "done": 102,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2014_Cu__dia_3_ASR_3 [ok]"
+  "last": "0.15bar 2015_V__bpq_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -153,6 +153,42 @@
    "n_0.15bar_err": 0.0228631361
   },
   {
+   "file": "2014_Cu__dia_3_FSR_2.cif",
+   "key": "2014[Cu][dia]3[FSR]2",
+   "set": "FSR",
+   "topo": "dia",
+   "metal": "Cu",
+   "PLD": 4.2919,
+   "LCD": 4.6846,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.3215601741,
+   "n_0.15bar_err": 0.0410616908
+  },
+  {
+   "file": "2014_Cu__dia_3_FSR_6.cif",
+   "key": "2014[Cu][dia]3[FSR]6",
+   "set": "FSR",
+   "topo": "dia",
+   "metal": "Cu",
+   "PLD": 4.16515,
+   "LCD": 4.61455,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.2827105251,
+   "n_0.15bar_err": 0.0437139969
+  },
+  {
    "file": "2014_Cu__tbo_3_ASR_3.cif",
    "key": "2014[Cu][tbo]3[ASR]3",
    "set": "ASR",
@@ -223,6 +259,24 @@
    },
    "n_0.15bar": 0.0808278954,
    "n_0.15bar_err": 0.001554488
+  },
+  {
+   "file": "2015_V__bpq_3_ASR_1.cif",
+   "key": "2015[V][bpq]3[ASR]1",
+   "set": "ASR",
+   "topo": "rna",
+   "metal": "V",
+   "PLD": 6.68644,
+   "LCD": 6.89356,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6760659509,
+   "n_0.15bar_err": 0.0183689107
   },
   {
    "file": "2015_Zn__hww_3_ION_2.cif",
@@ -1267,6 +1321,24 @@
    },
    "n_0.15bar": 0.6713853035,
    "n_0.15bar_err": 0.0128128504
+  },
+  {
+   "file": "2020_Cu__tbo_3_ASR_5.cif",
+   "key": "2020[Cu][tbo]3[ASR]5",
+   "set": "ASR",
+   "topo": "tbo",
+   "metal": "Cu",
+   "PLD": 6.57882,
+   "LCD": 13.17246,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6676620632,
+   "n_0.15bar_err": 0.0159357345
   },
   {
    "file": "2020_Fe__tbo_3_ASR_2.cif",
