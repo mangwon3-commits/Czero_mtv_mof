@@ -34,11 +34,16 @@ fi
 cd "$ROOT" || exit 1
 INBOX="$ROOT/.postman_inbox_$MACHINE"; LOG="$ROOT/.postman_$MACHINE.log"; FLAG="$ROOT/.postman_flag"
 STATE="$ROOT/.postman_state_$MACHINE"; mkdir -p "$STATE"
-RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json'
+RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md'
 say(){ echo "[$(date '+%m-%d %H:%M:%S')] $*" >> "$LOG"; }
 inbox(){ echo "[$(date '+%m-%d %H:%M')] $*" >> "$INBOX"; touch "$FLAG"; }
 repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh | grep -vE "wsl_keepalive|lammps_watchdog|ensure_guards" | grep -qE "$ROOT|^bash [^/]"; }
 runner_running(){ pgrep -x simulate >/dev/null || pgrep -f "python[0-9.]* .*run_[A-Za-z0-9_]*\.py" >/dev/null; }
+# (11) 09-23 10:2x — **같은 결함이 §AW 에서 반복**. (8)에서 `core_pop_results_*` 를 넣었는데
+#      §AW 의 `core_wc_results_*` 는 **또 빠져** 있었습니다. 패턴이 **시험 이름마다 늘어나는 구조**라
+#      새 시험을 열 때마다 같은 자리에서 막힙니다. `pair_times_*` 와 `MACHINE_CAPABILITIES.md`
+#      (어제 두 기기가 **손으로** 올려야 했던 것)도 같이 넣습니다.
+#      ⚠ **새 시험을 열면 결과 경로를 여기 먼저 넣으십시오** — 안 넣으면 결과가 영영 master 에 안 옵니다.
 # (10) 09-21 15:3x laptop2 지적 — ★ **깨진 결과 파일을 올리지 않습니다.**
 #      러너가 쓰는 중인 결과 JSON 에 git 이 충돌 표시를 박을 수 있고(§6, 랩탑 실측), 러너가 다음 쓰기로
 #      덮어 복구하기까지 **최대 한 작업 길이(13~50분)** 가 걸립니다. 그 창에서 **postman 이 5분마다
@@ -77,15 +82,28 @@ while :; do
       key=$(echo "$rb" | tr '/' '_'); last=$(cat "$STATE/$key" 2>/dev/null || echo ""); cur=$(git rev-parse "$rb")
       if [ -n "$last" ] && [ "$last" != "$cur" ]; then
         git log --format="  %h %ad %s" --date=format:'%m-%d %H:%M' "$last..$cur" | head -8 | while read -r l; do inbox "[$rb] $l"; done
-        if [ "$BR" = "master" ] && [ "$rb" != "origin/master" ]; then
-          # (6) 15:5x 데스크탑 실측 — last..cur 두 점 diff 는 브랜치가 병합해 들여온 master 커밋의 파일까지 집어, 브랜치의 (더 오래된) 판을
-          #     master 위에 덮어썼음(e9f52b5: watchdog.log 한 줄 삭제). master 에 없는 커밋(^HEAD)이 만진 파일만 반입. 병합 커밋은 파일을 안 냄.
-          # (8) 09-20 06:0x — 글롭이 **이 트리에서** 풀려 브랜치에만 있는 새 파일(1D JSON)이 pathspec 에서 빠졌음(3.5 h 미반입). set -f 로 패턴을 그대로 git 에 넘겨 git 이 브랜치 트리에서 푼다.
-          set -f; files=$(git log --name-only --format= "$cur" "^$last" ^HEAD -- $RESULT_PATTERNS 2>/dev/null | sort -u | grep -v COMMS/); set +f
-          if [ -n "$files" ]; then echo "$files" | xargs -r git checkout "$cur" -- 2>>"$LOG" && git add $files && \
-            git commit -q -m "[postman:$MACHINE] $rb 결과 반입 ($(git rev-parse --short "$cur"))" && git push -q origin master 2>>"$LOG" && inbox "[반입] $rb → master: $(echo "$files" | tr '\n' ' ')"; fi
-        fi
       fi; echo "$cur" > "$STATE/$key"
+      # (12) 2026-09-23 laptop2 — **반입을 state 에서 떼어 냅니다.** 위 `echo "$cur" > $STATE/$key` 는 `fi` 밖이라
+      #      **반입이 안 됐어도 state 가 올라갑니다.** 그래서 패턴이 없던 시각에 틱이 그 커밋을 한 번 보고 지나가면
+      #      그 커밋이 last 로 박히고, 이후 틱은 `cur ^last` 범위만 보므로 **그 파일은 영영 안 옵니다 —
+      #      패턴을 나중에 고쳐도 소급되지 않습니다.** 09-23 §AW 가 이 창에 걸릴 뻔했습니다(내용은 무사).
+      #      그래서 커밋 범위를 버리고 **트리를 직접 견줍니다.** 어느 창을 놓쳐도 다음 틱이 스스로 회복합니다.
+      #      ^HEAD 가 하던 "master 가 더 새것이면 덮지 않기"(결함 (6)) 는 **파일별 조상 검사**로 대신합니다 —
+      #      브랜치에서 그 파일을 마지막으로 만진 커밋이 이미 master 안이면 건너뜁니다.
+      if [ "$BR" = "master" ] && [ "$rb" != "origin/master" ]; then
+        set -f; cand=$(git diff --name-only HEAD "$cur" -- $RESULT_PATTERNS 2>/dev/null | grep -v COMMS/); set +f
+        files=""
+        for f in $cand; do
+          bc=$(git log -1 --format=%H "$cur" -- "$f" 2>/dev/null)
+          [ -n "$bc" ] || continue                                   # 브랜치엔 없는 파일(master 쪽 삭제/신규) — 건드리지 않는다
+          git merge-base --is-ancestor "$bc" HEAD 2>/dev/null && continue   # master 가 이미 그 커밋을 가짐 → 더 오래된 판으로 덮지 않는다
+          files="$files$f
+"
+        done
+        files=$(printf '%s' "$files" | sed '/^$/d')
+        if [ -n "$files" ]; then echo "$files" | xargs -r git checkout "$cur" -- 2>>"$LOG" && git add $files && \
+          git commit -q -m "[postman:$MACHINE] $rb 결과 반입 ($(git rev-parse --short "$cur"))" && git push -q origin master 2>>"$LOG" && inbox "[반입] $rb → master: $(echo "$files" | tr '\n' ' ')"; fi
+      fi
     done
   else say "fetch 실패"; fi
   # (9-3) 09-21 15:4x — 판정을 **fetch 뒤**로 옮겼습니다(랩탑이 넘긴 판단).
