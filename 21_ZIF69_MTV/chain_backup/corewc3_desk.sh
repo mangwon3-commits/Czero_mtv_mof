@@ -28,7 +28,37 @@ say "메움 사슬(생존=run_status 칸) 시작 — 앞 드라이버 PID $DRV �
 while kill -0 "$DRV" 2>/dev/null; do sleep 120; done
 say "앞 드라이버 종료 확인"
 q=0; while [ "$q" -lt 3 ]; do if [ "$(pgrep -xc simulate)" = "0" ]; then q=$((q+1)); else q=0; fi; sleep 60; done
-say "simulate 정지 3분 확인 — 메움 감시 시작"
+say "simulate 정지 3분 확인"
+
+# ───────────────────────────────────────────────────────────────────────────
+# [밀도맵 빈칸 메움 — 2026-09-23 사용자 지시 "넣어"]  메움 감시보다 **먼저** 돕니다.
+#   왜 직렬인가: 둘 다 8코어를 쓰므로 겹치면 서로 느려집니다(CLAUDE.md §5). 그리고
+#   밀도맵이 도는 동안은 simulate 가 살아 있어, 아래 메움 감시의 "안정" 판정이
+#   **잘못 발동하지 않습니다** — 순서 자체가 가드입니다.
+#   실패해도 **메움은 그대로 진행**합니다(|| true). 밀도맵은 그림 근거이지 판정이 아닙니다.
+DLOG=$G/.claude_work_density_gap.out
+say "밀도맵 빈칸 메움 착수 — 건조(saIm0583·mslm050 × 전하 ON/OFF, 6워커) + 습윤 RH90 2건"
+( cd "$R" && export PATH="$HOME/miniconda3/envs/czeromof/bin:$PATH" RASPA_DIR="$HOME/RASPA/simulations" \
+    DENSITY_GAP_WORKERS=6
+  echo "=== $(date '+%m-%d %H:%M:%S') 건조 밀도맵 착수 ===" >> "$DLOG"
+  python3 run_density_v3_gap.py >> "$DLOG" 2>&1
+  echo "=== $(date '+%m-%d %H:%M:%S') 건조 끝 rc=$? ===" >> "$DLOG" ) &
+DP1=$!
+for t in saIm0583 mslm050; do
+  ( cd "$R" && export PATH="$HOME/miniconda3/envs/czeromof/bin:$PATH" RASPA_DIR="$HOME/RASPA/simulations" \
+      DW_EXTRA=saIm0583,mslm050 DW_SUB="gap_$t"
+    echo "=== $(date '+%m-%d %H:%M:%S') 습윤 RH90 $t 착수 ===" >> "$DLOG"
+    python3 run_density_water_v3w.py "$t" >> "$DLOG" 2>&1
+    echo "=== $(date '+%m-%d %H:%M:%S') 습윤 $t 끝 rc=$? ===" >> "$DLOG" ) &
+done
+wait $DP1 || true
+wait || true
+say "밀도맵 빈칸 메움 종료 — 로그 $DLOG"
+
+# 밀도맵이 끝난 뒤 계산이 실제로 멎었는지 다시 확인하고 메움 감시로 넘어갑니다.
+q=0; while [ "$q" -lt 3 ]; do if [ "$(pgrep -xc simulate)" = "0" ]; then q=$((q+1)); else q=0; fi; sleep 60; done
+say "simulate 재정지 확인 — 메움 감시 시작"
+# ───────────────────────────────────────────────────────────────────────────
 
 # 생존 문턱 둘 — 랩탑 11:3x 의 정리대로 두 지표는 **전량 실패 중인 기기**에서 갈립니다.
 #   주  `run_status` 칸이 **3 h** 안 늘면 죽음   (실패해도 오르므로 **중복을 덜 냅니다**)
