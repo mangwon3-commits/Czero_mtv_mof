@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 44,
+  "done": 45,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2017_Cu__rob_3_ASR_4 [ok]"
+  "last": "0.15bar 2021_Cu__sql_2_FSR_6 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -619,6 +619,24 @@
    },
    "n_0.15bar": 1.8632498647,
    "n_0.15bar_err": 0.0398696958
+  },
+  {
+   "file": "2021_Cu__sql_2_FSR_6.cif",
+   "key": "2021[Cu][sql]2[FSR]6",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Cu",
+   "PLD": 7.90551,
+   "LCD": 12.01799,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.2175853337,
+   "n_0.15bar_err": 0.0029987925
   },
   {
    "file": "2021_Mn__dia_3_ASR_1.cif",
