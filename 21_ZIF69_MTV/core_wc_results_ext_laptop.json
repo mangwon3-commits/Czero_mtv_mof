@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 136,
+  "done": 141,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2020_Cu__tbo_3_ASR_4 [ok]"
+  "last": "0.15bar 2017_Zn__unc_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -295,6 +295,24 @@
    },
    "n_0.15bar": 0.7306961474,
    "n_0.15bar_err": 0.0220400248
+  },
+  {
+   "file": "2015_V__bpq_3_FSR_1.cif",
+   "key": "2015[V][bpq]3[FSR]1",
+   "set": "FSR",
+   "topo": "rna",
+   "metal": "V",
+   "PLD": 6.68644,
+   "LCD": 6.89356,
+   "N_super": 1216,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6625055802,
+   "n_0.15bar_err": 0.020223269
   },
   {
    "file": "2016_Co__sql_2_FSR_11.cif",
@@ -693,6 +711,24 @@
    "n_0.15bar_err": 0.034396074
   },
   {
+   "file": "2017_Cu__nbo_3_ASR_1.cif",
+   "key": "2017[Cu][nbo]3[ASR]1",
+   "set": "ASR",
+   "topo": "fof",
+   "metal": "Cu",
+   "PLD": 5.76316,
+   "LCD": 11.60438,
+   "N_super": 1152,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.8319502376,
+   "n_0.15bar_err": 0.0110395433
+  },
+  {
    "file": "2017_Cu__rob_3_ASR_3.cif",
    "key": "2017[Cu][rob]3[ASR]3",
    "set": "ASR",
@@ -889,6 +925,24 @@
    },
    "n_0.15bar": 1.4119010748,
    "n_0.15bar_err": 0.0216879705
+  },
+  {
+   "file": "2017_Zn__unc_3_ASR_1.cif",
+   "key": "2017[Zn][unc]3[ASR]1",
+   "set": "ASR",
+   "topo": "unc",
+   "metal": "Zn",
+   "PLD": 5.39718,
+   "LCD": 5.73481,
+   "N_super": 1200,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.7512878261,
+   "n_0.15bar_err": 0.0343081456
   },
   {
    "file": "2017_Zn__unc_3_FSR_1.cif",
@@ -1377,6 +1431,24 @@
    "n_0.15bar_err": 0.0080698248
   },
   {
+   "file": "2019_V__bpq_3_FSR_4.cif",
+   "key": "2019[V][bpq]3[FSR]4",
+   "set": "FSR",
+   "topo": "rna",
+   "metal": "V",
+   "PLD": 5.97028,
+   "LCD": 7.16507,
+   "N_super": 1152,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.4807200148,
+   "n_0.15bar_err": 0.0046227201
+  },
+  {
    "file": "2019_Zn__dia_3_FSR_1.cif",
    "key": "2019[Zn][dia]3[FSR]1",
    "set": "FSR",
@@ -1843,6 +1915,24 @@
    },
    "n_0.15bar": 0.693180553,
    "n_0.15bar_err": 0.0166992337
+  },
+  {
+   "file": "2020_Cu__tbo_3_FSR_1.cif",
+   "key": "2020[Cu][tbo]3[FSR]1",
+   "set": "FSR",
+   "topo": "tbo",
+   "metal": "Cu",
+   "PLD": 6.67803,
+   "LCD": 13.26744,
+   "N_super": 1248,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6719708269,
+   "n_0.15bar_err": 0.0148752673
   },
   {
    "file": "2020_Fe__tbo_3_FSR_1.cif",
