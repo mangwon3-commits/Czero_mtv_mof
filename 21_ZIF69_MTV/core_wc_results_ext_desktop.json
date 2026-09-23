@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 112,
+  "done": 114,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2017_Ag__sqc_2_FSR_1 [ok]"
+  "last": "0.15bar 2020_Zn__fgl_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -565,6 +565,24 @@
    },
    "n_0.15bar": 0.4160256946,
    "n_0.15bar_err": 0.0107071159
+  },
+  {
+   "file": "2017_Fe__kag_3_FSR_1.cif",
+   "key": "2017[Fe][kag]3[FSR]1",
+   "set": "FSR",
+   "topo": "kag",
+   "metal": "Fe",
+   "PLD": 13.61044,
+   "LCD": 15.13602,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.4945015775,
+   "n_0.15bar_err": 0.0376460164
   },
   {
    "file": "2017_Zn__dia_3_ASR_1.cif",
@@ -1537,6 +1555,24 @@
    },
    "n_0.15bar": 1.1311448662,
    "n_0.15bar_err": 0.0452310063
+  },
+  {
+   "file": "2020_Zn__fgl_3_FSR_1.cif",
+   "key": "2020[Zn][fgl]3[FSR]1",
+   "set": "FSR",
+   "topo": "ggl",
+   "metal": "Zn",
+   "PLD": 5.8044,
+   "LCD": 8.61383,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.8794910564,
+   "n_0.15bar_err": 0.0276624015
   },
   {
    "file": "2020_Zn__pcu_3_ASR_2.cif",
