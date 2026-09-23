@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 141,
+  "done": 144,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2020_Cu__ant_2_FSR_1 [ok]"
+  "last": "0.15bar 2014_Co__dmc_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -169,6 +169,24 @@
    },
    "n_0.15bar": 1.0077841097,
    "n_0.15bar_err": 0.0250455511
+  },
+  {
+   "file": "2014_Co__dmc_3_ASR_1.cif",
+   "key": "2014[Co][dmc]3[ASR]1",
+   "set": "ASR",
+   "topo": "dmc",
+   "metal": "Co",
+   "PLD": 3.4925,
+   "LCD": 4.91809,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.1935820316,
+   "n_0.15bar_err": 0.0286556666
   },
   {
    "file": "2014_Co__sql_2_ASR_1.cif",
@@ -1125,6 +1143,24 @@
    "n_0.15bar_err": 0.0196168318
   },
   {
+   "file": "2019_Cd__kgd_2_ASR_3.cif",
+   "key": "2019[Cd][kgd]2[ASR]3",
+   "set": "ASR",
+   "topo": "kgd",
+   "metal": "Cd",
+   "PLD": 3.82432,
+   "LCD": 6.85714,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 3.3235272034,
+   "n_0.15bar_err": 0.0290722689
+  },
+  {
    "file": "2019_Cd__pyr_3_ION_1.cif",
    "key": "2019[Cd][pyr]3[ION]1",
    "set": "Ion",
@@ -1555,6 +1591,24 @@
    },
    "n_0.15bar": 0.7310866464,
    "n_0.15bar_err": 0.0352148034
+  },
+  {
+   "file": "2020_Cd__sql_2_ASR_1.cif",
+   "key": "2020[Cd][sql]2[ASR]1",
+   "set": "ASR",
+   "topo": "sql",
+   "metal": "Cd",
+   "PLD": 5.42002,
+   "LCD": 7.73712,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.7887525815,
+   "n_0.15bar_err": 0.045082657
   },
   {
    "file": "2020_Cd__sql_2_FSR_3.cif",
