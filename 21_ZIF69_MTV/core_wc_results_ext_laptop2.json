@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 72,
+  "done": 74,
   "total": 109,
   "stage": "0.15bar",
-  "last": "0.15bar 2014_Zn__sql_2_ASR_1 [ok]"
+  "last": "0.15bar 0000_Cu__apo_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -26,6 +26,24 @@
   "co2": "García-Sánchez 2009 (경로는 TraPPE/CO2.def 지만 TraPPE 가 아님 — CLAUDE.md §1)"
  },
  "rows": [
+  {
+   "file": "0000_Cu__apo_3_ASR_1.cif",
+   "key": "0000[Cu][apo]3[ASR]1",
+   "set": "ASR",
+   "topo": "apo",
+   "metal": "Cu",
+   "PLD": 3.66848,
+   "LCD": 4.78705,
+   "N_super": 1728,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop2",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 3.6445336447,
+   "n_0.15bar_err": 0.0428780293
+  },
   {
    "file": "2007_In__ctn_3_ASR_1.cif",
    "key": "2007[In][ctn]3[ASR]1",
@@ -961,6 +979,24 @@
    },
    "n_0.15bar": 2.5172221125,
    "n_0.15bar_err": 0.0281806816
+  },
+  {
+   "file": "2021_Co__dia_3_FSR_1.cif",
+   "key": "2021[Co][dia]3[FSR]1",
+   "set": "FSR",
+   "topo": "dia",
+   "metal": "Co",
+   "PLD": 4.07898,
+   "LCD": 4.6055,
+   "N_super": 1680,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop2",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 3.3524642066,
+   "n_0.15bar_err": 0.0150795386
   },
   {
    "file": "2021_Co__pcu_3_ASR_1.cif",
