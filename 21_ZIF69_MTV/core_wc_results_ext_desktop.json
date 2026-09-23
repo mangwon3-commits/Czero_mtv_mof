@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 82,
+  "done": 86,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2017_Zn__pcu_3_FSR_1 [ok]"
+  "last": "0.15bar 2018_Zn__acs_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -567,6 +567,24 @@
    "n_0.15bar_err": 0.025521219
   },
   {
+   "file": "2018_Co__nia_3_FSR_1.cif",
+   "key": "2018[Co][nia]3[FSR]1",
+   "set": "FSR",
+   "topo": "nia-d",
+   "metal": "Co",
+   "PLD": 4.66988,
+   "LCD": 8.93138,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.188602941,
+   "n_0.15bar_err": 0.0461050395
+  },
+  {
    "file": "2018_Ni__sql_2_ASR_2.cif",
    "key": "2018[Ni][sql]2[ASR]2",
    "set": "ASR",
@@ -583,6 +601,60 @@
    },
    "n_0.15bar": 1.7214394903,
    "n_0.15bar_err": 0.0262708638
+  },
+  {
+   "file": "2018_Zn__acs_3_ASR_1.cif",
+   "key": "2018[Zn][acs]3[ASR]1",
+   "set": "ASR",
+   "topo": "acs",
+   "metal": "Zn",
+   "PLD": 5.33782,
+   "LCD": 6.42741,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.2922790754,
+   "n_0.15bar_err": 0.0092516158
+  },
+  {
+   "file": "2018_Zn__acs_3_FSR_1.cif",
+   "key": "2018[Zn][acs]3[FSR]1",
+   "set": "FSR",
+   "topo": "acs",
+   "metal": "Zn",
+   "PLD": 5.33782,
+   "LCD": 6.42741,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.2847923339,
+   "n_0.15bar_err": 0.0043786285
+  },
+  {
+   "file": "2018_Zn__sql_2_FSR_7.cif",
+   "key": "2018[Zn][sql]2[FSR]7",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Zn",
+   "PLD": 6.24677,
+   "LCD": 7.69017,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.7466627608,
+   "n_0.15bar_err": 0.0298778028
   },
   {
    "file": "2019_Cd__ins_3_FSR_1.cif",
