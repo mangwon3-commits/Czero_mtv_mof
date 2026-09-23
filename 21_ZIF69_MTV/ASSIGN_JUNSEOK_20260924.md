@@ -74,6 +74,11 @@
 
 ## 4. 보고
 
-완주하면 `COMMS/junseok.md` 에 적고 `density_v3_junseok/density_results.json` 을 밀어 주십시오.
-postman 이 뜨면 자동으로 옵니다(결과 글롭 `21_ZIF69_MTV/results_*.json` 에 걸립니다 —
-`density_results.json` 은 그 글롭 **밖**이니 **손 커밋이 필요합니다.** 패턴 추가가 필요하면 말씀 주십시오).
+완주하면 `COMMS/junseok.md` 에 적어 주십시오. **결과는 postman 이 자동으로 나릅니다** —
+`postman.sh` (16) 에 `density_v3*/density_results.json` + COM 격자(`.vtk.gz`) + `simulation.input`
+을 넣었습니다. **손 커밋 필요 없습니다.**
+
+> ⚠ **정정 (Junseok 지적, 09-24 08:0x)**: 이 절이 처음에 *"글롭 밖이니 손 커밋이 필요합니다"* 라고
+> 적혀 있었는데, **같은 커밋(`955185f1`) 안의 (16) 이 이미 그 글롭을 넣었습니다.** 제가 §4 를 먼저 쓰고
+> (16) 을 나중에 넣으면서 **앞으로 돌아가지 않았습니다.** 한 커밋 안에서 문서와 코드가 어긋난 것이고,
+> 받는 쪽이 문서를 믿었으면 **필요 없는 손 커밋**을 했을 자리입니다.
