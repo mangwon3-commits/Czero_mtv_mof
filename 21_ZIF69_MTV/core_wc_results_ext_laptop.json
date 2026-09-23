@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 86,
+  "done": 87,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2019_Co__hex_3_ASR_2 [ok]"
+  "last": "0.15bar 2020_Co__fsc_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -979,6 +979,24 @@
    },
    "n_0.15bar": 0.7274028107,
    "n_0.15bar_err": 0.0268607176
+  },
+  {
+   "file": "2020_Co__fsc_3_FSR_1.cif",
+   "key": "2020[Co][fsc]3[FSR]1",
+   "set": "FSR",
+   "topo": "fsc",
+   "metal": "Co",
+   "PLD": 3.93851,
+   "LCD": 6.07235,
+   "N_super": 1888,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.978843038,
+   "n_0.15bar_err": 0.0347140106
   },
   {
    "file": "2020_Cu__kgm_2_ASR_1.cif",
