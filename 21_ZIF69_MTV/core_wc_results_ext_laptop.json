@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 72,
+  "done": 74,
   "total": 171,
   "stage": "0.01bar",
-  "last": "0.01bar 2014_Cu__dia_3_ASR_2 [ok]"
+  "last": "0.01bar 2014_Cu__dia_3_FSR_5 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -267,10 +267,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 2.2896475113,
-   "n_0.15bar_err": 0.021515037
+   "n_0.15bar_err": 0.021515037,
+   "n_0.01bar": 0.5625621151,
+   "n_0.01bar_err": 0.0193553266
   },
   {
    "file": "2014_Cu__dia_3_FSR_5.cif",
@@ -285,10 +288,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 2.2759219404,
-   "n_0.15bar_err": 0.0118949303
+   "n_0.15bar_err": 0.0118949303,
+   "n_0.01bar": 0.4513082641,
+   "n_0.01bar_err": 0.0167189495
   },
   {
    "file": "2014_Ni__gfy_3_ION_2.cif",
