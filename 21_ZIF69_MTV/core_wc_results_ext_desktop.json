@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 1,
+  "done": 5,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2011_Zn__sod_3_FSR_2 [ok]"
+  "last": "0.01bar 2013_ZnCr__lon_3_ASR_6 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -168,10 +168,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.9876376158,
-   "n_0.15bar_err": 0.0223587436
+   "n_0.15bar_err": 0.0223587436,
+   "n_0.01bar": 0.1161655864,
+   "n_0.01bar_err": 0.0064343714
   },
   {
    "file": "2013_ZnCr__lon_3_ASR_6.cif",
@@ -186,10 +189,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.0077841097,
-   "n_0.15bar_err": 0.0250455511
+   "n_0.15bar_err": 0.0250455511,
+   "n_0.01bar": 0.1705620097,
+   "n_0.01bar_err": 0.0125173211
   },
   {
    "file": "2014_Co__dmc_3_ASR_1.cif",
@@ -1968,10 +1974,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.7310866464,
-   "n_0.15bar_err": 0.0352148034
+   "n_0.15bar_err": 0.0352148034,
+   "n_0.01bar": 0.0524389374,
+   "n_0.01bar_err": 0.0016353709
   },
   {
    "file": "2020_Cd__sql_2_ASR_1.cif",
@@ -3048,10 +3057,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.6348184988,
-   "n_0.15bar_err": 0.052065336
+   "n_0.15bar_err": 0.052065336,
+   "n_0.01bar": 0.1109464269,
+   "n_0.01bar_err": 0.0023183659
   },
   {
    "file": "2024_Zn__sql_2_ASR_3.cif",
