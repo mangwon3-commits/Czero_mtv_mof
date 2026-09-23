@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 90,
+  "done": 91,
   "total": 109,
   "stage": "0.15bar",
-  "last": "0.15bar 2024_Zn__srs_3_ASR_2 [ok]"
+  "last": "0.15bar 2020_Cd__apo_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -925,6 +925,24 @@
    },
    "n_0.15bar": 1.9428690927,
    "n_0.15bar_err": 0.0104803458
+  },
+  {
+   "file": "2020_Cd__apo_3_ASR_1.cif",
+   "key": "2020[Cd][apo]3[ASR]1",
+   "set": "ASR",
+   "topo": "apo",
+   "metal": "Cd",
+   "PLD": 5.84984,
+   "LCD": 6.58089,
+   "N_super": 1216,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop2",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.8464003056,
+   "n_0.15bar_err": 0.0144418066
   },
   {
    "file": "2020_Cd__sql_2_ASR_3.cif",
