@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 129,
+  "done": 131,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2019_Zn__dia_3_ASR_1 [ok]"
+  "last": "0.15bar 2020_Mn__sql_2_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1053,6 +1053,24 @@
    "n_0.15bar_err": 0.0349389905
   },
   {
+   "file": "2019_Cd__sql_2_ASR_2.cif",
+   "key": "2019[Cd][sql]2[ASR]2",
+   "set": "ASR",
+   "topo": "sql",
+   "metal": "Cd",
+   "PLD": 3.60611,
+   "LCD": 4.76059,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.4964633328,
+   "n_0.15bar_err": 0.0082017416
+  },
+  {
    "file": "2019_Co__apo_3_FSR_1.cif",
    "key": "2019[Co][apo]3[FSR]1",
    "set": "FSR",
@@ -1717,6 +1735,24 @@
    },
    "n_0.15bar": 1.6576223834,
    "n_0.15bar_err": 0.0348398405
+  },
+  {
+   "file": "2020_Mn__sql_2_FSR_1.cif",
+   "key": "2020[Mn][sql]2[FSR]1",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Mn",
+   "PLD": 5.11538,
+   "LCD": 7.6639,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.7107455057,
+   "n_0.15bar_err": 0.0144166203
   },
   {
    "file": "2020_Ni__kgd_2_ASR_1.cif",
