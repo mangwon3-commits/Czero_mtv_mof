@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 83,
+  "done": 85,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2016_Co__sql_2_FSR_11 [ok]"
+  "last": "0.15bar 2016_Co__sql_2_FSR_6 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -277,6 +277,42 @@
    },
    "n_0.15bar": 3.7542640263,
    "n_0.15bar_err": 0.0315669856
+  },
+  {
+   "file": "2016_Co__sql_2_FSR_27.cif",
+   "key": "2016[Co][sql]2[FSR]27",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Co",
+   "PLD": 3.84403,
+   "LCD": 4.2228,
+   "N_super": 1920,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 3.744591574,
+   "n_0.15bar_err": 0.0478086927
+  },
+  {
+   "file": "2016_Co__sql_2_FSR_6.cif",
+   "key": "2016[Co][sql]2[FSR]6",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Co",
+   "PLD": 3.86054,
+   "LCD": 4.66108,
+   "N_super": 1920,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 3.653285198,
+   "n_0.15bar_err": 0.0377137385
   },
   {
    "file": "2016_Cu__nbo_3_FSR_2.cif",
