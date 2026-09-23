@@ -30,6 +30,12 @@ Ewald 1e-6 · 12 Å · `unit_cells()` 규칙. 실행 뿌리도 압력별로 갈�
            (**이름을 `core_wc_results_ext_*` 로 한 것은 postman 의 기존 글롭 `core_wc_results_*.json` 에
             그대로 걸리게 하기 위해서입니다** — 패턴을 새로 늘리면 (11)·(12) 의 결함을 또 만듭니다.)
 
+    ⚠ **`COREWC_OUT` 을 반드시 주십시오**(laptop2 11:1x). 안 주면 기본값이
+      `core_wc_results_<기기>.json` 이라 **§AW 결과 파일에 섞입니다.** 그리고 §AW 와 §AW-2 는
+      **고정값이 같으므로 `load_prior` 의 `PROTOCOL` 대조가 이것을 막아 주지 않습니다** —
+      막아 주는 관문이 하나도 없는 자리입니다. 기동 줄에서 한 글자가 빠지면 조용히 섞입니다.
+      쓰는 이름: `core_wc_results_ext_<기기>.json`(본 배정) · `core_wc_results_ext2_<기기>.json`(메움).
+
 ## 3. 배정 — 용량 가중 LPT
 
 `N_super` 기준 비용 `t = 2 × 2.4436 × N_super^0.765` 초(두 압력)로 정렬(LPT, CLAUDE.md §5)한 뒤
