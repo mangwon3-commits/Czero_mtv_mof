@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 142,
+  "done": 145,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2023_Cd__rtl_3_FSR_1 [ok]"
+  "last": "0.01bar 2020_Cd__sql_2_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -225,10 +225,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 2.1935820316,
-   "n_0.15bar_err": 0.0286556666
+   "n_0.15bar_err": 0.0286556666,
+   "n_0.01bar": 0.2329942822,
+   "n_0.01bar_err": 0.0079892433
   },
   {
    "file": "2014_Co__sql_2_ASR_1.cif",
@@ -2241,10 +2244,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.7887525815,
-   "n_0.15bar_err": 0.045082657
+   "n_0.15bar_err": 0.045082657,
+   "n_0.01bar": 0.2681974279,
+   "n_0.01bar_err": 0.0106097509
   },
   {
    "file": "2020_Cd__sql_2_FSR_3.cif",
@@ -2427,10 +2433,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.705000097,
-   "n_0.15bar_err": 0.0197828693
+   "n_0.15bar_err": 0.0197828693,
+   "n_0.01bar": 0.0601565355,
+   "n_0.01bar_err": 0.0022166221
   },
   {
    "file": "2020_Cu__rob_3_ASR_2.cif",
