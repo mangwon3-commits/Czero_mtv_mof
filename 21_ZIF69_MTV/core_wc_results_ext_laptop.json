@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 133,
+  "done": 138,
   "total": 171,
   "stage": "0.01bar",
-  "last": "0.01bar 2017_Zn__dia_3_FSR_5 [ok]"
+  "last": "0.01bar 2020_Cu__tbo_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -444,10 +444,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.6625055802,
-   "n_0.15bar_err": 0.020223269
+   "n_0.15bar_err": 0.020223269,
+   "n_0.01bar": 0.042449661,
+   "n_0.01bar_err": 0.0013303738
   },
   {
    "file": "2015_Zn__pcu_3_FSR_5.cif",
@@ -1755,10 +1758,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.6987464701,
-   "n_0.15bar_err": 0.0228996495
+   "n_0.15bar_err": 0.0228996495,
+   "n_0.01bar": 0.0672973105,
+   "n_0.01bar_err": 0.0027517231
   },
   {
    "file": "2019_Mn__srs_3_ASR_1.cif",
@@ -2475,10 +2481,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.6427256525,
-   "n_0.15bar_err": 0.0125091346
+   "n_0.15bar_err": 0.0125091346,
+   "n_0.01bar": 0.0606326759,
+   "n_0.01bar_err": 0.0028018062
   },
   {
    "file": "2020_Cu__tbo_3_ASR_4.cif",
@@ -2493,10 +2502,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.693180553,
-   "n_0.15bar_err": 0.0166992337
+   "n_0.15bar_err": 0.0166992337,
+   "n_0.01bar": 0.0658369462,
+   "n_0.01bar_err": 0.0027376342
   },
   {
    "file": "2020_Cu__tbo_3_FSR_1.cif",
@@ -2511,10 +2523,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.6719708269,
-   "n_0.15bar_err": 0.0148752673
+   "n_0.15bar_err": 0.0148752673,
+   "n_0.01bar": 0.065254867,
+   "n_0.01bar_err": 0.0020344025
   },
   {
    "file": "2020_Fe__hcb_2_ASR_2.cif",
