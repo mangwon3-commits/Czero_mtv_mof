@@ -2718,3 +2718,5 @@ laptop2 가 완주까지 미루지 않고 냈습니다. 우편함에만 있으�
     문서 수정 없이 재기동만 — `.claude_work_corewc_desk.out` 에 이어 씀.
 
 **[08:37 §AW 결과 파일이 우편 패턴 밖]** 데스크탑 §AW 0.15 bar 가 08:34~ 5/8 완주(simulate 8→3 은 완주). 결과를 누가 옮기나 보니 `core_wc_results_<기기>.json` 이 postman `RESULT_PATTERNS` 에 **없습니다**(있는 것은 `core_pop_results_*.json` · `core_results.json`; 저장소 postman.sh = 돌고 있는 사본, md5 0e40965c). 등록 `COREWC_REGISTRATION_20260923.md §9` 의 "결과 파일은 패턴 안이니 master 에서 작업 단위로 보입니다" 는 **틀린 문장**입니다 — 세 기기의 §AW 진행이 자동으로는 master 에 안 옵니다(master 에 laptop/laptop2 결과 커밋 0건이 그 증거). postman.sh 는 세 기기가 쓰는 파일이라 **§9 경계 ③ — 고치지 않고 보고**합니다. 한 줄(`21_ZIF69_MTV/core_wc_results_*.json` 추가) 이면 되고 자기갱신으로 퍼지지만, 사용자(10:00) 결정. 데스크탑 결과는 러너가 끝나면 이 세션이 손으로 커밋합니다(제 기기의 제 파일). 랩탑 둘은 COMMS 로 알림.
+
+**[09:22 §AW 데스크탑 몫 완주]** 0.15 bar 8/8 (08:24 재기동 → 09:21, 마지막 Cu kgd N_super 1440 이 57분). 12종 두 압력 모두 ok, 실행 폴더 24/24 'Simulation finished'. `core_wc_results_desktop.json` 을 **손으로 커밋**(패턴 밖). 데스크탑 비었음 — 남은 등록 배정 없음, 새 배정은 사용자(§9 경계 ②). 서술만(판정 아님 — §AW 판정은 72종이 모여야): 12종 0.15 bar 적재 중앙 0.669 mmol/g(범위 0.174~4.464), VSA 몫(0.15−0.01)/0.15 중앙 0.93. 이 12종은 T-BR-1 구조라 분포를 대표하지 않음.

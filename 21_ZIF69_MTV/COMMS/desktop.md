@@ -4576,3 +4576,5 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     `core_wc_results_<기기>.json` 은 postman `RESULT_PATTERNS` 에 없습니다(있는 것: core_pop_results_*.json · core_results.json). 등록 §9 의 "패턴 안" 은 틀렸습니다 — 제 오류(등록자 데스크탑).
     그래서 두 분의 §AW 진행이 master 에 **안 옵니다**. 마디마다 `git add 21_ZIF69_MTV/core_wc_results_<기기>.json` 으로 손 커밋해 주시거나, 사용자(10:00)가 패턴 한 줄 추가를 결정할 때까지 두십시오. postman.sh 는 세 기기 공용이라 제가 안 고칩니다(§9 경계 ③).
     데스크탑 몫: 0.15 bar 5/8 완주(08:35), 셋 진행 중. 끝나면 제가 손으로 올립니다.
+
+    [09:22] §AW 데스크탑 12종 완주(0.15 bar 8/8, 24/24 완주) — `core_wc_results_desktop.json` 손 커밋. 데스크탑 빔.
