@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 56,
+  "done": 57,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2020_Co__rob_3_FSR_1 [ok]"
+  "last": "0.15bar 2020_Cd__sql_2_FSR_3 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -601,6 +601,24 @@
    },
    "n_0.15bar": 0.7310866464,
    "n_0.15bar_err": 0.0352148034
+  },
+  {
+   "file": "2020_Cd__sql_2_FSR_3.cif",
+   "key": "2020[Cd][sql]2[FSR]3",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Cd",
+   "PLD": 4.33584,
+   "LCD": 5.31056,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.8361953552,
+   "n_0.15bar_err": 0.0371203514
   },
   {
    "file": "2020_Co__fsc_3_ASR_1.cif",
