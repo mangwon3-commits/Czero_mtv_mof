@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 94,
+  "done": 96,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2014_Cu__tbo_3_ASR_3 [ok]"
+  "last": "0.15bar 2019_Cu__tbo_3_ASR_3 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -151,6 +151,24 @@
    },
    "n_0.15bar": 0.6611214217,
    "n_0.15bar_err": 0.0207796333
+  },
+  {
+   "file": "2014_Cu__tbo_3_FSR_1.cif",
+   "key": "2014[Cu][tbo]3[FSR]1",
+   "set": "FSR",
+   "topo": "tbo",
+   "metal": "Cu",
+   "PLD": 6.68961,
+   "LCD": 13.2781,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6587207756,
+   "n_0.15bar_err": 0.0214452417
   },
   {
    "file": "2014_Zn__unj_3_FSR_1.cif",
@@ -853,6 +871,24 @@
    },
    "n_0.15bar": 1.2712350494,
    "n_0.15bar_err": 0.0243723227
+  },
+  {
+   "file": "2019_Cu__tbo_3_ASR_3.cif",
+   "key": "2019[Cu][tbo]3[ASR]3",
+   "set": "ASR",
+   "topo": "tbo",
+   "metal": "Cu",
+   "PLD": 6.65971,
+   "LCD": 13.17214,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6785321339,
+   "n_0.15bar_err": 0.0096158051
   },
   {
    "file": "2019_GaCu__agw_3_ASR_1.cif",
