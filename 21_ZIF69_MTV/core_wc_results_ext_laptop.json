@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 2,
+  "done": 3,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2019_Zn__pcu_3_FSR_4 [ok]"
+  "last": "0.15bar 2012_Co__sqp_3_ASR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -26,6 +26,24 @@
   "co2": "García-Sánchez 2009 (경로는 TraPPE/CO2.def 지만 TraPPE 가 아님 — CLAUDE.md §1)"
  },
  "rows": [
+  {
+   "file": "2012_Co__sqp_3_ASR_2.cif",
+   "key": "2012[Co][sqp]3[ASR]2",
+   "set": "ASR",
+   "topo": "sqp",
+   "metal": "Co",
+   "PLD": 4.05182,
+   "LCD": 5.53082,
+   "N_super": 3456,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.9420633218,
+   "n_0.15bar_err": 0.0124616707
+  },
   {
    "file": "2019_Zn__pcu_3_ASR_2.cif",
    "key": "2019[Zn][pcu]3[ASR]2",
