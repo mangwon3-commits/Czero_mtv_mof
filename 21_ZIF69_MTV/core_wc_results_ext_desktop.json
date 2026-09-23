@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 168,
+  "done": 169,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2016_Co__sql_2_FSR_15 [ok]"
+  "last": "0.15bar 2024_Ni__sql_2_FSR_4 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -2851,6 +2851,24 @@
    },
    "n_0.15bar": 2.6201387887,
    "n_0.15bar_err": 0.0583915273
+  },
+  {
+   "file": "2024_Ni__sql_2_FSR_4.cif",
+   "key": "2024[Ni][sql]2[FSR]4",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Ni",
+   "PLD": 3.76836,
+   "LCD": 4.30395,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 3.8697131978,
+   "n_0.15bar_err": 0.0324993096
   },
   {
    "file": "2024_Zn__crb_3_ASR_11.cif",
