@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 43,
+  "done": 45,
   "total": 109,
   "stage": "0.01bar",
-  "last": "0.01bar 2014_Mn__gfy_3_ION_1 [ok]"
+  "last": "0.01bar 2016_Co__sql_2_FSR_7 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -132,10 +132,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 2.2880529833,
-   "n_0.15bar_err": 0.0179875202
+   "n_0.15bar_err": 0.0179875202,
+   "n_0.01bar": 0.4376142681,
+   "n_0.01bar_err": 0.0187401124
   },
   {
    "file": "2014_Cu__dia_3_FSR_7.cif",
@@ -453,10 +456,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 3.6305698765,
-   "n_0.15bar_err": 0.0491647316
+   "n_0.15bar_err": 0.0491647316,
+   "n_0.01bar": 2.2304926427,
+   "n_0.01bar_err": 0.0484663446
   },
   {
    "file": "2016_Mg__hcb_2_ASR_1.cif",
