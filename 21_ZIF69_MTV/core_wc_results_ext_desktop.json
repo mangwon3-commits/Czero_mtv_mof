@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 104,
+  "done": 108,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2020_Cd__kgd_2_ASR_2 [ok]"
+  "last": "0.15bar 2019_Zn__bcg_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -747,6 +747,42 @@
    "n_0.15bar_err": 0.0461050395
   },
   {
+   "file": "2018_Cu__kgm_2_ASR_2.cif",
+   "key": "2018[Cu][kgm]2[ASR]2",
+   "set": "ASR",
+   "topo": "kgm",
+   "metal": "Cu",
+   "PLD": 5.20143,
+   "LCD": 6.62985,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.9118352544,
+   "n_0.15bar_err": 0.009100695
+  },
+  {
+   "file": "2018_Cu__kgm_2_FSR_2.cif",
+   "key": "2018[Cu][kgm]2[FSR]2",
+   "set": "FSR",
+   "topo": "kgm",
+   "metal": "Cu",
+   "PLD": 5.20143,
+   "LCD": 6.62985,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.9051265263,
+   "n_0.15bar_err": 0.0264956972
+  },
+  {
    "file": "2018_Ni__sql_2_ASR_2.cif",
    "key": "2018[Ni][sql]2[ASR]2",
    "set": "ASR",
@@ -997,6 +1033,24 @@
    },
    "n_0.15bar": 0.6155660943,
    "n_0.15bar_err": 0.0218462528
+  },
+  {
+   "file": "2019_Zn__bcg_3_ASR_1.cif",
+   "key": "2019[Zn][bcg]3[ASR]1",
+   "set": "ASR",
+   "topo": "bcg",
+   "metal": "Zn",
+   "PLD": 5.1239,
+   "LCD": 7.20343,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.3971873856,
+   "n_0.15bar_err": 0.0338594417
   },
   {
    "file": "2019_Zn__fsc_3_ASR_1.cif",
@@ -1267,6 +1321,24 @@
    },
    "n_0.15bar": 1.5954435294,
    "n_0.15bar_err": 0.0135463866
+  },
+  {
+   "file": "2020_Co__nbo_3_ASR_1.cif",
+   "key": "2020[Co][nbo]3[ASR]1",
+   "set": "ASR",
+   "topo": "nbo",
+   "metal": "Co",
+   "PLD": 10.48012,
+   "LCD": 11.21785,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.2546180807,
+   "n_0.15bar_err": 0.0079850834
   },
   {
    "file": "2020_Co__nia_3_ASR_1.cif",
