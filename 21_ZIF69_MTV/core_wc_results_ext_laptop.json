@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 96,
+  "done": 97,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2014_Co__dmc_3_FSR_1 [ok]"
+  "last": "0.15bar 2019_Ni__hcb_2_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -889,6 +889,24 @@
    },
    "n_0.15bar": 1.9384136623,
    "n_0.15bar_err": 0.0434423599
+  },
+  {
+   "file": "2019_Ni__hcb_2_FSR_1.cif",
+   "key": "2019[Ni][hcb]2[FSR]1",
+   "set": "FSR",
+   "topo": "hcb",
+   "metal": "Ni",
+   "PLD": 4.71894,
+   "LCD": 5.629,
+   "N_super": 1608,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.2212811201,
+   "n_0.15bar_err": 0.0231563307
   },
   {
    "file": "2019_Zn__dia_3_FSR_1.cif",
