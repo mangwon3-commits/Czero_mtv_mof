@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 66,
+  "done": 68,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2019_Cd__sql_2_FSR_2 [ok]"
+  "last": "0.15bar 2017_Ni__sql_2_ASR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -259,6 +259,24 @@
    },
    "n_0.15bar": 2.4826377558,
    "n_0.15bar_err": 0.0209472898
+  },
+  {
+   "file": "2017_Ni__sql_2_ASR_2.cif",
+   "key": "2017[Ni][sql]2[ASR]2",
+   "set": "ASR",
+   "topo": "sql",
+   "metal": "Ni",
+   "PLD": 3.60054,
+   "LCD": 4.90255,
+   "N_super": 2052,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.4867338937,
+   "n_0.15bar_err": 0.0201185373
   },
   {
    "file": "2017_Zn__dia_3_ASR_8.cif",
@@ -1177,6 +1195,24 @@
    },
    "n_0.15bar": 2.5330418929,
    "n_0.15bar_err": 0.0141851301
+  },
+  {
+   "file": "2024_Zn__srs_3_FSR_1.cif",
+   "key": "2024[Zn][srs]3[FSR]1",
+   "set": "FSR",
+   "topo": "srs",
+   "metal": "Zn",
+   "PLD": 3.44353,
+   "LCD": 3.87773,
+   "N_super": 2160,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 3.3779584687,
+   "n_0.15bar_err": 0.0380247415
   },
   {
    "file": "2024_Zn__ths_3_ASR_1.cif",
