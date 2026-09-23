@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 60,
+  "done": 62,
   "total": 109,
   "stage": "0.15bar",
-  "last": "0.15bar 2024_Cu__tfz_3_ASR_1 [ok]"
+  "last": "0.15bar 2016_Co__sql_2_FSR_25 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -241,6 +241,24 @@
    },
    "n_0.15bar": 3.7770847224,
    "n_0.15bar_err": 0.0290205073
+  },
+  {
+   "file": "2016_Co__sql_2_FSR_25.cif",
+   "key": "2016[Co][sql]2[FSR]25",
+   "set": "FSR",
+   "topo": "sql",
+   "metal": "Co",
+   "PLD": 3.8209,
+   "LCD": 4.27686,
+   "N_super": 1920,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop2",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 3.6745488653,
+   "n_0.15bar_err": 0.0460214266
   },
   {
    "file": "2016_Co__sql_2_FSR_7.cif",
@@ -565,6 +583,24 @@
    },
    "n_0.15bar": 0.6921864283,
    "n_0.15bar_err": 0.0157576475
+  },
+  {
+   "file": "2019_Zn__bcg_3_FSR_1.cif",
+   "key": "2019[Zn][bcg]3[FSR]1",
+   "set": "FSR",
+   "topo": "bcg",
+   "metal": "Zn",
+   "PLD": 5.1239,
+   "LCD": 7.20343,
+   "N_super": 1608,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop2",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.3919294985,
+   "n_0.15bar_err": 0.0111019011
   },
   {
    "file": "2019_Zn__mog_3_FSR_1.cif",
