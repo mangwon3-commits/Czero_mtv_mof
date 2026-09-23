@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 141,
+  "done": 142,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2015_Cd__sql_2_ASR_1 [ok]"
+  "last": "0.01bar 2023_Cd__rtl_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -3153,10 +3153,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 2.8182991303,
-   "n_0.15bar_err": 0.0823343258
+   "n_0.15bar_err": 0.0823343258,
+   "n_0.01bar": 0.225352448,
+   "n_0.01bar_err": 0.012720816
   },
   {
    "file": "2023_In__neb_3_ASR_2.cif",
