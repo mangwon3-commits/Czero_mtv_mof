@@ -20,10 +20,30 @@ G=/home/mangwon1/mof_project
 LOG=$G/.claude_work_corewc3_desk.out
 DRV=2012109                       # 앞 드라이버. PID 로만 봅니다 — pkill -f 금지(CLAUDE.md §4)
 PY=$HOME/miniconda3/envs/czeromof/bin/python3
+MACH=desktop
 T1=$(date -d '2026-09-24 10:00' +%s)    # ① 이 시각 이후라야 착수
 T2=$(date -d '2026-09-25 12:00' +%s)    # 최후 보루 — ②를 무시하고 착수
 say(){ echo "[$(date '+%m-%d %H:%M:%S')] $*" >> "$LOG"; }
 
+# [postman 되살리기 — 2026-09-23 laptop2 지적]
+#   laptop2 의 WSL 이 11:05 에 재부팅되면서 postman 이 같이 죽었고 **되살리는 것이 없어**
+#   9시간 20분 동안 그 기기의 진척이 저장소에 안 나타났습니다. 제 메움 지표는 **배달 경로를 거쳐**
+#   재므로, 그 상태를 "그 기기가 죽었다" 로 읽습니다 — 10:00 게이트가 아니었으면 겹쳐 돌았을 것입니다.
+#   **러너를 띄우는 자리가 postman 을 되살릴 유일한 자리입니다**(재부팅 뒤 러너는 사람이 띄우므로).
+#   죽이지 않고 **보고 없으면 띄우기만** 합니다. 탐지는 `ps`+`grep -v grep` — `pgrep -f` 금지(CLAUDE.md §4).
+ensure_postman(){
+  if ps -eo args | grep -v grep | grep -q "postman_${MACH}\.sh"; then return 0; fi
+  if [ ! -x "$HOME/.mof_postman/postman_${MACH}.sh" ] && [ ! -f "$HOME/.mof_postman/postman_${MACH}.sh" ]; then
+    say "!! postman 사본이 없습니다 — 되살리지 못했습니다"; return 1; fi
+  say "!! postman 이 죽어 있습니다 — 되살립니다"
+  ( cd "$G" && POSTMAN_ROOT="$G" setsid nohup bash "$HOME/.mof_postman/postman_${MACH}.sh" "$MACH" \
+      >> "$G/.postman_${MACH}.err" 2>&1 < /dev/null & )      # stderr 를 버리지 않습니다(laptop2 ②)
+  sleep 3
+  ps -eo args | grep -v grep | grep -q "postman_${MACH}\.sh" \
+    && say "postman 되살림 확인" || say "!! postman 되살리기 실패 — .postman_${MACH}.err 를 보십시오"
+}
+
+ensure_postman
 say "메움 사슬(생존=run_status 칸) 시작 — 앞 드라이버 PID $DRV 대기"
 while kill -0 "$DRV" 2>/dev/null; do sleep 120; done
 say "앞 드라이버 종료 확인"
@@ -54,6 +74,7 @@ done
 wait $DP1 || true
 wait || true
 say "밀도맵 빈칸 메움 종료 — 로그 $DLOG"
+ensure_postman
 
 # 밀도맵이 끝난 뒤 계산이 실제로 멎었는지 다시 확인하고 메움 감시로 넘어갑니다.
 q=0; while [ "$q" -lt 3 ]; do if [ "$(pgrep -xc simulate)" = "0" ]; then q=$((q+1)); else q=0; fi; sleep 60; done
@@ -67,6 +88,7 @@ say "simulate 재정지 확인 — 메움 감시 시작"
 #        전부 `[no-output]` 낸 그 상태. 랩탑 지표가 덮지만 그쪽이 같이 죽으면 남는 자리입니다.)
 prevc=-1; prevv=-1; sc=0; sv=0; n=0
 while :; do
+  ensure_postman
   git -C "$G" fetch -q --all 2>/dev/null
   out=$("$PY" "$HOME/.mof_chain/corewc3_missing.py" 2>>"$LOG" | tail -1)
   n=$(echo "$out" | awk '{print $1}'); cells=$(echo "$out" | awk '{print $2}'); vals=$(echo "$out" | awk '{print $3}')
