@@ -146,7 +146,22 @@ while :; do
       say "!! 깨진 결과 파일 — 올리지 않음: $f"; inbox "!! **깨진 결과 파일 반려** $f (러너가 덮어쓰면 다음 틱에 올라갑니다)"; fi
   done
   if ! git diff --cached --quiet; then n=$(git diff --cached --name-only | wc -l)
-    git commit -q -m "[postman:$MACHINE] 결과 파일 자동 반입 ${n}건" && git push -q origin "$BR" 2>>"$LOG" && inbox "[푸시] $BR ← 결과 ${n}건 $(git log -1 --format=%h)" || inbox "!! 자동 커밋/푸시 실패"; fi
+    if git commit -q -m "[postman:$MACHINE] 결과 파일 자동 반입 ${n}건" && git push -q origin "$BR" 2>>"$LOG"; then
+      inbox "[푸시] $BR ← 결과 ${n}건 $(git log -1 --format=%h)"
+    else
+      # (14) 2026-09-23 — **(13) 은 ④ 반입 경로만 고쳤고 여기는 안 고쳤습니다.** 그래서 남이 먼저 밀면
+      #      이 push 가 거절되고, 그 뒤로 매 틱 같은 자리에서 실패합니다. `repo_bash_running` 가드가
+      #      pull 을 건너뛰므로 **스스로는 영영 안 풀립니다** — 데스크탑이 09-23 20:0x 에 그 상태였습니다
+      #      (로컬 3 앞 · 1 뒤, 실패 22회 누적).
+      #      **`reset --mixed` 는 작업트리를 하나도 안 건드립니다** — 러너가 결과 JSON 을 쓰는 중에도
+      #      안전한 유일한 되돌리기입니다(`--hard` 는 절대 금지: 09-21 의 충돌 표시 사고와 같은 자리).
+      #      HEAD 만 원격 끝으로 옮기면 다음 틱의 add/commit 이 **현재 작업트리를** 올립니다.
+      #      혹시 남의 파일이 한 틱 뒤처지더라도 (12) 의 트리 대조가 다음 틱에 다시 들여옵니다.
+      say "push 거절 — origin/$BR 로 재동기화(작업트리 불변) 뒤 다음 틱에 재시도"
+      if git fetch -q origin "$BR" 2>>"$LOG" && git reset -q --mixed "origin/$BR" 2>>"$LOG"; then
+        inbox "!! 푸시 거절 — origin/$BR 로 재동기화했습니다(작업트리 안 건드림). 다음 틱에 재시도합니다."
+      else inbox "!! 자동 커밋/푸시 실패 — 재동기화도 실패"; fi
+    fi; fi
   sim=$(pgrep -xc simulate); [ "$sim" != "$prev_sim" ] && { inbox "[simulate] $prev_sim → $sim"; prev_sim=$sim; }
   for f in "$ROOT"/.claude_work_*.out "$ROOT"/21_ZIF69_MTV/*_chain.log; do [ -f "$f" ] || continue
     k=$(basename "$f"); old=$(cat "$STATE/sz_$k" 2>/dev/null || echo 0); new=$(stat -c %s "$f")
