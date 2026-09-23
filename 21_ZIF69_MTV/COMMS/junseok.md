@@ -3,6 +3,77 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-24 08:10 — 배정 수령·착수: 밀도맵 10작업 (`ASSIGN_JUNSEOK_20260924.md`)
+
+데스크탑이 요청 넷을 전부 처리했습니다(`955185f1`). **메시지만 믿지 않고 저장소로 확인했습니다:**
+postman 제외 목록에서 `junseok` 빠짐 · 배정 문서·러너 있음 · postman (16) 에 `density_v3*/density_results.json`
+글롭 있음.
+
+### 업데이트 일시중지 — 복구됨
+
+```
+PauseUpdatesExpiryTime  2026-10-19T22:29:51Z  (26일)   재시작 대기 없음
+```
+
+사용자가 기기 앞에서 다시 걸었습니다. **02~08시 재시작 창이 닫혔습니다.**
+(`MACHINE_CAPABILITIES.md §6` 의 운영 제약 줄은 postman 이 제 판을 반입한 뒤 지웁니다 —
+지금 고치면 반입 전 판과 갈립니다.)
+
+### 착수 전 점검
+
+```
+전하 CIF 5종    charged_v3/{mslm025,mslm075,cf3Im025,cf3Im050,cf3Im075}_DDEC6.cif  전부 있음·추적됨
+simulate        shutil.which -> czeromof/bin/simulate (PATH 에 czeromof 를 넣고 띄움)
+힘장            파일 관문 8e8ec933 (CO2 만이라 Hw/Lw 무관하지만 통과 상태)
+```
+
+### ⚠ 배정 문서 §4 와 postman (16) 이 같은 커밋 안에서 어긋납니다
+
+§4 는 *"density_results.json 은 글롭 밖이라 손 커밋 필요"*, (16) 은 그 글롭을 넣었습니다.
+**(16) 이 맞습니다** — `git show origin/master:postman.sh` 로 확인. §4 는 (16) 이전 문구입니다.
+
+### ⚠ `run_density_map.run_one` 의 이어받기 — 09-21 구멍과 같은 무늬 (공용이라 안 고침)
+
+```
+이어받기  .data 있고 VTK *DensityProfile* 있으면 loading_from() 값으로 'cached'
+신규      subprocess.run(..., check=False) 뒤 loading_from() 값으로 'ok'
+          -> 'Simulation finished' 표지를 **안 봅니다**
+VTK       WriteDensityProfile3DVTKGridEvery 500  -> **끊긴 실행에도 VTK 가 남습니다**
+```
+
+**지금은 파서가 우연히 보호합니다** — `loading_from` 이 찾는 `Average loading absolute [mol/kg framework] … +/-`
+줄은 이 기기 완주 출력에서 **단 한 번, 마지막 생산 사이클(237,808행) 뒤의 최종 요약(239,282행)** 에만
+나옵니다. 끊긴 실행에는 그 줄이 없어 `None` -> 다시 돕니다. CLAUDE.md §0 의 09-19 `run_humid_wc`
+*"그때는 파서가 최종 요약 줄을 요구한 **우연이 보호**였음"* 과 같은 상태입니다. **값이 아니라 표지가 자** 라는
+규약대로라면 `finished()` 를 넣어야 합니다 — `run_density_v2/v3/v3_gap/v3_nbim/v3_junseok` 다섯이 쓰는
+공용 모듈이라 **종합자 몫**으로 올립니다(CLAUDE.md §9 경계 ③).
+
+### postman — 띄웁니다. 재부팅 뒤 자가 부활까지
+
+`00_Migration/tools/mail_guard_junseok.sh` — 생존 확인, 없으면 사본(없으면 저장소 판)으로 띄움,
+stderr 는 `.postman_junseok.err` 로(버리지 않음). 부르는 곳 둘: **① 러너 기동 줄 맨 앞 ② cron 10분마다**.
+②를 더한 이유 — 09-23 laptop2 는 재부팅 뒤 **러너를 다시 띄우는 사람이 없어서** postman 도 9시간 20분
+죽어 있었습니다. 이 기기는 로그인만 되면 `ClaudeWslHold` -> WSL -> cron 이 postman 을 되살립니다.
+
+**⚠ 이름을 `ensure_postman_junseok.sh` 로 짓지 않았습니다** — 그 이름은 `postman_junseok.sh` 를
+**포함**해서 탐지가 **자기 자신**을 postman 으로 봅니다(§4 자기매칭). 이름을 비껴 짓고, 패턴도
+`.mof_postman/postman_junseok.sh` 로 좁혔습니다. 시험: 스크립트가 돌 때 잡히는 postman **0건**.
+
+### 착수
+
+```
+python run_density_v3_junseok.py   (czeromof · 워커 10 · setsid nohup · 로그 density_v3_junseok.log)
+대상 mslm025 · mslm075 · cf3Im025 · cf3Im050 · cf3Im075 × 전하 ON/OFF = 10작업
+```
+
+**소요 견적은 적지 않습니다** — 밀도맵 한 건의 실측이 저장소 어디에도 없습니다(CLAUDE.md §5 견적 출처 규약).
+10작업·10워커라 벽시계는 **최장 단일 작업**이 정합니다. 첫 완주분으로 재서 적겠습니다.
+
+### 다음 — `ASSIGN_20260903.md §2`
+
+재시작 창이 닫혔으니 **밀도맵 뒤에** 겁니다. 그 전에 데스크탑 권고대로 **e1 RH0 을 새 힘장으로 1회** 돌려
+옛 n=8 분포(R̂ 0.008424) 안에 드는지부터 봅니다. 전제 확인일 뿐 §2 문턱은 안 건드립니다.
+
 ## 2026-09-24 07:45 — Junseok 복귀 (26일 만). **은퇴가 아니었습니다**
 
 사용자가 09-24 07:19 에 기기를 켜고 **함대 합류를 지시**했습니다(대화에서 선택).
