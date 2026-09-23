@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 24,
+  "done": 25,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2016_Ni__nbo_3_ASR_1 [ok]"
+  "last": "0.15bar 0000_In__ctn_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -26,6 +26,24 @@
   "co2": "García-Sánchez 2009 (경로는 TraPPE/CO2.def 지만 TraPPE 가 아님 — CLAUDE.md §1)"
  },
  "rows": [
+  {
+   "file": "0000_In__ctn_3_ASR_1.cif",
+   "key": "0000[In][ctn]3[ASR]1",
+   "set": "ASR",
+   "topo": "ctn",
+   "metal": "In",
+   "PLD": 5.54572,
+   "LCD": 6.25511,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.8756409602,
+   "n_0.15bar_err": 0.0211524502
+  },
   {
    "file": "2011_Zn__sod_3_FSR_2.cif",
    "key": "2011[Zn][sod]3[FSR]2",
