@@ -4,6 +4,12 @@
  "assign": "laptop",
  "machine": "laptop",
  "workers": 8,
+ "progress": {
+  "done": 1,
+  "total": 4,
+  "stage": "0.15bar",
+  "last": "0.15bar 2019_Ni__fcu_3_FSR_1 [ok]"
+ },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
   "gcmc_cycles": 15000,
@@ -382,6 +388,24 @@
    "n_0.01bar_err": 0.0086593616,
    "wc_vsa": 0.9371933276000001,
    "wc_vsa_err": 0.03428954689322589
+  },
+  {
+   "file": "2019_Ni__fcu_3_FSR_1.cif",
+   "key": "2019[Ni][fcu]3[FSR]1",
+   "set": "FSR",
+   "topo": "fcu",
+   "metal": "Ni",
+   "PLD": 5.16822,
+   "LCD": 14.69154,
+   "N_super": 1264,
+   "our_KH_CO2": 4.76934e-05,
+   "our_selectivity": 11.7447707605853,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.7066667565,
+   "n_0.15bar_err": 0.021059034
   },
   {
    "file": "2019_Zn__hcb_2_FSR_1.cif",

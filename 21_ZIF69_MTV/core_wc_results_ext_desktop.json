@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 3,
+  "done": 6,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2013_ZnCr__lon_3_ASR_4 [ok]"
+  "last": "0.15bar 2024_Zn__nia_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -79,6 +79,60 @@
    },
    "n_0.15bar": 1.0077841097,
    "n_0.15bar_err": 0.0250455511
+  },
+  {
+   "file": "2019_Zn__fsc_3_ASR_1.cif",
+   "key": "2019[Zn][fsc]3[ASR]1",
+   "set": "ASR",
+   "topo": "sqc27",
+   "metal": "Zn",
+   "PLD": 4.37361,
+   "LCD": 5.50326,
+   "N_super": 1464,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.3714014886,
+   "n_0.15bar_err": 0.0453585725
+  },
+  {
+   "file": "2020_Cd__sod_3_FSR_1.cif",
+   "key": "2020[Cd][sod]3[FSR]1",
+   "set": "FSR",
+   "topo": "sod",
+   "metal": "Cd",
+   "PLD": 7.05998,
+   "LCD": 9.58263,
+   "N_super": 2016,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.7310866464,
+   "n_0.15bar_err": 0.0352148034
+  },
+  {
+   "file": "2024_Zn__nia_3_FSR_1.cif",
+   "key": "2024[Zn][nia]3[FSR]1",
+   "set": "FSR",
+   "topo": "nia-d",
+   "metal": "Zn",
+   "PLD": 4.47227,
+   "LCD": 8.59472,
+   "N_super": 1408,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.6348184988,
+   "n_0.15bar_err": 0.052065336
   }
  ]
 }
