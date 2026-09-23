@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 41,
+  "done": 42,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2017_Zn__sql_2_ASR_1 [ok]"
+  "last": "0.01bar 2019_Cu__nan_3_ASR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1626,10 +1626,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.7698994723,
-   "n_0.15bar_err": 0.0169149242
+   "n_0.15bar_err": 0.0169149242,
+   "n_0.01bar": 0.0596801286,
+   "n_0.01bar_err": 0.0022996919
   },
   {
    "file": "2019_Cu__rtl_3_ASR_1.cif",
