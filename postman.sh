@@ -34,11 +34,14 @@ fi
 cd "$ROOT" || exit 1
 INBOX="$ROOT/.postman_inbox_$MACHINE"; LOG="$ROOT/.postman_$MACHINE.log"; FLAG="$ROOT/.postman_flag"
 STATE="$ROOT/.postman_state_$MACHINE"; mkdir -p "$STATE"
-RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md'
+RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/density_v3*/density_results.json 21_ZIF69_MTV/density_v3*/*/VTK/System_0/*.vtk.gz 21_ZIF69_MTV/density_v3*/*/simulation.input'
 say(){ echo "[$(date '+%m-%d %H:%M:%S')] $*" >> "$LOG"; }
 inbox(){ echo "[$(date '+%m-%d %H:%M')] $*" >> "$INBOX"; touch "$FLAG"; }
 repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh | grep -vE "wsl_keepalive|lammps_watchdog|ensure_guards" | grep -qE "$ROOT|^bash [^/]"; }
 runner_running(){ pgrep -x simulate >/dev/null || pgrep -f "python[0-9.]* .*run_[A-Za-z0-9_]*\.py" >/dev/null; }
+# (16) 2026-09-24 — 밀도맵 결과 경로를 **일감을 주기 전에** 넣습니다. `density_v3*/density_results.json`
+#      + COM 격자(.vtk.gz) + `simulation.input`. `density_v3/` 가 추적하는 것과 같은 세 종류입니다.
+#      (11)·(12) 에서 두 번 데인 순서를 이번엔 거꾸로 밟습니다 — **경로 먼저, 계산 나중.**
 # (11) 09-23 10:2x — **같은 결함이 §AW 에서 반복**. (8)에서 `core_pop_results_*` 를 넣었는데
 #      §AW 의 `core_wc_results_*` 는 **또 빠져** 있었습니다. 패턴이 **시험 이름마다 늘어나는 구조**라
 #      새 시험을 열 때마다 같은 자리에서 막힙니다. `pair_times_*` 와 `MACHINE_CAPABILITIES.md`
@@ -78,7 +81,10 @@ while :; do
   #     돌던 파일은 안 바뀝니다.
   BR=$(git rev-parse --abbrev-ref HEAD)
   if git fetch -q --all 2>>"$LOG"; then
-    for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|junseok|^origin$"); do  # (7) 15:5x: 짧은 이름 origin(=origin/HEAD) 이 브랜치로 취급돼 master 의 남의 푸시를 ④ 로 재커밋(e202853) → 갈래가 생김. 제외.
+    for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|^origin$"); do  # (7) 15:5x: 짧은 이름 origin(=origin/HEAD) 이 브랜치로 취급돼 master 의 남의 푸시를 ④ 로 재커밋(e202853) → 갈래가 생김. 제외.
+    # (15) 2026-09-24: **`junseok` 을 제외 목록에서 뺐습니다.** 09-24 07:19 복귀 — 그 기기의 결과가 master 로 와야 합니다.
+    #      "은퇴" 는 감사가 08-29 제목("가지 취합 **종결** 확인")에서 **추론한 것**이고 결정한 사람이 없었습니다.
+    #      같은 기록 끝줄은 "다음 배정 라운드까지 대기" 였고 등록부도 🟢 였습니다(Junseok 자기 정정, 09-24).
       key=$(echo "$rb" | tr '/' '_'); last=$(cat "$STATE/$key" 2>/dev/null || echo ""); cur=$(git rev-parse "$rb")
       if [ -n "$last" ] && [ "$last" != "$cur" ]; then
         git log --format="  %h %ad %s" --date=format:'%m-%d %H:%M' "$last..$cur" | head -8 | while read -r l; do inbox "[$rb] $l"; done
