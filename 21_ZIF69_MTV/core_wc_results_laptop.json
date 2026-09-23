@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 3,
+  "done": 4,
   "total": 4,
   "stage": "0.15bar",
-  "last": "0.15bar 2017_Zn__apo_3_ASR_1 [ok]"
+  "last": "0.15bar 2022_Cd__nuc_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -662,6 +662,24 @@
    "n_0.01bar_err": 0.0009433391,
    "wc_vsa": 0.3379541435,
    "wc_vsa_err": 0.007193911417219176
+  },
+  {
+   "file": "2022_Cd__nuc_3_FSR_1.cif",
+   "key": "2022[Cd][nuc]3[FSR]1",
+   "set": "FSR",
+   "topo": "nuc",
+   "metal": "Cd",
+   "PLD": 4.0645,
+   "LCD": 4.95702,
+   "N_super": 3104,
+   "our_KH_CO2": 0.000305718,
+   "our_selectivity": 33.35857538790564,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.4806175591,
+   "n_0.15bar_err": 0.0204203249
   },
   {
    "file": "2022_Zn__pcu_3_ASR_2.cif",
