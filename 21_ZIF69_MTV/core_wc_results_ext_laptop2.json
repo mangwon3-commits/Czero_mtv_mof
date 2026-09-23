@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 14,
+  "done": 15,
   "total": 109,
   "stage": "0.01bar",
-  "last": "0.01bar 2020_Cu__rob_3_FSR_1 [ok]"
+  "last": "0.01bar 2017_Zn__apo_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -606,10 +606,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 2.2187941405,
-   "n_0.15bar_err": 0.020749852
+   "n_0.15bar_err": 0.020749852,
+   "n_0.01bar": 0.210502832,
+   "n_0.01bar_err": 0.0053309029
   },
   {
    "file": "2017_Zn__dia_3_ASR_5.cif",
