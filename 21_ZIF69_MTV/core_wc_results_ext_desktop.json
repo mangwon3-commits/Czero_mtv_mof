@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 102,
+  "done": 103,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2015_V__bpq_3_ASR_1 [ok]"
+  "last": "0.15bar 2010_Ga__ctn_3_FSR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -61,6 +61,24 @@
    },
    "n_0.15bar": 0.8756409602,
    "n_0.15bar_err": 0.0211524502
+  },
+  {
+   "file": "2010_Ga__ctn_3_FSR_2.cif",
+   "key": "2010[Ga][ctn]3[FSR]2",
+   "set": "FSR",
+   "topo": "ctn",
+   "metal": "Ga",
+   "PLD": 5.35547,
+   "LCD": 5.93071,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.2299182727,
+   "n_0.15bar_err": 0.0291135043
   },
   {
    "file": "2011_Zn__sod_3_FSR_2.cif",
