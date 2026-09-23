@@ -73,3 +73,95 @@ saIm075e5       4.246     918.3    9.005    6.189      18.8     0.990    12     
 [OK] risk_results_v3ens075.json
 
 주: PLD/AV 는 이완 **전**, LCD 감소·최소거리는 이완 **후** 값으로 판정했습니다 (MIGRATION.md 3-6).
+
+===== 2026-08-29 11:10:46 2단계 saIm075 스크린 착수 (7종, base 포함) =====
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.8 GB, Zeo++ 9.5 GB/건)
+  안정성 관문 자기 산포 2단계 — base + saIm075 계열 (총 7종)
+  대상     base saIm075 saIm075e1 saIm075e2 saIm075e3 saIm075e4 saIm075e5
+  staging  7종 -> /home/mangwon/mof_project/21_ZIF69_MTV/structures_v3ens075_stage
+  STRUCT   /home/mangwon/mof_project/21_ZIF69_MTV/structures_v3ens075_stage
+  결과     /home/mangwon/mof_project/21_ZIF69_MTV/risk_results_v3ens075.json
+  워커     1  (Zeo++ 9.5 GB/건, 가용 22.8 GB)
+  python   /home/mangwon/miniconda3/envs/czeromof/bin/python
+  대상 7종
+
+대상: risk_v3ens075_index.json -> 7종, 작업 /home/mangwon/mof_project/21_ZIF69_MTV/lmp_v3ens075
+구조 7개 UFF4MOF 이완 + Zeo++
+
+Traceback (most recent call last):
+  File "/home/mangwon/mof_project/21_ZIF69_MTV/risk_screen_v3ens075.py", line 229, in <module>
+    sys.exit(main())
+  File "/home/mangwon/mof_project/21_ZIF69_MTV/risk_screen_v3ens075.py", line 225, in main
+    return rs.main()
+  File "/home/mangwon/mof_project/21_ZIF69_MTV/risk_screen.py", line 356, in main
+    with ProcessPoolExecutor(max_workers=MAX_WORKERS, max_tasks_per_child=1) as ex:
+TypeError: ProcessPoolExecutor.__init__() got an unexpected keyword argument 'max_tasks_per_child'
+
+===== 2026-08-29 11:13:02 2단계 saIm075 재착수 (3.10 shim 적용) =====
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.8 GB, Zeo++ 9.5 GB/건)
+  [shim] Python 3.10 — ProcessPoolExecutor 를 spawn Pool(maxtasksperchild=1) 로 대체합니다. 메모리 가드 유지.
+  안정성 관문 자기 산포 2단계 — base + saIm075 계열 (총 7종)
+  대상     base saIm075 saIm075e1 saIm075e2 saIm075e3 saIm075e4 saIm075e5
+  staging  7종 -> /home/mangwon/mof_project/21_ZIF69_MTV/structures_v3ens075_stage
+  STRUCT   /home/mangwon/mof_project/21_ZIF69_MTV/structures_v3ens075_stage
+  결과     /home/mangwon/mof_project/21_ZIF69_MTV/risk_results_v3ens075.json
+  워커     1  (Zeo++ 9.5 GB/건, 가용 22.8 GB)
+  python   /home/mangwon/miniconda3/envs/czeromof/bin/python
+  대상 7종
+
+대상: risk_v3ens075_index.json -> 7종, 작업 /home/mangwon/mof_project/21_ZIF69_MTV/lmp_v3ens075
+구조 7개 UFF4MOF 이완 + Zeo++
+
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.7 GB, Zeo++ 9.5 GB/건)
+  [shim] Python 3.10 — ProcessPoolExecutor 를 spawn Pool(maxtasksperchild=1) 로 대체합니다. 메모리 가드 유지.
+/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+    base: 이완 산출물 재사용 (다시 돌리지 않음)
+  [                          ok] base
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.4 GB, Zeo++ 9.5 GB/건)
+  [shim] Python 3.10 — ProcessPoolExecutor 를 spawn Pool(maxtasksperchild=1) 로 대체합니다. 메모리 가드 유지.
+/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+    saIm075: 이완 산출물 재사용 (다시 돌리지 않음)
+  [                          ok] saIm075
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 22.5 GB, Zeo++ 9.5 GB/건)
+  [shim] Python 3.10 — ProcessPoolExecutor 를 spawn Pool(maxtasksperchild=1) 로 대체합니다. 메모리 가드 유지.
+/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+    saIm075e1: 이완 산출물 재사용 (다시 돌리지 않음)
+    [zeo res 실패] after: CalledProcessError
+    [zeo vol 실패] after: CalledProcessError
+Process SpawnPoolWorker-3:
+Traceback (most recent call last):
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/queues.py", line 377, in put
+    self._writer.send_bytes(obj)
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/connection.py", line 411, in _send_bytes
+    self._send(header + buf)
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/queues.py", line 377, in put
+    self._writer.send_bytes(obj)
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/connection.py", line 411, in _send_bytes
+    self._send(header + buf)
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
