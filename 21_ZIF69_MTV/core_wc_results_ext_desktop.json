@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 14,
+  "done": 19,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2021_Cu__sql_2_FSR_1 [ok]"
+  "last": "0.01bar 2017_Cd__dia_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -525,10 +525,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.2610369678,
-   "n_0.15bar_err": 0.0242097502
+   "n_0.15bar_err": 0.0242097502,
+   "n_0.01bar": 0.1233613856,
+   "n_0.01bar_err": 0.0058570756
   },
   {
    "file": "2015_Zn__sql_2_FSR_5.cif",
@@ -903,10 +906,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.8771534908,
-   "n_0.15bar_err": 0.015385561
+   "n_0.15bar_err": 0.015385561,
+   "n_0.01bar": 0.0611102874,
+   "n_0.01bar_err": 0.0022991787
   },
   {
    "file": "2017_Cd__kgd_2_FSR_1.cif",
@@ -2517,10 +2523,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.673934124,
-   "n_0.15bar_err": 0.0135252342
+   "n_0.15bar_err": 0.0135252342,
+   "n_0.01bar": 0.0495437415,
+   "n_0.01bar_err": 0.0014763831
   },
   {
    "file": "2021_Cu__sql_2_ASR_8.cif",
@@ -2832,10 +2841,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.8324313416,
-   "n_0.15bar_err": 0.0353577232
+   "n_0.15bar_err": 0.0353577232,
+   "n_0.01bar": 0.0873634521,
+   "n_0.01bar_err": 0.0070503646
   },
   {
    "file": "2023_In__neb_3_FSR_2.cif",
@@ -2850,10 +2862,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.8200798966,
-   "n_0.15bar_err": 0.0191732052
+   "n_0.15bar_err": 0.0191732052,
+   "n_0.01bar": 0.0892101633,
+   "n_0.01bar_err": 0.0037803776
   },
   {
    "file": "2023_Ni__sql_2_FSR_1.cif",
