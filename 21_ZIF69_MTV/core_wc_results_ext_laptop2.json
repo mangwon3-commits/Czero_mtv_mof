@@ -5,10 +5,10 @@
  "machine": "laptop2",
  "workers": 12,
  "progress": {
-  "done": 49,
+  "done": 50,
   "total": 109,
   "stage": "0.01bar",
-  "last": "0.01bar 2020_Fe__tbo_3_FSR_2 [ok]"
+  "last": "0.01bar 2023_CrMn__qtz_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1881,10 +1881,13 @@
    "our_selectivity": null,
    "machine": "laptop2",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.1302882738,
-   "n_0.15bar_err": 0.0036775144
+   "n_0.15bar_err": 0.0036775144,
+   "n_0.01bar": 0.0088462605,
+   "n_0.01bar_err": 0.0007119133
   },
   {
    "file": "2023_In__neb_3_ASR_4.cif",
