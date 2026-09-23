@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 47,
+  "done": 48,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 0000_CrMn__qtz_3_ASR_1 [ok]"
+  "last": "0.15bar 2019_Cu__mrc_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -403,6 +403,24 @@
    },
    "n_0.15bar": 2.2901158171,
    "n_0.15bar_err": 0.0422436963
+  },
+  {
+   "file": "2019_Cu__mrc_3_ASR_1.cif",
+   "key": "2019[Cu][mrc]3[ASR]1",
+   "set": "ASR",
+   "topo": "mrc",
+   "metal": "Cu",
+   "PLD": 4.98557,
+   "LCD": 6.44914,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.2757987291,
+   "n_0.15bar_err": 0.0355850686
   },
   {
    "file": "2019_Cu__nan_3_ASR_2.cif",
