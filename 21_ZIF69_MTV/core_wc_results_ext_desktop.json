@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 137,
+  "done": 138,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2021_Zn__kgd_2_FSR_1 [ok]"
+  "last": "0.15bar 2019_Cu__rtl_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1231,6 +1231,24 @@
    },
    "n_0.15bar": 0.7698994723,
    "n_0.15bar_err": 0.0169149242
+  },
+  {
+   "file": "2019_Cu__rtl_3_ASR_1.cif",
+   "key": "2019[Cu][rtl]3[ASR]1",
+   "set": "ASR",
+   "topo": "rtl",
+   "metal": "Cu",
+   "PLD": 5.34406,
+   "LCD": 6.40417,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6168080417,
+   "n_0.15bar_err": 0.0149145031
   },
   {
    "file": "2019_Cu__ssa_3_FSR_1.cif",
