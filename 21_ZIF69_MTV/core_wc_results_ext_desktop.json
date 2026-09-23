@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 88,
+  "done": 89,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2015_Zn__pcu_3_FSR_6 [ok]"
+  "last": "0.15bar 2020_Mg__nia_3_FSR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1141,6 +1141,24 @@
    },
    "n_0.15bar": 0.3448517352,
    "n_0.15bar_err": 0.0051745199
+  },
+  {
+   "file": "2020_Mg__nia_3_FSR_2.cif",
+   "key": "2020[Mg][nia]3[FSR]2",
+   "set": "FSR",
+   "topo": "nia-d",
+   "metal": "Mg",
+   "PLD": 4.52699,
+   "LCD": 8.66431,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.6576223834,
+   "n_0.15bar_err": 0.0348398405
   },
   {
    "file": "2020_Zn__pcu_3_ASR_2.cif",
