@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 12,
+  "done": 14,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2021_Mn__dia_3_ASR_1 [ok]"
+  "last": "0.15bar 2021_Cu__pcu_3_ASR_3 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -189,6 +189,24 @@
    "n_0.15bar_err": 0.0135463866
   },
   {
+   "file": "2021_Cu__pcu_3_ASR_3.cif",
+   "key": "2021[Cu][pcu]3[ASR]3",
+   "set": "ASR",
+   "topo": "pcu",
+   "metal": "Cu",
+   "PLD": 9.86802,
+   "LCD": 11.37052,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.673934124,
+   "n_0.15bar_err": 0.0135252342
+  },
+  {
    "file": "2021_Mn__dia_3_ASR_1.cif",
    "key": "2021[Mn][dia]3[ASR]1",
    "set": "ASR",
@@ -223,6 +241,24 @@
    },
    "n_0.15bar": 0.8324313416,
    "n_0.15bar_err": 0.0353577232
+  },
+  {
+   "file": "2023_In__neb_3_FSR_2.cif",
+   "key": "2023[In][neb]3[FSR]2",
+   "set": "FSR",
+   "topo": "tfl",
+   "metal": "In",
+   "PLD": 7.05768,
+   "LCD": 9.69778,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.8200798966,
+   "n_0.15bar_err": 0.0191732052
   },
   {
    "file": "2024_Zn__nia_3_FSR_1.cif",
