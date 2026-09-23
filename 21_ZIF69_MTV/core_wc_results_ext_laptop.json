@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 159,
+  "done": 165,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2024_Zn__crb_3_ASR_9 [ok]"
+  "last": "0.15bar 2011_Zn__pcu_3_FSR_8 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -61,6 +61,24 @@
    },
    "n_0.15bar": 0.1294135132,
    "n_0.15bar_err": 0.0025133302
+  },
+  {
+   "file": "2011_Zn__pcu_3_FSR_8.cif",
+   "key": "2011[Zn][pcu]3[FSR]8",
+   "set": "FSR",
+   "topo": "pcu",
+   "metal": "Zn",
+   "PLD": 7.89575,
+   "LCD": 14.86344,
+   "N_super": 656,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.110471929,
+   "n_0.15bar_err": 0.0024674328
   },
   {
    "file": "2011_Zn__sod_3_ASR_3.cif",
@@ -333,6 +351,24 @@
    "n_0.15bar_err": 0.0149395767
   },
   {
+   "file": "2015_CrMn__noa_3_FSR_1.cif",
+   "key": "2015[CrMn][noa]3[FSR]1",
+   "set": "FSR",
+   "topo": "noa",
+   "metal": "Cr,Mn",
+   "PLD": 7.32685,
+   "LCD": 10.24846,
+   "N_super": 720,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.0709988819,
+   "n_0.15bar_err": 0.0029517946
+  },
+  {
    "file": "2015_Cu__pcu_2_ASR_1.cif",
    "key": "2015[Cu][pcu]2[ASR]1",
    "set": "ASR",
@@ -385,6 +421,42 @@
    },
    "n_0.15bar": 0.9119760529,
    "n_0.15bar_err": 0.0209232935
+  },
+  {
+   "file": "2016_Co__pts_3_ASR_4.cif",
+   "key": "2016[Co][pts]3[ASR]4",
+   "set": "ASR",
+   "topo": "dmd",
+   "metal": "Co",
+   "PLD": 9.5867,
+   "LCD": 10.01279,
+   "N_super": 800,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.5791560815,
+   "n_0.15bar_err": 0.0132112929
+  },
+  {
+   "file": "2016_Co__pts_3_ASR_6.cif",
+   "key": "2016[Co][pts]3[ASR]6",
+   "set": "ASR",
+   "topo": "dmd",
+   "metal": "Co",
+   "PLD": 8.69368,
+   "LCD": 8.84064,
+   "N_super": 800,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.3557016128,
+   "n_0.15bar_err": 0.0053593654
   },
   {
    "file": "2016_Co__sql_2_FSR_11.cif",
@@ -1897,6 +1969,42 @@
    },
    "n_0.15bar": 1.4556667108,
    "n_0.15bar_err": 0.0403026942
+  },
+  {
+   "file": "2020_Cu__eea_3_ASR_1.cif",
+   "key": "2020[Cu][eea]3[ASR]1",
+   "set": "ASR",
+   "topo": "eea",
+   "metal": "Cu",
+   "PLD": 5.37338,
+   "LCD": 7.85306,
+   "N_super": 816,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.8901253878,
+   "n_0.15bar_err": 0.019402833
+  },
+  {
+   "file": "2020_Cu__eea_3_FSR_1.cif",
+   "key": "2020[Cu][eea]3[FSR]1",
+   "set": "FSR",
+   "topo": "eea",
+   "metal": "Cu",
+   "PLD": 5.37338,
+   "LCD": 7.85306,
+   "N_super": 816,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.8897961175,
+   "n_0.15bar_err": 0.0217300221
   },
   {
    "file": "2020_Cu__kgm_2_ASR_1.cif",
