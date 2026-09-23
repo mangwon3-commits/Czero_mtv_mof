@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 171,
+  "done": 1,
   "total": 171,
-  "stage": "0.15bar",
-  "last": "0.15bar 2020_In__hcb_2_ASR_1 [ok]"
+  "stage": "0.01bar",
+  "last": "0.01bar 2012_Co__sqp_3_ASR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -129,10 +129,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.9420633218,
-   "n_0.15bar_err": 0.0124616707
+   "n_0.15bar_err": 0.0124616707,
+   "n_0.01bar": 0.1004817765,
+   "n_0.01bar_err": 0.0025402983
   },
   {
    "file": "2013_ZnCr__lon_3_ASR_5.cif",
