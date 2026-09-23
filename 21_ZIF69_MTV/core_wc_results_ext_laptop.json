@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 165,
+  "done": 171,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2011_Zn__pcu_3_FSR_8 [ok]"
+  "last": "0.15bar 2020_In__hcb_2_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -405,6 +405,24 @@
    "n_0.15bar_err": 0.020223269
   },
   {
+   "file": "2015_Zn__pcu_3_FSR_5.cif",
+   "key": "2015[Zn][pcu]3[FSR]5",
+   "set": "FSR",
+   "topo": "pcu",
+   "metal": "Zn",
+   "PLD": 8.81679,
+   "LCD": 10.86811,
+   "N_super": 664,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6009905176,
+   "n_0.15bar_err": 0.0150204122
+  },
+  {
    "file": "2015_Zr__fcu_3_ASR_1.cif",
    "key": "2015[Zr][fcu]3[ASR]1",
    "set": "ASR",
@@ -421,6 +439,24 @@
    },
    "n_0.15bar": 0.9119760529,
    "n_0.15bar_err": 0.0209232935
+  },
+  {
+   "file": "2015_Zr__ftw_3_ASR_2.cif",
+   "key": "2015[Zr][ftw]3[ASR]2",
+   "set": "ASR",
+   "topo": "xxv",
+   "metal": "Zr",
+   "PLD": 8.58272,
+   "LCD": 21.33814,
+   "N_super": 396,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.4236707978,
+   "n_0.15bar_err": 0.0126397938
   },
   {
    "file": "2016_Co__pts_3_ASR_4.cif",
@@ -2187,6 +2223,24 @@
    "n_0.15bar_err": 0.0148752673
   },
   {
+   "file": "2020_Fe__hcb_2_ASR_2.cif",
+   "key": "2020[Fe][hcb]2[ASR]2",
+   "set": "ASR",
+   "topo": "hcb",
+   "metal": "Fe",
+   "PLD": 15.58314,
+   "LCD": 22.94791,
+   "N_super": 600,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.1639962428,
+   "n_0.15bar_err": 0.0053457748
+  },
+  {
    "file": "2020_Fe__tbo_3_FSR_1.cif",
    "key": "2020[Fe][tbo]3[FSR]1",
    "set": "FSR",
@@ -2203,6 +2257,24 @@
    },
    "n_0.15bar": 0.3425064407,
    "n_0.15bar_err": 0.008218265
+  },
+  {
+   "file": "2020_In__hcb_2_ASR_1.cif",
+   "key": "2020[In][hcb]2[ASR]1",
+   "set": "ASR",
+   "topo": "hcb",
+   "metal": "In",
+   "PLD": 7.16561,
+   "LCD": 8.43082,
+   "N_super": 456,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.660260355,
+   "n_0.15bar_err": 0.0109113282
   },
   {
    "file": "2020_Mg__nia_3_ASR_2.cif",
@@ -2239,6 +2311,24 @@
    },
    "n_0.15bar": 1.1359597761,
    "n_0.15bar_err": 0.0240326106
+  },
+  {
+   "file": "2020_Zn__nbo_3_ASR_1.cif",
+   "key": "2020[Zn][nbo]3[ASR]1",
+   "set": "ASR",
+   "topo": "fof",
+   "metal": "Zn",
+   "PLD": 5.01419,
+   "LCD": 10.21223,
+   "N_super": 768,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.8888507404,
+   "n_0.15bar_err": 0.037388935
   },
   {
    "file": "2020_Zn__pcu_3_FSR_2.cif",
@@ -2545,6 +2635,24 @@
    },
    "n_0.15bar": 0.8349283634,
    "n_0.15bar_err": 0.0168022362
+  },
+  {
+   "file": "2022_Cu__sql_2_ASR_2.cif",
+   "key": "2022[Cu][sql]2[ASR]2",
+   "set": "ASR",
+   "topo": "sql",
+   "metal": "Cu",
+   "PLD": 6.63048,
+   "LCD": 10.10848,
+   "N_super": 640,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.3243533244,
+   "n_0.15bar_err": 0.0144080507
   },
   {
    "file": "2022_Ni__kgd_2_ASR_1.cif",
