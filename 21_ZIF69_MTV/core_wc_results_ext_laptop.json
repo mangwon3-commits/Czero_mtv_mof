@@ -1,0 +1,48 @@
+{
+ "test": "§AW core-wc",
+ "registration": "COREWC_REGISTRATION_20260923.md",
+ "assign": "laptop",
+ "machine": "laptop",
+ "workers": 8,
+ "progress": {
+  "done": 1,
+  "total": 171,
+  "stage": "0.15bar",
+  "last": "0.15bar 2019_Zn__pcu_3_ASR_2 [ok]"
+ },
+ "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
+ "protocol": {
+  "gcmc_cycles": 15000,
+  "gcmc_init": 5000,
+  "forcefield": "UFF_MOF",
+  "cutoff": 12.0,
+  "temp_K": 298.0,
+  "pressures_bar": [
+   0.15,
+   0.01
+  ],
+  "charges": "UseChargesFromCIFFile (CoRE CIF 의 PACMAN DDEC6)",
+  "supercell": "숫자 고정이 아니라 unit_cells() 규칙",
+  "co2": "García-Sánchez 2009 (경로는 TraPPE/CO2.def 지만 TraPPE 가 아님 — CLAUDE.md §1)"
+ },
+ "rows": [
+  {
+   "file": "2019_Zn__pcu_3_ASR_2.cif",
+   "key": "2019[Zn][pcu]3[ASR]2",
+   "set": "ASR",
+   "topo": "pcu",
+   "metal": "Zn",
+   "PLD": 4.15563,
+   "LCD": 5.61495,
+   "N_super": 3492,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.4885542484,
+   "n_0.15bar_err": 0.0224917717
+  }
+ ]
+}
