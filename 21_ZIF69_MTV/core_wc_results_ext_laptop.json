@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 47,
+  "done": 52,
   "total": 171,
   "stage": "0.01bar",
-  "last": "0.01bar 2020_Cu__lvt_3_ASR_1 [ok]"
+  "last": "0.01bar 2019_Zn__pcu_3_FSR_6 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1281,10 +1281,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.6193421439,
-   "n_0.15bar_err": 0.0166524662
+   "n_0.15bar_err": 0.0166524662,
+   "n_0.01bar": 0.0995861255,
+   "n_0.01bar_err": 0.0014460565
   },
   {
    "file": "2018_Cu__kgm_2_ASR_1.cif",
@@ -1356,10 +1359,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.7925549917,
-   "n_0.15bar_err": 0.0381089488
+   "n_0.15bar_err": 0.0381089488,
+   "n_0.01bar": 0.1086844577,
+   "n_0.01bar_err": 0.0032272323
   },
   {
    "file": "2018_Zn__sql_2_FSR_4.cif",
@@ -1395,10 +1401,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.5724367865,
-   "n_0.15bar_err": 0.0383605765
+   "n_0.15bar_err": 0.0383605765,
+   "n_0.01bar": 0.0958528574,
+   "n_0.01bar_err": 0.0019425039
   },
   {
    "file": "2019_Al__bpq_3_ASR_3.cif",
@@ -1413,10 +1422,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.9759389844,
-   "n_0.15bar_err": 0.0338013268
+   "n_0.15bar_err": 0.0338013268,
+   "n_0.01bar": 0.1188667605,
+   "n_0.01bar_err": 0.0022170119
   },
   {
    "file": "2019_Cd__fsc_3_FSR_1.cif",
@@ -1902,10 +1914,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 3.3842083857,
-   "n_0.15bar_err": 0.0497134392
+   "n_0.15bar_err": 0.0497134392,
+   "n_0.01bar": 1.2171614277,
+   "n_0.01bar_err": 0.046731954
   },
   {
    "file": "2019_Zn__pts_3_FSR_1.cif",
