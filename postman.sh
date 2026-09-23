@@ -35,10 +35,25 @@ cd "$ROOT" || exit 1
 INBOX="$ROOT/.postman_inbox_$MACHINE"; LOG="$ROOT/.postman_$MACHINE.log"; FLAG="$ROOT/.postman_flag"
 STATE="$ROOT/.postman_state_$MACHINE"; mkdir -p "$STATE"
 RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/density_v3*/density_results.json 21_ZIF69_MTV/density_v3*/*/VTK/System_0/*.vtk.gz 21_ZIF69_MTV/density_v3*/*/simulation.input'
+
+# (17) 2026-09-24 Junseok 발견 — **공용 파일은 ④ 로 자동 반입하지 않습니다.**
+#   `git checkout <가지> -- <파일>` 반입은 **가지 커밋을 master 의 조상으로 만들지 않으므로**
+#   (12) 의 파일별 조상 검사가 그 파일에 대해 **끝내 안 걸립니다.** 기기마다 따로인 결과 파일은
+#   필자가 하나라 괜찮은데, **여러 기기가 쓰는 한 파일**은 가지마다 판이 달라 **영원히 번갈아** 들어옵니다.
+#   실측: `MACHINE_CAPABILITIES.md` 가 07:38~08:25 에 junseok↔laptop 으로 **20커밋** 왕복했고,
+#   마지막이 늘 laptop 판이라 **Junseok 줄이 master 에서 사라졌습니다.**
+#   COMMS/ 는 "한 파일 한 필자" 라 구조적으로 안전해서 이미 제외돼 있습니다 — 아래는 그 예외의 나머지입니다.
+#   **자동 반입 대신 우편함에 알리고, 병합은 사람이 합니다.**
+NOAUTO_IMPORT='21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/watchdog.log'
 say(){ echo "[$(date '+%m-%d %H:%M:%S')] $*" >> "$LOG"; }
 inbox(){ echo "[$(date '+%m-%d %H:%M')] $*" >> "$INBOX"; touch "$FLAG"; }
 repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh | grep -vE "wsl_keepalive|lammps_watchdog|ensure_guards" | grep -qE "$ROOT|^bash [^/]"; }
 runner_running(){ pgrep -x simulate >/dev/null || pgrep -f "python[0-9.]* .*run_[A-Za-z0-9_]*\.py" >/dev/null; }
+# (16-정정) 2026-09-24 Junseok — **글롭이 새 격자를 0개 잡았습니다.** RASPA 는 `COMDensityProfile_CO2.vtk`
+#      (압축 안 됨)를 쓰는데 글롭이 `*.vtk.gz` 였습니다. 제가 "격자 28개 잡힘" 으로 확인했다고 한 것은
+#      **이미 압축돼 master 에 있던 옛 파일**을 센 것이라 **순환 확인**이었습니다(새 출력을 하나도 안 봄).
+#      글롭은 `.gz` 로 **둡니다**(`density_v3/` 관례 · 원본 2.0 MB → 0.062 MB). 대신 **러너가 완주 뒤
+#      COM 격자를 gzip 하도록** `run_density_map.run_one` 을 고쳤습니다. 전원자 판은 안 올립니다.
 # (16) 2026-09-24 — 밀도맵 결과 경로를 **일감을 주기 전에** 넣습니다. `density_v3*/density_results.json`
 #      + COM 격자(.vtk.gz) + `simulation.input`. `density_v3/` 가 추적하는 것과 같은 세 종류입니다.
 #      (11)·(12) 에서 두 번 데인 순서를 이번엔 거꾸로 밟습니다 — **경로 먼저, 계산 나중.**
@@ -100,6 +115,9 @@ while :; do
         set -f; cand=$(git diff --name-only HEAD "$cur" -- $RESULT_PATTERNS 2>/dev/null | grep -v COMMS/); set +f
         files=""
         for f in $cand; do
+          case " $NOAUTO_IMPORT " in *" $f "*)                       # (17) 공용 파일 — 자동 반입 금지, 알리기만
+            inbox "!! **공용 파일이 $rb 에서 다릅니다 — 자동 반입 안 합니다**: $f (손으로 병합하십시오)"
+            continue;; esac
           bc=$(git log -1 --format=%H "$cur" -- "$f" 2>/dev/null)
           [ -n "$bc" ] || continue                                   # 브랜치엔 없는 파일(master 쪽 삭제/신규) — 건드리지 않는다
           git merge-base --is-ancestor "$bc" HEAD 2>/dev/null && continue   # master 가 이미 그 커밋을 가짐 → 더 오래된 판으로 덮지 않는다

@@ -30,6 +30,7 @@
     S=O 공명을 갖는다. "왜 술폰산이 강한가"를 보려는 계산에서 가장 쓰면 안 된다.
 """
 import glob
+import gzip
 import json
 import os
 import re
@@ -143,6 +144,33 @@ def loading_from(path):
     return None, None
 
 
+def gzip_com_grid(d):
+    """완주 뒤 **COM 격자만** gzip 합니다. 원본은 남깁니다.
+
+    2026-09-24 Junseok 발견 — postman (16) 의 글롭이 `*.vtk.gz` 인데 RASPA 는
+    `COMDensityProfile_CO2.vtk`(압축 안 됨)를 씁니다. 그래서 **새 격자가 하나도 안 실렸습니다.**
+    `density_v3/README.md` 관례가 *"질량중심(COM) 판만, gzip 으로"* (원본 2.0 MB → 0.062 MB, 32배)
+    이므로 **글롭이 아니라 러너를 맞춥니다.** 전원자 판(`DensityProfile_CO2.vtk`)은 안 올립니다 —
+    분석 규약이 COM 이고 `export_diff_vtk.py:84` 가 COM 을 하드코딩합니다.
+
+    원본을 지우지 않는 이유: `export_diff_vtk.py` 등 읽는 쪽이 `.vtk` 를 기대합니다.
+    ⚠ 압축을 풀 때는 세대를 이름에 박으십시오(`DENSITY_GRID_TWO_GENERATIONS_20260906`).
+    """
+    made = 0
+    for src in glob.glob(os.path.join(d, 'VTK', 'System_0', 'COMDensityProfile*.vtk')):
+        dst = src + '.gz'
+        try:
+            if os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src):
+                continue
+            with open(src, 'rb') as fi, gzip.open(dst + '.tmp', 'wb', compresslevel=9) as fo:
+                shutil.copyfileobj(fi, fo)
+            os.replace(dst + '.tmp', dst)          # 원자적 — 반쯤 쓴 .gz 를 postman 이 집지 않게
+            made += 1
+        except OSError:
+            pass
+    return made
+
+
 def run_one(job):
     tag, charges = job
     name = tag + '_DDEC6'
@@ -180,7 +208,8 @@ def run_one(job):
     for sub in ('Movies', 'Restart'):
         shutil.rmtree(os.path.join(d, sub), ignore_errors=True)
     n_vtk = len(glob.glob(os.path.join(d, 'VTK', 'System_0', '*DensityProfile*')))
-    return tag, label, v, e, f'ok (밀도격자 {n_vtk}개)'
+    gz = gzip_com_grid(d)
+    return tag, label, v, e, f'ok (밀도격자 {n_vtk}개{", COM gz" if gz else ""})'
 
 
 def _star(a):
