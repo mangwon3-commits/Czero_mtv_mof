@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 71,
+  "done": 73,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2017_Cd__bey_2_FSR_1 [ok]"
+  "last": "0.01bar 2019_Zn__snz_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1287,10 +1287,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 2.2057703263,
-   "n_0.15bar_err": 0.0257922245
+   "n_0.15bar_err": 0.0257922245,
+   "n_0.01bar": 0.609676811,
+   "n_0.01bar_err": 0.0142046813
   },
   {
    "file": "2018_Cd__dia_3_FSR_5.cif",
@@ -1971,10 +1974,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.0007730635,
-   "n_0.15bar_err": 0.0163431928
+   "n_0.15bar_err": 0.0163431928,
+   "n_0.01bar": 0.070250394,
+   "n_0.01bar_err": 0.0023700364
   },
   {
    "file": "2019_Zn__sql_2_FSR_10.cif",
