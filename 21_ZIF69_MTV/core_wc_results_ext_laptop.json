@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 87,
+  "done": 89,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2020_Co__fsc_3_FSR_1 [ok]"
+  "last": "0.15bar 2012_Co__dia_3_ASR_3 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -26,6 +26,24 @@
   "co2": "García-Sánchez 2009 (경로는 TraPPE/CO2.def 지만 TraPPE 가 아님 — CLAUDE.md §1)"
  },
  "rows": [
+  {
+   "file": "2012_Co__dia_3_ASR_3.cif",
+   "key": "2012[Co][dia]3[ASR]3",
+   "set": "ASR",
+   "topo": "dia",
+   "metal": "Co",
+   "PLD": 3.40774,
+   "LCD": 4.26728,
+   "N_super": 1696,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6293544184,
+   "n_0.15bar_err": 0.0200097364
+  },
   {
    "file": "2012_Co__sqp_3_ASR_2.cif",
    "key": "2012[Co][sqp]3[ASR]2",
@@ -943,6 +961,24 @@
    },
    "n_0.15bar": 1.5213242832,
    "n_0.15bar_err": 0.0429063309
+  },
+  {
+   "file": "2020_Cd__kgd_2_FSR_2.cif",
+   "key": "2020[Cd][kgd]2[FSR]2",
+   "set": "FSR",
+   "topo": "kgd",
+   "metal": "Cd",
+   "PLD": 4.12981,
+   "LCD": 6.26168,
+   "N_super": 1788,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.1429778063,
+   "n_0.15bar_err": 0.0069693764
   },
   {
    "file": "2020_Cd__kgd_2_FSR_3.cif",
