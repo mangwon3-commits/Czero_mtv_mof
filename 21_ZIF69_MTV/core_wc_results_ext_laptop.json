@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 8,
+  "done": 10,
   "total": 171,
   "stage": "0.01bar",
-  "last": "0.01bar 2020_Cd__kgd_2_FSR_3 [ok]"
+  "last": "0.01bar 2020_Zn__pcu_3_FSR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -960,10 +960,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.4967800503,
-   "n_0.15bar_err": 0.0063261621
+   "n_0.15bar_err": 0.0063261621,
+   "n_0.01bar": 0.0364779445,
+   "n_0.01bar_err": 0.0010630718
   },
   {
    "file": "2017_Cu__rob_3_FSR_2.cif",
@@ -2355,10 +2358,13 @@
    "our_selectivity": null,
    "machine": "laptop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.5503315301,
-   "n_0.15bar_err": 0.0155442419
+   "n_0.15bar_err": 0.0155442419,
+   "n_0.01bar": 0.0417133328,
+   "n_0.01bar_err": 0.0015949251
   },
   {
    "file": "2020_Zn__qtz_3_ASR_1.cif",
