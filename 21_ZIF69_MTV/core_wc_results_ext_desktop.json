@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 170,
+  "done": 171,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2016_Co__sql_2_FSR_8 [ok]"
+  "last": "0.15bar 2019_Mn__bpq_3_FSR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1627,6 +1627,24 @@
    },
    "n_0.15bar": 0.6155660943,
    "n_0.15bar_err": 0.0218462528
+  },
+  {
+   "file": "2019_Mn__bpq_3_FSR_1.cif",
+   "key": "2019[Mn][bpq]3[FSR]1",
+   "set": "FSR",
+   "topo": "rna",
+   "metal": "Mn",
+   "PLD": 5.54886,
+   "LCD": 5.79654,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.1963552718,
+   "n_0.15bar_err": 0.0487970984
   },
   {
    "file": "2019_V__bpq_3_ASR_4.cif",
