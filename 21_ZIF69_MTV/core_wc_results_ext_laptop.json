@@ -5,10 +5,10 @@
  "machine": "laptop",
  "workers": 8,
  "progress": {
-  "done": 59,
+  "done": 62,
   "total": 171,
   "stage": "0.15bar",
-  "last": "0.15bar 2021_Cd__kag_3_ASR_1 [ok]"
+  "last": "0.15bar 2015_Co__hcb_2_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -43,6 +43,24 @@
    },
    "n_0.15bar": 0.9420633218,
    "n_0.15bar_err": 0.0124616707
+  },
+  {
+   "file": "2015_Co__hcb_2_ASR_1.cif",
+   "key": "2015[Co][hcb]2[ASR]1",
+   "set": "ASR",
+   "topo": "hcb",
+   "metal": "Co",
+   "PLD": 3.83703,
+   "LCD": 5.93349,
+   "N_super": 2144,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.0742454551,
+   "n_0.15bar_err": 0.0149395767
   },
   {
    "file": "2015_Cu__pcu_2_ASR_1.cif",
@@ -657,6 +675,24 @@
    "n_0.15bar_err": 0.0210925283
   },
   {
+   "file": "2020_Cu__nan_3_ASR_2.cif",
+   "key": "2020[Cu][nan]3[ASR]2",
+   "set": "ASR",
+   "topo": "mfj",
+   "metal": "Cu",
+   "PLD": 6.64379,
+   "LCD": 12.01795,
+   "N_super": 2016,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.6913370179,
+   "n_0.15bar_err": 0.012319602
+  },
+  {
    "file": "2020_Cu__sql_2_ASR_4.cif",
    "key": "2020[Cu][sql]2[ASR]4",
    "set": "ASR",
@@ -961,6 +997,24 @@
    },
    "n_0.15bar": 0.8584929907,
    "n_0.15bar_err": 0.0201530913
+  },
+  {
+   "file": "2023_Ni__dia_3_ASR_1.cif",
+   "key": "2023[Ni][dia]3[ASR]1",
+   "set": "ASR",
+   "topo": "dia",
+   "metal": "Ni",
+   "PLD": 3.79465,
+   "LCD": 5.38628,
+   "N_super": 2232,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "laptop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 2.8037120587,
+   "n_0.15bar_err": 0.0203691245
   },
   {
    "file": "2024_Co__pcu_3_ASR_1.cif",
