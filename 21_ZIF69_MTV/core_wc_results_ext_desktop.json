@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 8,
+  "done": 10,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2015_Zn__hww_3_ION_4 [ok]"
+  "last": "0.01bar 2022_Cd__nuc_3_ASR_1 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1656,10 +1656,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.6155660943,
-   "n_0.15bar_err": 0.0218462528
+   "n_0.15bar_err": 0.0218462528,
+   "n_0.01bar": 0.042719786,
+   "n_0.01bar_err": 0.001129883
   },
   {
    "file": "2019_Mn__bpq_3_FSR_1.cif",
@@ -2670,10 +2673,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 2.4831992982,
-   "n_0.15bar_err": 0.0221267177
+   "n_0.15bar_err": 0.0221267177,
+   "n_0.01bar": 0.2921003491,
+   "n_0.01bar_err": 0.0077890137
   },
   {
    "file": "2022_Cu__sql_2_ASR_3.cif",
