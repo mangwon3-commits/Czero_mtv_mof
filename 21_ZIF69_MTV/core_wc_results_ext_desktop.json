@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 47,
+  "done": 49,
   "total": 172,
   "stage": "0.01bar",
-  "last": "0.01bar 2017_Co__pcu_3_FSR_1 [ok]"
+  "last": "0.01bar 2020_Fe__tbo_3_ASR_2 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -1617,10 +1617,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 1.2757987291,
-   "n_0.15bar_err": 0.0355850686
+   "n_0.15bar_err": 0.0355850686,
+   "n_0.01bar": 0.0903798955,
+   "n_0.01bar_err": 0.002392648
   },
   {
    "file": "2019_Cu__nan_3_ASR_2.cif",
@@ -2364,10 +2367,13 @@
    "our_selectivity": null,
    "machine": "desktop",
    "run_status": {
-    "0.15bar": "ok"
+    "0.15bar": "ok",
+    "0.01bar": "ok"
    },
    "n_0.15bar": 0.3448517352,
-   "n_0.15bar_err": 0.0051745199
+   "n_0.15bar_err": 0.0051745199,
+   "n_0.01bar": 0.0234800752,
+   "n_0.01bar_err": 0.000580889
   },
   {
    "file": "2020_In__hcb_2_FSR_1.cif",
