@@ -5,10 +5,10 @@
  "machine": "desktop",
  "workers": 8,
  "progress": {
-  "done": 14,
+  "done": 16,
   "total": 172,
   "stage": "0.15bar",
-  "last": "0.15bar 2021_Cu__pcu_3_ASR_3 [ok]"
+  "last": "0.15bar 2015_Zn__sql_2_ASR_3 [ok]"
  },
  "note": "외부 계열(CoRE) 구조를 우리 프로토콜로 돌린 것. 우리 물질 결과가 아니며 results_v3.json 과 섞지 말 것.",
  "protocol": {
@@ -81,6 +81,24 @@
    "n_0.15bar_err": 0.0250455511
   },
   {
+   "file": "2015_Zn__hww_3_ION_2.cif",
+   "key": "2015[Zn][hww]3[ION]2",
+   "set": "Ion",
+   "topo": "hww",
+   "metal": "Zn",
+   "PLD": 8.71968,
+   "LCD": 9.34704,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 0.4156308184,
+   "n_0.15bar_err": 0.0081013369
+  },
+  {
    "file": "2015_Zn__hww_3_ION_4.cif",
    "key": "2015[Zn][hww]3[ION]4",
    "set": "Ion",
@@ -115,6 +133,24 @@
    },
    "n_0.15bar": 0.24137088,
    "n_0.15bar_err": 0.0085969868
+  },
+  {
+   "file": "2015_Zn__sql_2_ASR_3.cif",
+   "key": "2015[Zn][sql]2[ASR]3",
+   "set": "ASR",
+   "topo": "sql",
+   "metal": "Zn",
+   "PLD": 5.85903,
+   "LCD": 7.85595,
+   "N_super": null,
+   "our_KH_CO2": null,
+   "our_selectivity": null,
+   "machine": "desktop",
+   "run_status": {
+    "0.15bar": "ok"
+   },
+   "n_0.15bar": 1.2610369678,
+   "n_0.15bar_err": 0.0242097502
   },
   {
    "file": "2019_GaCu__agw_3_ASR_1.cif",
