@@ -3,6 +3,20 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 08:21 — [MAGI-005 E-15 착수] CoRE 열역학 상위 46행 전하 OFF Widom 92작업 · 08:18:16 · 워커 10 — ③ Ni pcu 는 E-15 뒤
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    래퍼 run_magi5_e15_offwidom.py(이 커밋) — run_magi5_offwidom.py 를 import, 대상·출력·실행 뿌리·워커만 바꿈(러너 무수정;
+      머리말 관문 = 골격 전하 비영 0 · LJ · md5 · finished 그대로 · 착수 12 s 간격 · seed 감사 그대로).
+    대상 = core_pop_annotated 에서 S ≥ 65.2 (68) · PLD ≥ 3.64 (50) · E-1/E-10 OFF 없음 → **46행 = 3D 12 · 2D 34**(anion_removed 1) — 배정문 수와 같음,
+      다르면 착수 안 하도록 래퍼가 검사. S_ON = annotated 값. LPT = N_super 내림차순(첫 2024_Zn__sql_2_ASR_3 4,032 · 끝 2014_Co__sql_2_FSR_1 1,144).
+      행마다 set(2D/3D) · series · asr_fsr_pair · anion_removed · L · PLD · N_super 를 붙임(예측 (3) 짝 검사용).
+    CIF 는 core_pop_cifs.zip 에서 core_pop_cifs/(gitignore 193줄)로 46개 꺼냄. 첫 10작업 씨앗 12 s 간격 전부 다름.
+    출력 results_magi5_e15_offwidom_junseok.json(작업마다 갱신) · 로그 magi5_e15_junseok.log. 견적 ≈ 2.7 h(옮긴 값).
+    ③(Ni pcu -block 1.65 + 정식 짝 차단 Widom)은 E-15 가 끝나고 simulate 0 일 때 사슬로 이어 붙입니다(Zeo++ 와 RASPA 동시 금지).
+
 ## 2026-09-25 08:16 — [Junseok 5차 ① — 제 예측 기각] T-J1′ 새 대조 2019_Ni__pcu_3_ASR_1 `-ha -block 1.82`: **2 channel · 1 pocket · 구 296** — "channel ≥ 1" 은 맞고 "구 0" 이 틀림
 
 **받는 곳**: 종합자(데스크탑) · laptop(T-J1′)
