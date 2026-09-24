@@ -1,5 +1,78 @@
 [
   {
+    "tag": "calf20",
+    "src": "/home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/CALF20_Zn2tz2ox_guestfree_P1_2x2x2.cif",
+    "skipped": false,
+    "error": null,
+    "steps": 39,
+    "minutes": 3.6,
+    "fmax_reached": 0.04039417202829527,
+    "wrote_cif": true,
+    "out": "/home/mangwon1/mof_project/21_ZIF69_MTV/relax_tnf/calf20_relaxed.cif",
+    "cell_moved": 0.0,
+    "dmin_before": 0.9495382574020123,
+    "dmin_after": 1.077369891516278,
+    "before": {
+      "metals": [
+        "Zn"
+      ],
+      "CH_median": 0.9497166525987506,
+      "CH_n": 64,
+      "aromCC_width": null,
+      "aromCC_n": 0,
+      "aromCC_range": null,
+      "otherCC_range": [
+        1.5312253816902077,
+        1.5312253816902113,
+        16
+      ],
+      "metal_N": {
+        "Zn": [
+          2.0071815588060207,
+          2.0908675300423494,
+          96
+        ]
+      },
+      "metal_O": {
+        "Zn": [
+          2.0221071043104084,
+          2.1888043898984777,
+          64
+        ]
+      }
+    },
+    "after": {
+      "metals": [
+        "Zn"
+      ],
+      "CH_median": 1.0777967763436482,
+      "CH_n": 64,
+      "aromCC_width": null,
+      "aromCC_n": 0,
+      "aromCC_range": null,
+      "otherCC_range": [
+        1.4959830965360803,
+        1.49598348415793,
+        16
+      ],
+      "metal_N": {
+        "Zn": [
+          2.0665156414190453,
+          2.0968162997651394,
+          96
+        ]
+      },
+      "metal_O": {
+        "Zn": [
+          1.955894545142242,
+          2.005393642128797,
+          64
+        ]
+      }
+    },
+    "note": "측정값입니다. 등록문 §1 앞단에는 이완 통과 문턱이 없습니다 (CLAUDE.md §2 — 결과를 보고 문턱을 만들지 않습니다)."
+  },
+  {
     "tag": "maf66",
     "src": "/home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/MAF66_Zn_atz2_1t_guestfree_P1_2x2x1.cif",
     "skipped": false,
@@ -52,6 +125,71 @@
       },
       "metal_O": {
         "Zn": null
+      }
+    },
+    "note": "측정값입니다. 등록문 §1 앞단에는 이완 통과 문턱이 없습니다 (CLAUDE.md §2 — 결과를 보고 문턱을 만들지 않습니다)."
+  },
+  {
+    "tag": "mof16",
+    "src": "/home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/IISERPMOF16_ZnDamtzHCOO_ordered_P1_2x2x2.cif",
+    "skipped": false,
+    "error": null,
+    "steps": 198,
+    "minutes": 43.0,
+    "fmax_reached": 0.041549249102221596,
+    "wrote_cif": true,
+    "out": "/home/mangwon1/mof_project/21_ZIF69_MTV/relax_tnf/mof16_relaxed.cif",
+    "cell_moved": 0.0,
+    "dmin_before": 0.8795745230394241,
+    "dmin_after": 1.0043236561770823,
+    "before": {
+      "metals": [
+        "Zn"
+      ],
+      "CH_median": 1.0899999747909817,
+      "CH_n": 32,
+      "aromCC_width": null,
+      "aromCC_n": 0,
+      "aromCC_range": null,
+      "otherCC_range": null,
+      "metal_N": {
+        "Zn": [
+          1.9696296684360706,
+          2.0152283512174245,
+          96
+        ]
+      },
+      "metal_O": {
+        "Zn": [
+          1.9065344117988072,
+          1.9825207512299232,
+          64
+        ]
+      }
+    },
+    "after": {
+      "metals": [
+        "Zn"
+      ],
+      "CH_median": 1.076080681778408,
+      "CH_n": 32,
+      "aromCC_width": null,
+      "aromCC_n": 0,
+      "aromCC_range": null,
+      "otherCC_range": null,
+      "metal_N": {
+        "Zn": [
+          2.0458246275224456,
+          2.1002583084323705,
+          96
+        ]
+      },
+      "metal_O": {
+        "Zn": [
+          2.1340205008313946,
+          2.1636800871423687,
+          64
+        ]
       }
     },
     "note": "측정값입니다. 등록문 §1 앞단에는 이완 통과 문턱이 없습니다 (CLAUDE.md §2 — 결과를 보고 문턱을 만들지 않습니다)."

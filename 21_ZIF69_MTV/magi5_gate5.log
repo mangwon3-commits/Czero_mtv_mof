@@ -1,0 +1,37 @@
+===== 2026-09-25 01:51:55 관문 ⑤ 착수 TAGS=maf66 (simulate 0)
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 18.2 GB, Zeo++ 9.5 GB/건)
+  안정성 관문 — 부분집합 RISK_SUB_TAGS (총 2종)
+  대상     base maf66
+  staging  2종 -> /home/mangwon1/mof_project/21_ZIF69_MTV/structures_v3sub_stage
+  STRUCT   /home/mangwon1/mof_project/21_ZIF69_MTV/structures_v3sub_stage
+  결과     /home/mangwon1/mof_project/21_ZIF69_MTV/risk_results_v3sub.json
+  워커     1  (Zeo++ 9.5 GB/건, 가용 18.2 GB)
+  python   /home/mangwon1/miniconda3/envs/lammps_mof/bin/python
+  대상 2종
+
+대상: risk_v3sub_index.json -> 2종, 작업 /home/mangwon1/mof_project/21_ZIF69_MTV/lmp_v3sub
+구조 2개 UFF4MOF 이완 + Zeo++
+
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 18.2 GB, Zeo++ 9.5 GB/건)
+/home/mangwon1/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+    base: 이완 산출물 재사용 (다시 돌리지 않음)
+  [                          ok] base
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 18.0 GB, Zeo++ 9.5 GB/건)
+    maf66: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon1/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+  [                          ok] maf66
+  !! 워커를 4 -> 1 로 낮춥니다 (가용 18.0 GB, Zeo++ 9.5 GB/건)
+
+==============================================================================================================================
+조성             PLD(전)     AV(전)   LCD(전)   LCD(후)    LCD감소%      최소거리    루프      EDiff  판정
+------------------------------------------------------------------------------------------------------------------------------
+base            5.157    1232.2    8.898    7.631       0.0     1.079    12      0.854  통과 *덜수렴
+maf66           3.999     300.6    5.106    4.657      39.0     1.033    12    0.00808  탈락: LCD_drop *덜수렴
+
+[OK] risk_results_v3sub.json
+
+주: PLD/AV 는 이완 **전**, LCD 감소·최소거리는 이완 **후** 값으로 판정했습니다 (MIGRATION.md 3-6).
+===== 2026-09-25 02:09:17 관문 ⑤ 종료 rc=0 결과=risk_results_magi5_gate5.json

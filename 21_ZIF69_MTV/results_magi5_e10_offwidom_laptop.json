@@ -1,0 +1,792 @@
+{
+ "test": "MAGI-005 E-10 전하 OFF 확장 Widom (가설 E-3-F1)",
+ "assign": "ASSIGN_MAGI5B_20260925.md §laptop E-10",
+ "registration": "ASSIGN_MAGI5B_20260925.md §laptop E-10 예측(A 중앙 ≥ 0.8 · B 중앙 ≤ 0.6)",
+ "machine": "laptop",
+ "workers": 8,
+ "protocol": {
+  "widom_cycles": 15000,
+  "widom_init": 3000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "temp_K": 298.0,
+  "charges": "OFF — UseChargesFromCIFFile no, ChargeMethod Ewald(흡착질 전하 유지)",
+  "supercell": "unit_cells() 규칙",
+  "co2": "García-Sánchez 2009 (경로 TraPPE/CO2.def, TraPPE 아님)",
+  "n2": "TraPPE N2(3자리)"
+ },
+ "note": "판정 없음(종합자가 씀). ± 는 RASPA 95 % CI. S_OFF ± 는 두 K_H 의 상대 ± 를 제곱합으로 합성. ln_ratio = ln S_OFF / ln S_ON (점추정). 외부 계열(CoRE) 행은 우리 물질 결과가 아님. seed 20개 · 겹침 0건 · 벽시계 65.5 min | G = S_ON/S_OFF 와 G_err(두 S 의 상대 ± 제곱합)는 러너 종료 뒤 같은 행 값으로 붙인 **파생 열**(종합자 02:1x 등록 보완 — 주 지표 G; 2026-09-25 03:1x laptop).",
+ "rows": [
+  {
+   "name": "2022_Cd__nuc_3_FSR_1",
+   "key": "2022[Cd][nuc]3[FSR]1",
+   "cif": "core_pop_cifs/2022_Cd__nuc_3_FSR_1.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Cd4 H144 C192 N48 · topo nuc · metal Cd · flexible None · anion_removed None · LCD 4.95702 · PLD 4.0645",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "A",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 388,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790269632,
+   "total_time_s_CO2": 1819.053726,
+   "KH_CO2": 0.000312326,
+   "KH_CO2_err": 4.84478e-06,
+   "dU_CO2": -28.4921277406,
+   "dU_CO2_err": 0.0742042604,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 388,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790269644,
+   "total_time_s_N2": 1811.376051,
+   "KH_N2": 9.40694e-06,
+   "KH_N2_err": 5.48628e-08,
+   "dU_N2": -17.4155578975,
+   "dU_N2_err": 0.0354097384,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 0.000305718,
+    "KH_CO2_err": 2.46173e-06,
+    "KH_N2": 9.1646e-06,
+    "KH_N2_err": 9.18283e-08,
+    "dU_CO2": -27.9361793152
+   },
+   "S_ON": 33.35857538790564,
+   "S_ON_err": 0.4288070743777063,
+   "S_OFF": 33.20165749967577,
+   "S_OFF_err": 0.5502208721335418,
+   "lnS_OFF": 3.502599799365276,
+   "lnS_OFF_err": 0.016572090478883923,
+   "lnS_ON": 3.5073148723792245,
+   "ln_ratio": 0.9986556459327104,
+   "dlnKH_CO2_off_minus_on": 0.021384405686281964,
+   "dlnKH_N2_off_minus_on": 0.026099478700230286,
+   "G": 1.0047262064621745,
+   "G_err": 0.021072243910496436
+  },
+  {
+   "name": "2024_Zn__lig_3_ASR_1",
+   "key": "2024[Zn][lig]3[ASR]1",
+   "cif": "core_pop_cifs/2024_Zn__lig_3_ASR_1.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Zn8 H24 C40 N32 · topo lig · metal Zn · flexible None · anion_removed None · LCD 7.52222 · PLD 4.33825",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "A",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 104,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790269656,
+   "total_time_s_CO2": 873.674642,
+   "KH_CO2": 6.75874e-05,
+   "KH_CO2_err": 3.00302e-07,
+   "dU_CO2": -20.3108448642,
+   "dU_CO2_err": 0.0162619691,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 104,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790269668,
+   "total_time_s_N2": 858.533751,
+   "KH_N2": 5.59105e-06,
+   "KH_N2_err": 1.40718e-08,
+   "dU_N2": -12.5570645529,
+   "dU_N2_err": 0.0111370283,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 0.000199574,
+    "KH_CO2_err": 2.71944e-06,
+    "KH_N2": 6.2464e-06,
+    "KH_N2_err": 3.929e-08,
+    "dU_CO2": -25.8278626065
+   },
+   "S_ON": 31.950243340163933,
+   "S_ON_err": 0.47950744527187583,
+   "S_OFF": 12.088498582556051,
+   "S_OFF_err": 0.06172977601558779,
+   "lnS_OFF": 2.4922544701949625,
+   "lnS_OFF_err": 0.0051064882536086915,
+   "lnS_ON": 3.4641797970751016,
+   "ln_ratio": 0.7194356575542755,
+   "dlnKH_CO2_off_minus_on": -1.082763519728183,
+   "dlnKH_N2_off_minus_on": -0.11083819284804416,
+   "G": 2.643028257145911,
+   "G_err": 0.04189967520196286
+  },
+  {
+   "name": "2024_Zn__srs_3_ASR_1",
+   "key": "2024[Zn][srs]3[ASR]1",
+   "cif": "core_pop_cifs/2024_Zn__srs_3_ASR_1.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Zn4 H12 C20 N16 · topo srs · metal Zn · flexible None · anion_removed ASR lacks vs FSR: C+8, H+12, O+8 · LCD 4.86043 · PLD 4.2216",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "A",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 52,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790269680,
+   "total_time_s_CO2": 1174.467883,
+   "KH_CO2": 8.58727e-05,
+   "KH_CO2_err": 5.89074e-07,
+   "dU_CO2": -22.1650623069,
+   "dU_CO2_err": 0.0213620598,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 52,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790269692,
+   "total_time_s_N2": 935.339104,
+   "KH_N2": 4.94256e-06,
+   "KH_N2_err": 2.25817e-08,
+   "dU_N2": -13.5827110085,
+   "dU_N2_err": 0.0069187919,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 0.000173758,
+    "KH_CO2_err": 2.12244e-06,
+    "KH_N2": 5.34654e-06,
+    "KH_N2_err": 2.95487e-08,
+    "dU_CO2": -25.6808174896
+   },
+   "S_ON": 32.4991489823325,
+   "S_ON_err": 0.435717275742703,
+   "S_OFF": 17.374134051989255,
+   "S_OFF_err": 0.1431988572566999,
+   "lnS_OFF": 2.8549825514744334,
+   "lnS_OFF_err": 0.008242071623725289,
+   "lnS_ON": 3.4812139038338543,
+   "ln_ratio": 0.8201112113019675,
+   "dlnKH_CO2_off_minus_on": -0.7047975594815685,
+   "dlnKH_N2_off_minus_on": -0.07856620712214735,
+   "G": 1.870547843425411,
+   "G_err": 0.029438428061693386
+  },
+  {
+   "name": "2020_Ag__pts_3_ASR_1",
+   "key": "2020[Ag][pts]3[ASR]1",
+   "cif": "core_pop_cifs/2020_Ag__pts_3_ASR_1.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Ag2 H28 C36 N16 · topo pts · metal Ag · flexible None · anion_removed None · LCD 5.14616 · PLD 3.58328",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "A",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 82,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790269704,
+   "total_time_s_CO2": 1833.071645,
+   "KH_CO2": 0.000189839,
+   "KH_CO2_err": 8.46009e-07,
+   "dU_CO2": -26.0341555027,
+   "dU_CO2_err": 0.0240599549,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 82,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790269716,
+   "total_time_s_N2": 1837.618083,
+   "KH_N2": 8.18097e-06,
+   "KH_N2_err": 7.4072e-08,
+   "dU_N2": -16.1176334115,
+   "dU_N2_err": 0.0274399971,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 0.000218107,
+    "KH_CO2_err": 2.77988e-06,
+    "KH_N2": 8.24308e-06,
+    "KH_N2_err": 9.72132e-08,
+    "dU_CO2": -26.8425043444
+   },
+   "S_ON": 26.45940595020308,
+   "S_ON_err": 0.45945721433889086,
+   "S_OFF": 23.204950024263628,
+   "S_OFF_err": 0.2341725826304604,
+   "lnS_OFF": 3.1443656190284037,
+   "lnS_OFF_err": 0.010091492650732028,
+   "lnS_ON": 3.2756117075732236,
+   "ln_ratio": 0.9599323423342948,
+   "dlnKH_CO2_off_minus_on": -0.13880942354176357,
+   "dlnKH_N2_off_minus_on": -0.007563334996943564,
+   "G": 1.1402483488452473,
+   "G_err": 0.02290077002747241
+  },
+  {
+   "name": "2014_Cu__bcu_3_ASR_2",
+   "key": "2014[Cu][bcu]3[ASR]2",
+   "cif": "core_pop_cifs/2014_Cu__bcu_3_ASR_2.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Cu6 H32 C48 N52 · topo bcu · metal Cu · flexible None · anion_removed None · LCD 5.94852 · PLD 4.82606",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "A",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 138,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790270527,
+   "total_time_s_CO2": 1152.258759,
+   "KH_CO2": 3.7112e-05,
+   "KH_CO2_err": 1.18246e-07,
+   "dU_CO2": -17.7141996718,
+   "dU_CO2_err": 0.0151305793,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 138,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790270542,
+   "total_time_s_N2": 1154.514193,
+   "KH_N2": 4.0174e-06,
+   "KH_N2_err": 1.79155e-08,
+   "dU_N2": -10.9284271331,
+   "dU_N2_err": 0.0050225626,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 7.91122e-05,
+    "KH_CO2_err": 5.02626e-07,
+    "KH_N2": 4.31044e-06,
+    "KH_N2_err": 1.10929e-08,
+    "dU_CO2": -21.0055441199
+   },
+   "S_ON": 18.353625151956646,
+   "S_ON_err": 0.1258096458107414,
+   "S_OFF": 9.237815502563848,
+   "S_OFF_err": 0.05063027097818833,
+   "lnS_OFF": 2.223305440231132,
+   "lnS_OFF_err": 0.005480762304046502,
+   "lnS_ON": 2.909827110953909,
+   "ln_ratio": 0.7640678828861006,
+   "dlnKH_CO2_off_minus_on": -0.756926730576534,
+   "dlnKH_N2_off_minus_on": -0.07040505985375667,
+   "G": 1.9867927809191266,
+   "G_err": 0.017437030325646148
+  },
+  {
+   "name": "2019_Zn__pcu_3_ASR_6",
+   "key": "2019[Zn][pcu]3[ASR]6",
+   "cif": "core_pop_cifs/2019_Zn__pcu_3_ASR_6.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Zn8 H96 C144 N8 O32 · topo pcu · metal Zn · flexible None · anion_removed None · LCD 4.37219 · PLD 3.38023",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "B",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 288,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790270652,
+   "total_time_s_CO2": 1649.837607,
+   "KH_CO2": 0.000973946,
+   "KH_CO2_err": 1.20404e-05,
+   "dU_CO2": -33.8013263828,
+   "dU_CO2_err": 0.0361031293,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 288,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790270891,
+   "total_time_s_N2": 1664.203758,
+   "KH_N2": 1.21359e-05,
+   "KH_N2_err": 1.46859e-07,
+   "dU_N2": -20.2110591183,
+   "dU_N2_err": 0.0216982113,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 0.00192846,
+    "KH_CO2_err": 1.99813e-05,
+    "KH_N2": 1.36631e-05,
+    "KH_N2_err": 1.75955e-07,
+    "dU_CO2": -36.1052998961
+   },
+   "S_ON": 141.14366432215238,
+   "S_ON_err": 2.332938130529444,
+   "S_OFF": 80.25329806606844,
+   "S_OFF_err": 1.3883364848356055,
+   "lnS_OFF": 4.3851878585621415,
+   "lnS_OFF_err": 0.017299432151594057,
+   "lnS_ON": 4.949778267557848,
+   "ln_ratio": 0.8859362220937893,
+   "dlnKH_CO2_off_minus_on": -0.6831211752970694,
+   "dlnKH_N2_off_minus_on": -0.11853076630136329,
+   "G": 1.7587272763040345,
+   "G_err": 0.042079997787911834
+  },
+  {
+   "name": "2017_Zn__dia_3_FSR_1",
+   "key": "2017[Zn][dia]3[FSR]1",
+   "cif": "core_pop_cifs/2017_Zn__dia_3_FSR_1.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Zn4 H72 C88 S8 N16 O16 · topo dia · metal Zn · flexible None · anion_removed None · LCD 5.16535 · PLD 3.80955",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "B",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 204,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790271501,
+   "total_time_s_CO2": 1138.379179,
+   "KH_CO2": 0.000426409,
+   "KH_CO2_err": 3.78314e-06,
+   "dU_CO2": -28.9395951192,
+   "dU_CO2_err": 0.0252568146,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 204,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790271517,
+   "total_time_s_N2": 1139.962501,
+   "KH_N2": 1.02516e-05,
+   "KH_N2_err": 9.34856e-08,
+   "dU_N2": -17.0295415484,
+   "dU_N2_err": 0.0128322007,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 0.00171765,
+    "KH_CO2_err": 3.00279e-05,
+    "KH_N2": 1.22887e-05,
+    "KH_N2_err": 9.41784e-08,
+    "dU_CO2": -34.7196231903
+   },
+   "S_ON": 139.7747524148201,
+   "S_ON_err": 2.6680262206379046,
+   "S_OFF": 41.594385266690075,
+   "S_OFF_err": 0.52920159503724,
+   "lnS_OFF": 3.7279651886072886,
+   "lnS_OFF_err": 0.01272290939375991,
+   "lnS_ON": 4.9400322155988174,
+   "ln_ratio": 0.7546439022878709,
+   "dlnKH_CO2_off_minus_on": -1.3933133769567332,
+   "dlnKH_N2_off_minus_on": -0.1812463499652042,
+   "G": 3.360423564830409,
+   "G_err": 0.07708680821061799
+  },
+  {
+   "name": "2018_Cd__dia_3_ASR_5",
+   "key": "2018[Cd][dia]3[ASR]5",
+   "cif": "core_pop_cifs/2018_Cd__dia_3_ASR_5.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Cd4 H72 C88 N16 O16 · topo dia · metal Cd · flexible None · anion_removed None · LCD 6.06749 · PLD 5.20735",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "B",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 196,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790271610,
+   "total_time_s_CO2": 1364.555693,
+   "KH_CO2": 0.000361369,
+   "KH_CO2_err": 6.48326e-06,
+   "dU_CO2": -30.1910184275,
+   "dU_CO2_err": 0.0617793671,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 196,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790271639,
+   "total_time_s_N2": 1370.26385,
+   "KH_N2": 1.22117e-05,
+   "KH_N2_err": 1.06685e-07,
+   "dU_N2": -18.5047693888,
+   "dU_N2_err": 0.0167139621,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 0.00120491,
+    "KH_CO2_err": 3.28968e-05,
+    "KH_N2": 1.31169e-05,
+    "KH_N2_err": 2.33076e-07,
+    "dU_CO2": -35.5856298931
+   },
+   "S_ON": 91.8593570127088,
+   "S_ON_err": 2.9923560044950923,
+   "S_OFF": 29.592030593611046,
+   "S_OFF_err": 0.5905046752328764,
+   "lnS_OFF": 3.3875050883769773,
+   "lnS_OFF_err": 0.019954854850696428,
+   "lnS_ON": 4.520258679229222,
+   "ln_ratio": 0.7494051400072975,
+   "dlnKH_CO2_off_minus_on": -1.2042605573915233,
+   "dlnKH_N2_off_minus_on": -0.07150696653927863,
+   "G": 3.1041924183648737,
+   "G_err": 0.11858475855683379
+  },
+  {
+   "name": "2019_Zn__pcu_3_ASR_1",
+   "key": "2019[Zn][pcu]3[ASR]1",
+   "cif": "core_pop_cifs/2019_Zn__pcu_3_ASR_1.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Zn4 H24 C68 N4 O16 F32 · topo pcu · metal Zn · flexible None · anion_removed None · LCD 4.80806 · PLD 4.03828",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "B",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 148,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790271680,
+   "total_time_s_CO2": 1241.074056,
+   "KH_CO2": 6.8709e-05,
+   "KH_CO2_err": 1.20386e-06,
+   "dU_CO2": -27.4137374653,
+   "dU_CO2_err": 0.1037500826,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 148,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790271709,
+   "total_time_s_N2": 1257.496908,
+   "KH_N2": 3.03479e-06,
+   "KH_N2_err": 3.03677e-08,
+   "dU_N2": -15.7798116794,
+   "dU_N2_err": 0.027518327,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 0.000256419,
+    "KH_CO2_err": 5.67643e-06,
+    "KH_N2": 3.32616e-06,
+    "KH_N2_err": 5.09611e-08,
+    "dU_CO2": -35.7975287862
+   },
+   "S_ON": 77.09160112562235,
+   "S_ON_err": 2.0754732925209454,
+   "S_OFF": 22.640446291176655,
+   "S_OFF_err": 0.4568216388703688,
+   "lnS_OFF": 3.119737965648496,
+   "lnS_OFF_err": 0.020177236481791417,
+   "lnS_ON": 4.344994339818625,
+   "ln_ratio": 0.7180073716226578,
+   "dlnKH_CO2_off_minus_on": -1.3169326302503515,
+   "dlnKH_N2_off_minus_on": -0.09167625608022258,
+   "G": 3.4050389349288657,
+   "G_err": 0.11455940543482887
+  },
+  {
+   "name": "2021_Co__dia_3_ASR_1",
+   "key": "2021[Co][dia]3[ASR]1",
+   "cif": "core_pop_cifs/2021_Co__dia_3_ASR_1.cif",
+   "charges": "off",
+   "identity": "미확인(CoRE 행)",
+   "identity_note": "annotated: formula Co4 H40 C64 N16 O16 · topo dia · metal Co · flexible None · anion_removed None · LCD 4.6055 · PLD 4.07898",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "ok",
+   "set": "B",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 140,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790272327,
+   "total_time_s_CO2": 1045.808681,
+   "KH_CO2": 0.00273189,
+   "KH_CO2_err": 1.54507e-05,
+   "dU_CO2": -35.3033473069,
+   "dU_CO2_err": 0.0187889832,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 140,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790272593,
+   "total_time_s_N2": 967.016747,
+   "KH_N2": 3.87179e-05,
+   "KH_N2_err": 2.09069e-07,
+   "dU_N2": -21.8117808641,
+   "dU_N2_err": 0.0182649922,
+   "on_ref": {
+    "src": "core_pop_annotated.json",
+    "KH_CO2": 0.00288727,
+    "KH_CO2_err": 2.35952e-05,
+    "KH_N2": 3.91021e-05,
+    "KH_N2_err": 6.39215e-08,
+    "dU_CO2": -35.4989503637
+   },
+   "S_ON": 73.83925671511248,
+   "S_ON_err": 0.6153799634272633,
+   "S_OFF": 70.5588371270136,
+   "S_OFF_err": 0.551734905589279,
+   "lnS_OFF": 4.256446930936504,
+   "lnS_OFF_err": 0.007819501115021155,
+   "lnS_ON": 4.301890523988901,
+   "ln_ratio": 0.9894363669184543,
+   "dlnKH_CO2_off_minus_on": -0.055317741640981806,
+   "dlnKH_N2_off_minus_on": -0.009874148588585006,
+   "G": 1.0464919735311646,
+   "G_err": 0.01195939185855725
+  }
+ ]
+}

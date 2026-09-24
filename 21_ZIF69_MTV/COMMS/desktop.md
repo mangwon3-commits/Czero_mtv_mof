@@ -5558,3 +5558,31 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 02:07 — desktop(종합자): E-1 판정문 + E-10 등록 보완(자료 0건)
     `MAGI5_E1_VERDICT_20260925.md`: Zn pts 성립(0.680) · **saIm050 기각(0.622 — ln 기준 38 % 만 정전기)** · Co dia 서술(전하가 145/34 를 가름). 곱 G = S_ON/S_OFF: O 골격 4.9/4.85, 순수 N 0.80/1.06(MAF-66).
     **laptop E-10 보완**: 주 지표 G — A 군 중앙 G ≤ 1.5 · B 군 중앙 G ≥ 3 · 띠 1.5~3(ln 비는 부 지표). E-10 착수 전·자료 0건 시점 보완(§9-6). 나머지 배정 그대로.
+
+## 2026-09-25 02:11 — desktop(종합자): 관문 ⑤(MAF-66) 결과 — 검사기 참조 문제 기록 · E-9b 착수
+    검사기 "LCD 감소 39.0 % 탈락" = base 이완 LCD 7.631 대비(v3 파생물 전용 정의). 자기 기준 LCD −8.8 %(5.106→4.657) · 부피 −12.4 % · PLD 3.42 · 덜수렴. 글자대로 탈락, 취지대로 통과 — 정의는 사용자(등록층) 몫. E-3 판정(S 15.5 기각) 불변. `MAGI5_E3_VERDICT_20260925.md §5`.
+    E-9b(srs FSR_1 273 K·15 kPa GCMC) 02:09:41 착수(데스크탑 1워커, 사용자 위임 실행 기록). 견적 0.5~1 h(옮긴 값).
+
+## 2026-09-25 02:17 — desktop(종합자): 착수 확인 — laptop E-10 02:10 · Junseok E-3b 02:08 / E-2b 0단계 통과(실행 폴더 .block, 환경 변경 없음; 관문 = N 정확 일치) · E-9b 진행 중. laptop2 E-4 착수 우편함 기다림.
+
+## 2026-09-25 02:41 — desktop(종합자): E-11 착수 — CALF-20(CCDC 2084733)·IISERP-MOF16(CCDC 2517882) 우리 자로. 등록 `E11_CALF20_MOF16_REGISTRATION_20260925.md`(자료 0건). 데스크탑 사슬: 이완→PACMAN→(simulate 0)→Zeo++→Widom. E-3 문헌 분해(`MAGI5_E3_VERDICT §7`): 문헌 225 는 체거름 섞임(K_H(N₂) 우리 7.6배 위, 구경 3.2 Å) → 맹점 ⑧.
+
+## 2026-09-25 03:16 — desktop(종합자): E-10 판정(`MAGI5_E10_VERDICT_20260925.md`: A 절 기각·B 절 성립, F1 범주 예측자 기각) · **laptop 2차 배정 E-12 물 Widom**(ASSIGN_MAGI5B §laptop 2차: MAF-66 즉시, CALF-20·MOF16 은 charged_v3 도착 뒤). 예측 (a) MAF-66 ≥ 3 × base (b) MOF16 < CALF-20 (c) CALF-20 물 Q_st [35,45].
+
+## 2026-09-25 03:24 — desktop(종합자): **E-9b 판정** — srs FSR_1 273 K·15 kPa 강체 3.94 ± 0.01 mmol/g 대 실측 0.20 → R 19.7(≥ 10) → 온도 아님, 맹점 ① 확정(laptop2 제안 시험, 예측 ≥ 17 적중). E-9 결론 유지. laptop E-12 착수 확인.
+
+## 2026-09-25 03:30 — desktop(종합자): E-11 전하본 master 반영 — `charged_v3/calf20_DDEC6.cif` · `charged_v3/mof16_DDEC6.cif`(GFN-FF 고정셀 이완 3.6/43 분, PACMAN). laptop E-12 ② 착수 가능.
+
+## 2026-09-25 03:35 — desktop(종합자): **E-2d 판정** — 273 K 직접 Widom base 31.6 ± 0.9 · nbIm100 111.1 ± 2.5 → Junseok 예측(31.8/107.7) 둘 다 1.5 단위 안 성립, 외삽 가정 제거. 273 K 비 3.51 대 실험 2.52.
+
+## 2026-09-25 03:48 — desktop(종합자): E-12 ① 판정 — MAF-66 K_H(H₂O) 3.73e-6(base 의 1/19) → 예측 (a) 정반대 기각. 실물은 친수성 → 맹점 ⑨(물–N 수소결합) 등록, E-7 DFT 를 필수로 상향(사용자 항목). `MAGI5_E12_VERDICT_20260925.md`.
+
+## 2026-09-25 04:18 — desktop(종합자): **E-3b 판정** — R₂₉₈ 0.937(띠 → (b)), N₂ 7.1배: 문헌 225 는 체거름 섞임(맹점 ⑧ 확정), 활성화상 불일치 (c) 기각. 종합자 예측 기각(위). `MAGI5_E3B_VERDICT_20260925.md`.
+
+## 2026-09-25 04:22 — desktop(종합자): Junseok 이의(04:21) 수용 — E-3b §3 규칙을 "우리 PLD < 3.64 또는 원 논문 유효 구경 < 3.64" 로 고침, PLD ≥ 3.3 관문은 따로. ④ MAF-66 `-ha -block 1.82` 확인(예측 0구) E-2b 뒤 Junseok 배정. §6-9 기록 5.
+
+## 2026-09-25 04:25 — desktop(종합자): E-12 ② 판정((b) 성립) · **E-4 재배정 — laptop2 무응답 3 h**
+    laptop2 는 01:37 이후 커밋 0·세션 목록 없음. **E-4 앞단(H 정규화·GFN-FF 이완·PACMAN)은 데스크탑이 대행 중**(사슬, 순서 77·90·8·68·2·3·6·10·20·7, 구조별 전하본을 master 에 커밋). **Widom ON/OFF(298 K) 는 laptop** — master 에 `charged_v3/zif<NN>_DDEC6.cif` 가 올라올 때마다 `run_magi5_widom.py --cif charged_v3/<tag>_DDEC6.cif --tag <tag> --workers 8`. 등록 예측·출력은 ASSIGN_MAGI5B §laptop2 그대로(문헌 다리 [1.2,2.5] · F1(ii) · 탐침 20·7). Zeo++ 는 데스크탑이 simulate 0 일 때.
+    ⚠ laptop2: 이 글을 보면 E-4 를 **시작하지 마십시오**(중복). 대신 우편함에 상태 한 줄. E-12: MOF16 < CALF-20 3.9 단위 성립, MAF-66 물 1/19(맹점 ⑨).
+
+## 2026-09-25 04:27 — desktop(종합자): **E-4 파일명 정정** — 전하본은 `charged_v3/e4zif<NN>_DDEC6.cif`(이완본 `relax_tnf/e4zif<NN>_relaxed.cif`). 이유: `zif90`·`zif71` 은 9/10 T-NF 입력이라 덮어쓰기 금지(§7). laptop 은 `--cif charged_v3/e4zif<NN>_DDEC6.cif --tag e4zif<NN>` 로.
