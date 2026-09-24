@@ -1,0 +1,112 @@
+{
+ "test": "MAGI-005 E-1 (P6′) 골격 전하 OFF Widom",
+ "assign": "ASSIGN_MAGI5_20260925.md §E-1",
+ "registration": "MAGI/MAGI-005_R3_laptop.md 재등록안 P6′",
+ "machine": "laptop",
+ "workers": 6,
+ "protocol": {
+  "widom_cycles": 15000,
+  "widom_init": 3000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "temp_K": 298.0,
+  "charges": "OFF — UseChargesFromCIFFile no, ChargeMethod Ewald(흡착질 전하 유지)",
+  "supercell": "unit_cells() 규칙",
+  "co2": "García-Sánchez 2009 (경로 TraPPE/CO2.def, TraPPE 아님)",
+  "n2": "TraPPE N2(3자리)"
+ },
+ "note": "판정 없음(종합자가 씀). ± 는 RASPA 95 % CI. S_OFF ± 는 두 K_H 의 상대 ± 를 제곱합으로 합성. ln_ratio = ln S_OFF / ln S_ON (점추정). 외부 계열(CoRE) 행은 우리 물질 결과가 아님. ",
+ "rows": [
+  {
+   "name": "2010_Zn__pts_3_ASR_1",
+   "key": "2010[Zn][pts]3[ASR]1",
+   "cif": "core_pop_cifs/2010_Zn__pts_3_ASR_1.cif",
+   "charges": "off",
+   "identity": "미확인",
+   "identity_note": "CIF 결합 분석(ase, 2026-09-25 이 세션): C32H24O32Zn4 · 92원자 · Zn–O4(1.98~1.99 Å) · N 0 → 카복실레이트([[J-8]] 와 일치), N–N 0 · N–H 0(N 없음) · C–H 24 · 제미널 H–H(<1.75 Å) 8쌍 = CH2 로 보임. CoRE 메타 슬라이스의 2010·Zn 행은 1개(ic101935f_si_002, 428원자, LCD 13.58)뿐이라 짝 안 맞음 → DOI·상·유연성 미확인. 차원 3(키).",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "pending",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 92,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790266924,
+   "total_time_s_CO2": 1049.925572,
+   "KH_CO2": 1.59985e-05,
+   "KH_CO2_err": 2.86503e-07,
+   "dU_CO2": -23.9056773836,
+   "dU_CO2_err": 0.0304034237,
+   "on_ref": {
+    "src": "core_pop_results_laptop.json",
+    "KH_CO2": 9.09385e-05,
+    "KH_CO2_err": 2.50868e-06,
+    "KH_N2": 6.24809e-07,
+    "KH_N2_err": 1.05811e-08,
+    "dU_CO2": -32.8238496629
+   },
+   "S_ON": 145.54607888170625,
+   "S_ON_err": 4.711311268487575
+  },
+  {
+   "name": "2012_Co__dia_3_ASR_3",
+   "key": "2012[Co][dia]3[ASR]3",
+   "cif": "core_pop_cifs/2012_Co__dia_3_ASR_3.cif",
+   "charges": "off",
+   "identity": "미확인(링커형만 확인)",
+   "identity_note": "Co–N4 사면체 1.99 Å · N–N 0 · N 당 C 이웃 2 → 이미다졸레이트형(MAGI-005 R3 D-2). DOI 미확인.",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "pending",
+   "on_ref": {
+    "src": "core_pop_results_laptop.json",
+    "KH_CO2": 6.51574e-05,
+    "KH_CO2_err": 7.63249e-07,
+    "KH_N2": 1.90798e-06,
+    "KH_N2_err": 2.17754e-08,
+    "dU_CO2": -28.9098865529
+   },
+   "S_ON": 34.1499386786025,
+   "S_ON_err": 0.5585035848014697
+  },
+  {
+   "name": "saIm050_DDEC6",
+   "key": "saIm050",
+   "cif": "charged_v3/saIm050_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 조성(ZIF-69 gme, −SO3H 50 %)",
+   "identity_note": "results_v3.json 의 saIm050 과 같은 CIF 계열(charged_v3).",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "status": "pending",
+   "on_ref": {
+    "src": "results_v3.json",
+    "KH_CO2": 0.000175691,
+    "KH_CO2_err": 5.56793e-06,
+    "KH_N2": 2.69441e-06,
+    "KH_N2_err": 1.60465e-08,
+    "dU_CO2": null
+   },
+   "S_ON": 65.20574077441816,
+   "S_ON_err": 2.1026456640745126
+  }
+ ]
+}
