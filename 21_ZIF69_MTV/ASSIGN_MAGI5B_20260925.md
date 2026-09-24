@@ -64,6 +64,13 @@
     후보 **E-11**(CIF 입수 조건, 사용자 항목): IISERP-MOF16 [Zn(Damtz)(HCOO)](Chem. Mater. 2026, 38, 7679 SI/CCDC) + CALF-20 [Zn₂(tz)₂(ox)] 를 우리 자(Widom ON/OFF + 0.15 bar + 물 Widom)로 — F1(아졸레이트 + O 음이온 → G ≈ 5?)과 E-6 물 축을 한 번에. 예측은 CIF 도착 뒤 자료 0건 시점에 등록.
     **맹점 ⑧ 등록**: 속도·체거름 선택도(구경 ≤ 3.3 Å) 는 Widom 이 못 봄 — MAF-66 문헌 225 의 정체(`MAGI5_E3_VERDICT §7`).
 
+## laptop 2차 — **E-12 물 Widom**(E-10 완주 뒤, 2026-09-25 03:16 등록·자료 0건)
+    자    v3w 물 프로토콜 그대로(`run_tb2_water_kh.py` 형 사본: TIP5P-Ew 5자리 `19_WaterCompetition/water.def`, **Hw/Lw none 힘장**(md5 8e8ec933), Widom, 298 K, `unit_cells()`, 전하 ON). 머리말 관문에서 물 5자리·Hw/Lw none 확인.
+    대상  ① `charged_v3/maf66_DDEC6.cif`(master) 즉시 ② `charged_v3/calf20_DDEC6.cif` · `charged_v3/mof16_DDEC6.cif`(데스크탑 E-11 PACMAN 뒤 master 로 밀어 줌 — 도착하면).
+    출력  `results_magi5_e12_waterkh_laptop.json` — name · KH_water ± · dU_water ± · Qst_rt_corrected · water_sites_in_rundir(=5) · ff_md5 · seed · status · minutes. 참조(v3w 실측, 데스크탑): base 7.13e-5 ± 0.89e-5 · nbIm100 1.30e-4 · saIm050 2.56e-4 ± 1.72e-4 · saIm100 4.08e-3 mol kg⁻¹ Pa⁻¹.
+    예측(등록)  (a) MAF-66 K_H(H₂O) ≥ 3 × base(≥ 2.1e-4; 아미노·비배위 N 이 물 자리 — J R1 위험 항목). 기각: base 와 1.5 단위 안. (b) K_H(H₂O) **MOF16 < CALF-20**, 차 ≥ 1.5 단위(논문: MOF16 물 흡착 더 낮음). (c) CALF-20 물 Q_st(보정) ∈ **[35, 45]**(Nat. Commun. 2024 원자료 36~41). 물 경쟁 지수 K_H(H₂O)/K_H(CO₂) 를 base 와 나란히.
+    비용  구조당 Widom 1건 ≈ 20~40 분(v3w 데스크탑 실측 — 옮긴 값). 판정은 종합자.
+
 ## 사용자 항목 (배정 아님 — 권고 첫 줄)
     E-7 DFT 물·CO₂ 결합에너지(J R3 2순위, 문턱 5 kJ/mol) — **어느 기기에도 DFT 코드 없음**(xtb 만). 권고: **E-3b 결과 뒤 결정** — R₂₉₈ < 0.67 이면 pyscf 설치(환경 변경, 데스크탑) 승인 요청; 아니면 보류.
     E-6 실험 한 줄(RH90·CO₂ 15 %·7 일 PXRD) — 시료: ZIF-69 모체 · 술폰화 ZIF-69 · MAF-66. srs 제외(자격 없음).
