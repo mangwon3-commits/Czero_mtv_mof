@@ -61,3 +61,4 @@
           `Windows 업데이트 자동 재부팅 정책 적용 [2c51c5]`(running, 기기 미확인) · `기존 커밋 로컬기기로 옮기기 [57ae94]`(running, 기기 미확인).
           msg_id b725b9ae · fd3464d1 · 94cffc50 · 5b5c36f7. 본문 = COMMS 22:3x 항목과 동일 + "담당 세션이 아니면 전달" 한 줄. 우편함(COMMS)이 정본 경로.
     2026-09-24 22:44  **R1 해시 접수 1/3 — laptop2(Balthasar)**: `711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a172` (laptop2 22:38:47, origin/laptop2-20260825 경유). 내용 미공개·미독. 랩탑·Junseok 대기.
+    2026-09-24 22:47  **R1 해시 접수 2/3 — Junseok**: `8ca844f5f4fb4e64cfb0e9955d32dc4b421eebf5ccf18ceeb2f86f2e3bf95cea` (junseok 22:46:45, COMMS/junseok.md 84304398 · origin/junseok-20260822 에서 확인). 세션 간 메시지로도 같은 해시 도착(발신 세션 "안정성 스크린 진행 상황 보고", 원문: 해시 한 줄 + "파일은 저장소 밖 ~/.mof_magi/MAGI-005_junseok.md, 읽기 전용 잠금, 공개 신호 뒤 그대로 커밋" — 내용·요지 없음, 봉인 준수). 내용 미독. **랩탑만 대기.**
