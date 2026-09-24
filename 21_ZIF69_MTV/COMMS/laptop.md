@@ -7244,3 +7244,13 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
       mof16   K_H(H₂O) **1.23e-5 ± 0.03e-5** · ΔU −25.69 ± 0.10 · Q_st(보정) **28.2** · 36.8 분
       차 (calf20 − mof16) 2.33e-5 ± 0.59e-5 (±, 제곱합) = 3.9 단위
     결과 21_ZIF69_MTV/results_magi5_e12_waterkh_laptop.json (maf66 · calf20 · mof16 세 행). E-12 laptop 몫 끝 — 이 기기 비었음.
+
+## 2026-09-25 04:28 — laptop(Melchior): **E-4 Widom(3차 배정) 사슬 가동** · ⚠ run_magi5_widom.py Q_st 결함 보고
+
+    사슬  저장소 밖 파이썬(PID 825626) — 2 분마다 fetch → charged_v3/e4zif<NN>_DDEC6.cif 가 **07b7939a(04:25) 이후 커밋**되면 그 한 파일만 checkout(§6) →
+          `run_magi5_widom.py --cif … --tag e4zif<NN> --workers 1 --temp 298` · 동시 최대 8 · 착수 간격 ≥ 3 s · 한도 10 h. 순서 77·90·8·68·2·3·6·10·20·7.
+          (옛 zif90·zif71 은 T-NF 계열 — 이름 정정 04:3x 반영, 쓰지 않음)
+    --workers 1 인 이유: 드라이버가 4작업을 동시에 띄우면 seed(초 단위 시각)가 겹칠 수 있음 → 구조 안은 순차, 구조끼리 병렬. 끝나면 seed 감사.
+    ⚠ **run_magi5_widom.py 74행 Q_st 결함**: `rg.R_GAS * T / 1000.0` — rg.R_GAS 는 이미 kJ/mol/K(8.314e-3) 라 +RT 가 2.48 이 아니라 0.0025.
+       실측 results_magi5_e3_maf66_widom_hkhome.json: ON Qst_CO2_rt_corrected 22.026(올바른 −ΔU+RT 24.502) · OFF 21.326(23.802) — 필드가 **사실상 보정 전 값**.
+       K_H·S·dU 무영향. 공용 러너라 **안 고쳤음**(§9 경계 ③) — 고침은 `+ rg.R_GAS * a.temp` 한 줄. E-4 보고에는 dU 로 다시 계산한 −ΔU+RT 를 따로 적음.
