@@ -58,21 +58,41 @@ qe = [rows[t]['Qst_CO2_err'] for t, _ in tags]
 ld = [rows[t]['loading_015bar'] for t, _ in tags]
 le = [rows[t]['loading_015bar_err'] for t, _ in tags]
 
+# 2026-09-24 — 이 사다리 일곱 중 **셋이 구조 관문 탈락**입니다(saIm075 20.26 · saIm0875 21.21 ·
+#   saIm100 22.50 %, 한도 20 %). 값은 지우지 않되 **표지 없이 그리면 우리 물질로 읽힙니다**
+#   (`GATE_SAIM100_20260924.md`, CLAUDE.md §2). 통과=채운 점 / 탈락=빈 점으로 가릅니다.
+passed = [risk.get(t) is not None and risk[t] <= 20.0 for t, _ in tags]
+
 fig, ax = plt.subplots(figsize=(6.2, 3.2))
 ax.axhspan(30, 40, color=SAGE_L, alpha=.75, zorder=0)
-ax.errorbar(x, q, yerr=qe, marker='o', color=NAVY, lw=1.7, ms=5.5,
-            capsize=3, zorder=3, label='Q$_{st}$ (좌축)')
+ax.errorbar(x, q, yerr=qe, marker='', color=NAVY, lw=1.7, zorder=3,
+            capsize=3, label='Q$_{st}$ (좌축) — 보정 전 척도')
+ax.scatter([xi for xi, k in zip(x, passed) if k], [qi for qi, k in zip(q, passed) if k],
+           marker='o', s=34, color=NAVY, zorder=4)
+ax.scatter([xi for xi, k in zip(x, passed) if not k], [qi for qi, k in zip(q, passed) if not k],
+           marker='o', s=40, facecolors='white', edgecolors=NAVY, linewidths=1.4, zorder=4)
 ax.set_xlabel(SUB); ax.set_ylabel('Q$_{st}$ (kJ/mol)', color=NAVY)
 ax.tick_params(axis='y', labelcolor=NAVY)
 ax.set_ylim(20, 42); ax.set_xlim(-4, 104)
 ax2 = ax.twinx()
-ax2.errorbar(x, ld, yerr=le, marker='s', color=ORANGE, lw=1.7, ms=5.5,
+ax2.errorbar(x, ld, yerr=le, marker='', color=ORANGE, lw=1.7,
              capsize=3, ls='--', label='0.15 bar 로딩 (우축)')
+ax2.scatter([xi for xi, k in zip(x, passed) if k], [li for li, k in zip(ld, passed) if k],
+            marker='s', s=30, color=ORANGE, zorder=4)
+ax2.scatter([xi for xi, k in zip(x, passed) if not k], [li for li, k in zip(ld, passed) if not k],
+            marker='s', s=36, facecolors='white', edgecolors=ORANGE, linewidths=1.4, zorder=4)
+for xi, k in zip(x, passed):
+    if not k:
+        ax.axvline(xi, color=GREY, ls=':', lw=.9, alpha=.55, zorder=1)
+ax.scatter([], [], marker='o', s=40, facecolors='white', edgecolors=GREY,
+           linewidths=1.4, label='빈 점 = 구조 관문 탈락 (LCD 감소 > 20 %)')
 ax2.set_ylabel('0.15 bar CO$_2$ 로딩 (mol/kg)', color=ORANGE)
 ax2.tick_params(axis='y', labelcolor=ORANGE); ax2.set_ylim(0.4, 1.75)
 h1, l1 = ax.get_legend_handles_labels(); h2, l2 = ax2.get_legend_handles_labels()
 ax.legend(h1 + h2, l1 + l2, loc='lower right', fontsize=8.5, framealpha=.92)
 ax.grid(alpha=.25, ls=':', color=GREY)
+ax.text(.015, .965, '띠 = Q$_{st}$ 목표대 30~40 (보정 전 척도) · 보정 척도로는 35~45',
+        transform=ax.transAxes, va='top', ha='left', fontsize=7.4, color=GREY)
 finish(fig, 'fig2_ladder.png')
 
 
@@ -200,13 +220,16 @@ def wc(Q, ns):
 
 Qs = np.arange(18, 60.1, 0.25)
 fig, ax = plt.subplots(figsize=(6.2, 3.1))
+# 이 모형의 회귀 계수(A·B)는 **보정 전 Q 척도**에서 맞춘 것입니다
+# (`qst_window_rt.py:18` · `QST_WINDOW_RT_20260918 §9`: 재회귀는 하지 않고 옛 계수를 그대로 씀).
+# 그래서 창도 보정 전 30~40 입니다 — **내부 일관이되 본문의 35~45(보정 척도)와 다른 자**입니다.
 ax.axvspan(30, 40, color=SAGE_L, alpha=.8, zorder=0)
 for ns, col, ls in ((2.0, SAGE, ':'), (2.5, NAVY, '-'), (4.0, ORANGE, '--')):
     E = [Q + 67.5 / wc(Q, ns) for Q in Qs]
     ax.plot(Qs, E, ls, lw=1.8, color=col, label=f'n$_{{sat}}$ = {ns} mol/kg')
     i = int(np.argmin(E))
     ax.plot(Qs[i], E[i], 'v', ms=7, color=col, mec='#3A3A3A', mew=.6)
-ax.set_xlabel('Q$_{st}$ (kJ/mol)')
+ax.set_xlabel('Q$_{st}$ (kJ/mol) — 보정 전 척도 (보정 척도 = +4.96)')
 ax.set_ylabel('총 재생 에너지 (kJ/mol-CO$_2$)')
 ax.set_ylim(50, 230); ax.set_xlim(18, 60)
 ax.legend(fontsize=8.5, framealpha=.92)

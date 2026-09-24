@@ -34,7 +34,7 @@ fi
 cd "$ROOT" || exit 1
 INBOX="$ROOT/.postman_inbox_$MACHINE"; LOG="$ROOT/.postman_$MACHINE.log"; FLAG="$ROOT/.postman_flag"
 STATE="$ROOT/.postman_state_$MACHINE"; mkdir -p "$STATE"
-RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/v3_water_repro*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/density_v3*/density_results.json 21_ZIF69_MTV/density_v3*/*/VTK/System_0/*.vtk.gz 21_ZIF69_MTV/density_v3*/*/simulation.input'
+RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/v3_water_repro*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/density_v3*/density_results.json 21_ZIF69_MTV/density_v3*/*/VTK/System_0/*.vtk.gz 21_ZIF69_MTV/water_runs_density_v3w/rh90_*/VTK/System_0/*.vtk.gz 21_ZIF69_MTV/density_water_v3w/loadings_*.json 21_ZIF69_MTV/density_water_v3w/*/water_results.json 21_ZIF69_MTV/density_v3*/*/simulation.input'
 
 # (17) 2026-09-24 Junseok 발견 — **공용 파일은 ④ 로 자동 반입하지 않습니다.**
 #   `git checkout <가지> -- <파일>` 반입은 **가지 커밋을 master 의 조상으로 만들지 않으므로**
@@ -44,7 +44,7 @@ RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.
 #   마지막이 늘 laptop 판이라 **Junseok 줄이 master 에서 사라졌습니다.**
 #   COMMS/ 는 "한 파일 한 필자" 라 구조적으로 안전해서 이미 제외돼 있습니다 — 아래는 그 예외의 나머지입니다.
 #   **자동 반입 대신 우편함에 알리고, 병합은 사람이 합니다.**
-NOAUTO_IMPORT='21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/watchdog.log'
+NOAUTO_IMPORT='21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/density_water_v3w/loadings_from_output.json'
 say(){ echo "[$(date '+%m-%d %H:%M:%S')] $*" >> "$LOG"; }
 inbox(){ echo "[$(date '+%m-%d %H:%M')] $*" >> "$INBOX"; touch "$FLAG"; }
 repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh | grep -vE "wsl_keepalive|lammps_watchdog|ensure_guards" | grep -qE "$ROOT|^bash [^/]"; }
