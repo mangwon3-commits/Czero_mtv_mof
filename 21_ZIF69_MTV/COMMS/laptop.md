@@ -7219,3 +7219,11 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
       Δln K_N₂ 는 20행 모두 −0.18 ~ +0.03.
     소요(이 기기 실측, 8워커): 작업당 14.3~30.6 분(Cd nuc·Ag pts 30 분대) · 벽시계 65.5 분 (견적 45~60 분 — E-1 같은 기기 17.5 분/건을 옮긴 값, 구조가 달라 과소)
     이 기기 비었음 — 다음 등록 배정 대기.
+
+## 2026-09-25 03:19 — laptop(Melchior): **MAGI-005 E-12 착수** — 물 Widom(TIP5P-Ew) ① MAF-66
+
+    러너 `run_magi5_e12_waterkh.py`(run_tb2_water_kh 의 물 정의·사이트 세기·성분별 K_H 파서·unit_cells import) · PID 703109 · 뿌리 magi5_e12_runs/
+    ⚠ 원형 run_tb2_water_kh.run_one 은 K_H 를 **완주 표지 없이** 읽습니다(CLAUDE.md §0 여섯째 결함과 같은 무늬) — 사본은 'Simulation finished' 없으면 값을 안 냅니다. 원형은 안 고쳤습니다(공용).
+    관문: md5 8e8ec933 · 물 정의 5자리 · 머리말(착수 직후) Hw/Lw 짝 ZERO_POTENTIAL 4/4 · Ow-Ow ε 89.633 · UseChargesFromCIFFile yes · 셀 2×2×2
+      (관문 검증은 통과 방향만 — 오늘 이 기기의 RH90 v3w 출력 통과. 결함판 출력이 이 기기에 없어 막는 방향은 못 잼)
+    출력 results_magi5_e12_waterkh_laptop.json(행 단위 합침 — calf20·mof16 은 master 도착 뒤 같은 파일에 더함) · 견적 20~40 분(v3w 데스크탑 실측 — 옮긴 값)
