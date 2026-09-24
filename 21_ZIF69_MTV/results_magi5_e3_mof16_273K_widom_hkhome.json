@@ -1,0 +1,30 @@
+{
+ "tag": "mof16_273K",
+ "cif": "charged_v3/mof16_DDEC6.cif",
+ "protocol": "run_aryl_gcmc.run_one widom (CLAUDE.md §1)",
+ "off_method": "CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)",
+ "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "host": "hkhome",
+ "elapsed_s": 1513,
+ "finished": "2026-09-25 04:45:54",
+ "rows": [
+  {
+   "name": "mof16_DDEC6",
+   "charges": "on",
+   "temp_K": 273.0,
+   "KH_CO2": 4.97384e-05,
+   "KH_CO2_err": 4.51609e-06,
+   "dU_CO2": -32.3890710723,
+   "dU_CO2_err": 0.323502913,
+   "status_CO2": "ok",
+   "KH_N2": 5.25678e-07,
+   "KH_N2_err": 1.69471e-08,
+   "dU_N2": -17.8192942266,
+   "dU_N2_err": 0.0742503002,
+   "status_N2": "ok",
+   "selectivity": 94.61761762904287,
+   "selectivity_err": 9.116441753641507,
+   "Qst_CO2_rt_corrected": 32.391340920594715
+  }
+ ]
+}
