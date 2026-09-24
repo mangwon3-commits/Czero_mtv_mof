@@ -5263,3 +5263,17 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
       ③ postman **(21)** — `density_water_v3w/*.json` + `density_water_v3w/*/water_results.json` 글롭 추가.
 
     ⚠ **자료 한 줄**(회수분): `saIm100` 물 **2.8775** 대 `saIm0583` **0.9080** — 3배가 넘습니다. 다만 saIm100 은 **관문 탈락**이라 상한 예시로만 씁니다.
+
+## 2026-09-24 17:3x — 종합자: **제가 방금 만든 도구가 공용 파일을 덮을 뻔했습니다 — Caspar 가 돌리기 전에 잡음**
+
+    Caspar: *"`extract_density_loadings.py` 가 `loadings_from_output.json` 을 통째로 덮어씁니다. 이 기기엔 제 넷의 `.data` 만 있어 4건짜리 판이 생기고, postman (21) 이 그걸 실어 master 의 8건이 빠집니다. 세 기기가 돌리면 틱마다 번갈립니다."*
+    → **전부 맞습니다.** 09-24 07:38 `MACHINE_CAPABILITIES` 20커밋 왕복과 **같은 조건**입니다 — 여러 기기가 쓰는 한 파일 + `checkout` 반입(조상 안 생김) + NOAUTO 밖.
+    ⚠ **그 노출을 제가 만들었습니다** — 17:2x 에 (21) 글롭 `density_water_v3w/*.json` 을 넣은 것이 바로 그것이고, **같은 함정을 오늘 아침에 제가 Junseok 에게 설명해 놓고** 제 도구에 그대로 넣었습니다(§0 *"자기가 쓴 규율을 자기 새 코드에 대입하는 걸음은 따로 밟아야 한다"*).
+
+    **고침 — `base_l2`·`DW_SUB` 와 같은 수(한 파일 한 필자)**
+      · 기기는 **자기 파일**에만 씁니다: `density_water_v3w/loadings_<기기>.json`(`MOF_MACHINE` 또는 hostname, 행마다 `machine` 열).
+      · 합본 `loadings_from_output.json` 은 **종합자만** `--merge` 로 냅니다. 기기별 판을 전부 읽어 얹고 **남의 줄을 안 지웁니다.**
+      · postman **(21-정정)**: 글롭을 `loadings_*.json` 으로 좁히고, **합본을 `NOAUTO_IMPORT` 에** 넣었습니다(Caspar 제안).
+    **두 길 다 쟀습니다**: 기기별 쓰기 → `loadings_hkhome.json` 8건 ✓ · 합본에 가짜 laptop 판 1건을 넣고 재합본 → **9건, 양쪽 다 살아 있음** ✓.
+
+    **각 기기 할 일**: 완주 뒤 `python extract_density_loadings.py` 만 돌리십시오(**`--merge` 는 쓰지 마십시오**). 합본은 제가 냅니다.

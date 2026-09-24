@@ -14,8 +14,20 @@ CLAUDE.md §0 의 *"실패가 결과처럼 보이는 것"* 입니다: 폴더는 
 `density_water_v3w/loadings_from_output.json` 은 그래서 한 번 **손으로** 만든 것이고
 스크립트가 안 남았습니다. 이 파일이 그 도구입니다.
 
-    python extract_density_loadings.py                  # 완주분 전부 회수
+    python extract_density_loadings.py                  # 이 기기 완주분 -> loadings_<기기>.json
     python extract_density_loadings.py --print          # 쓰지 않고 표만
+    python extract_density_loadings.py --merge          # **종합자만**: 기기별 판을 합쳐
+                                                        #   loadings_from_output.json 을 냅니다
+
+## ⚠ 기기마다 **자기 파일**에 씁니다 (2026-09-24 2차 수정 — Caspar 발견, 돌리기 전에)
+
+첫 판은 `loadings_from_output.json` 을 **통째로 덮어썼습니다.** 각 기기에는 **자기 `.data` 만**
+있으므로(남의 것은 git 으로 온 VTK `.gz` 뿐), 기기마다 돌리면 **자기 몫만 든 판**이 생기고
+postman (21) 이 그것을 실어 **master 의 표가 줄어듭니다.** 세 기기가 돌리면 **틱마다 번갈립니다**
+— 09-24 07:38 `MACHINE_CAPABILITIES` 20커밋 왕복과 **같은 조건**(여러 기기가 쓰는 한 파일 +
+`checkout` 반입 + NOAUTO 밖)입니다. **제가 (21) 글롭을 넣어 그 노출을 만들었습니다.**
+
+그래서 `base_l2`·`DW_SUB` 와 **같은 수**를 씁니다 — **한 파일 한 필자.**
 
 ⚠ **파서를 새로 쓰지 않습니다** — `run_water.parse_components` 를 그대로 import 합니다.
 파서가 둘이면 서로 어긋납니다(오늘 §C 계열).
@@ -27,7 +39,9 @@ sys.path.insert(0, HERE)
 from run_water import parse_components, finished        # 파서는 **하나**만
 
 RUNS = os.path.join(HERE, 'water_runs_density_v3w')
-OUT = os.path.join(HERE, 'density_water_v3w', 'loadings_from_output.json')
+OUTDIR = os.path.join(HERE, 'density_water_v3w')
+MACHINE = (os.environ.get('MOF_MACHINE') or os.uname().nodename).lower()
+MERGED = os.path.join(OUTDIR, 'loadings_from_output.json')   # 합본 — **종합자만** 씁니다
 
 
 def seed_of(path):
@@ -43,7 +57,11 @@ def seed_of(path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--print', dest='only_print', action='store_true')
+    ap.add_argument('--merge', action='store_true',
+                    help='**종합자만**: loadings_*.json 을 합쳐 loadings_from_output.json')
+    ap.add_argument('--out', default=None, help='기본 density_water_v3w/loadings_<기기>.json')
     a = ap.parse_args()
+    out = a.out or os.path.join(OUTDIR, 'loadings_%s.json' % MACHINE)
 
     rows, skipped = {}, []
     for d in sorted(glob.glob(os.path.join(RUNS, 'rh90_*'))):
@@ -74,10 +92,30 @@ def main():
     for n, why in skipped:
         print('  %-*s  -- %s' % (w, n, why))
 
-    if not a.only_print:
-        os.makedirs(os.path.dirname(OUT), exist_ok=True)
-        json.dump(rows, open(OUT, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
-        print('\n-> %s' % os.path.relpath(OUT, HERE))
+    if a.only_print:
+        return 0
+
+    os.makedirs(OUTDIR, exist_ok=True)
+    for r in rows.values():
+        r['machine'] = MACHINE
+    json.dump(rows, open(out, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
+    print('\n-> %s  (이 기기 몫 %d건)' % (os.path.relpath(out, HERE), len(rows)))
+
+    if a.merge:
+        # 합본은 **종합자만** 냅니다. 기기별 판을 전부 읽어 얹고, **남의 줄을 안 지웁니다.**
+        merged, src = {}, []
+        for f in sorted(glob.glob(os.path.join(OUTDIR, 'loadings_*.json'))):
+            if os.path.abspath(f) == os.path.abspath(MERGED):
+                continue
+            try:
+                d = json.load(open(f, encoding='utf-8'))
+            except Exception:
+                continue
+            merged.update(d); src.append(os.path.basename(f))
+        json.dump(merged, open(MERGED, 'w', encoding='utf-8'),
+                  indent=2, ensure_ascii=False)
+        print('합본 %d건  <- %s' % (len(merged), ' '.join(src)))
+        print('-> %s' % os.path.relpath(MERGED, HERE))
     return 0
 
 
