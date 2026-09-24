@@ -5,14 +5,37 @@
 
 ## 1. 덱
 
-    Junseok   python run_qn_supp.py --only base,saIm025,saIm050              18작업
-    laptop2   python run_qn_supp.py --only mslm050,sa50nb50,saIm0583,base    24작업 (base 6 = §1-2 교차)
+    Junseok   python run_qn_supp.py --only base,saIm025,saIm050                            18작업
+    laptop2   python run_qn_supp.py --only mslm050,sa50nb50,saIm0583,base --tag-suffix _l2  24작업
+
+⚠ **15:3x 갱신 — Caspar(Junseok)가 기동 전에 결함 둘을 찾았습니다. 러너를 고쳤습니다.**
+
+    ① 씨앗   RASPA 씨앗은 **착수 시각(초)** 입니다(`run_tnf.py:312` 의 자기 주석). 그 보호(`--seed-stagger`)는
+             **한 호출 안 여러 작업**을 전제하는데, 이 러너는 작업마다 따로 부르므로 `i=0 → sleep 0` —
+             **워커 N 개가 같은 초에 떴습니다.** §AS 는 사슬이 하나씩 띄워 씨앗 72/72 전부 다르고 최소 간격 12 s(검산 일치).
+             → **착수 간격 잠금 ≥ 12 s** 를 러너에 직접 걸었습니다(`QN_SUPP_MIN_GAP`). 12워커 기동 지연 144 s.
+             → 끝나고 **씨앗 감사**를 찍습니다. 겹치면 그 작업의 JSON·실행 폴더를 지우고 다시 돕니다.
+    ② 이름   `base` 를 두 기기가 내면 결과 파일 이름이 같아 **반입 핑퐁**(07:38 능력 문서 무늬). `--tag-suffix _l2` 로 가릅니다.
+
+**이미 돌고 있다면 씨앗부터 세십시오:**
+
+    grep -h "Random number seed" 21_ZIF69_MTV/tnf_runs_qn_*/*/Output/System_0/*.data \
+      | awk '{print $NF}' | sort | uniq -c | sort -rn | head
 
 ⚠ **conda 환경의 python 으로 띄우십시오.** 러너가 `sys.executable` 로 `run_tnf.py` 를 띄우므로
 시스템 `python3` 로 띄우면 자식이 numpy 를 못 찾습니다. 러너가 **선행 검사로 즉시 죽습니다**
 (09-24 데스크탑 예행에서 실제로 났습니다 — 그 자리에서 막게 고쳤습니다).
 
+⚠ **`RASPA_DIR` 은 `share/raspa` 의 *부모*입니다** (laptop2 14:2x 지적 — 변수가 비어 한 번 막혔습니다).
+
+    export RASPA_DIR=$HOME/RASPA/simulations        # 맞음 — 이 아래에 share/raspa/ 가 있습니다
+    export RASPA_DIR=$HOME/RASPA/simulations/share/raspa   # 틀림 — 09-24 데스크탑이 이렇게 줘서
+                                                    #        172구조가 3분 만에 전부 [no-output]
+
+관문이 **막되 고치는 법을 알려 주도록** 고쳤습니다(15:1x) — 못 찾으면 이 기기에서 맞아 보이는 값을 같이 찍습니다.
+
     워커   기본 6 (`QN_SUPP_WORKERS`). **첫 한 건의 실측을 보고 올리십시오** — 아래 §3.
+           laptop2 는 **12** 로 띄웠습니다(그 기기 09-21 실측: 12 가 6보다 처리량 +4 %). 기기마다 다릅니다.
     기동   setsid nohup ... < /dev/null &   ·  `bash bgstate.sh` 로 자식까지 확인
 
 ## 2. 왜 조성 단위로 나누는가 (등록 §1-1)
