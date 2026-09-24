@@ -13,7 +13,7 @@
 (`run_tnf.py` 자체가 `finished()` 로 'Simulation finished' 를 요구하므로, 표지가 없으면
 그 행의 `CO2_molkg` 가 null 로 남습니다.)
 """
-import argparse, json, os, subprocess, sys, threading, time
+import argparse, fcntl, glob, json, os, re, subprocess, sys, threading, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # 선행 검사 — `run_tnf.py` 를 **이 파이썬으로** 띄우므로 여기서 numpy 가 되면 자식도 됩니다.
@@ -46,17 +46,67 @@ SUFFIX = ['']
 # 따로(작업 1개, i=0) 부르므로 `sleep 0` — **워커 N 개가 같은 초에 뜹니다.**
 # §AS 72건은 사슬이 하나씩 띄워 씨앗 72개가 전부 다르고 **최소 간격 12 s** 였습니다(검산 일치).
 # 그래서 같은 12 s 를 여기서 직접 겁니다. 작업이 한 시간대이므로 12워커 기동 지연 144 s 는 무시할 만합니다.
+#
+# ⚠ 2차 수정 (15:5x — **laptop2 발견**): 첫 판은 `threading.Lock` 이라 **한 프로세스 안에서만**
+#   걸렸습니다. 한 기기에서 러너를 둘 띄우면(laptop2 가 실제로 A·B 로 나눠 띄웠습니다)
+#   **서로의 착수가 같은 초에 겹칩니다.** 잠금을 **파일 잠금(flock)** 으로 올려 기기 전체에 겁니다.
+#   잠금 파일은 **저장소 밖**입니다(§9 의 사슬·postman 과 같은 수).
 MIN_GAP = float(os.environ.get('QN_SUPP_MIN_GAP', '12'))
+LOCKF = os.environ.get('QN_SUPP_LOCK',
+                       os.path.join(os.path.expanduser('~'), '.mof_qn_supp_launch.lock'))
 _GATE = threading.Lock()
-_LAST = [0.0]
 
 
 def wait_turn():
-    with _GATE:                      # 잠금을 **든 채로** 잡니다 — 그래야 직렬화됩니다
-        w = _LAST[0] + MIN_GAP - time.time()
-        if w > 0:
-            time.sleep(w)
-        _LAST[0] = time.time()
+    with _GATE:                                   # ① 프로세스 안 (파일 경합을 줄입니다)
+        with open(LOCKF, 'a+') as fh:
+            fcntl.flock(fh, fcntl.LOCK_EX)        # ② 프로세스 사이 — 기기 전체
+            try:
+                fh.seek(0)
+                try:
+                    last = float((fh.read() or '').strip() or 0)
+                except ValueError:
+                    last = 0.0
+                w = last + MIN_GAP - time.time()
+                if w > 0:
+                    time.sleep(w)                 # 잠금을 **든 채로** 잡니다 — 그래야 직렬화됩니다
+                fh.seek(0); fh.truncate()
+                fh.write('%.3f' % time.time()); fh.flush()
+            finally:
+                fcntl.flock(fh, fcntl.LOCK_UN)
+
+
+def audit_seeds(verbose=True):
+    """**기기 전체** 씨앗 감사 — 실행 폴더를 직접 읽습니다.
+
+    러너의 끝 감사는 **자기 프로세스가 맡은 작업**만 셉니다(laptop2 지적). 러너를 둘 띄웠거나
+    남이 띄운 것이 섞였으면 못 봅니다. 이것은 `tnf_runs_qn_*` **전부**를 훑습니다.
+    """
+    seeds = {}
+    pat = os.path.join(HERE, 'tnf_runs_qn_*', '*', 'Output', 'System_0', '*.data')
+    for f in glob.glob(pat):
+        try:
+            with open(f, encoding='utf-8', errors='ignore') as fh:
+                for ln in fh:
+                    m = re.match(r'\s*Random number seed:\s*(\d+)', ln)
+                    if m:
+                        seeds.setdefault(int(m.group(1)), []).append(
+                            f.split(os.sep)[-5])
+                        break
+                    if ln.startswith('Number of cycles'):
+                        break
+        except OSError:
+            continue
+    dup = {k: sorted(set(v)) for k, v in seeds.items() if len(set(v)) > 1}
+    if verbose:
+        print('기기 전수 씨앗 감사 — 실행 폴더 %d · 서로 다른 씨앗 %d · **겹침 %d건**'
+              % (sum(len(v) for v in seeds.values()), len(seeds), len(dup)), flush=True)
+        for k, v in sorted(dup.items()):
+            print('  !! 씨앗 %d 를 %d 작업이 공유: %s' % (k, len(v), ' '.join(v)), flush=True)
+        if dup:
+            print('  → 겹친 작업은 **같은 난수열**입니다. 실행 폴더를 저장소 밖으로 격리하고 다시 도십시오.',
+                  flush=True)
+    return dup
 
 
 def tag_of(c, T, p):
@@ -107,7 +157,11 @@ def main():
                     default=int(os.environ.get('QN_SUPP_WORKERS', '6')))
     ap.add_argument('--tag-suffix', default='',
                     help='결과 이름을 가릅니다(교차 검산 쪽만, 예: _l2). 정본은 빈 값.')
+    ap.add_argument('--audit-seeds', action='store_true',
+                    help='계산 없이 **기기 전수** 씨앗 감사만 하고 끝냅니다(러너 여럿이어도 봅니다).')
     a = ap.parse_args()
+    if a.audit_seeds:
+        sys.exit(1 if audit_seeds() else 0)
     SUFFIX[0] = a.tag_suffix
     comps = [c.strip() for c in a.only.split(',') if c.strip()]
     bad = [c for c in comps if c not in ALL]
@@ -164,14 +218,12 @@ def main():
             pass
     dup = {k: v for k, v in seeds.items() if len(v) > 1}
     print('\n완주 %d · cached %d · 실패 %d' % (n_ok, n_cache, n_bad), flush=True)
-    print('씨앗 %d개 · 서로 다른 것 %d개 · **겹침 %d건**'
+    print('이 프로세스 씨앗 %d개 · 서로 다른 것 %d개 · 겹침 %d건'
           % (sum(len(v) for v in seeds.values()), len(seeds), len(dup)), flush=True)
     for k, v in dup.items():
         print('  !! 씨앗 %d 를 %d 작업이 공유: %s' % (k, len(v), ' '.join(v)), flush=True)
-    if dup:
-        print('  → 겹친 작업의 결과 JSON·실행 폴더를 지우고 다시 도십시오(같은 난수열입니다).',
-              flush=True)
-    sys.exit(1 if (n_bad or dup) else 0)
+    dup2 = audit_seeds()          # ← 기기 전수 (러너 둘이어도 봅니다 — laptop2 지적)
+    sys.exit(1 if (n_bad or dup or dup2) else 0)
 
 
 if __name__ == '__main__':
