@@ -5570,3 +5570,5 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 03:16 — desktop(종합자): E-10 판정(`MAGI5_E10_VERDICT_20260925.md`: A 절 기각·B 절 성립, F1 범주 예측자 기각) · **laptop 2차 배정 E-12 물 Widom**(ASSIGN_MAGI5B §laptop 2차: MAF-66 즉시, CALF-20·MOF16 은 charged_v3 도착 뒤). 예측 (a) MAF-66 ≥ 3 × base (b) MOF16 < CALF-20 (c) CALF-20 물 Q_st [35,45].
 
 ## 2026-09-25 03:24 — desktop(종합자): **E-9b 판정** — srs FSR_1 273 K·15 kPa 강체 3.94 ± 0.01 mmol/g 대 실측 0.20 → R 19.7(≥ 10) → 온도 아님, 맹점 ① 확정(laptop2 제안 시험, 예측 ≥ 17 적중). E-9 결론 유지. laptop E-12 착수 확인.
+
+## 2026-09-25 03:30 — desktop(종합자): E-11 전하본 master 반영 — `charged_v3/calf20_DDEC6.cif` · `charged_v3/mof16_DDEC6.cif`(GFN-FF 고정셀 이완 3.6/43 분, PACMAN). laptop E-12 ② 착수 가능.
