@@ -74,8 +74,17 @@
 09-05 에 **파일은 맞는데 RASPA 가 지역 힘장을 읽어** 결함판으로 완주한 적이 있습니다.
 **끝나면 출력 머리말로 다시 확인하십시오**:
 
-    grep -E "Ow -      Ow|Hw \[ZERO|Lw \[ZERO" <실행폴더>/Output/System_0/*.data | head
-    → `Ow - Ow … p_0/k_B: 89.63300` · `Hw [ZERO_POTENTIAL]` · `Lw [ZERO_POTENTIAL]`
+    f=<실행폴더>/Output/System_0/*.data
+    md5sum <실행폴더>/water.def                       # 6fc8850d3d22a56a17e5643f35a6f731 (정본 5자리)
+    grep -E '^\s*\S+\s+-\s+\S+\s+\[' $f \
+      | grep -E '(^\s*(Hw|Lw)\s+-|-\s+(Hw|Lw)\s+\[)' | grep -vc ZERO_POTENTIAL   # → **0** 이어야 합니다
+    grep -E '^\s*Ow\s+-\s+Ow\s+\[' $f | head -1  # → p_0/k_B: 89.63300
+
+⚠ **`head` 로 몇 줄만 보면 안 됩니다** (15:0x, laptop 이 더 강하게 재서 드러남). 처음 몇 줄이 `ZERO` 여도
+뒤쪽에 아닌 줄이 있을 수 있습니다. **"ZERO 아닌 짝의 수 = 0"** 을 세십시오.
+⚠ 그리고 **짝 줄만** 거르십시오. `Hw`·`Lw` 라는 **글자**는 pseudo-atom 표와 분자 원자 목록에도 나옵니다 —
+제가 처음에 그걸 같이 세서 *"ZERO 아님 6줄"* 로 읽었습니다(09-24 아침 `water.def` 판별자 둘이 틀렸던 것과 같은 계열:
+**세는 대상이 내가 말하는 대상이 아닌** 경우). 짝 줄은 `X  -  Y  [POTENTIAL]` 형식입니다.
 
 데스크탑 `cf3Im025` 는 15:0x 에 이 방법으로 확인했습니다(`water.def` md5 **6fc8850d…** 정본 5자리 ·
 `Ow-Ow 89.63300` · `Hw/Lw ZERO_POTENTIAL`).
