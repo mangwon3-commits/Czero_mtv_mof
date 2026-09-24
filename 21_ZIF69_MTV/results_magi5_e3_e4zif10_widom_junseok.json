@@ -1,0 +1,48 @@
+{
+ "tag": "e4zif10",
+ "cif": "/home/mangwon/.junseok_chain/e4/e4zif10_DDEC6.cif",
+ "protocol": "run_aryl_gcmc.run_one widom (CLAUDE.md §1)",
+ "off_method": "CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)",
+ "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "host": "junseok",
+ "elapsed_s": 1686,
+ "finished": "2026-09-25 05:49:39",
+ "rows": [
+  {
+   "name": "e4zif10_DDEC6",
+   "charges": "on",
+   "temp_K": 298.0,
+   "KH_CO2": 1.00351e-05,
+   "KH_CO2_err": 8.27785e-08,
+   "dU_CO2": -15.0097792267,
+   "dU_CO2_err": 0.0604426586,
+   "status_CO2": "ok",
+   "KH_N2": 1.76325e-06,
+   "KH_N2_err": 6.51676e-09,
+   "dU_N2": -7.3858382314,
+   "dU_N2_err": 0.0182040204,
+   "status_N2": "ok",
+   "selectivity": 5.691251949525025,
+   "selectivity_err": 0.0514433200736852,
+   "Qst_CO2_rt_corrected": 17.487489086864
+  },
+  {
+   "name": "e4zif10_DDEC6_q0",
+   "charges": "off",
+   "temp_K": 298.0,
+   "KH_CO2": 7.669e-06,
+   "KH_CO2_err": 1.62132e-08,
+   "dU_CO2": -13.0612704187,
+   "dU_CO2_err": 0.0369224484,
+   "status_CO2": "ok",
+   "KH_N2": 1.7291e-06,
+   "KH_N2_err": 1.41122e-08,
+   "dU_N2": -7.2620286668,
+   "dU_N2_err": 0.0215480555,
+   "status_N2": "ok",
+   "selectivity": 4.435255335145452,
+   "selectivity_err": 0.037393440857076236,
+   "Qst_CO2_rt_corrected": 15.538980278863999
+  }
+ ]
+}
