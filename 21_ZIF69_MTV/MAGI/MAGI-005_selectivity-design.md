@@ -62,3 +62,5 @@
           msg_id b725b9ae · fd3464d1 · 94cffc50 · 5b5c36f7. 본문 = COMMS 22:3x 항목과 동일 + "담당 세션이 아니면 전달" 한 줄. 우편함(COMMS)이 정본 경로.
     2026-09-24 22:44  **R1 해시 접수 1/3 — laptop2(Balthasar)**: `711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a172` (laptop2 22:38:47, origin/laptop2-20260825 경유). 내용 미공개·미독. 랩탑·Junseok 대기.
     2026-09-24 22:47  **R1 해시 접수 2/3 — Junseok**: `8ca844f5f4fb4e64cfb0e9955d32dc4b421eebf5ccf18ceeb2f86f2e3bf95cea` (junseok 22:46:45, COMMS/junseok.md 84304398 · origin/junseok-20260822 에서 확인). 세션 간 메시지로도 같은 해시 도착(발신 세션 "안정성 스크린 진행 상황 보고", 원문: 해시 한 줄 + "파일은 저장소 밖 ~/.mof_magi/MAGI-005_junseok.md, 읽기 전용 잠금, 공개 신호 뒤 그대로 커밋" — 내용·요지 없음, 봉인 준수). 내용 미독. **랩탑만 대기.**
+    2026-09-24 22:48  **R1 해시 3/3 — 랩탑(Melchior)** `6465581ee11f905d3e125cc40eaf7b0181eb18977e9833e6f6565e289b2b3790` (22:46:41). 넷 완비 → **공개 신호** 게시(COMMS/desktop.md). 종합자 봉인 예측 공개 `MAGI-005_sealed_prediction_hkhome.md`(sha256 fd205fab… 일치).
+          접수 순서: laptop2 22:38 · laptop 22:46:41 · junseok 22:46:45 — 시한(02:00)보다 3시간 이상 앞. 종합자는 이 시각까지 어느 R1 도 읽지 않았음(파일이 저장소 밖에 있어 읽을 것이 없었음 — §11-2 4).
