@@ -2873,3 +2873,8 @@ DENSW 산출은 7123fed 로 손 push(postman 미기동 — 사용자 선택 "손
       소요(이 기기 실측, 워커 6 동시): mslm050·sa50nb50 41~43 분 · saIm0583 33~34 분. 벽시계 19:52→21:13(약 81 분, 2바퀴).
       적재(서술만, ±=95% CI) 283/298/313 K: mslm050 0.169/0.090/0.049 · sa50nb50 0.162/0.084/0.045 · saIm0583 0.172/0.091/0.049 mol/kg.
       진행 줄의 `0.01bar` 는 표시 결함(실제 0.005). 결과 18파일 → laptop-20260822 **905667d** 손 push.
+    [21:3x postman 재기동 — 사용자 지시] 작업트리 정리: master 에서 checkout 해 둔 러너 5파일은 되돌림(병합이 같은 판을 가져옴) ·
+      끝난 체인 스크립트 둘 삭제(master 에서도 이미 없음) · watchdog.log·SESSION_LOG 커밋(fbe900d) → origin/master 병합(fc9380d, 충돌은
+      덧붙임 로그 둘뿐 — 양쪽 다 살림) → push → `setsid nohup bash postman.sh laptop`, PID 48197, 판 b1b67f4f(= master).
+      21:35 틱은 "저장소 bash/러너 실행 중" 으로 건너뜀 — 원인은 **이 세션의 도구 호출**(명령줄에 저장소 절대경로가 든 `/bin/bash -c …`
+      가 `repo_bash_running` 의 `$ROOT` 에 매칭). 21:40 틱은 fetch 뒤 정상 통과. Claude 세션이 긴 명령을 도는 동안은 pull 이 밀립니다(무해, 한 틱 지연).
