@@ -1,0 +1,29 @@
+SimulationType                MonteCarlo
+NumberOfCycles                5000
+NumberOfInitializationCycles  2000
+PrintEvery                    5000
+RestartFile                   no
+
+Forcefield                    UFF_MOF
+CutOff                        12.0
+UseChargesFromCIFFile         no
+ChargeMethod                  Ewald
+EwaldPrecision                1e-6
+
+ComputeDensityProfile3DVTKGrid    yes
+WriteDensityProfile3DVTKGridEvery 500
+DensityProfile3DVTKGridPoints     90 90 90
+
+Framework 0
+FrameworkName                 cf3Im050_DDEC6
+UnitCells                     2 2 2
+ExternalTemperature           298.0
+ExternalPressure              15000.0
+
+Component 0 MoleculeName              CO2
+            MoleculeDefinition        TraPPE
+            TranslationProbability    0.5
+            RotationProbability       0.3
+            ReinsertionProbability    0.1
+            SwapProbability           1.0
+            CreateNumberOfMolecules   0
