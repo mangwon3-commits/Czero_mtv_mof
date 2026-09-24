@@ -7904,3 +7904,73 @@ LCD 값을 봤지만 **상관은 안 냈습니다** — P1·P2 판정은 등록�
 `MACHINE_CAPABILITIES.md` 의 제 줄(RASPA GCMC·Widom · xtb · PACMAN · Zeo++ 소량) 범위 안이면 바로 뜹니다.
 
 **답 필요**: 다음 배정.
+
+---
+
+## 2026-09-24 14:2x — [Q_st 보완] ⚠ **배정 파일이 저장소에 아직 없습니다** · ① 확인 · ② 접수
+
+### 1. 못 띄웁니다 — 파일이 어느 ref 에도 없음
+
+    `run_qn_supp.py` · `ASSIGN_QNSUPP_20260924.md` · `QSTN_SUPP_REGISTRATION_20260924.md`
+    작업트리(14:2x 병합 뒤) **0** · origin/master **0** · origin 의 **모든 ref 0**
+    origin/master 최신: 09-24 14:14 `433a1a2`(postman 반입)
+
+**아직 안 미신 것으로 보입니다.** 전갈의 설명만으로는 러너가 없으니 띄울 수 없습니다.
+**45분짜리 도착 감시**를 걸었습니다 — 오면 러너 원문(선행 검사·이어받기·출력 이름)을 읽고,
+conda python 으로 띄운 뒤 **첫 한 건 실측**을 여기 적겠습니다.
+
+### 2. ① "max/min/정렬로 우리 대표를 고르는 자리" — **제 스크립트에는 없습니다**
+
+    제가 저장소에 올린 파이썬 둘:
+      `fit_corepop_abs_laptop2.py:19`       `sorted(os.listdir(RUNS))`         — 폴더 순회 순서
+      `pair_times_extract_laptop2.py:40`   `sorted(DESK.items(), key=N_super)` — 표시 정렬
+      `pair_times_extract_laptop2.py:52`   `min(r), max(r)`                    — 비율 범위 보고
+    **셋 다 물질을 고르지 않습니다**(소요시간 적합·짝 시간 비). 제 보고들도 **값을 나르기만 했고**
+    "최상위 물질" 을 이름으로 세운 적이 없습니다 — 판정을 종합자 몫으로 둔 규율 덕입니다.
+
+saIm100 건은 **`status: ok` 가 "GCMC 완주" 표지인데 "구조 합격" 으로 읽힌 것** — 제가 09-21 에 짚은
+"실패가 결과처럼 보이는 것" 의 이웃입니다: **완주 표지가 합격 표지처럼 보였습니다.**
+§AW·§AV 결과 JSON 에도 `status` 가 있으니, 관문 조인 없이 `status == ok` 만 거르는 코드가 더 있는지
+**그쪽 스크립트들에서** `grep -n "status.*ok"` 한 번 보시길 권합니다.
+
+### 3. ② MAGI 개정 — 접수
+
+Balthasar = laptop2 그대로 · Caspar = Junseok · HKHOME 종합만 · **봉인이 종합자에게도.**
+평가는 **저장소 밖** `~/.mof_magi/MAGI-NNN_laptop2.md` · 우편함엔 **sha256 한 줄만** · 공개 뒤 해시 대조.
+다음 MAGI 때 그대로 따르겠습니다.
+
+**답 필요**: 배정 파일 푸시.
+
+---
+
+## 2026-09-24 14:2x — [Q_st 보완 착수] laptop2 **24작업** · 워커 12 · 힘장 관문 통과
+
+    착수 **14:23:3x** · `run_qn_supp.py --only mslm050,sa50nb50,saIm0583,base` · conda python
+    .out  `힘장 관문 통과 8e8ec933…` · `조성 4 · 온도 3 · 압력 [0.01, 0.02] → 24작업 · 워커 12`
+    1분 뒤  simulate **12** · `.data` **12개 새로 생성**(첫 것 30 MB) · 파일명에 `313 K`·`1000 Pa`(=0.01 bar)
+    postman 살아 있음(PID 12378)
+
+### `RASPA_DIR` — **이 기기에서 비어 있습니다. 주고 띄웠습니다**
+
+러너의 힘장 관문이 `$RASPA_DIR/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def` 를 읽는데
+laptop2 는 그 변수가 **미설정**입니다 — 그대로 띄우면 **"힘장 파일 없음" 으로 즉시 죽습니다**(시끄럽게 죽으니 좋은 설계).
+
+    이 기기의 RASPA share 사본   `~/RASPA/simulations`  md5 **8e8ec933** ← **하나뿐**
+    conda 환경 안(`envs/czeromof/share/raspa`)        **없음**
+    -> `RASPA_DIR=$HOME/RASPA/simulations` 로 줬습니다. 관문 통과, simulate 도 같은 사본을 씁니다.
+       (데스크탑 10:39 함정 — `…/share/raspa` 를 한 번 더 붙이는 것 — 과 반대 방향으로 맞는 값입니다.)
+
+**Junseok 도 같은지 보십시오** — 변수가 비어 있으면 관문이 죽여 주니 조용히 틀리지는 않지만, 한 번 막힙니다.
+
+### 워커 12 — 이유
+
+이 기기에서 12워커가 6보다 처리량 +4 %(물리 6·논리 12, 09-21 실측)이고, 처리량 비 0.633 도 12 에서 잰 값입니다.
+**값에는 영향이 없습니다**(base 교차 짝의 적재는 워커와 무관). 첫 한 건 실측은 끝나는 대로 적겠습니다.
+
+### 작은 자백 — 또 헛검사
+
+착수 1분 뒤 `find -maxdepth 3 -name "*.data"` 가 **0** 을 줬습니다. 실행 폴더가
+`tnf_runs_qn_…/rh00_…/Output/System_0/` 로 **5단계**라 못 본 것이었고, 깊이 제한을 빼니 **12** 였습니다.
+**없음 과 못 봄 을 가르는 것** — 오늘 세 번째입니다(relax_v3 접두사 · 이것).
+
+**답 필요**: 아니오.
