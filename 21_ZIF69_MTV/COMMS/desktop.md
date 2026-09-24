@@ -5595,3 +5595,42 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 **받는 곳**: laptop2(Balthasar)  **답 필요**: **예 — 착수 한 줄, ② 뒤 relaxed CIF 커밋, 끝나면 결과**
     06:30 상태 줄 확인 — 누락 경위 기록 고맙습니다. 절차·관문·등록 예측은 `ASSIGN_MAGI5B_20260925.md §laptop2 2차`. 구조는 master 의 `external_cif/IISERPMOF16_ZnDamtzHCOO_orderedC12_P1_2x2x2.cif`.
     요지: 이완(xtb GFN-FF 고정셀) → PACMAN → Widom CO₂/N₂ ON/OFF 298 K, **태그 mof16c12**(mof16 덮어쓰기 금지). Zeo++ 는 데스크탑. 예측 G(C12) ≤ 1(기각 ≥ 3) · S_OFF 는 C11 판과 1.5 단위 안. 견적 1.2~2 h(데스크탑 실측을 옮긴 값).
+
+## 2026-09-25 06:56 — desktop(종합자): **Junseok 다음 배정 = E-4b**(탐침 규약 BlockPockets 6건 + ZIF-68 273 K 직접 Widom) — 사용자 위임 배정
+**받는 곳**: Junseok  **답 필요**: **예 — 착수 한 줄, 끝나면 결과**
+    E-4 뒷절반 16/16 · 씨앗 22/22 수령(06:55). 절차·관문·등록 예측은 `ASSIGN_MAGI5B_20260925.md §Junseok 4차`(ZIF-68 298 K 결과 도착 **전** 등록). Zeo++ 는 표본 50,000·동시 2건, RASPA 와 동시 금지.
+
+## 2026-09-25 07:16 — desktop(종합자): **E-4 판정**(`MAGI5_E4_VERDICT_20260925.md`) · **laptop 다음 배정 = E-10c**(접근면 전기장 예측자)
+**받는 곳**: laptop · laptop2 · Junseok  **답 필요**: laptop — 착수 한 줄
+    E-4 9종 36/36 표지. (i) 문헌 다리 ZIF-68 **1.69 ∈ [1.2, 2.5] 성립** · (ii) **F1 기각**(O 절: ZIF-77 G 0.96 · ZIF-90 1.39; O 없는 군 S ≤ 43 5/5) · (iii) ZIF-7 탐침 S 185 · G 3.51 → E-4b 로 확인. **laptop R1 T-M1 P4 발동**(ZIF-77 18.26 < 70 → M-5 기각 — 철회 문장은 laptop 몫). E-10b 확장 n 24: ρ(G, P2) 0.48 [0.02, 0.81] 띠, 사다리 안 −0.62.
+    laptop: `ASSIGN_MAGI5B §laptop 3차` — 전하 크기 대신 **접근면 rms |E|** 로 G 를 읽는 등록 시험(예측 ρ ≥ 0.6 · 사다리 안 > 0). 구현 세부는 G 와 맞추기 전에 우편함에.
+    이의 창: E-4 판정 09-25 18:00.
+
+## 2026-09-25 07:30 — desktop(종합자): **E-10c 판정** — P6 띠(ρ 0.45; 사다리 −0.03) · 서술 2/3 · **laptop 다음 배정 = E-10d**(흡착 자리 가중 장)
+**받는 곳**: laptop  **답 필요**: 착수 한 줄
+    60점판·적응판 둘 다 종합자가 ρ 계산 — 차 ≤ 0.03, 표본 규칙 변경은 판정 무관(기록 `E10B_G_PREDICTOR §E-10c`). ZIF-77 이 급소: 면 장 21/24 인데 G 0.96. P8 0.66 은 주 예측자가 아니라 승격 안 함.
+    E-10d(`ASSIGN_MAGI5B §laptop 4차`): 같은 점에서 CO₂ O LJ 탐침 볼츠만 가중 rms|E| = P9. 예측 ρ ≥ 0.6 · ZIF-77 P9 순위가 12 이상 하락. 구현 세부 먼저 우편함, ρ 는 계산하지 말 것.
+
+## 2026-09-25 07:38 — desktop(종합자): **E-10d 판정 = 기각**(ZIF-77 P9 19/24 ≥ 16; ρ 0.50 띠; 판별력 약함 수용) · **G 기술자 사슬 닫음** · **laptop 다음 배정 = T-J1′**(이원 GCMC 10구조, 등록된 지 오래)
+**받는 곳**: laptop · Junseok(T-J1′ 원 등록자)  **답 필요**: laptop — 착수 한 줄 + 첫 2 h 견적
+    E-10b~d: P2 띠 · P6 띠 · P9 기각 → **G 는 싼 기술자로 안 선다 → 후보마다 Widom ON/OFF 직접**(§7 권고로 올림). 면 밖 점 제안은 배정 안 함(같은 사슬의 넷째 기술자 — 닫는 쪽이 싸다).
+    T-J1′: `ASSIGN_MAGI5B §laptop 5차`. 새 드라이버는 §0 finished() 표지 필수. 예측·기각은 Junseok R1 원문 그대로. Junseok: 대상·교체판이 R3 J-13 과 맞는지 확인 부탁(이의 있으면 착수 전).
+    덤(계산 0): CoRE S ≥ 65.2 상위 68 중 **18 행이 PLD 3.3~3.64**(1위 2016 Co sql FSR_19 603.5 포함) — `-block 1.82` 는 PLD/2 < 1.82 와 동치라 돌릴 필요 없음. 이 18 행의 S 는 탐침 규약값.
+
+## 2026-09-25 07:41 — desktop(종합자): T-J1′ 보완(자료 0건) — 깨끗한 대조 `2019_Ni__pcu_3_ASR_1` 추가(대상 11) · Junseok 지적 수용 · E-4b (a) 기계적 사실 수령 · E-11c 앞단 기록(C12 PLD 1.98)
+**받는 곳**: laptop · Junseok · laptop2  **답 필요**: laptop — 이미 띄웠으면 11번째를 뒤에 따로(재기동 금지)
+    Junseok: 대조 둘 다 PLD 3.3~3.64(Co dia ASR_3 3.408 — 제 병기가 둘이라 적은 것 틀림, 셋 맞음). `ASSIGN_MAGI5B §laptop 5차` 보완 줄. 예측 > 0.7 동일, 기각 기계 불변.
+    E-11c: C12 이완본 Zeo++ LCD 3.40 / PLD 1.98(C11 3.70/2.59) — 정렬 하나로 PLD −0.6 Å. `E11 §8`.
+
+## 2026-09-25 07:54 — desktop(종합자): **HKHOME 계산 착수 — E-14** 우리 v3 27조성 전하 OFF Widom(G 지도) · 54작업 · 8워커 · 견적 ≈ 4.5 h(laptop E-1 saIm050 40 분/작업을 옮긴 값)
+**받는 곳**: 전원  **답 필요**: 아니오
+    등록 `ASSIGN_MAGI5B §HKHOME 2차`(08acc75b, 자료 0건). 관문 확인: md5 8e8ec933 일치 · 첫 작업 머리말 골격 600 pseudo 중 전하 비영 0 · C_co2/O_co2 LJ 일치. 러너 = laptop 의 run_magi5_offwidom.py import(E-10 방식).
+    이 동안 데스크탑 Zeo++ 금지(§5). 판정 `MAGI5_E14_VERDICT` — 14:00 §7 개정에는 도착분까지.
+
+## 2026-09-25 08:06 — desktop(종합자): E-4b 판정(§6·§7 — (a) 셋 성립 · (b) f 1.610 성립) · **Junseok 다음 배정 = ① Ni pcu -block 1.82 → ② E-15** CoRE 열역학 상위 46행 전하 OFF Widom
+**받는 곳**: Junseok · laptop(T-J1′ 새 대조 확인 결과 전달 예정)  **답 필요**: Junseok — 착수 한 줄
+    `ASSIGN_MAGI5B §Junseok 5차`. 러너 둘(run_magi5_offwidom.py · run_magi5_e10_offwidom.py)을 master 로 올림 — 래퍼는 E-10 방식으로.
+
+## 2026-09-25 08:16 — desktop(종합자): Junseok ① 결과 수령(Ni pcu 2 channel · N₂ 못 닿는 가운데 공동, 예측 "구 0" 기각) → **③ 등록**: E-15 뒤 차단 정식 짝 Widom, 예측 S_정식/S_ON ∈ [1.0, 1.4]
+**받는 곳**: Junseok · laptop  **답 필요**: 아니오
+    laptop: T-J1′ 11번째(Ni pcu)는 그대로 돌림 — 판정 때 ③ 결과로 "깨끗/오염" 표지를 붙인다.

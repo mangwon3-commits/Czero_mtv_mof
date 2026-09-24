@@ -1,0 +1,295 @@
+{
+  "test": "MAGI-005 E-4b (a) — 탐침 규약 검사(BlockPockets) ZIF-7 · 8 · 90",
+  "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 4차 (06:56, 자료 0건)",
+  "machine": "junseok",
+  "zeo": {
+    "samples": 50000,
+    "flags": "-ha",
+    "input": "relax_tnf/e4zif<NN>_relaxed.cif"
+  },
+  "protocol": {
+    "widom_init": 3000,
+    "widom_cycles": 15000,
+    "forcefield": "UFF_MOF",
+    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+    "cutoff": 12.0,
+    "temp_K": 298.0,
+    "charges": "UseChargesFromCIFFile yes (charged_v3 DDEC6)",
+    "input": "run_one Widom 틀 + BlockPockets"
+  },
+  "gate": "stderr 에 Blocking-pocket not-found 없음 · .data N = 구 수 × 단위셀 수(등식) · Simulation finished",
+  "zero_criterion": "K_H − ± ≤ 0 이고 K_H < 1e-06 × 차단 없음 참조 → 0 과 구별 안 됨",
+  "registered": "ZIF-7 두 반경 0 channel · ZIF-8 1.65 에서 0 channel(경계) · ZIF-90 1.65 channel ≥ 1 / 1.82 0 channel · 기각: ZIF-7 channel ≥ 1 — 판정문은 종합자",
+  "elapsed_s": 650,
+  "finished": "2026-09-25 07:50:26",
+  "rows": [
+    {
+      "tag": "e4zif7",
+      "probe_radius_A": 1.65,
+      "gas": "CO2",
+      "zeo": {
+        "channels": 0,
+        "pockets": 15,
+        "nodes": 95256,
+        "accessible_nodes": 1616,
+        "n_spheres": 15,
+        "sphere_radii": [
+          4.402,
+          4.369,
+          4.897,
+          4.748,
+          4.386,
+          4.804,
+          5.513,
+          4.882,
+          3.886,
+          4.143,
+          4.243,
+          4.376,
+          4.395,
+          5.212,
+          4.298
+        ],
+        "coord_max": 0.996411,
+        "block_file": "magi5_e4b_runs/zeo/e4zif7/r1.65/e4zif7_relaxed.block",
+        "seconds": 366.6,
+        "peak_rss_MB": 11662,
+        "stopped_by_guard": false,
+        "res": {
+          "Di": 5.58895,
+          "Df": 2.37397,
+          "Dif": 5.58895
+        }
+      },
+      "widom": {
+        "status": "not-run",
+        "why": "0 channel — 통로 없음(배정: 채널 남는 경우만 Widom)"
+      }
+    },
+    {
+      "tag": "e4zif7",
+      "probe_radius_A": 1.82,
+      "gas": "N2",
+      "zeo": {
+        "channels": 0,
+        "pockets": 15,
+        "nodes": 95255,
+        "accessible_nodes": 1270,
+        "n_spheres": 15,
+        "sphere_radii": [
+          3.432,
+          4.518,
+          4.456,
+          4.443,
+          4.387,
+          4.473,
+          4.291,
+          4.853,
+          4.108,
+          3.832,
+          4.039,
+          4.425,
+          4.424,
+          5.047,
+          3.923
+        ],
+        "coord_max": 0.997221,
+        "block_file": "magi5_e4b_runs/zeo/e4zif7/r1.82/e4zif7_relaxed.block",
+        "seconds": 364.5,
+        "peak_rss_MB": 11257,
+        "stopped_by_guard": false,
+        "res": {
+          "Di": 5.58895,
+          "Df": 2.37397,
+          "Dif": 5.58895
+        }
+      },
+      "widom": {
+        "status": "not-run",
+        "why": "0 channel — 통로 없음(배정: 채널 남는 경우만 Widom)"
+      }
+    },
+    {
+      "tag": "e4zif8",
+      "probe_radius_A": 1.65,
+      "gas": "CO2",
+      "zeo": {
+        "channels": 0,
+        "pockets": 2,
+        "nodes": 43614,
+        "accessible_nodes": 1934,
+        "n_spheres": 2,
+        "sphere_radii": [
+          11.82,
+          9.118
+        ],
+        "coord_max": 0.939758,
+        "block_file": "magi5_e4b_runs/zeo/e4zif8/r1.65/e4zif8_relaxed.block",
+        "seconds": 407.7,
+        "peak_rss_MB": 8976,
+        "stopped_by_guard": false,
+        "res": {
+          "Di": 11.36898,
+          "Df": 3.28416,
+          "Dif": 11.36898
+        }
+      },
+      "widom": {
+        "status": "not-run",
+        "why": "0 channel — 통로 없음(배정: 채널 남는 경우만 Widom)"
+      }
+    },
+    {
+      "tag": "e4zif8",
+      "probe_radius_A": 1.82,
+      "gas": "N2",
+      "zeo": {
+        "channels": 0,
+        "pockets": 2,
+        "nodes": 43614,
+        "accessible_nodes": 1698,
+        "n_spheres": 2,
+        "sphere_radii": [
+          10.511,
+          8.846
+        ],
+        "coord_max": 0.605433,
+        "block_file": "magi5_e4b_runs/zeo/e4zif8/r1.82/e4zif8_relaxed.block",
+        "seconds": 403.6,
+        "peak_rss_MB": 8682,
+        "stopped_by_guard": false,
+        "res": {
+          "Di": 11.36898,
+          "Df": 3.28416,
+          "Dif": 11.36898
+        }
+      },
+      "widom": {
+        "status": "not-run",
+        "why": "0 channel — 통로 없음(배정: 채널 남는 경우만 Widom)"
+      }
+    },
+    {
+      "tag": "e4zif90",
+      "probe_radius_A": 1.65,
+      "gas": "CO2",
+      "zeo": {
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 50075,
+        "accessible_nodes": 2570,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "coord_max": 0.0,
+        "block_file": "magi5_e4b_runs/zeo/e4zif90/r1.65/e4zif90_relaxed.block",
+        "seconds": 442.6,
+        "peak_rss_MB": 7641,
+        "stopped_by_guard": false,
+        "res": {
+          "Di": 10.80912,
+          "Df": 3.46642,
+          "Dif": 10.7811
+        }
+      },
+      "widom": {
+        "minutes": 10.8,
+        "unit_cells": [
+          2,
+          2,
+          2
+        ],
+        "n_spheres_per_uc": 0,
+        "n_expected": 0,
+        "data": "magi5_e4b_runs/e4zif90_r1.65/widom_CO2_e4zif90_DDEC6/Output/System_0/output_e4zif90_DDEC6_2.2.2_298.000000_1e-05.data",
+        "seed": 1790289576,
+        "n_blocked_reported": 0,
+        "pockets_blocked_line": true,
+        "stderr_not_found": false,
+        "marker_finished": true,
+        "KH": 1.19492e-05,
+        "KH_err": 1.10683e-07,
+        "dU": -15.9772965964,
+        "dU_err": 0.0144402387,
+        "status": "ok",
+        "KH_over_unblocked": 0.991750078847335,
+        "KH_units_from_unblocked": 0.9,
+        "KH_effectively_zero": false
+      }
+    },
+    {
+      "tag": "e4zif90",
+      "probe_radius_A": 1.82,
+      "gas": "N2",
+      "zeo": {
+        "channels": 0,
+        "pockets": 2,
+        "nodes": 50076,
+        "accessible_nodes": 2091,
+        "n_spheres": 2,
+        "sphere_radii": [
+          10.699,
+          10.247
+        ],
+        "coord_max": 0.844899,
+        "block_file": "magi5_e4b_runs/zeo/e4zif90/r1.82/e4zif90_relaxed.block",
+        "seconds": 440.6,
+        "peak_rss_MB": 8994,
+        "stopped_by_guard": false,
+        "res": {
+          "Di": 10.80912,
+          "Df": 3.46642,
+          "Dif": 10.7811
+        }
+      },
+      "widom": {
+        "status": "not-run",
+        "why": "0 channel — 통로 없음(배정: 채널 남는 경우만 Widom)"
+      }
+    }
+  ],
+  "canonical": {
+    "e4zif7": {
+      "pair": "CO₂@1.65 / N₂@1.82",
+      "reference_unblocked": {
+        "source": "results_magi5_e3_e4zif7_widom_junseok.json",
+        "KH_CO2": 0.00403,
+        "KH_CO2_err": 2.45089e-05,
+        "KH_N2": 2.17369e-05,
+        "KH_N2_err": 1.59177e-07,
+        "S": 185.39902193965102,
+        "S_err": 1.7648076533700456
+      },
+      "S": null,
+      "note": "두 반경 모두 0 channel — CO₂ · N₂ 둘 다 통로 없음 → 차단 없음 S_ON 은 탐침 규약값"
+    },
+    "e4zif8": {
+      "pair": "CO₂@1.65 / N₂@1.82",
+      "reference_unblocked": {
+        "source": "results_magi5_e3_e4zif8_widom_desktop-nvsrr9m.json",
+        "KH_CO2": 1.41399e-05,
+        "KH_CO2_err": 9.00666e-08,
+        "KH_N2": 2.20669e-06,
+        "KH_N2_err": 7.1698e-09,
+        "S": 6.407741912094584,
+        "S_err": 0.04581852161179417
+      },
+      "S": null,
+      "note": "두 반경 모두 0 channel — CO₂ · N₂ 둘 다 통로 없음 → 차단 없음 S_ON 은 탐침 규약값"
+    },
+    "e4zif90": {
+      "pair": "CO₂@1.65 / N₂@1.82",
+      "reference_unblocked": {
+        "source": "results_magi5_e3_e4zif90_widom_desktop-nvsrr9m.json",
+        "KH_CO2": 1.20486e-05,
+        "KH_CO2_err": 7.69979e-08,
+        "KH_N2": 1.63821e-06,
+        "KH_N2_err": 1.09667e-08,
+        "S": 7.354734740967276,
+        "S_err": 0.06806758189141017
+      },
+      "S": null,
+      "divergent": true,
+      "note": "N₂@1.82 0 channel(통로 없음) · CO₂@1.65 통로 있음 → 정식 짝 발산(E-2b 형)"
+    }
+  }
+}
