@@ -125,6 +125,27 @@
     ⚠ 첫 `.data` 가 나오는 시점을 보고 **자기 기기 실측으로 갱신**해 주십시오.
     Zeo++ 안 씁니다 — `RISK_WORKERS`·`ZEO_GB_PER_JOB` 손댈 일 없습니다. RASPA 건당 약 471 MB.
 
+## 4-1. 추가 배정 — **Junseok: nb 사다리 완성** (16:0x, 사용자 승인 "do it all")
+
+Junseok 이 Q_st §-보완 18/18 을 **72분**(워커 10 · 작업당 26.5~43.1분 · 씨앗 겹침 0)에 끝내고 비었습니다.
+
+    DW_EXTRA=nbIm050 DW_SUB=jk_nbIm050 setsid nohup <conda python> run_density_water_v3w.py nbIm050 ...
+    DW_EXTRA=nbIm100 DW_SUB=jk_nbIm100 setsid nohup <conda python> run_density_water_v3w.py nbIm100 ...
+
+    ⚠ `export RASPA_DIR=$HOME/RASPA/simulations` 를 **먼저** 주십시오(§2). 이제 `run_water.py` 에
+      힘장 관문이 있어 안 고친 사본이면 **실행 폴더를 만들기 전에 멈춥니다** — 막히면 그 메시지대로
+      고치고 다시 띄우십시오.
+
+**왜**: 습윤 사다리가 **둘**이 되어야 *"물이 술폰산에만 붙는가"* 를 가릅니다.
+
+    술폰산  base ✅ → saIm025(laptop 중) → saIm050 ✅ → saIm0583 ✅   [saIm100 탈락 — 상한 표시용]
+    nb      base ✅ → nbIm025 ✅ → **nbIm050 ⬜** → nbIm075 ✅ → **nbIm100 ⬜**
+
+nb 는 **강한 자리가 없는 대조**입니다(§AS 판정 1 에서 base 만 −1.7 로 차가 작았던 그 계열).
+둘을 채우면 nb 가 **0→25→50→75→100 다섯 칸 전부** 차는 **유일한 사다리**가 됩니다.
+
+⚠ **관문 확인**(16:0x): nbIm050 LCD 감소 **−0.09 %** · nbIm100 **2.31 %** — **둘 다 통과**. CIF 둘 다 있음.
+
 ## 5. 끝나면
 
     · 완주 표지(`Simulation finished`)를 **직접 확인**하고 우편함에 적으십시오. 폴더 존재는 표지가 아닙니다.
