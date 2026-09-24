@@ -26,6 +26,16 @@
 
 ## 2. 기동
 
+⚠ **기동 줄 보완 (15:0x — laptop 지적)**: `RASPA_DIR` 이 `.bashrc` 에만 있으면 **비대화 셸에서 빠집니다.**
+`setsid nohup` 은 비대화 셸이라 그대로 치면 안 잡힙니다. **두 줄을 먼저 주십시오.**
+
+    export RASPA_DIR=$HOME/RASPA/simulations          # share/raspa 의 **부모**
+    PY=$(conda run -n czeromof which python 2>/dev/null || echo python)   # 또는 절대경로 명시
+
+그리고 **15:0x 부터 `run_water.py` 에 힘장 관문이 생겼습니다** — 안 고친 `$RASPA_DIR` 사본이면
+**실행 폴더를 만들기 전에 멈춥니다**(아래 §2-1). 이미 도는 작업에는 영향이 없습니다.
+
+
     laptop (둘을 **동시에**, 8코어에 simulate 2)
         cd 21_ZIF69_MTV
         DW_EXTRA=saIm025 DW_SUB=lap_saIm025 setsid nohup python run_density_water_v3w.py saIm025 \
@@ -39,6 +49,36 @@
 ⚠ **`DW_EXTRA` 없이 주면 러너가 막습니다** — `run_density_water_v3.py:110` 이 등록 덱(`base·nbIm025·saIm050`)
 밖 대상을 거부합니다. **관문이 맞게 동작하는 것이고**, `DW_EXTRA` 가 이 문서로 등록된 확장입니다.
 ⚠ **`DW_SUB` 를 꼭 주십시오** — 안 주면 두 프로세스가 같은 결과 JSON 을 잡습니다(러너 주석의 그 이유).
+
+## 2-1. ★ 힘장 관문을 `run_water.py` 에 넣었습니다 (15:0x — laptop 지적에서 나온 것)
+
+**이 러너는 `water.def`(5자리 분자 정의)는 저장소에서 복사해 지켰지만 힘장 파일은 안 봤습니다.**
+`Hw none`/`Lw none` 는 `$RASPA_DIR` 에서 오고 **기기마다 따로 고쳐야 합니다**(CLAUDE.md §1).
+안 고친 기기에서 돌면 **수소결합이 없는 물**(친화도 약 8.6배 과소)이 나오는데
+**결과는 완전히 정상으로 보입니다** — §0 의 그 무늬입니다.
+
+    `run_water_v3w.py`        09-07 부터 관문 있음
+    `run_water.py`            **없었음**  ← 여기
+    `run_density_water_v3.py` 가 `run_water` 를 import  →  **습윤 밀도 격자 전체가 관문 밖**이었습니다
+
+**두 길을 다 쟀습니다**(15:0x):
+
+    통과하는 길   정본 md5 8e8ec933… → `ff_gate_once() -> True`                       ✓
+    막는 길       **있지만 안 고친 사본**(정본에서 `Hw none`/`Lw none` 두 줄 뺀 것,
+                  66줄 → 64줄, md5 4d428e02…) → **실행 폴더를 만들기 전에 중단**      ✓
+    ⚠ 첫 시험은 `RASPA_DIR=/tmp/nope` 로 쟀는데 **안 막혔습니다** — `ff_gate.ff_path()` 가
+      없는 경로면 홈으로 되돌아가기 때문입니다. 그건 **무해한 쪽**(RASPA 도 못 찾아 죽음)이고,
+      **위험한 쪽은 "있지만 안 고친 사본"** 입니다. 재서 확인했습니다.
+
+⚠ **파일 관문은 머리말 관문을 대신하지 못합니다**(`ff_gate.py` 자기 주석 · `FF_GATES_20260907 §1`) —
+09-05 에 **파일은 맞는데 RASPA 가 지역 힘장을 읽어** 결함판으로 완주한 적이 있습니다.
+**끝나면 출력 머리말로 다시 확인하십시오**:
+
+    grep -E "Ow -      Ow|Hw \[ZERO|Lw \[ZERO" <실행폴더>/Output/System_0/*.data | head
+    → `Ow - Ow … p_0/k_B: 89.63300` · `Hw [ZERO_POTENTIAL]` · `Lw [ZERO_POTENTIAL]`
+
+데스크탑 `cf3Im025` 는 15:0x 에 이 방법으로 확인했습니다(`water.def` md5 **6fc8850d…** 정본 5자리 ·
+`Ow-Ow 89.63300` · `Hw/Lw ZERO_POTENTIAL`).
 
 ## 3. 규약 — 건조 밀도맵과 **다릅니다**
 
