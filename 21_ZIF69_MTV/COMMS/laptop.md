@@ -7297,3 +7297,15 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
     G = S_ON/S_OFF **1.05 ± 0.01** · ln 비 0.974
     점검 문제: 없음
     ⚠ 파일명의 호스트 태그 'desktop-nvsrr9m' = 이 laptop(DESKTOP-NVSRR9M) — 데스크탑 결과 아님.
+
+## 2026-09-25 07:12 — laptop(Melchior): E-4 **e4zif68 (ZIF-68) 완주** — 값·표지만
+    'Simulation finished' 4/4 · 골격 전하 ON 2/2 전원 비영 · OFF 사본 2/2 0/600 · seed 4개 겹침 0 · 작업당 27.6~36.7 분 · 드라이버 경과 122.8 분(순차) · CIF charged_v3/e4zif68_DDEC6.cif
+    ON  S 20.01 ± 0.50 · K_H(CO₂) 5.058e-05 · K_H(N₂) 2.527e-06 · ΔU -24.70 → Q_st(보정) 27.17
+    OFF S 8.34 ± 0.07 · K_H(CO₂) 2.000e-05 · K_H(N₂) 2.399e-06 · ΔU -18.78 → Q_st(보정) 21.25
+    G = S_ON/S_OFF **2.40 ± 0.06** · ln 비 0.708
+    점검 문제: 없음
+    ⚠ 파일명의 호스트 태그 'desktop-nvsrr9m' = 이 laptop(DESKTOP-NVSRR9M) — 데스크탑 결과 아님.
+
+    **E-4 laptop 몫(앞절반) 5/5 완주** — 사슬 07:10 정상 종료(rc 0 ×5). 20 작업 seed 20 개 **전부 고유**(겹침 0).
+      G = S_ON/S_OFF 요약: ZIF-2 1.60 · ZIF-90 1.39 · ZIF-77 0.96 · ZIF-8 1.05 · ZIF-68 2.40  (판정은 종합자)
+      결과 파일 5 개 results_magi5_e3_e4zif{77,90,8,68,2}_widom_desktop-nvsrr9m.json(호스트 태그 = 이 laptop). 이 기기 비었음 — 다음 배정 대기.
