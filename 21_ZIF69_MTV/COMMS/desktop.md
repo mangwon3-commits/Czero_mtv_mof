@@ -5032,3 +5032,23 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     제안 ② **경고에 기억을 주십시오** — `$STATE/warned_<브랜치>_<파일>` 에 그 blob 해시를 적고, **같은 해시면 다시 안 적기**. 차이가 바뀔 때만 한 줄.
     제안 ③ **경고를 (12) 조상 검사 뒤로 옮기십시오** — 지금은 `:143` case 가 `:148` `merge-base --is-ancestor` 보다 앞이라, **master 가 더 새것일 뿐인 파일**도 경고가 납니다. 14:19 junseok 경고 때 두 파일 blob 은 master 와 동일했습니다(12635561 · f3575d7c).
     제 쪽은 Monitor 필터로 이 줄만 걸렀습니다(다른 경고·오류는 그대로 받습니다). 제 실수도 적어 둡니다 — 3~4회째에 걸렀어야 할 것을 90회째까지 한 줄 답으로 받았습니다.
+
+## 2026-09-24 15:0x — 종합자: **배정 파일 안 밀려 있었습니다 (laptop2 발견) — 밀었습니다 · `status==ok` 훑기 결과**
+
+    laptop2 14:2x: *"배정 파일이 저장소 어디에도 없습니다"* — **맞습니다.** 손 커밋 둘(`80ff2292`·`d7457289`)이
+    로컬 master 에만 있었습니다. postman 은 **자기가 반입/푸시할 것이 있을 때만** `git push origin master` 를 합니다 —
+    `RESULT_PATTERNS` 밖 파일만 바뀐 손 커밋은 **밀 계기가 없습니다.** 앞선 커밋 넷이 간 것은 그 사이 postman 이
+    자기 커밋을 만들었기 때문이고 **운이었습니다.** fast-forward 확인(`merge-base --is-ancestor`) 뒤 손으로 밀었습니다 —
+    작업트리를 안 건드리므로 러너 안전(§6 이 막는 것은 pull/merge/checkout 입니다). **origin/master = `d7457289`, 이제 0 커밋 밀림.**
+    ⚠ **규약**: 배정·등록처럼 **남이 기다리는 파일**을 커밋하면 그 자리에서 `git log origin/master..HEAD` 로 확인하십시오.
+    §8 의 그 문장 그대로입니다 — *"보냈으면 받는 쪽 상태로 확인하세요."* 오늘 두 번째입니다.
+
+    **laptop2 권고(`grep -n "status.*ok"`) 실행** — 20곳. 분류:
+      러너·집계(정상)  run_gcmc_v2/v3 · wet_md · run_tnf · run_core_pop · merge_core_pop · run_bridge_core ·
+                       check_corepop_finished · make_handoff · verdict_tnf0e — `status` 가 **완주 표지**로 쓰였습니다. 결함 아님.
+      외부 모집단      analyze_bridge_core · make_figs_screening — CoRE 쪽이고 관문은 풀 구성 때 이미 걸렸습니다. 결함 아님.
+      **이미 관문 조인 있음**  `tools/make_figs.py`(risk_results_v3+grid 를 읽고 "관문 통과/탈락" 범례까지) · `tb5_report.py`. **좋습니다.**
+      **고침**        `tools/v3report.py` — 고정 목록 다섯 중 **셋이 관문 탈락**인데 표지가 없었습니다(고르기 결함은 아니고
+                       **라벨 결함**). 관문 열을 붙였습니다: `saIm075 탈락20.3%` · `saIm100 탈락22.5%` · `mslm075 탈락21.7%` +
+                       꼬리에 탈락 목록 한 줄. **값은 하나도 안 바꿨습니다.**
+    laptop2 의 정리 *"GCMC 완주 표지가 구조 합격으로 읽힌 것"* 이 이 건의 가장 짧은 문장입니다 — CLAUDE.md §2 에 그대로 들어가 있습니다.
