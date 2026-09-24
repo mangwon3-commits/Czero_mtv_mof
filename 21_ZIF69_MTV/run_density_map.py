@@ -30,6 +30,7 @@
     S=O 공명을 갖는다. "왜 술폰산이 강한가"를 보려는 계산에서 가장 쓰면 안 된다.
 """
 import glob
+import gzip
 import json
 import os
 import re
@@ -110,6 +111,30 @@ Component 0 MoleculeName              CO2
 """)
 
 
+def finished(path):
+    """RASPA 가 **끝까지 갔다는 표지**. `run_aryl_gcmc.finished()` · `run_tnf.py:178` 과 같은 조건.
+
+    2026-09-24 Junseok 발견 — 이 모듈이 CLAUDE.md §0 의 **09-21 무늬** 그대로였습니다:
+    이어받기는 `.data` + VTK 의 **존재만** 보고, 신규 실행은 `subprocess.run(check=False)` 뒤
+    값만 보고 `ok` 를 냈습니다. `WriteDensityProfile3DVTKGridEvery 500` 이라
+    **끊긴 실행에도 VTK 가 남으므로** 이어받기가 중간 실행을 완주로 회수할 수 있었습니다.
+
+    **지금까지 막아 준 것은 설계가 아니라 우연이었습니다** — `loading_from` 이 찾는
+    `Average loading absolute [mol/kg framework]` 줄이 완주 출력에서 **딱 한 번,
+    끝에서 124줄 앞**(실측: 239957/240088)에만 나와서 끊긴 실행은 `None` 이 됐습니다.
+    09-19 `run_humid_wc` 의 *"파서가 최종 요약 줄을 요구한 우연이 보호"* 와 같은 상태입니다.
+    **값이 아니라 표지가 자입니다.**
+
+    확인: 기존 완주분 16개(`density_v3` 12 + `density_v3_gap` 4) **전부 표지 있음** —
+    이 관문을 넣어도 회수되던 것이 안 잃습니다.
+    """
+    try:
+        with open(path, encoding='utf-8', errors='ignore') as f:
+            return 'Simulation finished' in f.read()
+    except OSError:
+        return False
+
+
 def loading_from(path):
     for line in open(path, encoding='utf-8', errors='ignore'):
         if 'Average loading absolute [mol/kg framework]' in line:
@@ -117,6 +142,33 @@ def loading_from(path):
             if m:
                 return float(m.group(1)), float(m.group(2))
     return None, None
+
+
+def gzip_com_grid(d):
+    """완주 뒤 **COM 격자만** gzip 합니다. 원본은 남깁니다.
+
+    2026-09-24 Junseok 발견 — postman (16) 의 글롭이 `*.vtk.gz` 인데 RASPA 는
+    `COMDensityProfile_CO2.vtk`(압축 안 됨)를 씁니다. 그래서 **새 격자가 하나도 안 실렸습니다.**
+    `density_v3/README.md` 관례가 *"질량중심(COM) 판만, gzip 으로"* (원본 2.0 MB → 0.062 MB, 32배)
+    이므로 **글롭이 아니라 러너를 맞춥니다.** 전원자 판(`DensityProfile_CO2.vtk`)은 안 올립니다 —
+    분석 규약이 COM 이고 `export_diff_vtk.py:84` 가 COM 을 하드코딩합니다.
+
+    원본을 지우지 않는 이유: `export_diff_vtk.py` 등 읽는 쪽이 `.vtk` 를 기대합니다.
+    ⚠ 압축을 풀 때는 세대를 이름에 박으십시오(`DENSITY_GRID_TWO_GENERATIONS_20260906`).
+    """
+    made = 0
+    for src in glob.glob(os.path.join(d, 'VTK', 'System_0', 'COMDensityProfile*.vtk')):
+        dst = src + '.gz'
+        try:
+            if os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src):
+                continue
+            with open(src, 'rb') as fi, gzip.open(dst + '.tmp', 'wb', compresslevel=9) as fo:
+                shutil.copyfileobj(fi, fo)
+            os.replace(dst + '.tmp', dst)          # 원자적 — 반쯤 쓴 .gz 를 postman 이 집지 않게
+            made += 1
+        except OSError:
+            pass
+    return made
 
 
 def run_one(job):
@@ -128,7 +180,7 @@ def run_one(job):
     # 이미 끝난 실행은 재사용한다. 밀도 격자가 남아 있어야 하므로 VTK 존재도 본다.
     done = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
     vtk = glob.glob(os.path.join(d, 'VTK', 'System_0', '*DensityProfile*'))
-    if done and vtk:
+    if done and vtk and finished(done[0]):          # ← 표지를 요구합니다(2026-09-24). 존재만으로는 안 됩니다.
         v, e = loading_from(done[0])
         if v is not None:
             return tag, label, v, e, 'cached'
@@ -149,12 +201,15 @@ def run_one(job):
     outs = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
     if not outs:
         return tag, label, None, None, '출력 없음'
+    if not finished(outs[0]):                       # ← `check=False` 라 RASPA 가 죽어도 여기로 옵니다.
+        return tag, label, None, None, '미완주'      #    VTK 는 남겨 둡니다 — 다음 실행이 표지를 보고 다시 돕니다.
     v, e = loading_from(outs[0])
     # VTK 는 **지우지 않는다.** 이 계산의 산출물이다.
     for sub in ('Movies', 'Restart'):
         shutil.rmtree(os.path.join(d, sub), ignore_errors=True)
     n_vtk = len(glob.glob(os.path.join(d, 'VTK', 'System_0', '*DensityProfile*')))
-    return tag, label, v, e, f'ok (밀도격자 {n_vtk}개)'
+    gz = gzip_com_grid(d)
+    return tag, label, v, e, f'ok (밀도격자 {n_vtk}개{", COM gz" if gz else ""})'
 
 
 def _star(a):

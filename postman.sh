@@ -34,11 +34,29 @@ fi
 cd "$ROOT" || exit 1
 INBOX="$ROOT/.postman_inbox_$MACHINE"; LOG="$ROOT/.postman_$MACHINE.log"; FLAG="$ROOT/.postman_flag"
 STATE="$ROOT/.postman_state_$MACHINE"; mkdir -p "$STATE"
-RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md'
+RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/v3_water_repro*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/density_v3*/density_results.json 21_ZIF69_MTV/density_v3*/*/VTK/System_0/*.vtk.gz 21_ZIF69_MTV/water_runs_density_v3w/rh90_*/VTK/System_0/*.vtk.gz 21_ZIF69_MTV/density_water_v3w/loadings_*.json 21_ZIF69_MTV/density_water_v3w/*/water_results.json 21_ZIF69_MTV/density_v3*/*/simulation.input'
+
+# (17) 2026-09-24 Junseok 발견 — **공용 파일은 ④ 로 자동 반입하지 않습니다.**
+#   `git checkout <가지> -- <파일>` 반입은 **가지 커밋을 master 의 조상으로 만들지 않으므로**
+#   (12) 의 파일별 조상 검사가 그 파일에 대해 **끝내 안 걸립니다.** 기기마다 따로인 결과 파일은
+#   필자가 하나라 괜찮은데, **여러 기기가 쓰는 한 파일**은 가지마다 판이 달라 **영원히 번갈아** 들어옵니다.
+#   실측: `MACHINE_CAPABILITIES.md` 가 07:38~08:25 에 junseok↔laptop 으로 **20커밋** 왕복했고,
+#   마지막이 늘 laptop 판이라 **Junseok 줄이 master 에서 사라졌습니다.**
+#   COMMS/ 는 "한 파일 한 필자" 라 구조적으로 안전해서 이미 제외돼 있습니다 — 아래는 그 예외의 나머지입니다.
+#   **자동 반입 대신 우편함에 알리고, 병합은 사람이 합니다.**
+NOAUTO_IMPORT='21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/density_water_v3w/loadings_from_output.json'
 say(){ echo "[$(date '+%m-%d %H:%M:%S')] $*" >> "$LOG"; }
 inbox(){ echo "[$(date '+%m-%d %H:%M')] $*" >> "$INBOX"; touch "$FLAG"; }
 repo_bash_running(){ ps -eo args | grep -E "^(/bin/)?bash .*\.sh" | grep -v postman.sh | grep -vE "wsl_keepalive|lammps_watchdog|ensure_guards" | grep -qE "$ROOT|^bash [^/]"; }
 runner_running(){ pgrep -x simulate >/dev/null || pgrep -f "python[0-9.]* .*run_[A-Za-z0-9_]*\.py" >/dev/null; }
+# (16-정정) 2026-09-24 Junseok — **글롭이 새 격자를 0개 잡았습니다.** RASPA 는 `COMDensityProfile_CO2.vtk`
+#      (압축 안 됨)를 쓰는데 글롭이 `*.vtk.gz` 였습니다. 제가 "격자 28개 잡힘" 으로 확인했다고 한 것은
+#      **이미 압축돼 master 에 있던 옛 파일**을 센 것이라 **순환 확인**이었습니다(새 출력을 하나도 안 봄).
+#      글롭은 `.gz` 로 **둡니다**(`density_v3/` 관례 · 원본 2.0 MB → 0.062 MB). 대신 **러너가 완주 뒤
+#      COM 격자를 gzip 하도록** `run_density_map.run_one` 을 고쳤습니다. 전원자 판은 안 올립니다.
+# (16) 2026-09-24 — 밀도맵 결과 경로를 **일감을 주기 전에** 넣습니다. `density_v3*/density_results.json`
+#      + COM 격자(.vtk.gz) + `simulation.input`. `density_v3/` 가 추적하는 것과 같은 세 종류입니다.
+#      (11)·(12) 에서 두 번 데인 순서를 이번엔 거꾸로 밟습니다 — **경로 먼저, 계산 나중.**
 # (11) 09-23 10:2x — **같은 결함이 §AW 에서 반복**. (8)에서 `core_pop_results_*` 를 넣었는데
 #      §AW 의 `core_wc_results_*` 는 **또 빠져** 있었습니다. 패턴이 **시험 이름마다 늘어나는 구조**라
 #      새 시험을 열 때마다 같은 자리에서 막힙니다. `pair_times_*` 와 `MACHINE_CAPABILITIES.md`
@@ -77,40 +95,16 @@ while :; do
   #     merge 로 바뀝니다. `if…fi` 는 bash 가 통째로 읽은 뒤 실행하고 교체는 mv(원자적 rename)라
   #     돌던 파일은 안 바뀝니다.
   BR=$(git rev-parse --abbrev-ref HEAD)
-  if git fetch -q --all 2>>"$LOG"; then
-    for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|junseok|^origin$"); do  # (7) 15:5x: 짧은 이름 origin(=origin/HEAD) 이 브랜치로 취급돼 master 의 남의 푸시를 ④ 로 재커밋(e202853) → 갈래가 생김. 제외.
-      key=$(echo "$rb" | tr '/' '_'); last=$(cat "$STATE/$key" 2>/dev/null || echo ""); cur=$(git rev-parse "$rb")
-      if [ -n "$last" ] && [ "$last" != "$cur" ]; then
-        git log --format="  %h %ad %s" --date=format:'%m-%d %H:%M' "$last..$cur" | head -8 | while read -r l; do inbox "[$rb] $l"; done
-      fi; echo "$cur" > "$STATE/$key"
-      # (12) 2026-09-23 laptop2 — **반입을 state 에서 떼어 냅니다.** 위 `echo "$cur" > $STATE/$key` 는 `fi` 밖이라
-      #      **반입이 안 됐어도 state 가 올라갑니다.** 그래서 패턴이 없던 시각에 틱이 그 커밋을 한 번 보고 지나가면
-      #      그 커밋이 last 로 박히고, 이후 틱은 `cur ^last` 범위만 보므로 **그 파일은 영영 안 옵니다 —
-      #      패턴을 나중에 고쳐도 소급되지 않습니다.** 09-23 §AW 가 이 창에 걸릴 뻔했습니다(내용은 무사).
-      #      그래서 커밋 범위를 버리고 **트리를 직접 견줍니다.** 어느 창을 놓쳐도 다음 틱이 스스로 회복합니다.
-      #      ^HEAD 가 하던 "master 가 더 새것이면 덮지 않기"(결함 (6)) 는 **파일별 조상 검사**로 대신합니다 —
-      #      브랜치에서 그 파일을 마지막으로 만진 커밋이 이미 master 안이면 건너뜁니다.
-      if [ "$BR" = "master" ] && [ "$rb" != "origin/master" ]; then
-        set -f; cand=$(git diff --name-only HEAD "$cur" -- $RESULT_PATTERNS 2>/dev/null | grep -v COMMS/); set +f
-        files=""
-        for f in $cand; do
-          bc=$(git log -1 --format=%H "$cur" -- "$f" 2>/dev/null)
-          [ -n "$bc" ] || continue                                   # 브랜치엔 없는 파일(master 쪽 삭제/신규) — 건드리지 않는다
-          git merge-base --is-ancestor "$bc" HEAD 2>/dev/null && continue   # master 가 이미 그 커밋을 가짐 → 더 오래된 판으로 덮지 않는다
-          files="$files$f
-"
-        done
-        files=$(printf '%s' "$files" | sed '/^$/d')
-        if [ -n "$files" ]; then echo "$files" | xargs -r git checkout "$cur" -- 2>>"$LOG" && git add $files && \
-          git commit -q -m "[postman:$MACHINE] $rb 결과 반입 ($(git rev-parse --short "$cur"))" && git push -q origin master 2>>"$LOG" && inbox "[반입] $rb → master: $(echo "$files" | tr '\n' ' ')"; fi
-      fi
-    done
-  else say "fetch 실패"; fi
-  # (9-3) 09-21 15:4x — 판정을 **fetch 뒤**로 옮겼습니다(랩탑이 넘긴 판단).
-  #   앞에 있으면 직전 틱이 받아 온 ref 를 써서 새 판이 **최대 두 틱(~10분)** 뒤에 넘어갔습니다.
-  #   랩탑 우려("fetch 실패한 틱에서 판정이 통째로 건너뛰어진다")는 **배치로 피합니다** —
-  #   `if git fetch …; then … fi` **블록 밖**에 두었으므로 fetch 가 실패해도 판정은 돕니다
-  #   (그 틱은 낡은 ref 로 보는 것뿐, 예전과 같음). 두 걱정을 동시에 없앱니다.
+  git fetch -q --all 2>>"$LOG"; FETCH_OK=$?
+  # ⚠ 자기 갱신은 **fetch 성공 여부와 무관하게** 돕니다 — (9-3) 이 일부러 `if fetch` 밖에 둔 이유입니다
+  #   ("fetch 실패한 틱에서 판정이 통째로 건너뛰어진다" 랩탑 우려). fetch 가 실패해도 낡은 ref 로
+  #   보는 것뿐이라 예전과 같습니다. (18) 로 앞으로 옮기면서 **그 성질을 잃지 않게** 이 모양으로 둡니다.
+  # (18) 2026-09-24 Junseok 발견 — **자기 갱신을 반입보다 먼저** 돌립니다.
+  #   그 전에는 반입 블록이 먼저였고 자기 갱신이 그 뒤였습니다. 그래서 `postman.sh` 를 고쳐 밀면
+  #   **그것이 도착한 첫 틱은 옛 규칙으로 반입을 한 번 더 합니다.**
+  #   실측: (17)(공용 파일 자동 반입 금지)을 08:32 에 밀고 Junseok 줄을 손으로 병합했는데
+  #   08:36 틱이 **옛 규칙으로** 그 줄을 다시 지웠습니다(e41758fe, −52).
+  #   **"고쳤으니 이제 안 그런다" 가 한 틱 더 틀립니다.** fetch 뒤 · 반입 앞이 맞는 자리입니다.
   # (9-2) 09-21 15:3x laptop2 발견 — ★ **작업트리와 견주면 안 됩니다.**
   #   작업트리는 pull/merge 로만 바뀌는데 그 pull 을 postman 자신이 `runner_running` 가드로 건너뜁니다.
   #   그래서 **러너가 도는 기기에서는 (9)가 영영 안 걸리고, 러너가 도는 기기가 바로 보호가 필요한 기기**입니다.
@@ -126,10 +120,68 @@ while :; do
       mv -f "$NEWSELF" "$RUNSELF" && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
     else say "!! origin/master 판이 잘렸거나 문법 오류 — 이번 틱은 넘어감"; rm -f "$NEWSELF"; fi
   else rm -f "$NEWSELF"; fi
+  if [ "$FETCH_OK" = 0 ]; then
+    for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|^origin$"); do  # (7) 15:5x: 짧은 이름 origin(=origin/HEAD) 이 브랜치로 취급돼 master 의 남의 푸시를 ④ 로 재커밋(e202853) → 갈래가 생김. 제외.
+    # (15) 2026-09-24: **`junseok` 을 제외 목록에서 뺐습니다.** 09-24 07:19 복귀 — 그 기기의 결과가 master 로 와야 합니다.
+    #      "은퇴" 는 감사가 08-29 제목("가지 취합 **종결** 확인")에서 **추론한 것**이고 결정한 사람이 없었습니다.
+    #      같은 기록 끝줄은 "다음 배정 라운드까지 대기" 였고 등록부도 🟢 였습니다(Junseok 자기 정정, 09-24).
+      key=$(echo "$rb" | tr '/' '_'); last=$(cat "$STATE/$key" 2>/dev/null || echo ""); cur=$(git rev-parse "$rb")
+      if [ -n "$last" ] && [ "$last" != "$cur" ]; then
+        git log --format="  %h %ad %s" --date=format:'%m-%d %H:%M' "$last..$cur" | head -8 | while read -r l; do inbox "[$rb] $l"; done
+      fi; echo "$cur" > "$STATE/$key"
+      # (12) 2026-09-23 laptop2 — **반입을 state 에서 떼어 냅니다.** 위 `echo "$cur" > $STATE/$key` 는 `fi` 밖이라
+      #      **반입이 안 됐어도 state 가 올라갑니다.** 그래서 패턴이 없던 시각에 틱이 그 커밋을 한 번 보고 지나가면
+      #      그 커밋이 last 로 박히고, 이후 틱은 `cur ^last` 범위만 보므로 **그 파일은 영영 안 옵니다 —
+      #      패턴을 나중에 고쳐도 소급되지 않습니다.** 09-23 §AW 가 이 창에 걸릴 뻔했습니다(내용은 무사).
+      #      그래서 커밋 범위를 버리고 **트리를 직접 견줍니다.** 어느 창을 놓쳐도 다음 틱이 스스로 회복합니다.
+      #      ^HEAD 가 하던 "master 가 더 새것이면 덮지 않기"(결함 (6)) 는 **파일별 조상 검사**로 대신합니다 —
+      #      브랜치에서 그 파일을 마지막으로 만진 커밋이 이미 master 안이면 건너뜁니다.
+      if [ "$BR" = "master" ] && [ "$rb" != "origin/master" ]; then
+        set -f; cand=$(git diff --name-only HEAD "$cur" -- $RESULT_PATTERNS 2>/dev/null | grep -v COMMS/); set +f
+        files=""
+        for f in $cand; do
+          case " $NOAUTO_IMPORT " in *" $f "*)                       # (17) 공용 파일 — 자동 반입 금지, 알리기만
+            inbox "!! **공용 파일이 $rb 에서 다릅니다 — 자동 반입 안 합니다**: $f (손으로 병합하십시오)"
+            continue;; esac
+          bc=$(git log -1 --format=%H "$cur" -- "$f" 2>/dev/null)
+          [ -n "$bc" ] || continue                                   # 브랜치엔 없는 파일(master 쪽 삭제/신규) — 건드리지 않는다
+          git merge-base --is-ancestor "$bc" HEAD 2>/dev/null && continue   # master 가 이미 그 커밋을 가짐 → 더 오래된 판으로 덮지 않는다
+          files="$files$f
+"
+        done
+        files=$(printf '%s' "$files" | sed '/^$/d')
+        if [ -n "$files" ]; then echo "$files" | xargs -r git checkout "$cur" -- 2>>"$LOG" && git add $files && \
+          git commit -q -m "[postman:$MACHINE] $rb 결과 반입 ($(git rev-parse --short "$cur"))" && \
+          { git push -q origin master 2>>"$LOG" || { \
+              # (13) 2026-09-23 — push 가 거절되면 **이후 매 바퀴 ff-pull 이 실패해 반입이 영구 정지**합니다.
+              #      10:32~10:33 데스크탑 실측(laptop2 손 커밋 fc7dc3e8 과 ④ 반입이 경주). postman 은 자기 반입
+              #      커밋을 rebase 하지 않았습니다. 한 번 rebase 하고 다시 밉니다 — 실패하면 우편함에 적고 넘어갑니다.
+              say "push 거절 — rebase 재시도"; git pull --rebase -q origin master 2>>"$LOG" && git push -q origin master 2>>"$LOG"; }; } \
+          && inbox "[반입] $rb → master: $(echo "$files" | tr '\n' ' ')"; fi
+      fi
+    done
+  else say "fetch 실패"; fi
+  # (9-3) 09-21 15:4x — 판정을 **fetch 뒤**로 옮겼습니다(랩탑이 넘긴 판단).
+  #   ⚠ 이 주석이 설명하는 자기 갱신 블록은 **(18) 로 위(반입 앞)로 옮겼습니다.** 아래 설명은 그대로 유효합니다.
+  #   앞에 있으면 직전 틱이 받아 온 ref 를 써서 새 판이 **최대 두 틱(~10분)** 뒤에 넘어갔습니다.
+  #   랩탑 우려("fetch 실패한 틱에서 판정이 통째로 건너뛰어진다")는 **배치로 피합니다** —
+  #   `if git fetch …; then … fi` **블록 밖**에 두었으므로 fetch 가 실패해도 판정은 돕니다
+  #   (그 틱은 낡은 ref 로 보는 것뿐, 예전과 같음). 두 걱정을 동시에 없앱니다.
   if repo_bash_running || runner_running; then say "저장소 bash/러너 실행 중 — pull 건너뜀"; elif tracked_dirty; then say "추적 파일 수정 — pull 건너뜀"; else
     if [ "$BR" = "master" ]; then git pull -q --ff-only origin master 2>>"$LOG" || inbox "!! master ff-pull 실패"
     else git merge -q --no-edit origin/master 2>>"$LOG" || { git merge --abort 2>/dev/null; inbox "!! origin/master merge 충돌"; }; fi
   fi
+  # (19) 2026-09-24 — **글롭 밖에 결과가 쌓이는 것을 스스로 알립니다.** 오늘만 세 번 났습니다
+  #   (§AW `core_wc_results_*` · 밀도맵 `density_v3*/density_results.json` · §2 `v3_water_repro*`).
+  #   매번 "패턴을 먼저 넣으라" 고 적었는데도 **새 시험을 열 때마다 반복**됩니다 — 사람이 기억할 일이
+  #   아니라 **도구가 볼 일**입니다. 추적 안 되고 글롭에도 안 걸리는 결과 JSON 을 **한 번만** 알립니다.
+  NEWRES="$STATE/.seen_unglobbed"; touch "$NEWRES"
+  git status --porcelain --untracked-files=normal -- 21_ZIF69_MTV 2>/dev/null \
+    | sed -n 's/^?? //p' | grep -E '(results|_results)[^/]*\.json$' | while read -r u; do
+        grep -qxF "$u" "$NEWRES" && continue
+        echo "$u" >> "$NEWRES"
+        inbox "!! **글롭 밖 결과 파일**: $u — RESULT_PATTERNS 에 넣거나 손으로 올리십시오"
+      done
   # (5) 15:4x 데스크탑 실측 — 안 맞는 글롭이 하나라도 있으면(예: tnf_widom_*.json 이 아직 없음) git add 가 rc=128 로
   #     **아무것도 안 올림**. ③ 이 조용히 죽어 있었음(15:07 기동 뒤 푸시 0건). 패턴별로 add 하고 실패는 로그에.
   for p in $RESULT_PATTERNS; do [ -e "$p" ] && { git add "$p" 2>>"$LOG" || say "add 실패 $p"; }; done
@@ -140,7 +192,22 @@ while :; do
       say "!! 깨진 결과 파일 — 올리지 않음: $f"; inbox "!! **깨진 결과 파일 반려** $f (러너가 덮어쓰면 다음 틱에 올라갑니다)"; fi
   done
   if ! git diff --cached --quiet; then n=$(git diff --cached --name-only | wc -l)
-    git commit -q -m "[postman:$MACHINE] 결과 파일 자동 반입 ${n}건" && git push -q origin "$BR" 2>>"$LOG" && inbox "[푸시] $BR ← 결과 ${n}건 $(git log -1 --format=%h)" || inbox "!! 자동 커밋/푸시 실패"; fi
+    if git commit -q -m "[postman:$MACHINE] 결과 파일 자동 반입 ${n}건" && git push -q origin "$BR" 2>>"$LOG"; then
+      inbox "[푸시] $BR ← 결과 ${n}건 $(git log -1 --format=%h)"
+    else
+      # (14) 2026-09-23 — **(13) 은 ④ 반입 경로만 고쳤고 여기는 안 고쳤습니다.** 그래서 남이 먼저 밀면
+      #      이 push 가 거절되고, 그 뒤로 매 틱 같은 자리에서 실패합니다. `repo_bash_running` 가드가
+      #      pull 을 건너뛰므로 **스스로는 영영 안 풀립니다** — 데스크탑이 09-23 20:0x 에 그 상태였습니다
+      #      (로컬 3 앞 · 1 뒤, 실패 22회 누적).
+      #      **`reset --mixed` 는 작업트리를 하나도 안 건드립니다** — 러너가 결과 JSON 을 쓰는 중에도
+      #      안전한 유일한 되돌리기입니다(`--hard` 는 절대 금지: 09-21 의 충돌 표시 사고와 같은 자리).
+      #      HEAD 만 원격 끝으로 옮기면 다음 틱의 add/commit 이 **현재 작업트리를** 올립니다.
+      #      혹시 남의 파일이 한 틱 뒤처지더라도 (12) 의 트리 대조가 다음 틱에 다시 들여옵니다.
+      say "push 거절 — origin/$BR 로 재동기화(작업트리 불변) 뒤 다음 틱에 재시도"
+      if git fetch -q origin "$BR" 2>>"$LOG" && git reset -q --mixed "origin/$BR" 2>>"$LOG"; then
+        inbox "!! 푸시 거절 — origin/$BR 로 재동기화했습니다(작업트리 안 건드림). 다음 틱에 재시도합니다."
+      else inbox "!! 자동 커밋/푸시 실패 — 재동기화도 실패"; fi
+    fi; fi
   sim=$(pgrep -xc simulate); [ "$sim" != "$prev_sim" ] && { inbox "[simulate] $prev_sim → $sim"; prev_sim=$sim; }
   for f in "$ROOT"/.claude_work_*.out "$ROOT"/21_ZIF69_MTV/*_chain.log; do [ -f "$f" ] || continue
     k=$(basename "$f"); old=$(cat "$STATE/sz_$k" 2>/dev/null || echo 0); new=$(stat -c %s "$f")

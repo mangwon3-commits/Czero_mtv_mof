@@ -22,6 +22,7 @@
     사이클이 밀도맵 규약(2,000+5,000)과 다른 이유: 이 격자가 설명할 대상이
     **15,000 사이클 실행의 유지율**이다. 사이클이 다르면 다른 평형의 그림이다.
 """
+import json
 import os
 import sys
 
@@ -122,12 +123,30 @@ def main():
         if not os.path.exists(cif):
             print(f'  !! 전하 CIF 없음: {cif}', flush=True)
             return 1
+    # 2026-09-24 — **적재 값을 버리고 있었습니다** (Caspar 질문에서 드러남).
+    #   `rw.run_one` 은 `(name, rh, res, status)` 를 주는데 여기서 `r[-1]`(상태)만 찍고
+    #   값이 든 `r[2]` 를 버렸습니다. `water_results.json` 은 `rw.main()` 에서 쓰이는데
+    #   이 러너는 `run_one` 을 **직접** 부르므로 **아무도 안 썼습니다** — 그런데 위 118행이
+    #   그 경로를 찍어 **있는 것처럼 보였습니다**(CLAUDE.md §0). 이제 여기서 씁니다.
+    rows, bad = {}, 0
     for i, name in enumerate(targets, 1):
         print(f'\n[{i}/{len(targets)}] {name} RH{int(RH*100)}', flush=True)
         r = rw.run_one((name, RH))
         print(f'    -> {r[-1]}', flush=True)
-    print('\n끝. VTK 는 각 작업의 VTK/System_0/ 아래.', flush=True)
-    return 0
+        if r[-1] in ('ok', 'cached') and r[2]:
+            rows[name] = {k: list(v) for k, v in r[2].items()}
+            rows[name]['status'] = r[-1]
+        else:
+            bad += 1
+            rows[name] = {'status': r[-1]}          # 실패도 **적습니다** — 빈칸은 안 됩니다
+        with open(os.path.join(rw.HERE, 'water_results.json'), 'w',
+                  encoding='utf-8') as fh:          # 한 건 끝날 때마다 씁니다(중간 저장)
+            json.dump({'RH': RH, 'grid': GRID, 'init': rw.INIT, 'cycles': rw.CYCLES,
+                       'rows': rows}, fh, indent=2, ensure_ascii=False)
+    print(f'\n끝. 적재 {len(rows) - bad}/{len(targets)} '
+          f'-> {os.path.join(rw.HERE, "water_results.json")}', flush=True)
+    print('VTK 는 각 작업의 VTK/System_0/ 아래.', flush=True)
+    return 1 if bad else 0
 
 
 if __name__ == '__main__':
