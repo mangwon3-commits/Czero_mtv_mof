@@ -473,7 +473,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2024[Co][sql]2",
    "asr_fsr_pair": "2024[Co][sql]2[ASR]2",
@@ -489,6 +489,50 @@
     2
    ],
    "N_super": 2880,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 240,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790292969,
+   "total_time_s_CO2": 913.023048,
+   "KH_CO2": 0.000662913,
+   "KH_CO2_err": 2.92349e-06,
+   "dU_CO2": -30.2291270574,
+   "dU_CO2_err": 0.008156472,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 240,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790293000,
+   "total_time_s_N2": 928.347372,
+   "KH_N2": 1.56245e-05,
+   "KH_N2_err": 1.3491e-07,
+   "dU_N2": -19.0437793311,
+   "dU_N2_err": 0.0113506646,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00138621,
@@ -498,7 +542,15 @@
     "dU_CO2": -32.9546186116
    },
    "S_ON": 80.43227247671821,
-   "S_ON_err": 1.2350127865949958
+   "S_ON_err": 1.2350127865949958,
+   "S_OFF": 42.42778968927006,
+   "S_OFF_err": 0.4113604566537666,
+   "lnS_OFF": 3.7478035647456283,
+   "lnS_OFF_err": 0.009695542936986868,
+   "lnS_ON": 4.387415494610065,
+   "ln_ratio": 0.8542166953072489,
+   "dlnKH_CO2_off_minus_on": -0.7376849235680198,
+   "dlnKH_N2_off_minus_on": -0.09807299370358338
   },
   {
    "name": "2024_Zn__sql_2_ASR_4",
@@ -510,7 +562,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2024[Zn][sql]2",
    "asr_fsr_pair": "2024[Zn][sql]2[FSR]3",
@@ -526,6 +578,50 @@
     2
    ],
    "N_super": 2880,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 240,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790293182,
+   "total_time_s_CO2": 923.964701,
+   "KH_CO2": 0.000654438,
+   "KH_CO2_err": 3.75599e-06,
+   "dU_CO2": -30.2735123986,
+   "dU_CO2_err": 0.0202675319,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 240,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790293229,
+   "total_time_s_N2": 941.557105,
+   "KH_N2": 1.53049e-05,
+   "KH_N2_err": 1.12411e-07,
+   "dU_N2": -19.0349144494,
+   "dU_N2_err": 0.0077084542,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00169228,
@@ -535,7 +631,15 @@
     "dU_CO2": -33.6941055645
    },
    "S_ON": 97.19323435660338,
-   "S_ON_err": 1.1859871701622522
+   "S_ON_err": 1.1859871701622522,
+   "S_OFF": 42.76003110115062,
+   "S_OFF_err": 0.39857483303672236,
+   "lnS_OFF": 3.7556038134987366,
+   "lnS_OFF_err": 0.009321200728172465,
+   "lnS_ON": 4.576701103659087,
+   "ln_ratio": 0.8205918910667159,
+   "dlnKH_CO2_off_minus_on": -0.9500551590463794,
+   "dlnKH_N2_off_minus_on": -0.12895786888602861
   },
   {
    "name": "2024_Zn__sql_2_FSR_3",
