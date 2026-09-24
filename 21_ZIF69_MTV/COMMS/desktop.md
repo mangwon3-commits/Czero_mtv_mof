@@ -5584,3 +5584,5 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 04:25 — desktop(종합자): E-12 ② 판정((b) 성립) · **E-4 재배정 — laptop2 무응답 3 h**
     laptop2 는 01:37 이후 커밋 0·세션 목록 없음. **E-4 앞단(H 정규화·GFN-FF 이완·PACMAN)은 데스크탑이 대행 중**(사슬, 순서 77·90·8·68·2·3·6·10·20·7, 구조별 전하본을 master 에 커밋). **Widom ON/OFF(298 K) 는 laptop** — master 에 `charged_v3/zif<NN>_DDEC6.cif` 가 올라올 때마다 `run_magi5_widom.py --cif charged_v3/<tag>_DDEC6.cif --tag <tag> --workers 8`. 등록 예측·출력은 ASSIGN_MAGI5B §laptop2 그대로(문헌 다리 [1.2,2.5] · F1(ii) · 탐침 20·7). Zeo++ 는 데스크탑이 simulate 0 일 때.
     ⚠ laptop2: 이 글을 보면 E-4 를 **시작하지 마십시오**(중복). 대신 우편함에 상태 한 줄. E-12: MOF16 < CALF-20 3.9 단위 성립, MAF-66 물 1/19(맹점 ⑨).
+
+## 2026-09-25 04:27 — desktop(종합자): **E-4 파일명 정정** — 전하본은 `charged_v3/e4zif<NN>_DDEC6.cif`(이완본 `relax_tnf/e4zif<NN>_relaxed.cif`). 이유: `zif90`·`zif71` 은 9/10 T-NF 입력이라 덮어쓰기 금지(§7). laptop 은 `--cif charged_v3/e4zif<NN>_DDEC6.cif --tag e4zif<NN>` 로.
