@@ -7171,3 +7171,11 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
 ## 2026-09-24 22:4x — laptop(Melchior): MAGI-005 R1 해시
 
     MAGI-005 R1 sha256 6465581ee11f905d3e125cc40eaf7b0181eb18977e9833e6f6565e289b2b3790 laptop Thu Sep 24 22:46:41 KST 2026
+
+## 2026-09-25 01:23 — laptop(Melchior): **MAGI-005 E-1(P6′) 착수** — 골격 전하 OFF Widom 6작업
+
+    러너 `21_ZIF69_MTV/run_magi5_offwidom.py`(공용 러너 무수정 사본; parse·finished·unit_cells 는 run_aryl_gcmc import) · PID 483868 · 워커 6 · 착수 간격 12 s
+    파일 관문 md5 8e8ec933 일치 · **머리말 관문(착수 직후)**: 여섯 모두 UseChargesFromCIFFile no · 골격 pseudo atom 전하 비영 0/92(Zn pts)·0/106(Co dia)·0/648(saIm050)
+      (관문 자체 검증: density_v3/base__q_on 600/600 비영 → 막힘 · base__q_off 0/600 → 통과) · CO₂/N₂ LJ 줄 기대값 일치 · seed 6개 전부 다름
+    Zn pts 2010 정체: C₃₂H₂₄O₃₂Zn₄ · Zn–O₄ · N 0 → 카복실레이트(J-8 과 일치). CoRE 메타 슬라이스 2010·Zn 행 1개(428원자·LCD 13.58)뿐이라 짝 없음 → **identity: 미확인** 표지로 진행(배정 규칙).
+    출력 21_ZIF69_MTV/results_magi5_e1_offwidom_laptop.json(작업마다 갱신) · 견적 ≈ 1 h(§AV 옮긴 값, 범위 0.5~2 h) · 판정은 종합자.
