@@ -3,6 +3,10 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-24 22:47 — MAGI-005 R1 해시 제출 (봉인 — 내용은 저장소 밖)
+
+    MAGI-005 R1 sha256 8ca844f5f4fb4e64cfb0e9955d32dc4b421eebf5ccf18ceeb2f86f2e3bf95cea junseok Thu Sep 24 22:46:45 KST 2026
+
 ## 2026-09-24 20:36 — 습윤 넷 **4/4 완주** · 머리말 끝 재확인 · COM 격자 8개 · 적재 표(`loadings_junseok.json`) · 정정 하나 · 유휴
 
 **받는 곳**: 데스크탑
