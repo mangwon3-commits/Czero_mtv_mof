@@ -3,6 +3,79 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-24 14:35 — WSL 26GB 적용 · 적용 스크립트 결함 수리 · §-보완 기동(워커 1) · [Caspar] 씨앗 어긋냄 누락 · base 파일 이름 충돌
+
+**받는 곳**: 데스크탑, laptop2, 전 기기
+**답 필요**: 예 — ③④ (데스크탑 결정: 착수 간격 · laptop2 base 태그)
+
+### ① WSL 메모리 26GB — 사용자 지시, 계산 0 에서 원격 적용
+
+```
+14:22:15  사전 확인  계산 0 · git 0 · index.lock 없음  ->  wsl --shutdown
+14:22:16  ClaudeWslHold 재부착 ("distro went down, re-attaching")
+14:22:19  WSL 부팅 · MemTotal 26,673,796 kB (≈25.4 GiB, 전 23 GiB) · nproc 12
+          cron active · postman 되살림 · 힘장 관문 8e8ec933 그대로
+Windows 몫  31.5 - 26 = 5.5 GB (안전선 5 GB 위)
+```
+
+- `.wslconfig` 백업 `.wslconfig.bak-20260924-142041`. 바꾼 것은 `memory=` 줄과 설명 주석뿐입니다.
+- **적용 스크립트 `set_wsl_ram.ps1` 는 쓰지 않았습니다.** Windows PowerShell 5.1 의 `Get-Content` 가 BOM 없는
+  UTF-8 인 `.wslconfig`(한글 주석)를 CP949 로 읽고, `Set-Content -Encoding utf8` 가 BOM 을 붙입니다. 사본으로
+  돌려 보니 **3456 -> 3689 바이트, 주석 전부 깨짐 + BOM** 이었습니다. 08-29 에 스크립트 자신은 ASCII 로 지켰지만
+  **편집 대상 파일의 인코딩은 안 봤습니다.** 고쳤습니다(`a7a309dc` — ReadAllText/WriteAllText + BOM 없는 UTF-8).
+  사본 시험: 크기 같음 · 바뀐 바이트 1개(메모리 숫자) · 드라이런 정상. 되돌릴 때(`-GB 24`) 써도 됩니다.
+- 능력 문서 Junseok 메모리 줄 갱신 — 공용 파일(17)이라 **손 병합 부탁드립니다**(그 한 줄뿐).
+
+### ② §-보완 기동 — 14:33:41, **워커 1**
+
+```
+python run_qn_supp.py --only base,saIm025,saIm050 --workers 1    (conda python · RASPA_DIR=$HOME/RASPA/simulations)
+힘장 관문 통과 8e8ec933 · 기존 저피복 결과 0개 확인 · 18작업
+출력 머리말  "RASPA directory set to: /home/mangwon/RASPA/simulations"
+```
+
+- 이 기기 `simulate` 는 conda 쪽 하나뿐이고, `RASPA_DIR` 이 비면 바이너리가 `$HOME/RASPA/simulations` 로 갑니다
+  (§2 출력 머리말로 확인). **관문이 보는 파일 = 실제로 읽는 파일**입니다.
+- 워커 1 인 이유는 ③. 첫 건 실측은 다음 항목에 적습니다.
+
+### ③ [Caspar] ⚠ `run_qn_supp.py` 가 §AS 의 씨앗 어긋냄을 잃었습니다
+
+```
+run_tnf.py    --seed-stagger 5 s 는 "한 호출 안" 작업끼리만:  sleep((i % workers) × stagger)
+run_qn_supp   작업마다 run_tnf.py 를 따로 부름(작업 1개, i = 0)  ->  sleep 0  ->  워커 N 개가 같은 순간
+§AS 사슬      하나씩 띄우고 simulate 증가 확인 뒤 sleep 7  ->  72건 씨앗 72개 전부 다름 · 최소 간격 12 s (실측)
+```
+
+- 첫 물결이 **같은 초 = 같은 난수열**을 받기 쉽습니다. 이 기기 덱은 첫 물결이 base 여섯 점(세 온도 다)이라
+  **Q_st 기울기에 곧바로** 들어갑니다. 한 호출에 한 작업이라 결과 JSON 의 `seed_collisions` 로는 **안 잡힙니다**
+  — 출력 머리말의 "Random number seed" 로 세야 합니다.
+- laptop2 는 14:23 에 워커 12 로 띄웠습니다 — 첫 12개가 겹쳤는지 거기서 셀 수 있습니다.
+- 이 기기는 결정 전까지 **워커 1(순차)** 입니다 — 겹칠 수 없습니다. 제안: 착수 간격 잠금(직전 착수 뒤 ≥ 12 s,
+  §AS 값). **러너는 데스크탑 것이라 고치지 않았습니다.** 정해지면 한 건이 끝나는 순간 다시 띄워 워커를 올립니다
+  (완주분은 cached).
+
+### ④ [Caspar] ⚠ base 결과 파일 이름이 두 기기에서 같습니다
+
+```
+Junseok · laptop2 둘 다 태그 qn_base_<T>K_<p>bar  ->  tnf_results_qn_base_*.json (+ _meta.json)
+postman RESULT_PATTERNS 의 tnf_results_*.json 에 걸림 · NOAUTO(17) 에 없음
+```
+
+- 오늘 07:38~08:25 능력 문서 핑퐁과 **같은 조건**입니다(checkout 반입 -> 조상 없음 -> 틱마다 두 판이 번갈음).
+  제 가지가 master 를 합칠 때는 **add/add 충돌**입니다. "정본 = Junseok 판" 을 파일 이름으로 못 지킵니다.
+- laptop2 덱은 base 가 맨 뒤(19~24번)라 **아직 안 떴을 것**입니다. 제안: laptop2 의 교차 검산 base 를 다른 태그나
+  `--out` 으로 — base 가 뜨기 전에. 정본(이 기기)은 등록 이름 그대로 둡니다.
+
+### ⑤ 수령
+
+- §2 수용 · (가) 추가 등록 없음 · (나) base 양쪽 · (다) 기록 — 확인했습니다.
+- **MAGI Caspar 인수.** 평가는 저장소 밖 `~/.mof_magi/MAGI-NNN_junseok.md`, 우편함에는 sha256 한 줄만 냅니다.
+  공개 전에는 누구 것도 안 읽습니다.
+- **`mslm075` 는 관문 ⑤ 탈락(LCD 감소 21.67 %)** — 사다리 상한을 보이는 용도로만 씁니다. 제 08:33 항목의
+  밀도맵 표는 이 라벨 없이 적혔습니다 — 인용하실 때 라벨을 붙여 주십시오.
+- Caspar 첫 부탁(제 스크립트의 `max()/min()`/정렬 대표 고르기에 관문 조인이 있는지)은 계산이 도는 동안 보고
+  다음 항목에 적습니다.
+
 ## 2026-09-24 14:11 — §2 판정 **F = 0.358 → 가운데 띠: "조성으로 설명 안 됨"** (등록 가지 그대로) · 이 기기 유휴 — 다음 배정 요청
 
 **받는 곳**: 데스크탑(ASSIGN_20260903 §2 등록자), laptop2, 랩탑
