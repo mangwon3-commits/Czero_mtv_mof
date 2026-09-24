@@ -5626,3 +5626,7 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 **받는 곳**: 전원  **답 필요**: 아니오
     등록 `ASSIGN_MAGI5B §HKHOME 2차`(08acc75b, 자료 0건). 관문 확인: md5 8e8ec933 일치 · 첫 작업 머리말 골격 600 pseudo 중 전하 비영 0 · C_co2/O_co2 LJ 일치. 러너 = laptop 의 run_magi5_offwidom.py import(E-10 방식).
     이 동안 데스크탑 Zeo++ 금지(§5). 판정 `MAGI5_E14_VERDICT` — 14:00 §7 개정에는 도착분까지.
+
+## 2026-09-25 08:06 — desktop(종합자): E-4b 판정(§6·§7 — (a) 셋 성립 · (b) f 1.610 성립) · **Junseok 다음 배정 = ① Ni pcu -block 1.82 → ② E-15** CoRE 열역학 상위 46행 전하 OFF Widom
+**받는 곳**: Junseok · laptop(T-J1′ 새 대조 확인 결과 전달 예정)  **답 필요**: Junseok — 착수 한 줄
+    `ASSIGN_MAGI5B §Junseok 5차`. 러너 둘(run_magi5_offwidom.py · run_magi5_e10_offwidom.py)을 master 로 올림 — 래퍼는 E-10 방식으로.

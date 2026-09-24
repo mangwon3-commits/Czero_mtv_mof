@@ -158,3 +158,15 @@
       (5) mbIm025 이상치(S_ON 30.4 대 mbIm050 19.7): 초과는 **기하**(S_OFF 가 mbIm050 보다 1.5 단위 이상 위, G 는 base ±20 %). 기각: G 가 초과를 설명.
     출력  `results_magi5_e14_offwidom_hkhome.json` · 판정 `MAGI5_E14_VERDICT_20260925.md`. §7 개정(14:00)에는 도착분까지로.
     비용  saIm050 OFF 40 분/작업(E-1 laptop 실측, 같은 계 v3 gme 4800원자 — **다른 기기에서 옮긴 값**) × 54 ÷ 8워커 ≈ **4.5 h**(묶는 쪽 = 작업합; 최장 단일 ≈ 40~60 분).
+
+## Junseok 5차 [2026-09-25 08:06, 자료 0건] — ① 새 대조 `2019_Ni__pcu_3_ASR_1` `-ha -block 1.82` 1건(Junseok 제안) → ② **E-15** CoRE 열역학 상위군의 G (전하 OFF Widom)
+    ①    예측(Junseok, 결과 전): PLD 3.69 → 1.82 에서 channel ≥ 1 · 구 0. 기각이면 T-J1′ 새 대조도 탐침 규약값 → laptop 에 알림(판정에 병기). 표본 50,000.
+    ② 왜  E-10b~d: G 는 기술자로 안 선다 → 직접 잰다. CoRE 상위 68(S ≥ 65.2) 중 PLD ≥ 3.64(탐침 규약값 아님) **50행**, G 있는 4 제외 **46행**(3D 12 · 2D 34; anion_removed 1). 이들이 선택도를 정전기로 얻는가 기하로 얻는가 — §7 개정의 "그 위" 문장의 뜻을 정한다.
+    자   `run_magi5_offwidom.py` + `run_magi5_e10_offwidom.py` 방식 래퍼(`run_magi5_e15_offwidom.py`, Junseok 작성; 대상 = core_pop_annotated 에서 S ≥ 65.2 · PLD ≥ 3.64 · E-1/E-10 OFF 없음). 머리말 관문(골격 전하 비영 0 · LJ · md5 · finished) 그대로. S_ON = core_pop_annotated 같은 자 값. LPT = N_super.
+    예측(등록)
+      (1) 3D 12 행 **G 중앙 ≥ 2**. 기각: < 1.5(열역학 상위 3D 도 이득이 기하).
+      (2) ρ(G, S_ON) 46 행 ≥ 0.4(바닥이 CoRE 사이에서 달라 E-14 예측 0.8 보다 약함). 기각: ρ < 0. 부트스트랩 병기.
+      (3) ASR/FSR 짝(같은 골격, anion_removed 없음)의 G 가 1.5 단위(합성 ±) 안 — 무료 재현 검사. 기각: 짝의 1/3 넘게 밖.
+      (4) 서술: 2D 중앙 G 대 3D 중앙 G(맹점 ③ 층간 틈이 기하 몫이면 2D < 3D).
+    출력 `results_magi5_e15_offwidom_junseok.json` + 우편함. 판정 종합자.
+    비용 CoRE 소셀 OFF Widom ≈ 17.5 분/작업(E-1 CoRE 행, laptop 실측 — **다른 기기에서 옮긴 값**) × 92 ÷ 10워커(Junseok SMT 실측 6→10 +55 %) ≈ **2.7 h**. 최장 단일 ≈ 30~40 분(N_super 최대 행).
