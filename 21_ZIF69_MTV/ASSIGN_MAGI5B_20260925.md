@@ -145,3 +145,16 @@
     출력  `results_tj1_mix_laptop.json`(name · N_CO2 ± · N_N2 ± · S_mix ± (오차 전파) · S_Henry(출처) · 비 · L · dim · status · minutes · finished) + 우편함 착수·완주.
     비용  **옮긴 값**: 단일 성분 0.15 bar GCMC 1.5~20.2 h/작업(CLAUDE.md §5, v3 조성) — 이원·1 bar 는 흡착 분자 수가 늘어 더 길 수 있음. 벽시계 = max(최장 단일, 합/8) ≈ **15~25 h**(최장 단일이 묶을 공산 큼 — v3 GME 가 가장 무거움). 첫 2 h 진행률로 견적 갱신.
     **[보완 2026-09-25 07:41 — T-J1′ 자료 0건, Junseok 07:40 지적 수용(d5f3df77)]** 대조 둘(`2012_Co__dia_3_ASR_3` PLD 3.408 · `2010_Zn__pts_3_ASR_1` 3.339)이 **둘 다** PLD 3.3~3.64 띠 — "대조 > 0.7" 이 탐침 규약값끼리의 비가 된다. 원 대조는 그대로 두고 **깨끗한 대조 1행 추가**: `2019_Ni__pcu_3_ASR_1`(3D · PLD 3.69 · LCD 5.93 · S 44.4 · L 0.769 · 176원자 — `core_pop_annotated.json` 에서 3D·PLD ≥ 3.64·L > 0.7 중 S 최대). 예측은 원 대조와 같음(**> 0.7**). 기각 기계(L < 0.2 셋)는 불변. 대상 10 → 11.
+
+## HKHOME 2차 [2026-09-25 07:53, 자료 0건 — 이 27조성의 OFF 값은 저장소에 없음] — **E-14** 우리 v3 조성의 G 지도 (전하 OFF Widom)
+    왜    E-10b~d 결론: G 는 기술자로 안 선다 → **직접 잰다.** 설계 물음 그 자체 — 우리 치환기의 선택도 이득이 정전기(G)인가 기하 바닥(S_OFF)인가. 지금 G 가 있는 우리 조성은 saIm050(4.85, E-1) 하나.
+    대상  results_v3.json 31 중 **관문 통과 + OFF 없음 = 27**(mslm075·saIm075·saIm100 관문 탈락 제외, saIm050 은 E-1 값 재사용). `charged_v3/<name>_DDEC6.cif`.
+    자    `run_magi5_offwidom.py`(laptop E-1 러너 — 머리말 관문: 골격 전하 비영 0 · LJ 줄 · md5 · finished) 를 import 하는 `run_magi5_e14_offwidom.py`. S_ON 은 results_v3.json(같은 자 Widom, 행에 출처). G = S_ON/S_OFF.
+    예측(등록)
+      (1) base G ∈ **[1.8, 2.8]**(같은 gme 계 ZIF-68 2.40, E-4).
+      (2) **기하 바닥 거의 불변**: S_OFF 가 base S_OFF 의 [0.67, 1.5] 배 안에 27 중 ≥ 2/3. 기각: 1/3 넘게 밖.
+      (3) 그러므로 **ρ(G, S_ON) ≥ 0.8**(n 28 = 27 + saIm050; 이득은 정전기). 기각: ρ < 0.5(이득이 기하). 띠 판정 불가. 부트스트랩 병기.
+      (4) 비극성 치환(brbIm·fbIm·mbIm 전 분율) G 가 base G 의 ±20 % 안(12 중 ≥ 10). 극성 순서(최고 분율 기준): saIm025 > nbIm100 ≥ mslm050 > cf3Im075 > cnbIm100 > base — 순위는 차 ≥ 1.5 단위(합성 ±)일 때만.
+      (5) mbIm025 이상치(S_ON 30.4 대 mbIm050 19.7): 초과는 **기하**(S_OFF 가 mbIm050 보다 1.5 단위 이상 위, G 는 base ±20 %). 기각: G 가 초과를 설명.
+    출력  `results_magi5_e14_offwidom_hkhome.json` · 판정 `MAGI5_E14_VERDICT_20260925.md`. §7 개정(14:00)에는 도착분까지로.
+    비용  saIm050 OFF 40 분/작업(E-1 laptop 실측, 같은 계 v3 gme 4800원자 — **다른 기기에서 옮긴 값**) × 54 ÷ 8워커 ≈ **4.5 h**(묶는 쪽 = 작업합; 최장 단일 ≈ 40~60 분).
