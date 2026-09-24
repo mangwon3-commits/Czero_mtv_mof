@@ -1,0 +1,126 @@
+{
+  "test": "MAGI-005 E-2b — Co(p-Me₂-bdp) ASR_5 BlockPockets S(r) (맹점 ① 의 크기)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §E-2b",
+  "machine": "junseok",
+  "final": false,
+  "key": "2016[Co][pts]3[ASR]5",
+  "cif": "core_pop_cifs.zip:2016_Co__pts_3_ASR_5.cif (CoRE PACMAN DDEC6)",
+  "step0": "magi5_e2b_runs/step0_result.json (cwd 읽기 통과)",
+  "protocol": {
+    "widom_init": 3000,
+    "widom_cycles": 15000,
+    "forcefield": "UFF_MOF",
+    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+    "cutoff": 12.0,
+    "temp_K": 298.0,
+    "ewald": "1e-6",
+    "charges": "UseChargesFromCIFFile yes",
+    "supercell": "run_aryl_gcmc.unit_cells() 규칙",
+    "input": "run_one Widom 틀 + BlockPockets yes · BlockPocketsFileName",
+    "zeo": "network -ha -block r 50000 (반경마다 새 폴더) · -ha -res"
+  },
+  "gate": "stderr 에 file-not-found 없음 · .data N = 구 수 × 단위셀 수(등식) · Simulation finished",
+  "zeo_res": {
+    "Di": 4.23296,
+    "Df": 3.57101,
+    "Dif": 4.23296,
+    "raw": "2016_Co__pts_3_ASR_5.res 4.23296 3.57101 4.23296"
+  },
+  "reference_unblocked": {
+    "source": "core_pop_results_laptop2.json (laptop2 측정)",
+    "KH_CO2": 0.000308784,
+    "KH_CO2_err": 4.34205e-06,
+    "KH_N2": 2.72347e-06,
+    "KH_N2_err": 1.72582e-08,
+    "S": 113.37888796278277,
+    "S_err": 1.7487163021238739
+  },
+  "registered": "S_정식 ≥ 2 × 113.4 · 기각: S_정식 이 113.4 의 1.5 단위 안 — 판정문은 종합자",
+  "S_err_note": "± 는 두 RASPA 95 % 폭을 제곱합으로 전파(근사)",
+  "rows": [
+    {
+      "probe_radius_A": 1.5,
+      "zeo_block": {
+        "n_spheres": 0,
+        "file": "magi5_e2b_runs/zeo/r1.50/2016_Co__pts_3_ASR_5.block",
+        "sphere_radius_min": null,
+        "sphere_radius_max": null,
+        "zeo_seconds": 34.9
+      },
+      "CO2": {
+        "status": "pending"
+      },
+      "N2": {
+        "status": "pending"
+      },
+      "S": null,
+      "S_err": null,
+      "S_note": null
+    },
+    {
+      "probe_radius_A": 1.65,
+      "zeo_block": {
+        "n_spheres": 0,
+        "file": "magi5_e2b_runs/zeo/r1.65/2016_Co__pts_3_ASR_5.block",
+        "sphere_radius_min": null,
+        "sphere_radius_max": null,
+        "zeo_seconds": 34.4
+      },
+      "CO2": {
+        "status": "pending"
+      },
+      "N2": {
+        "status": "pending"
+      },
+      "S": null,
+      "S_err": null,
+      "S_note": null
+    },
+    {
+      "probe_radius_A": 1.82,
+      "zeo_block": {
+        "n_spheres": 1,
+        "file": "magi5_e2b_runs/zeo/r1.82/2016_Co__pts_3_ASR_5.block",
+        "sphere_radius_min": 4.253,
+        "sphere_radius_max": 4.253,
+        "zeo_seconds": 34.1
+      },
+      "CO2": {
+        "status": "pending"
+      },
+      "N2": {
+        "status": "pending"
+      },
+      "S": null,
+      "S_err": null,
+      "S_note": null
+    },
+    {
+      "probe_radius_A": 2.0,
+      "zeo_block": {
+        "n_spheres": 2,
+        "file": "magi5_e2b_runs/zeo/r2.00/2016_Co__pts_3_ASR_5.block",
+        "sphere_radius_min": 2.59083,
+        "sphere_radius_max": 2.74329,
+        "zeo_seconds": 34.3
+      },
+      "CO2": {
+        "status": "pending"
+      },
+      "N2": {
+        "status": "pending"
+      },
+      "S": null,
+      "S_err": null,
+      "S_note": null
+    }
+  ],
+  "canonical": {
+    "pair": "CO₂@1.65 + N₂@1.82",
+    "S": null,
+    "S_err": null,
+    "S_over_ref": null,
+    "units_from_ref": null,
+    "note": null
+  }
+}
