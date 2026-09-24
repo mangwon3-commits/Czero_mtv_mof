@@ -70,3 +70,5 @@
           ListAgents 의 `laptop-mof` 두 ref(81da47·cd8046) 중 어느 쪽이 담당인지는 이름으로 못 가림 — 계속 둘 다에 보내고 우편함을 정본으로.
     2026-09-24 22:50  **R1 공개 반입(경로 단위, 해시 대조)**: laptop(93d35cf1, origin/laptop-20260822) · laptop2(c1e38a3, origin/laptop2-20260825) — 둘 다 **sha256 = 제출 해시 일치 → 유효.** Junseok 대기.
           사용자 지시(2026-09-24 22:50 직전): *"If it ends earlier than scheduled, move the date up"* → 라운드 입력이 차는 즉시 다음 라운드를 엽니다. 시한은 상한으로만.
+    2026-09-24 22:51  **Junseok R1 도 반입(origin/junseok-20260822), sha256 = 제출 해시 일치 → 유효. 3/3 완비.** 해시 대조표: laptop 6465581e ✓ · laptop2 711b775a ✓ · junseok 8ca844f5 ✓ · 종합자 fd205fab ✓.
+          종합자가 **지금부터** 세 R1 을 읽습니다(공개 전 미독 — §11-2 4 준수). R2 공격 착수(일정 앞당김, 사용자 지시).
