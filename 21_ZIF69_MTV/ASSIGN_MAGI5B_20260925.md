@@ -59,6 +59,11 @@
     채택 규칙(E-8 제안)  **CoRE 후보를 올리기 전 원 논문 실측 등온선과 우리 적재를 대조한다**(srs 17배·MAF-66 1/14.5 — 양방향 사례). `COREPOP_REGISTRATION_20260921.md` 에 부록으로 적음(오늘).
 
 ---
+## 추가 배정·후보 [2026-09-25 02:27]
+    HKHOME  **E-2d**(273 K 직접 Widom base·nbIm100, Junseok 제안·예측 `MAGI5_E2_VERDICT §7`) — E-2c 뒤 사슬.
+    후보 **E-11**(CIF 입수 조건, 사용자 항목): IISERP-MOF16 [Zn(Damtz)(HCOO)](Chem. Mater. 2026, 38, 7679 SI/CCDC) + CALF-20 [Zn₂(tz)₂(ox)] 를 우리 자(Widom ON/OFF + 0.15 bar + 물 Widom)로 — F1(아졸레이트 + O 음이온 → G ≈ 5?)과 E-6 물 축을 한 번에. 예측은 CIF 도착 뒤 자료 0건 시점에 등록.
+    **맹점 ⑧ 등록**: 속도·체거름 선택도(구경 ≤ 3.3 Å) 는 Widom 이 못 봄 — MAF-66 문헌 225 의 정체(`MAGI5_E3_VERDICT §7`).
+
 ## 사용자 항목 (배정 아님 — 권고 첫 줄)
     E-7 DFT 물·CO₂ 결합에너지(J R3 2순위, 문턱 5 kJ/mol) — **어느 기기에도 DFT 코드 없음**(xtb 만). 권고: **E-3b 결과 뒤 결정** — R₂₉₈ < 0.67 이면 pyscf 설치(환경 변경, 데스크탑) 승인 요청; 아니면 보류.
     E-6 실험 한 줄(RH90·CO₂ 15 %·7 일 PXRD) — 시료: ZIF-69 모체 · 술폰화 ZIF-69 · MAF-66. srs 제외(자격 없음).
