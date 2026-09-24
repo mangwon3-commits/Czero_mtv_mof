@@ -14,7 +14,7 @@
 | **desktop** (HKHOME) | 전부 — RASPA · Zeo++ · LAMMPS 관문 · xtb · PACMAN · rdkit | (현재 알려진 제약 없음) |
 | **laptop2** | **RASPA GCMC·Widom · xtb 이완 · PACMAN 전하** | **rdkit 빌드 · LAMMPS 위험도 관문** · **Zeo++ 대량** |
 | **laptop** | **RASPA GCMC·Widom · Zeo++(소량) · rdkit 빌드 · LAMMPS 위험도 관문** | **xtb 이완**(환경 자체가 없음) · **Zeo++ 대량** |
-| **Junseok** (원격지) | **RASPA GCMC · LAMMPS 위험도 관문 · Zeo++(동시 2건)** | **rdkit 빌드 · xtb 이완 · PACMAN 전하** · Zeo++ 대량 · (Widom 미확인) |
+| **Junseok** (원격지) | **RASPA GCMC·Widom · LAMMPS 위험도 관문 · Zeo++(동시 2건)** | **rdkit 빌드 · xtb 이완 · PACMAN 전하** · Zeo++ 대량 |
 
 ## 2. desktop (HKHOME) — 2026-09-21 23:2x 실측
 
@@ -90,7 +90,7 @@
     RASPA `simulate` 는 czeromof 안(`envs/czeromof/bin/simulate`). `~/RASPA/simulations/bin/` 에는 없습니다.
 
     ✅ **RASPA GCMC**          08-28~29 물 러너 RH0 재현성 반복 20회 완주, 실패 0
-    ?  **Widom**               같은 `simulate` 라 될 것이지만 **이 기기에서 돌린 적이 없습니다** — 미확인
+    ✅ **Widom**               09-25 MAGI-005 E-2 4작업 완주, 표지 4/4 · 실패 0 (그 전까지 미확인)
     ✅ **LAMMPS 위험도 관문**   `lammps_mof` 에서 `lammps_interface`·`ase`·`numpy` import 됨.
                               `lmp_serial` 은 **`envs/lammps_mof/bin/`** 에 있고 **PATH 에 없습니다**
                               (랩탑은 `~/.local/bin` 이라 PATH 로 잡힘 — **다릅니다**, 절대경로로 부르십시오).
@@ -119,6 +119,8 @@
                   nbIm025 RH0 물 러너 · 동시성 1 (09-24 §2)   4회 58.5~59.8 분
                   Q_st 저피복 GCMC (0.01·0.02 bar · 283/298/313 K) 18작업 · 워커 10 (09-24)
                     작업당 26.5~43.1 분 (중앙 29.5) · 벽시계 72 분 · 최장 = 283 K 0.02 bar
+                  Widom (초기화 3,000 + 생산 15,000) · v3 base·nbIm100 2×2×2 · 4작업 · 워커 4 동시 (09-25 MAGI-005 E-2)
+                    N₂ 24.1 / 26.7 · CO₂ 25.9 / 27.2 분 · 벽시계 28 분
 
     ⚠ **경합 배수 — 같은 구조(e1)의 짝만 적습니다.**
       동시성 1 (98.2 분, **1회**) 대 3~4 (105.7~107.1 분, 7회) -> 3~4 에서 **약 +8 %**.

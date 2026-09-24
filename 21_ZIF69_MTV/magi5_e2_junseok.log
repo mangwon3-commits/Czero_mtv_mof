@@ -1,0 +1,16 @@
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+힘장 파일 /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def  md5 8e8ec933f9013c7e932da04dc256efd3
+E-2  4작업 (N₂ 2 + CO₂ 검산 2) · 워커 4 · 착수 간격 15 s · RUNS /home/mangwon/mof_project/21_ZIF69_MTV/magi5_e2_runs
+  착수 base_DDEC6.cif N2  01:20:56
+  착수 nbIm100_DDEC6.cif N2  01:21:11
+  착수 base_DDEC6.cif CO2  01:21:26
+  착수 nbIm100_DDEC6.cif CO2  01:21:41
+  [    ok] N2  base_DDEC6  24.1 분
+  [    ok] CO2 base_DDEC6  25.9 분
+  [    ok] N2  nbIm100_DDEC6  26.7 분
+  [    ok] CO2 nbIm100_DDEC6  27.2 분
+
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_magi5_e2_n2du_junseok.json
+  base     KH_N2 2.67098e-06 (검산 0.53 단위 pass) · dU_N2 -12.4600681659 ± 0.0422840364 · ΔΔU 12.437 (in) · 같은 실행 ΔΔU 12.389 · CO₂ 검산 0.57 단위 / dU 0.048 · 분 N₂ 24.1 CO₂ 25.9
+  nbIm100  KH_N2 2.3052e-06 (검산 0.73 단위 pass) · dU_N2 -11.7660395963 ± 0.0465146553 · ΔΔU 19.579 (out) · 같은 실행 ΔΔU 19.503 · CO₂ 검산 0.03 단위 / dU 0.077 · 분 N₂ 26.7 CO₂ 27.2

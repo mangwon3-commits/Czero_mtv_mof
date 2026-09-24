@@ -3,6 +3,47 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 01:54 — [MAGI-005 E-2 완주] ΔΔU base 12.44 (등록 띠 [10, 15] 안) · nbIm100 19.58 (띠 밖, 위) — 판정문은 종합자
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오 — 판정문·이의 창은 종합자. 부수 BlockPockets 계산은 사용자 결정 대기
+
+    결과 21_ZIF69_MTV/results_magi5_e2_n2du_junseok.json (글롭 안) · 로그 magi5_e2_junseok.log · 드라이버 사본 magi5_e2_junseok.py
+    완주 표지 4/4 (`Simulation finished`) · 상태 ok 4/4 · 씨앗 1790266857 / 872 / 887 / 902 (전부 다름) · 힘장 md5 8e8ec933 · 단위셀 2×2×2
+
+                K_H(N₂) [mol/kg/Pa]    v3 검산          dU_N2 [kJ/mol]     dU_CO2 참조*   ΔΔU      띠 [10, 15]      S(273)/S(298)
+      base      2.671e-6 ± 0.034e-6    0.53 단위 통과   −12.460 ± 0.042    −24.897        12.437   안               1.584
+      nbIm100   2.305e-6 ± 0.011e-6    0.73 단위 통과   −11.766 ± 0.047    −31.345        19.579   밖 (위로 +4.58)  2.062
+      * dU_CO2 참조 = −(Q_st 보정 − RT), results_v3 · ± 는 RASPA 95 % 폭 · S(273)/S(298) = exp(ΔΔU/R·(1/273 − 1/298)) 등록식 그대로
+
+    parse 확인: rg.parse 의 u = .data `[N2] Average <U_gh>_1-<U_h>_0` 의 kJ/mol 괄호값과 같은 자릿수
+      (base −1498.60 K → −12.4601 · nbIm100 −1415.13 K → −11.7660) → run_widom_tnf 형 불필요
+    CO₂ 같은 실행 검산: K_H(CO₂) 0.57 / 0.03 단위 · dU_CO2 −24.849 / −31.269 (참조와 +0.048 / +0.077 kJ/mol)
+      → 같은 실행끼리의 ΔΔU 12.389 / 19.503 — 참조 대신 써도 띠 안/밖 같음
+    산술(기계적 사실): 두 구조 ΔΔU 차 7.14 = dU_CO2 쪽 6.45 + dU_N2 쪽 0.69 — 차의 90 % 가 CO₂ 쪽
+      등록 절 "밖이면 그대로 적고 A-3 환산 문장을 그 값으로 다시" 의 그 값: nbIm100 S(273)/S(298) = 2.06 (base 1.58)
+    소요 시간 실측 = 이 기기 첫 Widom (MACHINE_CAPABILITIES §6 "Widom 미확인" → 확인, 이 커밋):
+      Widom 3,000+15,000 · 4작업 동시(워커 4 · 물리 6) · N₂ 24.1 / 26.7 · CO₂ 25.9 / 27.2 분
+      벽시계 01:20:55 → 01:48:57 = 28.0 분 (견적 30~60 분보다 조금 짧음)
+
+    부수(선택, 검토만 · 계산 0) — `2016[Co][pts]3[ASR]5` N₂·CO₂ Widom 을 BlockPockets 없이/있이
+      ① 이 기기 RASPA(libraspa2.so.0)에 성분별 `BlockPockets` · `BlockPocketsFileName` · `InvertBlockPockets` 가 있고,
+         .data 성분 절에 "Number of pockets blocked in a unitcell: N" / "Pockets are (NOT) blocked for this component" 를 찍음
+         (E-2 .data 4건에서 "NOT" 확인 — 지금 프로토콜은 막지 않음)
+      ② ⚠ 조용한 실패: 파일을 못 찾으면 "'Blocking-pocket' file not found and therefore not used" 를 stderr 로만 내고
+         차단 없이 돈다(바이너리 문자열). run_one 은 stderr 를 DEVNULL 로 버리므로 "있이" 가 "없이" 와 같은 값을 조용히 낼 수 있음
+         → 회수 관문에 ① 의 .data 줄(N > 0 · "are blocked")을 넣어야 함
+      ③ 찾는 경로: `$RASPA_DIR/share/raspa/structures/block/<이름>.block` — 이 기기엔 그 디렉터리가 없음(structures/mofs/block ·
+         zeolites/block 뿐). 작업 폴더를 먼저 보는지는 문자열만으로 확정 못 함(소스 없음). 공유 트리에 디렉터리를 새로 만드는 건
+         환경 변경 → 사용자 결정
+      ④ .block 생성: czeromof/bin/network(Zeo++) `-block probe_radius num_samples_total` 있음
+      ⑤ 자의 문제(핵심): CoRE PLD 3.57 Å 가 CO₂(3.30)와 N₂(3.64) 운동 지름 사이 → N₂ 크기 탐침이면 통로가 이어지지 않아
+         공극 대부분이 막힐 수 있고 K_H(N₂) → 0 · S → ∞. 결과가 시뮬레이션보다 탐침 반경·원자 반경표 규약으로 정해짐
+         → 돌린다면 반경 훑기(예 1.4 / 1.65 / 1.82 Å)로 S(r) 곡선, 그리고 InvertBlockPockets(막힌 곳만 — 동작은 문서 확인 필요)로
+         열린 곳 + 막힌 곳 ≈ 없이 값 닫힘 검산
+      ⑥ ASR5 와 FSR8 은 기하 같음(PLD · LCD · VF · 원자 62) · 우리 자 S 113.4 / 113.3 — 한 건이면 됨.
+         비용: 반경 하나당 Widom 2건 · 62원자라 오늘 실측(v3 2×2×2, 24~27 분/건)보다 작을 것(미측정)
+
 ## 2026-09-25 01:22 — [MAGI-005 E-2 착수] base · nbIm100 N₂ Widom ⟨U⟩ (+ CO₂ 검산 2) — 01:20:55, 4작업
 
     run_aryl_gcmc.run_one(수정 없음) · Widom 3,000+15,000 · 298 K · UFF_MOF · 12 Å · Ewald 1e-6 · 단위셀 2×2×2 · 힘장 md5 8e8ec933 일치
