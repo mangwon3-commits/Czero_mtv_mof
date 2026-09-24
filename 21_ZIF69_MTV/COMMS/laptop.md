@@ -7279,3 +7279,11 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
     G = S_ON/S_OFF **1.39 ± 0.02** · ln 비 0.837
     점검 문제: 없음
     ⚠ 파일명의 호스트 태그 'desktop-nvsrr9m' = 이 laptop(DESKTOP-NVSRR9M) — 데스크탑 결과 아님.
+
+## 2026-09-25 05:59 — laptop(Melchior): E-4 **e4zif77 (ZIF-77) 완주** — 값·표지만
+    'Simulation finished' 4/4 · 골격 전하 ON 2/2 전원 비영 · OFF 사본 2/2 0/420 · seed 4개 겹침 0 · 작업당 18.0~21.3 분 · 드라이버 경과 79.2 분(순차) · CIF charged_v3/e4zif77_DDEC6.cif
+    ON  S 18.26 ± 0.39 · K_H(CO₂) 3.880e-05 · K_H(N₂) 2.124e-06 · ΔU -24.67 → Q_st(보정) 27.15
+    OFF S 18.97 ± 0.35 · K_H(CO₂) 4.075e-05 · K_H(N₂) 2.148e-06 · ΔU -24.12 → Q_st(보정) 26.60
+    G = S_ON/S_OFF **0.96 ± 0.03** · ln 비 1.013
+    점검 문제: 없음
+    ⚠ 파일명의 호스트 태그 'desktop-nvsrr9m' = 이 laptop(DESKTOP-NVSRR9M) — 데스크탑 결과 아님.
