@@ -28,8 +28,52 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop",
-   "status": "pending",
+   "status": "ok",
    "set": "A",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 388,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790269632,
+   "total_time_s_CO2": 1819.053726,
+   "KH_CO2": 0.000312326,
+   "KH_CO2_err": 4.84478e-06,
+   "dU_CO2": -28.4921277406,
+   "dU_CO2_err": 0.0742042604,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 388,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790269644,
+   "total_time_s_N2": 1811.376051,
+   "KH_N2": 9.40694e-06,
+   "KH_N2_err": 5.48628e-08,
+   "dU_N2": -17.4155578975,
+   "dU_N2_err": 0.0354097384,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.000305718,
@@ -39,7 +83,15 @@
     "dU_CO2": -27.9361793152
    },
    "S_ON": 33.35857538790564,
-   "S_ON_err": 0.4288070743777063
+   "S_ON_err": 0.4288070743777063,
+   "S_OFF": 33.20165749967577,
+   "S_OFF_err": 0.5502208721335418,
+   "lnS_OFF": 3.502599799365276,
+   "lnS_OFF_err": 0.016572090478883923,
+   "lnS_ON": 3.5073148723792245,
+   "ln_ratio": 0.9986556459327104,
+   "dlnKH_CO2_off_minus_on": 0.021384405686281964,
+   "dlnKH_N2_off_minus_on": 0.026099478700230286
   },
   {
    "name": "2024_Zn__lig_3_ASR_1",
@@ -201,8 +253,52 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop",
-   "status": "pending",
+   "status": "ok",
    "set": "A",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 82,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790269704,
+   "total_time_s_CO2": 1833.071645,
+   "KH_CO2": 0.000189839,
+   "KH_CO2_err": 8.46009e-07,
+   "dU_CO2": -26.0341555027,
+   "dU_CO2_err": 0.0240599549,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 82,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790269716,
+   "total_time_s_N2": 1837.618083,
+   "KH_N2": 8.18097e-06,
+   "KH_N2_err": 7.4072e-08,
+   "dU_N2": -16.1176334115,
+   "dU_N2_err": 0.0274399971,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.000218107,
@@ -212,7 +308,15 @@
     "dU_CO2": -26.8425043444
    },
    "S_ON": 26.45940595020308,
-   "S_ON_err": 0.45945721433889086
+   "S_ON_err": 0.45945721433889086,
+   "S_OFF": 23.204950024263628,
+   "S_OFF_err": 0.2341725826304604,
+   "lnS_OFF": 3.1443656190284037,
+   "lnS_OFF_err": 0.010091492650732028,
+   "lnS_ON": 3.2756117075732236,
+   "ln_ratio": 0.9599323423342948,
+   "dlnKH_CO2_off_minus_on": -0.13880942354176357,
+   "dlnKH_N2_off_minus_on": -0.007563334996943564
   },
   {
    "name": "2014_Cu__bcu_3_ASR_2",

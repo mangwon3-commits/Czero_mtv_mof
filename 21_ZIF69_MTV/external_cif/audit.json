@@ -3,11 +3,11 @@
  "cutoff_A": 12.0,
  "rows": [
   {
-   "file": "/home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/MAF66_Zn_atz2_1t_guestfree_P1_2x2x1.cif",
-   "name": "MAF66_Zn_atz2_1t_guestfree_P1_2x2x1.cif",
+   "file": "/home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/IISERPMOF16_ZnDamtzHCOO_ordered_P1.cif",
+   "name": "IISERPMOF16_ZnDamtzHCOO_ordered_P1.cif",
    "space_group_HM": "P 1",
    "IT_number": 1,
-   "n_symops_listed": 1,
+   "n_symops_listed": 0,
    "atom_site_columns": [
     "_atom_site_type_symbol",
     "_atom_site_label",
@@ -21,48 +21,49 @@
    "n_partial_occupancy": 0,
    "partial_occupancy_examples": [],
    "has_occupancy_column": true,
-   "pmg_natoms": 304,
-   "pmg_formula": "Zn16 H96 C64 N128",
-   "pmg_reduced_formula": "ZnH6(CN2)4",
+   "pmg_natoms": 64,
+   "pmg_formula": "Zn4 H20 C12 N20 O8",
+   "pmg_reduced_formula": "ZnH5C3N5O2",
    "pmg_ordered": true,
-   "ase_natoms": 304,
+   "ase_natoms": 64,
    "elements": {
-    "C": 64,
-    "H": 96,
-    "N": 128,
-    "Zn": 16
+    "C": 12,
+    "H": 20,
+    "N": 20,
+    "O": 8,
+    "Zn": 4
    },
    "has_H": true,
    "unknown_elements_for_COV": [],
    "cell": {
-    "a": 20.408,
-    "b": 20.408,
-    "c": 13.0998,
+    "a": 8.831,
+    "b": 9.192,
+    "c": 9.838,
     "alpha": 90.0,
-    "beta": 90.0,
+    "beta": 108.76,
     "gamma": 90.0,
-    "volume": 5455.89
+    "volume": 756.17
    },
    "perp_widths": [
-    20.408,
-    20.408,
-    13.1
+    8.362,
+    9.192,
+    9.315
    ],
    "tnf_unitcells": [
-    2,
-    2,
-    2
+    3,
+    3,
+    3
    ],
    "tnf_perp_widths_after": [
-    40.82,
-    40.82,
-    26.2
+    25.09,
+    27.58,
+    27.95
    ],
-   "tnf_supercell_atoms": 2432,
+   "tnf_supercell_atoms": 1728,
    "tnf_min_width_ok": true,
-   "tnf_native_222_ok": true,
-   "min_interatomic_dist": 0.8591,
-   "n_pairs_below_0p9": 128,
+   "tnf_native_222_ok": false,
+   "min_interatomic_dist": 0.8796,
+   "n_pairs_below_0p9": 32,
    "guest_candidates": [],
    "p1_written": null,
    "p1_note": "원본이 이미 P1"
