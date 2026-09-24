@@ -478,8 +478,52 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop",
-   "status": "pending",
+   "status": "ok",
    "set": "B",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 204,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790271501,
+   "total_time_s_CO2": 1138.379179,
+   "KH_CO2": 0.000426409,
+   "KH_CO2_err": 3.78314e-06,
+   "dU_CO2": -28.9395951192,
+   "dU_CO2_err": 0.0252568146,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 204,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790271517,
+   "total_time_s_N2": 1139.962501,
+   "KH_N2": 1.02516e-05,
+   "KH_N2_err": 9.34856e-08,
+   "dU_N2": -17.0295415484,
+   "dU_N2_err": 0.0128322007,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00171765,
@@ -489,7 +533,15 @@
     "dU_CO2": -34.7196231903
    },
    "S_ON": 139.7747524148201,
-   "S_ON_err": 2.6680262206379046
+   "S_ON_err": 2.6680262206379046,
+   "S_OFF": 41.594385266690075,
+   "S_OFF_err": 0.52920159503724,
+   "lnS_OFF": 3.7279651886072886,
+   "lnS_OFF_err": 0.01272290939375991,
+   "lnS_ON": 4.9400322155988174,
+   "ln_ratio": 0.7546439022878709,
+   "dlnKH_CO2_off_minus_on": -1.3933133769567332,
+   "dlnKH_N2_off_minus_on": -0.1812463499652042
   },
   {
    "name": "2018_Cd__dia_3_ASR_5",
