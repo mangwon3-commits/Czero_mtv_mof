@@ -2,7 +2,7 @@
   "test": "MAGI-005 E-3b — MAF-66 등온선 대조 GCMC (T-J3′ 후속: 문헌 225 대 우리 15.5 의 원인 가르기)",
   "assign": "ASSIGN_MAGI5B_20260925.md §E-3b",
   "machine": "junseok",
-  "final": false,
+  "final": true,
   "cif": "charged_v3/maf66_DDEC6.cif (2×2×1 초격자 304원자 · PACMAN DDEC6)",
   "protocol": {
     "gcmc_init": 5000,
@@ -70,8 +70,26 @@
       "gas": "CO2",
       "temp_K": 273.0,
       "pressure_bar": 1.0,
-      "status": "pending",
-      "run_root": "magi5_e3b_runs_CO2_273K_1bar"
+      "status": "ok",
+      "run_root": "magi5_e3b_runs_CO2_273K_1bar",
+      "marker_finished": true,
+      "seed": 1790269741,
+      "minutes": 126.4,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+      "data": "magi5_e3b_runs_CO2_273K_1bar/gcmc_CO2_maf66_DDEC6/Output/System_0/output_maf66_DDEC6_2.2.2_273.000000_100000.data",
+      "abs_minus_excess_upper_mmol_g": 0.0391,
+      "n_mmol_g": 6.9126447545,
+      "n_mmol_g_err": 0.0907631022,
+      "exp_mmol_g_1atm": 6.27,
+      "R": 1.1025,
+      "R_lo": 1.088,
+      "R_hi": 1.117,
+      "dQ_kJ_mol": -0.221
     },
     {
       "gas": "N2",
