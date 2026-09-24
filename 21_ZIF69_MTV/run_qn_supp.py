@@ -83,16 +83,28 @@ def main():
     if bad:
         sys.exit('등록 밖 조성: %s (등록 §1 은 %s)' % (bad, ALL))
 
-    ffp = os.path.join(os.environ.get('RASPA_DIR', ''), 'share', 'raspa',
+    # ⚠ `RASPA_DIR` 은 **`share/raspa` 의 부모**입니다(예: `$HOME/RASPA/simulations`).
+    #   09-24 데스크탑이 한 단계 깊게 줘서 172구조가 3분 만에 전부 `[no-output]` 이 났고,
+    #   laptop2 는 변수 자체가 비어 여기서 막혔습니다. **막되 고치는 법을 알려 줍니다.**
+    rd = os.environ.get('RASPA_DIR', '')
+    ffp = os.path.join(rd, 'share', 'raspa',
                        'forcefield', 'UFF_MOF', 'force_field_mixing_rules.def')
     import hashlib
-    if os.path.exists(ffp):
-        m = hashlib.md5(open(ffp, 'rb').read()).hexdigest()
-        if m != FF_MD5:
-            sys.exit('힘장 관문 실패: %s != %s (등록 §1)' % (m, FF_MD5))
-        print('힘장 관문 통과  %s' % m, flush=True)
-    else:
-        sys.exit('힘장 파일 없음: %s — $RASPA_DIR 을 확인하십시오' % ffp)
+    if not os.path.exists(ffp):
+        hint = ''
+        for c in (os.path.join(os.path.expanduser('~'), 'RASPA', 'simulations'),
+                  os.path.join(os.path.expanduser('~'), 'RASPA')):
+            if os.path.exists(os.path.join(c, 'share', 'raspa', 'forcefield',
+                                           'UFF_MOF', 'force_field_mixing_rules.def')):
+                hint = '\n이 기기에서 맞는 값은 이것으로 보입니다:  export RASPA_DIR=%s' % c
+                break
+        sys.exit('힘장 파일 없음: %s\n'
+                 'RASPA_DIR=%r — **`share/raspa` 의 부모**를 주십시오(한 단계 깊게 주면 안 됩니다).%s'
+                 % (ffp, rd, hint))
+    m = hashlib.md5(open(ffp, 'rb').read()).hexdigest()
+    if m != FF_MD5:
+        sys.exit('힘장 관문 실패: %s != %s (등록 §1)' % (m, FF_MD5))
+    print('힘장 관문 통과  %s  (RASPA_DIR=%s)' % (m, rd), flush=True)
 
     jobs = [(c, T, p) for c in comps for T in TEMPS for p in PRESS]
     print('§-보완  조성 %d · 온도 %d · 압력 %s → %d작업 · 워커 %d'

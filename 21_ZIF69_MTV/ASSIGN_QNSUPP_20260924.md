@@ -12,7 +12,16 @@
 시스템 `python3` 로 띄우면 자식이 numpy 를 못 찾습니다. 러너가 **선행 검사로 즉시 죽습니다**
 (09-24 데스크탑 예행에서 실제로 났습니다 — 그 자리에서 막게 고쳤습니다).
 
+⚠ **`RASPA_DIR` 은 `share/raspa` 의 *부모*입니다** (laptop2 14:2x 지적 — 변수가 비어 한 번 막혔습니다).
+
+    export RASPA_DIR=$HOME/RASPA/simulations        # 맞음 — 이 아래에 share/raspa/ 가 있습니다
+    export RASPA_DIR=$HOME/RASPA/simulations/share/raspa   # 틀림 — 09-24 데스크탑이 이렇게 줘서
+                                                    #        172구조가 3분 만에 전부 [no-output]
+
+관문이 **막되 고치는 법을 알려 주도록** 고쳤습니다(15:1x) — 못 찾으면 이 기기에서 맞아 보이는 값을 같이 찍습니다.
+
     워커   기본 6 (`QN_SUPP_WORKERS`). **첫 한 건의 실측을 보고 올리십시오** — 아래 §3.
+           laptop2 는 **12** 로 띄웠습니다(그 기기 09-21 실측: 12 가 6보다 처리량 +4 %). 기기마다 다릅니다.
     기동   setsid nohup ... < /dev/null &   ·  `bash bgstate.sh` 로 자식까지 확인
 
 ## 2. 왜 조성 단위로 나누는가 (등록 §1-1)
