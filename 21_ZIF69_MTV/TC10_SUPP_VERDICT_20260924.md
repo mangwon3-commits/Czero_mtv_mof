@@ -1,4 +1,4 @@
-# T-C10 §-보완 판정 — `saIm0583e6~e10` 건조 GCMC 5건으로 P5(LCD–로딩 상관)를 닫는다 (2026-09-24 14:17 종합자; 등록 `TC10_SUPP_REGISTRATION_20260924.md` §1·§3 자료 0건 09-24 04:55; **이의 창 09-24 22:1x 까지(8 h)**, 검산 Melchior/Balthasar/Junseok)
+# T-C10 §-보완 판정 — `saIm0583e6~e10` 건조 GCMC 5건으로 P5(LCD–로딩 상관)를 닫는다 (2026-09-24 14:17 종합자; 등록 `TC10_SUPP_REGISTRATION_20260924.md` §1·§3 자료 0건 09-24 04:55; **확정 (2026-09-24 22:22 — 이의 창 22:1x 종료, 잔여 이의 0건)**, 검산 Melchior/Balthasar/Junseok)
 
 자료 `results_v3ens0583_e610.json`(laptop2 사슬, 09-24 08:1x 착수 → 14:10 푸시; 머리말 조건 e1~e5 파일과 동일: 15,000 사이클 · UFF_MOF · DDEC6 · 298 K · 0.15 bar · GFN-FF 셀 고정 이완본) + `results_v3ens0583.json`(e1~e5). 정의(등록 §1·§1-1): 「LCD」 = 이 두 파일의 `LCD` 열 = `charged_v3` 이완본의 Zeo++ LCD(같은 `run_gcmc_v3.py` 경로). 등록 §3 의 n=5 원자료(LCD·로딩 다섯 쌍)와 파일 값 일치 확인, r(n=5) = -0.755(등록 −0.755).
 
@@ -34,10 +34,11 @@
     n=5 의 −0.755 는 n=10 에서 -0.25(CI 폭 1.21)로 무너졌다 — 다섯 점의 우연. 배치 간 LCD–로딩 상관을 기제로 읽는 문장은 쓰지 않는다(`LCD_LOADING_CONFOUND` 보류 해제 = 그 문장의 근거가 없어졌다는 뜻, 반대 근거가 생겼다는 뜻은 아님).
     T-C10 의 확정 판정(P1~P4)은 그대로. 이 문서는 P5 하나만 닫는다(등록 §4 (ㄷ)). `results_v3.json` 31조성과 섞지 않는다((ㄱ)).
     정정 하나(등록 §1-1): `TC10_VERDICT_20260923.md §2` 의 "이완 **전** LCD 8.9~10.0 Å" 는 틀린 표기 — `results_v3ens0583.json` 의 LCD 는 GFN-FF **이완 후**(charged_v3) 값이다. 그 판정(P5 판정 불가)은 안 바뀐다. 그 문서에 정정 줄을 같은 시각에 넣는다.
-    이의 창 뒤 편집: `LCD_LOADING_CONFOUND.md` §4 에 보류 해제 한 줄.
+    이의 창 뒤 편집: `LCD_LOADING_CONFOUND.md` §4 에 보류 해제 한 줄 **(22:22 적음)**.
 
 ## 5. 절차
-    이의 창 09-24 22:1x. 검산 Melchior/Balthasar/Junseok. 계산 `~/.claude_work/write_tc10_supp_verdict.py`. 자료: 두 결과 JSON · `risk_results_v3ensA.json` · `risk_results_tc10.json`.
+    이의 창 09-24 22:1x 종료 → **확정 22:22**. 네 브랜치 COMMS 의 `db6e26bc` 이후 추가분을 넓게 걸면 166줄(대부분 Q_st §-보완), T-C10 고유어로 좁혀 51줄(중복 제거)을 **사람이 읽음 — 이의 0**: 라벨 정정("22:1x 그대로" 명시)·제 점검 줄·판정 전 laptop2 기록뿐 (`~/.claude_work/tc10_objection_narrow.py`). 독립 검산 `dc70a557` 판정값 전부 일치 — 그 검산이 짚은 P3 문턱 표기(±0.1546 대 실제 2SD 0.15624)는 판정 불변·문턱 안 고침으로 정리됨.
+    이의 창 09-24 22:1x(원문). 검산 Melchior/Balthasar/Junseok. 계산 `~/.claude_work/write_tc10_supp_verdict.py`. 자료: 두 결과 JSON · `risk_results_v3ensA.json` · `risk_results_tc10.json`.
 
 ---
 
