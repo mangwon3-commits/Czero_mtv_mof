@@ -2,7 +2,7 @@
   "test": "MAGI-005 E-2b — Co(p-Me₂-bdp) ASR_5 BlockPockets S(r) (맹점 ① 의 크기)",
   "assign": "ASSIGN_MAGI5B_20260925.md §E-2b",
   "machine": "junseok",
-  "final": false,
+  "final": true,
   "key": "2016[Co][pts]3[ASR]5",
   "cif": "core_pop_cifs.zip:2016_Co__pts_3_ASR_5.cif (CoRE PACMAN DDEC6)",
   "step0": "magi5_e2b_runs/step0_result.json (cwd 읽기 통과)",
@@ -48,14 +48,57 @@
         "zeo_seconds": 34.9
       },
       "CO2": {
-        "status": "pending"
+        "minutes": 13.2,
+        "unit_cells": [
+          3,
+          3,
+          4
+        ],
+        "n_spheres_per_uc": 0,
+        "n_expected": 0,
+        "data": "magi5_e2b_runs/r1.50/widom_CO2_2016_Co__pts_3_ASR_5/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data",
+        "seed": 1790277467,
+        "n_blocked_reported": 0,
+        "pockets_blocked_line": true,
+        "stderr_not_found": false,
+        "marker_finished": true,
+        "KH": 0.000316253,
+        "KH_err": 9.07695e-06,
+        "dU": -32.0578222851,
+        "dU_err": 0.0807070901,
+        "status": "ok",
+        "KH_over_unblocked": 1.0241884294523034,
+        "KH_units_from_unblocked": 0.82,
+        "KH_effectively_zero": false
       },
       "N2": {
-        "status": "pending"
+        "minutes": 13.3,
+        "unit_cells": [
+          3,
+          3,
+          4
+        ],
+        "n_spheres_per_uc": 0,
+        "n_expected": 0,
+        "data": "magi5_e2b_runs/r1.50/widom_N2_2016_Co__pts_3_ASR_5/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data",
+        "seed": 1790277482,
+        "n_blocked_reported": 0,
+        "pockets_blocked_line": true,
+        "stderr_not_found": false,
+        "marker_finished": true,
+        "KH": 2.70578e-06,
+        "KH_err": 3.71866e-08,
+        "dU": -17.0134899271,
+        "dU_err": 0.0241130497,
+        "status": "ok",
+        "KH_over_unblocked": 0.993504609927776,
+        "KH_units_from_unblocked": 0.48,
+        "KH_effectively_zero": false
       },
-      "S": null,
-      "S_err": null,
-      "S_note": null
+      "S": 116.88052982873701,
+      "S_err": 3.719408814031173,
+      "S_note": null,
+      "S_units_from_unblocked": 0.94
     },
     {
       "probe_radius_A": 1.65,
@@ -67,14 +110,57 @@
         "zeo_seconds": 34.4
       },
       "CO2": {
-        "status": "pending"
+        "minutes": 13.3,
+        "unit_cells": [
+          3,
+          3,
+          4
+        ],
+        "n_spheres_per_uc": 0,
+        "n_expected": 0,
+        "data": "magi5_e2b_runs/r1.65/widom_CO2_2016_Co__pts_3_ASR_5/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data",
+        "seed": 1790277497,
+        "n_blocked_reported": 0,
+        "pockets_blocked_line": true,
+        "stderr_not_found": false,
+        "marker_finished": true,
+        "KH": 0.000316947,
+        "KH_err": 4.91999e-06,
+        "dU": -32.0890098078,
+        "dU_err": 0.0756228394,
+        "status": "ok",
+        "KH_over_unblocked": 1.0264359552308409,
+        "KH_units_from_unblocked": 1.66,
+        "KH_effectively_zero": false
       },
       "N2": {
-        "status": "pending"
+        "minutes": 13.3,
+        "unit_cells": [
+          3,
+          3,
+          4
+        ],
+        "n_spheres_per_uc": 0,
+        "n_expected": 0,
+        "data": "magi5_e2b_runs/r1.65/widom_N2_2016_Co__pts_3_ASR_5/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data",
+        "seed": 1790277512,
+        "n_blocked_reported": 0,
+        "pockets_blocked_line": true,
+        "stderr_not_found": false,
+        "marker_finished": true,
+        "KH": 2.7061e-06,
+        "KH_err": 2.95509e-08,
+        "dU": -17.0111808477,
+        "dU_err": 0.0348132033,
+        "status": "ok",
+        "KH_over_unblocked": 0.9936221070913209,
+        "KH_units_from_unblocked": 0.59,
+        "KH_effectively_zero": false
       },
-      "S": null,
-      "S_err": null,
-      "S_note": null
+      "S": 117.1231661801116,
+      "S_err": 2.222917412099188,
+      "S_note": null,
+      "S_units_from_unblocked": 1.68
     },
     {
       "probe_radius_A": 1.82,
@@ -86,14 +172,58 @@
         "zeo_seconds": 34.1
       },
       "CO2": {
-        "status": "pending"
+        "minutes": 12.8,
+        "unit_cells": [
+          3,
+          3,
+          4
+        ],
+        "n_spheres_per_uc": 1,
+        "n_expected": 36,
+        "data": "magi5_e2b_runs/r1.82/widom_CO2_2016_Co__pts_3_ASR_5/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data",
+        "seed": 1790277527,
+        "n_blocked_reported": 36,
+        "pockets_blocked_line": true,
+        "stderr_not_found": false,
+        "marker_finished": true,
+        "KH": 2.24746e-157,
+        "KH_err": 6.23706e-157,
+        "dU": null,
+        "dU_err": null,
+        "status": "ok",
+        "KH_over_unblocked": 7.278421161718224e-154,
+        "KH_units_from_unblocked": 71.11,
+        "KH_effectively_zero": true
       },
       "N2": {
-        "status": "pending"
+        "minutes": 13.0,
+        "unit_cells": [
+          3,
+          3,
+          4
+        ],
+        "n_spheres_per_uc": 1,
+        "n_expected": 36,
+        "data": "magi5_e2b_runs/r1.82/widom_N2_2016_Co__pts_3_ASR_5/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data",
+        "seed": 1790277542,
+        "n_blocked_reported": 36,
+        "pockets_blocked_line": true,
+        "stderr_not_found": false,
+        "marker_finished": true,
+        "KH": 3.60602e-112,
+        "KH_err": 1.00103e-111,
+        "dU": 621.6321711493,
+        "dU_err": 57.5058439368,
+        "status": "ok",
+        "KH_over_unblocked": 1.3240535052708495e-106,
+        "KH_units_from_unblocked": 157.81,
+        "KH_effectively_zero": true
       },
       "S": null,
       "S_err": null,
-      "S_note": null
+      "S_note": "0/0 — 두 기체 모두 완전 차단(K_H 가 0 과 구별 안 됨) → S(r) 정의 안 됨",
+      "S_raw": 6.2325222821836814e-46,
+      "S_err_raw": 2.446427241440262e-45
     },
     {
       "probe_radius_A": 2.0,
@@ -105,14 +235,58 @@
         "zeo_seconds": 34.3
       },
       "CO2": {
-        "status": "pending"
+        "minutes": 13.0,
+        "unit_cells": [
+          3,
+          3,
+          4
+        ],
+        "n_spheres_per_uc": 2,
+        "n_expected": 72,
+        "data": "magi5_e2b_runs/r2.00/widom_CO2_2016_Co__pts_3_ASR_5/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data",
+        "seed": 1790277557,
+        "n_blocked_reported": 72,
+        "pockets_blocked_line": true,
+        "stderr_not_found": false,
+        "marker_finished": true,
+        "KH": 3.82088e-21,
+        "KH_err": 9.19335e-21,
+        "dU": 45.4222210501,
+        "dU_err": 6.2842457269,
+        "status": "ok",
+        "KH_over_unblocked": 1.2373957199854914e-17,
+        "KH_units_from_unblocked": 71.11,
+        "KH_effectively_zero": true
       },
       "N2": {
-        "status": "pending"
+        "minutes": 13.1,
+        "unit_cells": [
+          3,
+          3,
+          4
+        ],
+        "n_spheres_per_uc": 2,
+        "n_expected": 72,
+        "data": "magi5_e2b_runs/r2.00/widom_N2_2016_Co__pts_3_ASR_5/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data",
+        "seed": 1790277572,
+        "n_blocked_reported": 72,
+        "pockets_blocked_line": true,
+        "stderr_not_found": false,
+        "marker_finished": true,
+        "KH": 2.72677e-18,
+        "KH_err": 6.62303e-18,
+        "dU": 33.4173002545,
+        "dU_err": 12.7439836567,
+        "status": "ok",
+        "KH_over_unblocked": 1.0012116894990581e-12,
+        "KH_units_from_unblocked": 157.81,
+        "KH_effectively_zero": true
       },
       "S": null,
       "S_err": null,
-      "S_note": null
+      "S_note": "0/0 — 두 기체 모두 완전 차단(K_H 가 0 과 구별 안 됨) → S(r) 정의 안 됨",
+      "S_raw": 0.001401247629979793,
+      "S_err_raw": 0.004790698731938708
     }
   ],
   "canonical": {
@@ -121,6 +295,18 @@
     "S_err": null,
     "S_over_ref": null,
     "units_from_ref": null,
-    "note": null
+    "note": "S 발산 — N₂@1.82 는 완전 차단(K_H 가 0 과 구별 안 됨), CO₂@1.65 는 차단 구 0(= 차단 없음)",
+    "S_raw": 8.789385527534511e+107,
+    "S_err_raw": 2.439968761616609e+108,
+    "S_over_ref_raw": 7.752224144604129e+105,
+    "units_from_ref_raw": 0.36,
+    "divergent": true
+  },
+  "summary": "차단 구 0 인 반경 [1.5, 1.65] → 차단 없음과 같음(같은 기기 재측 둘, 참조 laptop2 와의 거리는 행마다 *_units_from_unblocked). 두 기체 모두 완전 차단된 반경 [1.82, 2.0] → S(r) 정의 안 됨. 정식 짝(CO₂@1.65 + N₂@1.82) 은 발산. 판정문은 종합자.",
+  "postprocess": {
+    "script": "magi5_e2b_post_junseok.py",
+    "time": "2026-09-25 04:33:41",
+    "criterion": "K_H − ± ≤ 0 이고 K_H < 1e-06 × 차단 없음 참조(laptop2) → \"0 과 구별 안 됨\"",
+    "why": "드라이버는 K_H = 0 정확히일 때만 null — 수치상 0(1e-112 등)에서 뜻 없는 유한 비를 적었음. 원값은 *_raw 로 보존"
   }
 }
