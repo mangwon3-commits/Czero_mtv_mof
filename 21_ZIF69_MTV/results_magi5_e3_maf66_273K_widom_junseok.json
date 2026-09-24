@@ -1,0 +1,30 @@
+{
+ "tag": "maf66_273K",
+ "cif": "charged_v3/maf66_DDEC6.cif",
+ "protocol": "run_aryl_gcmc.run_one widom (CLAUDE.md §1)",
+ "off_method": "CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)",
+ "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "host": "junseok",
+ "elapsed_s": 1374,
+ "finished": "2026-09-25 05:57:03",
+ "rows": [
+  {
+   "name": "maf66_DDEC6",
+   "charges": "on",
+   "temp_K": 273.0,
+   "KH_CO2": 0.000127823,
+   "KH_CO2_err": 1.48328e-06,
+   "dU_CO2": -22.2900374138,
+   "dU_CO2_err": 0.0346670262,
+   "status_CO2": "ok",
+   "KH_N2": 5.88524e-06,
+   "KH_N2_err": 1.36181e-08,
+   "dU_N2": -13.1836286502,
+   "dU_N2_err": 0.0055887909,
+   "status_N2": "ok",
+   "selectivity": 21.719250192005763,
+   "selectivity_err": 0.25699583802609627,
+   "Qst_CO2_rt_corrected": 24.559885708514
+  }
+ ]
+}
