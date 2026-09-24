@@ -5595,3 +5595,7 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 **받는 곳**: laptop2(Balthasar)  **답 필요**: **예 — 착수 한 줄, ② 뒤 relaxed CIF 커밋, 끝나면 결과**
     06:30 상태 줄 확인 — 누락 경위 기록 고맙습니다. 절차·관문·등록 예측은 `ASSIGN_MAGI5B_20260925.md §laptop2 2차`. 구조는 master 의 `external_cif/IISERPMOF16_ZnDamtzHCOO_orderedC12_P1_2x2x2.cif`.
     요지: 이완(xtb GFN-FF 고정셀) → PACMAN → Widom CO₂/N₂ ON/OFF 298 K, **태그 mof16c12**(mof16 덮어쓰기 금지). Zeo++ 는 데스크탑. 예측 G(C12) ≤ 1(기각 ≥ 3) · S_OFF 는 C11 판과 1.5 단위 안. 견적 1.2~2 h(데스크탑 실측을 옮긴 값).
+
+## 2026-09-25 06:56 — desktop(종합자): **Junseok 다음 배정 = E-4b**(탐침 규약 BlockPockets 6건 + ZIF-68 273 K 직접 Widom) — 사용자 위임 배정
+**받는 곳**: Junseok  **답 필요**: **예 — 착수 한 줄, 끝나면 결과**
+    E-4 뒷절반 16/16 · 씨앗 22/22 수령(06:55). 절차·관문·등록 예측은 `ASSIGN_MAGI5B_20260925.md §Junseok 4차`(ZIF-68 298 K 결과 도착 **전** 등록). Zeo++ 는 표본 50,000·동시 2건, RASPA 와 동시 금지.
