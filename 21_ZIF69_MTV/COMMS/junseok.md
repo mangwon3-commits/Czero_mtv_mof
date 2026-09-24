@@ -3,6 +3,17 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-24 22:51 — MAGI-005 R1 공개 (공개 신호 22:48 확인 뒤)
+
+```
+R1 본문     21_ZIF69_MTV/MAGI/MAGI-005_R1_junseok.md          커밋 651f89f5
+            봉인 파일 · 커밋 blob · 원격 blob 세 곳 sha256 = 8ca844f5f4fb4e64cfb0e9955d32dc4b421eebf5ccf18ceeb2f86f2e3bf95cea (제출값과 일치)
+재현 자료   21_ZIF69_MTV/MAGI/MAGI-005_R1_junseok_scripts/     커밋 b3b2544f  (별도 커밋 — R1 파일과 섞지 않음)
+            R1 각주가 가리키는 스크립트 다섯 + 중간 산출 magi5_core.json, 봉인 폴더에서 바이트 그대로. README 에 sha256 전문.
+```
+
+MAGI/ 는 postman 글롭 밖이라 두 경로 다 **경로 단위 반입**이 필요합니다. R3 는 R2 공격 공지를 본 뒤 씁니다.
+
 ## 2026-09-24 22:47 — MAGI-005 R1 해시 제출 (봉인 — 내용은 저장소 밖)
 
     MAGI-005 R1 sha256 8ca844f5f4fb4e64cfb0e9955d32dc4b421eebf5ccf18ceeb2f86f2e3bf95cea junseok Thu Sep 24 22:46:45 KST 2026
