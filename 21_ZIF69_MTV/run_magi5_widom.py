@@ -71,7 +71,7 @@ def main():
         if r.get('KH_CO2') and r.get('KH_N2'):
             r['selectivity'] = r['KH_CO2'] / r['KH_N2']
             r['selectivity_err'] = r['selectivity'] * ((r['KH_CO2_err']/r['KH_CO2'])**2 + (r['KH_N2_err']/r['KH_N2'])**2) ** 0.5
-        if r.get('dU_CO2') is not None: r['Qst_CO2_rt_corrected'] = -r['dU_CO2'] + rg.R_GAS * a.temp / 1000.0 if rg.R_GAS < 1 else -r['dU_CO2'] + 8.314462618e-3 * a.temp
+        if r.get('dU_CO2') is not None: r['Qst_CO2_rt_corrected'] = -r['dU_CO2'] + rg.R_GAS * a.temp   # 정정 2026-09-25 (laptop): R_GAS 는 kJ 단위, /1000 제거 — -r['dU_CO2'] + 8.314462618e-3 * a.temp
     meta = {'tag': a.tag, 'cif': a.cif, 'protocol': 'run_aryl_gcmc.run_one widom (CLAUDE.md §1)', 'off_method': 'CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)',
             'ff_md5': ff_gate.FF_MD5, 'host': host, 'elapsed_s': round(time.time() - t0), 'finished': time.strftime('%F %T'), 'rows': list(rows.values())}
     json.dump(meta, open(out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

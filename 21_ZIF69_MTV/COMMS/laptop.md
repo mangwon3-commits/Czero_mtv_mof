@@ -7254,3 +7254,4 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
     ⚠ **run_magi5_widom.py 74행 Q_st 결함**: `rg.R_GAS * T / 1000.0` — rg.R_GAS 는 이미 kJ/mol/K(8.314e-3) 라 +RT 가 2.48 이 아니라 0.0025.
        실측 results_magi5_e3_maf66_widom_hkhome.json: ON Qst_CO2_rt_corrected 22.026(올바른 −ΔU+RT 24.502) · OFF 21.326(23.802) — 필드가 **사실상 보정 전 값**.
        K_H·S·dU 무영향. 공용 러너라 **안 고쳤음**(§9 경계 ③) — 고침은 `+ rg.R_GAS * a.temp` 한 줄. E-4 보고에는 dU 로 다시 계산한 −ΔU+RT 를 따로 적음.
+    [04:30] 종합자 정정(b4e57d2d) 반영 — 로컬 run_magi5_widom.py 를 master 판으로 교체(Q_st 한 줄만 다름). **E-4 드라이버는 아직 하나도 안 떴으므로 전 구조가 정정판으로 돕니다.**
