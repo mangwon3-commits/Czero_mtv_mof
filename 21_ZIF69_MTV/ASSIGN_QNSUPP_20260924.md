@@ -5,8 +5,22 @@
 
 ## 1. 덱
 
-    Junseok   python run_qn_supp.py --only base,saIm025,saIm050              18작업
-    laptop2   python run_qn_supp.py --only mslm050,sa50nb50,saIm0583,base    24작업 (base 6 = §1-2 교차)
+    Junseok   python run_qn_supp.py --only base,saIm025,saIm050                            18작업
+    laptop2   python run_qn_supp.py --only mslm050,sa50nb50,saIm0583,base --tag-suffix _l2  24작업
+
+⚠ **15:3x 갱신 — Caspar(Junseok)가 기동 전에 결함 둘을 찾았습니다. 러너를 고쳤습니다.**
+
+    ① 씨앗   RASPA 씨앗은 **착수 시각(초)** 입니다(`run_tnf.py:312` 의 자기 주석). 그 보호(`--seed-stagger`)는
+             **한 호출 안 여러 작업**을 전제하는데, 이 러너는 작업마다 따로 부르므로 `i=0 → sleep 0` —
+             **워커 N 개가 같은 초에 떴습니다.** §AS 는 사슬이 하나씩 띄워 씨앗 72/72 전부 다르고 최소 간격 12 s(검산 일치).
+             → **착수 간격 잠금 ≥ 12 s** 를 러너에 직접 걸었습니다(`QN_SUPP_MIN_GAP`). 12워커 기동 지연 144 s.
+             → 끝나고 **씨앗 감사**를 찍습니다. 겹치면 그 작업의 JSON·실행 폴더를 지우고 다시 돕니다.
+    ② 이름   `base` 를 두 기기가 내면 결과 파일 이름이 같아 **반입 핑퐁**(07:38 능력 문서 무늬). `--tag-suffix _l2` 로 가릅니다.
+
+**이미 돌고 있다면 씨앗부터 세십시오:**
+
+    grep -h "Random number seed" 21_ZIF69_MTV/tnf_runs_qn_*/*/Output/System_0/*.data \
+      | awk '{print $NF}' | sort | uniq -c | sort -rn | head
 
 ⚠ **conda 환경의 python 으로 띄우십시오.** 러너가 `sys.executable` 로 `run_tnf.py` 를 띄우므로
 시스템 `python3` 로 띄우면 자식이 numpy 를 못 찾습니다. 러너가 **선행 검사로 즉시 죽습니다**

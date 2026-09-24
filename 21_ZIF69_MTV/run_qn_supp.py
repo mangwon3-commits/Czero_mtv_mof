@@ -13,7 +13,7 @@
 (`run_tnf.py` 자체가 `finished()` 로 'Simulation finished' 를 요구하므로, 표지가 없으면
 그 행의 `CO2_molkg` 가 null 로 남습니다.)
 """
-import argparse, json, os, subprocess, sys, time
+import argparse, json, os, subprocess, sys, threading, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # 선행 검사 — `run_tnf.py` 를 **이 파이썬으로** 띄우므로 여기서 numpy 가 되면 자식도 됩니다.
@@ -30,10 +30,37 @@ FF_MD5 = '8e8ec933f9013c7e932da04dc256efd3'          # 등록 §1 — 기존 72�
 TEMPS = [283.0, 298.0, 313.0]
 PRESS = [0.01, 0.02]                                  # ← §-보완이 더하는 두 점
 ALL = ['base', 'mslm050', 'sa50nb50', 'saIm025', 'saIm050', 'saIm0583']
+# ② 2026-09-24 Caspar 발견 — `base` 를 두 기기가 내면 **결과 파일 이름이 같습니다**
+#    (`tnf_results_qn_base_*.json`). `RESULT_PATTERNS` 안이고 `NOAUTO_IMPORT` 밖이라
+#    07:38~08:25 능력 문서와 **같은 핑퐁**이 납니다(checkout 반입은 조상을 안 만듦).
+#    등록 §1-2 의 "정본 = Junseok 판" 을 **파일 이름으로 지킬 수 없습니다.**
+#    → 교차 검산 쪽만 `--tag-suffix _l2` 로 갈라 냅니다. 정본은 등록 이름 그대로.
+SUFFIX = ['']
+
+
+# ── 착수 간격 잠금 (2026-09-24 15:3x — **Caspar(Junseok) 발견**) ────────────────
+# `run_tnf.py:312` 이 자기 주석에 적어 둔 그대로입니다:
+#     "씨앗 = 착수 시각(초). 같은 초에 두 개가 뜨면 **같은 난수열**입니다."
+#     time.sleep((i % max(1, cfg['workers'])) * cfg['stagger'])
+# 그 보호는 **한 호출 안 여러 작업**을 전제합니다. 이 러너는 작업마다 `run_tnf.py` 를
+# 따로(작업 1개, i=0) 부르므로 `sleep 0` — **워커 N 개가 같은 초에 뜹니다.**
+# §AS 72건은 사슬이 하나씩 띄워 씨앗 72개가 전부 다르고 **최소 간격 12 s** 였습니다(검산 일치).
+# 그래서 같은 12 s 를 여기서 직접 겁니다. 작업이 한 시간대이므로 12워커 기동 지연 144 s 는 무시할 만합니다.
+MIN_GAP = float(os.environ.get('QN_SUPP_MIN_GAP', '12'))
+_GATE = threading.Lock()
+_LAST = [0.0]
+
+
+def wait_turn():
+    with _GATE:                      # 잠금을 **든 채로** 잡니다 — 그래야 직렬화됩니다
+        w = _LAST[0] + MIN_GAP - time.time()
+        if w > 0:
+            time.sleep(w)
+        _LAST[0] = time.time()
 
 
 def tag_of(c, T, p):
-    return 'qn_%s_%dK_%.2fbar' % (c, int(T), p)
+    return 'qn_%s%s_%dK_%.2fbar' % (c, SUFFIX[0], int(T), p)
 
 
 def out_of(c, T, p):
@@ -59,6 +86,7 @@ def run_one(job):
     cif = os.path.join(HERE, 'charged_v3', '%s_DDEC6.cif' % c)
     if not os.path.exists(cif):
         return c, T, p, 'CIF 없음', 0.0
+    wait_turn()                                        # ← 착수 간격 잠금
     t0 = time.time()
     r = subprocess.run(
         [sys.executable, os.path.join(HERE, 'run_tnf.py'),
@@ -77,7 +105,10 @@ def main():
     ap.add_argument('--only', default=','.join(ALL), help='조성 쉼표 구분')
     ap.add_argument('--workers', type=int,
                     default=int(os.environ.get('QN_SUPP_WORKERS', '6')))
+    ap.add_argument('--tag-suffix', default='',
+                    help='결과 이름을 가릅니다(교차 검산 쪽만, 예: _l2). 정본은 빈 값.')
     a = ap.parse_args()
+    SUFFIX[0] = a.tag_suffix
     comps = [c.strip() for c in a.only.split(',') if c.strip()]
     bad = [c for c in comps if c not in ALL]
     if bad:
@@ -122,8 +153,25 @@ def main():
                 n_bad += 1
             print('[%2d/%d] %-10s %3dK %.2fbar  %-10s %5.1f min'
                   % (i, len(jobs), c, int(T), p, st, dt), flush=True)
+    # ── 씨앗 감사 — **막은 것과 안 겹친 것은 다릅니다.** 끝나고 실제로 셉니다.
+    seeds = {}
+    for c, T, p in jobs:
+        try:
+            for r in json.load(open(out_of(c, T, p), encoding='utf-8')):
+                if r.get('seed') is not None:
+                    seeds.setdefault(r['seed'], []).append(tag_of(c, T, p))
+        except Exception:
+            pass
+    dup = {k: v for k, v in seeds.items() if len(v) > 1}
     print('\n완주 %d · cached %d · 실패 %d' % (n_ok, n_cache, n_bad), flush=True)
-    sys.exit(1 if n_bad else 0)
+    print('씨앗 %d개 · 서로 다른 것 %d개 · **겹침 %d건**'
+          % (sum(len(v) for v in seeds.values()), len(seeds), len(dup)), flush=True)
+    for k, v in dup.items():
+        print('  !! 씨앗 %d 를 %d 작업이 공유: %s' % (k, len(v), ' '.join(v)), flush=True)
+    if dup:
+        print('  → 겹친 작업의 결과 JSON·실행 폴더를 지우고 다시 도십시오(같은 난수열입니다).',
+              flush=True)
+    sys.exit(1 if (n_bad or dup) else 0)
 
 
 if __name__ == '__main__':
