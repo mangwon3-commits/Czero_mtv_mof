@@ -32,8 +32,21 @@
       "gas": "CO2",
       "temp_K": 298.0,
       "pressure_bar": 0.15,
-      "status": "pending",
-      "run_root": "magi5_e3b_runs_CO2_298K_0.15bar"
+      "status": "ok",
+      "run_root": "magi5_e3b_runs_CO2_298K_0.15bar",
+      "marker_finished": true,
+      "seed": 1790269725,
+      "minutes": 13.0,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+      "data": "magi5_e3b_runs_CO2_298K_0.15bar/gcmc_CO2_maf66_DDEC6/Output/System_0/output_maf66_DDEC6_2.2.2_298.000000_15000.data",
+      "abs_minus_excess_upper_mmol_g": 0.0054,
+      "n_mmol_g": 0.7588032506,
+      "n_mmol_g_err": 0.0115646138
     },
     {
       "gas": "CO2",
@@ -46,8 +59,21 @@
       "gas": "N2",
       "temp_K": 298.0,
       "pressure_bar": 1.0,
-      "status": "pending",
-      "run_root": "magi5_e3b_runs_N2_298K_1bar"
+      "status": "ok",
+      "run_root": "magi5_e3b_runs_N2_298K_1bar",
+      "marker_finished": true,
+      "seed": 1790269756,
+      "minutes": 10.7,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+      "data": "magi5_e3b_runs_N2_298K_1bar/gcmc_N2_maf66_DDEC6/Output/System_0/output_maf66_DDEC6_2.2.2_298.000000_100000.data",
+      "abs_minus_excess_upper_mmol_g": 0.0358,
+      "n_mmol_g": 0.3189447889,
+      "n_mmol_g_err": 0.0089579951
     }
   ]
 }
