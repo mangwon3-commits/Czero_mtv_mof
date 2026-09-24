@@ -2843,3 +2843,4 @@ laptop2 가 완주까지 미루지 않고 냈습니다. 우편함에만 있으�
     [2026-09-25 00:13 Notion] MAGI-005 페이지 https://app.notion.com/p/3e54d27e904681c58f80e0d7c5c429cb · 판 종료(이의 창 12:00).
     [2026-09-25 00:17 이의 수용] Junseok(dfa7002f): §6-1 2·§6-7 두 문턱 혼용 → 분리(68/3D 26·75.5 대 48/3D 13·5계열·138.3), 맹점 ③ 계수 표기. 결론 불변(9c0a877c), Notion 갱신.
     [2026-09-25 01:18 배정] 사용자 승인 → `ASSIGN_MAGI5_20260925.md`: E-1 랩탑(OFF Widom 6) · E-2 Junseok(N₂ ΔU) · E-9+E-4준비 laptop2 · E-8 HKHOME. E-8 ① 완료: `core_pop_annotated.json`(dim·series·formula·L·flexible·anion_removed) · T-C4 값 넘김(`TC4_NOTE_20260925.md`).
+    [2026-09-25 01:26 E-3] 사용자가 MAF-66 CIF(CCDC 860996/860997) 업로드 → 검사·저장(`MAF66_CIF_20260925.md`, external_cif/): 1t 블록 = Zn(atz)₂ 정연, Zeo++ LCD 5.22 / PLD 4.06 → PLD 관문 통과. E-3 앞단(감사→이완→PACMAN→Widom ON/OFF) 데스크탑 착수 준비.
