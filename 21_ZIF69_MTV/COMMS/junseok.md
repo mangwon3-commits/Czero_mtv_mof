@@ -3,6 +3,20 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 06:59 — [MAGI-005 E-4b 착수] (a) Zeo++ 먼저 06:58 → 끝나면 (b) ZIF-68 273 K 와 (a) 의 Widom 을 함께
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    순서 선택: (a) Zeo++ 6건을 먼저(RASPA 0 인 지금) → 끝나는 즉시 (b) `run_magi5_widom.py --tag e4zif68_273K --workers 4 --temp 273` 와
+      (a) 에서 채널이 남은 경우의 CO₂@1.65 · N₂@1.82 Widom 을 같이 띄웁니다 — Widom 끼리는 겹쳐도 되므로 벽시계가 가장 짧은 순서.
+    (a) e4b_zeo(`magi5_e4b_runs/zeo/`): `-ha -res` + `-ha -block r 50000`, r = 1.65 · 1.82 × relax_tnf/e4zif{7,8,90}_relaxed · **한 번에 한 건**
+      (상한 2건 안; ZIF-7 522원자라 E-2b ④ 보다 클 수 있어서) · network RSS 1 s 감시, WSL 가용 5 GB 아래면 멈춤.
+      이완본과 전하본(charged_v3/e4zif{7,8,90}_DDEC6)은 셀·원자 분율 좌표가 같음을 확인(최대 차 5e-9) — .block 을 전하본 Widom 에 그대로 씀.
+      첫 줄: ZIF-7 `-res` Df **2.374** · Di 5.589(배정문 PLD 2.37 과 같음).
+    (b) ZIF-68: charged_v3/e4zif68_DDEC6.cif 600원자 · 2×2×2(4,800원자) · ON·OFF 4작업 · 워커 4.
+    출력 results_magi5_e4b_blockpockets_junseok.json(E-2b 행 형식) · results_magi5_e3_e4zif68_273K_widom_junseok.json · 우편함 한 줄씩.
+
 ## 2026-09-25 06:55 — [MAGI-005 E-4 Widom 뒷절반 완주] zif3 · zif6 · zif10 · zif7(탐침) ON/OFF 16작업 — 표지 16/16 · 씨앗 감사 22/22 겹침 0 — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
