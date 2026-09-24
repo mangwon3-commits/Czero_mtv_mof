@@ -1,0 +1,56 @@
+{
+ "test": "MAGI-005 E-2d — base·nbIm100 Widom 273 K (다른 시험: 온도)",
+ "registration": "MAGI5_E2_VERDICT_20260925.md §7",
+ "protocol": {
+  "widom_init": 3000,
+  "widom_cycles": 15000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "temp_K": 273.0,
+  "charges": "on",
+  "supercell": "unit_cells()"
+ },
+ "host": "HKHOME",
+ "elapsed_s": 2086,
+ "finished": "2026-09-25 03:34:38",
+ "rows": [
+  {
+   "name": "base",
+   "temp_K": 273.0,
+   "cif": "charged_v3/base_DDEC6.cif",
+   "status_N2": "ok",
+   "KH_N2": 4.66278e-06,
+   "KH_N2_err": 6.3454e-08,
+   "dU_N2": -12.9056173883,
+   "dU_N2_err": 0.04518285,
+   "status_CO2": "ok",
+   "KH_CO2": 0.000147455,
+   "KH_CO2_err": 3.60539e-06,
+   "dU_CO2": -25.8690986159,
+   "dU_CO2_err": 0.0943626683,
+   "S273": 31.623838139479023,
+   "S273_err": 0.8849224960614072,
+   "pred_junseok": 31.8
+  },
+  {
+   "name": "nbIm100",
+   "temp_K": 273.0,
+   "cif": "charged_v3/nbIm100_DDEC6.cif",
+   "status_CO2": "ok",
+   "KH_CO2": 0.00043381,
+   "KH_CO2_err": 9.30083e-06,
+   "dU_CO2": -32.7724438015,
+   "dU_CO2_err": 0.1399043554,
+   "status_N2": "ok",
+   "KH_N2": 3.9064e-06,
+   "KH_N2_err": 2.7475e-08,
+   "dU_N2": -12.2833607289,
+   "dU_N2_err": 0.0566791816,
+   "S273": 111.0510956379275,
+   "S273_err": 2.5057610042398117,
+   "pred_junseok": 107.7,
+   "ratio_273": 3.5116261077523014
+  }
+ ]
+}
