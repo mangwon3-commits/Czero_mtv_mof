@@ -22,7 +22,8 @@ from scipy.special import erfc
 HERE = os.path.dirname(os.path.abspath(__file__))
 KE = 14.399645            # e/(4πε0) [V·Å/e]
 PROBE = 1.65              # Å — 배정문 σ/2 + 1.65
-N_SPH = 60                # 원자당 구면 점(≥ 50)
+N_SPH = 60                # 원자당 구면 점(≥ 50) — 등록값(07:20). 표본 수렴은 아래 DENS 로 봄
+DENS = [60, 240, 960, 3840, 15360]   # 07:3x 추가(G 대조 전): 초미세공에서 60점/원자는 남는 점 8~10개 → 4배씩 올려 연속 두 밀도의 P6·P7 변화 < 1 % 에서 멈춤(적응 규칙)
 SETS = {'A': dict(alpha=0.30, rc=12.0, ktail=1e-8), 'B': dict(alpha=0.36, rc=14.0, ktail=1e-10)}
 FF = os.path.join(os.environ.get('RASPA_DIR', os.path.expanduser('~/RASPA/simulations')),
                   'share', 'raspa', 'forcefield', 'UFF_MOF', 'force_field_mixing_rules.def')
@@ -99,24 +100,24 @@ def fib_sphere(n):
     return np.c_[np.cos(th) * np.sin(phi), np.sin(th) * np.sin(phi), np.cos(phi)]
 
 
-def surface_points(cell, r, R):
-    sph = fib_sphere(N_SPH)
-    P = (r[:, None, :] + R[:, None, None] * sph[None]).reshape(-1, 3)
-    owner = np.repeat(np.arange(len(r)), N_SPH)
+def surface_points(cell, r, R, nsph=N_SPH):
+    """원자별 벡터화: 원자 i 의 구 점을 i 의 이웃(주기 영상 포함, 거리 < R_i + R_max) 과만 대조."""
+    sph = fib_sphere(nsph)
     sh = images(cell, R.max() * 2 + 1.0)
     rimg = (r[None] + sh[:, None]).reshape(-1, 3); Rimg = np.tile(R, len(sh))
     tree = cKDTree(rimg)
-    keep = np.ones(len(P), bool)
-    for s in range(0, len(P), 4096):
-        idx = tree.query_ball_point(P[s:s + 4096], R.max() + 1e-6)
-        for t, lst in enumerate(idx):
-            if not lst:
-                continue
-            lst = np.asarray(lst)
-            d = np.linalg.norm(rimg[lst] - P[s + t], axis=1)
-            if np.any(d < Rimg[lst] - 1e-6):
-                keep[s + t] = False
-    return P[keep], owner[keep]
+    keepP, owner = [], []
+    for i in range(len(r)):
+        pts = r[i] + R[i] * sph
+        nb = np.asarray(tree.query_ball_point(r[i], R[i] + R.max() + 1e-6))
+        nb = nb[np.linalg.norm(rimg[nb] - r[i], axis=1) > 1e-6]            # 자기 자신 제외
+        if len(nb):
+            d = np.linalg.norm(pts[:, None, :] - rimg[nb][None], axis=2)
+            ok = ~(d < Rimg[nb][None] - 1e-6).any(1)
+        else:
+            ok = np.ones(len(pts), bool)
+        keepP.append(pts[ok]); owner.append(np.full(ok.sum(), i))
+    return np.vstack(keepP), np.concatenate(owner)
 
 
 def ewald(cell, r, q, P, alpha, rc, ktail):
@@ -167,9 +168,27 @@ def one(name):
         if miss:
             return {'name': name, 'status': f'σ 없음 {miss}'}
         r = fr @ cell; R = np.array([sg[x] / 2 + PROBE for x in el])
-        P, own = surface_points(cell, r, R)
+        dens, used = {}, []
+        for nd in DENS:                                                    # 표본 수렴(적응) — Ewald 는 보고 설정 B
+            Pd, _ = surface_points(cell, r, R, nd)
+            if len(Pd) == 0:
+                dens[nd] = {'n_points': 0}; used.append(nd); continue
+            phd, Ed, _, _ = ewald(cell, r, q, Pd, **SETS['B'])
+            dens[nd] = {'n_points': int(len(Pd)), **props(phd, Ed)}; used.append(nd)
+            if len(used) >= 2 and nd >= 240:
+                a_, b_ = dens[used[-2]], dens[used[-1]]
+                if a_.get('P6_rms_E_V_per_A') and abs(a_['P6_rms_E_V_per_A'] / b_['P6_rms_E_V_per_A'] - 1) < 0.01 \
+                        and abs(a_['P7_sigma_phi_V'] / b_['P7_sigma_phi_V'] - 1) < 0.01:
+                    break
+        P, own = surface_points(cell, r, R, used[-1])
         out = {'name': name, 'cif': os.path.relpath(cif_path(name), HERE), 'n_atoms': len(el), 'n_points': int(len(P)),
-               'points_per_atom_kept': round(len(P) / len(el), 1), 'net_charge_e': float(q.sum()), 'sets': {}}
+               'points_per_atom_kept': round(len(P) / len(el), 2), 'points_per_atom_generated': used[-1], 'net_charge_e': float(q.sum()), 'sets': {},
+               'by_density': {str(k): v for k, v in dens.items()}}
+        p6a, p6b = dens[used[-2]].get('P6_rms_E_V_per_A'), dens[used[-1]].get('P6_rms_E_V_per_A')
+        p7a, p7b = dens[used[-2]].get('P7_sigma_phi_V'), dens[used[-1]].get('P7_sigma_phi_V')
+        out['sampling_rel_dP6'] = (abs(p6a / p6b - 1) if p6a and p6b else None)
+        out['sampling_rel_dP7'] = (abs(p7a / p7b - 1) if p7a and p7b else None)
+        out['sampling_converged'] = bool(out['sampling_rel_dP6'] is not None and out['sampling_rel_dP6'] < 0.01 and out['sampling_rel_dP7'] < 0.01)
         res = {}
         for k, st in SETS.items():
             phi, E, nk, nimg = ewald(cell, r, q, P, **st)
@@ -201,10 +220,10 @@ def main():
         futs = {ex.submit(one, n): n for n in todo}
         for fu in as_completed(futs):
             r = fu.result(); rows[r['name']] = r
-            print(f"  [{r['status'][:40]}] {r['name']:24s} 점 {r.get('n_points')} · P6 {r.get('P6_rms_E_V_per_A')} · "
+            print(f"  [{r['status'][:40]}] {r['name']:24s} 점 {r.get('n_points')} · P6 {r.get('P6_rms_E_V_per_A')} · 표본 dP6 {r.get('sampling_rel_dP6')} · "
                   f"수렴 dφ {r.get('conv_rel_rms_dphi')} dP6 {r.get('conv_rel_dP6')} · {r.get('seconds')} s", flush=True)
             json.dump({'test': 'MAGI-005 E-10c 접근면 전기장', 'assign': 'ASSIGN_MAGI5B_20260925.md §laptop 3차',
-                       'method': {'probe_A': PROBE, 'points_per_atom': N_SPH, 'sigma_source': FF, 'sets': SETS,
+                       'method': {'probe_A': PROBE, 'densities': DENS, 'sampling_rule': '4배씩 올려 연속 두 밀도(≥240)의 P6·P7 변화 < 1 % 에서 멈춤 → sampling_converged; 상한 15360 에서도 넘으면 false', 'sigma_source': FF, 'sets': SETS,
                                   'coulomb_V_A': KE, 'k0': '생략(중화 배경)', 'report_set': 'B',
                                   'converged_rule': 'dφ(평균 뺀 rms/σ_φ)·dP6·dP7 모두 < 1 %'},
                        'note': '판정 없음(종합자). 골격 DDEC6 전하만. 값은 G 와 맞추기 전에 구현 세부를 우편함에 적은 뒤 계산.',
