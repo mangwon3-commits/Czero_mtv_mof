@@ -1,0 +1,235 @@
+{
+  "criteria": {
+    "PLD_min": 3.3,
+    "LCD_drop_limit_pct": 20.0,
+    "AV_floor": 20.0,
+    "min_dist_limit": 0.7,
+    "LCD_reference": 7.63144
+  },
+  "rows": [
+    {
+      "name": "base",
+      "status": "ok",
+      "before": {
+        "LCD": 8.89809,
+        "PLD": 5.157,
+        "AV": 1232.2,
+        "min_dist": 1.074,
+        "n_atoms": 600,
+        "AV_per_cell": 1232.2
+      },
+      "after": {
+        "LCD": 7.63144,
+        "PLD": 5.26127,
+        "AV": 8137.52,
+        "min_dist": 1.079,
+        "n_atoms": 4800,
+        "supercell_rep": 8,
+        "AV_per_cell": 1017.2
+      },
+      "LCD_drop_pct": 0.0,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.854070553699785,
+      "converged": false
+    },
+    {
+      "name": "saIm0583",
+      "status": "ok",
+      "before": {
+        "LCD": 9.42056,
+        "PLD": 3.77782,
+        "AV": 1024.07,
+        "min_dist": 0.971,
+        "n_atoms": 656,
+        "AV_per_cell": 1024.1
+      },
+      "after": {
+        "LCD": 6.4327,
+        "PLD": 4.0797,
+        "AV": 3755.58,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 469.4
+      },
+      "LCD_drop_pct": 15.71,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 1.60215290000087,
+      "converged": false
+    },
+    {
+      "name": "saIm0583e6",
+      "status": "ok",
+      "before": {
+        "LCD": 9.67921,
+        "PLD": 3.94483,
+        "AV": 1006.35,
+        "min_dist": 0.971,
+        "n_atoms": 656,
+        "AV_per_cell": 1006.4
+      },
+      "after": {
+        "LCD": 6.54204,
+        "PLD": 4.11498,
+        "AV": 3795.87,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 474.5
+      },
+      "LCD_drop_pct": 14.28,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 1.64638832659875,
+      "converged": false
+    },
+    {
+      "name": "saIm0583e7",
+      "status": "ok",
+      "before": {
+        "LCD": 9.35867,
+        "PLD": 4.76093,
+        "AV": 1029.22,
+        "min_dist": 0.971,
+        "n_atoms": 656,
+        "AV_per_cell": 1029.2
+      },
+      "after": {
+        "LCD": 6.17688,
+        "PLD": 4.0589,
+        "AV": 3825.97,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 478.2
+      },
+      "LCD_drop_pct": 19.06,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 1.12418342609999,
+      "converged": false
+    },
+    {
+      "name": "saIm0583e8",
+      "status": "ok",
+      "before": {
+        "LCD": 9.32074,
+        "PLD": 4.42472,
+        "AV": 1100.12,
+        "min_dist": 0.971,
+        "n_atoms": 656,
+        "AV_per_cell": 1100.1
+      },
+      "after": {
+        "LCD": 6.9142,
+        "PLD": 4.08101,
+        "AV": 4071.59,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 508.9
+      },
+      "LCD_drop_pct": 9.4,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.851223622699763,
+      "converged": false
+    },
+    {
+      "name": "saIm0583e9",
+      "status": "ok",
+      "before": {
+        "LCD": 9.28553,
+        "PLD": 3.79605,
+        "AV": 1062.95,
+        "min_dist": 0.971,
+        "n_atoms": 656,
+        "AV_per_cell": 1063.0
+      },
+      "after": {
+        "LCD": 6.63831,
+        "PLD": 4.07965,
+        "AV": 4016.28,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 502.0
+      },
+      "LCD_drop_pct": 13.01,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 1.03053618349986,
+      "converged": false
+    },
+    {
+      "name": "saIm0583e10",
+      "status": "ok",
+      "before": {
+        "LCD": 9.26394,
+        "PLD": 4.23051,
+        "AV": 1040.08,
+        "min_dist": 0.971,
+        "n_atoms": 656,
+        "AV_per_cell": 1040.1
+      },
+      "after": {
+        "LCD": 6.60404,
+        "PLD": 4.05814,
+        "AV": 4295.68,
+        "min_dist": 0.99,
+        "n_atoms": 5248,
+        "supercell_rep": 8,
+        "AV_per_cell": 537.0
+      },
+      "LCD_drop_pct": 13.46,
+      "checks": {
+        "PLD": true,
+        "LCD_drop": true,
+        "AV": true,
+        "min_dist": true
+      },
+      "pass": true,
+      "outer_loops": 12,
+      "final_EDiff": 0.623237910400348,
+      "converged": false
+    }
+  ]
+}
