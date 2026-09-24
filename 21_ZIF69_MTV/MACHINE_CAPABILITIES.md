@@ -103,6 +103,8 @@
                               (커널 로그 total-vm 9.47 GB/건). §5 대로 RASPA 와 동시 실행 금지.
                               ⚠ `-block` 은 **표본 수**로 커집니다(09-25 실측): MAF-66(304원자 · -ha 10,704 입자) 표본 50,000 →
                               최대 RSS 6.4 GB · 300 s / 표본 357,000 → 25.4 GB · WSL 가용 429 MB 에서 멈춤(OOM 직전). CoRE 62원자는 50,000 에 34 s.
+                              같은 50,000 표본(09-25 E-4b): ZIF-7 522원자 **11.7 GB** · 367 s · ZIF-8 276원자 9.0 GB · ZIF-90 252원자 9.0 GB —
+                              원자 수에 비례하지 않음. ZIF-7 두 건을 같이 띄우면 ≈ 23 GB(WSL 25 GB) → 큰 셀 -block 은 **한 번에 한 건**.
     ❌ **rdkit 빌드**          czeromof · lammps_mof 둘 다 import 실패
     ❌ **xtb 이완**            `spectra` 환경 없음 · `xtb` 바이너리 없음
     ❌ **PACMAN 전하**         `PACMANCharge` import 실패(두 환경 모두). 저장소는 `coremof_tools/bin/python`

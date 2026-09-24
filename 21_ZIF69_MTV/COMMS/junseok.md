@@ -3,6 +3,39 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 08:05 — [MAGI-005 E-4b 완주] (a) ZIF-7·8 두 반경 0 channel · ZIF-90 1.65 채널 / 1.82 0 — 예측 셋 그대로 · (b) ZIF-68 f = 1.61 ± 0.06 — 판정문은 종합자
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오 (끝의 둘은 선택 제안)
+
+    결과 results_magi5_e4b_blockpockets_junseok.json · results_magi5_e3_e4zif68_273K_widom_junseok.json
+      로그 magi5_e4b_zeo_junseok.log · magi5_e4b_chain_junseok.log · magi5_e4b_widom_junseok.log · magi5_e4b_zif68_273K_junseok.log
+      스크립트 사본 magi5_e4b_zeo_junseok.py · magi5_e4b_junseok.py · magi5_e4b_chain_junseok.sh · Zeo++ 산출 magi5_e4b_runs/zeo/
+    (a) Zeo++ `-ha -block r 50000`, 한 번에 한 건(network RSS 감시):
+                 -res Df     r = 1.65 (CO₂)                          r = 1.82 (N₂)                            최대 RSS
+      ZIF-7      2.374       0 channel · 15 pocket · 구 15            0 channel · 15 pocket · 구 15             11.7 GB
+      ZIF-8      3.284       0 channel ·  2 pocket · 구 2 (11.8/9.1 Å) 0 channel · 2 pocket · 구 2              9.0 GB
+      ZIF-90     3.466       1 channel ·  0 pocket · 구 0             0 channel · 2 pocket · 구 2 (10.7/10.2 Å)  9.0 GB
+      채널 남은 칸은 ZIF-90 CO₂@1.65 하나 → Widom(구 0 = 차단 없음과 같음): K_H 1.195e-5 ± 0.011e-5 · laptop 차단 없음 1.205e-5 와 0.9 단위 ·
+        관문 통과(N 0/0 · not-found 없음 · 표지) · 10.8 분.
+      정식 짝(CO₂@1.65 / N₂@1.82): ZIF-7 · ZIF-8 = 두 반경 모두 통로 없음 → 차단 없음 S_ON(185.4 · 6.41)은 **탐침 규약값** ·
+        ZIF-90 = N₂ 통로 없음 · CO₂ 통로 있음 → **발산**(E-2b 형) — S_ON 7.35 도 N₂ 쪽은 규약값.
+      기계적 사실: 등록 예측(ZIF-7 두 반경 0 · ZIF-8 1.65 에서 0 · ZIF-90 1.65 채널 / 1.82 0) 셋 다 그대로 · 기각 조건(ZIF-7 channel ≥ 1) 해당 없음.
+      ZIF-8 경계(PLD/2 1.642 대 1.65, 8 mÅ)는 50,000 표본에서 0 channel 로 나옴 — 표본 수 민감도는 재지 않았습니다.
+    (b) ZIF-68 273 K(ON·OFF, 워커 4, 24.6 분, 표지 4/4):
+              S₂₇₃ ±          S₂₉₈(laptop E-4)   f = S₂₇₃/S₂₉₈      K_CO₂ 비   K_N₂ 비   dU_CO₂ 273 (298)   dU_N₂ 273 (298)
+      ON      32.23 ± 0.88    20.01 ± 0.50       **1.610 ± 0.060**  2.691      1.671     −25.62 (−24.70)    −11.98 (−11.60)
+      OFF     11.04 ± 0.10     8.34 ± 0.07       1.324 ± 0.016      2.204      1.664     −19.32 (−18.78)    −11.62 (−11.28)
+      기계적 사실: f(ON) 1.61 은 등록 [1.5, 2.1] 안 — 모체 1.58 쪽(nbIm100 2.06 과는 먼 쪽).
+      문헌 대조(등록 없음, 값만): S₂₇₃ 32.23 / Phan 2010 표 2 ZIF-68 18.7 = **1.72** — E-4 (i) 의 ÷1.58 다리 1.69 와 같은 급.
+    씨앗·표지(E-4b .data 5): 표지 5/5 · 씨앗 5/5 서로 다름.
+    E-4 판정문 병기 제안(이의 창 18:00 안, 판정 불변): E-4b 로 **ZIF-8 은 두 기체 모두 통로 없음**이 됐으므로 O 없는 군 통계에서
+      빼는 판도 적어 두면 좋겠습니다 — 빼도 ln 비 중앙 0.836 → 0.828(≥ 0.8 그대로) · S_ON 중앙 8.34 → 10.8(ZIF-77 18.26 위 · ZIF-90 7.35 아래 그대로) ·
+      G 중앙 1.42 → 1.51. O 절 기각은 ZIF-77(ln 1.013) 하나로도 서므로, N₂ 쪽이 규약값인 ZIF-90 을 빼도 결론 같음.
+    선택 제안(결과 전 예측 적음): T-J1′ 새 대조 2019_Ni__pcu_3_ASR_1 은 PLD 3.69 로 문턱 3.64 를 **0.05 Å** 넘깁니다 —
+      원하시면 이 기기에서 Zeo++ `-ha -block 1.82` 한 건(CoRE 소형, 1분 안)으로 "N₂ 탐침 channel ≥ 1" 을 확인합니다. 예측: channel ≥ 1 · 구 0.
+    이 기기는 비었습니다(simulate 0 · network 0).
+
 ## 2026-09-25 07:40 — [T-J1′ 대상 확인] ASSIGN §laptop 5차 = 제 R1 §T-J1′ + R3 J-13 교체판과 일치 — 이의 없음. 병기 한 줄 보정: PLD 3.3~3.64 띠는 **둘이 아니라 셋**(대조 둘 다 포함)
 
 **받는 곳**: 종합자(데스크탑) · laptop
