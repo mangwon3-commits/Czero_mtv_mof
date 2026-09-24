@@ -1,0 +1,93 @@
+===== 2026-09-25 01:28:03 0 감사
+
+=== MAF66_Zn_atz2_1t_guestfree_P1.cif
+    공간군      P 1 (IT 1)
+    원자수      ase 76  pymatgen 76
+    조성        ZnH6(CN2)4  {'C': 16, 'H': 24, 'N': 32, 'Zn': 4}
+    셀          {'a': np.float64(10.204), 'b': np.float64(10.204), 'c': np.float64(13.0998), 'alpha': np.float64(90.0), 'beta': np.float64(90.0), 'gamma': np.float64(90.0), 'volume': 1363.97}
+    수직폭      [10.204, 10.204, 13.1]
+    최소거리    0.8591  (<0.9 인 쌍 32)
+    수소        있음
+    부분점유    0 (점유율 열 있음, 무질서 열 없음)
+    게스트후보  []
+    T-NF 복제   UnitCells [3, 3, 2] -> 폭 [30.61, 30.61, 26.2] -> 원자 1368
+    2x2x2 로도 되나  **아니오**
+
+[OK] /home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/audit.json
+===== 2026-09-25 01:28:09 1 이완 (GFN-FF 셀 고정, RELAX_WORKERS=1)
+  T-NF 이완 1종, 워커 1 x 스레드 2, 셀 고정, fmax 0.05 / 800단계
+  출력 /home/mangwon1/mof_project/21_ZIF69_MTV/relax_tnf/<tag>_relaxed.cif  (v3 서랍 relax_v3/ 에 섞지 않습니다)
+  [실패] maf66        결과 CIF 를 쓰지 않습니다 — RuntimeError: xtb 종료코드 139 — xtb_step.log 확인
+  [실패] maf66          0.0분    0단계  C-H 0.9302840079457211  C-C폭 None  최소거리 0.859  셀변화 0.00e+00
+[OK] /home/mangwon1/mof_project/21_ZIF69_MTV/relax_tnf_results.json
+===== 2026-09-25 01:28:10 이완본 없음 rc=1 — 중단
+===== 2026-09-25 01:31:10 0 감사(2x2x1)
+
+=== MAF66_Zn_atz2_1t_guestfree_P1_2x2x1.cif
+    공간군      P 1 (IT 1)
+    원자수      ase 304  pymatgen 304
+    조성        ZnH6(CN2)4  {'C': 64, 'H': 96, 'N': 128, 'Zn': 16}
+    셀          {'a': np.float64(20.408), 'b': np.float64(20.408), 'c': np.float64(13.0998), 'alpha': np.float64(90.0), 'beta': np.float64(90.0), 'gamma': np.float64(90.0), 'volume': 5455.89}
+    수직폭      [20.408, 20.408, 13.1]
+    최소거리    0.8591  (<0.9 인 쌍 128)
+    수소        있음
+    부분점유    0 (점유율 열 있음, 무질서 열 없음)
+    게스트후보  []
+    T-NF 복제   UnitCells [2, 2, 2] -> 폭 [40.82, 40.82, 26.2] -> 원자 2432
+    2x2x2 로도 되나  예
+
+[OK] /home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/audit.json
+===== 2026-09-25 01:31:12 1 이완 (GFN-FF 셀 고정, RELAX_WORKERS=1)
+  T-NF 이완 1종, 워커 1 x 스레드 2, 셀 고정, fmax 0.05 / 800단계
+  출력 /home/mangwon1/mof_project/21_ZIF69_MTV/relax_tnf/<tag>_relaxed.cif  (v3 서랍 relax_v3/ 에 섞지 않습니다)
+  [이완] maf66          4.1분   66단계  C-H 1.0788666542541532  C-C폭 None  최소거리 1.011  셀변화 0.00e+00
+[OK] /home/mangwon1/mof_project/21_ZIF69_MTV/relax_tnf_results.json
+===== 2026-09-25 01:35:18 2 PACMAN DDEC6
+/home/mangwon1/miniconda3/envs/coremof_tools/lib/python3.9/site-packages/PACMANCharge/pmcharge.py:2: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_filename
+Using device: cuda
+CIF Name: /home/mangwon1/mof_project/21_ZIF69_MTV/charged_v3/maf66.cif
+Charge Type: DDEC6
+Digits: 6
+Atom Type: True
+Neutral: True
+Keep Connect: False
+Compelete and save as /home/mangwon1/mof_project/21_ZIF69_MTV/charged_v3/maf66_pacman.cif
+  [ok] maf66      원자 304   순전하 +0.000016  -> /home/mangwon1/mof_project/21_ZIF69_MTV/charged_v3/maf66_DDEC6.cif
+===== 2026-09-25 01:35:39 3 Zeo++ (이완 뒤)
+High accuracy requested (DEF (default) settings). 
+Opening File: relax_tnf/maf66_relaxed.cif
+Radii analysis: the smallest atom r = 1.09 while the largest atoms r = 1.7.
+Starting Voronoi decomposition
+Box dimensions:
+  va=(20.408000 0 0)
+  vb=(0.000000 20.408000 0)
+  vc=(0.000000 0.000000 13.099800)
+
+Total particles = 10704
+
+Internal grid size = (13 13 8)
+
+Using voro++ with radii for particles.
+Performing Voronoi decomposition.
+Volume check:
+  Total domain volume  = 5455.889381
+  Total Voronoi volume = 5455.889381
+Voronoi decomposition finished. Rerouting Voronoi network information.
+Finished rerouting information.
+Finished Voronoi decomposition
+Command 0  -ha
+Command 1  -res
+relax_tnf/maf66_relaxed.res    5.10552 3.99924  5.10552
+===== 2026-09-25 01:35:41 4 Widom CO2/N2 298 K ON/OFF (워커 4)
+  [파일 관문] /home/mangwon1/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  [파일 관문] 8e8ec933f9013c7e932da04dc256efd3
+  전하 OFF 사본: /home/mangwon1/mof_project/21_ZIF69_MTV/magi5_runs_maf66/maf66_DDEC6_q0.cif (304 원자 전하 0)
+  Widom 4작업 (tag maf66, 298.0 K, 워커 4) — 착수 2026-09-25 01:35:42
+    maf66_DDEC6 CO2: ok  (5.15683e-05, 4.0744e-07, -22.0240202384, 0.0169549952, 0.0, 0.0)
+    maf66_DDEC6 N2: ok  (3.32036e-06, 1.1133e-08, -13.0536681848, 0.0161305253, 0.0, 0.0)
+    maf66_DDEC6_q0 CO2: ok  (4.8113e-05, 2.48784e-07, -21.323967087, 0.0203186538, 0.0, 0.0)
+    maf66_DDEC6_q0 N2: ok  (3.27658e-06, 1.3002e-08, -12.9657812929, 0.0141572669, 0.0, 0.0)
+  저장 /home/mangwon1/mof_project/21_ZIF69_MTV/results_magi5_e3_maf66_widom_hkhome.json  (912 s)
+===== 2026-09-25 01:50:54 사슬 종료 rc=0

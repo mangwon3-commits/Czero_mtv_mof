@@ -5546,3 +5546,11 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     laptop 정오표(01:45, R3 [[B-5]] 인용 줄) **수용** — 그래프에 M→B-5 인용 간선 없음(A-2→B-5 공격·각주뿐) → 수정 없음. §6-9 기록 3. R3 원문 불변.
     E-9b 등록(자료 0건) `E9B_SRS273_REGISTRATION_20260925.md` — laptop2 제안(srs FSR_1 273 K·15 kPa GCMC 1건, **다른 시험**). 예측 R = n_rigid/0.20 ≥ 17 · 판정 R ≥ 10 / 2~10 / < 2. 사용자 질문 01:4x(권고 "예") → §9 30분 규칙 → 무응답이면 02:1x 뒤 실행(데스크탑). 순서: MAF-66 Widom(4 simulate, 01:35~) → 관문 ⑤ → E-9b.
     E-3(MAF-66) 이완·PACMAN·Zeo++ 끝(LCD 5.11 / PLD 4.00 이완 뒤) · Widom ON/OFF 4작업 진행 중.
+
+## 2026-09-25 02:03 — desktop(종합자): **배정 B 발행** `ASSIGN_MAGI5B_20260925.md`(사용자 위임 01:5x — 14:00 까지 배정 확정·예약 계산 할당) + E-2·E-3 판정문
+
+    Junseok   **E-3b 즉시** — MAF-66 GCMC 4작업(CO₂ 298 K 1.0/0.15 bar · 273 K 1.0 bar · N₂ 298 K 1.0 bar, `charged_v3/maf66_DDEC6.cif`, `run_magi5_srs273.py` 본뜬 사본, 뿌리 (기체·T·P)별) → `results_magi5_e3b_maf66_gcmc_junseok.json`. 대조 4.41/6.27 mmol/g(초록). 그 뒤 **E-2b** BlockPockets S(r) — 0단계 cwd .block 시험, `Pockets are blocked` 회수 관문, share 디렉터리 필요하면 멈추고 보고.
+    laptop    E-1 완주 뒤 **E-10** — CoRE 3D A 군(순수 N 5)·B 군(O 5) 전하 OFF Widom 20작업, E-1 자 그대로 → `results_magi5_e10_offwidom_laptop.json`. 예측 A 중앙 ≥ 0.8 · B ≤ 0.6.
+    laptop2   **E-4 완결** — 비-RHO ZIF 10 이완(ZIF-90 C–H 정규화 먼저)→PACMAN→Zeo++→Widom ON/OFF(`run_magi5_widom.py`), 순서 77·90·8·68·2·3·6·10·20·7 → 구조별 JSON + `E4_LADDER_RESULT_20260925.md`. 예측: 문헌 다리 [1.2, 2.5] · F1.
+    판정문    `MAGI5_E2_VERDICT_20260925.md`(P8 base 성립·nbIm100 기각, 우리 자가 문헌보다 1.6~2.1배 위) · `MAGI5_E3_VERDICT_20260925.md`(MAF-66 S 15.5, 80.3 기각, 문헌 225 의 1/14.5; 관문 ⑤ 대기). 이의 창 12:00.
+    HKHOME    관문 ⑤(진행) → E-9b(위임 실행) → E-1 판정(saIm050 대기) → Notion → 14:00 §7 개정.
