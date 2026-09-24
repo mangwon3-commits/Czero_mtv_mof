@@ -88,10 +88,13 @@ for ax, (name, pool, v, mine, logx) in zip(axes, AXES):
     ax.axvline(st.median(pool), color=GREY, ls=':', lw=1.2, zorder=2,
                label='풀 중앙 (524종)')
     ax.axvline(v, color=ORANGE, lw=2.0, zorder=4)
-    ax.annotate('saIm0583\n%s %.1f %%' % ('상위' if p > 50 else '백분위',
-                                          (100 - p) if p > 50 else p),
+    # 2026-09-24 이의 수용(다른 데스크탑 세션 16:4x) — **같은 양의 두 이름**입니다.
+    #   판정문·`GATE_SAIM100`·검산은 "백분위 N %"(**아래** 비율), 그림 초판은 "상위 N %"(**위** 비율).
+    #   나란히 읽으면 55 와 45 로 **어긋나 보입니다**. 어느 쪽을 정본으로 고르는 것은
+    #   §9-9 의 "등록된 자 중 고르기" 라 안 합니다 — **둘 다 적습니다**(CLAUDE.md §2 의 두 자 규약).
+    ax.annotate('saIm0583\n상위 %.1f %%\n(백분위 %.1f)' % (100 - p, p),
                 xy=(v, ax.get_ylim()[1] * .62), xytext=(6, 0),
-                textcoords='offset points', color=ORANGE, fontsize=8.6,
+                textcoords='offset points', color=ORANGE, fontsize=8.2,
                 va='center', ha='left', weight='bold')
     ax.set_xlabel(name); ax.set_ylabel('구조 수')
     ax.grid(alpha=.22, ls=':', color=GREY, axis='y')
@@ -101,8 +104,9 @@ axes[0].legend(loc='upper right', fontsize=7.8, framealpha=.92)
 fig.suptitle('같은 자(524종·우리 프로토콜) 위에서 세 축의 자리는 다릅니다',
              fontsize=10.5, y=.995)
 fig.text(.5, .003,
-         '대표 = saIm0583 (구조 관문 통과 상한). saIm100 은 관문 탈락(LCD 감소 22.5 %)이라 쓰지 않습니다.',
-         ha='center', fontsize=7.6, color=GREY)
+         '대표 = saIm0583 (구조 관문 통과 상한). saIm100 은 관문 탈락(LCD 감소 22.5 %)이라 쓰지 않습니다.  '
+         '「상위 N %」와 「백분위 N %」는 같은 양의 두 표기 (상위 = 100 − 백분위).',
+         ha='center', fontsize=7.3, color=GREY)
 fig.tight_layout(rect=[0, .022, 1, .975])
 os.makedirs(OUT, exist_ok=True)
 fig.savefig(OUT + 'fig10_corepop_axes.png', dpi=220, bbox_inches='tight',
