@@ -1,0 +1,42 @@
+{
+ "test": "MAGI-005 E-9b — srs FSR_1 273 K·15 kPa CO2 GCMC (다른 시험: 온도만 실측에 맞춤)",
+ "registration": "E9B_SRS273_REGISTRATION_20260925.md",
+ "protocol": {
+  "gcmc_cycles": 15000,
+  "gcmc_init": 5000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "temp_K": 273.0,
+  "pressure_bar": 0.15,
+  "charges": "UseChargesFromCIFFile yes (CoRE CIF 의 PACMAN DDEC6)",
+  "supercell": "unit_cells() 규칙",
+  "co2": "García-Sánchez 2009 (경로 TraPPE/CO2.def, TraPPE 아님)"
+ },
+ "note": "판정 없음(종합자가 등록 문턱으로 씀). 298 K 자가 아니므로 core_wc·results_v3 와 섞지 말 것.",
+ "host": "HKHOME",
+ "finished": "2026-09-25 03:22:25",
+ "rows": [
+  {
+   "name": "2024_Zn__srs_3_FSR_1",
+   "key": "2024[Zn][srs]3[FSR]1",
+   "identity": "HSTC-1 원상 (E9_SRS_IDENTITY_20260925.md §3, FSR_1)",
+   "cif": "core_pop_cifs/2024_Zn__srs_3_FSR_1.cif",
+   "charges": "on (CIF DDEC6)",
+   "temp_K": 273.0,
+   "pressure_bar": 0.15,
+   "status": "ok",
+   "elapsed_s": 4365,
+   "machine": "hkhome",
+   "host": "HKHOME",
+   "n_mmol_g": 3.9411973886,
+   "n_mmol_g_err": 0.0122955996,
+   "exp_mmol_g": 0.2,
+   "exp_err_frac": 0.1,
+   "R": 19.705986943,
+   "R_lo": 17.858644495454545,
+   "R_hi": 21.96384993444444,
+   "ref_298K_mmol_g": 3.3779584687
+  }
+ ]
+}
