@@ -33,7 +33,9 @@ def zero_charge_copy(cif, out):
     return n
 
 def _one(args):
-    cif, gas, temp, runs = args
+    cif, gas, temp, runs = args[:4]
+    # 씨앗 간격(2026-09-25 laptop 지적): 동시 착수는 초 단위 씨앗이 겹침 → 작업 순번 × 15 s
+    if len(args) > 4: time.sleep(15 * int(args[4]))
     rg.TEMP = float(temp); rg.RUNS = runs
     name, g, mode, res, st = rg.run_one((cif, gas, 'widom'))
     return name, g, res, st
@@ -52,7 +54,7 @@ def main():
     if 'off' in a.charges:
         q0 = os.path.join(runs, os.path.basename(a.cif).replace('.cif', '_q0.cif'))
         n = zero_charge_copy(a.cif, q0); print(f'  전하 OFF 사본: {q0} ({n} 원자 전하 0)', flush=True); cifs['off'] = q0
-    jobs = [(c, g, a.temp, runs) for ch, c in cifs.items() for g in a.gases.split(',')]
+    jobs = [(c, g, a.temp, runs, k) for k, (c, g) in enumerate((c, g) for ch, c in cifs.items() for g in a.gases.split(','))]
     print(f'  Widom {len(jobs)}작업 (tag {a.tag}, {a.temp} K, 워커 {a.workers}) — 착수 {time.strftime("%F %T")}', flush=True)
     host = socket.gethostname().lower()
     out = os.path.join(HERE, f'results_magi5_e3_{a.tag}_widom_{host}.json')
@@ -71,7 +73,7 @@ def main():
         if r.get('KH_CO2') and r.get('KH_N2'):
             r['selectivity'] = r['KH_CO2'] / r['KH_N2']
             r['selectivity_err'] = r['selectivity'] * ((r['KH_CO2_err']/r['KH_CO2'])**2 + (r['KH_N2_err']/r['KH_N2'])**2) ** 0.5
-        if r.get('dU_CO2') is not None: r['Qst_CO2_rt_corrected'] = -r['dU_CO2'] + rg.R_GAS * a.temp / 1000.0 if rg.R_GAS < 1 else -r['dU_CO2'] + 8.314462618e-3 * a.temp
+        if r.get('dU_CO2') is not None: r['Qst_CO2_rt_corrected'] = -r['dU_CO2'] + rg.R_GAS * a.temp   # 정정 2026-09-25 (laptop): R_GAS 는 kJ 단위, /1000 제거 — -r['dU_CO2'] + 8.314462618e-3 * a.temp
     meta = {'tag': a.tag, 'cif': a.cif, 'protocol': 'run_aryl_gcmc.run_one widom (CLAUDE.md §1)', 'off_method': 'CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)',
             'ff_md5': ff_gate.FF_MD5, 'host': host, 'elapsed_s': round(time.time() - t0), 'finished': time.strftime('%F %T'), 'rows': list(rows.values())}
     json.dump(meta, open(out, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
