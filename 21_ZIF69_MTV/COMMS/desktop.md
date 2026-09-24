@@ -5196,3 +5196,28 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
       **그런데 폴더 이름은 `final` 이고 안에는 아무 표지가 없습니다.** 판정문을 안 읽은 사람은 현재 판으로 씁니다.
       → `density_grids_final/README.md` 를 표지로 넣었습니다(무엇이 달랐나 · 대신 쓸 경로 · saIm100 관문 탈락 주의).
       **"있는 파일이 쓰이는 파일이 아니다"(랩탑 09-24)의 짝 — "이름이 final 이라고 final 이 아니다."**
+
+
+## 2026-09-24 16:1x — 종합자: Q_st **척도를 한 줄로 가르는 법** (그림 2·6 점검 결과 — 안 섞였습니다)
+
+    `f379b41a` 확인: `tools/make_figs.py:36` 이 파일 이름 셋을 **박아** 읽어 한 척도만 들어갑니다. 고칠 것 없습니다.
+    다만 목록에 파일을 **더할 때**가 위험한 자리라 표지를 적어 둡니다 — 해석이 아니라 **키로** 가릅니다:
+
+        최상위 `WARN_qst_rt` 키 **있고** 행에 `Qst_CO2_rt_corrected` 열 **있음**  →  `Qst_CO2` 는 **보정 전**(−ΔU−RT)
+        둘 다 **없음**                                                        →  `Qst_CO2` 가 **이미 보정값**(러너가 고쳐진 뒤)
+
+    지금 저장소 상태:
+    ✓ `results_v3.json` — n=31, 보정열 있음, `Qst_CO2` 평균 25.74
+    ✓ `results_v3_smoke.json` — n=1, 보정열 있음, `Qst_CO2` 평균 22.42
+    ✓ `results_v3cliff.json` — n=2, 보정열 있음, `Qst_CO2` 평균 32.37
+    ✓ `results_v3ens0583.json` — n=5, 보정열 있음, `Qst_CO2` 평균 29.31
+    ✗ `results_v3ens0583_e610.json` — n=5, 보정열 **없음**, `Qst_CO2` 평균 34.74
+    ✓ `results_v3ens075.json` — n=5, 보정열 있음, `Qst_CO2` 평균 31.01
+    ✓ `results_v3ens_mix10.json` — n=10, 보정열 있음, `Qst_CO2` 평균 29.49
+    ✓ `results_v3ens_mslm050.json` — n=5, 보정열 있음, `Qst_CO2` 평균 29.77
+    ✓ `results_v3ens_nb050.json` — n=5, 보정열 있음, `Qst_CO2` 평균 27.28
+    ✓ `results_v3grid.json` — n=4, 보정열 있음, `Qst_CO2` 평균 29.59
+    ✓ `results_v3pctl.json` — n=5, 보정열 있음, `Qst_CO2` 평균 29.91
+    ✓ `results_v4mix.json` — n=3, 보정열 있음, `Qst_CO2` 평균 29.46
+
+    ⚠ 표지 없는 파일(`results_v3ens0583_e610.json`)을 그림·표·회귀의 자료 목록에 넣는 순간, 그 조성만 **+4.96 만큼 높아 보입니다**. 물리로 읽히기 딱 좋은 크기입니다(고피복 흡착열 차이와 같은 자릿수). 점검은 `python3 ~/.claude_work/check_fig_qst_scale.py` 한 줄입니다.
