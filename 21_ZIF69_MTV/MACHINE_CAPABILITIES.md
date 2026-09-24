@@ -83,7 +83,7 @@
 
 ## 6. Junseok (원격지) — 2026-09-24 07:3x 실측 (그 기기가 직접 잰 값)
 
-    CPU   AMD Ryzen 5 7500F · **물리 6 / 논리 12** · WSL 메모리 23 GiB (.wslconfig 24GB · 호스트 31.5 GB)
+    CPU   AMD Ryzen 5 7500F · **물리 6 / 논리 12** · WSL 메모리 25 GiB (.wslconfig **26GB**, 09-24 사용자 지시 · 호스트 31.5 GB · Windows 몫 5.5 GB)
     환경  czeromof (py 3.10) · **lammps_mof** (py 3.11.15) — **`coremof_tools` · `spectra` 환경이 없습니다**
     힘장  UFF_MOF md5 **8e8ec933** (파일 관문 통과) — ⚠ **09-24 복귀 때 고쳤습니다.** 그 전은 73046fd7
           (09-06 수정 전 결함판). 기기가 09-06 에 쉬고 있었습니다. 지금은 저장소 정본 트리 498개 전부 일치.

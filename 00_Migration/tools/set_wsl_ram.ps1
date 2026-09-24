@@ -86,7 +86,12 @@ if ($busy -gt 0) {
 
 # ---- read current ------------------------------------------------------
 if (-not (Test-Path $cfg)) { Say "REFUSED: $cfg not found."; exit 1 }
-$text = Get-Content $cfg -Raw
+# [2026-09-24] .wslconfig is UTF-8 WITHOUT a BOM and carries Korean comments.
+# Windows PowerShell 5.1 Get-Content reads a BOM-less file as the ANSI codepage
+# (CP949 here) and Set-Content -Encoding utf8 writes a BOM: a scratch copy went
+# 3456 -> 3689 bytes with every comment mangled. Read and write as UTF-8, no BOM.
+$utf8 = New-Object System.Text.UTF8Encoding($false)
+$text = [System.IO.File]::ReadAllText($cfg, $utf8)
 $cur = 0
 if ($text -match '(?m)^\s*memory\s*=\s*(\d+)GB') { $cur = [int]$Matches[1] }
 Say "current memory=${cur}GB"
@@ -104,7 +109,7 @@ Say "backed up -> $bak"
 
 $new = $text -replace '(?m)^\s*memory\s*=\s*\d+GB', "memory=${GB}GB"
 if ($new -eq $text) { Say "REFUSED: no memory= line matched; refusing to guess."; exit 1 }
-Set-Content -Path $cfg -Value $new -Encoding utf8 -NoNewline
+[System.IO.File]::WriteAllText($cfg, $new, $utf8)
 Say "wrote memory=${GB}GB"
 
 # ---- restart -----------------------------------------------------------
