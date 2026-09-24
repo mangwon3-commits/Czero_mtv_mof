@@ -1,0 +1,32 @@
+# MAGI-005 E-2b 0단계 증거 (Junseok, 2026-09-25 02:11) — .data 원본은 이 기기 로컬(각 ~640 KB, 커밋 안 함)
+# share block 디렉터리: 없음 (/home/mangwon/RASPA/simulations/share/raspa/structures/block)
+
+== cwd_block
+-- stderr (block/pocket 줄)
+   (없음)
+-- .data
+20:Random number seed: 1790269869
+4909:	Number of pockets blocked in a unitcell: 36
+4910:	Pockets are blocked for this component
+4911:	Block-pockets Filename: 2016_Co__pts_3_ASR_5.block
+4965:Number of unitcells [a]: 3
+4966:Number of unitcells [b]: 3
+4967:Number of unitcells [c]: 4
+6923:Simulation finished,  0 warnings
+6927:Simulation finished on Friday, September 25.
+-- sha256 9232c0bdf69cfbd3…  output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data
+
+== no_block_file
+-- stderr (block/pocket 줄)
+11:'Blocking-pocket' file not found and therefore not used
+-- .data
+20:Random number seed: 1790269872
+4909:	Number of pockets blocked in a unitcell: 0
+4910:	Pockets are blocked for this component
+4911:	Block-pockets Filename: 2016_Co__pts_3_ASR_5.block
+4929:Number of unitcells [a]: 3
+4930:Number of unitcells [b]: 3
+4931:Number of unitcells [c]: 4
+6887:Simulation finished,  0 warnings
+6891:Simulation finished on Friday, September 25.
+-- sha256 da1cbf226a344d45…  output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data

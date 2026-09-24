@@ -3,6 +3,33 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 02:16 — [MAGI-005 E-3b 착수 · E-2b 0단계 통과] MAF-66 GCMC 4작업 02:08:29 · cwd .block 읽힘 → E-2b 사슬 대기(E-3b 뒤)
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    E-3b  magi5_e3b_junseok.py (run_magi5_srs273 본뜸 — 작업마다 전역 TEMP/PRESSURE/RUNS 만 덮음, run_one 무수정) · 워커 4 · 15 s 어긋냄
+          ① CO₂ 298 K 1.0 bar  ② CO₂ 298 K 0.15 bar  ③ CO₂ 273 K 1.0 bar  ④ N₂ 298 K 1.0 bar — 뿌리 magi5_e3b_runs_<gas>_<T>K_<P>bar/ 넷
+          씨앗 1790269711 / 725 / 741 / 756 (전부 다름) · 단위셀 2×2×2 · 힘장 md5 8e8ec933 일치 · 입력 넷의 T·P·기체 확인
+          결과 results_magi5_e3b_maf66_gcmc_junseok.json (작업이 끝날 때마다 갱신, 안 끝난 행 'pending')
+          적재는 RASPA absolute — 문헌(excess)과의 차 상한을 행마다 적음(P/RT × 셀 비부피 0.887 cm³/g: 298 K 0.036 · 273 K 0.039 mmol/g, 1 bar)
+    E-2b 0단계 (02:11, N₂ Widom 100 사이클 · 두 길) — magi5_e2b_step0_junseok.py · magi5_e2b_runs/step0_evidence.txt
+          cwd_block      cwd 에 1점 .block(0.5 0.5 0.5 · 1.0 Å) → .data "Number of pockets blocked in a unitcell: 36" (= 1구 × 단위셀 3×3×4)
+                         · "Pockets are blocked for this component" · "Block-pockets Filename: …ASR_5.block" · 표지 ✓ · stderr 에 not-found 없음
+          no_block_file  같은 입력, 파일 없음 → stderr "'Blocking-pocket' file not found and therefore not used"
+                         · .data **"Pockets are blocked for this component"(NOT 아님)** · 같은 Filename 줄 · N = 0 · 표지 ✓
+          → cwd 에서 읽힘(share structures/block/ 은 이 기기에 없음) = 환경 변경 없음 → 배정문대로 진행
+          ⚠ 관문 보정: 파일이 없어도 "Pockets are blocked" 줄은 그대로 찍힙니다 — 01:54 ② 제 문구의 줄 조건은 무력이고 가르는 것은 N 뿐.
+            그래서 E-2b 관문 = (a) stderr 에 not-found 없음 + (b) N = (파일 구 수) × (단위셀 수) **등식** + (c) 표지.
+            (b) 는 구 0개인 반경(막을 주머니 없음, N = 0 이 정상)도 (a) 와 함께 가려 줍니다.
+          ⚠ N 은 이름("in a unitcell")과 달리 **초격자 전체** 수입니다(1구 → 36) — 등식에 단위셀 수를 곱한 까닭.
+    E-2b 본 계산 = 사슬 magi5_e2b_junseok.py (02:15:22 착수, 지금 대기): E-3b 드라이버가 끝나고 simulate 0 이 되면
+          Zeo++ -ha -res(PLD 재확인) + -ha -block r 50000 (r = 1.50 · 1.65 · 1.82 · 2.00, 반경마다 새 폴더 · 구 좌표가 분율인지 검사)
+          → CO₂·N₂ Widom 8작업 · 워커 8 · 15 s 어긋냄 → results_magi5_e2b_blockpockets_junseok.json
+            (반경별 S ± · 정식 짝 CO₂@1.65 + N₂@1.82 · 참조 113.38 ± 1.75(laptop2, 차단 없음)와의 단위 거리 · K_H(N₂)=0 이면 S 는 null + '발산' 표지)
+          Zeo++ 를 E-3b 뒤로 둔 이유: CLAUDE.md §5·§9 "Zeo++ 와 RASPA 동시 금지" — 62원자라 메모리는 작겠지만 규칙은 크기를 가리지 않습니다.
+    laptop2 전달(02:0x 부탁): 제 ListAgents 에 laptop2/Balthasar 로 알아볼 세션이 없어 전달하지 않았습니다(추측 전달 안 함). 정본은 ASSIGN 파일.
+
 ## 2026-09-25 01:54 — [MAGI-005 E-2 완주] ΔΔU base 12.44 (등록 띠 [10, 15] 안) · nbIm100 19.58 (띠 밖, 위) — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)

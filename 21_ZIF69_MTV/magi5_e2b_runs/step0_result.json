@@ -1,0 +1,25 @@
+{
+  "test": "MAGI-005 E-2b 0단계 — cwd .block 읽기",
+  "share_block_dir_exists": false,
+  "cases": {
+    "cwd_block": {
+      "rc": 0,
+      "minutes": 0.09,
+      "n_blocked_per_uc": 36,
+      "pockets_line": "Pockets are blocked for this component",
+      "finished": true,
+      "stderr": "_cell_length_a: 13.064800\n_cell_length_b: 13.064800\n_cell_length_c: 7.129450\n_cell_length_alpha: 89.923600\n_cell_length_beta: 90.076400\n_cell_length_gamma: 141.121000\n_symmetry_space_group_name_H-M: P 1 found space group: 1\n_symmetry_Int_Tables_number: 1\nspace group found from symmetry elements: 1 (",
+      "data": "magi5_e2b_runs/step0_cwd_block/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data"
+    },
+    "no_block_file": {
+      "rc": 0,
+      "minutes": 0.09,
+      "n_blocked_per_uc": 0,
+      "pockets_line": "Pockets are blocked for this component",
+      "finished": true,
+      "stderr": "_cell_length_a: 13.064800\n_cell_length_b: 13.064800\n_cell_length_c: 7.129450\n_cell_length_alpha: 89.923600\n_cell_length_beta: 90.076400\n_cell_length_gamma: 141.121000\n_symmetry_space_group_name_H-M: P 1 found space group: 1\n_symmetry_Int_Tables_number: 1\nspace group found from symmetry elements: 1 (",
+      "data": "magi5_e2b_runs/step0_no_block_file/Output/System_0/output_2016_Co__pts_3_ASR_5_3.3.4_298.000000_1e-05.data"
+    }
+  },
+  "result": "cwd 에서 읽음 → 환경 변경 없음, 진행 가능"
+}
