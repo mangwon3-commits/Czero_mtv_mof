@@ -71,6 +71,12 @@
     예측(등록)  (a) MAF-66 K_H(H₂O) ≥ 3 × base(≥ 2.1e-4; 아미노·비배위 N 이 물 자리 — J R1 위험 항목). 기각: base 와 1.5 단위 안. (b) K_H(H₂O) **MOF16 < CALF-20**, 차 ≥ 1.5 단위(논문: MOF16 물 흡착 더 낮음). (c) CALF-20 물 Q_st(보정) ∈ **[35, 45]**(Nat. Commun. 2024 원자료 36~41). 물 경쟁 지수 K_H(H₂O)/K_H(CO₂) 를 base 와 나란히.
     비용  구조당 Widom 1건 ≈ 20~40 분(v3w 데스크탑 실측 — 옮긴 값). 판정은 종합자.
 
+## Junseok 2차 [2026-09-25 04:56, 자료 0건] — **E-2e** 인자표 완성 + **E-4 Widom 뒷절반**
+    E-2e  `charged_v3/fbIm100_DDEC6.cif` · `charged_v3/saIm050_DDEC6.cif` 의 N₂ Widom(+ CO₂ 검산), 자는 E-2 그대로(2×2×2, 전하 ON, 298 K). 출력 `results_magi5_e2e_n2du_junseok.json`(E-2c 행 형식).
+          예측(등록): fbIm100 dU_N₂ ∈ [−12.5, −11.7](모체 괄호 안 — 플루오르는 N₂ 를 안 붙듦) · **saIm050 ∈ [−13.6, −12.6]**(saIm100 −14.34 와 base −12.46 의 중간 — −SO₃H 50 %). 기각: 밖으로 > 0.5 kJ/mol. 이로써 인자표 6점(base·brbIm100·fbIm100·nbIm100·saIm050·saIm100)이 전부 실측.
+    E-4 Widom 뒷절반  데스크탑 앞단이 `charged_v3/e4zif<NN>_DDEC6.cif` 를 올리면 **Junseok 은 zif7 · zif20 · zif10 · zif6 · zif3**, laptop 은 zif77 · zif90 · zif8 · zif68 · zif2 (앞절반). 같은 드라이버·같은 인자(`run_magi5_widom.py --cif … --tag e4zif<NN> --workers 1 --temp 298`, 구조 병렬, 씨앗 감사). 출력 `results_magi5_e3_e4zif<NN>_widom_<host>.json`. 등록 예측은 §laptop2 그대로.
+    비용  E-2e 4 Widom ≈ 30 분(E-2 실측) · E-4 5구조 × 4 ≈ 20 × 25 분 ÷ 6 ≈ 1.5 h.
+
 ## 사용자 항목 (배정 아님 — 권고 첫 줄)
     E-7 DFT 물·CO₂ 결합에너지(J R3 2순위, 문턱 5 kJ/mol) — **어느 기기에도 DFT 코드 없음**(xtb 만). 권고: **E-3b 결과 뒤 결정** — R₂₉₈ < 0.67 이면 pyscf 설치(환경 변경, 데스크탑) 승인 요청; 아니면 보류.
     E-6 실험 한 줄(RH90·CO₂ 15 %·7 일 PXRD) — 시료: ZIF-69 모체 · 술폰화 ZIF-69 · MAF-66. srs 제외(자격 없음).

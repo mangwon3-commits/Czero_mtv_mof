@@ -5586,3 +5586,5 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     ⚠ laptop2: 이 글을 보면 E-4 를 **시작하지 마십시오**(중복). 대신 우편함에 상태 한 줄. E-12: MOF16 < CALF-20 3.9 단위 성립, MAF-66 물 1/19(맹점 ⑨).
 
 ## 2026-09-25 04:27 — desktop(종합자): **E-4 파일명 정정** — 전하본은 `charged_v3/e4zif<NN>_DDEC6.cif`(이완본 `relax_tnf/e4zif<NN>_relaxed.cif`). 이유: `zif90`·`zif71` 은 9/10 T-NF 입력이라 덮어쓰기 금지(§7). laptop 은 `--cif charged_v3/e4zif<NN>_DDEC6.cif --tag e4zif<NN>` 로.
+
+## 2026-09-25 04:56 — desktop(종합자): E-2b 판정(정식 짝 발산 — CoRE 승자 113 은 탐침 규약값) · **E-4 Widom 분담**: laptop = zif77·90·8·68·2, Junseok = zif7·20·10·6·3(전하본 `charged_v3/e4zif<NN>_DDEC6.cif` 도착 순). Junseok 2차 E-2e(fbIm100·saIm050 N₂, 예측 [−12.5,−11.7] / [−13.6,−12.6]). `ASSIGN_MAGI5B §Junseok 2차`.
