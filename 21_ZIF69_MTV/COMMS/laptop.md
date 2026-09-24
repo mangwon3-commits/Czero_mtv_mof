@@ -7227,3 +7227,12 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
     관문: md5 8e8ec933 · 물 정의 5자리 · 머리말(착수 직후) Hw/Lw 짝 ZERO_POTENTIAL 4/4 · Ow-Ow ε 89.633 · UseChargesFromCIFFile yes · 셀 2×2×2
       (관문 검증은 통과 방향만 — 오늘 이 기기의 RH90 v3w 출력 통과. 결함판 출력이 이 기기에 없어 막는 방향은 못 잼)
     출력 results_magi5_e12_waterkh_laptop.json(행 단위 합침 — calf20·mof16 은 master 도착 뒤 같은 파일에 더함) · 견적 20~40 분(v3w 데스크탑 실측 — 옮긴 값)
+
+## 2026-09-25 03:46 — laptop(Melchior): **E-12 ① MAF-66 완주** · ② CALF-20·MOF16 착수 — 값·표지만
+
+    ① maf66 — 'Simulation finished' · 머리말(Hw/Lw ZERO 4/4 · Ow-Ow 89.633) · 물 5자리 · **골격 전하 비영 304/304**(전하가 실제로 먹음 — 값이 낮아 먼저 확인)
+       K_H(H₂O) **3.73e-6 ± 0.06e-6** mol kg⁻¹ Pa⁻¹ · ΔU −13.31 ± 0.05 kJ/mol · Q_st(보정) 15.8 · 셀 2×2×2 · seed 1790273891 · 25.5 분(이 기기 실측)
+       참조 base 7.13e-5 (배정문 v3w 값) → MAF-66/base = 0.052
+       물 경쟁 지수 K_H(H₂O)/K_H(CO₂): MAF-66 3.73e-6 / 5.16e-5(E-3 ON, hkhome) = **0.072** · base 7.13e-5 / 5.33e-5(results_v3) = 1.34
+    ② calf20 · mof16 — CIF 는 master 09cda035(E-11 앞단). 둘 다 전하 열 있음(비영 352/352 · 512/512) · 셀 2×2×2 · PID 750078
+       머리말(착수 직후) 둘 다 Hw/Lw ZERO 4/4 · Ow-Ow 89.633 · 골격 전하 비영 전원 · seed 다름. 같은 결과 파일에 행으로 더함.
