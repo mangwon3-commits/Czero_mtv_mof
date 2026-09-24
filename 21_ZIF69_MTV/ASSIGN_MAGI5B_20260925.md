@@ -135,3 +135,12 @@
     예측(등록)  **ρ(G, P9) ≥ 0.6 (n 24)** 그리고 **ZIF-77 의 P9 순위가 P6 순위(21/24)보다 12 이상 내려감**(장이 자리에 없다 — ZIF-77 이 가설의 급소). 기각: ρ(G, P9) < 0.4 또는 ZIF-77 P9 순위 ≥ 16/24(자리 가중으로도 ZIF-77 을 못 설명 → 남는 것은 CO₂ 배향/사중극자 짝 — 점 탐침 모형 밖). 띠는 판정 불가. 부트스트랩 병기, 60점판 쓰지 않음(적응판만 — E-10c 에서 차 ≤ 0.03 확인).
     출력  `e10d_site_field.py` · `e10d_site_field.json` + 우편함. ρ 는 계산하지 말 것(판정 종합자 — E-10c 와 같은 분리).
     비용  E-10c 벽시계 4 분(같은 기기·같은 점 실측) + LJ 합 → **≈ 10~20 분**(LJ 는 Ewald 보다 싸다 — 옮긴 값 아님, 같은 스크립트 확장).
+
+## laptop 5차 [2026-09-25 07:38] — **T-J1′** 이원 공동 지표 S_mix/S_Henry (Junseok R1 §T-J1′ + R3 J-13 대조 교체 — **등록된 지 오래, 미착수**; 예측·기각은 그 원문 그대로, 이 배정은 자·운영만 정함)
+    대상 10  우리 5 `charged_v3/{base,nbIm100,saIm050,mslm050,sa50nb50}_DDEC6.cif` + CoRE 5 `core_pop_cifs/` — L < 0.2 셋 `2016_Co__sql_2_FSR_19`(2D) · `2024_Ni__sql_2_FSR_4`(2D) · `2017_Zn__dia_3_FSR_1`(3D, **주 대상**) + 대조 둘 `2012_Co__dia_3_ASR_3` · `2010_Zn__pts_3_ASR_1`(R3 J-13 교체판).
+    자    이원 GCMC CO₂/N₂ = 0.15/0.85, 전압 1 bar, 298 K, 5,000+15,000, UFF_MOF(md5 8e8ec933), DDEC6, 12 Å, Ewald 1e-6, `unit_cells()`, 강체. S_mix = (N_CO₂/N_N₂)/(0.15/0.85). S_Henry = 같은 구조 E-10/E-1/우리 Widom 기존값(행에 출처 파일 기록).
+    드라이버  `run_tj1_mix.py`(새로, `run_humid_wc.py` 의 MolFraction 블록 형 · 성분 2개). **§0 결함 방지 필수**: 이어받기·신규 둘 다 `'Simulation finished'` 표지 + 두 성분 적재 둘 다 있을 때만 ok(`run_aryl_gcmc.finished()` 와 같은 조건), `check=False` 금지 또는 반환코드 검사. **LPT = N_super 내림차순**, `submit`+`as_completed` 중간 저장.
+    예측(원문)  L < 0.2 셋 S_mix/S_Henry **< 0.5**, 우리 다섯·대조 둘 **> 0.7**. 기각: L < 0.2 셋 **모두** ≥ 0.8 → J-13 철회. 2D 둘은 층간 틈 단서 표지(맹점 ③).
+          종합자 병기(판정 아님): 2016_Co__sql_2_FSR_19 · 2010_Zn__pts_3_ASR_1 은 PLD 3.3~3.64(N₂ 탐침 통로 없음 — E-2b 규칙 후보 대상 18/68 중 둘)라 **S_Henry 자체가 탐침 규약값**. S_mix 는 GCMC 도 차단 없음이라 같은 맹점을 공유 — 비의 뜻이 우리 5와 다름을 판정문에 적는다.
+    출력  `results_tj1_mix_laptop.json`(name · N_CO2 ± · N_N2 ± · S_mix ± (오차 전파) · S_Henry(출처) · 비 · L · dim · status · minutes · finished) + 우편함 착수·완주.
+    비용  **옮긴 값**: 단일 성분 0.15 bar GCMC 1.5~20.2 h/작업(CLAUDE.md §5, v3 조성) — 이원·1 bar 는 흡착 분자 수가 늘어 더 길 수 있음. 벽시계 = max(최장 단일, 합/8) ≈ **15~25 h**(최장 단일이 묶을 공산 큼 — v3 GME 가 가장 무거움). 첫 2 h 진행률로 견적 갱신.
