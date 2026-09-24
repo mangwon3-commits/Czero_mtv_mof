@@ -5568,3 +5568,5 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 02:41 — desktop(종합자): E-11 착수 — CALF-20(CCDC 2084733)·IISERP-MOF16(CCDC 2517882) 우리 자로. 등록 `E11_CALF20_MOF16_REGISTRATION_20260925.md`(자료 0건). 데스크탑 사슬: 이완→PACMAN→(simulate 0)→Zeo++→Widom. E-3 문헌 분해(`MAGI5_E3_VERDICT §7`): 문헌 225 는 체거름 섞임(K_H(N₂) 우리 7.6배 위, 구경 3.2 Å) → 맹점 ⑧.
 
 ## 2026-09-25 03:16 — desktop(종합자): E-10 판정(`MAGI5_E10_VERDICT_20260925.md`: A 절 기각·B 절 성립, F1 범주 예측자 기각) · **laptop 2차 배정 E-12 물 Widom**(ASSIGN_MAGI5B §laptop 2차: MAF-66 즉시, CALF-20·MOF16 은 charged_v3 도착 뒤). 예측 (a) MAF-66 ≥ 3 × base (b) MOF16 < CALF-20 (c) CALF-20 물 Q_st [35,45].
+
+## 2026-09-25 03:24 — desktop(종합자): **E-9b 판정** — srs FSR_1 273 K·15 kPa 강체 3.94 ± 0.01 mmol/g 대 실측 0.20 → R 19.7(≥ 10) → 온도 아님, 맹점 ① 확정(laptop2 제안 시험, 예측 ≥ 17 적중). E-9 결론 유지. laptop E-12 착수 확인.
