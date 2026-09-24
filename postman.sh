@@ -95,7 +95,32 @@ while :; do
   #     merge 로 바뀝니다. `if…fi` 는 bash 가 통째로 읽은 뒤 실행하고 교체는 mv(원자적 rename)라
   #     돌던 파일은 안 바뀝니다.
   BR=$(git rev-parse --abbrev-ref HEAD)
-  if git fetch -q --all 2>>"$LOG"; then
+  git fetch -q --all 2>>"$LOG"; FETCH_OK=$?
+  # ⚠ 자기 갱신은 **fetch 성공 여부와 무관하게** 돕니다 — (9-3) 이 일부러 `if fetch` 밖에 둔 이유입니다
+  #   ("fetch 실패한 틱에서 판정이 통째로 건너뛰어진다" 랩탑 우려). fetch 가 실패해도 낡은 ref 로
+  #   보는 것뿐이라 예전과 같습니다. (18) 로 앞으로 옮기면서 **그 성질을 잃지 않게** 이 모양으로 둡니다.
+  # (18) 2026-09-24 Junseok 발견 — **자기 갱신을 반입보다 먼저** 돌립니다.
+  #   그 전에는 반입 블록이 먼저였고 자기 갱신이 그 뒤였습니다. 그래서 `postman.sh` 를 고쳐 밀면
+  #   **그것이 도착한 첫 틱은 옛 규칙으로 반입을 한 번 더 합니다.**
+  #   실측: (17)(공용 파일 자동 반입 금지)을 08:32 에 밀고 Junseok 줄을 손으로 병합했는데
+  #   08:36 틱이 **옛 규칙으로** 그 줄을 다시 지웠습니다(e41758fe, −52).
+  #   **"고쳤으니 이제 안 그런다" 가 한 틱 더 틀립니다.** fetch 뒤 · 반입 앞이 맞는 자리입니다.
+  # (9-2) 09-21 15:3x laptop2 발견 — ★ **작업트리와 견주면 안 됩니다.**
+  #   작업트리는 pull/merge 로만 바뀌는데 그 pull 을 postman 자신이 `runner_running` 가드로 건너뜁니다.
+  #   그래서 **러너가 도는 기기에서는 (9)가 영영 안 걸리고, 러너가 도는 기기가 바로 보호가 필요한 기기**입니다.
+  #   laptop2 실측: origin/master fe4a3bf0 / 작업트리 cb16a7b7 / 사본 cb16a7b7 — 둘이 같아 갱신이 안 걸림.
+  #   -> **`origin/master` 판과 견줍니다.** fetch 는 가드 밖이라 러너가 돌아도 돕니다.
+  #      작업트리를 건드리지 않으므로 §6 위험도 없습니다.
+  NEWSELF="$RUNDIR/.new_$MACHINE"
+  if git show origin/master:postman.sh > "$NEWSELF" 2>>"$LOG" && [ -s "$NEWSELF" ] \
+     && ! cmp -s "$NEWSELF" "$RUNSELF"; then
+    if bash -n "$NEWSELF" 2>>"$LOG"; then
+      say "postman.sh 갱신 감지(origin/master $(md5sum "$NEWSELF" | cut -c1-8)) — 사본을 새로 떠서 재기동"
+      inbox "postman 자체 갱신 -> 재기동 (판 $(md5sum "$NEWSELF" | cut -c1-8))"
+      mv -f "$NEWSELF" "$RUNSELF" && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
+    else say "!! origin/master 판이 잘렸거나 문법 오류 — 이번 틱은 넘어감"; rm -f "$NEWSELF"; fi
+  else rm -f "$NEWSELF"; fi
+  if [ "$FETCH_OK" = 0 ]; then
     for rb in $(git for-each-ref --format='%(refname:short)' refs/remotes/origin | grep -vE "HEAD|claude/|magi004-|^origin$"); do  # (7) 15:5x: 짧은 이름 origin(=origin/HEAD) 이 브랜치로 취급돼 master 의 남의 푸시를 ④ 로 재커밋(e202853) → 갈래가 생김. 제외.
     # (15) 2026-09-24: **`junseok` 을 제외 목록에서 뺐습니다.** 09-24 07:19 복귀 — 그 기기의 결과가 master 로 와야 합니다.
     #      "은퇴" 는 감사가 08-29 제목("가지 취합 **종결** 확인")에서 **추론한 것**이고 결정한 사람이 없었습니다.
@@ -137,25 +162,11 @@ while :; do
     done
   else say "fetch 실패"; fi
   # (9-3) 09-21 15:4x — 판정을 **fetch 뒤**로 옮겼습니다(랩탑이 넘긴 판단).
+  #   ⚠ 이 주석이 설명하는 자기 갱신 블록은 **(18) 로 위(반입 앞)로 옮겼습니다.** 아래 설명은 그대로 유효합니다.
   #   앞에 있으면 직전 틱이 받아 온 ref 를 써서 새 판이 **최대 두 틱(~10분)** 뒤에 넘어갔습니다.
   #   랩탑 우려("fetch 실패한 틱에서 판정이 통째로 건너뛰어진다")는 **배치로 피합니다** —
   #   `if git fetch …; then … fi` **블록 밖**에 두었으므로 fetch 가 실패해도 판정은 돕니다
   #   (그 틱은 낡은 ref 로 보는 것뿐, 예전과 같음). 두 걱정을 동시에 없앱니다.
-  # (9-2) 09-21 15:3x laptop2 발견 — ★ **작업트리와 견주면 안 됩니다.**
-  #   작업트리는 pull/merge 로만 바뀌는데 그 pull 을 postman 자신이 `runner_running` 가드로 건너뜁니다.
-  #   그래서 **러너가 도는 기기에서는 (9)가 영영 안 걸리고, 러너가 도는 기기가 바로 보호가 필요한 기기**입니다.
-  #   laptop2 실측: origin/master fe4a3bf0 / 작업트리 cb16a7b7 / 사본 cb16a7b7 — 둘이 같아 갱신이 안 걸림.
-  #   -> **`origin/master` 판과 견줍니다.** fetch 는 가드 밖이라 러너가 돌아도 돕니다.
-  #      작업트리를 건드리지 않으므로 §6 위험도 없습니다.
-  NEWSELF="$RUNDIR/.new_$MACHINE"
-  if git show origin/master:postman.sh > "$NEWSELF" 2>>"$LOG" && [ -s "$NEWSELF" ] \
-     && ! cmp -s "$NEWSELF" "$RUNSELF"; then
-    if bash -n "$NEWSELF" 2>>"$LOG"; then
-      say "postman.sh 갱신 감지(origin/master $(md5sum "$NEWSELF" | cut -c1-8)) — 사본을 새로 떠서 재기동"
-      inbox "postman 자체 갱신 -> 재기동 (판 $(md5sum "$NEWSELF" | cut -c1-8))"
-      mv -f "$NEWSELF" "$RUNSELF" && POSTMAN_ROOT="$ROOT" exec bash "$RUNSELF" "$MACHINE"
-    else say "!! origin/master 판이 잘렸거나 문법 오류 — 이번 틱은 넘어감"; rm -f "$NEWSELF"; fi
-  else rm -f "$NEWSELF"; fi
   if repo_bash_running || runner_running; then say "저장소 bash/러너 실행 중 — pull 건너뜀"; elif tracked_dirty; then say "추적 파일 수정 — pull 건너뜀"; else
     if [ "$BR" = "master" ]; then git pull -q --ff-only origin master 2>>"$LOG" || inbox "!! master ff-pull 실패"
     else git merge -q --no-edit origin/master 2>>"$LOG" || { git merge --abort 2>/dev/null; inbox "!! origin/master merge 충돌"; }; fi
