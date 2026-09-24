@@ -77,6 +77,12 @@
     E-4 Widom 뒷절반  데스크탑 앞단이 `charged_v3/e4zif<NN>_DDEC6.cif` 를 올리면 **Junseok 은 zif7 · zif20 · zif10 · zif6 · zif3**, laptop 은 zif77 · zif90 · zif8 · zif68 · zif2 (앞절반). 같은 드라이버·같은 인자(`run_magi5_widom.py --cif … --tag e4zif<NN> --workers 1 --temp 298`, 구조 병렬, 씨앗 감사). 출력 `results_magi5_e3_e4zif<NN>_widom_<host>.json`. 등록 예측은 §laptop2 그대로.
     비용  E-2e 4 Widom ≈ 30 분(E-2 실측) · E-4 5구조 × 4 ≈ 20 × 25 분 ÷ 6 ≈ 1.5 h.
 
+## Junseok 3차 [2026-09-25 05:33, 자료 0건] — **E-13** MAF-66 273 K 직접 Widom (여유 워커, E-4 와 병행)
+    대상  `charged_v3/maf66_DDEC6.cif`, CO₂·N₂ Widom **273 K** 전하 ON(2작업; `run_magi5_widom.py --tag maf66_273K --temp 273 --charges on --workers 1`). 출력 `results_magi5_e3_maf66_273K_widom_junseok.json`. **다른 시험**(온도).
+    대조  Lin 2012 ESI 표 S3(273 K): K_H(CO₂) **25.72 / 26.82** · K_H(N₂) **0.0638 / 0.0648** mmol g⁻¹ atm⁻¹ · S 403/414. 우리 298 K: 5.22 / 0.336(E-3).
+    예측(등록)  K_H(CO₂, 273)/K_H(CO₂, 298) ∈ **[1.8, 2.8]**(ΔU −22.0 의 반트호프 2.25; E-2d·E-11b 에서 외삽이 1.5 단위 안) → K_H(273) ≈ 9.4~14.6 → **실측의 0.35~0.55 배**(298 K 의 0.52 와 같은 급). N₂: 우리 K_H(N₂, 273) 실측의 **5~10 배 위**(298 K 의 7.7 배와 같은 급 — 체거름 읽기의 온도 불변성). 기각: CO₂ 비가 [1.8, 2.8] 밖, 또는 CO₂ 가 실측의 0.7 배 이상(자 과소가 온도 문제였음), 또는 N₂ 비가 3 배 아래(체거름 아닌 다른 원인).
+    비용  2 Widom ≈ 25 분(이 기기 E-2 실측).
+
 ## 사용자 항목 (배정 아님 — 권고 첫 줄)
     E-7 DFT 물·CO₂ 결합에너지(J R3 2순위, 문턱 5 kJ/mol) — **어느 기기에도 DFT 코드 없음**(xtb 만). 권고: **E-3b 결과 뒤 결정** — R₂₉₈ < 0.67 이면 pyscf 설치(환경 변경, 데스크탑) 승인 요청; 아니면 보류.
     E-6 실험 한 줄(RH90·CO₂ 15 %·7 일 PXRD) — 시료: ZIF-69 모체 · 술폰화 ZIF-69 · MAF-66. srs 제외(자격 없음).
