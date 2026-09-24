@@ -34,7 +34,7 @@ fi
 cd "$ROOT" || exit 1
 INBOX="$ROOT/.postman_inbox_$MACHINE"; LOG="$ROOT/.postman_$MACHINE.log"; FLAG="$ROOT/.postman_flag"
 STATE="$ROOT/.postman_state_$MACHINE"; mkdir -p "$STATE"
-RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/density_v3*/density_results.json 21_ZIF69_MTV/density_v3*/*/VTK/System_0/*.vtk.gz 21_ZIF69_MTV/density_v3*/*/simulation.input'
+RESULT_PATTERNS='21_ZIF69_MTV/v3w_humid_wc*/*.json 21_ZIF69_MTV/v3w_humid_wc*/*.jsonl 21_ZIF69_MTV/v3w_water*/*.json 21_ZIF69_MTV/v3_water_repro*/*.json 21_ZIF69_MTV/results_*.json 21_ZIF69_MTV/risk_results*.json 21_ZIF69_MTV/relax_v3/*_relaxed.cif 21_ZIF69_MTV/charged_v3/*_DDEC6.cif 21_ZIF69_MTV/relax_v3_judged.json 21_ZIF69_MTV/risk_v3sub_index.json 21_ZIF69_MTV/COMMS/*.md 21_ZIF69_MTV/watchdog.log 21_ZIF69_MTV/tnf_results_*.json 21_ZIF69_MTV/tnf_widom_*.json 21_ZIF69_MTV/core_pop_results_*.json 21_ZIF69_MTV/bridge_core_results.json 21_ZIF69_MTV/core_wc_results_*.json 21_ZIF69_MTV/pair_times_*.json 21_ZIF69_MTV/MACHINE_CAPABILITIES.md 21_ZIF69_MTV/density_v3*/density_results.json 21_ZIF69_MTV/density_v3*/*/VTK/System_0/*.vtk.gz 21_ZIF69_MTV/density_v3*/*/simulation.input'
 
 # (17) 2026-09-24 Junseok 발견 — **공용 파일은 ④ 로 자동 반입하지 않습니다.**
 #   `git checkout <가지> -- <파일>` 반입은 **가지 커밋을 master 의 조상으로 만들지 않으므로**
@@ -171,6 +171,17 @@ while :; do
     if [ "$BR" = "master" ]; then git pull -q --ff-only origin master 2>>"$LOG" || inbox "!! master ff-pull 실패"
     else git merge -q --no-edit origin/master 2>>"$LOG" || { git merge --abort 2>/dev/null; inbox "!! origin/master merge 충돌"; }; fi
   fi
+  # (19) 2026-09-24 — **글롭 밖에 결과가 쌓이는 것을 스스로 알립니다.** 오늘만 세 번 났습니다
+  #   (§AW `core_wc_results_*` · 밀도맵 `density_v3*/density_results.json` · §2 `v3_water_repro*`).
+  #   매번 "패턴을 먼저 넣으라" 고 적었는데도 **새 시험을 열 때마다 반복**됩니다 — 사람이 기억할 일이
+  #   아니라 **도구가 볼 일**입니다. 추적 안 되고 글롭에도 안 걸리는 결과 JSON 을 **한 번만** 알립니다.
+  NEWRES="$STATE/.seen_unglobbed"; touch "$NEWRES"
+  git status --porcelain --untracked-files=normal -- 21_ZIF69_MTV 2>/dev/null \
+    | sed -n 's/^?? //p' | grep -E '(results|_results)[^/]*\.json$' | while read -r u; do
+        grep -qxF "$u" "$NEWRES" && continue
+        echo "$u" >> "$NEWRES"
+        inbox "!! **글롭 밖 결과 파일**: $u — RESULT_PATTERNS 에 넣거나 손으로 올리십시오"
+      done
   # (5) 15:4x 데스크탑 실측 — 안 맞는 글롭이 하나라도 있으면(예: tnf_widom_*.json 이 아직 없음) git add 가 rc=128 로
   #     **아무것도 안 올림**. ③ 이 조용히 죽어 있었음(15:07 기동 뒤 푸시 0건). 패턴별로 add 하고 실패는 로그에.
   for p in $RESULT_PATTERNS; do [ -e "$p" ] && { git add "$p" 2>>"$LOG" || say "add 실패 $p"; }; done
