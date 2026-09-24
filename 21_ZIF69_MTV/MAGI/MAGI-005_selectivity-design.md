@@ -72,3 +72,5 @@
           사용자 지시(2026-09-24 22:50 직전): *"If it ends earlier than scheduled, move the date up"* → 라운드 입력이 차는 즉시 다음 라운드를 엽니다. 시한은 상한으로만.
     2026-09-24 22:51  **Junseok R1 도 반입(origin/junseok-20260822), sha256 = 제출 해시 일치 → 유효. 3/3 완비.** 해시 대조표: laptop 6465581e ✓ · laptop2 711b775a ✓ · junseok 8ca844f5 ✓ · 종합자 fd205fab ✓.
           종합자가 **지금부터** 세 R1 을 읽습니다(공개 전 미독 — §11-2 4 준수). R2 공격 착수(일정 앞당김, 사용자 지시).
+    2026-09-24 23:04  **R2 공격 게시** `MAGI-005_R2_attack.md`(A-1~A-20). 결정적 둘: **A-2** — 세 자리가 기댄 CoRE "유일 아졸레이트 승자" `2016[Co][pts]3[ASR]5`(S 113.4) 는 Long 그룹 Co(bdp) 계열(메틸화 bdp, JACS 2016 10.1021/jacs.6b09155, CoRE 슬라이스 `ja6b09155_si_006` 62원자 일치; CIF 결합: 피라졸레이트, N–H 0)의 **유연 골격 수축상** — 강체 Widom 의 맹점. **A-3** — Melchior 의 실험 앵커(ZIF-69 19.9·ZIF-78 50.1)는 Phan 2010 표 2 각주대로 **273 K**.
+          종합자 자백 A-1: 브리핑이 가리킨 `core_pop_merged.json` 이 git 미추적(세 자리가 각자 재합침, 512/524). Junseok 재현 스크립트 6종 `MAGI-005_R1_junseok_scripts/` 경로 반입(README 해시 일치). 봉인 예측 대조 §6: 부분·부분·(M✓ B✗ J✓)·✓.
