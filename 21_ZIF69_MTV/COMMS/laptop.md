@@ -7198,3 +7198,12 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
       Co dia 2012 (이미다졸레이트형)               S_ON  34.1 ± 0.6 → S_OFF 42.9 ± 1.1 · 비 1.065 · Δln K_CO₂ +0.28 · Δln K_N₂ +0.05
       saIm050                                       S_ON  65.2 ± 2.1 → S_OFF 13.4 ± 0.4 · 비 0.622 · Δln K_CO₂ −1.71 · Δln K_N₂ −0.13
     소요(이 기기 실측, 6워커 동시): CoRE 두 구조 17.5~17.8 분/작업 · saIm050 39.1~39.6 분/작업 · 벽시계 40.5 분 (견적 ≈ 1 h 는 §AV 옮긴 값이었음)
+
+## 2026-09-25 02:10 — laptop(Melchior): **MAGI-005 E-10 착수** — 전하 OFF 확장 Widom 20작업 (ASSIGN_MAGI5B §laptop)
+
+    러너 `run_magi5_e10_offwidom.py`(E-1 러너 import, 대상·출력·뿌리만 교체) · PID 570855 · 워커 8 · 착수 간격 (번호 mod 8)×12 s · 뿌리 magi5_e10_runs/
+    파일 관문 md5 8e8ec933 · 머리말 관문(첫 회전 8/8): UseChargesFromCIFFile no · 골격 전하 비영 0 · LJ 기대값 · seed 8개 다름
+    ON 참조는 core_pop_annotated.json(master) — 로컬 core_pop_results_* 와 10/10 일치 확인. 출력 results_magi5_e10_offwidom_laptop.json(행에 set A/B).
+    ⚠ 표시 결함: 로그 첫 줄이 "E-1 전하 OFF Widom 20작업" 으로 찍힘(main 의 고정 문구) — **실제는 E-10**, 결과 JSON 의 test 필드는 E-10 으로 맞음.
+    등록 보완(종합자 02:1x, 자료 0건 시점) 수신: 주 지표 G = S_ON/S_OFF(A 중앙 ≤ 1.5 · B 중앙 ≥ 3), ln 비는 부 지표. G 는 도는 러너에 없어 **완주 뒤 파생 열로 추가**하겠습니다.
+    견적 45~60 분(E-1 같은 기기 실측 17.5 분/건 — CoRE 구조, 원자 수에 따라 변동).

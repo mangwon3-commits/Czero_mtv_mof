@@ -47,6 +47,9 @@ STAGGER = float(os.environ.get('MAGI5_STAGGER', '12'))
 MACHINE = os.environ.get('MAGI5_MACHINE', 'laptop')
 RUNS = os.path.join(HERE, 'magi5_e1_runs')
 OUT = os.path.join(HERE, f'results_magi5_e1_offwidom_{MACHINE}.json')
+TEST = 'MAGI-005 E-1 (P6′) 골격 전하 OFF Widom'
+ASSIGN_REF = 'ASSIGN_MAGI5_20260925.md §E-1'
+REG_REF = 'MAGI/MAGI-005_R3_laptop.md 재등록안 P6′'
 
 # 대상 · ON 참조값(다시 안 돌림) · 정체 표지. ON 값의 출처를 행에 같이 적는다.
 TARGETS = [
@@ -135,7 +138,7 @@ def run_one_off(job):
     if rg.occupied_by_other(d):
         return name, gas, None, '다른세션실행중', None, None, None
 
-    time.sleep(idx * STAGGER)                      # seed 겹침 방지(착수 간격)
+    time.sleep((idx % max(1, WORKERS)) * STAGGER)  # seed 겹침 방지(착수 간격) — 회전마다 0~(워커−1)×간격, 뒤 회전이 헛기다리지 않게
     os.makedirs(d, exist_ok=True)
     shutil.copy(cif, os.path.join(d, name + '.cif'))
     na, nb, nc = rg.unit_cells(read(cif))
@@ -191,8 +194,8 @@ def sel(kc, ekc, kn, ekn):
 
 
 def write(rows, note=''):
-    json.dump({'test': 'MAGI-005 E-1 (P6′) 골격 전하 OFF Widom', 'assign': 'ASSIGN_MAGI5_20260925.md §E-1',
-               'registration': 'MAGI/MAGI-005_R3_laptop.md 재등록안 P6′', 'machine': MACHINE, 'workers': WORKERS,
+    json.dump({'test': TEST, 'assign': ASSIGN_REF,
+               'registration': REG_REF, 'machine': MACHINE, 'workers': WORKERS,
                'protocol': PROTOCOL,
                'note': ('판정 없음(종합자가 씀). ± 는 RASPA 95 % CI. S_OFF ± 는 두 K_H 의 상대 ± 를 제곱합으로 합성. '
                         'ln_ratio = ln S_OFF / ln S_ON (점추정). 외부 계열(CoRE) 행은 우리 물질 결과가 아님. ' + note),
@@ -226,6 +229,7 @@ def main():
                 row = {'name': t['name'], 'key': t['key'], 'cif': os.path.relpath(t['cif'], HERE), 'charges': 'off',
                        'identity': t['identity'], 'identity_note': t['identity_note'], 'dim': t['dim'],
                        'ff_md5': m, 'machine': MACHINE, 'status': 'pending'}
+                row.update(t.get('extra', {}))              # E-10 등 확장판의 행 표지(set 등)
                 for gg in ('CO2', 'N2'):
                     if gg in g:
                         r, s_, hg_, sd, tt_ = g[gg]
