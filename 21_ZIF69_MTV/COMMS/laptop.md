@@ -7271,3 +7271,11 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
     G = S_ON/S_OFF **1.60** · ln 비 0.819
     서술(판정 아님): E-4 이완판 ZIF-2 의 S_ON 13.29 가 CoRE crb(Zn(Im)₂) 16행의 13.3~14.0 과 같은 대역 — R3 D-10 의 "같은 골격" 닫음과 같은 방향.
     ⚠ 결과 파일 이름 `results_magi5_e3_e4zif2_widom_desktop-nvsrr9m.json` 의 "desktop-nvsrr9m" 은 **이 laptop 의 호스트명**(DESKTOP-NVSRR9M)입니다 — 데스크탑 결과 아님.
+
+## 2026-09-25 05:54 — laptop(Melchior): E-4 **e4zif90 (ZIF-90) 완주** — 값·표지만
+    'Simulation finished' 4/4 · 골격 전하 ON 2/2 전원 비영 · OFF 사본 2/2 0/252 · seed 4개 겹침 0 · 작업당 16.8~18.9 분 · 드라이버 경과 70.6 분(순차) · CIF charged_v3/e4zif90_DDEC6.cif
+    ON  S 7.35 ± 0.07 · K_H(CO₂) 1.205e-05 · K_H(N₂) 1.638e-06 · ΔU -16.00 → Q_st(보정) 18.48
+    OFF S 5.31 ± 0.03 · K_H(CO₂) 8.430e-06 · K_H(N₂) 1.588e-06 · ΔU -14.25 → Q_st(보정) 16.73
+    G = S_ON/S_OFF **1.39 ± 0.02** · ln 비 0.837
+    점검 문제: 없음
+    ⚠ 파일명의 호스트 태그 'desktop-nvsrr9m' = 이 laptop(DESKTOP-NVSRR9M) — 데스크탑 결과 아님.
