@@ -108,3 +108,13 @@
           (iii) S_ON(C12) 는 문턱 없이 보고(탐침 표지 PLD 2.59 그대로; 문헌 IAST 67).
     출력  `relax_tnf/mof16c12_relaxed.cif` · `charged_v3/mof16c12_DDEC6.cif` · `results_magi5_e3_mof16c12_widom_<host>.json` + 우편함 한 줄(관문 수치 포함). 판정은 종합자(E11 §8 로 덧붙임).
     비용  이완 ≈ 43 분(C11 판, 데스크탑 실측 198단계 — **다른 기기에서 옮긴 값**) + PACMAN 수 분 + Widom 4작업 ≈ 25 분(C11 판 데스크탑 4워커 실측, 옮긴 값; PLD 좁아 ± 19 % 였음) → **≈ 1.2~2 h**. 끝나면 다음 배정 없음 → 종합자에 알림.
+
+## Junseok 4차 [2026-09-25 06:56, 자료 0건 — ZIF-68 298 K 결과 도착 전] — **E-4b** 탐침 규약 검사(BlockPockets) + ZIF-68 273 K 직접 Widom
+    왜    E-4 의 PLD < 3.64 행(ZIF-7 2.37 · ZIF-8 3.28 · ZIF-90 3.47)은 E-2b 규칙 후보("`-block 1.82` 로 통로 유무 확인, 0 channel 이면 탐침 규약값 표지")의 첫 적용처이고, ZIF-7 S_ON 185.4 · K_H(CO₂) 4.0e-3(ZIF-2 의 73배)은 닿지 않는 공동이 Widom 을 부풀린 전형으로 보인다. ZIF-68 은 nIm 을 품어 E-4 (i) 문헌 다리의 온도 인자(등록 ÷1.58)가 1.58(모체)인지 2.06(nbIm100)인지 모호 — 직접 잰다.
+    (a) Zeo++ `-ha -block r` (**표본 50,000** — E-2b ④ 의 25 GB 교훈; 동시 2건 상한) r = **1.65 · 1.82** × {`relax_tnf/e4zif7_relaxed.cif` · `e4zif8` · `e4zif90`} = 6건. 채널/주머니 수와 차단 구 수를 표로. 채널이 남는 경우만 그 .block 으로 CO₂@1.65 · N₂@1.82 Widom(전하 ON, 298 K, E-2b 드라이버·관문 그대로: stderr not-found 외 없음 + **N = 구 × 단위셀 수 정확 일치** + 표지).
+          예측(등록): ZIF-7 은 두 반경 모두 **0 channel**(PLD/2 = 1.19) → S_ON 185.4 는 **탐침 규약값**. ZIF-8 은 1.65 에서 **0 channel**(PLD/2 = 1.642 < 1.65 — 경계, 5 mÅ 차라 표본 수에 민감하면 그대로 적음). ZIF-90 은 1.65 에서 channel ≥ 1 · 1.82 에서 **0 channel**(PLD/2 = 1.733) → E-2b 와 같은 "정식 짝 발산" 형. 기각: ZIF-7 이 어느 반경에서든 channel ≥ 1(우리 PLD 가 틀림 → e4_zeo_relaxed 재검).
+    (b) ZIF-68 273 K 직접 Widom: `run_magi5_widom.py --cif charged_v3/e4zif68_DDEC6.cif --tag e4zif68_273K --workers 4 --temp 273`(ON·OFF 4작업, E-2d·E-13 과 같은 자). 출력 `results_magi5_e3_e4zif68_273K_widom_junseok.json`.
+          예측(등록): 인자 f = S₂₇₃/S₂₉₈(같은 전하 ON) ∈ **[1.5, 2.1]**(모체 1.58 과 nbIm100 2.06 사이 — nIm 50 %). 기각: 밖. **E-4 (i) 판정은 등록대로 ÷1.58 로 내고**, 직접값은 "다른 시험" 으로 옆에 적는다(문헌 18.7 @ 273 K 과 직접 대조 — 등록 없음, 값 보고).
+    순서  (b) 먼저(RASPA 4워커) → 끝난 뒤 (a) Zeo++(RASPA 와 동시 금지 — CLAUDE.md §5). 또는 (a) 먼저 — **동시만 피하면 순서는 Junseok 선택.**
+    출력  `results_magi5_e4b_blockpockets_junseok.json`(E-2b 행 형식) · 위 273 K JSON · 우편함 한 줄씩. 판정은 종합자(`MAGI5_E4_VERDICT` 에 §로).
+    비용  (b) ZIF-68 4800원자 × 4작업 — ZIF-7(4176원자) 298 K 81 분/작업 같은 기기 실측을 옮김 → 4워커 병렬 **≈ 1.5 h**(273 K 는 삽입 수용이 달라 ± 30 %). (a) 50,000 표본 × 6건 ≈ 300 s/건(E-2b ④ 같은 기기) → **≈ 20 분**. 합 ≈ 2 h.
