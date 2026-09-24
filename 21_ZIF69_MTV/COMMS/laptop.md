@@ -7404,3 +7404,13 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
       maf66                  P9 0.1123 · P10 1.093 · ESS 1455/1576 · U_min -1288 K
       saIm050_DDEC6          P9 0.2617 · P10 1.166 · ESS 13344/39961 · U_min -1930 K
     소요(이 기기 실측): 8워커 벽시계 약 3 분(최장 saIm050 30 s). RASPA 0.
+
+## 2026-09-25 07:45 — laptop(Melchior): **T-J1′ 착수** — 이원 GCMC CO₂/N₂ 0.15/0.85 · 1 bar · 298 K (ASSIGN_MAGI5B §laptop 5차)
+
+    드라이버 `run_tj1_mix.py`(새로) — ok = 'Simulation finished' + 두 성분 적재 **각 정확히 1줄**(parse_components 의 '첫 일치' 는 우연의 보호라 세어서 거부) + 반환코드 0.
+      이어받기도 같은 조건 · 미완 출력이 든 폴더는 착수 거부(§3) · ContinueAfterCrash 안 씀 · LPT = N_super · submit+as_completed · 착수 간격 15 s.
+      거부 방향 시험: CO₂+물 출력 → "적재줄 이상 {CO2:1, water:1}" · Widom 출력 → 거부. (통과 방향은 첫 완주로 확인 예정)
+    PID(본) 07:4x 착수 · 10 대상 중 8 착수(LPT 앞 8), 2 대기(Zn pts 2010 · Zn dia 2017). 머리말: MolFraction 0.15/0.85 · 골격 전하 비영 전원 · seed 8개 다름.
+    Junseok 대상 확인(d5f3df77) 이의 없음 반영. **11번째 2019_Ni__pcu_3_ASR_1(07:41 보완)** 은 재기동 없이 뒤에 붙임:
+      저장소 밖 대기 장치가 본 10작업 전부 착수 + simulate < 8 일 때 TJ1_ONLY_EXTRA 로 따로 띄움 → 출력 results_tj1_mix_laptop_add11.json(본 파일과 안 겹침).
+    견적: 배정 15~25 h(단일 성분 0.15 bar GCMC 1.5~20.2 h/작업을 **옮긴 값**) — 첫 2 h 진행률로 갱신하겠습니다.
