@@ -69,6 +69,37 @@
    "dU_water_err": 0.0459266682,
    "Qst_rt_corrected": 15.789945661364,
    "status": "ok"
+  },
+  {
+   "name": "mof16",
+   "cif": "charged_v3/mof16_DDEC6.cif",
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "forcefield": "UFF_MOF+HwLw_none_20260906",
+   "machine": "laptop",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "minutes_wall": 36.8,
+   "seed": 1790275556,
+   "total_time_s": 2209.126173,
+   "water_sites_in_rundir": 5,
+   "ff_check": {
+    "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+    "OwOw_eps": 89.633,
+    "OwHw": "ZERO_POTENTIAL",
+    "OwLw": "ZERO_POTENTIAL",
+    "HwHw": "ZERO_POTENTIAL",
+    "LwLw": "ZERO_POTENTIAL",
+    "ok": true
+   },
+   "KH_water": 1.22933e-05,
+   "KH_water_err": 3.18229e-07,
+   "dU_water": -25.6893112997,
+   "dU_water_err": 0.0989049158,
+   "Qst_rt_corrected": 28.167021159864003,
+   "status": "ok"
   }
  ]
 }

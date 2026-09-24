@@ -7236,3 +7236,11 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
        물 경쟁 지수 K_H(H₂O)/K_H(CO₂): MAF-66 3.73e-6 / 5.16e-5(E-3 ON, hkhome) = **0.072** · base 7.13e-5 / 5.33e-5(results_v3) = 1.34
     ② calf20 · mof16 — CIF 는 master 09cda035(E-11 앞단). 둘 다 전하 열 있음(비영 352/352 · 512/512) · 셀 2×2×2 · PID 750078
        머리말(착수 직후) 둘 다 Hw/Lw ZERO 4/4 · Ow-Ow 89.633 · 골격 전하 비영 전원 · seed 다름. 같은 결과 파일에 행으로 더함.
+
+## 2026-09-25 04:23 — laptop(Melchior): **MAGI-005 E-12 ② 완주** — CALF-20·MOF16 물 K_H (값·표지만)
+
+    둘 다 'Simulation finished' · 머리말(Hw/Lw ZERO 4/4 · Ow-Ow 89.633) · 물 5자리 · 골격 전하 비영 전원 · 셀 2×2×2 · seed 다름
+      calf20  K_H(H₂O) **3.56e-5 ± 0.59e-5** · ΔU −25.49 ± 0.48 · Q_st(보정) **28.0** · 30.0 분
+      mof16   K_H(H₂O) **1.23e-5 ± 0.03e-5** · ΔU −25.69 ± 0.10 · Q_st(보정) **28.2** · 36.8 분
+      차 (calf20 − mof16) 2.33e-5 ± 0.59e-5 (±, 제곱합) = 3.9 단위
+    결과 21_ZIF69_MTV/results_magi5_e12_waterkh_laptop.json (maf66 · calf20 · mof16 세 행). E-12 laptop 몫 끝 — 이 기기 비었음.
