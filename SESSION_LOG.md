@@ -2845,3 +2845,4 @@ laptop2 가 완주까지 미루지 않고 냈습니다. 우편함에만 있으�
     [2026-09-25 01:18 배정] 사용자 승인 → `ASSIGN_MAGI5_20260925.md`: E-1 랩탑(OFF Widom 6) · E-2 Junseok(N₂ ΔU) · E-9+E-4준비 laptop2 · E-8 HKHOME. E-8 ① 완료: `core_pop_annotated.json`(dim·series·formula·L·flexible·anion_removed) · T-C4 값 넘김(`TC4_NOTE_20260925.md`).
     [2026-09-25 01:26 E-3] 사용자가 MAF-66 CIF(CCDC 860996/860997) 업로드 → 검사·저장(`MAF66_CIF_20260925.md`, external_cif/): 1t 블록 = Zn(atz)₂ 정연, Zeo++ LCD 5.22 / PLD 4.06 → PLD 관문 통과. E-3 앞단(감사→이완→PACMAN→Widom ON/OFF) 데스크탑 착수 준비.
     [2026-09-25 01:31 E-3] xtb GFN-FF 가 MAF-66 단위셀에서 세그폴트(작은 셀) → 2×2×1 초격자로 이완(MUF-16 1×3×1 선례). 사슬 재착수(감사→이완→PACMAN→Zeo++→Widom ON/OFF). laptop2 E-4 준비 반입(7d3a2279): 비-RHO 10 중 창 안 0, ZIF-90 H 결함·ZIF-20 PLD 2.87.
+    [2026-09-25 01:39 E-9 개정] srs 자격 없음(실측 CO₂ 1/9~1/17 · 물 침지 비다공화) — MAGI-005 §6-2·§6-4 정정(대표값 269.6), 관문 ⑤ 는 MAF-66 만.
