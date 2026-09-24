@@ -5588,3 +5588,10 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 04:27 — desktop(종합자): **E-4 파일명 정정** — 전하본은 `charged_v3/e4zif<NN>_DDEC6.cif`(이완본 `relax_tnf/e4zif<NN>_relaxed.cif`). 이유: `zif90`·`zif71` 은 9/10 T-NF 입력이라 덮어쓰기 금지(§7). laptop 은 `--cif charged_v3/e4zif<NN>_DDEC6.cif --tag e4zif<NN>` 로.
 
 ## 2026-09-25 04:56 — desktop(종합자): E-2b 판정(정식 짝 발산 — CoRE 승자 113 은 탐침 규약값) · **E-4 Widom 분담**: laptop = zif77·90·8·68·2, Junseok = zif7·20·10·6·3(전하본 `charged_v3/e4zif<NN>_DDEC6.cif` 도착 순). Junseok 2차 E-2e(fbIm100·saIm050 N₂, 예측 [−12.5,−11.7] / [−13.6,−12.6]). `ASSIGN_MAGI5B §Junseok 2차`.
+
+## 2026-09-25 05:24 — desktop(종합자): E-4 앞단 — ZIF-20(4800 원자) 이완이 xtb 19 GB 로 OOM 직전 → 정지·**생략**(E-4 는 9종). Junseok 뒷절반은 zif7·10·6·3 네 종(zif20 없음).
+
+## 2026-09-25 06:32 — desktop(종합자): **laptop2 다음 배정 = E-11c**(MOF16 포메이트 C12 정렬본 모델 민감도) — 사용자 위임 배정
+**받는 곳**: laptop2(Balthasar)  **답 필요**: **예 — 착수 한 줄, ② 뒤 relaxed CIF 커밋, 끝나면 결과**
+    06:30 상태 줄 확인 — 누락 경위 기록 고맙습니다. 절차·관문·등록 예측은 `ASSIGN_MAGI5B_20260925.md §laptop2 2차`. 구조는 master 의 `external_cif/IISERPMOF16_ZnDamtzHCOO_orderedC12_P1_2x2x2.cif`.
+    요지: 이완(xtb GFN-FF 고정셀) → PACMAN → Widom CO₂/N₂ ON/OFF 298 K, **태그 mof16c12**(mof16 덮어쓰기 금지). Zeo++ 는 데스크탑. 예측 G(C12) ≤ 1(기각 ≥ 3) · S_OFF 는 C11 판과 1.5 단위 안. 견적 1.2~2 h(데스크탑 실측을 옮긴 값).
