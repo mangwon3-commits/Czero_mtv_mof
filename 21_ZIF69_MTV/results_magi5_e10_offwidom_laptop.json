@@ -705,6 +705,30 @@
    "machine": "laptop",
    "status": "pending",
    "set": "B",
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 140,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790272327,
+   "total_time_s_CO2": 1045.808681,
+   "KH_CO2": 0.00273189,
+   "KH_CO2_err": 1.54507e-05,
+   "dU_CO2": -35.3033473069,
+   "dU_CO2_err": 0.0187889832,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00288727,
