@@ -29,6 +29,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FF_MD5 = '8e8ec933f9013c7e932da04dc256efd3'          # 등록 §1 — 기존 72건과 같은 값
 TEMPS = [283.0, 298.0, 313.0]
 PRESS = [0.01, 0.02]                                  # ← §-보완이 더하는 두 점
+#   §-보완2(2026-09-24, `QSTN_SUPP2_REGISTRATION_20260924.md`)는 `--press 0.005` 로 덮습니다.
+#   ⚠ 압력이 태그에 들어가지만 **서식이 `%.2f` 면 0.005 가 0.01 로 반올림**됩니다 —
+#   `_ptag()` 가 그것을 막습니다. 등록문의 '저절로 갈립니다' 는 **그 함수가 있어야** 참입니다.
 ALL = ['base', 'mslm050', 'sa50nb50', 'saIm025', 'saIm050', 'saIm0583']
 # ② 2026-09-24 Caspar 발견 — `base` 를 두 기기가 내면 **결과 파일 이름이 같습니다**
 #    (`tnf_results_qn_base_*.json`). `RESULT_PATTERNS` 안이고 `NOAUTO_IMPORT` 밖이라
@@ -109,8 +112,22 @@ def audit_seeds(verbose=True):
     return dup
 
 
+def _ptag(p):
+    """압력을 태그 문자열로. **기존 태그를 한 글자도 안 바꾸면서** 0.005 를 가릅니다.
+
+    ⚠ 2026-09-24 @T@ — `%.2f` 하나로는 **0.005 가 `0.01bar` 로 반올림**됩니다.
+      §-보완2(0.005 bar)를 그대로 띄웠으면 §-보완의 **0.01 bar 결과 6개를 덮어썼습니다.**
+      등록문에 *"압력은 태그에 들어가므로 저절로 갈립니다"* 라고 **제가 써 놓고**,
+      바로 그 줄을 시험해서 잡았습니다 — **쓴 것을 시험한 덕**입니다.
+      고친 방법: `%.2f` 가 값을 **되돌려 주면** 그대로 쓰고(0.01·0.02·0.05·0.15·0.50·1.00 전부 유지),
+      안 되돌려 주면 `%g` 로 갑니다(0.005 → `0.005bar`).
+    """
+    t = '%.2f' % p
+    return t if float(t) == float(p) else ('%g' % p)
+
+
 def tag_of(c, T, p):
-    return 'qn_%s%s_%dK_%.2fbar' % (c, SUFFIX[0], int(T), p)
+    return 'qn_%s%s_%dK_%sbar' % (c, SUFFIX[0], int(T), _ptag(p))
 
 
 def out_of(c, T, p):
@@ -157,9 +174,19 @@ def main():
                     default=int(os.environ.get('QN_SUPP_WORKERS', '6')))
     ap.add_argument('--tag-suffix', default='',
                     help='결과 이름을 가릅니다(교차 검산 쪽만, 예: _l2). 정본은 빈 값.')
+    ap.add_argument('--press', default=None,
+                    help='압력 목록(쉼표, bar). 기본 0.01,0.02. §-보완2 는 0.005')
     ap.add_argument('--audit-seeds', action='store_true',
                     help='계산 없이 **기기 전수** 씨앗 감사만 하고 끝냅니다(러너 여럿이어도 봅니다).')
     a = ap.parse_args()
+    if a.press:
+        try:
+            ps = [float(x) for x in a.press.split(',') if x.strip()]
+        except ValueError:
+            sys.exit('--press 를 못 읽었습니다: %r' % a.press)
+        if not ps:
+            sys.exit('--press 가 비었습니다')
+        PRESS[:] = ps                                  # 태그가 압력을 담으므로 파일이 갈립니다
     if a.audit_seeds:
         sys.exit(1 if audit_seeds() else 0)
     SUFFIX[0] = a.tag_suffix
