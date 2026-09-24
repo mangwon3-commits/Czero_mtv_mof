@@ -60,3 +60,4 @@
     2026-09-24 22:35  시한 연장 안내 SendMessage 발신(원격 제어 경로, **수신 확인 없음** — 상대 세션이 승인 뒤 읽음): `laptop-mof [81da47]`(running) · `laptop-mof [cd8046]`(idle) ·
           `Windows 업데이트 자동 재부팅 정책 적용 [2c51c5]`(running, 기기 미확인) · `기존 커밋 로컬기기로 옮기기 [57ae94]`(running, 기기 미확인).
           msg_id b725b9ae · fd3464d1 · 94cffc50 · 5b5c36f7. 본문 = COMMS 22:3x 항목과 동일 + "담당 세션이 아니면 전달" 한 줄. 우편함(COMMS)이 정본 경로.
+    2026-09-24 22:44  **R1 해시 접수 1/3 — laptop2(Balthasar)**: `711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a172` (laptop2 22:38:47, origin/laptop2-20260825 경유). 내용 미공개·미독. 랩탑·Junseok 대기.
