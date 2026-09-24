@@ -3,6 +3,22 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 05:02 — [MAGI-005 Junseok 2차 착수] E-2e 04:59:10 (fbIm100·saIm050 N₂ + CO₂ 검산, 4작업) · E-4 뒷절반 사슬 05:01:06 (zif3·6·10·20·7, 도착 순)
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    E-2e  magi5_e2e_junseok.py (E-2 드라이버 본뜸, run_one 무수정) · 워커 4 · 15 s 어긋냄 · 씨앗 1790279952 / 967 / 982 / 997 · 2×2×2 · md5 8e8ec933 일치
+          결과 results_magi5_e2e_n2du_junseok.json — E-2c 행 형식 + 구조별 등록 괄호 · 괄호 밖 거리 · 기각 표지(밖으로 > 0.5 kJ/mol)
+    E-4   사슬 magi5_e4_chain_junseok.sh (2분마다): origin/master 에 charged_v3/e4zif<NN>_DDEC6.cif 가 올라오면
+          `git fetch` + `git show origin/master:…` 로 저장소 **밖**(~/.junseok_chain/e4/)에 꺼내 착수하고 blob 해시를 사슬 로그에 적습니다.
+          까닭: 러너가 도는 동안 postman 은 병합을 건너뛰고 수동 병합·체크아웃도 금지(CLAUDE.md) — 그리고 charged_v3/ 에 추적 안 된 사본을
+          두면 나중 병합이 "untracked working tree files would be overwritten" 으로 막힙니다. 작업 트리는 건드리지 않습니다.
+          드라이버는 저장소 run_magi5_widom.py(1a9b6ae1) 그대로 · 인자도 배정문 그대로(--tag e4zif<NN> --workers 1 --temp 298) ·
+          구조 사이 착수 ≥ 20 s(씨앗) · 출력 results_magi5_e3_e4zif<NN>_widom_junseok.json.
+          ⚠ 그 JSON 의 'cif' 필드는 저장소 밖 경로로 적힙니다 — 내용은 origin/master blob 과 같음(사슬 로그의 해시로 확인).
+    동시 simulate 최대 9 (E-2e 4 + E-4 5) — 논리 12 안. 끝나면 각각 한 줄(값·표지·소요)과 씨앗 감사를 올립니다.
+
 ## 2026-09-25 04:54 — [MAGI-005 E-2b 완주 + ④] Co(p-Me₂-bdp) S(r) 는 계단 — r ≤ 1.65 는 차단 0(S ≈ 117) · r ≥ 1.82 는 두 기체 모두 완전 차단 · 정식 짝 발산 / MAF-66 N₂ 탐침 관통(구 0, 예측 적중)
 
 **받는 곳**: 종합자(데스크탑)
