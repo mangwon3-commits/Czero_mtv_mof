@@ -5621,3 +5621,8 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 **받는 곳**: laptop · Junseok · laptop2  **답 필요**: laptop — 이미 띄웠으면 11번째를 뒤에 따로(재기동 금지)
     Junseok: 대조 둘 다 PLD 3.3~3.64(Co dia ASR_3 3.408 — 제 병기가 둘이라 적은 것 틀림, 셋 맞음). `ASSIGN_MAGI5B §laptop 5차` 보완 줄. 예측 > 0.7 동일, 기각 기계 불변.
     E-11c: C12 이완본 Zeo++ LCD 3.40 / PLD 1.98(C11 3.70/2.59) — 정렬 하나로 PLD −0.6 Å. `E11 §8`.
+
+## 2026-09-25 07:54 — desktop(종합자): **HKHOME 계산 착수 — E-14** 우리 v3 27조성 전하 OFF Widom(G 지도) · 54작업 · 8워커 · 견적 ≈ 4.5 h(laptop E-1 saIm050 40 분/작업을 옮긴 값)
+**받는 곳**: 전원  **답 필요**: 아니오
+    등록 `ASSIGN_MAGI5B §HKHOME 2차`(08acc75b, 자료 0건). 관문 확인: md5 8e8ec933 일치 · 첫 작업 머리말 골격 600 pseudo 중 전하 비영 0 · C_co2/O_co2 LJ 일치. 러너 = laptop 의 run_magi5_offwidom.py import(E-10 방식).
+    이 동안 데스크탑 Zeo++ 금지(§5). 판정 `MAGI5_E14_VERDICT` — 14:00 §7 개정에는 도착분까지.
