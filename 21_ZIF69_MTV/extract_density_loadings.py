@@ -40,8 +40,56 @@ from run_water import parse_components, finished        # 파서는 **하나**�
 
 RUNS = os.path.join(HERE, 'water_runs_density_v3w')
 OUTDIR = os.path.join(HERE, 'density_water_v3w')
-MACHINE = (os.environ.get('MOF_MACHINE') or os.uname().nodename).lower()
+def _machine():
+    # laptop 지적(19:4x): `MOF_MACHINE` 을 안 주면 hostname 이 들어가
+    # `loadings_desktop-nvsrr9m.json` 처럼 **저장소 관례 밖 이름**이 생깁니다.
+    # 이 저장소는 기기를 **가지 이름**으로 부릅니다(`laptop-20260822` 등) — 그것을 먼저 봅니다.
+    v = os.environ.get('MOF_MACHINE')
+    if v:
+        return v.lower()
+    try:
+        import subprocess
+        br = subprocess.run(['git', 'rev-parse', '--abbrev-ref', 'HEAD'],
+                            cwd=HERE, capture_output=True, text=True).stdout.strip()
+    except Exception:
+        br = ''
+    m = re.match(r'([a-zA-Z0-9]+?)(?:-\d{8})?$', br)
+    if m and m.group(1) not in ('master', 'HEAD'):
+        return m.group(1).lower()
+    return os.uname().nodename.lower()
+
+
+MACHINE = _machine()
 MERGED = os.path.join(OUTDIR, 'loadings_from_output.json')   # 합본 — **종합자만** 씁니다
+
+
+def net_q(comp):
+    """전하 CIF 의 `_atom_site_charge` 합 × 8 (2×2×2). 없으면 None."""
+    p = os.path.join(HERE, 'charged_v3', comp + '_DDEC6.cif')
+    if not os.path.exists(p):
+        return None
+    hdr, tot, seen = [], 0.0, False
+    for ln in open(p, encoding='utf-8', errors='ignore'):
+        t = ln.strip()
+        if t.startswith('_atom_site'):
+            hdr.append(t); continue
+        if hdr and t and not t.startswith('_') and not t.startswith('loop_'):
+            f = t.split()
+            if '_atom_site_charge' in hdr and len(f) >= len(hdr):
+                try:
+                    tot += float(f[hdr.index('_atom_site_charge')]); seen = True
+                except ValueError:
+                    pass
+    return round(tot * 8, 9) if seen else None
+
+
+def warn_of(path):
+    """RASPA 가 마지막에 센 경고 수."""
+    for ln in open(path, encoding='utf-8', errors='ignore'):
+        m = re.search(r'Simulation finished,\s*(\d+)\s*warning', ln)
+        if m:
+            return int(m.group(1))
+    return None
 
 
 def seed_of(path):
@@ -80,6 +128,14 @@ def main():
             'CO2': list(comp.get('CO2', (None, None))),
             'water': list(comp.get('water', (None, None))),
             'seed': seed_of(f),
+            # 골격 알짜전하 — **재서 적습니다.** `run_water.net_charge_ok` 는
+            # `Component has a net charge of`(흡착질, 늘 0.000000)를 읽으므로
+            # **골격 전하는 어디에서도 안 봅니다**(laptop 19:4x 가 물어서 드러남).
+            # 값 자체는 DDEC6 CIF 를 5자리로 적은 **반올림 잔차**이고,
+            # 2×2×2 에서 최대 5e-4 e 라 Ewald 배경전하로 중화되면 무해합니다.
+            # 무해하다고 **가정**하지 않고 **수를 남깁니다**.
+            'framework_net_q_2x2x2': net_q(name),
+            'raspa_warnings': warn_of(f),
             'file': os.path.relpath(f, HERE),
         }
 
