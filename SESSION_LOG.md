@@ -2724,3 +2724,48 @@ laptop2 가 완주까지 미루지 않고 냈습니다. 우편함에만 있으�
 **[10:33 postman 결함 (13) — 밀린 push 뒤 ff-pull 영구 실패]** 10:32 데스크탑 ④ 가 랩탑·laptop2 결과를 반입해 두 커밋(232bdcb0·9018dd0b)을 만들었는데, 그 사이 laptop2 가 같은 파일을 master 에 손으로 올려(fc7dc3e8, 10:30) push 가 non-ff 로 거절됨. 다음 바퀴부터 `!! master ff-pull 실패` 만 반복 — postman 은 자기 반입 커밋을 rebase 할 줄 모르고, 그 상태로는 **데스크탑의 모든 반입이 멈춥니다**(master 합침 기기). 러너 없음(simulate 0)을 확인하고 `git pull --rebase origin master` + push 로 풀었음(§6 허용 — 러너가 안 돎). laptop2 파일은 내용이 같아 반입 커밋이 저절로 빠지고, 랩탑 파일 커밋만 위에 얹힘 → 14a677c0. 고칠 곳(postman.sh — 세 기기 공용이라 안 건드림, 제안만): push 거절 시 `git pull --rebase` 후 재시도, 그래도 안 되면 `inbox` 에 사람 호출. 손 커밋과 ④ 반입이 같은 파일을 두고 경주하는 구조 자체가 원인이니, (11) 이후엔 손 커밋 대신 패턴을 믿는 쪽이 맞음.
 
 **[10:43 번호 정정]** 위 "postman 결함 (12)" 는 laptop2 가 10:36 에 올린 postman (12)(반입 state 분리, 3a642923)와 번호가 겹쳐 **(13)** 으로 고쳐 적음(내용 그대로: push 거절 뒤 ff-pull 영구 실패). §AW-2 데스크탑 몫 172종은 다른 데스크탑 세션이 10:42 에 기동(simulate 8) — 이 세션은 판정·창 담당이라 띄우지 않음.
+
+## 2026-09-24 — laptop(mof-project-60): **ASSIGN_DENSW_20260924 §2 기동** (습윤 RH90 밀도 격자 saIm025 · mslm025)
+
+종합자(HKHOME-desktop) 배정 수령 → 등록 명령대로 동시 2건 기동. 러너 PID 40900(saIm025) · 40918(mslm025), simulate 2.
+    ⚠ 배정 명령을 그대로 치면 **`RASPA_DIR` 이 빠집니다** — 이 기기에서는 `.bashrc` 에만 있고 비대화 셸에는 없음.
+      `export RASPA_DIR=$HOME/RASPA/simulations` + czeromof python 을 명시해 띄움. simulate 두 프로세스의 environ 에서 RASPA_DIR 확인,
+      그 share 의 mixing_rules 에 `Hw none`/`Lw none` 있음(v3w 규약).
+    입력 확인: 초기화 5000 + 생산 15000 · 90³ · ExternalPressure 17852.1(RH90). rh90_saIm025·rh90_mslm025 는 새 폴더(이어받기 없음).
+    견적: 데스크탑 실측 452~552 분을 **옮긴 값** → 약 8~10 h. 이 기기 실측으로 갱신 예정. 끝나면 `Simulation finished` 직접 확인 후 보고.
+    로그 `.claude_work_densw_{saIm025,mslm025}.out`.
+    [머리말 확인 — 종합자 요청(08165cbb 관문 추가 뒤)] 두 작업 모두 water.def md5 6fc8850d…(정본 5자리) ·
+      `Ow-Ow LJ 89.63300 K / 3.097 Å` · Hw/Lw 짝 전부 [ZERO_POTENTIAL](ZERO 아닌 Hw/Lw 짝 0줄). 새 관문은 도는 작업에 안 듦 — 완주 뒤 머리말 재확인.
+    [자 맞추기 — 배정문 31262d52 명령 그대로] saIm025: Hw/Lw 짝 1305줄 · ZERO 아님 **0** · Ow-Ow 89.63300. mslm025: 1329줄 · **0** · 89.63300.
+      앞서 적은 "Hw 17 · Lw 18" 은 `grep -c "Hw \[ZERO"` 라 **Hw 가 오른쪽(둘째) 자리인 짝만** 셌음 — 짝 표가 삼각형(pseudo-atom 번호순)이라
+      Hw 보다 앞 번호 타입 17개만 그 형태로 인쇄됨. 나머지는 `Hw - Y` 형태. 판정(ZERO 아님 0)은 당시 필터가 양 방향을 다 봐서 유효했으나 분모는 잘못 적었음.
+    [19:3x mslm025 완주] `Simulation finished, 0 warnings`(19:22) · RASPA total time 15842.5 s = **264 분**(이 기기 실측; 데스크탑 mslm050 452 분의 0.58).
+      머리말(배정문 명령): water.def 6fc8850d… · Hw/Lw 짝 1329 · ZERO 아님 0 · Ow-Ow 89.63300. VTK 90³ `DensityProfile_water.vtk` 19:22.
+      적재(서술만, ±=95% CI): CO2 0.8749 ± 0.0103 · water 0.1497 ± 0.0353 mol/kg.
+      ⚠ 러너가 찍는 "결과 …/lap_mslm025/water_results.json" 은 **쓰이지 않음**(run_density_water_v3.main 이 run_one 반환을 저장 안 함; 폴더는 비어 있음).
+        종합자 쪽 `loadings_from_output.json` 처럼 .data 에서 뽑는 것이 원래 경로로 보임. saIm025 는 도는 중(4h35m, VTK 19:31 갱신).
+    [19:4x saIm025 완주 · 회수] `Simulation finished, 1 warnings`(19:38) · total time 16801.2 s = **280 분**(견적 ~320 분은 과대; mslm025 비 1.06).
+      경고 1 = "SYSTEM HAS A NET CHARGE" — 골격 +0.00028 e(2×2×2; CIF 합 3.5e-5 e/셀, 반올림 크기). 무해로 판단, mslm025 는 1e-6 이라 경고 없음.
+      머리말: water.def 6fc8850d… · Hw/Lw 짝 1305 · ZERO 아님 0 · Ow-Ow 89.63300.
+      회수: master 에서 `extract_density_loadings.py`·`run_water.py`·`run_density_water_v3.py` 만 checkout(계산 0 확인, 파서·finished 는 로컬판과 동일 확인)
+        → `MOF_MACHINE=laptop python extract_density_loadings.py` → `density_water_v3w/loadings_laptop.json` 2건(손 추출값과 일치):
+        mslm025 CO2 0.8749±0.0103 · water 0.1497±0.0353 / saIm025 CO2 0.9229±0.0158 · water 0.1894±0.0390 (서술만).
+        ⚠ MOF_MACHINE 을 안 주면 파일명이 hostname(desktop-nvsrr9m) 으로 나감.
+      COM 격자 4개 gzip(gzip -t 통과), 전원자 DensityProfile_water.vtk 는 그대로.
+      ⚠ **이 기기 postman 이 안 돌고 있음**: 14:37 재부팅 뒤 미기동(마지막 틱 14:30). 그 전에도 "추적 파일 수정 — pull 건너뜀" 반복,
+        도는 사본은 master 판과 다름(RESULT_PATTERNS 에 density 글롭 없음). 그래서 위 산출은 아직 **자동으로 안 실림** — 재기동은 사용자 확인 대기.
+
+## 2026-09-24 19:5x — laptop(mof-project-60): **§-보완2 laptop 몫 기동** (`QSTN_SUPP2_REGISTRATION_20260924.md §1-1`)
+
+DENSW 산출은 7123fed 로 손 push(postman 미기동 — 사용자 선택 "손 커밋·push"), 종합자가 19:46 master 반입 확인.
+종합자 새 배정 수령 → master b1814b5 에서 `run_qn_supp.py`(`_ptag` 수리판)·등록문만 checkout. `run_tnf.py`·`ff_gate.py`·CIF 셋은 로컬=master 확인.
+    기동 `RASPA_DIR=$HOME/RASPA/simulations czeromof/python -u run_qn_supp.py --only mslm050,sa50nb50,saIm0583 --press 0.005`
+    PID 45360 · 힘장 관문 통과 8e8ec933… · 9작업 · 워커 6 · 태그 `…_0.005bar`(0.01bar 결과와 안 겹침 — 실행 폴더로 확인) · 착수 약 12 s 간격.
+    기동 전 0.005bar 결과 0건 확인. 견적: **없음** — 기존 qn meta 에 소요시간 기록이 없어 옮길 실측이 없음. 첫 완주로 적음.
+    로그 `.claude_work_qn_supp2.out`. 완주 뒤 손 push 필요(postman 미기동).
+    ⚠ 이 묶음(PID 45360)의 진행 줄은 `0.01bar` 로 찍히지만 **실제는 0.005 bar** — 표시만 `%.2f`(종합자가 8ec3a129 에서 표시도 `_ptag` 로 고침,
+      도는 프로세스엔 안 듦). 파일 태그·실행 폴더는 `_0.005bar` 로 맞음. 수리판 checkout 은 러너 종료 뒤에.
+    [21:14 §-보완2 laptop 몫 9/9 완주] 실패 0 · 씨앗 겹침 0(기기 전수) · 실행 폴더 9/9 `Simulation finished` · ExternalPressure 500 Pa 9/9.
+      소요(이 기기 실측, 워커 6 동시): mslm050·sa50nb50 41~43 분 · saIm0583 33~34 분. 벽시계 19:52→21:13(약 81 분, 2바퀴).
+      적재(서술만, ±=95% CI) 283/298/313 K: mslm050 0.169/0.090/0.049 · sa50nb50 0.162/0.084/0.045 · saIm0583 0.172/0.091/0.049 mol/kg.
+      진행 줄의 `0.01bar` 는 표시 결함(실제 0.005). 결과 18파일 → laptop-20260822 **905667d** 손 push.
