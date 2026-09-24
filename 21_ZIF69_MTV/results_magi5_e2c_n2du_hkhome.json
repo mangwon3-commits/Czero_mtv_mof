@@ -1,0 +1,63 @@
+{
+ "test": "MAGI-005 E-2c — brbIm100·saIm100 N2 Widom ⟨U⟩ (괄호 가정 시험)",
+ "registration": "MAGI5_E2_VERDICT_20260925.md §6",
+ "protocol": {
+  "widom_init": 3000,
+  "widom_cycles": 15000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "temp_K": 298.0,
+  "charges": "on (charged_v3 DDEC6)",
+  "supercell": "unit_cells()"
+ },
+ "host": "HKHOME",
+ "elapsed_s": 2175,
+ "finished": "2026-09-25 02:59:38",
+ "rows": [
+  {
+   "name": "brbIm100",
+   "cif": "charged_v3/brbIm100_DDEC6.cif",
+   "gate5_note": "",
+   "status_N2": "ok",
+   "KH_N2": 2.42159e-06,
+   "KH_N2_err": 8.83572e-09,
+   "dU_N2": -12.7941695647,
+   "dU_N2_err": 0.0378287761,
+   "status_CO2": "ok",
+   "KH_CO2": 5.07741e-05,
+   "KH_CO2_err": 1.24253e-06,
+   "dU_CO2": -25.1514086319,
+   "dU_CO2_err": 0.1130279571,
+   "Qst_corr_ref": 27.685367642636,
+   "dU_CO2_ref": -25.207795642636,
+   "KH_N2_ref": 2.41322e-06,
+   "KH_N2_ref_err": 4.09801e-08,
+   "ddU": 12.413626077936,
+   "S273_over_S298": 1.5822182434233187,
+   "bracket_-12.5_-11.7": "out"
+  },
+  {
+   "name": "saIm100",
+   "cif": "charged_v3/saIm100_DDEC6.cif",
+   "gate5_note": "관문 ⑤ 탈락(LCD 22.5 %)",
+   "status_N2": "ok",
+   "KH_N2": 2.86615e-06,
+   "KH_N2_err": 6.89662e-08,
+   "dU_N2": -14.3380689222,
+   "dU_N2_err": 0.1338176286,
+   "status_CO2": "ok",
+   "KH_CO2": 0.000417571,
+   "KH_CO2_err": 3.87579e-05,
+   "dU_CO2": -36.3352081375,
+   "dU_CO2_err": 0.4580010988,
+   "Qst_corr_ref": 38.970082450536,
+   "dU_CO2_ref": -36.492510450535995,
+   "KH_N2_ref": 2.85843e-06,
+   "KH_N2_ref_err": 3.40738e-08,
+   "ddU": 22.154441528335994,
+   "S273_over_S298": 2.2679224656653574,
+   "bracket_-12.5_-11.7": "out"
+  }
+ ]
+}
