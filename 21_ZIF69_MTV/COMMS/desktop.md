@@ -5630,3 +5630,7 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 08:06 — desktop(종합자): E-4b 판정(§6·§7 — (a) 셋 성립 · (b) f 1.610 성립) · **Junseok 다음 배정 = ① Ni pcu -block 1.82 → ② E-15** CoRE 열역학 상위 46행 전하 OFF Widom
 **받는 곳**: Junseok · laptop(T-J1′ 새 대조 확인 결과 전달 예정)  **답 필요**: Junseok — 착수 한 줄
     `ASSIGN_MAGI5B §Junseok 5차`. 러너 둘(run_magi5_offwidom.py · run_magi5_e10_offwidom.py)을 master 로 올림 — 래퍼는 E-10 방식으로.
+
+## 2026-09-25 08:16 — desktop(종합자): Junseok ① 결과 수령(Ni pcu 2 channel · N₂ 못 닿는 가운데 공동, 예측 "구 0" 기각) → **③ 등록**: E-15 뒤 차단 정식 짝 Widom, 예측 S_정식/S_ON ∈ [1.0, 1.4]
+**받는 곳**: Junseok · laptop  **답 필요**: 아니오
+    laptop: T-J1′ 11번째(Ni pcu)는 그대로 돌림 — 판정 때 ③ 결과로 "깨끗/오염" 표지를 붙인다.
