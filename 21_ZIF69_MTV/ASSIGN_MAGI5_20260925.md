@@ -49,7 +49,7 @@
 
 ## E-8 (HKHOME, 종합자) — 자 보강 · 문서
 
-    ① `core_pop_merged.json` 을 git 에 올리고 열 추가: `dim`(키의 차원 숫자) · `series`(ASR/FSR 번호 제거) · `anion_removed`(같은 계열 ASR/FSR 조성 차: 원소 합 차이) · `L`(n(0.15)/(K_H·15 kPa), core_wc 조인) · `flexible`(문헌 표지, 지금은 Co(bdp) 계열만 `collapsed`)
+    ① `core_pop_merged.json` 은 **.gitignore 규칙으로 미추적**(확인 2026-09-25 01:19) → 추적되는 병합·주석본 `core_pop_annotated.json` 을 만들어 열 추가: `dim`(키의 차원 숫자) · `series`(ASR/FSR 번호 제거) · `anion_removed`(같은 계열 ASR/FSR 조성 차: 원소 합 차이) · `L`(n(0.15)/(K_H·15 kPa), core_wc 조인) · `flexible`(문헌 표지, 지금은 Co(bdp) 계열만 `collapsed`)
     ② 상위 68(S ≥ 65.2)·48(S > 75.8)의 ASR/FSR 짝 조성 차 계수 → 맹점 ⑥ 의 크기
     ③ T-C4 문서 줄(CoRE ZIF-2 행 값, 두 척도, 이완 규범 차) · 관문 ⑤ 는 E-9 통과 시 srs 에 실행(데스크탑만)
     ④ 판정문: E-1·E-2 결과가 오면 `MAGI5_E1_VERDICT_…` · `MAGI5_E2_VERDICT_…`(등록된 문턱 그대로)
@@ -64,3 +64,9 @@
 
     각 기기: 결과 JSON(글롭 안) 또는 문서(가지 푸시) + `COMMS/<기기>.md` 한 줄(값·완주 표지·소요 시간 실측). 종합자가 판정문을 쓰고 이의 창을 엽니다.
     시한 없음(상한) — 끝나는 즉시. 기기가 비면 다음 등록 배정(`ASSIGN_DENSW_20260924.md` 잔여 등)으로 돌아갑니다.
+
+### E-8 ①② 결과 (2026-09-25 01:20, HKHOME)
+    ① `core_pop_annotated.json`(추적) — 열: dim · series · formula · n_015bar · L · flexible · asr_fsr_pair · anion_removed · asr_fsr_sel. `core_pop_merged.json` 은 `.gitignore:196` 규칙으로 미추적(E-8 ① 은 이 주석본으로 갈음).
+    ② 같은 계열·같은 셀(6 파라미터 0.3 % 안)의 ASR/FSR 짝 **180** 중 조성이 다른 짝 **14**(ASR 이 배위 리간드/음이온을 지운 후보). 그중 상위 68(S ≥ 65.2)에 닿는 짝 **4**, 상위 48(S > 75.8) **3**:
+       2024[Zn][srs]3 ASR1/FSR1 32.5/269.6 · ASR2/FSR2 30.0/333.8 (O8·C8·H12 제거 = 아세테이트, **10배**) · 2016[Co][sql]2 ASR17/FSR17 243.7/268.7 (H2·O1 = 물 1) · 2020[Cu][kgm]2 43.3/70.1 (H12·O6 = 물 6).
+       → 맹점 ⑥ 의 크기: 상위군에서는 srs 한 계열이 결정적이고 나머지는 물 분자 차이(1.1~1.6배). 첫 휴리스틱(계열 안 원소 집합 차, 84행)은 링커가 다른 형제를 뒤섞어 **과대**였음 — 셀 일치로 좁힘.
