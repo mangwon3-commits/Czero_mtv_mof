@@ -3,8 +3,8 @@
  "cutoff_A": 12.0,
  "rows": [
   {
-   "file": "/home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/MUF-16_Co_activated_P1_1x3x1.cif",
-   "name": "MUF-16_Co_activated_P1_1x3x1.cif",
+   "file": "/home/mangwon1/mof_project/21_ZIF69_MTV/external_cif/MAF66_Zn_atz2_1t_guestfree_P1_2x2x1.cif",
+   "name": "MAF66_Zn_atz2_1t_guestfree_P1_2x2x1.cif",
    "space_group_HM": "P 1",
    "IT_number": 1,
    "n_symops_listed": 1,
@@ -21,49 +21,48 @@
    "n_partial_occupancy": 0,
    "partial_occupancy_examples": [],
    "has_occupancy_column": true,
-   "pmg_natoms": 468,
-   "pmg_formula": "Co12 H144 C192 N24 O96",
-   "pmg_reduced_formula": "CoH12C16(NO4)2",
+   "pmg_natoms": 304,
+   "pmg_formula": "Zn16 H96 C64 N128",
+   "pmg_reduced_formula": "ZnH6(CN2)4",
    "pmg_ordered": true,
-   "ase_natoms": 468,
+   "ase_natoms": 304,
    "elements": {
-    "C": 192,
-    "Co": 12,
-    "H": 144,
-    "N": 24,
-    "O": 96
+    "C": 64,
+    "H": 96,
+    "N": 128,
+    "Zn": 16
    },
    "has_H": true,
    "unknown_elements_for_COV": [],
    "cell": {
-    "a": 15.3514,
-    "b": 13.2696,
-    "c": 25.614,
+    "a": 20.408,
+    "b": 20.408,
+    "c": 13.0998,
     "alpha": 90.0,
-    "beta": 94.294,
+    "beta": 90.0,
     "gamma": 90.0,
-    "volume": 5203.1
+    "volume": 5455.89
    },
    "perp_widths": [
-    15.308,
-    13.27,
-    25.542
+    20.408,
+    20.408,
+    13.1
    ],
    "tnf_unitcells": [
     2,
     2,
-    1
+    2
    ],
    "tnf_perp_widths_after": [
-    30.62,
-    26.54,
-    25.54
+    40.82,
+    40.82,
+    26.2
    ],
-   "tnf_supercell_atoms": 1872,
+   "tnf_supercell_atoms": 2432,
    "tnf_min_width_ok": true,
    "tnf_native_222_ok": true,
-   "min_interatomic_dist": 0.8203,
-   "n_pairs_below_0p9": 144,
+   "min_interatomic_dist": 0.8591,
+   "n_pairs_below_0p9": 128,
    "guest_candidates": [],
    "p1_written": null,
    "p1_note": "원본이 이미 P1"
