@@ -39,6 +39,38 @@ RUNS = os.path.join(HERE, 'water_runs')
 # 5사이트 정의를 재사용한다(중복 사본을 만들면 한쪽만 고쳐질 위험이 있다).
 WATER_DEF = os.path.join(HERE, '..', '19_WaterCompetition', 'water.def')
 
+# -- 힘장 관문 (2026-09-24 추가 — **laptop 지적**) -----------------------------
+# 이 러너는 `water.def`(분자 정의)는 저장소에서 복사해 지키지만 **힘장 파일은 안 봤습니다.**
+# `Hw none`/`Lw none` 는 `$RASPA_DIR/.../UFF_MOF/force_field_mixing_rules.def` 에서 오고
+# **기기마다 따로 고쳐야 합니다**(CLAUDE.md §1). 안 고친 기기에서 돌면 **수소결합이 없는 물**
+# (친화도 약 8.6배 과소)이 나오는데 **결과는 완전히 정상으로 보입니다.**
+# `run_water_v3w.py` 에는 09-07 부터 있던 관문인데 **이 파일에는 없었고**,
+# `run_density_water_v3.py` 가 `run_water`(이 파일)를 import 하므로
+# **습윤 밀도 격자 전체가 관문 밖**이었습니다.
+# `ff_gate` 는 프로젝트 안의 무엇도 import 하지 않아 여기서 불러도 순환이 없습니다.
+_FF_CHECKED = []
+
+
+def ff_gate_once():
+    # 실행 폴더를 만들기 전에 **한 번** 검사합니다. 안 맞으면 즉시 멈춥니다.
+    if _FF_CHECKED:
+        return _FF_CHECKED[0]
+    try:
+        from ff_gate import md5_gate
+    except ImportError:
+        print('  !! ff_gate.py 를 못 찾아 힘장 관문을 건너뜁니다 — 머리말로 직접 확인하십시오',
+              flush=True)
+        _FF_CHECKED.append(True)
+        return True
+    ok = md5_gate()[0]
+    _FF_CHECKED.append(ok)
+    if not ok:
+        raise SystemExit(
+            '힘장 관문 실패 — 이 기기의 $RASPA_DIR 힘장이 09-06 수정판이 아닙니다.\n'
+            '  물 계산을 돌리면 **수소결합 없는 물**이 나오고 결과는 정상으로 보입니다.\n'
+            '  WATER_FIX_20260906.md §1 대로 이 기기 사본을 고친 뒤 다시 띄우십시오.')
+    return ok
+
 SIMULATE = shutil.which('simulate') or os.path.expanduser(
     '~/miniconda3/envs/czeromof/bin/simulate')
 
@@ -186,6 +218,7 @@ def run_one(job):
 
     guard_crash_restart(d, f'rh{int(rh*100):02d}_{name}')
 
+    ff_gate_once()                       # <- 힘장 관문 (실행 폴더를 만들기 전에)
     os.makedirs(d, exist_ok=True)
     shutil.copy(cif, os.path.join(d, fw + '.cif'))
     shutil.copy(WATER_DEF, os.path.join(d, 'water.def'))
