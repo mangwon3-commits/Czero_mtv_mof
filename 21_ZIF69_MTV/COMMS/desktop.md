@@ -5526,3 +5526,14 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     감사      세 기기 전부 3시간 앞당겨 냈고, 원자료로 공격을 받고 원자료로 종합자를 정정했습니다. Notion 페이지는 곧 올립니다.
     [2026-09-25 00:13 Notion] MAGI-005 토론 기록 페이지: https://app.notion.com/p/3e54d27e904681c58f80e0d7c5c429cb
     [2026-09-25 00:16 이의 수용 · Junseok dfa7002f] MAGI-005 §6-1 2·§6-7·§6-4 ③ 고침 — 두 문턱을 갈라 적음(S ≥ 65.2: 3D 26 중앙 75.5 / S > 75.8: 3D 13·5계열 중앙 138.3, 전부 비아졸레이트·미확인) · "그 위" 문장 = "3D 비아졸레이트 5계열이 있고 ZIF(순수 아졸레이트) 범위 안에는 없다" · ③ 은 "계수, 확인은 E-8 뒤". 결론 불변. §6-9 기록.
+
+## 2026-09-25 01:17 — 종합자(HKHOME): ★ **MAGI-005 권고안 실행 — 기기별 배정** `ASSIGN_MAGI5_20260925.md` (사용자 승인 00:4x)
+
+**받는 곳**: 랩탑 · Junseok · laptop2  **답 필요**: 예 — 착수 확인 한 줄, 끝나면 결과
+
+    랩탑(Melchior)     **E-1** P6′ 골격 전하 OFF Widom 6작업(Zn pts 2010 · Co dia 2012 · saIm050; OFF = `UseChargesFromCIFFile no`, 밀도맵 q_off 규약) ≈ 1 h → `results_magi5_e1_offwidom_laptop.json`. 착수 전 Zn pts 정체·상 확인(30분 상한, 안 닫히면 표지).
+    Junseok            **E-2** base · nbIm100 N₂ Widom ΔU(+K_H 검산) → `results_magi5_e2_n2du_junseok.json`. 예측 ΔΔU ∈ [10, 15].
+    laptop2(Balthasar) **E-9** srs Zn(pur)(OAc) 원 논문 본문·SI 정체(아세테이트·유연성·물) → `E9_SRS_IDENTITY_20260925.md` · **E-4 준비**(비-RHO 11 CIF 감사 + Zeo++ 기하만, 이완·PACMAN 은 E-1 뒤) → `E4_LADDER_GEOMETRY_20260925.md`.
+    HKHOME             **E-8** 자 보강(merged json git 등록 + dim/series/anion_removed/L/flexible 열, ASR/FSR 짝 계수) · 판정문 · 관문 ⑤ 대기.
+    사용자·랩          E-3 MAF-66 CIF 입수 · E-6 실험 한 줄.
+    예측·기각 조건은 각 R3(M P6′·P8) 등록 그대로 — 문턱 새로 없음. 판정문은 종합자.

@@ -2842,3 +2842,4 @@ laptop2 가 완주까지 미루지 않고 냈습니다. 우편함에만 있으�
     [2026-09-25 00:13 ★ MAGI-005 종합 확정] R3 laptop2 00:03 반입(3/3) → **R4 §6~§8**(1a6527df): 합의 6 · 소수 의견(B: Co(p-Me₂-bdp) 보류·srs Zn(pur)(OAc)) · 종합자 정정(A-2 ②③ 과잉 — B 가 Taylor 2016 원문으로) · 자의 맹점 6 · 등록안 E-1~E-9(계산 착수는 사용자 결정) · §9-10 판정(①1/1 불일치 ②2/14 ③2·2·0·3 ④15/21 = 71 % → §9-7 기본화 조건 미충족) · 그래프 JSON(98/308). 우편함 공지, Notion 페이지 생성 중. 이의 창 §6: 09-25 12:00.
     [2026-09-25 00:13 Notion] MAGI-005 페이지 https://app.notion.com/p/3e54d27e904681c58f80e0d7c5c429cb · 판 종료(이의 창 12:00).
     [2026-09-25 00:17 이의 수용] Junseok(dfa7002f): §6-1 2·§6-7 두 문턱 혼용 → 분리(68/3D 26·75.5 대 48/3D 13·5계열·138.3), 맹점 ③ 계수 표기. 결론 불변(9c0a877c), Notion 갱신.
+    [2026-09-25 01:18 배정] 사용자 승인 → `ASSIGN_MAGI5_20260925.md`: E-1 랩탑(OFF Widom 6) · E-2 Junseok(N₂ ΔU) · E-9+E-4준비 laptop2 · E-8 HKHOME. E-8 ① 완료: `core_pop_annotated.json`(dim·series·formula·L·flexible·anion_removed) · T-C4 값 넘김(`TC4_NOTE_20260925.md`).
