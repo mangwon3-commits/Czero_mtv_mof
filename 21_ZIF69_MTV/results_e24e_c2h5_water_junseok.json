@@ -127,43 +127,112 @@
       "stderr_not_found": false,
       "data": "e24e_runs/water_b1.30_e24c_c2h5_100_s3/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
       "status": "ok"
+    },
+    {
+      "block_radius": 1.3,
+      "seed_idx": 4,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.8,
+      "n_expected": 24,
+      "KH_water": 2.52665e-05,
+      "KH_water_err": 3.02456e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790360779,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 24,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.30_e24c_c2h5_100_s4/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.65,
+      "seed_idx": 1,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.5,
+      "n_expected": 12,
+      "KH_water": 1.64302e-05,
+      "KH_water_err": 4.05282e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790360785,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 12,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.65_e24c_c2h5_100_s1/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
     }
   ],
   "summary": {
     "block1.30": {
-      "n": 3,
+      "n": 4,
       "KH_each": [
         2.60101e-05,
         2.53097e-05,
-        2.55649e-05
+        2.55649e-05,
+        2.52665e-05
       ],
       "KH_err_each": [
         9.47277e-07,
         7.02324e-07,
-        1.04483e-06
+        1.04483e-06,
+        3.02456e-07
       ],
       "seeds": [
         1790359933,
         1790359948,
-        1790359964
+        1790359964,
+        1790360779
       ],
-      "KH_mean": 2.5628233333333333e-05,
-      "KH_mean_err": 5.185434877209575e-07,
-      "seed_SD_rel": 0.013831196960843553,
-      "index": 0.011338070020984766,
-      "index_err": 0.00024229699146330647,
-      "units_vs_parent": -8.718097921806278,
+      "KH_mean": 2.5537799999999998e-05,
+      "KH_mean_err": 3.74610875e-07,
+      "seed_SD_rel": 0.013364080790442516,
+      "index": 0.011298061821737149,
+      "index_err": 0.00018304116257432406,
+      "units_vs_parent": -9.680232474681059,
       "(2)_more_than_1.5_below_parent": true
     },
     "block1.65": {
-      "n": 0,
-      "KH_each": [],
-      "KH_err_each": [],
-      "seeds": []
+      "n": 1,
+      "KH_each": [
+        1.64302e-05
+      ],
+      "KH_err_each": [
+        4.05282e-07
+      ],
+      "seeds": [
+        1790360785
+      ],
+      "KH_mean": 1.64302e-05,
+      "KH_mean_err": 4.05282e-07,
+      "seed_SD_rel": null,
+      "index": 0.007268809973588396,
+      "index_err": 0.00018613770294476488,
+      "units_vs_parent": -21.048300040867595
     }
   },
   "final": false,
-  "written": "2026-09-26 03:33:02",
-  "elapsed_s": 1460,
+  "written": "2026-09-26 03:40:04",
+  "elapsed_s": 1883,
   "note": "기계적 사실뿐 — 판정은 종합자. 평균 ± = ±̄/√4, 지수 ± = 두 상대 ± 제곱합, 단위 = d/√(±₁²+±₂²)."
 }
