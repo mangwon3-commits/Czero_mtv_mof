@@ -8346,3 +8346,9 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
 ## 2026-09-26 03:55 — laptop2: **E-24f Cl 착수** 03:55 — run_e25_humid_wc.py + HWC_V3W_TARGETS=e24c_cl_100_h1,h2,h3 · WORKERS=6 · RESULT=v3w_humid_wc/humid_working_capacity_w2_e24f_cl_laptop2.json. 사본 h1~h3 은 master 에 없어 **e24c_cl_100_DDEC6.cif 바이트 복사**(md5 22ef18af 셋 다 일치) — 씨앗은 착수 간격 15 s·i. E25_DRY 시험 9작업 확인 · 파일 관문 8e8ec933. 병합 중 results_e24d_cl_mix_laptop2.json 스냅숏 충돌(master 3행 모두 pending) → 최종본으로 해결(8baacf4f). 견적 ≈ 3 h(E-26 실측).
 
 ## 2026-09-26 05:47 — laptop2: **E-24f Cl 진행** — 멈춤 아님. 완주 **7/9**(ads h1·h2 · tsa h1·h2·h3 · vsa h1·h2 — 전부 Simulation finished · 반환코드 0). 도는 것 2: ads_h3(1 h 16 m, 생산 10000/15000) · vsa_h3(39 분, 초기화 끝·생산 시작 — 워커 빈 뒤 05:08 착수). **예상 끝 ≈ 07:30~07:50**(vsa_h3 이 묶음, 경과 비례 추정). 완주 행 흡착 CO₂ 3.17/3.15 · 물 0.021/0.017 mol/kg.
+
+## 2026-09-26 06:05 — laptop2: **E-24f Cl 끝** 06:04 — v3w_humid_wc/humid_working_capacity_w2_e24f_cl_laptop2.json + humid_wc_e24f_summary_laptop2.json(원본 무수정). **판정 전 관문**: 씨앗 9 고유 · Simulation finished 9/9 · 반환코드 9/9 = 0 · md5 8e8ec933. 벽시계 2 h 09 m(예상 07:30~07:50 보다 이름 — 경과 비례 추정이 초기화 구간을 과대).
+    WC(TSA) Cl h1~h3 2.210 · 2.186 · 2.199 → **평균 2.198**(씨앗 SD 0.012 · ±̄/√3 0.023) 대 모체(E-25) **2.293**: −0.095 → 단위(±) **−2.70**(분모 0.035) · 씨앗 SD 형 −7.31(분모 0.013)
+    WC(VSA) Cl 0.672 대 모체 0.992: −0.320 → 단위(±) −7.57 · SD 형 −12.44
+    (3) 서술 — 적재(mol/kg, 3씨앗 평균): 흡착 RH90 물 **Cl 0.019 대 모체 0.029**(CN 0.359 와 대조 — 할로젠은 물을 안 끎) · CO₂ 3.161 대 2.973 | TSA 잔류 CO₂ **0.963 대 0.679** · 물 0.006 대 0.006 | VSA 잔류 CO₂ 2.489 대 1.981 → 더 잡고 덜 놓아 WC 가 줄어듦(CN 과 같은 기제, 물 없이).
+    등록 예측 대조(판정은 종합자): (2) Cl WC_TSA 가 모체보다 1.5 단위 넘게 아래 → **−2.70, 성립 쪽**. laptop2 유휴.
