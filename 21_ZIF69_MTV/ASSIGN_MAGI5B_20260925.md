@@ -178,3 +178,12 @@
     자    `run_magi5_widom.py --cif charged_v3/<n>_DDEC6.cif --tag e14b_<n> --workers 4 --temp 298`(ON·OFF 4작업/구조, Q_st 정정판 드라이버) × 2 = 8작업. 출력 `results_magi5_e3_e14b_<n>_widom_<host>.json`.
     예측(등록)  (1) **G(saIm0583) ≥ G(saIm050) = 4.85**(술포네이트 ↑ → 정전기 ↑; 차가 1.5 단위 안이면 "같음"). 기각: 1.5 단위 넘게 아래. (2) **G(sa50nb50) ∈ [3.5, 6]**(술포 50 % 가 G 를 정하고 니트로는 ≈ ZIF-68 급 2.4 를 얹지 못함 — 곱이 아님). 기각: > 6(곱셈형 합성). (3) S_ON 이 results_v3ens* 값과 1.5 단위 안(재현). 관문 표지는 행에 그대로(`status` 는 계산 표지 — CLAUDE.md §2).
     비용  E-11c 4작업 42 분(같은 기기·4워커) 이지만 v3 gme 4800원자는 MOF16 512 보다 무거움 — saIm050 OFF 40 분/작업(laptop E-1, 옮긴 값) × 8 ÷ 4 ≈ **1.5 h**.
+
+## laptop2 4차 [2026-09-25 10:21, 자료 0건 — 이 10 실현의 OFF 값 없음] — **E-14c** 배치 산포 속 G: sa50nb50 대 saIm050 (앙상블 각 5)
+    왜    E-14b: sa50nb50 G 5.87 대 saIm050 4.85 — 실현 하나씩. 앙상블 S_ON 산포(52~88)가 커서 차가 조성인지 배치인지 못 가름. "술포 + 니트로 조합이 술포 단독보다 G 를 올린다" 가 §7 설계 문장의 핵심이라 배치 단위로 잰다.
+    대상  `charged_v3/sa50nb50e{1..5}_DDEC6.cif` · `charged_v3/saIm050e{1..5}_DDEC6.cif` — 10 전부 관문 pass(risk_results_v3ens50nb50 · v3ens0500). S_ON = `results_v3ens_mix10.json` 같은 이름 행(같은 자 Widom, 행에 출처). 실현 0(원판)은 E-14b·E-1 값으로 더해 각 n = 6.
+    자    전하 OFF Widom — `run_magi5_offwidom.py` import 래퍼 `run_magi5_e14c_offwidom.py`(E-10/E-15 방식, 머리말 관문 그대로). 20작업.
+    예측(등록)  (1) **배치 평균 G(sa50nb50) − G(saIm050) ≥ 1.5 배치 단위**(분모 = 두 군 실현 SD 의 합성, CLAUDE.md §2 · RULER_DECISION §7) — 니트로가 G 를 올림. **± 자 단위도 병기**. 기각: < 1.5 배치 단위 → "조합의 G 이득은 배치 산포 안".
+                (2) G 의 실현 간 변동계수(SD/평균)가 S_ON 의 변동계수보다 작다(두 군 모두) — G 가 S 보다 배치에 둔감. 기각: 한 군이라도 G CV ≥ S_ON CV.
+    출력  `results_magi5_e14c_offwidom_<host>.json` + 우편함. 판정 종합자(`MAGI5_E14_VERDICT §E-14c`).
+    비용  laptop2 E-14b 실측 56 분/구조(4작업 · 4워커 — **같은 기기·같은 계**) → 작업당 ≈ 56 분 × 20 ÷ 6워커(물리 6) ≈ **3.1 h**(작업합이 묶음; 최장 단일 ≈ 1 h).
