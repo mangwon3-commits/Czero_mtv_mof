@@ -11,7 +11,6 @@ OUT = os.path.join(HERE, 'results_e22b_gate5_hkhome.json')
 if __name__ == '__main__':
     os.makedirs(STAGE, exist_ok=True); os.makedirs(rs.WORK, exist_ok=True)
     res = json.load(open(OUT)) if os.path.exists(OUT) else {'rule': 'risk_screen.py:414~423, LCD_ref = e22_parent 같은 처리 뒤 LCD(사용자 결정 4 (다)), OUTER_LOOP_CAP 12', 'rows': {}}
-    global REF
     for t in ['e22_parent', 'e22_no2_050', 'e22_no2_100']:          # 모체 먼저 — 그 이완 후 LCD 가 기준
         if res['rows'].get(t, {}).get('status') == 'ok':
             if t == 'e22_parent': REF = res['rows'][t]['after']['LCD']
