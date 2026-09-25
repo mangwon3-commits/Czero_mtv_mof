@@ -1548,7 +1548,7 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "hkhome",
-   "status": "pending",
+   "status": "ok",
    "group": "-SO2CH3",
    "frac": 0.25,
    "run_status_CO2": "ok",
@@ -1575,6 +1575,26 @@
    "KH_CO2_err": 2.26042e-07,
    "dU_CO2": -21.4192370917,
    "dU_CO2_err": 0.0682981906,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 636,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790300996,
+   "total_time_s_N2": 2210.624058,
+   "KH_N2": 2.96977e-06,
+   "KH_N2_err": 2.36894e-08,
+   "dU_N2": -12.8063857147,
+   "dU_N2_err": 0.0308787519,
    "on_ref": {
     "src": "results_v3.json",
     "KH_CO2": 0.000136048,
@@ -1584,7 +1604,15 @@
     "dU_CO2": null
    },
    "S_ON": 42.160848869496235,
-   "S_ON_err": 0.8252734253568751
+   "S_ON_err": 0.8252734253568751,
+   "S_OFF": 11.150829862245224,
+   "S_OFF_err": 0.11706928317341204,
+   "lnS_OFF": 2.411513922243763,
+   "lnS_OFF_err": 0.010498705891817822,
+   "lnS_ON": 3.741492038506128,
+   "ln_ratio": 0.644532688410213,
+   "dlnKH_CO2_off_minus_on": -1.4130093336612215,
+   "dlnKH_N2_off_minus_on": -0.08303121739885641
   },
   {
    "name": "mslm050_DDEC6",
