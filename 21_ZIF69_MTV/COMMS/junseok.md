@@ -3,6 +3,29 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 12:11 — [E-8c 완주] 상위 68행 formal_charge_nonzero — **True 3 · False 64 · None 1** · ⚠ 새 True 둘 = **2010_Zn__pts_3 ASR_1/FSR_1(E-1 의 Zn pts, G 4.92)** — 병합·판정은 종합자
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 예 — 2010 Zn pts 행이 E-1 · E-10 · E-15 읽기에 걸립니다(아래 ⚠)
+
+    결과 21_ZIF69_MTV/core_pop_formal_charge_junseok.json(행: name · value · basis · DOI · method · confidence · meta_key · MOFid · 자동값 보존)
+      스크립트 magi5_e8c_formal_charge_junseok.py(자동) · magi5_e8c_conn_junseok.py(CIF 결합 환경) · magi5_e8c_manual_junseok.py(손 검토 적용)
+    방법(E-15b/E-16 을 기계화, 계산 0): CoRE 메타 짝짓기(금속·원자 수·LCD/PLD < 0.01 Å·ASR/FSR) → MOFid-v1 SMILES 를 성분으로 나눠 원소 수(암시 H 포함)·전하를
+      세고(rdkit 없어 작은 파서 — 알려진 링커 다섯으로 자가시험 통과), CIF 원소 수를 성분 배수로 **H 까지 정확히** 채운 뒤 흔한 산화수로 합 0 이 되는지 봄.
+      보정 둘: MOFid 가 음이온 자리를 라디칼([N]·[C])로 적는 경우를 음이온으로 셈(Co(p-Me₂-bdp) 둘이 이 때문에 처음엔 거짓 True 였음 — 고침) ·
+      메타에 판이 없으면 같은 계열·같은 조성 형제의 MOFid 를 빌림(2018 Cd dia ASR_6/FSR_5).
+      자동 56행 · 나머지 12행은 MOFid 가 성분을 빠뜨린(ERROR) 경우라 CIF 결합 환경(COO⁻ · O–H · 물 · 에터 · CH₂/CH, ase)과 조성 산수로 손 검토.
+    확인 6행 대조: 상위 68 안의 넷 모두 일치(Cd hcb ASR_1 True · Zn dia ASR_1/FSR_1 False · srs(HSTC-1) FSR_1 False). srs ASR_1 · lig ASR_1 은 상위 68 밖.
+    True 3: 2017_Cd__hcb_2_ASR_1(알려진 것, −2) · **2010_Zn__pts_3_ASR_1 · FSR_1(새로)** — CIF 결합 COO⁻ 16(O–H 0) · CH₂ 8 · CH 8 =
+      butane-1,2,3,4-tetracarboxylate⁴⁻ × 4(C₈H₆O₈ × 4 = C₃₂H₂₄O₃₂ 원소 일치) + Zn²⁺ × 4 → **−8**(Zn 하나당 −2). 짝양이온이 ASR·FSR 둘 다에서 빠짐.
+      CoRE 메타 슬라이스에 이 행 없음(DOI 미상 — E-1 정체 확인 때와 같음).
+    None 1: 2017_Cd__kgd_2_FSR_1 — COO⁻ 24 · 물 20 · 에터 O 8 · **H 없는 금속 결합 O 4** · Cd²⁺ 12 → O 넷이 O²⁻/OH⁻/H 못 잡힌 물이면 −8/−4/0. CIF 로는 못 가름.
+    확신 중간 표지 2: 2016_Cd__kgd_2_ASR_1(MOFid 실패, N 을 중성 주개로 가정) · 2024_Zn__sql_2_ASR_3(남는 C₁₄H₈N₄S₂ × 4 를 중성 기둥으로 읽음).
+    등록 예측 "상위 68 중 True ≥ 3 행": 3 — 기계적으로 맞음(계수).
+    ⚠ 파급(판정 아님, 알림): 2010_Zn__pts_3_ASR_1 은 **E-1 의 B 군 대표**(카복실레이트, S_ON 145.5 · OFF 비 0.68 · G 4.92 — "O = 정전기" 의 첫 근거)이고
+      E-10 의 B 군 판정·E-3-F1 가설 문장에도 들어가 있습니다. 골격이 짝양이온 없는 음이온(−2/Zn)이면 그 G 는 Cd hcb 처럼 **짝이온 빈자리** 몫일 수 있음.
+      또 PLD 3.34 라 probe_convention(PLD < 3.64)에도 걸립니다. 두 표지가 겹치는 행.
+
 ## 2026-09-25 12:02 — [E-17 완주] CoRE 3D 상위 12행의 물 — ρ(K_H(H₂O), G) **0.776** [0.21, 0.97] · 지수 중앙 **0.065** · 짝 4 전부 1.5 단위 안 — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
