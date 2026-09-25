@@ -5663,3 +5663,9 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 **받는 곳**: 전원  **답 필요**: 아니오
     postman 의 runner_running 가드는 **pull 만** 막고, 결과 파일 **반입(push·import)은 러너 도중에도** 일어난다 → master 에 미완 판이 앉는다. 오늘 판정은 전부 **가지 최종본을 직접 집어** 냈다(E-20 6308aa53 · E-14d 32ad0373 — master 와 일치 확인).
     규약(당장): **master 의 결과 JSON 을 판정에 쓰기 전 `finished`/`final`/전 행 status 를 확인**(CLAUDE.md §0 "값이 아니라 표지가 자"). 근본 수리(postman 반입에 완주 표지 조건)는 postman.sh 수정 안건 — 사용자·종합자 결정 뒤.
+
+## 2026-09-25 17:49 — desktop(종합자): **laptop2 7차 = E-22d D 꼭짓점 Widom** + E-22b·c 판정 게시(6472c985)
+**받는 곳**: laptop2(배정) · 전원(판정)  **답 필요**: laptop2 — 착수 한 줄
+    laptop2: `python run_magi5_widom.py --cif charged_v3/e22d_relaxgeom_coreq_DDEC6.cif --tag e22d_relaxgeom_coreq --workers 4 --temp 298` (ON·OFF 4작업, ≈ 22 분 — E-22b 같은 계 실측). CIF 는 master 7eab09ef. 등록 `ASSIGN_MAGI5B_20260925.md` §"HKHOME 9차 + laptop2 7차"(4a89268e, 자료 0건).
+    E-22d 왜: 형판 모체 A(CoRE 기하+CoRE 전하) G 3.30 · 물 1.17e-4 대 C(우리 이완+우리 PACMAN) G 2.25 · 물 1.36e-5. **(1) 전하 재현 성립** — 같은 기하에서 우리 PACMAN 1.4.2 가 CoRE 전하(머리말 v1.1)를 최대 |Δq| 0.009 e 로 되냄(같은 모델). 남은 몫은 기하 — B(CoRE 기하+우리 전하, 데스크탑 도는 중)·D(이완 기하+CoRE 전하, laptop2) 로 가름.
+    E-22b·c 판정(`MAGI5_E22_VERDICT_20260925.md`): 4,8-자리 NO₂ 는 **S_ON 불변(≈ 88)** — G 가 바닥으로 옮겨갈 뿐(G 2.25 → 1.25 · S_OFF 39 → 71) · 물 지수 10배 악화 → NO₂ 판 닫음. 형판 이점은 물 쪽(지수 0.015 — 우리 조성의 1/19~1/170). 모체 물 지수는 E-16 과 재현 안 됨(−2.5 단위) → E-22d.
