@@ -8,13 +8,18 @@ lib.num_threads(int(os.environ.get('E7_THREADS', '8')))
 
 
 def energy(sym, xyz, ghost, basis, charge=0):
+    energy.cycles = getattr(energy, 'cycles', [])
     atoms = [(('ghost-' + s) if i in ghost else s, x) for i, (s, x) in enumerate(zip(sym, xyz))]
     real_e = sum(gto.charge(s) for i, s in enumerate(sym) if i not in ghost) - charge
     spin = real_e % 2
     m = gto.M(atom=atoms, basis=basis, charge=charge if not ghost else charge, spin=spin, verbose=0)
     mf = (dft.UKS(m) if spin else dft.RKS(m)).density_fit(auxbasis='def2-universal-jkfit')
     mf.xc = 'wb97x-v'; mf.nlc = 'vv10'; mf.conv_tol = 1e-8
+    mf.grids.level = int(os.environ.get('E7_GRID', '2')); mf.nlcgrids.level = int(os.environ.get('E7_NLCGRID', '0'))   # 물 이합체에서 기본(3/1)과 결합에너지 차 < 0.01 kJ/mol, 9배 빠름(09-25 실측)
+    cyc = []
+    mf.callback = lambda env: cyc.append(env.get('cycle'))
     e = mf.kernel()
+    energy.cycles.append(len(cyc))
     return e, mf.converged
 
 
@@ -34,4 +39,4 @@ if __name__ == '__main__':
     t = time.time()
     e, conv = cp_bind(d['frag_symbols'], d['frag_xyz'], r['water'], basis, d.get('dft_charge', 0))
     print(json.dumps({'site': site, 'pose': pose, 'basis': basis, 'E_dft': round(e, 3), 'E_ff': r['E_ff'], 'converged': conv,
-                      'seconds': round(time.time() - t, 1)}, ensure_ascii=False), flush=True)
+                      'seconds': round(time.time() - t, 1), 'scf_cycles': energy.cycles}, ensure_ascii=False), flush=True)

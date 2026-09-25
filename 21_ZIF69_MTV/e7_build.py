@@ -222,15 +222,23 @@ def ok_geom(X, W, lim=1.5):
     return np.min(np.linalg.norm(X[:, None, :] - W[None, :3, :], axis=2)) >= lim
 
 
-def poses(X, S, Q, ti, kind, open_dir=None, rng=np.random.default_rng(7)):
+def poses(X, S, Q, ti, kind, open_dir=None, rng=np.random.default_rng(7), n_caps=0):
     tx = X[ti]
+    caps_idx = list(range(len(X) - n_caps, len(X)))
     out = []
     # ① 힘장 최소
     best = None
     for _ in range(40):
         dirv = rng.normal(size=3); dirv /= np.linalg.norm(dirv)
         p0 = np.r_[tx + dirv * rng.uniform(2.8, 3.6), rng.normal(size=3)]
-        f = lambda p: e_ff(X, S, Q, water_xyz(p))[0] if ok_geom(X, water_xyz(p), 1.2) else 1e3
+        def f(p):
+            W = water_xyz(p)
+            if not ok_geom(X, W, 1.2):
+                return 1e3
+            # 막은 H(인공 — 실제 골격에선 Zn 자리) 옆 자세 금지: 물 O 가 자리 원자에 막은 H 보다 0.5 Å 이상 가까워야 함(09-25 S3 ff_min 결함)
+            if caps_idx and min(np.linalg.norm(X[c] - W[0]) for c in caps_idx) < np.linalg.norm(tx - W[0]) + 0.5:
+                return 1e3
+            return e_ff(X, S, Q, W)[0]
         r = minimize(f, p0, method='Powell', options={'maxiter': 4000, 'xtol': 1e-3, 'ftol': 1e-4})
         if best is None or r.fun < best.fun:
             best = r
@@ -296,7 +304,7 @@ if __name__ == '__main__':
             X, S, Q, ti, ncap, qc, od, charge = build_openzn(a, q, nb, t)
         else:
             X, S, Q, ti, ncap, qc = build_linker(a, q, nb, t); od = None; charge = 0
-        ps = poses(X, S, Q, ti, cfg['find'], od)
+        ps = poses(X, S, Q, ti, cfg['find'], od, n_caps=ncap)
         rows = []
         for name, W in ps:
             e, lj, c = e_ff(X, S, Q, W)
