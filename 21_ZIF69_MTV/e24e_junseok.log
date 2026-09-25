@@ -1,0 +1,25 @@
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+E-24e — CIF charged_v3/e24c_c2h5_100_DDEC6.cif · 막음 CO₂ 2 구 · N₂ 2 구 · 단위셀 [1, 2, 3] · 워커 6 · S_mix 3 + 물 1.3 ×4 + 물 1.65 ×4
+[A] Zeo++ 물 탐침 1.30 착수 03:08:42
+  [A] chan 1.30: {'rc': 0, 'seconds': 1.0, 'peak_rss_MB': 0, 'stopped_by_guard': False, 'channels_stdout': 4, 'pockets_stdout': 4, 'n_channels': 4, 'dimensionality': [1, 1, 1, 1]}
+  [A] block 1.30: {'rc': 0, 'seconds': 160.9, 'peak_rss_MB': 5774, 'stopped_by_guard': False, 'channels_stdout': 4, 'pockets_stdout': 4, 'n_spheres': 4, 'sphere_radii': [2.147, 2.436, 2.254, 2.133], 'block_file': 'e24e_zeo/block1.30/e24c_c2h5_100_relaxed.block'}
+[B] RASPA 11작업 · 워커 6 착수 03:11:24
+  [    ok] 물 막음1.30 s1 K_H 2.60101e-05 ± 9.47277e-07 · N 24/24 · 관문 True · 표지 True · rc 0 · 씨앗 1790359933 · 14.1 분
+  [    ok] 물 막음1.30 s2 K_H 2.53097e-05 ± 7.02324e-07 · N 24/24 · 관문 True · 표지 True · rc 0 · 씨앗 1790359948 · 13.9 분
+  [    ok] 물 막음1.30 s3 K_H 2.55649e-05 ± 1.04483e-06 · N 24/24 · 관문 True · 표지 True · rc 0 · 씨앗 1790359964 · 13.9 분
+  [    ok] S_mix s1 142.73620996153016 ± 22.243802836981164 · N_CO2 1.621403962 · N_N2 0.0643701818 · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "N2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_n2.block"}} · rc 0 · 씨앗 1790359886 · 21.2 분
+  [    ok] S_mix s3 164.69038243995533 ± 15.074869876045037 · N_CO2 1.63630731 · N_N2 0.0563020618 · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "N2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_n2.block"}} · rc 0 · 씨앗 1790359917 · 21.0 분
+  [    ok] S_mix s2 155.17788438120937 ± 29.193493141648744 · N_CO2 1.6182437909 · N_N2 0.0590937825 · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "N2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_n2.block"}} · rc 0 · 씨앗 1790359902 · 21.3 분
+  [    ok] 물 막음1.65 s1 K_H 1.64302e-05 ± 4.05282e-07 · N 12/12 · 관문 True · 표지 True · rc 0 · 씨앗 1790360785 · 13.5 분
+  [    ok] 물 막음1.30 s4 K_H 2.52665e-05 ± 3.02456e-07 · N 24/24 · 관문 True · 표지 True · rc 0 · 씨앗 1790360779 · 13.8 분
+  [    ok] 물 막음1.65 s2 K_H 1.67031e-05 ± 4.61754e-07 · N 12/12 · 관문 True · 표지 True · rc 0 · 씨앗 1790360800 · 13.8 분
+  [    ok] 물 막음1.65 s3 K_H 1.70556e-05 ± 5.0174e-07 · N 12/12 · 관문 True · 표지 True · rc 0 · 씨앗 1790361158 · 13.4 분
+  [    ok] 물 막음1.65 s4 K_H 1.70249e-05 ± 8.5507e-07 · N 12/12 · 관문 True · 표지 True · rc 0 · 씨앗 1790361179 · 13.3 분
+씨앗 11개 · 겹침 0
+
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24e_c2h5_mix_junseok.json
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24e_c2h5_water_junseok.json
+  S_mix {"n": 3, "S_mix_mean": 154.20149226089828, "S_mix_mean_err": 12.800272286860539, "seed_SD": 11.009606191075337, "units_vs_CH3": 1.8793474002698263, "(1)_more_than_1.5_above_CH3": true, "ratio_Smix_over_SHenry_blocked": 0.8178026822711311, "ratio_err": 0.07036373468831163, "ratio_vs_unblocked_SHenry_descriptive": 0.6522905763997389}
+  물 block1.30 {"n": 4, "KH_mean": 2.5537799999999998e-05, "KH_mean_err": 3.74610875e-07, "seed_SD_rel": 0.013364080790442516, "index": 0.011298061821737149, "index_err": 0.00018304116257432406, "units_vs_parent": -9.680232474681059, "(2)_more_than_1.5_below_parent": true}
+  물 block1.65 {"n": 4, "KH_mean": 1.680345e-05, "KH_mean_err": 2.7798075e-07, "seed_SD_rel": 0.017587173340701256, "index": 0.007433937806642275, "index_err": 0.00013318442671990545, "units_vs_parent": -22.1367811622254}
