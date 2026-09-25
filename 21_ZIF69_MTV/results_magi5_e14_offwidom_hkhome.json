@@ -1551,6 +1551,30 @@
    "status": "pending",
    "group": "-SO2CH3",
    "frac": 0.25,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 636,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790300933,
+   "total_time_s_CO2": 2226.010086,
+   "KH_CO2": 3.31154e-05,
+   "KH_CO2_err": 2.26042e-07,
+   "dU_CO2": -21.4192370917,
+   "dU_CO2_err": 0.0682981906,
    "on_ref": {
     "src": "results_v3.json",
     "KH_CO2": 0.000136048,
