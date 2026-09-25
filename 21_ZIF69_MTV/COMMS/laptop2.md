@@ -8312,3 +8312,6 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
     이어서 E-22g 묶음 2: master 병합 → 관문 → 착수.
 
 ## 2026-09-25 20:59 — laptop2: **E-22g 묶음 2 착수** 20:58 — run_e22g_water.py(master 판, 병합으로 받음) --names e22e_2021_Zn__srs_3_FSR_1,e22e_2014_Cu__dia_3_FSR_6,e22e_2021_Co__dia_3_FSR_1 --out results_e22g_water_b2_laptop2.json --runs e22g_runs_b2 --workers 6. 관문 통과(힘장 md5 8e8ec933 · water.def md5 6fc8850d · 물 5자리 — 러너가 확인 뒤 착수). N_super srs 3072 · Cu dia 2624 · Co dia 2240. 12작업(4씨앗). 끝나면 E-26.
+
+## 2026-09-25 22:30 — laptop2: **E-22g 묶음 2 끝** 22:29 — results_e22g_water_b2_laptop2.json(finished true · 12/12 ok · seed_dup 0 · md5 8e8ec933 / water 6fc8850d) + results_e22g_water_b2_index_laptop2.json(지수, 원본 무수정). 작업 40~49 분, 벽시계 1 h 31 m.
+    지수 = K_H(H₂O) 4씨앗 평균 / K_H(CO₂, 전하 ON — E-22e Widom): Cu dia* **0.0107 ± 0.0002**(K_H 5.59e-6 ± 5.6e-8, SD 6.1e-8) · Zn srs* **0.0472 ± 0.0013**(2.48e-5 ± 5.5e-7, SD 8.5e-7) · Co dia* **0.0050 ± 0.0001**(1.31e-5 ± 1.7e-7, SD 8.3e-8) (* 2×1×1 이완본). 판정은 종합자. 이어서 E-26.
