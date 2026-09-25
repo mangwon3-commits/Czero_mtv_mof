@@ -5691,3 +5691,24 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     **laptop** — E-21 완주 뒤: **E-22g 묶음 1** 이어받기(데스크탑이 E-23 위해 19:00 에 정지, 완주 행 0 — 등록 §HKHOME 11차 + 정지 줄): `python run_e22g_water.py --names <아래> --out results_e22g_water_b1_laptop.json --runs e22g_runs_b1 --workers 8`. names = e22e_2018_Cd__dia_3_FSR_4_coregeom,e22e_2021_Co__dia_3_FSR_1_coregeom,e22e_2021_Zn__srs_3_FSR_1_coregeom,e22e_2024_Co__pcu_3_ASR_1_coregeom,e22e_2014_Cu__dia_3_FSR_6_coregeom,e22e_2024_Co__pcu_3_ASR_1,e22e_2018_Cd__dia_3_FSR_4. 러너가 힘장 md5 · 물 5자리 관문을 먼저 봄 — **관문 실패면 착수하지 말고 우편함에 한 줄**.
     **laptop2** — E-22e 완주 뒤: **E-22g 묶음 2**(초격자 세 행 이완본 × 4씨앗): `python run_e22g_water.py --names e22e_2021_Zn__srs_3_FSR_1,e22e_2014_Cu__dia_3_FSR_6,e22e_2021_Co__dia_3_FSR_1 --out results_e22g_water_b2_laptop2.json --runs e22g_runs_b2 --workers 6`. 같은 관문 규칙.
     최종 1위 규칙(등록 고정): S_mix 배치 평균(배치 단위 1.5) → 동률이면 물 지수 → 그래도 동률이면 공동. ZIF 목록 · 전체 목록 따로. 판정 예상 09-26 01:30~02:30.
+
+## 2026-09-25 19:54 — desktop(종합자): **laptop 7차 = E-25**(E-22g 묶음 1 완주 뒤) — 형판 습윤 TSA 작업 용량 · 사용자 권고 ① 무응답 30분 → 권고안 실행
+**받는 곳**: laptop  **답 필요**: 착수 한 줄
+    등록 `ASSIGN_MAGI5B_20260925.md` §laptop 7차(자료 0건). 명령: `HWC_V3W_TARGETS=e22_parent_h1,e22_parent_h2,e22_parent_h3 HWC_V3W_WORKERS=8 HWC_V3W_RESULT=humid_working_capacity_w2_e22parent_laptop.json python run_humid_wc_v3w.py`(러너 수정 없이). 입력 CIF 셋은 `e22_parent_DDEC6.cif` 의 바이트 동일 사본(md5 f15ce100) — master 반입 뒤 경로 지정 checkout 으로. 러너의 힘장 md5 관문이 먼저 봄.
+    E-21 수령 — 값 · 표지 종합자 검산 일치, 판정 `MAGI5_TJ1_VERDICT_20260925.md §E-21`(ρ −0.482 → 띠). E-22g 9번째 작업부터 착수 간격 0 → 씨앗 감사 좋습니다.
+
+## 2026-09-25 20:31 — desktop(종합자): **E-24 (3) 성립 — 형판 4,8-(CN)₂ 가 설계 후보** · **laptop2 10차 = E-26**(E-22g 묶음 2 뒤)
+**받는 곳**: 전원 · laptop2(배정)  **답 필요**: laptop2 착수 한 줄
+    E-24: −C≡N 100 헨리 S_ON **110.23 ± 1.32**(모체 87.80 대비 +12.48 단위) · S_OFF 63.4 · G 1.74 — NO₂ 의 S_ON 보존을 깸(`MAGI5_E22_VERDICT_20260925.md` §7). 후속: 데스크탑 사슬(E-24 F·CH₃ Widom 뒤 자동) CN 작동점 S_mix 3씨앗 → 물 4씨앗 · 관문 ⑤ 는 RASPA 없는 창.
+    laptop2 10차 E-26: CN 습윤 TSA 작업 용량 — laptop 래퍼 `run_e25_humid_wc.py`(laptop 가지 ed08bc7a · c770ee50, 경로 지정 checkout) + env `HWC_V3W_TARGETS=e24_cn_100_h1,e24_cn_100_h2,e24_cn_100_h3 HWC_V3W_WORKERS=6 HWC_V3W_RESULT=humid_working_capacity_w2_e24cn_laptop2.json`. 입력 = `e24_cn_100_DDEC6.cif` 바이트 동일 사본 셋(md5 6267386d). **착수 간격 없는 원 러너로 띄우지 말 것**(같은 씨앗 → 같은 출력). 등록 `ASSIGN_MAGI5B` §laptop2 10차(e59a85ee).
+
+## 2026-09-25 21:32 — desktop(종합자): **E-24 판정 — −CH₃ 가 S_ON 154 로 최고(무극성 대조가 이김)** · **Junseok 14차 = E-24b 관문 + CH₃ 습윤 WC**(E-23 완주 뒤)
+**받는 곳**: Junseok(배정) · 전원  **답 필요**: Junseok 착수 한 줄
+    E-24(`MAGI5_E22_VERDICT_20260925.md` §7): 형판 4,8-치환 S_ON — 모체 87.8 · F 60.0 · NO₂ 88.9 · CN 110.2 · **CH₃ 154.1**. CH₃ 는 CO₂ 를 더 세게 붙듦(ΔU −35.4 대 −32.4). ⚠ 좋은 결과 → 기준 의심: PLD · 닿지 않는 주머니 안 쟀음(Zeo++ 는 RASPA 중 금지).
+    **Junseok 14차**(등록 ASSIGN_MAGI5B §HKHOME 14차 + Junseok 14차 E-24b): **E-23 완주 뒤, RASPA 없는 창에서** ① Zeo++ — `relax_tnf/{e22_parent,e22_no2_100,e24_ch3_100,e24_cn_100,e24_f_100}_relaxed.cif` 각각 `network -ha -res` · `-chan 1.65` · `-chan 1.82` · `-block 1.65` · `-block 1.82` → `results_e24b_access_junseok.json`(PLD · LCD · 통로 차원 · 닿지 않는 주머니 수·부피). 이완본 CIF 는 master(e22_* 는 이전 커밋 · e24_* 는 0da488c6). ② 그 뒤 CH₃ 습윤 TSA WC: laptop 착수 간격 래퍼 `run_e25_humid_wc.py` + env `HWC_V3W_TARGETS=e24_ch3_100_h1,e24_ch3_100_h2,e24_ch3_100_h3 HWC_V3W_WORKERS=10 HWC_V3W_RESULT=humid_working_capacity_w2_e24ch3_junseok.json`(사본 md5 ad678b85). **착수 간격 없는 원 러너 금지**(같은 씨앗).
+    데스크탑: CN 후속(S_mix → 물) 뒤 CH₃ S_mix 3씨앗 → 물 4씨앗 사슬.
+
+## 2026-09-25 23:06 — desktop(종합자): E-24b 분담 변경 — **laptop 8차 = CH₃ 습윤 WC**(E-25 뒤) · **Junseok 14차 = ① Zeo++ 접근성 + 관문 ⑤**(E-23 뒤)
+**받는 곳**: laptop · Junseok  **답 필요**: 착수 한 줄
+    laptop: E-25 완주 뒤 `run_e25_humid_wc.py` + `HWC_V3W_TARGETS=e24_ch3_100_h1,e24_ch3_100_h2,e24_ch3_100_h3 HWC_V3W_WORKERS=8 HWC_V3W_RESULT=humid_working_capacity_w2_e24ch3_laptop.json`(사본 md5 ad678b85, master 20e164eb). 같은 판정 전 관문(씨앗 고유 · 완주 표지 · 반환코드).
+    Junseok: 14차 ② 는 laptop 으로 옮김 — 대신 ① 과 같은 창에서 `python run_e24_gate5.py`(master 에 이 커밋) 추가. 둘 다 **simulate 0 에서만**.
