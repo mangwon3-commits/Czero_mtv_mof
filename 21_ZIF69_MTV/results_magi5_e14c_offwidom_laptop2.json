@@ -1,0 +1,448 @@
+{
+ "test": "MAGI-005 E-14c 배치 산포 속 G (sa50nb50 대 saIm050, 전하 OFF Widom)",
+ "assign": "ASSIGN_MAGI5B_20260925.md §laptop2 4차 E-14c",
+ "registration": "ASSIGN_MAGI5B_20260925.md §laptop2 4차 예측((1) 배치 평균 G 차 ≥ 1.5 배치 단위 · (2) G CV < S_ON CV)",
+ "machine": "laptop2",
+ "workers": 6,
+ "protocol": {
+  "widom_cycles": 15000,
+  "widom_init": 3000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "temp_K": 298.0,
+  "charges": "OFF — UseChargesFromCIFFile no, ChargeMethod Ewald(흡착질 전하 유지)",
+  "supercell": "unit_cells() 규칙",
+  "co2": "García-Sánchez 2009 (경로 TraPPE/CO2.def, TraPPE 아님)",
+  "n2": "TraPPE N2(3자리)"
+ },
+ "note": "판정 없음(종합자가 씀). ± 는 RASPA 95 % CI. S_OFF ± 는 두 K_H 의 상대 ± 를 제곱합으로 합성. ln_ratio = ln S_OFF / ln S_ON (점추정). 외부 계열(CoRE) 행은 우리 물질 결과가 아님. ",
+ "rows": [
+  {
+   "name": "sa50nb50e1_DDEC6",
+   "key": "sa50nb50e1",
+   "cif": "charged_v3/sa50nb50e1_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(sa50nb50 e1, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens50nb50.json: {'name': 'sa50nb50e1', 'pass': True, 'LCD_drop_pct': 15.67, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "ok",
+   "set": "sa50nb50",
+   "realization": 1,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790299379,
+   "total_time_s_CO2": 4006.484101,
+   "KH_CO2": 2.30772e-05,
+   "KH_CO2_err": 2.62007e-07,
+   "dU_CO2": -20.4912753594,
+   "dU_CO2_err": 0.0258992617,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790299391,
+   "total_time_s_N2": 4040.106174,
+   "KH_N2": 2.06673e-06,
+   "KH_N2_err": 1.04433e-08,
+   "dU_N2": -11.5256699931,
+   "dU_N2_err": 0.016996508,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000120182,
+    "KH_CO2_err": 5.27816e-06,
+    "KH_N2": 2.28144e-06,
+    "KH_N2_err": 2.13515e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 34.115530034964,
+    "selectivity": 52.67813310891366,
+    "selectivity_err": 2.3654667327720147
+   },
+   "S_ON": 52.67813310891366,
+   "S_ON_err": 2.3654667327720147,
+   "S_OFF": 11.166044911526905,
+   "S_OFF_err": 0.138762689104596,
+   "lnS_OFF": 2.412877469047992,
+   "lnS_OFF_err": 0.012427201413219182,
+   "lnS_ON": 3.964200437919749,
+   "ln_ratio": 0.6086668691036652,
+   "dlnKH_CO2_off_minus_on": -1.6501621433487559,
+   "dlnKH_N2_off_minus_on": -0.09883917447699889
+  },
+  {
+   "name": "sa50nb50e2_DDEC6",
+   "key": "sa50nb50e2",
+   "cif": "charged_v3/sa50nb50e2_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(sa50nb50 e2, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens50nb50.json: {'name': 'sa50nb50e2', 'pass': True, 'LCD_drop_pct': 10.38, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "ok",
+   "set": "sa50nb50",
+   "realization": 2,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790299404,
+   "total_time_s_CO2": 3987.668147,
+   "KH_CO2": 3.44038e-05,
+   "KH_CO2_err": 3.92158e-07,
+   "dU_CO2": -22.9135943599,
+   "dU_CO2_err": 0.0958720962,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790299416,
+   "total_time_s_N2": 4008.40579,
+   "KH_N2": 2.52169e-06,
+   "KH_N2_err": 2.39696e-08,
+   "dU_N2": -12.6158122516,
+   "dU_N2_err": 0.0462235903,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000222772,
+    "KH_CO2_err": 1.14822e-05,
+    "KH_N2": 2.89523e-06,
+    "KH_N2_err": 2.44469e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 35.942233354163996,
+    "selectivity": 76.9444914566373,
+    "selectivity_err": 4.018768903520096
+   },
+   "S_ON": 76.9444914566373,
+   "S_ON_err": 4.018768903520096,
+   "S_OFF": 13.643152013134047,
+   "S_OFF_err": 0.2024903241435795,
+   "lnS_OFF": 2.613237711725952,
+   "lnS_OFF_err": 0.01484190192622975,
+   "lnS_ON": 4.343084271713876,
+   "ln_ratio": 0.6017008992309311,
+   "dlnKH_CO2_off_minus_on": -1.8679818035112232,
+   "dlnKH_N2_off_minus_on": -0.13813524352330012
+  },
+  {
+   "name": "sa50nb50e3_DDEC6",
+   "key": "sa50nb50e3",
+   "cif": "charged_v3/sa50nb50e3_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(sa50nb50 e3, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens50nb50.json: {'name': 'sa50nb50e3', 'pass': True, 'LCD_drop_pct': 15.71, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "ok",
+   "set": "sa50nb50",
+   "realization": 3,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790299428,
+   "total_time_s_CO2": 3928.708272,
+   "KH_CO2": 3.3768e-05,
+   "KH_CO2_err": 4.82423e-07,
+   "dU_CO2": -22.6265645808,
+   "dU_CO2_err": 0.0576564869,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790299440,
+   "total_time_s_N2": 3991.163109,
+   "KH_N2": 2.54687e-06,
+   "KH_N2_err": 2.71448e-08,
+   "dU_N2": -12.5617589854,
+   "dU_N2_err": 0.0541230256,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000246258,
+    "KH_CO2_err": 1.69969e-05,
+    "KH_N2": 2.9395e-06,
+    "KH_N2_err": 3.69475e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 36.253205341164,
+    "selectivity": 83.77547201905087,
+    "selectivity_err": 5.87734044217884
+   },
+   "S_ON": 83.77547201905087,
+   "S_ON_err": 5.87734044217884,
+   "S_OFF": 13.258627256200747,
+   "S_OFF_err": 0.23632223856642343,
+   "lnS_OFF": 2.584648454225218,
+   "lnS_OFF_err": 0.017824035173467985,
+   "lnS_ON": 4.428140267973969,
+   "ln_ratio": 0.5836871232192891,
+   "dlnKH_CO2_off_minus_on": -1.986866158353944,
+   "dlnKH_N2_off_minus_on": -0.14337434460519313
+  },
+  {
+   "name": "sa50nb50e4_DDEC6",
+   "key": "sa50nb50e4",
+   "cif": "charged_v3/sa50nb50e4_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(sa50nb50 e4, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens50nb50.json: {'name': 'sa50nb50e4', 'pass': True, 'LCD_drop_pct': 14.61, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "pending",
+   "set": "sa50nb50",
+   "realization": 4,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000265439,
+    "KH_CO2_err": 9.16267e-06,
+    "KH_N2": 3.01809e-06,
+    "KH_N2_err": 4.37313e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 36.584497659964,
+    "selectivity": 87.94933219353963,
+    "selectivity_err": 3.292535279135919
+   },
+   "S_ON": 87.94933219353963,
+   "S_ON_err": 3.292535279135919
+  },
+  {
+   "name": "sa50nb50e5_DDEC6",
+   "key": "sa50nb50e5",
+   "cif": "charged_v3/sa50nb50e5_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(sa50nb50 e5, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens50nb50.json: {'name': 'sa50nb50e5', 'pass': True, 'LCD_drop_pct': 11.67, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "pending",
+   "set": "sa50nb50",
+   "realization": 5,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000126545,
+    "KH_CO2_err": 7.63088e-06,
+    "KH_N2": 2.23312e-06,
+    "KH_N2_err": 1.65191e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 34.240341957964,
+    "selectivity": 56.667353299419645,
+    "selectivity_err": 3.442753522753949
+   },
+   "S_ON": 56.667353299419645,
+   "S_ON_err": 3.442753522753949
+  },
+  {
+   "name": "saIm050e1_DDEC6",
+   "key": "saIm050e1",
+   "cif": "charged_v3/saIm050e1_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(saIm050 e1, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens0500.json: {'name': 'saIm050e1', 'pass': True, 'LCD_drop_pct': 13.55, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "pending",
+   "set": "saIm050",
+   "realization": 1,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000214645,
+    "KH_CO2_err": 6.5114e-06,
+    "KH_N2": 3.16597e-06,
+    "KH_N2_err": 2.7898e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 34.143597702864,
+    "selectivity": 67.797547039296,
+    "selectivity_err": 2.1416957661015465
+   },
+   "S_ON": 67.797547039296,
+   "S_ON_err": 2.1416957661015465
+  },
+  {
+   "name": "saIm050e2_DDEC6",
+   "key": "saIm050e2",
+   "cif": "charged_v3/saIm050e2_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(saIm050 e2, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens0500.json: {'name': 'saIm050e2', 'pass': True, 'LCD_drop_pct': 10.21, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "pending",
+   "set": "saIm050",
+   "realization": 2,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000141842,
+    "KH_CO2_err": 1.06152e-05,
+    "KH_N2": 2.72606e-06,
+    "KH_N2_err": 1.98995e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 33.088009976064,
+    "selectivity": 52.03187017160297,
+    "selectivity_err": 3.9124514484655823
+   },
+   "S_ON": 52.03187017160297,
+   "S_ON_err": 3.9124514484655823
+  },
+  {
+   "name": "saIm050e3_DDEC6",
+   "key": "saIm050e3",
+   "cif": "charged_v3/saIm050e3_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(saIm050 e3, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens0500.json: {'name': 'saIm050e3', 'pass': True, 'LCD_drop_pct': 9.66, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "pending",
+   "set": "saIm050",
+   "realization": 3,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000187403,
+    "KH_CO2_err": 1.14348e-05,
+    "KH_N2": 3.3183e-06,
+    "KH_N2_err": 4.28086e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 33.529462829064,
+    "selectivity": 56.47560497845282,
+    "selectivity_err": 3.5221604272659
+   },
+   "S_ON": 56.47560497845282,
+   "S_ON_err": 3.5221604272659
+  },
+  {
+   "name": "saIm050e4_DDEC6",
+   "key": "saIm050e4",
+   "cif": "charged_v3/saIm050e4_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(saIm050 e4, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens0500.json: {'name': 'saIm050e4', 'pass': True, 'LCD_drop_pct': 8.76, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "pending",
+   "set": "saIm050",
+   "realization": 4,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000171612,
+    "KH_CO2_err": 9.99079e-06,
+    "KH_N2": 3.17816e-06,
+    "KH_N2_err": 5.73576e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 33.498451928264,
+    "selectivity": 53.99728144586805,
+    "selectivity_err": 3.2911621489694625
+   },
+   "S_ON": 53.99728144586805,
+   "S_ON_err": 3.2911621489694625
+  },
+  {
+   "name": "saIm050e5_DDEC6",
+   "key": "saIm050e5",
+   "cif": "charged_v3/saIm050e5_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(saIm050 e5, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지 risk_results_v3ens0500.json: {'name': 'saIm050e5', 'pass': True, 'LCD_drop_pct': 13.56, 'status': 'ok'}",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "pending",
+   "set": "saIm050",
+   "realization": 5,
+   "on_ref": {
+    "src": "results_v3ens_mix10.json",
+    "KH_CO2": 0.000173032,
+    "KH_CO2_err": 8.62573e-06,
+    "KH_N2": 3.182e-06,
+    "KH_N2_err": 2.6006e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 33.089146207664,
+    "selectivity": 54.37837837837837,
+    "selectivity_err": 2.746978451687789
+   },
+   "S_ON": 54.37837837837837,
+   "S_ON_err": 2.746978451687789
+  }
+ ]
+}
