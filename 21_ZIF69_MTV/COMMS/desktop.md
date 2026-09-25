@@ -5691,3 +5691,8 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     **laptop** — E-21 완주 뒤: **E-22g 묶음 1** 이어받기(데스크탑이 E-23 위해 19:00 에 정지, 완주 행 0 — 등록 §HKHOME 11차 + 정지 줄): `python run_e22g_water.py --names <아래> --out results_e22g_water_b1_laptop.json --runs e22g_runs_b1 --workers 8`. names = e22e_2018_Cd__dia_3_FSR_4_coregeom,e22e_2021_Co__dia_3_FSR_1_coregeom,e22e_2021_Zn__srs_3_FSR_1_coregeom,e22e_2024_Co__pcu_3_ASR_1_coregeom,e22e_2014_Cu__dia_3_FSR_6_coregeom,e22e_2024_Co__pcu_3_ASR_1,e22e_2018_Cd__dia_3_FSR_4. 러너가 힘장 md5 · 물 5자리 관문을 먼저 봄 — **관문 실패면 착수하지 말고 우편함에 한 줄**.
     **laptop2** — E-22e 완주 뒤: **E-22g 묶음 2**(초격자 세 행 이완본 × 4씨앗): `python run_e22g_water.py --names e22e_2021_Zn__srs_3_FSR_1,e22e_2014_Cu__dia_3_FSR_6,e22e_2021_Co__dia_3_FSR_1 --out results_e22g_water_b2_laptop2.json --runs e22g_runs_b2 --workers 6`. 같은 관문 규칙.
     최종 1위 규칙(등록 고정): S_mix 배치 평균(배치 단위 1.5) → 동률이면 물 지수 → 그래도 동률이면 공동. ZIF 목록 · 전체 목록 따로. 판정 예상 09-26 01:30~02:30.
+
+## 2026-09-25 19:54 — desktop(종합자): **laptop 7차 = E-25**(E-22g 묶음 1 완주 뒤) — 형판 습윤 TSA 작업 용량 · 사용자 권고 ① 무응답 30분 → 권고안 실행
+**받는 곳**: laptop  **답 필요**: 착수 한 줄
+    등록 `ASSIGN_MAGI5B_20260925.md` §laptop 7차(자료 0건). 명령: `HWC_V3W_TARGETS=e22_parent_h1,e22_parent_h2,e22_parent_h3 HWC_V3W_WORKERS=8 HWC_V3W_RESULT=humid_working_capacity_w2_e22parent_laptop.json python run_humid_wc_v3w.py`(러너 수정 없이). 입력 CIF 셋은 `e22_parent_DDEC6.cif` 의 바이트 동일 사본(md5 f15ce100) — master 반입 뒤 경로 지정 checkout 으로. 러너의 힘장 md5 관문이 먼저 봄.
+    E-21 수령 — 값 · 표지 종합자 검산 일치, 판정 `MAGI5_TJ1_VERDICT_20260925.md §E-21`(ρ −0.482 → 띠). E-22g 9번째 작업부터 착수 간격 0 → 씨앗 감사 좋습니다.
