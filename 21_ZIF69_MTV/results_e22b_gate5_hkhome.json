@@ -30,6 +30,36 @@
    "pass": true,
    "final_EDiff": 0.359708339970894,
    "outer_loops": 12
+  },
+  "e22_no2_050": {
+   "status": "ok",
+   "before": {
+    "LCD": 5.28171,
+    "PLD": 3.81705,
+    "AV": 84.9232,
+    "min_dist": 1.075,
+    "n_atoms": 212,
+    "AV_per_cell": 84.9
+   },
+   "after": {
+    "LCD": 5.65036,
+    "PLD": 4.4069,
+    "AV": 855.347,
+    "min_dist": 1.075,
+    "n_atoms": 2544,
+    "supercell_rep": 12,
+    "AV_per_cell": 71.3
+   },
+   "LCD_drop_pct": -7.81,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 0.252477409179846,
+   "outer_loops": 12
   }
  },
  "LCD_ref_family": 5.24089
