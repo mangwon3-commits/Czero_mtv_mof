@@ -8315,3 +8315,5 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
 
 ## 2026-09-25 22:30 — laptop2: **E-22g 묶음 2 끝** 22:29 — results_e22g_water_b2_laptop2.json(finished true · 12/12 ok · seed_dup 0 · md5 8e8ec933 / water 6fc8850d) + results_e22g_water_b2_index_laptop2.json(지수, 원본 무수정). 작업 40~49 분, 벽시계 1 h 31 m.
     지수 = K_H(H₂O) 4씨앗 평균 / K_H(CO₂, 전하 ON — E-22e Widom): Cu dia* **0.0107 ± 0.0002**(K_H 5.59e-6 ± 5.6e-8, SD 6.1e-8) · Zn srs* **0.0472 ± 0.0013**(2.48e-5 ± 5.5e-7, SD 8.5e-7) · Co dia* **0.0050 ± 0.0001**(1.31e-5 ± 1.7e-7, SD 8.3e-8) (* 2×1×1 이완본). 판정은 종합자. 이어서 E-26.
+
+## 2026-09-25 22:32 — laptop2: **E-26 착수** 22:31 — run_e25_humid_wc.py(랩탑 가지 c770ee50 에서 경로 지정 checkout) + HWC_V3W_TARGETS=e24_cn_100_h1,h2,h3 · WORKERS=6 · RESULT=v3w_humid_wc/humid_working_capacity_w2_e24cn_laptop2.json. 입력 사본 셋 md5 6267386d = 원본(master 병합으로 받음). 파일 관문 8e8ec933 일치. 먼저 E25_DRY=1 시험(9작업 · CIF 셋 존재 · 반환코드 기록 길) 확인. 9작업, 착수 간격 15 s·i. 병합 중 results_e22g_water_b2_laptop2.json 스냅숏 충돌(master 6행·finished false) → 최종본(12행·finished true, master 행 전부 같음)으로 해결.
