@@ -301,6 +301,7 @@
 | T-BR-1 (CoRE 눈금 ↔ 우리 눈금 다리) · 철회 판정 | `21_ZIF69_MTV/BRIDGE_CORE_REGISTRATION_20260920.md` · `BRIDGE_CORE_RESULT_20260921.md` |
 | §AV · 「CoRE 모집단(우리 자)」 · **모집단 524 / 새로 도는 것 512** | `21_ZIF69_MTV/COREPOP_REGISTRATION_20260921.md` |
 | D1~D8 (내려받은 스크리닝 노트북의 결함 여덟) | `23_SCREENING/SCREENING_AUDIT_20260920.md` · `D8_GEMC_IS_WATER_20260921.md` |
+| 관문 ⑤ 두 갈래 · **처리 보정 자기 감소**(외부 골격) · `probe_convention` · `formal_charge_nonzero` | `21_ZIF69_MTV/MAGI5_USER_DECISIONS_20260925.md` §4 · 2·3번 |
 
 같은 이유로, 다른 기기의 세션에 일을 시킬 때는 **대화 맥락을 옮기려 하지 말고**
 읽을 파일을 지정하세요. 아이패드에서든 랩탑에서든 이 한 줄이면 부팅됩니다.
