@@ -1,0 +1,18 @@
+  !! 워커를 4 -> 2 로 낮춥니다 (가용 24.5 GB, Zeo++ 9.5 GB/건)
+E-24c 처리 — 대상 ['e24c_cl_100', 'e24c_och3_100', 'e24c_c2h5_100'] · OUTER_LOOP_CAP 12 · INNER 2000 · 관문 ⑤ 판정식 True · LCD_ref 5.24089 · STRUCT /home/mangwon/mof_project/21_ZIF69_MTV/e24c12_stage · WORK /home/mangwon/mof_project/21_ZIF69_MTV/lmp_e24c12 · 출력 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24c_gate5_junseok.json · NETWORK /home/mangwon/miniconda3/envs/czeromof/bin/network · LMP /home/mangwon/miniconda3/envs/lammps_mof/bin/lmp_serial · python /home/mangwon/miniconda3/envs/lammps_mof/bin/python
+    e24c_cl_100: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+    e24c_och3_100: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+    e24c_c2h5_100: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 12, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+e24c_cl_100 ok · 루프 12 · EDiff 12.4009328706607 · 전 PLD 3.80888 · AV/셀 78.3 | 뒤 PLD 3.4776 · LCD 5.27299 · AV/셀 32.1 · 최소거리 1.075 · chan 8 · 감소 -0.61 % · pass True · 셀 변화 {'a': 1.92, 'b': -1.54, 'c': 4.85, 'V': 5.22} · 4.4 분
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+e24c_och3_100 ok · 루프 12 · EDiff 2.35996958508622e-06 · 전 PLD 3.81622 · AV/셀 47.5 | 뒤 PLD 3.80978 · LCD 5.48459 · AV/셀 53.4 · 최소거리 1.077 · chan 8 · 감소 -4.65 % · pass True · 셀 변화 {'a': 1.87, 'b': -1.01, 'c': 5.49, 'V': 6.36} · 5.7 분
+e24c_c2h5_100 ok · 루프 12 · EDiff 0.406768766890309 · 전 PLD 3.80041 · AV/셀 33.3 | 뒤 PLD 3.27874 · LCD 5.91823 · AV/셀 0.0 · 최소거리 1.071 · chan 0 · 감소 -12.92 % · pass True · 셀 변화 {'a': 1.79, 'b': -1.75, 'c': 7.23, 'V': 7.24} · 6.3 분
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24c_gate5_junseok.json · 6.9 분
