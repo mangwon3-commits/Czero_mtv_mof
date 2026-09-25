@@ -1,0 +1,35 @@
+{
+ "rule": "risk_screen.py:414~423, LCD_ref 7.63144, OUTER_LOOP_CAP 12",
+ "rows": {
+  "mslm050e1": {
+   "status": "ok",
+   "before": {
+    "LCD": 8.52824,
+    "PLD": 4.65575,
+    "AV": 788.494,
+    "min_dist": 1.072,
+    "n_atoms": 672,
+    "AV_per_cell": 788.5
+   },
+   "after": {
+    "LCD": 6.52313,
+    "PLD": 4.08108,
+    "AV": 3510.65,
+    "min_dist": 1.075,
+    "n_atoms": 5376,
+    "supercell_rep": 8,
+    "AV_per_cell": 438.8
+   },
+   "LCD_drop_pct": 14.52,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 1.04439304610059,
+   "outer_loops": 12
+  }
+ }
+}
