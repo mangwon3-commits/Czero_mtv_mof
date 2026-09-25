@@ -18,7 +18,12 @@ def energy(sym, xyz, ghost, basis, charge=0):
     mf.grids.level = int(os.environ.get('E7_GRID', '2')); mf.nlcgrids.level = int(os.environ.get('E7_NLCGRID', '0'))   # 물 이합체에서 기본(3/1)과 결합에너지 차 < 0.01 kJ/mol, 9배 빠름(09-25 실측)
     cyc = []
     mf.callback = lambda env: cyc.append(env.get('cycle'))
+    mf.max_cycle = 100
     e = mf.kernel()
+    if not mf.converged:                      # 09-25 MAF-66 조각(S5)이 50회 안에 못 수렴 → 2차 수렴법으로 이어 풂(같은 범함수·격자)
+        dm = mf.make_rdm1()
+        mf = mf.newton(); e = mf.kernel(dm0=dm)
+        cyc.append('newton')
     energy.cycles.append(len(cyc))
     return e, mf.converged
 
