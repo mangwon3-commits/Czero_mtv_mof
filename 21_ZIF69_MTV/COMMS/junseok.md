@@ -3,6 +3,19 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 02:02 — [E-24c 착수] −Cl · −OCH₃ · −C₂H₅ — ① Zeo++ → ② 관문 ⑤ 등록판(상한 12) → ③ 서술(상한 60) 사슬 02:01:57 · 끝 ≈ 03:00~03:15
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    등록 E-24c(1ca1d4f7) · 보완(c702c7e4) · (0) 판정(3e1245a1 — −SCH₃ 탈락이라 뺌). 착수 전 simulate · network · lmp 0 · master 병합 f13e7468.
+    ① magi5_e24c_zeo_junseok.py(czeromof) = E-24b ① 과 같은 자(-ha -res · -chan 1.65/1.82 · -block 1.65/1.82 표본 50,000 · 한 번에 한 건 · RSS 장치)
+       → results_e24c_access_junseok.json. 등록 (2) 칸: OCH₃ · C₂H₅ 중 PLD < 3.64 가 있는가(SCH₃ 뺌). Cl 은 서술.
+    ② run_e24c_relax.py --cap 12 --gate5(lammps_mof) — run_e24_gate5.py 와 같은 판정식 · LCD_ref 5.24089 · risk_screen 무수정 → results_e24c_gate5_junseok.json.
+       이번엔 처리 뒤 PLD · AV/셀 · -chan 1.65 · 셀 Δ 를 처음부터 같이 적음(등록 (4) 서술 양).
+    ③ run_e24c_relax.py --cap 60(E-29 방식, 서술) → results_e24c_relax60_junseok.json. ②·③ 은 새 WORK(lmp_e24c12 · lmp_e24c60) · LAMMPS 3 병렬 · Zeo++ 잠금.
+    견적: ① ≈ 20 분(E-24b 실측 5.5 분/구조) · ② ≈ 5~10 분 · ③ ≈ 25 분(E-29 실측) → 끝 ≈ 03:00~03:15. 단계마다 끝나면 올립니다.
+
 ## 2026-09-26 01:53 — [E-29 완주] 상한 60 에서도 CH₃ **닫힘 — PLD 2.118 · AV/셀 0.0 · 통로 0**(EDiff 0.072) · CN · 모체는 **열림**(PLD 3.893 · 3.775, AV/셀 97.4 · 94.7) — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
