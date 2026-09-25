@@ -1,0 +1,93 @@
+{
+  "test": "Junseok 5차 ③ — T-J1′ 새 대조 Ni pcu 정식 짝 차단 Widom",
+  "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 5차 ③",
+  "registered": "S_정식 / S_ON(44.4) ∈ [1.0, 1.4] · > 1.4 → 오염 대조 표지 — 판정문은 종합자",
+  "machine": "junseok",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "zeo": [
+    {
+      "probe_radius_A": 1.65,
+      "channels": 1,
+      "pockets": 0,
+      "n_spheres": 0,
+      "block_file": "magi5_tj1c_zeo/r1.65/2019_Ni__pcu_3_ASR_1.block"
+    },
+    {
+      "probe_radius_A": 1.82,
+      "channels": 2,
+      "pockets": 1,
+      "n_spheres": 296,
+      "block_file": "magi5_tj1c_zeo/r1.82/2019_Ni__pcu_3_ASR_1.block"
+    }
+  ],
+  "widom": {
+    "CO2": {
+      "minutes": 8.7,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "n_spheres_per_uc": 0,
+      "n_expected": 0,
+      "data": "magi5_tj1c_runs/r1.65/widom_CO2_2019_Ni__pcu_3_ASR_1/Output/System_0/output_2019_Ni__pcu_3_ASR_1_2.2.2_298.000000_1e-05.data",
+      "seed": 1790300964,
+      "n_blocked_reported": 0,
+      "pockets_blocked_line": true,
+      "stderr_not_found": false,
+      "marker_finished": true,
+      "KH": 0.000289344,
+      "KH_err": 2.15049e-06,
+      "dU": -26.2740602437,
+      "dU_err": 0.0282600269,
+      "status": "ok",
+      "KH_over_unblocked": 0.9996648712518269,
+      "KH_effectively_zero": false
+    },
+    "N2": {
+      "minutes": 9.0,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "n_spheres_per_uc": 296,
+      "n_expected": 2368,
+      "data": "magi5_tj1c_runs/r1.82/widom_N2_2019_Ni__pcu_3_ASR_1/Output/System_0/output_2019_Ni__pcu_3_ASR_1_2.2.2_298.000000_1e-05.data",
+      "seed": 1790300979,
+      "n_blocked_reported": 2368,
+      "pockets_blocked_line": true,
+      "stderr_not_found": false,
+      "marker_finished": true,
+      "KH": 6.14879e-06,
+      "KH_err": 3.93674e-08,
+      "dU": -13.9830353574,
+      "dU_err": 0.0055341977,
+      "status": "ok",
+      "KH_over_unblocked": 0.9427507367168645,
+      "KH_effectively_zero": false
+    }
+  },
+  "canonical": {
+    "pair": "CO₂@1.65 / N₂@1.82",
+    "S_ON_unblocked": 44.37795338368459,
+    "S_ON_unblocked_err": 0.5765878360004272,
+    "S": 47.057063259600675,
+    "S_err": 0.4616164606193206,
+    "S_over_S_ON": 1.0603702891107423,
+    "S_over_S_ON_err": 0.017262875831926334,
+    "band_1_0_to_1_4": "in"
+  },
+  "reference_unblocked": {
+    "source": "core_pop_annotated.json",
+    "KH_CO2": 0.000289441,
+    "KH_CO2_err": 2.89256e-06,
+    "KH_N2": 6.52218e-06,
+    "KH_N2_err": 5.41526e-08,
+    "S": 44.37795338368459,
+    "S_err": 0.5765878360004272
+  },
+  "gate": "stderr 에 Blocking-pocket not-found 없음 · .data N = 구 수 × 단위셀 수(등식) · Simulation finished",
+  "elapsed_s": 781,
+  "finished": "2026-09-25 10:58:39"
+}
