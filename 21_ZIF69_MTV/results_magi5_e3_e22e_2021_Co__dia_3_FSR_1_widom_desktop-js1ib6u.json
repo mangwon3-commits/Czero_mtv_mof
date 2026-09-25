@@ -1,0 +1,64 @@
+{
+ "tag": "e22e_2021_Co__dia_3_FSR_1",
+ "cif": "charged_v3/e22e_2021_Co__dia_3_FSR_1_DDEC6.cif",
+ "protocol": "run_aryl_gcmc.run_one widom (CLAUDE.md §1)",
+ "off_method": "CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)",
+ "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "host": "desktop-js1ib6u",
+ "elapsed_s": 1634,
+ "finished": "2026-09-25 20:56:08",
+ "rows": [
+  {
+   "name": "e22e_2021_Co__dia_3_FSR_1_DDEC6",
+   "charges": "on",
+   "temp_K": 298.0,
+   "KH_CO2": 0.00260658,
+   "KH_CO2_err": 3.09693e-05,
+   "dU_CO2": -35.4312734959,
+   "dU_CO2_err": 0.0262885302,
+   "status_CO2": "ok",
+   "KH_N2": 3.6509e-05,
+   "KH_N2_err": 3.23893e-07,
+   "dU_N2": -21.777616633,
+   "dU_N2_err": 0.0122015775,
+   "status_N2": "ok",
+   "selectivity": 71.39554630365116,
+   "selectivity_err": 1.058649580110857,
+   "Qst_CO2_rt_corrected": 37.908983356064,
+   "relax_supercell": [
+    2,
+    1,
+    1
+   ]
+  },
+  {
+   "name": "e22e_2021_Co__dia_3_FSR_1_DDEC6_q0",
+   "charges": "off",
+   "temp_K": 298.0,
+   "KH_CO2": 0.00253835,
+   "KH_CO2_err": 2.26016e-05,
+   "dU_CO2": -35.2609911334,
+   "dU_CO2_err": 0.020163717,
+   "status_CO2": "ok",
+   "KH_N2": 3.62442e-05,
+   "KH_N2_err": 4.34895e-07,
+   "dU_N2": -21.746219338,
+   "dU_N2_err": 0.0154252477,
+   "status_N2": "ok",
+   "selectivity": 70.03465382047334,
+   "selectivity_err": 1.0464468651710346,
+   "Qst_CO2_rt_corrected": 37.738700993563995,
+   "relax_supercell": [
+    2,
+    1,
+    1
+   ]
+  }
+ ],
+ "relax_supercell": [
+  2,
+  1,
+  1
+ ],
+ "relax_note": "1×1×1 에서 xtb SIGSEGV → 2×1×1 초격자 사본(/home/leehk/.mof_chain/e22e_sc/2021_Co__dia_3_FSR_1_2x1x1.cif, 저장소 밖)으로 고정셀 이완 — 종합자 승인 2026-09-25 18:14"
+}
