@@ -61,6 +61,37 @@
    "pass": true,
    "final_EDiff": 0.0140632581696991,
    "outer_loops": 12
+  },
+  "e24_f_100": {
+   "status": "ok",
+   "before": {
+    "LCD": 5.27506,
+    "PLD": 3.81662,
+    "AV": 95.7172,
+    "min_dist": 1.077,
+    "n_atoms": 204,
+    "AV_per_cell": 95.7
+   },
+   "after": {
+    "LCD": 4.84002,
+    "PLD": 3.63213,
+    "AV": 890.872,
+    "min_dist": 1.079,
+    "n_atoms": 2448,
+    "supercell_rep": 12,
+    "AV_per_cell": 74.2
+   },
+   "LCD_drop_pct": 7.65,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 0.590233671619899,
+   "outer_loops": 12
   }
- }
+ },
+ "finished": true
 }
