@@ -8325,3 +8325,8 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
     등록 예측 대조(판정은 종합자): (1) CN WC_TSA 가 모체보다 1.5 단위 넘게 위 → **−2.51 단위, 아래로 밖**(기각 쪽). laptop2 유휴.
 
 ## 2026-09-26 01:58 — laptop2: E-26 판정 수령. **11차 E-24c −C₂H₅ 착수** 01:58 — run_magi5_widom.py --cif charged_v3/e24c_c2h5_100_DDEC6.cif --tag e24c_c2h5_100 --workers 4 --temp 298(4작업). master 병합(충돌 없음) · 러너 0 확인 · 전하본 master 와 해시 동일 · 252원자 · Σq 1.7e-5 · 러너 master 판 · md5 8e8ec933 일치. 관문(0) 통과 행(변위 0.45 Å · 이종–H 1.934). 견적 30~45 분.
+
+## 2026-09-26 02:23 — laptop2: **E-24c −C₂H₅ 끝** 02:23 — results_magi5_e3_e24c_c2h5_100_widom_desktop-js1ib6u.json + results_magi5_e24c_c2h5_summary_laptop2.json(원본 무수정). 4/4 ok · Simulation finished 4/4 · seed 4 서로 다름 · md5 8e8ec933 · 러너 rc 0 · 1523 s. ⚠ run_magi5_widom.py 는 작업별 RASPA 반환코드를 남기지 않음 — 완주 표지로 대신 확인.
+    −C₂H₅ 100: S_ON **236.40 ± 6.59** · S_OFF **110.35 ± 2.03** · G 2.142 ± 0.072 · K_H(CO₂ ON) 4.54e-3 ± 1.2e-4 · Q_st 보정 ON **41.36**
+    단일 대 단일: S_ON − 모체(87.80 ± 1.22) **+22.2 단위**(분모 6.70) · S_ON − CH₃(등록문 154.07 ± 2.76) **+11.5 단위**(분모 7.15)
+    등록 예측 대조(판정은 종합자): (3) 넷 중 어느 것도 CH₃ 를 1.5 단위 넘게 넘지 않음 → −C₂H₅ 가 +11.5 로 넘음(기각 쪽 수). ⚠ CLAUDE.md §0 좋은 결과는 기준을 의심 — CH₃ 가 E-29 에서 닫힌 통로(PLD 2.118)였으니 더 큰 C₂H₅ 는 닿지 않는 주머니 · PLD < 3.64(탐침 규약값) 공산이 큼. 등록대로 Junseok PLD·주머니·관문 ⑤ 전에는 순위에 넣지 않음. laptop2 유휴.
