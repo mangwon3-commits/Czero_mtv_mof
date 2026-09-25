@@ -1,8 +1,9 @@
 {
  "test": "E-22c",
- "finished": false,
+ "finished": true,
  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
  "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
+ "seed_dup": 0,
  "rows": [
   {
    "name": "e22_parent",
@@ -153,6 +154,82 @@
    "header_gate_ok": true,
    "marker_finished": true,
    "seed": 1790321822,
+   "water_sites_in_rundir": 5,
+   "status": "ok"
+  },
+  {
+   "name": "e22_parent",
+   "seed_idx": 4,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "returncode": 0,
+   "minutes": 16.6,
+   "KH_water": 1.36856e-05,
+   "KH_water_err": 5.09537e-07,
+   "read_error": null,
+   "header_gate_ok": true,
+   "marker_finished": true,
+   "seed": 1790322922,
+   "water_sites_in_rundir": 5,
+   "status": "ok"
+  },
+  {
+   "name": "e22_no2_100",
+   "seed_idx": 3,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "returncode": 0,
+   "minutes": 18.0,
+   "KH_water": 0.000189537,
+   "KH_water_err": 5.1668e-05,
+   "read_error": null,
+   "header_gate_ok": true,
+   "marker_finished": true,
+   "seed": 1790322861,
+   "water_sites_in_rundir": 5,
+   "status": "ok"
+  },
+  {
+   "name": "e22_no2_050",
+   "seed_idx": 4,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "returncode": 0,
+   "minutes": 17.3,
+   "KH_water": 8.76197e-05,
+   "KH_water_err": 1.94785e-05,
+   "read_error": null,
+   "header_gate_ok": true,
+   "marker_finished": true,
+   "seed": 1790322952,
+   "water_sites_in_rundir": 5,
+   "status": "ok"
+  },
+  {
+   "name": "e22_no2_100",
+   "seed_idx": 4,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "returncode": 0,
+   "minutes": 17.6,
+   "KH_water": 0.000159756,
+   "KH_water_err": 3.12198e-05,
+   "read_error": null,
+   "header_gate_ok": true,
+   "marker_finished": true,
+   "seed": 1790322999,
    "water_sites_in_rundir": 5,
    "status": "ok"
   }
