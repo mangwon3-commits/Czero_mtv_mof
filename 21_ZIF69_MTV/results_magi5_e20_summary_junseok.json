@@ -1,0 +1,420 @@
+{
+  "test": "MAGI-005 E-20 — 조합 ms50nb50 · sa25nb75 의 G 와 물 경쟁 지수",
+  "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 11차",
+  "machine": "junseok",
+  "made": "2026-09-25 14:55:06",
+  "inputs": {
+    "ms50nb50": "results_magi5_e3_e20_ms50nb50_widom_junseok.json",
+    "sa25nb75": "results_magi5_e3_e20_sa25nb75_widom_junseok.json",
+    "water": "results_magi5_e20_water_junseok.json"
+  },
+  "conventions": "G ± = G·√((±_ON/S_ON)²+(±_OFF/S_OFF)²) · 물 평균 ± = ±̄/√4 · 지수 ± = 두 상대 ± 제곱합 · 단위 = d/√(±₁²+±₂²)",
+  "references": {
+    "G_mslm050": {
+      "value": 4.694844271076537,
+      "err": 0.15071491260178843,
+      "S_ON": 58.11340946697725,
+      "S_ON_err": 1.7018725134342632,
+      "S_OFF": 12.378133567708677,
+      "S_OFF_err": 0.16277112349828354,
+      "src": "results_magi5_e14_offwidom_hkhome.json (S_ON = results_v3)"
+    },
+    "index_saIm050": {
+      "value": 1.3398523544176992,
+      "err": 0.28323808180919385,
+      "src": "E-16 보완 ⓑ — saIm050 4씨앗 2.354e-4 ± 4.92e-5 / results_v3 1.75691e-4"
+    },
+    "S_ON_v4mix": {
+      "ms50nb50": {
+        "value": 49.22181921746342,
+        "err": 2.065886182497455,
+        "KH_CO2": 0.000117523,
+        "KH_CO2_err": 4.88643e-06,
+        "src": "results_v4mix.json"
+      },
+      "sa25nb75": {
+        "value": 56.975950231393675,
+        "err": 3.057317961437283,
+        "KH_CO2": 0.00013518,
+        "KH_CO2_err": 7.10338e-06,
+        "src": "results_v4mix.json"
+      }
+    },
+    "context": {
+      "mslm050_index_E19": {
+        "value": 0.7178420589088944,
+        "err": 0.05019658260547893
+      },
+      "G_saIm050_E1": {
+        "value": 4.8545445477190015,
+        "err": 0.2024016475462862
+      },
+      "S_OFF_saIm050_E1": {
+        "value": 13.431896676085978,
+        "err": 0.3549935910628182
+      },
+      "G_sa50nb50_E14b": {
+        "value": 5.872782406792541,
+        "err": 0.20905341833340282
+      },
+      "S_OFF_mslm050_E14": {
+        "value": 12.378133567708677,
+        "err": 0.16277112349828354
+      },
+      "G_nbIm050_E14": {
+        "value": 3.925262328993908,
+        "err": 0.23664834200883886
+      },
+      "G_nbIm100_E14": {
+        "value": 4.657820477487825,
+        "err": 0.19910545715230152
+      },
+      "G_base_E14": {
+        "value": 2.1399015266032104,
+        "err": 0.05739681414706383
+      },
+      "S_OFF_nbIm050_E14": {
+        "value": 10.88034740050046,
+        "err": 0.12056599915928079
+      },
+      "S_OFF_nbIm100_E14": {
+        "value": 11.208152418914752,
+        "err": 0.21183548610377062
+      }
+    }
+  },
+  "registered": {
+    "(1)": {
+      "what": "G(ms50nb50) 대 mslm050(E-14)",
+      "G": 4.32378951298664,
+      "G_err": 0.1663836316089034,
+      "ref": [
+        4.694844271076537,
+        0.15071491260178843
+      ],
+      "units": -1.6528338905971653,
+      "not_more_than_1.5_below": false,
+      "strong_more_than_1.5_above": false,
+      "more_than_1.5_below(기각 조건)": true
+    },
+    "(2)": {
+      "what": "지수(ms50nb50) 대 saIm050(E-16 보완 ⓑ)",
+      "index": 1.6750272763340606,
+      "index_err": 0.6051884735423273,
+      "ref": [
+        1.3398523544176992,
+        0.28323808180919385
+      ],
+      "units": 0.5016167384873106,
+      "more_than_1.5_below": false,
+      "index_ge_ref": true,
+      "branch_amended": "기각 쪽(지수 ≥ 참조)",
+      "rule_amended": "ASSIGN_MAGI5B §Junseok 11차 보완 2026-09-25 13:56(b117ae02, 자료 0건): 성립 = 1.5 단위 넘게 낮음 · 기각 = 지수 ≥ 1.340 · 판정 불가(띠) = 그 사이",
+      "seed_sd_rel": 0.19861102438228506,
+      "seed_sd_abs": 4.024882200760664e-05
+    },
+    "(3)": {
+      "ms50nb50": {
+        "S_ON": 50.42365640694354,
+        "S_ON_err": 1.9024733944646661,
+        "ref": [
+          49.22181921746342,
+          2.065886182497455
+        ],
+        "units": 0.42793884850394126,
+        "within_1.5": true
+      },
+      "sa25nb75": {
+        "S_ON": 54.367837996834844,
+        "S_ON_err": 5.33824080263555,
+        "ref": [
+          56.975950231393675,
+          3.057317961437283
+        ],
+        "units": -0.4239627628609021,
+        "within_1.5": true
+      }
+    }
+  },
+  "descriptive": {
+    "ms50nb50_vs_mslm050_index_E19": 1.5762189737454444,
+    "ms50nb50_S_OFF_vs_mslm050_E14": -3.868337448880326,
+    "ms50nb50_G_vs_nbIm050_E14": 1.3776270875653454,
+    "ms50nb50_G_vs_nbIm100_E14": -1.287341357188093,
+    "sa25nb75_G_vs_saIm050_E1": -0.1388278314253957,
+    "sa25nb75_G_vs_sa50nb50_E14b": -2.1132664350404955,
+    "sa25nb75_index_vs_saIm050": -1.516243035810637
+  },
+  "audit": {
+    "n_jobs": 16,
+    "n_ok": 16,
+    "seeds_distinct": true,
+    "seed_overlap_with_E19_or_seedfixed": [],
+    "water_header_gate_pre": true,
+    "ff_md5": [
+      "8e8ec933f9013c7e932da04dc256efd3"
+    ],
+    "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
+    "water_minutes": [
+      67.8,
+      71.1
+    ]
+  },
+  "per_structure": {
+    "ms50nb50": {
+      "file": "results_magi5_e3_e20_ms50nb50_widom_junseok.json",
+      "finished": "2026-09-25 14:35:28",
+      "elapsed_s": 3441,
+      "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+      "S_ON": 50.42365640694354,
+      "S_ON_err": 1.9024733944646661,
+      "S_OFF": 11.661912832596146,
+      "S_OFF_err": 0.08823773460120084,
+      "KH_CO2_ON": 0.000120984,
+      "KH_CO2_ON_err": 4.17196e-06,
+      "KH_N2_ON": 2.39935e-06,
+      "KH_N2_ON_err": 3.67359e-08,
+      "KH_CO2_OFF": 2.53902e-05,
+      "KH_CO2_OFF_err": 1.81168e-07,
+      "KH_N2_OFF": 2.17719e-06,
+      "KH_N2_OFF_err": 5.48026e-09,
+      "G": 4.32378951298664,
+      "G_err": 0.1663836316089034,
+      "lnG": 1.4641322198193645,
+      "audit": [
+        {
+          "job": "ms50nb50 on CO2",
+          "n_data": 1,
+          "status": "ok",
+          "marker_finished": true,
+          "seed": 1790311088,
+          "KH_reparse": 0.000120984,
+          "KH_json": 0.000120984,
+          "KH_match": true,
+          "ok": true
+        },
+        {
+          "job": "ms50nb50 on N2",
+          "n_data": 1,
+          "status": "ok",
+          "marker_finished": true,
+          "seed": 1790311103,
+          "KH_reparse": 2.39935e-06,
+          "KH_json": 2.39935e-06,
+          "KH_match": true,
+          "ok": true
+        },
+        {
+          "job": "ms50nb50 off CO2",
+          "n_data": 1,
+          "status": "ok",
+          "marker_finished": true,
+          "seed": 1790311118,
+          "KH_reparse": 2.53902e-05,
+          "KH_json": 2.53902e-05,
+          "KH_match": true,
+          "ok": true
+        },
+        {
+          "job": "ms50nb50 off N2",
+          "n_data": 1,
+          "status": "ok",
+          "marker_finished": true,
+          "seed": 1790311133,
+          "KH_reparse": 2.17719e-06,
+          "KH_json": 2.17719e-06,
+          "KH_match": true,
+          "ok": true
+        }
+      ],
+      "water": {
+        "n_new": 4,
+        "per_seed": [
+          {
+            "seed_idx": 1,
+            "seed": 1790311297,
+            "KH_water": 0.000210532,
+            "KH_water_err": 0.00016382
+          },
+          {
+            "seed_idx": 2,
+            "seed": 1790311327,
+            "KH_water": 0.000148174,
+            "KH_water_err": 0.000104299
+          },
+          {
+            "seed_idx": 3,
+            "seed": 1790311358,
+            "KH_water": 0.000245242,
+            "KH_water_err": 0.000189771
+          },
+          {
+            "seed_idx": 4,
+            "seed": 1790311388,
+            "KH_water": 0.000206658,
+            "KH_water_err": 0.000125181
+          }
+        ],
+        "KH_water_mean4": 0.0002026515,
+        "KH_water_mean4_err": 7.2883875e-05,
+        "seed_sd_rel": 0.19861102438228506,
+        "supplementary_with_seedfixed": {
+          "n": 5,
+          "KH_water_mean": 0.000219577,
+          "KH_water_mean_err": 8.901741897067112e-05,
+          "seedfixed": [
+            0.000287279,
+            0.000412174
+          ],
+          "note": "등록 값 아님(등록 = 새 4씨앗)"
+        },
+        "seed_sd_abs": 4.024882200760664e-05,
+        "sd_over_sqrt_n": 2.012441100380332e-05
+      },
+      "index": 1.6750272763340606,
+      "index_err": 0.6051884735423273,
+      "units_index_vs_saIm050": 0.5016167384873106,
+      "supplementary_index_v4mix_KH_CO2": {
+        "index": 1.72435608349004,
+        "err": 0.6242974647450096,
+        "note": "분모를 v4mix ON K_H(CO₂)로 — 등록 값 아님"
+      },
+      "supplementary_index_5seed": {
+        "index": 1.8149259406202471,
+        "err": 0.7384353814326337,
+        "units_vs_saIm050": 0.6006805082461538,
+        "note": "seedfixed 1 + 새 4 = 5씨앗 — 등록 값 아님"
+      },
+      "units_S_ON_vs_v4mix": 0.42793884850394126,
+      "units_KH_CO2_ON_vs_v4mix": 0.5386651463742355
+    },
+    "sa25nb75": {
+      "file": "results_magi5_e3_e20_sa25nb75_widom_junseok.json",
+      "finished": "2026-09-25 14:33:13",
+      "elapsed_s": 3301,
+      "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+      "S_ON": 54.367837996834844,
+      "S_ON_err": 5.33824080263555,
+      "S_OFF": 11.366070605585769,
+      "S_OFF_err": 0.09128188323035591,
+      "KH_CO2_ON": 0.000131232,
+      "KH_CO2_ON_err": 1.28199e-05,
+      "KH_N2_ON": 2.41378e-06,
+      "KH_N2_ON_err": 2.38554e-08,
+      "KH_CO2_OFF": 2.46621e-05,
+      "KH_CO2_OFF_err": 1.18604e-07,
+      "KH_N2_OFF": 2.1698e-06,
+      "KH_N2_OFF_err": 1.39561e-08,
+      "G": 4.783345087625638,
+      "G_err": 0.4712330281431391,
+      "lnG": 1.5651401108778402,
+      "audit": [
+        {
+          "job": "sa25nb75 on CO2",
+          "n_data": 1,
+          "status": "ok",
+          "marker_finished": true,
+          "seed": 1790311093,
+          "KH_reparse": 0.000131232,
+          "KH_json": 0.000131232,
+          "KH_match": true,
+          "ok": true
+        },
+        {
+          "job": "sa25nb75 on N2",
+          "n_data": 1,
+          "status": "ok",
+          "marker_finished": true,
+          "seed": 1790311108,
+          "KH_reparse": 2.41378e-06,
+          "KH_json": 2.41378e-06,
+          "KH_match": true,
+          "ok": true
+        },
+        {
+          "job": "sa25nb75 off CO2",
+          "n_data": 1,
+          "status": "ok",
+          "marker_finished": true,
+          "seed": 1790311123,
+          "KH_reparse": 2.46621e-05,
+          "KH_json": 2.46621e-05,
+          "KH_match": true,
+          "ok": true
+        },
+        {
+          "job": "sa25nb75 off N2",
+          "n_data": 1,
+          "status": "ok",
+          "marker_finished": true,
+          "seed": 1790311138,
+          "KH_reparse": 2.1698e-06,
+          "KH_json": 2.1698e-06,
+          "KH_match": true,
+          "ok": true
+        }
+      ],
+      "water": {
+        "n_new": 4,
+        "per_seed": [
+          {
+            "seed_idx": 1,
+            "seed": 1790311312,
+            "KH_water": 0.000136139,
+            "KH_water_err": 1.9621e-05
+          },
+          {
+            "seed_idx": 2,
+            "seed": 1790311342,
+            "KH_water": 0.000112665,
+            "KH_water_err": 3.81552e-05
+          },
+          {
+            "seed_idx": 3,
+            "seed": 1790311373,
+            "KH_water": 0.000108042,
+            "KH_water_err": 2.95592e-05
+          },
+          {
+            "seed_idx": 4,
+            "seed": 1790311403,
+            "KH_water": 9.4664e-05,
+            "KH_water_err": 3.1511e-05
+          }
+        ],
+        "KH_water_mean4": 0.0001128775,
+        "KH_water_mean4_err": 1.48558e-05,
+        "seed_sd_rel": 0.15312569483147156,
+        "supplementary_with_seedfixed": {
+          "n": 5,
+          "KH_water_mean": 0.0001192034,
+          "KH_water_mean_err": 1.686719741059551e-05,
+          "seedfixed": [
+            0.000144507,
+            6.97346e-05
+          ],
+          "note": "등록 값 아님(등록 = 새 4씨앗)"
+        },
+        "seed_sd_abs": 1.728444561833943e-05,
+        "sd_over_sqrt_n": 8.642222809169716e-06
+      },
+      "index": 0.8601370092660326,
+      "index_err": 0.14097926520699575,
+      "units_index_vs_saIm050": -1.516243035810637,
+      "supplementary_index_v4mix_KH_CO2": {
+        "index": 0.8350162745968339,
+        "err": 0.11833220854101532,
+        "note": "분모를 v4mix ON K_H(CO₂)로 — 등록 값 아님"
+      },
+      "supplementary_index_5seed": {
+        "index": 0.9083409534259936,
+        "err": 0.15618488332364883,
+        "units_vs_saIm050": -1.334105105529268,
+        "note": "seedfixed 1 + 새 4 = 5씨앗 — 등록 값 아님"
+      },
+      "units_S_ON_vs_v4mix": -0.4239627628609021,
+      "units_KH_CO2_ON_vs_v4mix": -0.2693717678379179
+    }
+  },
+  "note": "기계적 사실뿐 — 판정문은 종합자"
+}

@@ -2,7 +2,7 @@
   "test": "MAGI-005 E-20 ② — ms50nb50 · sa25nb75 물 Widom 4씨앗",
   "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 11차",
   "machine": "junseok",
-  "final": false,
+  "final": true,
   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
   "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
   "header_gate_pre": {
@@ -15,18 +15,217 @@
     "ok": true
   },
   "protocol": "E-19 와 같음(TIP5P-Ew 5자리 · 15,000 + 3,000 · 298 K · 전하 ON · read_kh(water) · 관문 착수 전·후)",
-  "runs": [],
+  "runs": [
+    {
+      "name": "ms50nb50",
+      "seed_idx": 1,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "minutes": 71.1,
+      "KH_water": 0.000210532,
+      "KH_water_err": 0.00016382,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790311297,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e20_runs/widom_water_ms50nb50_s1/Output/System_0/output_ms50nb50_DDEC6_2.2.2_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "name": "ms50nb50",
+      "seed_idx": 2,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "minutes": 70.7,
+      "KH_water": 0.000148174,
+      "KH_water_err": 0.000104299,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790311327,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e20_runs/widom_water_ms50nb50_s2/Output/System_0/output_ms50nb50_DDEC6_2.2.2_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "name": "ms50nb50",
+      "seed_idx": 3,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "minutes": 70.6,
+      "KH_water": 0.000245242,
+      "KH_water_err": 0.000189771,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790311358,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e20_runs/widom_water_ms50nb50_s3/Output/System_0/output_ms50nb50_DDEC6_2.2.2_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "name": "ms50nb50",
+      "seed_idx": 4,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "minutes": 68.1,
+      "KH_water": 0.000206658,
+      "KH_water_err": 0.000125181,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790311388,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e20_runs/widom_water_ms50nb50_s4/Output/System_0/output_ms50nb50_DDEC6_2.2.2_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "name": "sa25nb75",
+      "seed_idx": 1,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "minutes": 68.5,
+      "KH_water": 0.000136139,
+      "KH_water_err": 1.9621e-05,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790311312,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e20_runs/widom_water_sa25nb75_s1/Output/System_0/output_sa25nb75_DDEC6_2.2.2_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "name": "sa25nb75",
+      "seed_idx": 2,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "minutes": 68.3,
+      "KH_water": 0.000112665,
+      "KH_water_err": 3.81552e-05,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790311342,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e20_runs/widom_water_sa25nb75_s2/Output/System_0/output_sa25nb75_DDEC6_2.2.2_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "name": "sa25nb75",
+      "seed_idx": 3,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "minutes": 68.0,
+      "KH_water": 0.000108042,
+      "KH_water_err": 2.95592e-05,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790311373,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e20_runs/widom_water_sa25nb75_s3/Output/System_0/output_sa25nb75_DDEC6_2.2.2_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "name": "sa25nb75",
+      "seed_idx": 4,
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "minutes": 67.8,
+      "KH_water": 9.4664e-05,
+      "KH_water_err": 3.1511e-05,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790311403,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e20_runs/widom_water_sa25nb75_s4/Output/System_0/output_sa25nb75_DDEC6_2.2.2_298.000000_1e-05.data",
+      "status": "ok"
+    }
+  ],
   "compositions": {
     "ms50nb50": {
-      "n_new": 0,
-      "KH_water_each": [],
-      "seeds": []
+      "n_new": 4,
+      "KH_water_each": [
+        0.000206658,
+        0.000210532,
+        0.000148174,
+        0.000245242
+      ],
+      "seeds": [
+        1790311388,
+        1790311297,
+        1790311327,
+        1790311358
+      ],
+      "KH_water_mean4": 0.0002026515,
+      "KH_water_mean4_err": 7.2883875e-05,
+      "seed_sd_rel": 0.19861102438228506,
+      "supplementary_with_seedfixed": {
+        "n": 5,
+        "KH_water_mean": 0.000219577,
+        "KH_water_mean_err": 8.901741897067112e-05,
+        "seedfixed": [
+          0.000287279,
+          0.000412174
+        ],
+        "note": "등록 값 아님(등록 = 새 4씨앗)"
+      }
     },
     "sa25nb75": {
-      "n_new": 0,
-      "KH_water_each": [],
-      "seeds": []
+      "n_new": 4,
+      "KH_water_each": [
+        0.000136139,
+        0.000112665,
+        0.000108042,
+        9.4664e-05
+      ],
+      "seeds": [
+        1790311312,
+        1790311342,
+        1790311373,
+        1790311403
+      ],
+      "KH_water_mean4": 0.0001128775,
+      "KH_water_mean4_err": 1.48558e-05,
+      "seed_sd_rel": 0.15312569483147156,
+      "supplementary_with_seedfixed": {
+        "n": 5,
+        "KH_water_mean": 0.0001192034,
+        "KH_water_mean_err": 1.686719741059551e-05,
+        "seedfixed": [
+          0.000144507,
+          6.97346e-05
+        ],
+        "note": "등록 값 아님(등록 = 새 4씨앗)"
+      }
     }
   },
-  "elapsed_s": 7
+  "elapsed_s": 4304
 }
