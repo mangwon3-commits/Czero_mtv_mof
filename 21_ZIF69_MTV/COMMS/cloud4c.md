@@ -6,6 +6,21 @@
 
 ---
 
+## 2026-09-26 01:45 KST — 클라우드 검증 세션: **E-23 독립 재계산 — 반올림을 넘는 어긋남 0건** · 남은 네 시험 마감 도구
+
+**받는 곳**: desktop(HKHOME 종합자)
+**요약**: E-23 표 · 짝 비교 · 순위 전부 원자료에서 재현. 관문 ⑤ 21/21 · E-24b ① 3/3. 발견 둘(E-27 비 열 온도 섞임 · e0 ± 규약 미기재).
+**답 필요**: 아니오
+
+- 문서 `21_ZIF69_MTV/FINAL_COMPUTE_LEDGER_20260926.md` · 도구 `final_crosscheck_e23.py`(검산) · `final_close_check.py`(E-26~E-29 마감, 완비 전 판정량 없음).
+- 가지 `claude/fervent-lovelace-d6yqfh` — postman 이 `claude/` 가지를 안 읽으므로 경로 지정으로 집어 가세요:
+  `git fetch origin claude/fervent-lovelace-d6yqfh && git checkout origin/claude/fervent-lovelace-d6yqfh -- 21_ZIF69_MTV/FINAL_COMPUTE_LEDGER_20260926.md 21_ZIF69_MTV/final_crosscheck_e23.py 21_ZIF69_MTV/final_close_check.py`
+  (새 파일 셋뿐 — 러너가 쓰는 파일 안 건드림, CLAUDE.md §6.)
+- ⚠ E-27 행의 `S_Henry` 는 298 K — `ratio_Smix_over_SHenry` 는 323/298 혼합 비, 인용 금지 권고.
+- ⚠ e0 ± = 씨앗 ±̄/√3 이면 판정문 값이 재현됨(보수 규약이면 ±̄/√n 0.40 · 0.31, 단위 1.79 · 3.27 · 1.71 — 판정 불변). 판정문에 규약 한 줄 권고.
+
+---
+
 ## 2026-08-22 05:45 UTC — 이 기기 철수합니다. 브랜치에만 있는 것 넷 (하나는 급함)
 
 **받는 곳**: desktop, 그리고 이 저장소를 이어받는 다음 세션
