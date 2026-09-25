@@ -1,0 +1,622 @@
+{
+ "test": "MAGI-005 E-22 준비 — Zn(bib)(bdtdc) 4,8-치환 후보 빌드",
+ "assign": "ASSIGN_MAGI5B_20260925.md §laptop 6차",
+ "template": "core_pop_cifs/2017_Zn__dia_3_ASR_1.cif",
+ "template_formula": "C88H72N16O16S8Zn4",
+ "seed": 3618,
+ "torsion_step_deg": 5,
+ "sites_per_cell": 8,
+ "bdtdc_per_cell": 4,
+ "sites": [
+  {
+   "ring": 0,
+   "C": 136,
+   "H": 64,
+   "nbr": [
+    128,
+    133
+   ]
+  },
+  {
+   "ring": 0,
+   "C": 137,
+   "H": 65,
+   "nbr": [
+    129,
+    132
+   ]
+  },
+  {
+   "ring": 1,
+   "C": 138,
+   "H": 66,
+   "nbr": [
+    130,
+    135
+   ]
+  },
+  {
+   "ring": 1,
+   "C": 139,
+   "H": 67,
+   "nbr": [
+    131,
+    134
+   ]
+  },
+  {
+   "ring": 2,
+   "C": 160,
+   "H": 72,
+   "nbr": [
+    152,
+    157
+   ]
+  },
+  {
+   "ring": 2,
+   "C": 161,
+   "H": 73,
+   "nbr": [
+    153,
+    156
+   ]
+  },
+  {
+   "ring": 3,
+   "C": 162,
+   "H": 74,
+   "nbr": [
+    154,
+    159
+   ]
+  },
+  {
+   "ring": 3,
+   "C": 163,
+   "H": 75,
+   "nbr": [
+    155,
+    158
+   ]
+  }
+ ],
+ "half_rule": "링커 단위 — bdtdc 4 중 2 를 4,8-이치환",
+ "half_rings_chosen": [
+  0,
+  3
+ ],
+ "note": "판정 없음. 전하 없음(PACMAN 은 이완 뒤). Zeo++ 안 씀(E-21 RASPA 동시, CLAUDE.md §5) — PLD 는 데스크탑.",
+ "rows": [
+  {
+   "name": "E22_ZnDia_parent",
+   "kind": null,
+   "fraction": 0.0,
+   "n_substituted": 0,
+   "formula": "C88H72N16O16S8Zn4",
+   "n_atoms": 204,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    2.284,
+    "H-H"
+   ],
+   "substituent_nonbonded_min_A": null,
+   "nonbonded_ge_1.0": true,
+   "substituent_to_framework_contacts_top": [],
+   "substituent_geometry_range": {},
+   "clash_check": {
+    "name": "E22_ZnDia_parent.cif",
+    "n_atoms": 204,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E22_ZnDia_NO2_100",
+   "kind": "NO2",
+   "fraction": 1.0,
+   "n_substituted": 8,
+   "torsion_deg": {
+    "136": 125.0,
+    "137": 125.0,
+    "138": 125.0,
+    "139": 125.0,
+    "160": 70.0,
+    "161": 70.0,
+    "162": 70.0,
+    "163": 70.0
+   },
+   "sweeps_changed": [
+    8,
+    0
+   ],
+   "fragment_local": [
+    [
+     "N",
+     [
+      1.4679,
+      0.0,
+      0.0
+     ]
+    ],
+    [
+     "O",
+     [
+      2.0453,
+      1.0969,
+      -0.0
+     ]
+    ],
+    [
+     "O",
+     [
+      2.0453,
+      -1.0969,
+      0.0
+     ]
+    ]
+   ],
+   "formula": "C88H64N24O32S8Zn4",
+   "n_atoms": 220,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    1.717,
+    "O-O"
+   ],
+   "substituent_nonbonded_min_A": [
+    1.717,
+    "O-O"
+   ],
+   "nonbonded_ge_1.0": true,
+   "substituent_to_framework_contacts_top": [
+    [
+     1.717,
+     "O(치환기)",
+     "O(bdtdc; 결합 C)"
+    ],
+    [
+     1.748,
+     "O(치환기)",
+     "H(bib; 결합 C)"
+    ],
+    [
+     1.749,
+     "O(치환기)",
+     "H(bib; 결합 C)"
+    ],
+    [
+     1.956,
+     "O(치환기)",
+     "H(bib; 결합 C)"
+    ]
+   ],
+   "substituent_geometry_range": {
+    "C-X": [
+     1.468,
+     1.468
+    ],
+    "X-O": [
+     1.24,
+     1.24
+    ],
+    "O-X-O": [
+     124.478,
+     124.478
+    ],
+    "twist_deg": [
+     55.0,
+     70.0
+    ]
+   },
+   "clash_check": {
+    "name": "E22_ZnDia_NO2_100.cif",
+    "n_atoms": 220,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E22_ZnDia_NO2_050",
+   "kind": "NO2",
+   "fraction": 0.5,
+   "n_substituted": 4,
+   "torsion_deg": {
+    "136": 125.0,
+    "137": 125.0,
+    "162": 70.0,
+    "163": 70.0
+   },
+   "sweeps_changed": [
+    4,
+    0
+   ],
+   "fragment_local": [
+    [
+     "N",
+     [
+      1.4679,
+      0.0,
+      0.0
+     ]
+    ],
+    [
+     "O",
+     [
+      2.0453,
+      1.0969,
+      -0.0
+     ]
+    ],
+    [
+     "O",
+     [
+      2.0453,
+      -1.0969,
+      0.0
+     ]
+    ]
+   ],
+   "formula": "C88H68N20O24S8Zn4",
+   "n_atoms": 212,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    1.717,
+    "O-O"
+   ],
+   "substituent_nonbonded_min_A": [
+    1.717,
+    "O-O"
+   ],
+   "nonbonded_ge_1.0": true,
+   "substituent_to_framework_contacts_top": [
+    [
+     1.717,
+     "O(치환기)",
+     "O(bdtdc; 결합 C)"
+    ],
+    [
+     1.749,
+     "O(치환기)",
+     "H(bib; 결합 C)"
+    ],
+    [
+     1.956,
+     "O(치환기)",
+     "H(bib; 결합 C)"
+    ],
+    [
+     2.079,
+     "O(치환기)",
+     "C(bib; 결합 CN)"
+    ]
+   ],
+   "substituent_geometry_range": {
+    "C-X": [
+     1.468,
+     1.468
+    ],
+    "X-O": [
+     1.24,
+     1.24
+    ],
+    "O-X-O": [
+     124.478,
+     124.478
+    ],
+    "twist_deg": [
+     55.0,
+     70.0
+    ]
+   },
+   "clash_check": {
+    "name": "E22_ZnDia_NO2_050.cif",
+    "n_atoms": 212,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E22_ZnDia_SO2Me_100",
+   "kind": "SO2Me",
+   "fraction": 1.0,
+   "n_substituted": 8,
+   "torsion_deg": {
+    "136": 270.0,
+    "137": 270.0,
+    "138": 270.0,
+    "139": 270.0,
+    "160": 15.0,
+    "161": 15.0,
+    "162": 15.0,
+    "163": 15.0
+   },
+   "sweeps_changed": [
+    8,
+    0
+   ],
+   "fragment_local": [
+    [
+     "S",
+     [
+      1.7764,
+      0.0,
+      0.0
+     ]
+    ],
+    [
+     "O",
+     [
+      2.2163,
+      1.2615,
+      0.5654
+     ]
+    ],
+    [
+     "O",
+     [
+      2.2163,
+      -1.2615,
+      0.5653
+     ]
+    ],
+    [
+     "C",
+     [
+      2.18,
+      0.0,
+      -1.7271
+     ]
+    ],
+    [
+     "H",
+     [
+      3.2681,
+      0.0,
+      -1.8205
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7683,
+      0.8989,
+      -2.19
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7683,
+      -0.8988,
+      -2.19
+     ]
+    ]
+   ],
+   "formula": "C96H88N16O32S16Zn4",
+   "n_atoms": 252,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    1.346,
+    "H-O"
+   ],
+   "substituent_nonbonded_min_A": [
+    1.346,
+    "H-O"
+   ],
+   "nonbonded_ge_1.0": true,
+   "substituent_to_framework_contacts_top": [
+    [
+     1.346,
+     "O(치환기)",
+     "H(bib; 결합 C)"
+    ],
+    [
+     1.897,
+     "O(치환기)",
+     "O(bdtdc; 결합 C)"
+    ],
+    [
+     2.006,
+     "O(치환기)",
+     "C(bib; 결합 CN)"
+    ],
+    [
+     2.104,
+     "H(치환기)",
+     "S(bdtdc; 결합 CC)"
+    ]
+   ],
+   "substituent_geometry_range": {
+    "C-X": [
+     1.776,
+     1.776
+    ],
+    "X-O": [
+     1.451,
+     1.451
+    ],
+    "O-X-O": [
+     120.82,
+     120.82
+    ],
+    "twist_deg": [
+     0.001,
+     74.999
+    ]
+   },
+   "clash_check": {
+    "name": "E22_ZnDia_SO2Me_100.cif",
+    "n_atoms": 252,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E22_ZnDia_SO2Me_050",
+   "kind": "SO2Me",
+   "fraction": 0.5,
+   "n_substituted": 4,
+   "torsion_deg": {
+    "136": 270.0,
+    "137": 270.0,
+    "162": 15.0,
+    "163": 15.0
+   },
+   "sweeps_changed": [
+    4,
+    0
+   ],
+   "fragment_local": [
+    [
+     "S",
+     [
+      1.7764,
+      0.0,
+      0.0
+     ]
+    ],
+    [
+     "O",
+     [
+      2.2163,
+      1.2615,
+      0.5654
+     ]
+    ],
+    [
+     "O",
+     [
+      2.2163,
+      -1.2615,
+      0.5653
+     ]
+    ],
+    [
+     "C",
+     [
+      2.18,
+      0.0,
+      -1.7271
+     ]
+    ],
+    [
+     "H",
+     [
+      3.2681,
+      0.0,
+      -1.8205
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7683,
+      0.8989,
+      -2.19
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7683,
+      -0.8988,
+      -2.19
+     ]
+    ]
+   ],
+   "formula": "C92H80N16O24S12Zn4",
+   "n_atoms": 228,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    1.346,
+    "H-O"
+   ],
+   "substituent_nonbonded_min_A": [
+    1.346,
+    "H-O"
+   ],
+   "nonbonded_ge_1.0": true,
+   "substituent_to_framework_contacts_top": [
+    [
+     1.346,
+     "O(치환기)",
+     "H(bib; 결합 C)"
+    ],
+    [
+     1.897,
+     "O(치환기)",
+     "O(bdtdc; 결합 C)"
+    ],
+    [
+     2.006,
+     "O(치환기)",
+     "C(bib; 결합 CN)"
+    ],
+    [
+     2.104,
+     "H(치환기)",
+     "S(bdtdc; 결합 CC)"
+    ]
+   ],
+   "substituent_geometry_range": {
+    "C-X": [
+     1.776,
+     1.776
+    ],
+    "X-O": [
+     1.451,
+     1.451
+    ],
+    "O-X-O": [
+     120.82,
+     120.82
+    ],
+    "twist_deg": [
+     0.001,
+     74.999
+    ]
+   },
+   "clash_check": {
+    "name": "E22_ZnDia_SO2Me_050.cif",
+    "n_atoms": 228,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  }
+ ]
+}

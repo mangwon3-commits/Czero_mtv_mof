@@ -1,0 +1,167 @@
+{
+ "test": "MAGI-005 E-21 작동점 벌점 대 G (T-J1′ 확장, S_mix/S_Henry)",
+ "assign": "ASSIGN_MAGI5B_20260925.md §laptop 6차",
+ "registration": "ASSIGN_MAGI5B_20260925.md §laptop 6차 예측(1)(2) — ρ(비, G) ≤ −0.5(n 11), 기각 ρ ≥ 0",
+ "protocol": {
+  "mix": {
+   "CO2": 0.15,
+   "N2": 0.85
+  },
+  "P_Pa": 100000.0,
+  "T_K": 298.0,
+  "init": 5000,
+  "cycles": 15000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "ewald": 1e-06,
+  "blocking": false
+ },
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "rows": [
+  {
+   "name": "ms50nb50",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 49.22181921746342,
+   "S_Henry_err": 2.065886182497455,
+   "S_Henry_src": "results_v4mix.json",
+   "L": 0.46024839574664816,
+   "L_src": "results_v4mix.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 5568,
+   "cif": "charged_v3/ms50nb50_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "flexible": null
+  },
+  {
+   "name": "cf3Im075",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 37.46255002060185,
+   "S_Henry_err": 1.0878954593551824,
+   "S_Henry_src": "results_v3.json",
+   "L": 0.5139020958310808,
+   "L_src": "results_v3.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 5232,
+   "cif": "charged_v3/cf3Im075_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "flexible": null
+  },
+  {
+   "name": "mslm025",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 42.160848869496235,
+   "S_Henry_err": 0.8252734253568751,
+   "S_Henry_src": "results_v3.json",
+   "L": 0.4451443097044181,
+   "L_src": "results_v3.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 5088,
+   "cif": "charged_v3/mslm025_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "flexible": null
+  },
+  {
+   "name": "nbIm050",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 42.70821777755125,
+   "S_Henry_err": 2.530950366252459,
+   "S_Henry_src": "results_v3.json",
+   "L": 0.3889990186222615,
+   "L_src": "results_v3.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 4992,
+   "cif": "charged_v3/nbIm050_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "flexible": null
+  },
+  {
+   "name": "saIm025",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 44.789213592825334,
+   "S_Henry_err": 1.1192112110269608,
+   "S_Henry_src": "results_v3.json",
+   "L": 0.4379074104848303,
+   "L_src": "results_v3.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 4992,
+   "cif": "charged_v3/saIm025_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "flexible": null
+  },
+  {
+   "name": "fbIm100",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 20.427509887192492,
+   "S_Henry_err": 0.523375669552244,
+   "S_Henry_src": "results_v3.json",
+   "L": 0.6186722071615404,
+   "L_src": "results_v3.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 4800,
+   "cif": "charged_v3/fbIm100_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop",
+   "flexible": null
+  }
+ ]
+}
