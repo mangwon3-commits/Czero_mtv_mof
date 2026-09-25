@@ -169,6 +169,21 @@ def main():
             txt = open(blk).read()
         rows = [list(map(float, l.split())) for l in txt.strip().splitlines()[1:]]
         print(f"  막음 구 {len(rows)}: {rows}")
+
+        def inside_any(p):
+            i, rem = divmod(p, n[1] * n[2]); j, k = divmod(rem, n[2])
+            f = ((i + 0.5) / n[0], (j + 0.5) / n[1], (k + 0.5) / n[2])
+            for sx, sy, sz, sr in rows:
+                d = [f[0] - sx, f[1] - sy, f[2] - sz]
+                d = [x - round(x) for x in d]
+                c = cart(M, d)
+                if c[0] ** 2 + c[1] ** 2 + c[2] ** 2 <= sr * sr:
+                    return True
+            return False
+        # 과막음: 통로(열린 부분) 격자점이 구 안에 드는 비율 — 0 이어야 통로 흡착을 안 지움
+        ch_pts = [p for r in R["chans"] for p in R["comps"][r]]
+        ch_in = sum(inside_any(p) for p in ch_pts)
+        print(f"  통로 점 {len(ch_pts)} 중 막음 구 안 {ch_in} ({100*ch_in/max(1,len(ch_pts)):.2f} %) — 과막음 지표")
         for r in sorted(R["pockets"], key=lambda r: -len(R["comps"][r])):
             pts = R["comps"][r]
             inside = 0
