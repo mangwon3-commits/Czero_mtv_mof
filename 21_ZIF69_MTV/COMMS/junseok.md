@@ -3,6 +3,28 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 11:15 — [E-16 ① 정체 · ② 착수] 2017_Zn__dia_3 ASR_1/FSR_1 = Zn(bib)(bdtdc) — **형식 전하 0**(짝이온 삭제 없음) · S 는 티오펜(술포 아님) · ② 물 Widom 착수 전 관문 통과 11:14 · ⚠ ② 기각선이 결과 전부터 닿지 않음
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 예 — ② 기각선 보완 여부(결과 전, 본 계산 진행 중)
+
+    ① 정체(계산 0) — CoRE 메타 슬라이스: Zn · 원자 204 · LCD 5.16535 / PLD 3.80955 가 ASR·FSR 두 판 모두 한 줄기에 정확히 맞음
+      am6b11797_si_001_1_{ASR,FSR}_pacman · DOI **10.1021/acsami.6b11797**(ACS Appl. Mater. Interfaces 2017, Zhao · Xu · Qiu 외 —
+      Crossref 제목 "MOFs Constructed from a New Thiophene-Functionalized Dicarboxylate: Luminescence Sensing and Pesticide Removal")
+      · ASR C2/m(#12) · FSR P4₃22(#95, hall "P 4cw 2c") · 두 판 조성 같음 · dia · **4중 상호침투** · has_OMS Yes(Zn) · 열 안정 316 °C · 물 안정 unknown
+      · MOFid 링커 = **1,4-bis(imidazol-1-yl)butane(bib, 중성 N-주개)** + **benzo[1,2-b:4,5-b′]dithiophene-2,6-dicarboxylate(bdtdc²⁻)**
+    형식 전하 산수: bib C₁₀H₁₄N₄ + bdtdc C₁₂H₄S₂O₄²⁻ + Zn²⁺ = ZnC₂₂H₁₈N₄S₂O₄ → ×4 = **Zn₄C₈₈H₇₂N₁₆S₈O₁₆ — CIF 식과 원소마다 정확히 일치**,
+      전하 +8 − 8 = **0**. 짝이온 삭제 **없음**(E-15b 와 다름) → 등록 절 "형식 전하 ≠ 0 이면 '유일 3D 표본' 철회" 는 **발동 안 함**.
+      정정 한 줄: 배정문의 "술포 계열" 은 틀린 이름입니다 — S 8개는 **티오펜 고리 S**, O 16개는 카복실레이트 O(술포네이트·설폰 아님).
+    원 논문 CO₂ 등온선: Crossref 에 초록 없음 · 제목이 발광 감지·농약 제거 — 기체 흡착 자료 유무 **미확인**(원문 못 봄). 대조 못 했습니다.
+    ② 물 Widom(magi5_e16_water.py, run_tb2_water_kh 의 read_kh · count_sites 그대로): water.def md5 6fc8850d(정본) · 5자리 ·
+      **착수 전 10 사이클 시험의 머리말 관문 통과** — Hw–Hw · Ow–Hw · Ow–Lw · Lw–Lw = ZERO_POTENTIAL · Ow–Ow ε 89.633. 본 계산 11:14:10 착수(1×2×3).
+    ⚠ ② 등록 기각선(결과 전 지적): 참조 saIm050 의 물 K_H 는 v3w_water_kh/water_kh_ALLw_hkhome.json 에서 **2.559e-4 ± 1.715e-4(± 67 %)**.
+      그래서 참조 지수 = 2.559e-4 / 1.757e-4 = **1.46 ± 0.98**. "합성 ± 1.5 단위 넘게 아래" 는 새 값 ± 가 0 이어도 지수 < 1.46 − 1.47 ≈ **−0.01**
+      이어야 성립 — 지수는 음수가 될 수 없으니 **어떤 결과로도 기각이 안 됩니다.** 판별력이 0 인 기각선입니다.
+      보완안(선택은 종합자, 결과 전): 참조 ± 를 빼고 새 값 ± 만으로 재기 · 또는 saIm050 물 K_H 를 씨앗 여럿으로 다시 재서 ± 를 줄이기 ·
+      또는 이 지표는 서술로만. 본 계산은 그대로 돌립니다(값 자체는 쓸모 있음).
+
 ## 2026-09-25 11:09 — [E-15b ① 완주] Cd hcb 새 씨앗 재현 — S_ON 235.4 ± 19.5(옛 224.0, 0.26 단위) · G 16.58 ± 1.39(옛 15.72, 0.28 단위) — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
