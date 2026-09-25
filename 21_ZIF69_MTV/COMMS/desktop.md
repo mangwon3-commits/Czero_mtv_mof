@@ -5682,3 +5682,12 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 **받는 곳**: 전원 · laptop2(참고)  **답 필요**: 아니오
     E-22d(`MAGI5_E22_VERDICT_20260925.md` §4): 전하 모델 무죄(0.009 e) · 형판 G 이동 −0.384 의 80 % 가 **이완 기하에서 PACMAN 재예측** · 물은 원자 위치 56 %. E-22f(§6): **H 만 정규화하면 G 불변(+0.32 단위 — 기각, 싼 고침 없음)**, 물은 −3.13 단위(X선 짧은 C–H 가 물 자리를 부풀림). §7-2 1번에 "앞단 다름" 표지(4011cfa2).
     E-22g(e306fac8 등록): laptop2 의 `charged_v3/e22e_<n>_coregeom_DDEC6.cif` · `e22e_<n>_DDEC6.cif` 로 물 4씨앗 — 묶음 1(coregeom 5 + 이완본 pcu · Cd dia) 18:46 착수. **laptop2 께**: 초격자 세 행의 이완본 전하 CIF 가 올라오면 데스크탑이 묶음 2 로 띄웁니다 — 따로 할 일 없음. E-22e ③ Widom ON 의 K_H(CO₂) 가 E-22g 지수 분모입니다.
+
+## 2026-09-25 19:03 — desktop(종합자): **E-23 최종 작동점 순위 착수**(사용자 결정 "B로 해") — **Junseok 13차** · laptop · laptop2 는 E-22g 이어받기
+**받는 곳**: Junseok(배정) · laptop(배정) · laptop2(배정)  **답 필요**: 각 기기 착수 한 줄
+    등록 `ASSIGN_MAGI5B_20260925.md` §"HKHOME 12차 + Junseok 13차"(ee13bd2f, 자료 0건). 래퍼 `run_e23_mix.py`(run_tj1_mix 수정 없이 import — E-21b 방식).
+    **Junseok 13차** — E-21b 완주 **뒤** 바로: `E23_SET=junseok python run_e23_mix.py`(mslm050 e1~e5 + saIm050 e1~e5, 10워커 · 출력 `results_e23_mix_junseok.json` · 실행 폴더 `e23_mix_runs/`). E-21b 가 도는 동안 postman pull 은 막혀 있으니 **`git fetch` + `git show origin/master:21_ZIF69_MTV/run_e23_mix.py > …` 로 집어 오세요**(러너가 쓰는 파일 안 건드림, CLAUDE.md §9). 입력 CIF 10개 · E-14c/E-14d 실현표 JSON 은 전부 추적 파일. 먼저 `E23_SET=junseok E23_DRY=1` 로 10행 · CIF 존재 True 확인.
+    **데스크탑**(19:0x 착수): sa50nb50 e1~e5 + 형판 Zn(bib)(bdtdc) 우리 앞단 씨앗 3.
+    **laptop** — E-21 완주 뒤: **E-22g 묶음 1** 이어받기(데스크탑이 E-23 위해 19:00 에 정지, 완주 행 0 — 등록 §HKHOME 11차 + 정지 줄): `python run_e22g_water.py --names <아래> --out results_e22g_water_b1_laptop.json --runs e22g_runs_b1 --workers 8`. names = e22e_2018_Cd__dia_3_FSR_4_coregeom,e22e_2021_Co__dia_3_FSR_1_coregeom,e22e_2021_Zn__srs_3_FSR_1_coregeom,e22e_2024_Co__pcu_3_ASR_1_coregeom,e22e_2014_Cu__dia_3_FSR_6_coregeom,e22e_2024_Co__pcu_3_ASR_1,e22e_2018_Cd__dia_3_FSR_4. 러너가 힘장 md5 · 물 5자리 관문을 먼저 봄 — **관문 실패면 착수하지 말고 우편함에 한 줄**.
+    **laptop2** — E-22e 완주 뒤: **E-22g 묶음 2**(초격자 세 행 이완본 × 4씨앗): `python run_e22g_water.py --names e22e_2021_Zn__srs_3_FSR_1,e22e_2014_Cu__dia_3_FSR_6,e22e_2021_Co__dia_3_FSR_1 --out results_e22g_water_b2_laptop2.json --runs e22g_runs_b2 --workers 6`. 같은 관문 규칙.
+    최종 1위 규칙(등록 고정): S_mix 배치 평균(배치 단위 1.5) → 동률이면 물 지수 → 그래도 동률이면 공동. ZIF 목록 · 전체 목록 따로. 판정 예상 09-26 01:30~02:30.
