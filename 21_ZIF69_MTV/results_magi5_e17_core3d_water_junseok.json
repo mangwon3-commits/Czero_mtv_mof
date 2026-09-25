@@ -2,7 +2,7 @@
   "test": "MAGI-005 E-17 — CoRE 3D 열역학 상위 12행의 물(정전기 이득 G 와 물 벌점)",
   "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 8차",
   "machine": "junseok",
-  "final": false,
+  "final": true,
   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
   "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
   "header_gate_pre": {
@@ -35,8 +35,33 @@
       "has_OMS": "No",
       "OMS_type": null,
       "DOI": "10.1039/d3dt01053h",
-      "status": "pending",
-      "source": "E-17"
+      "unit_cells": [
+        3,
+        2,
+        3
+      ],
+      "minutes": 29.8,
+      "KH_water": 3.43301e-05,
+      "KH_water_err": 1.80792e-06,
+      "read_error": null,
+      "header_gate_ok": true,
+      "header_gate": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "marker_finished": true,
+      "seed": 1790303404,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e17_runs/widom_water_2024_Co__pcu_3_ASR_1/Output/System_0/output_2024_Co__pcu_3_ASR_1_3.2.3_298.000000_1e-05.data",
+      "status": "ok",
+      "source": "E-17",
+      "index": 0.061494382586016645,
+      "index_err": 0.003300575984755844
     },
     {
       "name": "2024_Co__pcu_3_FSR_1",
@@ -56,8 +81,33 @@
       "has_OMS": "No",
       "OMS_type": null,
       "DOI": "10.1039/d3dt01053h",
-      "status": "pending",
-      "source": "E-17"
+      "unit_cells": [
+        3,
+        2,
+        3
+      ],
+      "minutes": 29.8,
+      "KH_water": 3.53666e-05,
+      "KH_water_err": 1.43408e-06,
+      "read_error": null,
+      "header_gate_ok": true,
+      "header_gate": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      },
+      "marker_finished": true,
+      "seed": 1790303419,
+      "water_sites_in_rundir": 5,
+      "data": "magi5_e17_runs/widom_water_2024_Co__pcu_3_FSR_1/Output/System_0/output_2024_Co__pcu_3_FSR_1_3.2.3_298.000000_1e-05.data",
+      "status": "ok",
+      "source": "E-17",
+      "index": 0.06334853462203961,
+      "index_err": 0.0027522413119929643
     },
     {
       "name": "2018_Cd__dia_3_ASR_4",
@@ -495,5 +545,74 @@
       "index_err": 0.0223405088079205
     }
   ],
-  "elapsed_s": 1236
+  "stats": {
+    "n": 12,
+    "rho_KHwater_G": 0.7762237762237763,
+    "rho_boot95": [
+      0.21323529411764705,
+      0.9714285714285714
+    ],
+    "index_median": 0.06486417629333782,
+    "index_range": [
+      0.004810787725181861,
+      0.11363825200766178
+    ],
+    "pairs": [
+      {
+        "a": "2024[Co][pcu]3[ASR]1",
+        "b": "2024[Co][pcu]3[FSR]1",
+        "KH_water_a": 3.43301e-05,
+        "KH_water_b": 3.53666e-05,
+        "units_max": 0.5733107659630972,
+        "units_comb": 0.4491619605429479
+      },
+      {
+        "a": "2018[Cd][dia]3[ASR]4",
+        "b": "2018[Cd][dia]3[FSR]3",
+        "KH_water_a": 9.27287e-05,
+        "KH_water_b": 7.71819e-05,
+        "units_max": 0.2603020460101129,
+        "units_comb": 0.2571670148149876
+      },
+      {
+        "a": "2018[Cd][dia]3[ASR]6",
+        "b": "2018[Cd][dia]3[FSR]5",
+        "KH_water_a": 7.99178e-05,
+        "KH_water_b": 7.8911e-05,
+        "units_max": 0.05186055136605259,
+        "units_comb": 0.048469771308216884
+      },
+      {
+        "a": "2014[Cu][dia]3[ASR]5",
+        "b": "2014[Cu][dia]3[FSR]6",
+        "KH_water_a": 1.11371e-05,
+        "KH_water_b": 1.13576e-05,
+        "units_max": 0.6476037193893405,
+        "units_comb": 0.46465315810176633
+      }
+    ],
+    "pairs_outside_1p5_max": 0,
+    "pairs_outside_1p5_comb": 0,
+    "has_OMS_split": {
+      "Yes": [
+        "2021_Zn__srs_3_FSR_1",
+        "2014_Cu__dia_3_ASR_5",
+        "2014_Cu__dia_3_FSR_6",
+        "2017_Zn__dia_3_ASR_1"
+      ],
+      "No": [
+        "2024_Co__pcu_3_ASR_1",
+        "2024_Co__pcu_3_FSR_1",
+        "2018_Cd__dia_3_ASR_4",
+        "2018_Cd__dia_3_FSR_3",
+        "2018_Cd__dia_3_FSR_4",
+        "2021_Co__dia_3_FSR_1"
+      ],
+      "null": [
+        "2018_Cd__dia_3_ASR_6",
+        "2018_Cd__dia_3_FSR_5"
+      ]
+    }
+  },
+  "elapsed_s": 1807
 }
