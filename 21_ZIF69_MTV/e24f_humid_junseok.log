@@ -1,0 +1,43 @@
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  파일 관문 md5 8e8ec933f9013c7e932da04dc256efd3 일치
+E-24f 습윤 작업 용량(C₂H₅ 막음) — 착수 간격 15 s(+ 2 s 잠금) · 작업 9 · 막음 CO₂ 2 구 · 물 4 구 · 스모크 False · 사이클 15000+5000
+  CHARGED      /home/mangwon/mof_project/21_ZIF69_MTV/charged_v3
+  RUNS         /home/mangwon/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w
+  RESULT       /home/mangwon/mof_project/21_ZIF69_MTV/v3w_humid_wc/humid_working_capacity_w2_e24f_c2h5_junseok.json
+  TARGETS      ['e24c_c2h5_100_h1', 'e24c_c2h5_100_h2', 'e24c_c2h5_100_h3']
+  MAX_WORKERS  6
+습윤 작업 용량 — 물 분압 2852.1 Pa 고정, 작업 9개, 워커 6
+  ads  CO2  0.15 bar  298.0 K  -> RH  90.0%
+  tsa  CO2  0.15 bar  373.0 K  -> RH   2.8%
+  vsa  CO2  0.05 bar  298.0 K  -> RH  90.0%
+
+  [              ok] ads  e24c_c2h5_100_h1 CO2 1.6639  물 0.045
+  [              ok] tsa  e24c_c2h5_100_h1 CO2 0.6781  물 0.008
+  [              ok] vsa  e24c_c2h5_100_h1 CO2 1.3581  물 0.054
+  [              ok] ads  e24c_c2h5_100_h2 CO2 1.6575  물 0.052
+  [              ok] tsa  e24c_c2h5_100_h2 CO2 0.6679  물 0.008
+  [              ok] vsa  e24c_c2h5_100_h2 CO2 1.3715  물 0.051
+  [              ok] ads  e24c_c2h5_100_h3 CO2 1.6624  물 0.046
+  [              ok] tsa  e24c_c2h5_100_h3 CO2 0.6677  물 0.008
+  [              ok] vsa  e24c_c2h5_100_h3 CO2 1.3555  물 0.076
+
+====================================================================================================
+조성                    흡착 CO2            TSA 잔류            VSA 잔류       WC(TSA)       WC(VSA)
+----------------------------------------------------------------------------------------------------
+e24c_c2h5_100_h1     1.6639±0.0271     0.6781±0.0240     1.3581±0.0127 0.9858±0.0362 0.3058±0.0299
+e24c_c2h5_100_h2     1.6575±0.0451     0.6679±0.0238     1.3715±0.0385 0.9896±0.0510 0.2860±0.0592
+e24c_c2h5_100_h3     1.6624±0.0375     0.6677±0.0137     1.3555±0.0387 0.9947±0.0399 0.3069±0.0539
+
+[OK] humid_working_capacity_w2_e24f_c2h5_junseok.json
+감사 {"n": 9, "n_ok": 9, "seeds_distinct": true}
+  ads  e24c_c2h5_100_h1   ok True · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24c_c2h5_100_water.block"}} · 기대 {'CO2': 12, 'water': 24} · rc 0 · not-found False · 씨앗 1790362443
+  tsa  e24c_c2h5_100_h1   ok True · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24c_c2h5_100_water.block"}} · 기대 {'CO2': 12, 'water': 24} · rc 0 · not-found False · 씨앗 1790362459
+  vsa  e24c_c2h5_100_h1   ok True · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24c_c2h5_100_water.block"}} · 기대 {'CO2': 12, 'water': 24} · rc 0 · not-found False · 씨앗 1790362474
+  ads  e24c_c2h5_100_h2   ok True · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24c_c2h5_100_water.block"}} · 기대 {'CO2': 12, 'water': 24} · rc 0 · not-found False · 씨앗 1790362490
+  tsa  e24c_c2h5_100_h2   ok True · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24c_c2h5_100_water.block"}} · 기대 {'CO2': 12, 'water': 24} · rc 0 · not-found False · 씨앗 1790362505
+  vsa  e24c_c2h5_100_h2   ok True · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24c_c2h5_100_water.block"}} · 기대 {'CO2': 12, 'water': 24} · rc 0 · not-found False · 씨앗 1790362521
+  ads  e24c_c2h5_100_h3   ok True · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24c_c2h5_100_water.block"}} · 기대 {'CO2': 12, 'water': 24} · rc 0 · not-found False · 씨앗 1790363427
+  tsa  e24c_c2h5_100_h3   ok True · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24c_c2h5_100_water.block"}} · 기대 {'CO2': 12, 'water': 24} · rc 0 · not-found False · 씨앗 1790363470
+  vsa  e24c_c2h5_100_h3   ok True · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24c_c2h5_100_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24c_c2h5_100_water.block"}} · 기대 {'CO2': 12, 'water': 24} · rc 0 · not-found False · 씨앗 1790363713
+요약 저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24f_c2h5_summary_junseok.json · {"WC_TSA_each": [0.9858, 0.9896, 0.9947], "WC_TSA_mean": 0.9900333333333333, "WC_TSA_mean_err": 0.024460406404667144, "WC_VSA_each": [0.3058, 0.286, 0.3069], "WC_VSA_mean": 0.29956666666666665, "WC_VSA_mean_err": 0.027520362831372165, "CH3_reference": {"file": "v3w_humid_wc/humid_working_capacity_w2_e24ch3_laptop.json", "WC_TSA_each": [2.1189, 2.1172, 2.1331], "mean": 2.123066666666667, "mean_err": 0.028713553387697387}, "units_WC_TSA_vs_CH3": -30.038197434231506, "(1)_more_than_1.5_below_CH3": true, "per_cell_descriptive": {"cell_mass_g_per_mol": {"C2H5": 2352.0720000000038, "CH3": 2239.8560000000034}, "WC_TSA_molecules_per_cell": {"C2H5": 2.328629682400004, "CH3": 4.75536361173334}}}
