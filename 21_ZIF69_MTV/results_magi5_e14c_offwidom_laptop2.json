@@ -660,7 +660,7 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop2",
-   "status": "pending",
+   "status": "ok",
    "set": "saIm050",
    "realization": 4,
    "run_status_CO2": "ok",
@@ -687,6 +687,26 @@
    "KH_CO2_err": 6.22749e-07,
    "dU_CO2": -22.8059671018,
    "dU_CO2_err": 0.1272467584,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 648,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790307548,
+   "total_time_s_N2": 3812.05844,
+   "KH_N2": 2.83442e-06,
+   "KH_N2_err": 2.64238e-08,
+   "dU_N2": -13.0664330419,
+   "dU_N2_err": 0.0824973351,
    "on_ref": {
     "src": "results_v3ens_mix10.json",
     "KH_CO2": 0.000171612,
@@ -699,7 +719,15 @@
     "selectivity_err": 3.2911621489694625
    },
    "S_ON": 53.99728144586805,
-   "S_ON_err": 3.2911621489694625
+   "S_ON_err": 3.2911621489694625,
+   "S_OFF": 12.972601096520629,
+   "S_OFF_err": 0.25079463905416843,
+   "lnS_OFF": 2.5628395253703147,
+   "lnS_OFF_err": 0.019332640939790702,
+   "lnS_ON": 3.988933701701957,
+   "ln_ratio": 0.642487370566432,
+   "dlnKH_CO2_off_minus_on": -1.5405592585971633,
+   "dlnKH_N2_off_minus_on": -0.11446508226552109
   },
   {
    "name": "saIm050e5_DDEC6",
