@@ -1,0 +1,15 @@
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+E-24c 막음 Widom 8작업 · 좌표 {"e24c_och3_100": {"n_atoms": [236, 236], "symbols_same": true, "cell_max_diff": 0.0, "frac_max_diff": 4.965812538948455e-09}, "e24c_c2h5_100": {"n_atoms": [252, 252], "symbols_same": true, "cell_max_diff": 0.0, "frac_max_diff": 4.994958668902427e-09}} · 계획 {"e24c_och3_100 r1.65 CO2": {"block_file": "e24c_zeo_runs/e24c_och3_100/block1.65/e24c_och3_100_relaxed.block", "n_spheres": 4}, "e24c_och3_100 r1.82 N2": {"block_file": "e24c_zeo_runs/e24c_och3_100/block1.82/e24c_och3_100_relaxed.block", "n_spheres": 4}, "e24c_c2h5_100 r1.65 CO2": {"block_file": "e24c_zeo_runs/e24c_c2h5_100/block1.65/e24c_c2h5_100_relaxed.block", "n_spheres": 2}, "e24c_c2h5_100 r1.82 N2": {"block_file": "e24c_zeo_runs/e24c_c2h5_100/block1.82/e24c_c2h5_100_relaxed.block", "n_spheres": 2}}
+  [    ok] e24c_och3_100 on r=1.65 CO2 K_H 0.000941175 ± 2.62797e-05 · N 24/24 · 표지 True · rc 0 · 씨앗 1790358410 · 10.3 분
+  [    ok] e24c_och3_100 off r=1.65 CO2 K_H 0.000434373 ± 6.00432e-06 · N 24/24 · 표지 True · rc 0 · 씨앗 1790358425 · 10.4 분
+  [    ok] e24c_och3_100 on r=1.82 N2 K_H 8.35535e-06 ± 7.40624e-08 · N 24/24 · 표지 True · rc 0 · 씨앗 1790358441 · 10.4 분
+  [    ok] e24c_och3_100 off r=1.82 N2 K_H 7.45127e-06 ± 1.00571e-07 · N 24/24 · 표지 True · rc 0 · 씨앗 1790358456 · 10.5 분
+  [    ok] e24c_c2h5_100 on r=1.65 CO2 K_H 0.00226037 ± 1.55457e-05 · N 12/12 · 표지 True · rc 0 · 씨앗 1790358472 · 10.9 분
+  [    ok] e24c_c2h5_100 off r=1.65 CO2 K_H 0.00101797 ± 2.78282e-05 · N 12/12 · 표지 True · rc 0 · 씨앗 1790358487 · 10.8 분
+  [    ok] e24c_c2h5_100 on r=1.82 N2 K_H 1.19878e-05 ± 2.58479e-07 · N 12/12 · 표지 True · rc 0 · 씨앗 1790358503 · 11.0 분
+  [    ok] e24c_c2h5_100 off r=1.82 N2 K_H 1.04634e-05 ± 9.32279e-08 · N 12/12 · 표지 True · rc 0 · 씨앗 1790358518 · 10.9 분
+
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24c_och3_blockpockets_junseok.json
+  e24c_och3_100: S_ON 막음 112.64339614737864 ± 3.299937005199925 · S_OFF 막음 58.29516310642347 ± 1.1262401817986416 · G 막음 1.932294038559206 ± 0.06780865357956659 · 차단 없음 참조 None
+  e24c_c2h5_100: S_ON 막음 188.55586512954835 ± 4.267419113060723 · S_OFF 막음 97.28864422654203 ± 2.7972735646987714 · G 막음 1.9381076448191168 ± 0.07091748542943363 · 차단 없음 참조 None
