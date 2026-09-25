@@ -1,0 +1,19 @@
+{
+ "test": "MAGI-005 E-29 — CH₃ 통로 닫힘 · UFF4MOF 이완 상한 60",
+ "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 15차",
+ "machine": "junseok",
+ "rule": "risk_screen.run_one 무수정 · OUTER_LOOP_CAP 60(래퍼) · INNER 2000 · min_eval 1e-4 · Zeo++ 호출 잠금(순차)",
+ "cap": 60,
+ "started": "2026-09-26 01:26:08",
+ "rows": {
+  "e24_ch3_100": {
+   "status": "pending"
+  },
+  "e24_cn_100": {
+   "status": "pending"
+  },
+  "e22_parent": {
+   "status": "pending"
+  }
+ }
+}
