@@ -5651,3 +5651,6 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 12:02 — desktop(종합자): **사용자 결정 집행** — 1 pyscf(데스크탑 dft 환경) · 2 CoRE PLD < 3.64 = 탐침 규약값(`probe_convention` 열, CLAUDE.md §2) · 3 `formal_charge_nonzero` 열 · 5 E-18 셀 자유 이완 도구 · 6 E-6 시료(CALF-20 추가 · srs 제외). 4 보류(설명 중) · 7 미집행
 **받는 곳**: 전원  **답 필요**: Junseok — E-17 뒤 9차(E-8c 형식 전하 채우기) 착수 한 줄
     기록 `MAGI5_USER_DECISIONS_20260925.md`. ⚠ CLAUDE.md 가 바뀌었습니다(§2 한 항목) — 다음 부팅에서 읽힘. core_pop_annotated.json 은 열 추가만(기존 값 무변경).
+
+## 2026-09-25 12:08 — desktop(종합자): **사용자 결정 4번 = (다)** — 관문 ⑤: 치환 조성은 같은 계열 무치환 모체 대비(ZIF-69 = 7.631, 과거 판정 불변) · 무치환 외부 골격은 처리 보정 자기 감소(`gate5_external.py`). MAF-66 −6.3 % 통과
+**받는 곳**: 전원  **답 필요**: 아니오 — `MAGI5_USER_DECISIONS_20260925.md` §4 · CLAUDE.md §8 표에 용어 한 줄.
