@@ -107,7 +107,104 @@
    }
   },
   "e24c_cl_100": {
-   "status": "pending"
+   "status": "ok",
+   "before": {
+    "LCD": 5.008,
+    "PLD": 3.80888,
+    "AV": 78.2563,
+    "min_dist": 1.076,
+    "n_atoms": 204,
+    "AV_per_cell": 78.3
+   },
+   "after": {
+    "LCD": 5.74972,
+    "PLD": 2.1942,
+    "AV": 0.0,
+    "min_dist": 1.072,
+    "n_atoms": 2448,
+    "supercell_rep": 12,
+    "AV_per_cell": 0.0
+   },
+   "final_EDiff": 6.19585989625193e-06,
+   "outer_loops": 164,
+   "minutes": 61.3,
+   "cell_before": {
+    "a": 24.404,
+    "b": 14.181,
+    "c": 9.304,
+    "alpha": 90.0,
+    "beta": 99.608,
+    "gamma": 90.0,
+    "V": 3174.6984782755267,
+    "n_atoms": 204
+   },
+   "chan_before": {
+    "probe_radius": 1.65,
+    "rc": 0,
+    "n_channels": 4,
+    "dimensionality": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "channels_stdout": 4,
+    "pockets_stdout": 0,
+    "chan_file_head": [
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e29b/e24c_cl_100/before.cif.chan1.65   4 channels identified of dimensionality 1 1 1 1 ",
+     "Channel  0  5.00786  3.80865  5.00786",
+     "Channel  1  4.99398  3.80423  4.99398",
+     "Channel  2  5.008  3.80888  5.008"
+    ]
+   },
+   "cell_after_supercell": {
+    "a": 49.58233672535443,
+    "b": 27.057068477414745,
+    "c": 28.928107544883954,
+    "alpha": 90.0,
+    "beta": 99.60800029118649,
+    "gamma": 90.0,
+    "V": 38264.20221128867,
+    "n_atoms": 2448
+   },
+   "cell_after_per_cell": {
+    "rep_abc": [
+     2,
+     2,
+     3
+    ],
+    "a": 24.791168362677215,
+    "b": 13.528534238707373,
+    "c": 9.642702514961318,
+    "alpha": 90.0,
+    "beta": 99.60800029118649,
+    "gamma": 90.0,
+    "V": 3188.683517607389,
+    "rep_product_eq_supercell_rep": true
+   },
+   "cell_change_pct": {
+    "a": 1.5864955035126018,
+    "b": -4.600985553152997,
+    "c": 3.6403967644165696,
+    "V": 0.44051551438859965
+   },
+   "cell_change_deg": {
+    "alpha": 0.0,
+    "beta": 2.9118648114945245e-07,
+    "gamma": 0.0
+   },
+   "chan_after": {
+    "probe_radius": 1.65,
+    "rc": 0,
+    "n_channels": 0,
+    "dimensionality": [],
+    "channels_stdout": 0,
+    "pockets_stdout": 40,
+    "chan_file_head": [
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e29b/e24c_cl_100/after.cif.chan1.65   0 channels identified of dimensionality ",
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e29b/e24c_cl_100/after.cif.chan1.65 summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+    ]
+   }
   }
  },
  "registered": {
@@ -118,6 +215,16 @@
    "final_EDiff": 2.93584398605162e-05,
    "outer_loops": 71,
    "converged": true
+  },
+  "(2)_Cl": {
+   "PLD_after": 2.1942,
+   "AV_per_cell_after": 0.0,
+   "branch": "성립 쪽(닫힘 유지: PLD < 3.3 이거나 AV/셀 < 20)",
+   "final_EDiff": 6.19585989625193e-06,
+   "outer_loops": 164,
+   "converged": true
   }
- }
+ },
+ "finished": true,
+ "elapsed_min": 61.7
 }
