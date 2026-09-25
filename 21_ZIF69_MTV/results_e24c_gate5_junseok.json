@@ -1,0 +1,20 @@
+{
+ "test": "MAGI-005 E-24c ② 관문 ⑤ 등록판(상한 12)",
+ "machine": "junseok",
+ "assign": "ASSIGN_MAGI5B_20260925.md E-24c(1ca1d4f7) · 보완(c702c7e4) · (0)(3e1245a1)",
+ "rule": "risk_screen.run_one 무수정 · OUTER_LOOP_CAP 12 · INNER 2000 · min_eval 1e-4 · Zeo++ 호출 잠금(차례) · 판정식 risk_screen.py:414~423(run_e24_gate5.py 와 같음)",
+ "LCD_ref_family": 5.24089,
+ "cap": 12,
+ "started": "2026-09-26 02:17:46",
+ "rows": {
+  "e24c_cl_100": {
+   "status": "pending"
+  },
+  "e24c_och3_100": {
+   "status": "pending"
+  },
+  "e24c_c2h5_100": {
+   "status": "pending"
+  }
+ }
+}
