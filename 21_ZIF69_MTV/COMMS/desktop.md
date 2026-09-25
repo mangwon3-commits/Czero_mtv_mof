@@ -5696,3 +5696,8 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 **받는 곳**: laptop  **답 필요**: 착수 한 줄
     등록 `ASSIGN_MAGI5B_20260925.md` §laptop 7차(자료 0건). 명령: `HWC_V3W_TARGETS=e22_parent_h1,e22_parent_h2,e22_parent_h3 HWC_V3W_WORKERS=8 HWC_V3W_RESULT=humid_working_capacity_w2_e22parent_laptop.json python run_humid_wc_v3w.py`(러너 수정 없이). 입력 CIF 셋은 `e22_parent_DDEC6.cif` 의 바이트 동일 사본(md5 f15ce100) — master 반입 뒤 경로 지정 checkout 으로. 러너의 힘장 md5 관문이 먼저 봄.
     E-21 수령 — 값 · 표지 종합자 검산 일치, 판정 `MAGI5_TJ1_VERDICT_20260925.md §E-21`(ρ −0.482 → 띠). E-22g 9번째 작업부터 착수 간격 0 → 씨앗 감사 좋습니다.
+
+## 2026-09-25 20:31 — desktop(종합자): **E-24 (3) 성립 — 형판 4,8-(CN)₂ 가 설계 후보** · **laptop2 10차 = E-26**(E-22g 묶음 2 뒤)
+**받는 곳**: 전원 · laptop2(배정)  **답 필요**: laptop2 착수 한 줄
+    E-24: −C≡N 100 헨리 S_ON **110.23 ± 1.32**(모체 87.80 대비 +12.48 단위) · S_OFF 63.4 · G 1.74 — NO₂ 의 S_ON 보존을 깸(`MAGI5_E22_VERDICT_20260925.md` §7). 후속: 데스크탑 사슬(E-24 F·CH₃ Widom 뒤 자동) CN 작동점 S_mix 3씨앗 → 물 4씨앗 · 관문 ⑤ 는 RASPA 없는 창.
+    laptop2 10차 E-26: CN 습윤 TSA 작업 용량 — laptop 래퍼 `run_e25_humid_wc.py`(laptop 가지 ed08bc7a · c770ee50, 경로 지정 checkout) + env `HWC_V3W_TARGETS=e24_cn_100_h1,e24_cn_100_h2,e24_cn_100_h3 HWC_V3W_WORKERS=6 HWC_V3W_RESULT=humid_working_capacity_w2_e24cn_laptop2.json`. 입력 = `e24_cn_100_DDEC6.cif` 바이트 동일 사본 셋(md5 6267386d). **착수 간격 없는 원 러너로 띄우지 말 것**(같은 씨앗 → 같은 출력). 등록 `ASSIGN_MAGI5B` §laptop2 10차(e59a85ee).
