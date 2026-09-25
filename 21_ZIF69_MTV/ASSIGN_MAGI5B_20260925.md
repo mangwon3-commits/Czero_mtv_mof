@@ -217,3 +217,12 @@
                 (2) 지수 K_H(H₂O)/K_H(CO₂) 12행 중앙 ≤ saIm050 참조 1.34(CoRE 3D 상위는 CO₂ 를 더 세게 붙들어 지수가 낮다). 기각: 중앙 > 1.34.
                 (3) 짝(ASR/FSR) K_H(H₂O) 1.5 단위 안(재현).
     비용  E-16 10.3 분/건(같은 기기·같은 규약 실측) × 11 ÷ 동시 6 ≈ **25~40 분**.
+
+## 사용자 결정 뒤 배정 [2026-09-25 12:02 — `MAGI5_USER_DECISIONS_20260925.md`]
+### HKHOME 3차 — **E-18** 셀 자유 이완 도구(유연 골격) — E-14 뒤, RASPA 0 일 때 (자료 0건)
+    도구  관문 ⑤ 의 LAMMPS UFF4MOF box/relax 경로(`risk_screen.py`, lammps-interface 패치판)를 **구조 산출용**으로 재사용 — 새 이완 코드 없음. 바깥 루프 상한 12 대신 **수렴(EDiff < 1e-4 kcal/mol) 또는 상한 50** · 산출 셀·좌표를 CIF 로.
+    검증 관문(먼저)  CALF-20(`external_cif/CALF20_Zn2tz2ox_guestfree_P1.cif`) 이완 셀이 실험 셀(CCDC 2084733) 대비 **a·b·c 각 ≤ 3 % · 부피 ≤ 5 %**. 밖이면 도구 불합격 — 여기서 멈추고 기록(UFF4MOF 가 이 골격을 못 잡음).
+    그다음(합격 시)  MOF16 C11·C12 두 정렬 셀 자유 이완 → Zeo++ PLD/LCD → PACMAN → Widom ON/OFF. 예측(등록): **C11·C12 의 G 가 셀 자유 이완 뒤 서로 1.5 단위 안으로 모인다**(고정셀의 정렬 민감도는 셀 구속 때문). 기각: 여전히 1.5 단위 밖. PLD 는 서술(논문 NLDFT 5.2 Å 쪽으로 가는지).
+    비용  관문 ⑤ MAF-66 18 분(2432원자, 상한 12 — 같은 기기) → CALF-20 352원자 수 분 · MOF16 512원자 ×2 ≈ 30~60 분 + Widom 8작업 ≈ 1 h.
+### HKHOME 4차 — **E-7** DFT 물 결합 오차(pyscf, 설치 확인 뒤 · E-18 과 코어 나눔) — 설계 등록은 설치 확인 뒤 별도 문서(`E7_DFT_WATER_REGISTRATION_20260925.md`, 자료 0건 시점). 자리: −SO₃H O · 트리아졸 N · NH₂ · −NO₂ O · Zn–카복실레이트 · **열린 Zn(E-16 추가)**. 양 ΔE_err = E_DFT − E_UFF_MOF/TIP5P(같은 클러스터 기하). 문턱은 두 판(5 kJ/mol 차 · 2배) 병기, 판정 문턱은 사용자 7번 결정 뒤.
+### Junseok 9차 — **E-8c** 상위 68 행의 `formal_charge_nonzero` 채우기(E-17 뒤, 계산 0) — E-15b/E-16 방식(CoRE 메타 DOI · 링커 형식 전하 산수). 18 행 probe_convention 과 겹치는 것 포함. 출력 `core_pop_formal_charge_junseok.json`(name · 값 · 근거 · DOI) → 종합자가 annotated 에 병합. 예측(서술 외 하나): **상위 68 중 True ≥ 3 행**(이미 확인 3 — 더 나오면 모집단 문장에 병기). 기각 없음(계수).
