@@ -3,6 +3,25 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 10:52 — [E-15b ② 정체] 2017_Cd__hcb_2_ASR_1 = 10.1039/C6CE02384C(CrystEngComm 2017) — **짝이온이 빠진 음이온 골격(Cd₂L₂²⁻, 전하 −2)** + 열린 Cd 자리. ① 재현은 ③ 뒤 사슬
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오 — 표지 여부는 종합자
+
+    CoRE 메타 슬라이스(23_SCREENING/data/CR_meta_data_SI_slice.json) 짝짓기: Cd · 원자 126 · Zeo++ LCD 6.93233 / PLD 4.45124 가 **정확히 한 행**
+      → `c6ce02384c2_2_ASR_pacman` · DOI **10.1039/C6CE02384C** · year 2017 · SI · P-1 · "All Solvent Removed" · unmodified false
+      · MOFid-v1 `[Cd].[O-]C(=O)c1ccc(cc1)C12CC3CC(C2)(CC(C1)(C3)c1ccc(cc1)C(=O)[O-])c1ccc(cc1)C(=O)[O-] … hcb.cat1`
+        = 1,3,5-tris(4-carboxyphenyl)adamantane 삼카복실레이트(L³⁻) · CrystalNets hcb · **2중 상호침투** · 2D
+      · metal: **has_OMS Yes (Cd)** · MOSAEC 메모 ["Unknown", "low_prob_1", "low_prob_2"](산화수 확률 낮음 표지). 같은 줄기의 FSR·원판은 슬라이스에 없음.
+    조성 산수: L = C₃₁H₂₅O₆³⁻(아다만테인 C₁₀H₁₃ + 3 × C₆H₄COO⁻) → 2L = C₆₂H₅₀O₁₂ 로 CIF 식 Cd₂H₅₀C₆₂O₁₂ 와 **H 까지 정확히 일치** —
+      카복실레이트는 전부 탈양성자. 전하: 2 Cd²⁺(+4) + 2 L³⁻(−6) = **−2**, N 0 → 짝양이온(DMF 합성의 Me₂NH₂⁺ 류)이 "용매" 로 지워진 것으로 보입니다
+      (맹점 ⑥ "ASR 이 음이온을 지움" 과 같은 계열 — 여기서는 **양이온**을 지움).
+    CIF 전하(PACMAN v1.1): 합 **0.000** — Cd +1.01 ×2 · O −0.515 ×12 · H +0.118 ×50 · C 합 −1.76. 즉 Ewald 는 순전하를 안 보지만, 전하 집합은
+      −2 가 빠진 조성을 PACMAN 이 중성으로 맞춘 것 — "순전하 인공물" 가설은 기각, "짝이온 빈자리 + 열린 Cd" 는 남음.
+    읽기(판정 아님): dU_CO₂ −42.3 · K_H(CO₂) 1.07e-3 · S_OFF 14.2 → S_ON 224 (G 15.7) — 이득 대부분이 정전기이고, 그 자리는 실물이라면 짝이온이
+      차지했을 빈 공간 · 열린 Cd 일 공산이 큽니다. CoRE 자체 선택도 1.98 과 우리 224 의 100배 차도 이 행만의 특이점.
+    ① 재현(새 씨앗, ON·OFF)은 ③ 이 끝나면 사슬(e15b_chain.sh, 10:51)이 ② `-ha -res` 1건 → run_magi5_widom.py(워커 4) 순서로 띄웁니다.
+
 ## 2026-09-25 10:46 — [MAGI-005 E-15 완주] CoRE 열역학 상위 46행 전하 OFF — ok 46/46 · 머리말 관문 92/92 · 씨앗 겹침 0 · 146.9 분 — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
