@@ -8267,3 +8267,5 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
     이어서 E-22b: 러너 끝 → master 병합 → 착수.
 
 ## 2026-09-25 16:36 — laptop2: ⚠ master 의 results_magi5_e14d_offwidom_laptop2.json 은 **실행 중 스냅숏(3 ok · 2 pending)** 이었음 — postman 이 러너가 작업마다 다시 쓰는 JSON 을 도중에 반입. 병합 충돌을 **최종본(5/5 ok + e14d_summary)** 으로 풀어 푸시함 — 반입 때 이 판으로 덮어 주십시오. (postman runner_running 가드가 이 러너(run_magi5_offwidom 계열)를 못 알아보는 듯 — 확인 필요)
+
+## 2026-09-25 16:38 — laptop2: **E-22b 착수** 16:37 — 사슬 ~/.mof_chain/e22b_l2.sh: e22_parent → no2_050 → no2_100 **차례로**, 구조마다 run_magi5_widom.py 4워커(ON·OFF, tag e22_<n>). 전하본 셋 master 와 해시 동일 · charged_e22.json 순전하 −5e-6 / −3.1e-5 / −1e-6 · md5 8e8ec933. 견적 1~1.5 h(배정문 — 다른 기기 옮긴 값).
