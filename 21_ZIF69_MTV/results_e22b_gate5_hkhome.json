@@ -1,0 +1,36 @@
+{
+ "rule": "risk_screen.py:414~423, LCD_ref = e22_parent 같은 처리 뒤 LCD(사용자 결정 4 (다)), OUTER_LOOP_CAP 12",
+ "rows": {
+  "e22_parent": {
+   "status": "ok",
+   "before": {
+    "LCD": 5.26553,
+    "PLD": 3.81832,
+    "AV": 105.717,
+    "min_dist": 1.074,
+    "n_atoms": 204,
+    "AV_per_cell": 105.7
+   },
+   "after": {
+    "LCD": 5.24089,
+    "PLD": 3.71074,
+    "AV": 1136.7,
+    "min_dist": 1.079,
+    "n_atoms": 2448,
+    "supercell_rep": 12,
+    "AV_per_cell": 94.7
+   },
+   "LCD_drop_pct": 0.0,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 0.359708339970894,
+   "outer_loops": 12
+  }
+ },
+ "LCD_ref_family": 5.24089
+}
