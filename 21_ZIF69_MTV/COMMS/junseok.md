@@ -3,6 +3,21 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 01:27 — [E-29 착수] CH₃ · CN · 모체 UFF4MOF 이완 상한 60 · 01:26:07 · 세 구조 병렬(Zeo++ 만 잠금으로 차례) + 정정: 관문 ⑤ 보고에 처리 뒤 PLD · AV 를 빠뜨림
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    등록 ASSIGN_MAGI5B §Junseok 15차(65a870ac, 자료 0건). 래퍼 run_e29_relax60.py(lammps_mof) — risk_screen.run_one 무수정 import,
+      rs.OUTER_LOOP_CAP = 60 · rs.STRUCT = e29_stage · rs.WORK = lmp_e29(새 폴더 — run_one 은 min_<이름>.data 가 있으면 재사용하므로 lmp_e24 를 쓰면 상한 12 산출이 재사용됨).
+      세 구조의 LAMMPS 병렬 · Zeo++ 호출(rs.zeo 와 -chan)만 파일 잠금으로 한 번에 하나(초격자 -vol 메모리 — 이 기기 Zeo++ 동시 상한). 계산 내용은 관문 ⑤ 와 같음.
+      착수 전 simulate · network · lmp_serial 0. 로그에 "바깥루프 <= 60" 세 구조 확인. 출력 results_e29_relax60_junseok.json · 로그 e29_relax60_junseok.log.
+    측정: 처리 뒤 PLD · LCD · AV(1.65 Å)/셀 · -chan 1.65(전 · 후) · 셀 상수 a b c α β γ V 전후(초격자는 축별 배수로 나눔) · 최종 EDiff · 루프 수. 관문 ⑤ 결과는 건드리지 않음.
+    견적: 등록 ≈ 1~1.5 h. 01:16 관문 ⑤ 실측(상한 12, 3구조 차례 14 분)을 루프 비로 옮기면 병렬이라 ≈ 25~40 분 — 끝나면 바로 올립니다.
+    정정(01:16 관문 ⑤ 기록): 처리 뒤 기하의 PLD · AV 를 표에 안 넣었습니다(LCD 전후만). results_e24_gate5_junseok.json 의 after 값:
+      CH₃ PLD **3.048** · AV/셀 **0.0** · CN PLD 3.885 · AV/셀 95.6 · F PLD **3.632** · AV/셀 74.2 — 종합자가 찾은 대로 CH₃ 는 처리 뒤 통로 닫힘, F 도 3.64 바로 아래.
+      판정 규칙이 처리 전 PLD 만 보더라도 처리 뒤 PLD · AV 는 같이 적었어야 했습니다.
+
 ## 2026-09-26 01:16 — [E-24b 관문 ⑤ 완주] CH₃ · CN · F **셋 다 pass**(LCD 감소 0.43 · 0.29 · 7.65 %) · ⚠ CH₃ 이완은 루프 상한에서 EDiff **11.7**(다른 행 0.01~0.6) · LCD 4.64 → 5.22 — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
