@@ -16,7 +16,7 @@
   "co2": "García-Sánchez 2009 (경로 TraPPE/CO2.def, TraPPE 아님)",
   "n2": "TraPPE N2(3자리)"
  },
- "note": "판정 없음(종합자가 씀). ± 는 RASPA 95 % CI. S_OFF ± 는 두 K_H 의 상대 ± 를 제곱합으로 합성. ln_ratio = ln S_OFF / ln S_ON (점추정). 외부 계열(CoRE) 행은 우리 물질 결과가 아님. ",
+ "note": "판정 없음(종합자가 씀). ± 는 RASPA 95 % CI. S_OFF ± 는 두 K_H 의 상대 ± 를 제곱합으로 합성. ln_ratio = ln S_OFF / ln S_ON (점추정). 외부 계열(CoRE) 행은 우리 물질 결과가 아님. seed 92개 · 겹침 0건 · 벽시계 146.9 min",
  "rows": [
   {
    "name": "2024_Zn__sql_2_ASR_3",
@@ -3766,7 +3766,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2017[Cd][hcb]2",
    "asr_fsr_pair": null,
@@ -3806,6 +3806,26 @@
    "KH_CO2_err": 9.08451e-07,
    "dU_CO2": -22.0417012608,
    "dU_CO2_err": 0.0676183564,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 126,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790299864,
+   "total_time_s_N2": 606.756941,
+   "KH_N2": 4.46904e-06,
+   "KH_N2_err": 3.77656e-08,
+   "dU_N2": -12.4637109444,
+   "dU_N2_err": 0.0085211655,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00106961,
@@ -3815,7 +3835,15 @@
     "dU_CO2": -42.3315142549
    },
    "S_ON": 223.95097244817413,
-   "S_ON_err": 43.283335115281
+   "S_ON_err": 43.283335115281,
+   "S_OFF": 14.244759500921898,
+   "S_OFF_err": 0.2362446994425586,
+   "lnS_OFF": 2.6563890847551854,
+   "lnS_OFF_err": 0.016584674485186586,
+   "lnS_ON": 5.411427154899627,
+   "ln_ratio": 0.49088512304005266,
+   "dlnKH_CO2_off_minus_on": -2.821486669818818,
+   "dlnKH_N2_off_minus_on": -0.06644859967437677
   },
   {
    "name": "2017_Zn__dia_3_ASR_1",
@@ -3827,7 +3855,7 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "3D",
    "series": "2017[Zn][dia]3",
    "asr_fsr_pair": "2017[Zn][dia]3[FSR]1",
@@ -3843,6 +3871,50 @@
     3
    ],
    "N_super": 1224,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 204,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790299893,
+   "total_time_s_CO2": 556.671227,
+   "KH_CO2": 0.00042839,
+   "KH_CO2_err": 8.38961e-06,
+   "dU_CO2": -28.9427042676,
+   "dU_CO2_err": 0.0403391902,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 204,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790300027,
+   "total_time_s_N2": 548.623146,
+   "KH_N2": 1.0307e-05,
+   "KH_N2_err": 3.44786e-08,
+   "dU_N2": -17.0189790773,
+   "dU_N2_err": 0.0161854625,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00167535,
@@ -3852,7 +3924,15 @@
     "dU_CO2": -34.608476483
    },
    "S_ON": 137.1001399356787,
-   "S_ON_err": 3.2273796035097573
+   "S_ON_err": 3.2273796035097573,
+   "S_OFF": 41.56301542640924,
+   "S_OFF_err": 0.8257610215861967,
+   "lnS_OFF": 3.727210719576092,
+   "lnS_OFF_err": 0.019867687970048155,
+   "lnS_ON": 4.920711607251035,
+   "ln_ratio": 0.7574535996142854,
+   "dlnKH_CO2_off_minus_on": -1.3637433820241973,
+   "dlnKH_N2_off_minus_on": -0.1702424943492545
   },
   {
    "name": "2014_Co__sql_2_ASR_1",
@@ -3864,7 +3944,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2014[Co][sql]2",
    "asr_fsr_pair": "2014[Co][sql]2[FSR]1",
@@ -3880,6 +3960,50 @@
     2
    ],
    "N_super": 1144,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 286,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790300142,
+   "total_time_s_CO2": 543.877407,
+   "KH_CO2": 3.126e-05,
+   "KH_CO2_err": 4.49086e-07,
+   "dU_CO2": -22.1265839073,
+   "dU_CO2_err": 0.0578886929,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 286,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790300177,
+   "total_time_s_N2": 537.278632,
+   "KH_N2": 2.24209e-06,
+   "KH_N2_err": 8.60406e-09,
+   "dU_N2": -13.1503707007,
+   "dU_N2_err": 0.0221943314,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.000177891,
@@ -3889,7 +4013,15 @@
     "dU_CO2": -29.4566292404
    },
    "S_ON": 68.2204641067039,
-   "S_ON_err": 2.4265048455793776
+   "S_ON_err": 2.4265048455793776,
+   "S_OFF": 13.942348433827368,
+   "S_OFF_err": 0.20732086777285666,
+   "lnS_OFF": 2.6349308584193545,
+   "lnS_OFF_err": 0.01486986706413449,
+   "lnS_ON": 4.222744580055953,
+   "ln_ratio": 0.6239853745509847,
+   "dlnKH_CO2_off_minus_on": -1.7388316781795063,
+   "dlnKH_N2_off_minus_on": -0.15101795654290812
   },
   {
    "name": "2014_Co__sql_2_FSR_1",
@@ -3901,7 +4033,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2014[Co][sql]2",
    "asr_fsr_pair": "2014[Co][sql]2[ASR]1",
@@ -3917,6 +4049,50 @@
     2
    ],
    "N_super": 1144,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 286,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790300084,
+   "total_time_s_CO2": 545.462291,
+   "KH_CO2": 3.15552e-05,
+   "KH_CO2_err": 6.11223e-07,
+   "dU_CO2": -22.111293603,
+   "dU_CO2_err": 0.059210961,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 286,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790300143,
+   "total_time_s_N2": 540.56226,
+   "KH_N2": 2.24673e-06,
+   "KH_N2_err": 2.09818e-08,
+   "dU_N2": -13.1485776215,
+   "dU_N2_err": 0.0264555486,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.000181193,
@@ -3926,7 +4102,15 @@
     "dU_CO2": -29.5224231886
    },
    "S_ON": 69.74890195127396,
-   "S_ON_err": 1.017732234524901
+   "S_ON_err": 1.017732234524901,
+   "S_OFF": 14.044945320532507,
+   "S_OFF_err": 0.30201822012755775,
+   "lnS_OFF": 2.642262567386116,
+   "lnS_OFF_err": 0.021503694976016244,
+   "lnS_ON": 4.244901677943494,
+   "ln_ratio": 0.6224555402814889,
+   "dlnKH_CO2_off_minus_on": -1.7478243683602182,
+   "dlnKH_N2_off_minus_on": -0.14518525780284028
   }
  ]
 }
