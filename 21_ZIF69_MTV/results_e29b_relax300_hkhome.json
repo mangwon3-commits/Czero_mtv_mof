@@ -4,96 +4,13 @@
  "machine": "hkhome",
  "rule": "risk_screen.run_one 무수정 · OUTER_LOOP_CAP 300(래퍼) · INNER 2000 · min_eval 1e-4 · Zeo++ 호출 잠금(순차)",
  "cap": 300,
- "started": "2026-09-26 02:59:00",
+ "started": "2026-09-26 02:59:55",
  "rows": {
   "e24_ch3_100": {
-   "status": "lammps-interface 실패: Traceback (most recent call last):\n  File \"/home/mangwon1/mof_project/21_ZIF69_MTV/../18_PoreNarrowing/lammps_iface_patched.py\", line 23, in <module>\n    from lammps_interface.uff import UFF_DATA\nModuleNotFoundError: No module named 'lammps_interface'\n",
-   "before": {
-    "LCD": 4.64285,
-    "PLD": 3.81371,
-    "AV": 59.5256,
-    "min_dist": 1.077,
-    "n_atoms": 228
-   },
-   "after": null,
-   "final_EDiff": null,
-   "outer_loops": null,
-   "minutes": 0.1,
-   "cell_before": {
-    "a": 24.404,
-    "b": 14.181,
-    "c": 9.304,
-    "alpha": 90.0,
-    "beta": 99.608,
-    "gamma": 90.0,
-    "V": 3174.6984782755267,
-    "n_atoms": 228
-   },
-   "chan_before": {
-    "probe_radius": 1.65,
-    "rc": 0,
-    "n_channels": 4,
-    "dimensionality": [
-     1,
-     1,
-     1,
-     1
-    ],
-    "channels_stdout": 4,
-    "pockets_stdout": 0,
-    "chan_file_head": [
-     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e29b/e24_ch3_100/before.cif.chan1.65   4 channels identified of dimensionality 1 1 1 1 ",
-     "Channel  0  4.6368  3.81371  4.6368",
-     "Channel  1  4.6428  3.81182  4.6428",
-     "Channel  2  4.63678  3.81368  4.63678"
-    ]
-   }
+   "status": "pending"
   },
   "e24c_cl_100": {
-   "status": "lammps-interface 실패: Traceback (most recent call last):\n  File \"/home/mangwon1/mof_project/21_ZIF69_MTV/../18_PoreNarrowing/lammps_iface_patched.py\", line 23, in <module>\n    from lammps_interface.uff import UFF_DATA\nModuleNotFoundError: No module named 'lammps_interface'\n",
-   "before": {
-    "LCD": 5.008,
-    "PLD": 3.80888,
-    "AV": 78.2563,
-    "min_dist": 1.076,
-    "n_atoms": 204
-   },
-   "after": null,
-   "final_EDiff": null,
-   "outer_loops": null,
-   "minutes": 0.0,
-   "cell_before": {
-    "a": 24.404,
-    "b": 14.181,
-    "c": 9.304,
-    "alpha": 90.0,
-    "beta": 99.608,
-    "gamma": 90.0,
-    "V": 3174.6984782755267,
-    "n_atoms": 204
-   },
-   "chan_before": {
-    "probe_radius": 1.65,
-    "rc": 0,
-    "n_channels": 4,
-    "dimensionality": [
-     1,
-     1,
-     1,
-     1
-    ],
-    "channels_stdout": 4,
-    "pockets_stdout": 0,
-    "chan_file_head": [
-     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e29b/e24c_cl_100/before.cif.chan1.65   4 channels identified of dimensionality 1 1 1 1 ",
-     "Channel  0  5.00786  3.80865  5.00786",
-     "Channel  1  4.99398  3.80423  4.99398",
-     "Channel  2  5.008  3.80888  5.008"
-    ]
-   }
+   "status": "pending"
   }
- },
- "registered": {},
- "finished": true,
- "elapsed_min": 0.1
+ }
 }
