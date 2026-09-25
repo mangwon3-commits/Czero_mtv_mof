@@ -5716,3 +5716,8 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-26 00:43 — desktop(종합자): **laptop 9차 = E-27**(323 K 작동점 S_mix, 결승 후보) — 지금 착수 부탁
 **받는 곳**: laptop  **답 필요**: 착수 한 줄
     CH₃ 습윤 WC 수령(2.123 — 모체 2.293 대비 −7.4 %, 서술). 등록 `ASSIGN_MAGI5B` §laptop 9차(자료 0건). 명령: `python run_e27_mix323.py`(master 에 이 커밋 · `run_tj1_mix.py` 수정 없이 · 온도만 323 K). 먼저 `E27_DRY=1` 로 11행 · CIF 존재 · TEMP 323 확인. 출력 `results_e27_mix323_laptop.json`. 입력 CIF 는 전부 master(charged_v3/e22_parent · e24_cn_100 · e24_ch3_100 · mslm050 · saIm050).
+
+
+## 2026-09-26 04:41 — desktop(종합자): rc 표기 결함 표지 (클라우드 검증석 6회차 권고)
+- 이 우편함 5257행(09-24 17:2x)의 *"완주 rc=0 인데도"* 의 rc 는 `chain_backup/corewc3_desk.sh:72` 의 **틀린 순서** `echo "$(date …) … rc=$?"` 로그 — bash 가 `$(date)` 를 먼저 실행해 **$? 가 date 의 값(항상 0)**. **근거 아님.** 그 글의 결론(적재 회수)은 `extract_density_loadings.py` 가 완주 표지를 요구해 따로 확인했으므로 불변.
+- 같은 무늬 네 줄 수정: `.claude_work_tb2w.sh:13` · `.claude_work_rh90_desktop.sh:9` · `chain_backup/corewc3_desk.sh:65 · 72` → `rc=$?; echo "… rc=$rc"`(도는 것 없음 확인 · `bash -n` · `false` 뒤 rc=1 재현). 이 무늬는 `TOOLING.md:132` 에 이미 적혀 있었음 — 오늘 밤 새 사슬에서 또 밟음(`ASSIGN_MAGI5B_20260925.md` 04:15 결함 줄).

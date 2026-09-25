@@ -62,14 +62,14 @@ say "밀도맵 빈칸 메움 착수 — 건조(saIm0583·mslm050 × 전하 ON/OF
     DENSITY_GAP_WORKERS=6
   echo "=== $(date '+%m-%d %H:%M:%S') 건조 밀도맵 착수 ===" >> "$DLOG"
   python3 run_density_v3_gap.py >> "$DLOG" 2>&1
-  echo "=== $(date '+%m-%d %H:%M:%S') 건조 끝 rc=$? ===" >> "$DLOG" ) &
+  rc=$?; echo "=== $(date '+%m-%d %H:%M:%S') 건조 끝 rc=$rc ===" >> "$DLOG" ) &
 DP1=$!
 for t in saIm0583 mslm050; do
   ( cd "$R" && export PATH="$HOME/miniconda3/envs/czeromof/bin:$PATH" RASPA_DIR="$HOME/RASPA/simulations" \
       DW_EXTRA=saIm0583,mslm050 DW_SUB="gap_$t"
     echo "=== $(date '+%m-%d %H:%M:%S') 습윤 RH90 $t 착수 ===" >> "$DLOG"
     python3 run_density_water_v3w.py "$t" >> "$DLOG" 2>&1
-    echo "=== $(date '+%m-%d %H:%M:%S') 습윤 $t 끝 rc=$? ===" >> "$DLOG" ) &
+    rc=$?; echo "=== $(date '+%m-%d %H:%M:%S') 습윤 $t 끝 rc=$rc ===" >> "$DLOG" ) &
 done
 wait $DP1 || true
 wait || true
