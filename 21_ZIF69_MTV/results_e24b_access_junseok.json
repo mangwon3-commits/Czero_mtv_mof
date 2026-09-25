@@ -1,0 +1,495 @@
+{
+  "test": "MAGI-005 E-24b ① — 형판 치환체 접근성 관문(Zeo++)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 14차 + Junseok 14차",
+  "machine": "junseok",
+  "made": "2026-09-26 01:00:38",
+  "zeo": "/home/mangwon/miniconda3/envs/czeromof/bin/network",
+  "flags": "-ha",
+  "block_samples": 50000,
+  "radii": [
+    1.65,
+    1.82
+  ],
+  "PLD_threshold": 3.64,
+  "guard_MB": 5000,
+  "rows": [
+    {
+      "tag": "e22_parent",
+      "cif": "relax_tnf/e22_parent_relaxed.cif",
+      "n_atoms": 204,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 5.26553,
+      "PLD_Df": 3.81832,
+      "Dif": 5.24761,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e22_parent.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.26551  3.81828  5.26551",
+            "Channel  1  5.24498  3.81351  5.24498"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 36769,
+          "accessible_nodes": 1149,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e22_parent/block1.65/e22_parent_relaxed.block",
+          "rc": 0,
+          "seconds": 156.6,
+          "peak_rss_MB": 5759,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e22_parent.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.26551  3.81828  5.26551",
+            "Channel  1  5.24498  3.81351  5.24498"
+          ],
+          "rc": 0,
+          "seconds": 1.8,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 36769,
+          "accessible_nodes": 952,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e22_parent/block1.82/e22_parent_relaxed.block",
+          "rc": 0,
+          "seconds": 157.6,
+          "peak_rss_MB": 5405,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e22_no2_100",
+      "cif": "relax_tnf/e22_no2_100_relaxed.cif",
+      "n_atoms": 220,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 2.0,
+          "peak_rss_MB": 346,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 5.19757,
+      "PLD_Df": 3.77461,
+      "Dif": 5.19757,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e22_no2_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.19757  3.77461  5.19757",
+            "Channel  1  4.26086  3.76238  4.26086"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 43431,
+          "accessible_nodes": 1316,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e22_no2_100/block1.65/e22_no2_100_relaxed.block",
+          "rc": 0,
+          "seconds": 168.6,
+          "peak_rss_MB": 5952,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e22_no2_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  4.26086  3.76238  4.26086",
+            "Channel  1  5.19745  3.77443  5.19745"
+          ],
+          "rc": 0,
+          "seconds": 1.9,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 43431,
+          "accessible_nodes": 992,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e22_no2_100/block1.82/e22_no2_100_relaxed.block",
+          "rc": 0,
+          "seconds": 167.5,
+          "peak_rss_MB": 5782,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24_ch3_100",
+      "cif": "relax_tnf/e24_ch3_100_relaxed.cif",
+      "n_atoms": 228,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 2.0,
+          "peak_rss_MB": 359,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 4.64285,
+      "PLD_Df": 3.81371,
+      "Dif": 4.6368,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24_ch3_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  4.6368  3.81371  4.6368",
+            "Channel  1  4.6428  3.81182  4.6428"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 39155,
+          "accessible_nodes": 1007,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e24_ch3_100/block1.65/e24_ch3_100_relaxed.block",
+          "rc": 0,
+          "seconds": 151.6,
+          "peak_rss_MB": 6134,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24_ch3_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  4.6368  3.81371  4.6368",
+            "Channel  1  4.6428  3.81182  4.6428"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 39155,
+          "accessible_nodes": 758,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e24_ch3_100/block1.82/e24_ch3_100_relaxed.block",
+          "rc": 0,
+          "seconds": 151.4,
+          "peak_rss_MB": 5166,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24_cn_100",
+      "cif": "relax_tnf/e24_cn_100_relaxed.cif",
+      "n_atoms": 212,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 2.0,
+          "peak_rss_MB": 365,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 5.03894,
+      "PLD_Df": 3.82798,
+      "Dif": 5.03518,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24_cn_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.03512  3.82779  5.03512",
+            "Channel  1  5.03871  3.81853  5.03871"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 41223,
+          "accessible_nodes": 1243,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e24_cn_100/block1.65/e24_cn_100_relaxed.block",
+          "rc": 0,
+          "seconds": 169.5,
+          "peak_rss_MB": 5473,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24_cn_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.03512  3.82779  5.03512",
+            "Channel  1  5.03871  3.81853  5.03871"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 41223,
+          "accessible_nodes": 1013,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e24_cn_100/block1.82/e24_cn_100_relaxed.block",
+          "rc": 0,
+          "seconds": 168.5,
+          "peak_rss_MB": 5651,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24_f_100",
+      "cif": "relax_tnf/e24_f_100_relaxed.cif",
+      "n_atoms": 204,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 2.0,
+          "peak_rss_MB": 358,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 5.27506,
+      "PLD_Df": 3.81662,
+      "Dif": 5.27506,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24_f_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.275  3.81652  5.275",
+            "Channel  1  5.25341  3.81174  5.25341"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 38897,
+          "accessible_nodes": 1271,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e24_f_100/block1.65/e24_f_100_relaxed.block",
+          "rc": 0,
+          "seconds": 162.4,
+          "peak_rss_MB": 5150,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24_f_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.275  3.81652  5.275",
+            "Channel  1  5.25341  3.81174  5.25341"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 38898,
+          "accessible_nodes": 1033,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24b_zeo_runs/e24_f_100/block1.82/e24_f_100_relaxed.block",
+          "rc": 0,
+          "seconds": 161.6,
+          "peak_rss_MB": 5278,
+          "stopped_by_guard": false
+        }
+      }
+    }
+  ],
+  "registered": {
+    "(1)_CN": {
+      "PLD": 3.82798,
+      "PLD_ge_3.64": true,
+      "pockets_1.65": 0,
+      "pockets_1.82": 0,
+      "all_three_conditions": true
+    },
+    "(2)_CH3": {
+      "PLD": 3.81371,
+      "PLD_lt_3.64": false,
+      "pockets_1.65": 0,
+      "pockets_1.82": 0,
+      "PLD_lt_or_pocket_at_1.65": false
+    }
+  },
+  "elapsed_s": 1637,
+  "note": "기계적 사실뿐 — 판정문은 종합자. 주머니 부피 = .block 구 부피 합(겹침 무시). PLD = Df · LCD = Di (-res)."
+}
