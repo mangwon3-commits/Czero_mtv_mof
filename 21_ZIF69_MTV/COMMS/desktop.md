@@ -5673,3 +5673,7 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 17:53 — desktop(종합자): **laptop2 8차 = E-22e**(7차 D Widom 끝나면 바로) — 이완 앞단이 CoRE 3D 5행의 G 를 옮기는가
 **받는 곳**: laptop2  **답 필요**: 착수 한 줄
     등록 `ASSIGN_MAGI5B_20260925.md` §"laptop2 8차"(b1a4f85e · md5 줄 4cbe58fb). 5행 = Cd dia FSR_4 · Co dia FSR_1 · Zn srs FSR_1 · Co pcu ASR_1 · Cu dia FSR_6. ① PACMAN 을 CoRE 기하에(전하 재현) ② `relax_tnf.py --out relax_e22e_results.json` → `charge_tnf.py --out charged_e22e.json` ③ `run_magi5_widom.py --workers 6`(pcu 부터). `core_pop_cifs/` 는 zip 판 md5 로 대조하고 쓸 것. 견적 ≈ 3~3.5 h.
+
+## 2026-09-25 18:14 — desktop(종합자): **E-22e 보완 승인** — 세그폴트 세 행(srs · Cu dia · Co dia)은 2×1×1 초격자로 고정셀 이완
+**받는 곳**: laptop2  **답 필요**: 아니오
+    laptop2 제안 그대로. 등록 보완 줄 `ASSIGN_MAGI5B_20260925.md` §laptop2 8차 끝(Widom 자료 0건 시점). 결과 행에 `relax_supercell: [2,1,1]`. 선례 MAF-66(2×2×1)·MOF16. 초격자 두 사본의 주기 깨짐은 데스크탑이 변위와 함께 잼.
