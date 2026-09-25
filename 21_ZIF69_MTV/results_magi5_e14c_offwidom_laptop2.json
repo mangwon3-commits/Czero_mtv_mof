@@ -502,9 +502,53 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop2",
-   "status": "pending",
+   "status": "ok",
    "set": "saIm050",
    "realization": 2,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 648,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790307276,
+   "total_time_s_CO2": 3862.31212,
+   "KH_CO2": 3.08989e-05,
+   "KH_CO2_err": 7.35393e-07,
+   "dU_CO2": -22.4751439883,
+   "dU_CO2_err": 0.2799127904,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 648,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790307320,
+   "total_time_s_N2": 3879.416882,
+   "KH_N2": 2.44388e-06,
+   "KH_N2_err": 8.05597e-09,
+   "dU_N2": -12.4739217042,
+   "dU_N2_err": 0.0316357967,
    "on_ref": {
     "src": "results_v3ens_mix10.json",
     "KH_CO2": 0.000141842,
@@ -517,7 +561,15 @@
     "selectivity_err": 3.9124514484655823
    },
    "S_ON": 52.03187017160297,
-   "S_ON_err": 3.9124514484655823
+   "S_ON_err": 3.9124514484655823,
+   "S_OFF": 12.643378561958855,
+   "S_OFF_err": 0.30378460459147194,
+   "lnS_OFF": 2.5371336442969707,
+   "lnS_OFF_err": 0.0240271698820672,
+   "lnS_ON": 3.9518564187577754,
+   "ln_ratio": 0.6420105832424176,
+   "dlnKH_CO2_off_minus_on": -1.5239931774968045,
+   "dlnKH_N2_off_minus_on": -0.10927040303600001
   },
   {
    "name": "saIm050e3_DDEC6",
@@ -529,9 +581,53 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop2",
-   "status": "pending",
+   "status": "ok",
    "set": "saIm050",
    "realization": 3,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 648,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790307394,
+   "total_time_s_CO2": 3797.338348,
+   "KH_CO2": 4.00797e-05,
+   "KH_CO2_err": 4.57731e-07,
+   "dU_CO2": -23.1797209882,
+   "dU_CO2_err": 0.0343280055,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 648,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790307457,
+   "total_time_s_N2": 3802.893329,
+   "KH_N2": 2.94872e-06,
+   "KH_N2_err": 1.47951e-08,
+   "dU_N2": -13.2323453391,
+   "dU_N2_err": 0.041242179,
    "on_ref": {
     "src": "results_v3ens_mix10.json",
     "KH_CO2": 0.000187403,
@@ -544,7 +640,15 @@
     "selectivity_err": 3.5221604272659
    },
    "S_ON": 56.47560497845282,
-   "S_ON_err": 3.5221604272659
+   "S_ON_err": 3.5221604272659,
+   "S_OFF": 13.592236631487562,
+   "S_OFF_err": 0.16955094868185488,
+   "lnS_OFF": 2.609498793833121,
+   "lnS_OFF_err": 0.012474102186322729,
+   "lnS_ON": 4.033808774619892,
+   "ln_ratio": 0.6469069159281144,
+   "dlnKH_CO2_off_minus_on": -1.542391406495417,
+   "dlnKH_N2_off_minus_on": -0.11808142570864556
   },
   {
    "name": "saIm050e4_DDEC6",
@@ -559,6 +663,30 @@
    "status": "pending",
    "set": "saIm050",
    "realization": 4,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 648,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790307495,
+   "total_time_s_CO2": 3747.793651,
+   "KH_CO2": 3.67698e-05,
+   "KH_CO2_err": 6.22749e-07,
+   "dU_CO2": -22.8059671018,
+   "dU_CO2_err": 0.1272467584,
    "on_ref": {
     "src": "results_v3ens_mix10.json",
     "KH_CO2": 0.000171612,
