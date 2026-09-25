@@ -142,3 +142,5 @@
   만료가 다가오면 **값으로** 확인하십시오(`PauseUpdatesExpiryTime`, COMMS.md 의 08-22 교훈).
 - `ClaudeWslHold` 는 `Interactive only` 입니다 — 재부팅 뒤 **로그인 전에는 WSL 이 안 붙잡힙니다.**
   로그인되면 cron 이 postman 을 되살립니다(`mail_guard_junseok.sh`). 도는 계산은 되살리지 않습니다.
+
+> **[desktop 2026-09-25 12:02]** ✅ **DFT(pyscf 2.14.0)** — conda 환경 `dft`(python 3.11), 사용자 결정 1번(`MAGI5_USER_DECISIONS_20260925.md`). 확인: H₂O RHF/def2-SVP −75.960975 Eh. 기존 환경 무변경. 다른 기기에는 없음.
