@@ -22,7 +22,25 @@ T0 = time.time()                  # fork 로 워커에 물려짐
 _orig = hw.run_one
 
 
+# 반환코드 기록(종합자 판정 전 관문 — 러너는 check=False 로 버림): hw 가 쓰는 subprocess.run 을 감싸 cwd 가 있는 호출(= RASPA)의
+# returncode 를 실행 폴더의 e25_returncode.txt 에 남긴다. 시간초과(예외)면 파일이 안 생김 → 감사에서 '없음' = 실패.
+_real_run = hw.subprocess.run
+
+
+def _run_rec(args, *a, **k):
+    cp = _real_run(args, *a, **k)
+    if k.get('cwd'):
+        with open(os.path.join(k['cwd'], 'e25_returncode.txt'), 'w') as f:
+            f.write(f'{cp.returncode}\n')
+    return cp
+
+
+hw.subprocess.run = _run_rec
+
+
 def _dry(job):
+    d = os.path.join(os.environ['E25_DRY_DIR'], f'{job[1]}_{job[0]}'); os.makedirs(d, exist_ok=True)
+    hw.subprocess.run(['bash', '-c', 'exit 0' if job[1] != 'vsa' else 'exit 7'], cwd=d)   # 반환코드 기록 길 시험(vsa 는 7)
     return job[0], job[1], None, 'dry@' + time.strftime('%H:%M:%S')
 
 
