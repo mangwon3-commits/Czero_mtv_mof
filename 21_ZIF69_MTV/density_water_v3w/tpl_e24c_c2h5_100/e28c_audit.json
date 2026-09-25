@@ -1,0 +1,38 @@
+{
+  "target": "e24c_c2h5_100",
+  "run_dir": "water_runs_density_v3w/rh90_e24c_c2h5_100",
+  "blocking": true,
+  "driver_rc": 0,
+  "finished": true,
+  "seed": 1790365315,
+  "unit_cells": [
+    1,
+    2,
+    3
+  ],
+  "grid_directive": true,
+  "blockpockets_in_input": 2,
+  "block": {
+    "CO2": {
+      "n_blocked": 12,
+      "blocked_line": true,
+      "block_file": "e24c_c2h5_100_co2.block"
+    },
+    "water": {
+      "n_blocked": 24,
+      "blocked_line": true,
+      "block_file": "e24c_c2h5_100_water.block"
+    }
+  },
+  "n_expected": {
+    "CO2": 12,
+    "water": 24
+  },
+  "stderr_not_found": false,
+  "returncode": 0,
+  "block_ok": true,
+  "com_grids_gz": [
+    "water_runs_density_v3w/rh90_e24c_c2h5_100/VTK/System_0/COMDensityProfile_CO2.vtk.gz",
+    "water_runs_density_v3w/rh90_e24c_c2h5_100/VTK/System_0/COMDensityProfile_water.vtk.gz"
+  ]
+}

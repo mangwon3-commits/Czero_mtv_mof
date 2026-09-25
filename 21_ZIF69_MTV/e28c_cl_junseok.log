@@ -1,0 +1,17 @@
+E-28c 밀도 격자 — 대상 e24c_cl_100 · 막음 False · 결과 /home/mangwon/mof_project/21_ZIF69_MTV/density_water_v3w/tpl_e24c_cl_100 · 작업 /home/mangwon/mof_project/21_ZIF69_MTV/water_runs_density_v3w
+물 밀도 격자 — T-4·T-6 선행 (ASSIGN_20260905 §2)
+  RH 90%  격자 90^3  초기화 5000 + 생산 15000
+  대상 e24c_cl_100
+  결과 /home/mangwon/mof_project/21_ZIF69_MTV/density_water_v3w/tpl_e24c_cl_100/water_results.json
+  작업 /home/mangwon/mof_project/21_ZIF69_MTV/water_runs_density_v3w
+
+[1/1] e24c_cl_100 RH90
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+    [격자] 90^3 지시자 추가 — rh90_e24c_cl_100
+  [격자 보존] /home/mangwon/mof_project/21_ZIF69_MTV/water_runs_density_v3w/rh90_e24c_cl_100/VTK — 삭제하지 않습니다
+    -> ok
+
+끝. 적재 1/1 -> /home/mangwon/mof_project/21_ZIF69_MTV/density_water_v3w/tpl_e24c_cl_100/water_results.json
+VTK 는 각 작업의 VTK/System_0/ 아래.
+감사 {"target": "e24c_cl_100", "run_dir": "water_runs_density_v3w/rh90_e24c_cl_100", "blocking": false, "driver_rc": 0, "finished": true, "seed": 1790365300, "unit_cells": [1, 2, 3], "grid_directive": true, "blockpockets_in_input": 0, "com_grids_gz": ["water_runs_density_v3w/rh90_e24c_cl_100/VTK/System_0/COMDensityProfile_CO2.vtk.gz", "water_runs_density_v3w/rh90_e24c_cl_100/VTK/System_0/COMDensityProfile_water.vtk.gz"]}
