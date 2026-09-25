@@ -66,7 +66,9 @@ def audit():
     rows = json.load(open(M.OUT))['rows']
     res = {'seeds_unique': len({r.get('seed') for r in rows}) == len(rows), 'rows': {}}
     for r in rows:
-        d = os.path.join(M.RUNS, r['name'])
+        d = os.path.join(M.RUNS, f"mix_{r['name']}")   # run_tj1_mix.run_one 의 실행 폴더는 mix_<이름> (04:19 laptop 지적 — 처음엔 접두사 없이 봐 전 행 거짓 경보)
+        if not os.path.isdir(d):
+            raise RuntimeError(f'감사: 실행 폴더 없음 {d} — 거짓 경보를 내지 않고 멈춤')
         dat = glob.glob(os.path.join(d, 'Output', 'System_0', '*.data'))
         txt = open(dat[0], errors='ignore').read() if dat else ''
         res['rows'][r['name']] = {'status': r['status'], 'finished_marker': 'Simulation finished' in txt,
@@ -78,6 +80,8 @@ def audit():
 
 
 if __name__ == '__main__':
+    if os.environ.get('E27B_AUDIT_ONLY'):
+        audit(); sys.exit(0)
     rc = M.main()
     audit()
     sys.exit(rc)
