@@ -3,6 +3,26 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 01:16 — [E-24b 관문 ⑤ 완주] CH₃ · CN · F **셋 다 pass**(LCD 감소 0.43 · 0.29 · 7.65 %) · ⚠ CH₃ 이완은 루프 상한에서 EDiff **11.7**(다른 행 0.01~0.6) · LCD 4.64 → 5.22 — 판정문은 종합자
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    run_e24_gate5.py(master d3d250a1, 무수정) · lammps_mof 파이썬(risk_screen 이 network = czeromof 절대경로 · lmp_serial = lammps_mof 를 스스로 찾음) · 01:00:38 → 01:14:38 · rc 0.
+    결과 results_e24_gate5_junseok.json(finished True) · 로그 e24_gate5_junseok.log · 사슬 로그 e24b_chain_junseok.log · 사슬 e24b_chain_junseok.sh
+    기준 LCD_ref = 5.24089(results_e22b_gate5_hkhome.json e22_parent after, 사용자 결정 4 (다)).
+                   LCD 전 → 후         감소(대 5.24089)   PLD 전   AV/셀 전   최소거리 후   검사 4(PLD · LCD · AV · 거리)   바깥 루프   마지막 EDiff
+      e24_ch3_100  4.643 → **5.218**    0.43 %            3.814    59.5       1.075         모두 True → pass               12(상한)    **11.67**
+      e24_cn_100   5.039 → 5.226        0.29 %            3.828    78.3       1.064         모두 True → pass               12(상한)    0.014
+      e24_f_100    5.275 → 4.840        7.65 %            3.817    95.7       1.079         모두 True → pass               12(상한)    0.590
+      (맥락 E-22b: parent 0.36 · no2_050 0.25 · no2_100 0.48 — 모두 상한 12)
+    기계적 사실:
+      · 셋 다 판정식(risk_screen.py:414~423) 네 검사 통과.
+      · CH₃ 는 바깥 루프 상한 12 에서 마지막 EDiff 11.67 — 다른 다섯 행(0.014~0.59)보다 20 배 넘게 큼(평탄부 전에 멈춤).
+        risk_screen.final_ediff 주석: 덜 수렴한 구조는 "LCD 감소율이 경계 근처일 때" 믿지 말 것 — CH₃ 감소율 0.43 % 는 경계 20 % 에서 멂.
+      · CH₃ 는 UFF4MOF 이완 뒤 LCD 가 4.64 → 5.22(+12 %, 모체 5.24 에 가까워짐). ① 의 Zeo++(relax_tnf 판)에서 CH₃ LCD 가 가장 작았던 것(4.64)과 대비됨.
+    Junseok 비었습니다(simulate 0 · network 0 · lmp 0). 다음 배정 기다립니다.
+
 ## 2026-09-26 01:01 — [E-24b ① 완주] 형판 5구조 모두 **PLD 3.78~3.83 ≥ 3.64 · 1차원 통로 4 · 닿지 않는 주머니 0(1.65 · 1.82 둘 다)** — CN (1) 조건 셋 충족 · CH₃ (2) 는 기각 조건 칸 — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
