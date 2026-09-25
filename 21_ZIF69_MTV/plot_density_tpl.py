@@ -201,8 +201,33 @@ def dry2():
     p = os.path.join(OUT, 'e28b_dry_cl_c2h5.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
 
 
+def wet2(base=None):
+    """E-28c — 새 1 · 2위 습윤(RH90). base = 격자 폴더 루트(기본 water_runs_density_v3w). C₂H₅ 는 CO₂ 막은 구(block1.65)를 점선 원으로."""
+    base = base or WET
+    rows = [('e24c_cl_100', 'Cl2'), ('e24c_c2h5_100', '(C2H5)2 막음')]
+    blk = [l.split() for l in open(os.path.join(HERE, 'e28b_blocks', 'e24c_c2h5_100_block1.65.block')).read().split('\n')[1:] if l.strip()]
+    fig, axs = plt.subplots(2, 2, figsize=(7.4, 5.4))
+    for i, (t, lab) in enumerate(rows):
+        _, _, cp = atoms_ab(t); a_len, b_len = cp[0], cp[1]
+        for j, m in enumerate(('CO2', 'water')):
+            g = proj_c(read_grid(os.path.join(base, f'rh90_{t}', 'VTK', 'System_0', f'COMDensityProfile_{m}.vtk.gz')))
+            panel(axs[i, j], g, a_len, b_len, 'magma' if m == 'CO2' else 'Blues', 0, g.max(), f'{lab} — {"CO₂" if m == "CO2" else "H₂O (영역 서술만)"}')
+            overlay(axs[i, j], t, a_len, b_len)
+            if t == 'e24c_c2h5_100':
+                for bb in blk:
+                    fa, fb, r = float(bb[0]), float(bb[1]), float(bb[3])
+                    for sa in (-1, 0, 1):
+                        for sb in (-1, 0, 1):
+                            axs[i, j].add_patch(plt.Circle(((fa + sa) * a_len, (fb + sb) * b_len), r, fill=False, ls='--', lw=0.8, ec='#00e5ff'))
+                axs[i, j].set_xlim(0, a_len); axs[i, j].set_ylim(0, b_len)
+    fig.suptitle('E-28c 습윤 — CO2 15 kPa + H2O 2852 Pa (RH90) · 298 K · c 투영\n(C2H5: 점선 원 = CO2 가 못 가는 통로 — 물의 64 % 가 여기에)', fontsize=10)
+    os.makedirs(OUT, exist_ok=True)
+    p = os.path.join(OUT, 'e28c_humid_cl_c2h5.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
+
+
 if __name__ == '__main__':
     what = sys.argv[1:] or ['dry', 'wet']
     if 'dry' in what: dry()
     if 'wet' in what: wet()
     if 'dry2' in what: dry2()
+    if 'wet2' in what: wet2(os.environ.get('E28C_BASE'))
