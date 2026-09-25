@@ -7628,3 +7628,16 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
       적재(mol/kg CO₂ / N₂): ch3 2.23~2.30 / 0.155~0.162 · cn 2.33~2.34 / 0.173~0.175 · parent 1.88~1.91 / 0.210~0.217 · saIm050 0.619 / 0.118 · mslm050 0.636 / 0.132.
       행의 '비' 는 298 K S_Henry 대비(러너 주석대로 참고용 — 온도가 다름).
     견적 기록(§5): 04:45~06:15 → 실측 04:09(**36~126 분 과대**). 출처 = 같은 기기 298 K 실측을 옮김 · 온도 효과 미반영이라 적었고 실제로 그 방향(gme 192~204 분 대 298 K 280~401).
+
+## 2026-09-26 04:19 — laptop(Melchior): **E-27b −Cl 착수 04:16**(HKHOME 20차 + laptop 10차, 자료 0건) · ⚠ **러너 audit() 경로 결함**(거짓 경보 쪽) · 사슬 rc 무늬 점검
+**받는 곳**: 종합자  **답 필요**: audit() 수정 여부(데스크탑 C₂H₅ 도 같은 러너)
+
+    입력: run_e27b_mix323.py · charged_v3/e24c_cl_100_DDEC6.cif(md5 22ef18af · 204원자 전하 비영 · 합 −4e-5) 를 origin/master(44838b84) **경로 지정 checkout** — merge 안 함(runner_running 가드 0 이었지만 v3w_humid_wc 등 미추적 동명 파일로 merge 가 막힐 수 있어 경로 지정이 안전).
+    명령 그대로: E27B_SET=cl E27B_MACHINE=laptop E27B_WORKERS=3. 착수 관문 3/3: 골격 전하 204/204 · LJ 일치 · T 323 · 0.15/0.85 · 막음 없음(Cl, 등록대로) · 씨앗 3 고유(1790363779 · …794 · …809, 15 s).
+    ⚠ 결함(러너 끝의 audit): `d = os.path.join(M.RUNS, r['name'])`(run_e27b_mix323.py:69) — 실제 실행 폴더는 run_tj1_mix 의 `mix_{name}`(run_tj1_mix.py:107).
+      → .data 를 못 찾아 **finished_marker False · n_blocked 0 · blocked_for_component 0 이 전 행에** 찍힘(거짓 경보). C₂H₅(데스크탑)의 막음 감사도 같은 경로라 **막음 실패처럼 보일 것**.
+      laptop 은 러너 안 고침(남의 러너) — Cl 완주 뒤 `mix_` 경로로 **직접 감사**해 보고. 고치실 때는 `f'mix_{r["name"]}'`.
+    사슬 rc 무늬(종합자 04:15 요청 — 다른 기기에서 찾기): laptop 저장소 밖 사슬 ~/.mof_chain/*.sh · 스크래치 대기 장치 전수 grep.
+      해당 무늬는 corewc_chain.sh 의 `say "… rc=$?"` 둘뿐이고 **이것은 맞음** — $? 가 say 의 인자 단어를 펼 때(파이썬 직후) 확정되고 date 는 say 안에서 나중에 돎.
+      재현: `bash -c 'exit 3'; say "rc=$?"` → rc=3 · `bash -c 'exit 3'; echo "$(date +%T) rc $?"` → rc 0. 이번 주 사슬(e22g · e25 · e24b)은 rc 를 안 찍음(착수만) · E-25/E-24b 반환코드는 래퍼가 파이썬에서 cp.returncode 로 기록.
+    견적 ≈ 04:55~05:10. 출처 = 같은 기기 323 K 형판 계열 실측(E-27: 41~68 분, 8 동시 → 지금 3 동시) · 같은 N_super 1224(모체 41.6 분).
