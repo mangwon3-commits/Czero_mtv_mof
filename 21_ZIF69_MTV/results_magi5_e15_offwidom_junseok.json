@@ -1363,7 +1363,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2016[Co][sql]2",
    "asr_fsr_pair": "2016[Co][sql]2[ASR]17",
@@ -1379,6 +1379,50 @@
     3
    ],
    "N_super": 2400,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 40,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790294840,
+   "total_time_s_CO2": 949.1968,
+   "KH_CO2": 0.00199304,
+   "KH_CO2_err": 2.4998e-05,
+   "dU_CO2": -34.9851560579,
+   "dU_CO2_err": 0.0264327863,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 40,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790294918,
+   "total_time_s_N2": 964.789241,
+   "KH_N2": 1.7996e-05,
+   "KH_N2_err": 1.11646e-07,
+   "dU_N2": -20.8976263013,
+   "dU_N2_err": 0.0198655705,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00597084,
@@ -1388,7 +1432,15 @@
     "dU_CO2": -38.8327388063
    },
    "S_ON": 268.7182995269963,
-   "S_ON_err": 3.2121237814600443
+   "S_ON_err": 3.2121237814600443,
+   "S_OFF": 110.74905534563239,
+   "S_OFF_err": 1.5497225325218125,
+   "lnS_OFF": 4.7072668792783245,
+   "lnS_OFF_err": 0.013993099333311188,
+   "lnS_ON": 5.593663617236219,
+   "ln_ratio": 0.8415355662027,
+   "dlnKH_CO2_off_minus_on": -1.0972265097491736,
+   "dlnKH_N2_off_minus_on": -0.21082977179127907
   },
   {
    "name": "2016_Co__sql_2_FSR_18",
