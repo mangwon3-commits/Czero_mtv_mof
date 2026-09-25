@@ -2342,7 +2342,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2020[Cu][sql]2",
    "asr_fsr_pair": null,
@@ -2382,6 +2382,26 @@
    "KH_CO2_err": 1.27847e-06,
    "dU_CO2": -24.7985690937,
    "dU_CO2_err": 0.0270755517,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 176,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790297028,
+   "total_time_s_N2": 891.097679,
+   "KH_N2": 7.09885e-06,
+   "KH_N2_err": 7.08822e-08,
+   "dU_N2": -15.2464230233,
+   "dU_N2_err": 0.0203602693,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.000532568,
@@ -2391,7 +2411,15 @@
     "dU_CO2": -29.4034143877
    },
    "S_ON": 65.21278080772706,
-   "S_ON_err": 2.048306471472627
+   "S_ON_err": 2.048306471472627,
+   "S_OFF": 22.252195778189428,
+   "S_OFF_err": 0.28601080577411847,
+   "lnS_OFF": 3.10244069040324,
+   "lnS_OFF_err": 0.012853149802611975,
+   "lnS_ON": 4.177655474380675,
+   "ln_ratio": 0.7426272246308602,
+   "dlnKH_CO2_off_minus_on": -1.2153370994605355,
+   "dlnKH_N2_off_minus_on": -0.14012231548310064
   },
   {
    "name": "2014_Cu__dia_3_ASR_5",
@@ -2403,7 +2431,7 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "3D",
    "series": "2014[Cu][dia]3",
    "asr_fsr_pair": "2014[Cu][dia]3[FSR]6",
@@ -2419,6 +2447,50 @@
     2
    ],
    "N_super": 1968,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 164,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790297176,
+   "total_time_s_CO2": 738.763641,
+   "KH_CO2": 0.000339802,
+   "KH_CO2_err": 2.26764e-06,
+   "dU_CO2": -29.5866193226,
+   "dU_CO2_err": 0.0307670101,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 164,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790297309,
+   "total_time_s_N2": 751.911965,
+   "KH_N2": 8.98021e-06,
+   "KH_N2_err": 5.68042e-08,
+   "dU_N2": -18.183671719,
+   "dU_N2_err": 0.0129577223,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.000636862,
@@ -2428,7 +2500,15 @@
     "dU_CO2": -33.1157977552
    },
    "S_ON": 67.92564316698076,
-   "S_ON_err": 1.4232182770909139
+   "S_ON_err": 1.4232182770909139,
+   "S_OFF": 37.83898149375126,
+   "S_OFF_err": 0.34792580432001496,
+   "lnS_OFF": 3.633339827694351,
+   "lnS_OFF_err": 0.009194904053574262,
+   "lnS_ON": 4.218413624049044,
+   "ln_ratio": 0.8613047822007767,
+   "dlnKH_CO2_off_minus_on": -0.6281898965641696,
+   "dlnKH_N2_off_minus_on": -0.04311610020947651
   },
   {
    "name": "2014_Cu__dia_3_FSR_6",
@@ -2440,7 +2520,7 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "3D",
    "series": "2014[Cu][dia]3",
    "asr_fsr_pair": "2014[Cu][dia]3[ASR]5",
@@ -2456,6 +2536,50 @@
     2
    ],
    "N_super": 1968,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 164,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790297349,
+   "total_time_s_CO2": 743.791259,
+   "KH_CO2": 0.00034316,
+   "KH_CO2_err": 3.45339e-06,
+   "dU_CO2": -29.5883222569,
+   "dU_CO2_err": 0.0275592447,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 164,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790297440,
+   "total_time_s_N2": 745.111789,
+   "KH_N2": 9.00241e-06,
+   "KH_N2_err": 5.73723e-08,
+   "dU_N2": -18.1677791931,
+   "dU_N2_err": 0.0233376331,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.000650424,
@@ -2465,7 +2589,15 @@
     "dU_CO2": -33.2629875649
    },
    "S_ON": 69.5236140683923,
-   "S_ON_err": 1.0271046057719342
+   "S_ON_err": 1.0271046057719342,
+   "S_OFF": 38.1186815530508,
+   "S_OFF_err": 0.45405900662058146,
+   "lnS_OFF": 3.6407044914368374,
+   "lnS_OFF_err": 0.011911718562161057,
+   "lnS_ON": 4.241666465629965,
+   "ln_ratio": 0.8583193706853908,
+   "dlnKH_CO2_off_minus_on": -0.6394276472170382,
+   "dlnKH_N2_off_minus_on": -0.0384656730239107
   },
   {
    "name": "2016_Co__sql_2_FSR_11",
