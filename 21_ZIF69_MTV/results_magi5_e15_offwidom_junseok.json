@@ -1541,7 +1541,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2016[Co][sql]2",
    "asr_fsr_pair": null,
@@ -1581,6 +1581,26 @@
    "KH_CO2_err": 1.87233e-05,
    "dU_CO2": -33.7158202336,
    "dU_CO2_err": 0.0137212941,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 40,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790295442,
+   "total_time_s_N2": 963.081449,
+   "KH_N2": 1.96537e-05,
+   "KH_N2_err": 1.37884e-07,
+   "dU_N2": -20.4255002801,
+   "dU_N2_err": 0.0123387127,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00587863,
@@ -1590,7 +1610,15 @@
     "dU_CO2": -38.1959109519
    },
    "S_ON": 234.72832249924136,
-   "S_ON_err": 4.518801016188775
+   "S_ON_err": 4.518801016188775,
+   "S_OFF": 82.66077125426764,
+   "S_OFF_err": 1.1152893346648158,
+   "lnS_OFF": 4.4147451394812345,
+   "lnS_OFF_err": 0.013492365456331685,
+   "lnS_ON": 5.458428770903272,
+   "ln_ratio": 0.8087941282690171,
+   "dlnKH_CO2_off_minus_on": -1.2860682653116724,
+   "dlnKH_N2_off_minus_on": -0.24238463388963424
   },
   {
    "name": "2016_Co__sql_2_FSR_8",
@@ -1602,7 +1630,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2016[Co][sql]2",
    "asr_fsr_pair": null,
@@ -1618,6 +1646,50 @@
     3
    ],
    "N_super": 2400,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 40,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790295568,
+   "total_time_s_CO2": 938.300192,
+   "KH_CO2": 0.00161905,
+   "KH_CO2_err": 1.09903e-05,
+   "dU_CO2": -33.8724710324,
+   "dU_CO2_err": 0.0218644705,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 40,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790295618,
+   "total_time_s_N2": 954.537624,
+   "KH_N2": 1.83907e-05,
+   "KH_N2_err": 2.93553e-07,
+   "dU_N2": -20.4566180153,
+   "dU_N2_err": 0.0323820257,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00586068,
@@ -1627,7 +1699,15 @@
     "dU_CO2": -38.3811330948
    },
    "S_ON": 247.52524591271734,
-   "S_ON_err": 5.8072042170764036
+   "S_ON_err": 5.8072042170764036,
+   "S_OFF": 88.03634445670909,
+   "S_OFF_err": 1.5270311686017253,
+   "lnS_OFF": 4.477749734404914,
+   "lnS_OFF_err": 0.017345463149627097,
+   "lnS_ON": 5.511512580494469,
+   "ln_ratio": 0.8124357277622669,
+   "dlnKH_CO2_off_minus_on": -1.2864260803324294,
+   "dlnKH_N2_off_minus_on": -0.2526632342428744
   },
   {
    "name": "2018_Cd__dia_3_ASR_4",
@@ -1639,7 +1719,7 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "3D",
    "series": "2018[Cd][dia]3",
    "asr_fsr_pair": "2018[Cd][dia]3[FSR]3",
@@ -1655,6 +1735,50 @@
     3
    ],
    "N_super": 2352,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 196,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790295651,
+   "total_time_s_CO2": 773.874211,
+   "KH_CO2": 0.000316245,
+   "KH_CO2_err": 3.16963e-06,
+   "dU_CO2": -28.3737196825,
+   "dU_CO2_err": 0.0235994079,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 196,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790295700,
+   "total_time_s_N2": 778.567908,
+   "KH_N2": 1.10436e-05,
+   "KH_N2_err": 4.87778e-08,
+   "dU_N2": -17.1433684569,
+   "dU_N2_err": 0.0115078828,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.000815999,
@@ -1664,7 +1788,15 @@
     "dU_CO2": -32.6277852915
    },
    "S_ON": 68.01522009118719,
-   "S_ON_err": 2.3215808656828516
+   "S_ON_err": 2.3215808656828516,
+   "S_OFF": 28.63604259480604,
+   "S_OFF_err": 0.3136438409607511,
+   "lnS_OFF": 3.354666154989392,
+   "lnS_OFF_err": 0.010952764856469354,
+   "lnS_ON": 4.219731505001457,
+   "ln_ratio": 0.7949951675866718,
+   "dlnKH_CO2_off_minus_on": -0.9478958998330936,
+   "dlnKH_N2_off_minus_on": -0.08283054982102821
   },
   {
    "name": "2018_Cd__dia_3_ASR_6",
@@ -1676,7 +1808,7 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "3D",
    "series": "2018[Cd][dia]3",
    "asr_fsr_pair": "2018[Cd][dia]3[FSR]5",
@@ -1692,6 +1824,50 @@
     3
    ],
    "N_super": 2352,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 196,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790295790,
+   "total_time_s_CO2": 762.728956,
+   "KH_CO2": 0.000397926,
+   "KH_CO2_err": 2.35298e-06,
+   "dU_CO2": -30.5552320572,
+   "dU_CO2_err": 0.0437533964,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 196,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790295896,
+   "total_time_s_N2": 761.085712,
+   "KH_N2": 1.27921e-05,
+   "KH_N2_err": 1.13509e-07,
+   "dU_N2": -18.7054078861,
+   "dU_N2_err": 0.0393210628,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.0010705,
@@ -1701,7 +1877,15 @@
     "dU_CO2": -34.8495136373
    },
    "S_ON": 78.02535003899446,
-   "S_ON_err": 1.4700907312822329
+   "S_ON_err": 1.4700907312822329,
+   "S_OFF": 31.10716770506797,
+   "S_OFF_err": 0.331698558024008,
+   "lnS_OFF": 3.437438265462173,
+   "lnS_OFF_err": 0.010663090936754355,
+   "lnS_ON": 4.357033774388298,
+   "ln_ratio": 0.7889400090649444,
+   "dlnKH_CO2_off_minus_on": -0.9896150496806009,
+   "dlnKH_N2_off_minus_on": -0.07001954075447565
   },
   {
    "name": "2018_Cd__dia_3_FSR_3",
