@@ -8299,3 +8299,14 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
 ## 2026-09-25 19:04 — laptop2: **9차 E-22g 묶음 2 접수** — E-22e 완주(Widom 5구조, 지금 pcu) 뒤 착수: run_e22g_water.py --names e22e_2021_Zn__srs_3_FSR_1,e22e_2014_Cu__dia_3_FSR_6,e22e_2021_Co__dia_3_FSR_1 --out results_e22g_water_b2_laptop2.json --runs e22g_runs_b2 --workers 6. 러너(run_e22g_water · run_e22c_water)는 master 에만 있어 **러너 끝난 뒤 병합**하고 띄움. 힘장 md5·water.def md5·물 5자리 관문 실패 시 착수 안 하고 여기 적음.
 
 ## 2026-09-25 20:31 — laptop2: **10차 E-26 접수**(§laptop2 10차, e59a85ee) — 순서: E-22e Widom(지금 srs, 남은 Cu dia·Co dia) → E-22g 묶음 2 → E-26. 러너 run_e25_humid_wc.py(착수 간격 15 s·i) + env HWC_V3W_TARGETS=e24_cn_100_h1,h2,h3 · WORKERS=6 · RESULT=humid_working_capacity_w2_e24cn_laptop2.json. 입력 사본 셋은 e24_cn_100_DDEC6.cif 바이트 동일(md5 6267386d 대조). 판정 전 관문(씨앗 고유 9 · Simulation finished · 반환코드) 확인해 올림. 병합은 러너 끝난 뒤.
+
+## 2026-09-25 20:57 — laptop2: **E-22e 끝** 20:56 — results_magi5_e3_e22e_<n>_widom_desktop-js1ib6u.json 5(초격자 셋은 relax_supercell [2,1,1]) + results_magi5_e22e_summary_laptop2.json(요약, 원본 무수정). 20/20 완주 표지 · seed 20 겹침 0 · md5 8e8ec933 · Widom 27~32 분/구조.
+    (0) 전하 재현(같은 CoRE 기하, 같은 원소 최근접 짝·일대일·짝거리 0): 최대 |Δq| pcu 0.0058 · Cd dia 0.0054 · srs 0.0039 · Cu dia 0.0019 · Co dia 0.0069 e, 원소별 평균 최대 ≤ 0.0060 → **5/5 문턱 안**(0.05/0.02).
+    A(E-15: 코어팝 S_ON · E-15 S_OFF) → C(이완 앞단) G, 단일 대 단일 d/√(±₁²+±₂²):
+      pcu    1.829 → 1.349  ΔG −9.1 단위 · ΔS_ON −13.7 · ΔS_OFF −3.3  | Δln G −0.304 · Δln S_OFF −0.064
+      Cd dia 2.945 → 2.764  ΔG −1.4 · ΔS_ON −2.5 · ΔS_OFF −1.0         | −0.063 · −0.025
+      srs*   2.855 → 1.920  ΔG −13.7 · ΔS_ON −19.4 · ΔS_OFF −5.6      | −0.397 · −0.085
+      Cu dia* 1.824 → 1.681 ΔG −3.0 · ΔS_ON −10.9 · ΔS_OFF −9.6       | −0.082 · −0.157
+      Co dia* 1.031 → 1.019 ΔG −0.4 · ΔS_ON −1.0 · ΔS_OFF −0.5        | −0.012 · −0.009   (* 2×1×1 이완)
+    등록 예측 대조(판정은 종합자): (0) 5/5 성립 쪽 · (1) G 가 1.5 단위 넘게 낮아진 행 **3/5**(문턱 ≥ 3) · (2) |Δln G| > |Δln S_OFF| **4/5** · (3) 방향: 다섯 모두 G·S_ON·S_OFF 가 내려감.
+    이어서 E-22g 묶음 2: master 병합 → 관문 → 착수.
