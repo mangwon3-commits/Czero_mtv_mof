@@ -8310,3 +8310,5 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
       Co dia* 1.031 → 1.019 ΔG −0.4 · ΔS_ON −1.0 · ΔS_OFF −0.5        | −0.012 · −0.009   (* 2×1×1 이완)
     등록 예측 대조(판정은 종합자): (0) 5/5 성립 쪽 · (1) G 가 1.5 단위 넘게 낮아진 행 **3/5**(문턱 ≥ 3) · (2) |Δln G| > |Δln S_OFF| **4/5** · (3) 방향: 다섯 모두 G·S_ON·S_OFF 가 내려감.
     이어서 E-22g 묶음 2: master 병합 → 관문 → 착수.
+
+## 2026-09-25 20:59 — laptop2: **E-22g 묶음 2 착수** 20:58 — run_e22g_water.py(master 판, 병합으로 받음) --names e22e_2021_Zn__srs_3_FSR_1,e22e_2014_Cu__dia_3_FSR_6,e22e_2021_Co__dia_3_FSR_1 --out results_e22g_water_b2_laptop2.json --runs e22g_runs_b2 --workers 6. 관문 통과(힘장 md5 8e8ec933 · water.def md5 6fc8850d · 물 5자리 — 러너가 확인 뒤 착수). N_super srs 3072 · Cu dia 2624 · Co dia 2240. 12작업(4씨앗). 끝나면 E-26.
