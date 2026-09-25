@@ -1,0 +1,166 @@
+{
+  "test": "MAGI-005 E-19 — 우리 경계 조성 물 경쟁 지수 다씨앗",
+  "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 10차",
+  "machine": "junseok",
+  "final": false,
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
+  "header_gate_pre": {
+    "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+    "OwOw_eps": 89.633,
+    "OwHw": "ZERO_POTENTIAL",
+    "OwLw": "ZERO_POTENTIAL",
+    "HwHw": "ZERO_POTENTIAL",
+    "LwLw": "ZERO_POTENTIAL",
+    "ok": true
+  },
+  "reference_saIm050": {
+    "index": 1.3398523544176992,
+    "src": "E-16 보완 ⓑ — saIm050 4씨앗 2.354e-4 ± 4.92e-5 / results_v3 1.75691e-4",
+    "index_err": 0.28323808180919385
+  },
+  "registered": "(1) mslm050 지수 < saIm050 − 1.5 단위 · (2) sa50nb50 지수 가 saIm050 보다 1.5 단위 넘게 낮지 않음 · (3) 6조성 ρ 서술 — 판정문은 종합자",
+  "runs": [],
+  "compositions": {
+    "mslm050": {
+      "n_seeds": 1,
+      "seeds_src": [
+        "seedfixed"
+      ],
+      "KH_water_each": [
+        0.000136983
+      ],
+      "KH_water_mean": 0.000136983,
+      "KH_water_mean_err": 2.14035e-05,
+      "seed_sd_rel": null,
+      "KH_CO2": 0.000199834,
+      "KH_CO2_err": 5.8009e-06,
+      "KH_CO2_src": "results_v3",
+      "index": 0.6854839516798943,
+      "index_err": 0.10893914007210298,
+      "units_vs_saIm050": -2.156316150648509,
+      "G": 4.694844271076537,
+      "G_src": "E-14 hkhome"
+    },
+    "sa50nb50": {
+      "n_seeds": 1,
+      "seeds_src": [
+        "seedfixed"
+      ],
+      "KH_water_each": [
+        0.00047793
+      ],
+      "KH_water_mean": 0.00047793,
+      "KH_water_mean_err": 0.000212078,
+      "seed_sd_rel": null,
+      "KH_CO2": 0.000187221,
+      "KH_CO2_err": 6.42828e-06,
+      "KH_CO2_src": "E-14b ON (desktop-js1ib6u)",
+      "index": 2.5527585046549266,
+      "index_err": 1.1361541736786653,
+      "units_vs_saIm050": 1.035851180923281,
+      "G": 5.872782406792541,
+      "G_src": "E-14b desktop-js1ib6u"
+    },
+    "nbIm100": {
+      "n_seeds": 1,
+      "seeds_src": [
+        "seedfixed"
+      ],
+      "KH_water_each": [
+        0.000129688
+      ],
+      "KH_water_mean": 0.000129688,
+      "KH_water_mean_err": 2.91107e-05,
+      "seed_sd_rel": null,
+      "KH_CO2": 0.00011977,
+      "KH_CO2_err": 4.52411e-06,
+      "KH_CO2_src": "results_v3",
+      "index": 1.082808716707022,
+      "index_err": 0.24647242868556699,
+      "units_vs_saIm050": -0.6846044308159337,
+      "G": 4.657820477487825,
+      "G_src": "E-14 hkhome"
+    },
+    "nbIm050": {
+      "n_seeds": 1,
+      "seeds_src": [
+        "seedfixed"
+      ],
+      "KH_water_each": [
+        4.03233e-05
+      ],
+      "KH_water_mean": 4.03233e-05,
+      "KH_water_mean_err": 3.24032e-06,
+      "seed_sd_rel": null,
+      "KH_CO2": 0.000142446,
+      "KH_CO2_err": 8.40668e-06,
+      "KH_CO2_src": "results_v3",
+      "index": 0.283077797902363,
+      "index_err": 0.028223366300472796,
+      "units_vs_saIm050": -3.7126605127032004,
+      "G": 3.925262328993908,
+      "G_src": "E-14 hkhome",
+      "supplementary_all_seeds": {
+        "n": 4,
+        "KH_water_mean": 4.1574225e-05,
+        "KH_water_mean_err": 1.7453025e-06,
+        "index": 0.2918595467756202,
+        "note": "laptop v3w_water_kh_ours 3씨앗 더함(등록 값 아님)"
+      }
+    },
+    "saIm050": {
+      "n_seeds": 4,
+      "seeds_src": [
+        "seedfixed",
+        "ours",
+        "ours",
+        "ours"
+      ],
+      "KH_water_each": [
+        0.000255883,
+        0.000237772,
+        0.000212593,
+        0.000235254
+      ],
+      "KH_water_mean": 0.0002353755,
+      "KH_water_mean_err": 4.92385625e-05,
+      "seed_sd_rel": 0.07541821190564794,
+      "KH_CO2": 0.000175691,
+      "KH_CO2_err": 5.56793e-06,
+      "KH_CO2_src": "results_v3",
+      "index": 1.3397129050435137,
+      "index_err": 0.2834544316542809,
+      "units_vs_saIm050": -0.00034800385955379896,
+      "G": 4.8545445477190015,
+      "G_src": "E-1 laptop"
+    },
+    "base": {
+      "n_seeds": 4,
+      "seeds_src": [
+        "seedfixed",
+        "ours",
+        "ours",
+        "ours"
+      ],
+      "KH_water_each": [
+        7.13482e-05,
+        7.7346e-05,
+        7.17486e-05,
+        7.1236e-05
+      ],
+      "KH_water_mean": 7.29197e-05,
+      "KH_water_mean_err": 4.8827325000000004e-06,
+      "seed_sd_rel": 0.04057967263881656,
+      "KH_CO2": 5.33337e-05,
+      "KH_CO2_err": 1.14459e-06,
+      "KH_CO2_src": "results_v3",
+      "index": 1.3672349752595452,
+      "index_err": 0.09613778079268868,
+      "units_vs_saIm050": 0.09154725223445785,
+      "G": 2.1399015266032104,
+      "G_src": "E-14 hkhome"
+    }
+  },
+  "elapsed_s": 4
+}
