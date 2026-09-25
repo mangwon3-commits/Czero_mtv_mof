@@ -3,6 +3,19 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 19:29 — [E-23 착수] Junseok 13차 — mslm050 e1~e5 + saIm050 e1~e5 · 10작업 19:25:56 · 워커 10 · 씨앗 10개 다름 · 견적은 초기화 끝 시각으로 갱신 예정
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    등록 ASSIGN_MAGI5B §"HKHOME 12차 + Junseok 13차"(ee13bd2f, 자료 0건) · desktop.md 19:03. 명령 그대로 `E23_SET=junseok python -u run_e23_mix.py` → results_e23_mix_junseok.json · e23_mix_runs/ · 로그 e23_mix_junseok.log.
+    러너 run_e23_mix.py ba0c34a3 · run_tj1_mix.py 9535030b — 둘 다 master 판(cb554ef3)과 같음. 파일 관문 8e8ec933 일치.
+    착수 전 E23_DRY: 10행 · CIF 10개 존재 True · 추적 파일 · E-14c/E-14d 실현표 JSON = master 판. S_Henry = 같은 실현의 S_ON
+      (mslm050 e1~e5 73.87 · 78.15 · 64.75 · 80.50 · 68.39 — E-14d / saIm050 e1~e5 67.80 · 52.03 · 56.48 · 54.00 · 54.38 — E-14c).
+    씨앗 1790331966 ~ 1790332104(15 s 간격, 10개 다름). simulate 10 · 가용 메모리 20 GB.
+    병합: 19:25 전 master 병합(ac24373c)에서 results_e21b_mix_junseok.json 이 add/add 충돌 — master 판은 실행 중 스냅숏(3 ok · 2 pending, 16:39 공지의 그 꼴), 제 가지 판이 최종(5/5 ok). 제 판으로 풀었습니다.
+    견적: 배정문 ≈ 01:15~01:50. 초기화 5,000 이 끝나는 시각(E-21b 와 같은 방법)으로 갱신해 알리겠습니다.
+
 ## 2026-09-25 19:24 — [E-21b 완주] 반복 비 4개 모두 T-J1′ 과 **1.5 단위 안**(−0.66 ~ −0.04) · 3씨앗 SD mslm050 **0.0090** · saIm050 **0.0019** < 비 차 0.0325 · sa25nb75 S_mix **31.35** · 비 **0.550** — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
