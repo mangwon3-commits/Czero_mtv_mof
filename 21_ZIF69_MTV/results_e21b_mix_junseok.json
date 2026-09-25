@@ -1,0 +1,143 @@
+{
+ "test": "MAGI-005 E-21b 작동점 벌점 비(S_mix/S_Henry)의 씨앗 산포 + sa25nb75",
+ "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 12차",
+ "registration": "ASSIGN_MAGI5B_20260925.md §Junseok 12차 예측 (1)(2)(3) — 반복 비 대 T-J1′(mslm050 0.676 · saIm050 0.643) 1.5 단위(S_mix ± 기준)",
+ "protocol": {
+  "mix": {
+   "CO2": 0.15,
+   "N2": 0.85
+  },
+  "P_Pa": 100000.0,
+  "T_K": 298.0,
+  "init": 5000,
+  "cycles": 15000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "ewald": 1e-06,
+  "blocking": false
+ },
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "rows": [
+  {
+   "name": "mslm050_s2",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 58.11340946697725,
+   "S_Henry_err": 1.7018725134342632,
+   "S_Henry_src": "results_v3.json",
+   "L": 0.414699898348963,
+   "L_src": "results_v3.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 5376,
+   "cif": "charged_v3/mslm050_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "junseok",
+   "flexible": null
+  },
+  {
+   "name": "mslm050_s3",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 58.11340946697725,
+   "S_Henry_err": 1.7018725134342632,
+   "S_Henry_src": "results_v3.json",
+   "L": 0.414699898348963,
+   "L_src": "results_v3.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 5376,
+   "cif": "charged_v3/mslm050_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "junseok",
+   "flexible": null
+  },
+  {
+   "name": "sa25nb75",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 56.975950231393675,
+   "S_Henry_err": 3.057317961437283,
+   "S_Henry_src": "results_v4mix.json",
+   "L": 0.43625544261971694,
+   "L_src": "results_v4mix.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 5280,
+   "cif": "charged_v3/sa25nb75_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "junseok",
+   "flexible": null
+  },
+  {
+   "name": "saIm050_s2",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 65.20574077441816,
+   "S_Henry_err": 2.1026456640745126,
+   "S_Henry_src": "results_v3.json",
+   "L": 0.4701353925167861,
+   "L_src": "results_v3.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 5184,
+   "cif": "charged_v3/saIm050_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "junseok",
+   "flexible": null
+  },
+  {
+   "name": "saIm050_s3",
+   "group": "우리",
+   "dim": 3,
+   "S_Henry": 65.20574077441816,
+   "S_Henry_err": 2.1026456640745126,
+   "S_Henry_src": "results_v3.json",
+   "L": 0.4701353925167861,
+   "L_src": "results_v3.json loading_015bar/(KH_CO2·15 kPa)",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 5184,
+   "cif": "charged_v3/saIm050_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "junseok",
+   "flexible": null
+  }
+ ]
+}
