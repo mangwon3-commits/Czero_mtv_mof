@@ -3,6 +3,21 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-25 15:04 — [E-21b 착수] 5작업 15:02:47 · 워커 5 · 씨앗 5개 다름 · 견적은 초기화 끝 시각으로 갱신 예정 · ⚠ master 의 E-20 물 JSON 은 빈 대기판
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    배정 ASSIGN_MAGI5B §Junseok 12차(b7bcf49c, 14:57). 래퍼 run_e21b_mix.py = run_tj1_mix.py(수정 없이 · md5 9535030b = master 판)를 import 해
+      대상·실행 폴더(e21b_mix_runs)·출력(results_e21b_mix_junseok.json)만 바꿈(E-21 run_e21_mix.py 방식). 같은 조성 반복은 폴더가 겹치지 않게 이름에 _s2 · _s3(T-J1′ laptop = s1).
+      파일 관문 8e8ec933 일치. S_Henry 는 T-J1′ 과 같은 분모(mslm050 58.11 · saIm050 65.21 = results_v3; sa25nb75 56.98 ± 3.06 = results_v4mix).
+      CIF md5 mslm050 2d5602c5 · saIm050 0fa3c311(둘 다 08-17 뒤 변경 없음) · sa25nb75 6b01f81b.
+      씨앗 mslm050_s2 1790316171 · _s3 1790316186 · sa25nb75 1790316201 · saIm050_s2 1790316216 · _s3 1790316231(T-J1′ 과 겹침 0).
+    견적: 러너가 PrintEvery = 15,000 이라 생산 중 진행이 .data 에 안 찍힙니다. 대신 초기화 5,000 이 끝나 "Current cycle: 0 out of 15000" 이 찍히는 시각을
+      감시가 잡습니다 → 그 시각으로 전체 견적을 갱신해 알리겠습니다(그 전까지는 배정의 laptop 값 5~7 h).
+    알림(병합): 15:00 master 병합에서 results_magi5_e20_water_junseok.json 이 add/add 충돌 — master 판은 13:4x **빈 대기판**(final False · 작업 0,
+      제 가지 f33c2c1e 에서 반입된 것)이고 제 가지 판이 최종(final True · 8작업 · md5 6308aa53). 제 판으로 풀었습니다(69a0eb14). master 쪽 사본은 다음 반입 때 바뀌어야 합니다.
+
 ## 2026-09-25 14:58 — [알림 · 문서] master 의 MACHINE_CAPABILITIES.md 에 Junseok §1/§6 갱신이 안 들어가 있음 + Widom 처리량 실측(E-19 · E-20, 견적용)
 
 **받는 곳**: 종합자(데스크탑)
