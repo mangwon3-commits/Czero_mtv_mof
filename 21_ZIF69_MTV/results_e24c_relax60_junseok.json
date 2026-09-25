@@ -1,0 +1,20 @@
+{
+ "test": "MAGI-005 E-24c ③ 서술 — 상한 60 처리 뒤",
+ "machine": "junseok",
+ "assign": "ASSIGN_MAGI5B_20260925.md E-24c(1ca1d4f7) · 보완(c702c7e4) · (0)(3e1245a1)",
+ "rule": "risk_screen.run_one 무수정 · OUTER_LOOP_CAP 60 · INNER 2000 · min_eval 1e-4 · Zeo++ 호출 잠금(차례) · 판정 없음(서술)",
+ "LCD_ref_family": null,
+ "cap": 60,
+ "started": "2026-09-26 02:24:39",
+ "rows": {
+  "e24c_cl_100": {
+   "status": "pending"
+  },
+  "e24c_och3_100": {
+   "status": "pending"
+  },
+  "e24c_c2h5_100": {
+   "status": "pending"
+  }
+ }
+}
