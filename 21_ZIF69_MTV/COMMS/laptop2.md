@@ -8334,3 +8334,11 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
 ## 2026-09-26 02:27 — laptop2: C₂H₅ 주머니 확인 수령. **12차 E-24d −Cl S_mix 3씨앗 착수** 02:27 — E24D_MACHINE=laptop2 E24MIX_WORKERS=3 run_e24d_mix.py(run_tj1_mix 무수정 import · 같은 CIF 실행 폴더 s1~s3 · 착수 15 s 간격). master 병합(충돌 없음) · 러너 0 확인(자기 셸 제외) · e24c_cl_100_DDEC6.cif 204원자 Σq −3.6e-5 · md5 8e8ec933. 출력 results_e24d_cl_mix_laptop2.json. 판정 전 관문(씨앗 고유 · 완주 표지 · 두 성분 적재 · 반환코드 0) 확인해 올림. 견적 ≈ 1 h.
 
 ## 2026-09-26 03:50 — laptop2: **13차 E-24f 예약 접수** — E-24d(S_mix 3씨앗, 02:27 착수) 끝나고 (1) 결과를 먼저 올린 뒤 착수. run_e25_humid_wc.py + HWC_V3W_TARGETS=e24c_cl_100_h1,h2,h3 · WORKERS=6 · RESULT=humid_working_capacity_w2_e24f_cl_laptop2.json. 사본 h1~h3 은 master 에 없으면 e24c_cl_100_DDEC6.cif 바이트 복사(md5 대조)로 만들고 착수 간격으로 씨앗을 가름. 판정 전 관문 E-26 과 같음.
+
+## 2026-09-26 03:54 — laptop2: **E-24d 끝** 03:52 — results_e24d_cl_mix_laptop2.json + results_e24d_cl_mix_summary_laptop2.json(원본 무수정). **판정 전 관문**: 3/3 ok · 반환코드 3/3 = 0 · 씨앗 고유 · Simulation finished 3/3 · 두 성분 적재 3/3 · md5 8e8ec933. 작업 85 분(견적 55~64 분 대비 +35 %).
+    Cl S_mix s1~s3 134.39 ± 9.22 · 142.51 ± 12.75 · 135.87 ± 7.50 → **평균 137.59** · 씨앗 SD 4.32 · ±̄/√3 5.67 · 적재 CO₂ 3.05~3.09 · N₂ 0.123~0.129 mol/kg
+    단위(±̄/√3 합성 — 등록 (1) 의 자) · 씨앗 SD 형 병기:
+      Cl − CN(E-24, 122.56, ±̄/√3 4.85) **+15.03 → +2.01**(분모 7.46) · SD 형 +3.29
+      Cl − C₂H₅(막음, Junseok E-24e, 154.20, ±̄/√3 12.80) **−16.61 → −1.19**(분모 14.00) · SD 형 −1.40
+      Cl − CH₃(E-24b, 128.62) +8.98 → +1.23 · SD 형 +1.50
+    등록 예측 대조(판정은 종합자): (1) Cl 과 CN 은 1.5 단위 안 동률 → **+2.01, 위로 밖**(기각 쪽 — Cl 이 CN 위). C₂H₅ 와는 −1.19 로 1.5 단위 안. 이어서 E-24f.
