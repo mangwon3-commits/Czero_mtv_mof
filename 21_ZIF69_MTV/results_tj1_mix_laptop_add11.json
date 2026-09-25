@@ -1,0 +1,47 @@
+{
+ "test": "T-J1′ 이원 공동 지표 S_mix/S_Henry",
+ "assign": "ASSIGN_MAGI5B_20260925.md §laptop 5차",
+ "registration": "MAGI/MAGI-005_R1_junseok.md §T-J1′ + R3 J-13",
+ "protocol": {
+  "mix": {
+   "CO2": 0.15,
+   "N2": 0.85
+  },
+  "P_Pa": 100000.0,
+  "T_K": 298.0,
+  "init": 5000,
+  "cycles": 15000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "ewald": 1e-06,
+  "blocking": false
+ },
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "rows": [
+  {
+   "name": "2019_Ni__pcu_3_ASR_1",
+   "group": "대조(07:41 보완 · Junseok 08:16 — N₂ 닿지 않는 주머니 1개 ≈ 셀 4 % · S_Henry 에 섞임)",
+   "dim": 3,
+   "S_Henry": 44.37795338368459,
+   "S_Henry_err": null,
+   "S_Henry_src": "core_pop_annotated.json(§AV Widom)",
+   "L": 0.7694666785516449,
+   "L_src": "core_pop_annotated.json L",
+   "unit_cells": [
+    2,
+    2,
+    2
+   ],
+   "N_super": 1408,
+   "cif": "core_pop_cifs/2019_Ni__pcu_3_ASR_1.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop_add11",
+   "flexible": null
+  }
+ ]
+}
