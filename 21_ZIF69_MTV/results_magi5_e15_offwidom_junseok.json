@@ -1452,7 +1452,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2016[Co][sql]2",
    "asr_fsr_pair": null,
@@ -1468,6 +1468,50 @@
     3
    ],
    "N_super": 2400,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 40,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790295115,
+   "total_time_s_CO2": 948.741821,
+   "KH_CO2": 0.00266174,
+   "KH_CO2_err": 4.40772e-05,
+   "dU_CO2": -35.9373901254,
+   "dU_CO2_err": 0.0225941557,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 40,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790295215,
+   "total_time_s_N2": 968.036839,
+   "KH_N2": 2.12158e-05,
+   "KH_N2_err": 2.81842e-07,
+   "dU_N2": -21.530859194,
+   "dU_N2_err": 0.0139345225,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00855779,
@@ -1477,7 +1521,15 @@
     "dU_CO2": -39.8401552177
    },
    "S_ON": 316.56007131839146,
-   "S_ON_err": 5.556837697817918
+   "S_ON_err": 5.556837697817918,
+   "S_OFF": 125.4602701760009,
+   "S_OFF_err": 2.663475477559125,
+   "lnS_OFF": 4.831989136149468,
+   "lnS_OFF_err": 0.021229632885555648,
+   "lnS_ON": 5.757513022369004,
+   "ln_ratio": 0.8392493629413074,
+   "dlnKH_CO2_off_minus_on": -1.1678619349713035,
+   "dlnKH_N2_off_minus_on": -0.24233804875176668
   },
   {
    "name": "2016_Co__sql_2_FSR_7",
@@ -1505,6 +1557,30 @@
     3
    ],
    "N_super": 2400,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 40,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790295361,
+   "total_time_s_CO2": 945.970575,
+   "KH_CO2": 0.00162459,
+   "KH_CO2_err": 1.87233e-05,
+   "dU_CO2": -33.7158202336,
+   "dU_CO2_err": 0.0137212941,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.00587863,
