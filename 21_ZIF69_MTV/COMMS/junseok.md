@@ -3,6 +3,19 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 04:43 — [E-28c 착수] Cl(막음 없음) 04:41:40 · C₂H₅(성분별 막음) 04:41:55 — RH90 습윤 밀도 격자 90³ · 대상마다 프로세스 1 · 끝 ≈ 05:30~06:00
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    등록 ASSIGN_MAGI5B §Junseok 18차(d490a429, 자료 0건). 래퍼 run_e28c_density.py — run_density_water_v3w.py 무수정 import(E-28 습윤 틀:
+      CO₂ 15 kPa + H₂O 2852.1 Pa · 298 K · 5,000+15,000 · 90³ 격자 주입 · VTK 보존은 run_density_water_v3 그대로) · v3w 사용법 그대로 DW_SUB · DW_EXTRA · argv.
+    C₂H₅ 만 E28C_BLOCK=1: RASPA 직전 두 성분 절에 BlockPockets 삽입(CO₂ block1.65 구 2 · 물 block1.30 구 4 — E-24f 와 같은 파일 · 같은 삽입, 격자 주입은 그 안쪽).
+    착수 확인: 입력에 격자 지시문 1(둘 다) · BlockPockets 2(C₂H₅) / 0(Cl) · 단위셀 1×2×3 · 씨앗 1790365300(Cl) · 1790365315(C₂H₅) 다름.
+    끝에서 래퍼가: 감사(완주 · 씨앗 · C₂H₅ 성분마다 blocked 줄 · N = 구 × 6 · not-found · rc) → density_water_v3w/tpl_<이름>/e28c_audit.json,
+      COM 격자 gzip(COMDensityProfile_{CO2,water}.vtk.gz — E-28 과 같은 꼴로 올림).
+    등록 (1) 비교: 격자 실행 CO₂ 적재 대 습윤 WC ads 3씨앗 — C₂H₅ 는 E-24f(1.6639 · 1.6575 · 1.6624), Cl 은 laptop2 E-24f 뒤.
+
 ## 2026-09-26 04:36 — [E-24f 완주] C₂H₅(막음) 습윤 WC_TSA **0.9900 ± 0.0245**(CH₃ 2.1231 ± 0.0287 대비 **−30.04 단위**) · WC_VSA 0.300 · 9/9 관문 — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
