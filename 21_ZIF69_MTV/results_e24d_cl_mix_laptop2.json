@@ -1,0 +1,95 @@
+{
+ "test": "MAGI-005 E-24 후속 — Zn(bib)(bdtdc)-4,8-Cl2 작동점 S_mix (E-24d)",
+ "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 17차 + laptop2 12차 (E-24d)",
+ "registration": "ASSIGN_MAGI5B_20260925.md §HKHOME 17차 E-24d · E-23 최종 1위 규칙 편입",
+ "protocol": {
+  "mix": {
+   "CO2": 0.15,
+   "N2": 0.85
+  },
+  "P_Pa": 100000.0,
+  "T_K": 298.0,
+  "init": 5000,
+  "cycles": 15000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "ewald": 1e-06,
+  "blocking": false
+ },
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "rows": [
+  {
+   "name": "e24c_cl_100_s1",
+   "group": "형판 설계(비-ZIF, 우리 앞단)",
+   "dim": 3,
+   "S_Henry": 128.3288771964942,
+   "S_Henry_err": 2.8968711802140796,
+   "S_Henry_src": "E-24c results_magi5_e3_e24c_cl_100_widom_hkhome.json ON",
+   "L": null,
+   "L_src": "—",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "N_super": 1224,
+   "cif": "charged_v3/e24c_cl_100_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "flexible": null
+  },
+  {
+   "name": "e24c_cl_100_s2",
+   "group": "형판 설계(비-ZIF, 우리 앞단)",
+   "dim": 3,
+   "S_Henry": 128.3288771964942,
+   "S_Henry_err": 2.8968711802140796,
+   "S_Henry_src": "E-24c results_magi5_e3_e24c_cl_100_widom_hkhome.json ON",
+   "L": null,
+   "L_src": "—",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "N_super": 1224,
+   "cif": "charged_v3/e24c_cl_100_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "flexible": null
+  },
+  {
+   "name": "e24c_cl_100_s3",
+   "group": "형판 설계(비-ZIF, 우리 앞단)",
+   "dim": 3,
+   "S_Henry": 128.3288771964942,
+   "S_Henry_err": 2.8968711802140796,
+   "S_Henry_src": "E-24c results_magi5_e3_e24c_cl_100_widom_hkhome.json ON",
+   "L": null,
+   "L_src": "—",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "N_super": 1224,
+   "cif": "charged_v3/e24c_cl_100_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "flexible": null
+  }
+ ]
+}
