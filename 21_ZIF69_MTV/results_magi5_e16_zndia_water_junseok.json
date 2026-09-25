@@ -70,5 +70,27 @@
   "index_err": 0.0223405088079205,
   "index_minus_ref_units": -1.4182296045894436,
   "combined_err": 0.9776336969276349,
-  "rejection_line_index": -0.010012822343601568
+  "rejection_line_index": -0.010012822343601568,
+  "amended_reference": {
+    "src": "ASSIGN_MAGI5B_20260925.md §Junseok 7차 보완 ⓑ (master 817d89ed, 11:16 — 결과 전)",
+    "saIm050_KH_water_mean4": 0.0002354,
+    "saIm050_KH_water_mean4_err": 4.92e-05,
+    "saIm050_KH_CO2": 0.000175691,
+    "index": 1.3398523544176992,
+    "index_err": 0.28323808180919385
+  },
+  "index_minus_amended_units": -4.46970869280492,
+  "amended_rule": "단위 = d / √(±_ref² + ±_new²) · ≥ −1.5 성립 · < −1.5 기각(\"좁은 3D 카복실레이트는 물에 덜 취약\") · > +1.5 강한 성립",
+  "amended_band": "below(>1.5 units)",
+  "superseded": {
+    "note": "드라이버의 'reference'·'index_minus_ref_units'(saIm050 한 씨앗, 지수 1.46 ± 0.98) 는 판별력 0 — 보완 ⓑ 로 대체"
+  },
+  "components": {
+    "KH_water_over_saIm050_mean4": 0.4976847918436703,
+    "KH_CO2_over_saIm050": 9.535775879242532
+  },
+  "postprocess": {
+    "script": "magi5_e16_post_junseok.py",
+    "time": "2026-09-25 11:26:08"
+  }
 }
