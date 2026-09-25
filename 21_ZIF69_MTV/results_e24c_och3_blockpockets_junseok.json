@@ -1,0 +1,265 @@
+{
+  "test": "MAGI-005 E-24c 막음 Widom(BlockPockets) — 주머니 있는 형판 치환체, 전하 ON/OFF",
+  "machine": "junseok",
+  "assign": "ASSIGN_MAGI5B_20260925.md E-24c 보완 02:14(3efe1d37)",
+  "zeo": "E-24c ① -ha -block r 50000 (results_e24c_access_junseok.json)",
+  "protocol": {
+    "widom_init": 3000,
+    "widom_cycles": 15000,
+    "forcefield": "UFF_MOF",
+    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+    "cutoff": 12.0,
+    "temp_K": 298.0,
+    "charges_on": "charged_v3 DDEC6",
+    "charges_off": "run_magi5_widom.zero_charge_copy(골격 전하 0, 흡착질 전하 · Ewald 유지)",
+    "pair": "CO₂@1.65 막음 / N₂@1.82 막음"
+  },
+  "gate": "stderr 에 Blocking-pocket not-found 없음 · .data N = 구 수 × 단위셀 수(등식) · 'Pockets are blocked' 줄 · Simulation finished",
+  "all_ok": true,
+  "seeds_distinct": true,
+  "per_structure": {
+    "e24c_och3_100": {
+      "coords": {
+        "n_atoms": [
+          236,
+          236
+        ],
+        "symbols_same": true,
+        "cell_max_diff": 0.0,
+        "frac_max_diff": 4.965812538948455e-09
+      },
+      "unblocked_reference_descriptive": null,
+      "rows": {
+        "on_CO2@1.65": {
+          "minutes": 10.3,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 4,
+          "n_expected": 24,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24c_bp_runs/e24c_och3_100/on_r1.65_CO2/Output/System_0/output_e24c_och3_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790358410,
+          "n_blocked_reported": 24,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.000941175,
+          "KH_err": 2.62797e-05,
+          "dU": -34.1576479081,
+          "dU_err": 0.068728702,
+          "status": "ok",
+          "KH_effectively_zero": false
+        },
+        "off_CO2@1.65": {
+          "minutes": 10.4,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 4,
+          "n_expected": 24,
+          "returncode": 0,
+          "zero_charge_atoms": 236,
+          "block_pockets_used": true,
+          "data": "e24c_bp_runs/e24c_och3_100/off_r1.65_CO2/Output/System_0/output_e24c_och3_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790358425,
+          "n_blocked_reported": 24,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.000434373,
+          "KH_err": 6.00432e-06,
+          "dU": -31.2991422931,
+          "dU_err": 0.0355318563,
+          "status": "ok",
+          "KH_effectively_zero": false
+        },
+        "on_N2@1.82": {
+          "minutes": 10.4,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 4,
+          "n_expected": 24,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24c_bp_runs/e24c_och3_100/on_r1.82_N2/Output/System_0/output_e24c_och3_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790358441,
+          "n_blocked_reported": 24,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 8.35535e-06,
+          "KH_err": 7.40624e-08,
+          "dU": -19.0156558145,
+          "dU_err": 0.0377652597,
+          "status": "ok",
+          "KH_effectively_zero": false
+        },
+        "off_N2@1.82": {
+          "minutes": 10.5,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 4,
+          "n_expected": 24,
+          "returncode": 0,
+          "zero_charge_atoms": 236,
+          "block_pockets_used": true,
+          "data": "e24c_bp_runs/e24c_och3_100/off_r1.82_N2/Output/System_0/output_e24c_och3_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790358456,
+          "n_blocked_reported": 24,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 7.45127e-06,
+          "KH_err": 1.00571e-07,
+          "dU": -18.5502224115,
+          "dU_err": 0.035524956,
+          "status": "ok",
+          "KH_effectively_zero": false
+        }
+      },
+      "S_ON_blocked": 112.64339614737864,
+      "S_ON_blocked_err": 3.299937005199925,
+      "S_OFF_blocked": 58.29516310642347,
+      "S_OFF_blocked_err": 1.1262401817986416,
+      "G_blocked": 1.932294038559206,
+      "G_blocked_err": 0.06780865357956659
+    },
+    "e24c_c2h5_100": {
+      "coords": {
+        "n_atoms": [
+          252,
+          252
+        ],
+        "symbols_same": true,
+        "cell_max_diff": 0.0,
+        "frac_max_diff": 4.994958668902427e-09
+      },
+      "unblocked_reference_descriptive": null,
+      "rows": {
+        "on_CO2@1.65": {
+          "minutes": 10.9,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 2,
+          "n_expected": 12,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24c_bp_runs/e24c_c2h5_100/on_r1.65_CO2/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790358472,
+          "n_blocked_reported": 12,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.00226037,
+          "KH_err": 1.55457e-05,
+          "dU": -36.9191110103,
+          "dU_err": 0.0417783318,
+          "status": "ok",
+          "KH_effectively_zero": false
+        },
+        "off_CO2@1.65": {
+          "minutes": 10.8,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 2,
+          "n_expected": 12,
+          "returncode": 0,
+          "zero_charge_atoms": 252,
+          "block_pockets_used": true,
+          "data": "e24c_bp_runs/e24c_c2h5_100/off_r1.65_CO2/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790358487,
+          "n_blocked_reported": 12,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.00101797,
+          "KH_err": 2.78282e-05,
+          "dU": -34.1498454949,
+          "dU_err": 0.0390739673,
+          "status": "ok",
+          "KH_effectively_zero": false
+        },
+        "on_N2@1.82": {
+          "minutes": 11.0,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 2,
+          "n_expected": 12,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24c_bp_runs/e24c_c2h5_100/on_r1.82_N2/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790358503,
+          "n_blocked_reported": 12,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 1.19878e-05,
+          "KH_err": 2.58479e-07,
+          "dU": -20.9510060236,
+          "dU_err": 0.0313125802,
+          "status": "ok",
+          "KH_effectively_zero": false
+        },
+        "off_N2@1.82": {
+          "minutes": 10.9,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 2,
+          "n_expected": 12,
+          "returncode": 0,
+          "zero_charge_atoms": 252,
+          "block_pockets_used": true,
+          "data": "e24c_bp_runs/e24c_c2h5_100/off_r1.82_N2/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790358518,
+          "n_blocked_reported": 12,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 1.04634e-05,
+          "KH_err": 9.32279e-08,
+          "dU": -20.3781557748,
+          "dU_err": 0.0410665278,
+          "status": "ok",
+          "KH_effectively_zero": false
+        }
+      },
+      "S_ON_blocked": 188.55586512954835,
+      "S_ON_blocked_err": 4.267419113060723,
+      "S_OFF_blocked": 97.28864422654203,
+      "S_OFF_blocked_err": 2.7972735646987714,
+      "G_blocked": 1.9381076448191168,
+      "G_blocked_err": 0.07091748542943363
+    }
+  },
+  "elapsed_s": 761,
+  "finished": "2026-09-26 02:59:30",
+  "note": "기계적 사실뿐 — 판정문은 종합자. 차단 없음 참조는 서술(주머니 포함 상한)로만."
+}

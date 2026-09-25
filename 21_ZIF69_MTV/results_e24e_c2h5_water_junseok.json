@@ -1,0 +1,328 @@
+{
+  "test": "MAGI-005 E-24e ③ — C₂H₅ 물 Widom 4씨앗(막음 1.3 = 등록 · 막음 1.65 = 서술)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 16차",
+  "machine": "junseok",
+  "protocol": "E-24 물 Widom 틀(= E-19: TIP5P-Ew 5자리 · 15,000 + 3,000 · 298 K · 전하 ON · read_kh(water) · 머리말 관문) + BlockPockets",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
+  "zeo_water_probe": {
+    "chan": {
+      "rc": 0,
+      "seconds": 1.0,
+      "peak_rss_MB": 0,
+      "stopped_by_guard": false,
+      "channels_stdout": 4,
+      "pockets_stdout": 4,
+      "n_channels": 4,
+      "dimensionality": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "block": {
+      "rc": 0,
+      "seconds": 160.9,
+      "peak_rss_MB": 5774,
+      "stopped_by_guard": false,
+      "channels_stdout": 4,
+      "pockets_stdout": 4,
+      "n_spheres": 4,
+      "sphere_radii": [
+        2.147,
+        2.436,
+        2.254,
+        2.133
+      ],
+      "block_file": "e24e_zeo/block1.30/e24c_c2h5_100_relaxed.block"
+    }
+  },
+  "denominator_KH_CO2_ON_blocked": [
+    0.00226037,
+    1.55457e-05
+  ],
+  "reference_parent_index": [
+    0.0147,
+    0.0003
+  ],
+  "rows": [
+    {
+      "block_radius": 1.3,
+      "seed_idx": 1,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 14.1,
+      "n_expected": 24,
+      "KH_water": 2.60101e-05,
+      "KH_water_err": 9.47277e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790359933,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 24,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.30_e24c_c2h5_100_s1/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.3,
+      "seed_idx": 2,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.9,
+      "n_expected": 24,
+      "KH_water": 2.53097e-05,
+      "KH_water_err": 7.02324e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790359948,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 24,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.30_e24c_c2h5_100_s2/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.3,
+      "seed_idx": 3,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.9,
+      "n_expected": 24,
+      "KH_water": 2.55649e-05,
+      "KH_water_err": 1.04483e-06,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790359964,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 24,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.30_e24c_c2h5_100_s3/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.3,
+      "seed_idx": 4,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.8,
+      "n_expected": 24,
+      "KH_water": 2.52665e-05,
+      "KH_water_err": 3.02456e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790360779,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 24,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.30_e24c_c2h5_100_s4/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.65,
+      "seed_idx": 1,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.5,
+      "n_expected": 12,
+      "KH_water": 1.64302e-05,
+      "KH_water_err": 4.05282e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790360785,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 12,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.65_e24c_c2h5_100_s1/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.65,
+      "seed_idx": 2,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.8,
+      "n_expected": 12,
+      "KH_water": 1.67031e-05,
+      "KH_water_err": 4.61754e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790360800,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 12,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.65_e24c_c2h5_100_s2/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.65,
+      "seed_idx": 3,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.4,
+      "n_expected": 12,
+      "KH_water": 1.70556e-05,
+      "KH_water_err": 5.0174e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790361158,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 12,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.65_e24c_c2h5_100_s3/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.65,
+      "seed_idx": 4,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.3,
+      "n_expected": 12,
+      "KH_water": 1.70249e-05,
+      "KH_water_err": 8.5507e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790361179,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 12,
+        "blocked_line": true,
+        "block_file": "e24c_c2h5_100_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24e_runs/water_b1.65_e24c_c2h5_100_s4/Output/System_0/output_e24c_c2h5_100_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    }
+  ],
+  "summary": {
+    "block1.30": {
+      "n": 4,
+      "KH_each": [
+        2.60101e-05,
+        2.53097e-05,
+        2.55649e-05,
+        2.52665e-05
+      ],
+      "KH_err_each": [
+        9.47277e-07,
+        7.02324e-07,
+        1.04483e-06,
+        3.02456e-07
+      ],
+      "seeds": [
+        1790359933,
+        1790359948,
+        1790359964,
+        1790360779
+      ],
+      "KH_mean": 2.5537799999999998e-05,
+      "KH_mean_err": 3.74610875e-07,
+      "seed_SD_rel": 0.013364080790442516,
+      "index": 0.011298061821737149,
+      "index_err": 0.00018304116257432406,
+      "units_vs_parent": -9.680232474681059,
+      "(2)_more_than_1.5_below_parent": true
+    },
+    "block1.65": {
+      "n": 4,
+      "KH_each": [
+        1.64302e-05,
+        1.67031e-05,
+        1.70556e-05,
+        1.70249e-05
+      ],
+      "KH_err_each": [
+        4.05282e-07,
+        4.61754e-07,
+        5.0174e-07,
+        8.5507e-07
+      ],
+      "seeds": [
+        1790360785,
+        1790360800,
+        1790361158,
+        1790361179
+      ],
+      "KH_mean": 1.680345e-05,
+      "KH_mean_err": 2.7798075e-07,
+      "seed_SD_rel": 0.017587173340701256,
+      "index": 0.007433937806642275,
+      "index_err": 0.00013318442671990545,
+      "units_vs_parent": -22.1367811622254
+    }
+  },
+  "final": true,
+  "written": "2026-09-26 03:46:17",
+  "elapsed_s": 2255,
+  "note": "기계적 사실뿐 — 판정은 종합자. 평균 ± = ±̄/√4, 지수 ± = 두 상대 ± 제곱합, 단위 = d/√(±₁²+±₂²)."
+}

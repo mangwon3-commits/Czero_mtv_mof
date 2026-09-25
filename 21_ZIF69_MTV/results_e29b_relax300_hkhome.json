@@ -1,0 +1,123 @@
+{
+ "test": "MAGI-005 E-29b — CH₃ · Cl 닫힘 · UFF4MOF 이완 수렴(상한 300)",
+ "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 18차",
+ "machine": "hkhome",
+ "rule": "risk_screen.run_one 무수정 · OUTER_LOOP_CAP 300(래퍼) · INNER 2000 · min_eval 1e-4 · Zeo++ 호출 잠금(순차)",
+ "cap": 300,
+ "started": "2026-09-26 02:59:55",
+ "rows": {
+  "e24_ch3_100": {
+   "status": "ok",
+   "before": {
+    "LCD": 4.64285,
+    "PLD": 3.81371,
+    "AV": 59.5256,
+    "min_dist": 1.077,
+    "n_atoms": 228,
+    "AV_per_cell": 59.5
+   },
+   "after": {
+    "LCD": 4.45825,
+    "PLD": 2.11715,
+    "AV": 0.0,
+    "min_dist": 1.077,
+    "n_atoms": 2736,
+    "supercell_rep": 12,
+    "AV_per_cell": 0.0
+   },
+   "final_EDiff": 2.93584398605162e-05,
+   "outer_loops": 71,
+   "minutes": 34.8,
+   "cell_before": {
+    "a": 24.404,
+    "b": 14.181,
+    "c": 9.304,
+    "alpha": 90.0,
+    "beta": 99.608,
+    "gamma": 90.0,
+    "V": 3174.6984782755267,
+    "n_atoms": 228
+   },
+   "chan_before": {
+    "probe_radius": 1.65,
+    "rc": 0,
+    "n_channels": 4,
+    "dimensionality": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "channels_stdout": 4,
+    "pockets_stdout": 0,
+    "chan_file_head": [
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e29b/e24_ch3_100/before.cif.chan1.65   4 channels identified of dimensionality 1 1 1 1 ",
+     "Channel  0  4.6368  3.81371  4.6368",
+     "Channel  1  4.6428  3.81182  4.6428",
+     "Channel  2  4.63678  3.81368  4.63678"
+    ]
+   },
+   "cell_after_supercell": {
+    "a": 48.822266156080914,
+    "b": 26.854852272057073,
+    "c": 29.20537324139775,
+    "alpha": 90.0,
+    "beta": 99.60800029118649,
+    "gamma": 90.0,
+    "V": 37754.46938010845,
+    "n_atoms": 2736
+   },
+   "cell_after_per_cell": {
+    "rep_abc": [
+     2,
+     2,
+     3
+    ],
+    "a": 24.411133078040457,
+    "b": 13.427426136028537,
+    "c": 9.73512441379925,
+    "alpha": 90.0,
+    "beta": 99.60800029118649,
+    "gamma": 90.0,
+    "V": 3146.205781675704,
+    "rep_product_eq_supercell_rep": true
+   },
+   "cell_change_pct": {
+    "a": 0.02922913473388487,
+    "b": -5.313968436439339,
+    "c": 4.633753372734841,
+    "V": -0.8974929995650955
+   },
+   "cell_change_deg": {
+    "alpha": 0.0,
+    "beta": 2.9118648114945245e-07,
+    "gamma": 0.0
+   },
+   "chan_after": {
+    "probe_radius": 1.65,
+    "rc": 0,
+    "n_channels": 0,
+    "dimensionality": [],
+    "channels_stdout": 0,
+    "pockets_stdout": 52,
+    "chan_file_head": [
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e29b/e24_ch3_100/after.cif.chan1.65   0 channels identified of dimensionality ",
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e29b/e24_ch3_100/after.cif.chan1.65 summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+    ]
+   }
+  },
+  "e24c_cl_100": {
+   "status": "pending"
+  }
+ },
+ "registered": {
+  "(1)_CH3": {
+   "PLD_after": 2.11715,
+   "AV_per_cell_after": 0.0,
+   "branch": "성립 쪽(닫힘 유지: PLD < 3.3 이거나 AV/셀 < 20)",
+   "final_EDiff": 2.93584398605162e-05,
+   "outer_loops": 71,
+   "converged": true
+  }
+ }
+}
