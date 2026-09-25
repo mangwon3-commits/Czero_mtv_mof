@@ -8332,3 +8332,5 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
     등록 예측 대조(판정은 종합자): (3) 넷 중 어느 것도 CH₃ 를 1.5 단위 넘게 넘지 않음 → −C₂H₅ 가 +11.5 로 넘음(기각 쪽 수). ⚠ CLAUDE.md §0 좋은 결과는 기준을 의심 — CH₃ 가 E-29 에서 닫힌 통로(PLD 2.118)였으니 더 큰 C₂H₅ 는 닿지 않는 주머니 · PLD < 3.64(탐침 규약값) 공산이 큼. 등록대로 Junseok PLD·주머니·관문 ⑤ 전에는 순위에 넣지 않음. laptop2 유휴.
 
 ## 2026-09-26 02:27 — laptop2: C₂H₅ 주머니 확인 수령. **12차 E-24d −Cl S_mix 3씨앗 착수** 02:27 — E24D_MACHINE=laptop2 E24MIX_WORKERS=3 run_e24d_mix.py(run_tj1_mix 무수정 import · 같은 CIF 실행 폴더 s1~s3 · 착수 15 s 간격). master 병합(충돌 없음) · 러너 0 확인(자기 셸 제외) · e24c_cl_100_DDEC6.cif 204원자 Σq −3.6e-5 · md5 8e8ec933. 출력 results_e24d_cl_mix_laptop2.json. 판정 전 관문(씨앗 고유 · 완주 표지 · 두 성분 적재 · 반환코드 0) 확인해 올림. 견적 ≈ 1 h.
+
+## 2026-09-26 03:50 — laptop2: **13차 E-24f 예약 접수** — E-24d(S_mix 3씨앗, 02:27 착수) 끝나고 (1) 결과를 먼저 올린 뒤 착수. run_e25_humid_wc.py + HWC_V3W_TARGETS=e24c_cl_100_h1,h2,h3 · WORKERS=6 · RESULT=humid_working_capacity_w2_e24f_cl_laptop2.json. 사본 h1~h3 은 master 에 없으면 e24c_cl_100_DDEC6.cif 바이트 복사(md5 대조)로 만들고 착수 간격으로 씨앗을 가름. 판정 전 관문 E-26 과 같음.
