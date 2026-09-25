@@ -180,12 +180,21 @@ def e28():
             say("      ⚠ 0.15 bar 는 헨리 영역 밖 — 띠 · 기각은 '헨리 분해가 0.15 bar 로 안 옮겨짐' 의 증거로 읽음(등록 문구)")
     # (1) 습윤: 격자 실행 CO₂ 적재 대 습윤 WC ads 3씨앗 평균
     wet = {}
-    for fn in sorted(os.listdir(os.path.join(HERE, "density_water_v3w"))) if os.path.isdir(os.path.join(HERE, "density_water_v3w")) else []:
+    # 1순위: 러너 자체 출력 density_water_v3w/tpl_<이름>/water_results.json(DW_SUB — 등록 E-28 덱) · status ok 만
+    for n in need:
+        dd = load(f"density_water_v3w/tpl_{n}/water_results.json", "E28") or {}
+        r = (dd.get("rows") or {}).get(n)
+        if r and r.get("status") == "ok" and r.get("CO2"):
+            wet[n] = dict(r, src=f"tpl_{n}/water_results.json")
+    # 2순위: extract_density_loadings.py 회수본 loadings_*.json
+    dwd = os.path.join(HERE, "density_water_v3w")
+    for fn in (sorted(os.listdir(dwd)) if os.path.isdir(dwd) else []):
         if fn.startswith("loadings_") and fn.endswith(".json"):
             dd = load(f"density_water_v3w/{fn}", "E28") or {}
             for k, v in dd.items():
-                if k in need or k in [f"tpl_{n}" for n in need]:
-                    wet[k.replace("tpl_", "")] = v
+                k2 = k.replace("tpl_", "")
+                if k2 in need and k2 not in wet:
+                    wet[k2] = dict(v, src=fn)
     wcfile = {"e22_parent": "humid_working_capacity_w2_e22parent_laptop.json",
               "e24_ch3_100": "humid_working_capacity_w2_e24ch3_laptop.json",
               "e24_cn_100": "humid_working_capacity_w2_e24cn_laptop2.json"}
