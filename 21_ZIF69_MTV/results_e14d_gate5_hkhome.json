@@ -30,6 +30,36 @@
    "pass": true,
    "final_EDiff": 1.04439304610059,
    "outer_loops": 12
+  },
+  "mslm050e2": {
+   "status": "ok",
+   "before": {
+    "LCD": 8.0286,
+    "PLD": 3.87397,
+    "AV": 818.799,
+    "min_dist": 1.072,
+    "n_atoms": 672,
+    "AV_per_cell": 818.8
+   },
+   "after": {
+    "LCD": 6.50752,
+    "PLD": 4.09585,
+    "AV": 3434.97,
+    "min_dist": 1.076,
+    "n_atoms": 5376,
+    "supercell_rep": 8,
+    "AV_per_cell": 429.4
+   },
+   "LCD_drop_pct": 14.73,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 0.985849636799685,
+   "outer_loops": 12
   }
  }
 }
