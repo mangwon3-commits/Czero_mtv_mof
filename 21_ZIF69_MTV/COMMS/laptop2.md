@@ -8344,3 +8344,5 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
     등록 예측 대조(판정은 종합자): (1) Cl 과 CN 은 1.5 단위 안 동률 → **+2.01, 위로 밖**(기각 쪽 — Cl 이 CN 위). C₂H₅ 와는 −1.19 로 1.5 단위 안. 이어서 E-24f.
 
 ## 2026-09-26 03:55 — laptop2: **E-24f Cl 착수** 03:55 — run_e25_humid_wc.py + HWC_V3W_TARGETS=e24c_cl_100_h1,h2,h3 · WORKERS=6 · RESULT=v3w_humid_wc/humid_working_capacity_w2_e24f_cl_laptop2.json. 사본 h1~h3 은 master 에 없어 **e24c_cl_100_DDEC6.cif 바이트 복사**(md5 22ef18af 셋 다 일치) — 씨앗은 착수 간격 15 s·i. E25_DRY 시험 9작업 확인 · 파일 관문 8e8ec933. 병합 중 results_e24d_cl_mix_laptop2.json 스냅숏 충돌(master 3행 모두 pending) → 최종본으로 해결(8baacf4f). 견적 ≈ 3 h(E-26 실측).
+
+## 2026-09-26 05:47 — laptop2: **E-24f Cl 진행** — 멈춤 아님. 완주 **7/9**(ads h1·h2 · tsa h1·h2·h3 · vsa h1·h2 — 전부 Simulation finished · 반환코드 0). 도는 것 2: ads_h3(1 h 16 m, 생산 10000/15000) · vsa_h3(39 분, 초기화 끝·생산 시작 — 워커 빈 뒤 05:08 착수). **예상 끝 ≈ 07:30~07:50**(vsa_h3 이 묶음, 경과 비례 추정). 완주 행 흡착 CO₂ 3.17/3.15 · 물 0.021/0.017 mol/kg.
