@@ -17,7 +17,7 @@
   "ewald": 1e-06,
   "blocking": false
  },
- "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 완료 · seed 1개 겹침 0건 · 벽시계 1.81 h",
  "rows": [
   {
    "name": "2019_Ni__pcu_3_ASR_1",
@@ -35,13 +35,22 @@
    ],
    "N_super": 1408,
    "cif": "core_pop_cifs/2019_Ni__pcu_3_ASR_1.cif",
-   "status": "pending",
-   "returncode": null,
-   "seed": null,
-   "minutes": null,
+   "status": "ok",
+   "returncode": 0,
+   "seed": 1790298076,
+   "minutes": 108.5,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop_add11",
-   "flexible": null
+   "flexible": null,
+   "N_CO2": 3.1748259139,
+   "N_CO2_err": 0.0344000413,
+   "N_N2": 0.3319580263,
+   "N_N2_err": 0.0069072855,
+   "S_mix": 54.19564750185607,
+   "S_mix_err": 1.271420410105599,
+   "ratio_Smix_over_SHenry": 1.221229087184109,
+   "ratio_err": 0.0286498207592654,
+   "finished": "2026-09-25 11:49:49"
   }
  ]
 }
