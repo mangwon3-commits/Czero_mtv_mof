@@ -114,20 +114,19 @@ def find_target(a, nb, kind):
 
 
 def build_linker(a, q, nb, t):
+    """[09-25 모형 ③] 캡 없는 링커 음이온(닫힌 껍질) + 배위 Zn 자리 점전하(합이 0 이 되게) — QM/MM 매립.
+    ① 총전하 0 + H 캡 2 = 홀수 전자 라디칼(폐기) ② +1 양이온 = 전하가 자리 물리를 덮음(폐기)."""
     sym = a.get_chemical_symbols()
     pos = component(a, nb, t)
     idx = list(pos)
     X = [pos[k] for k in idx]; S = [sym[k] for k in idx]; Q = [q[k] for k in idx]
-    caps = []
+    pcx = []
     for k in idx:
         for y, d in nb[k]:
             if sym[y] in ('Zn', 'Cu'):
-                caps.append(cap(pos[k], pos[k] + d, 1.01))
-    tgt = 0.0
-    qc = (tgt - sum(Q)) / max(1, len(caps))
-    for c in caps:
-        X.append(c); S.append('H'); Q.append(qc)
-    return np.array(X), S, np.array(Q), idx.index(t), len(caps), qc
+                pcx.append(pos[k] + d)
+    qpc = (0.0 - sum(Q)) / max(1, len(pcx))
+    return np.array(X), S, np.array(Q), idx.index(t), np.array(pcx), np.full(len(pcx), qpc)
 
 
 def build_openzn(a, q, nb, z):
@@ -203,6 +202,9 @@ def water_xyz(p):
     return Rot.from_rotvec(p[3:]).apply(WAT) + p[:3]
 
 
+PCX = np.zeros((0, 3)); PCQ = np.zeros(0)   # 현재 자리의 Zn 점전하(쿨롱만, LJ 없음)
+
+
 def e_ff(X, S, Q, W):
     e_lj = 0.0
     for x, s in zip(X, S):
@@ -215,6 +217,9 @@ def e_ff(X, S, Q, W):
     e_lj *= K2KJ
     d = np.linalg.norm(X[:, None, :] - W[None, :, :], axis=2)
     e_c = COUL * np.sum(Q[:, None] * WQ[None, :] / d)
+    if len(PCX):
+        dp = np.linalg.norm(PCX[:, None, :] - W[None, :, :], axis=2)
+        e_c += COUL * np.sum(PCQ[:, None] * WQ[None, :] / dp)
     return e_lj + e_c, e_lj, e_c
 
 
@@ -236,8 +241,9 @@ def poses(X, S, Q, ti, kind, open_dir=None, rng=np.random.default_rng(7), n_caps
             if not ok_geom(X, W, 1.2):
                 return 1e3
             # 막은 H(인공 — 실제 골격에선 Zn 자리) 옆 자세 금지: 물 O 가 자리 원자에 막은 H 보다 0.5 Å 이상 가까워야 함(09-25 S3 ff_min 결함)
-            if caps_idx and min(np.linalg.norm(X[c] - W[0]) for c in caps_idx) < np.linalg.norm(tx - W[0]) + 0.5:
-                return 1e3
+            if len(PCX) and (np.min(np.linalg.norm(PCX[:, None, :] - W[None, :3, :], axis=2)) < 3.0
+                             or np.min(np.linalg.norm(PCX - W[0], axis=1)) < np.linalg.norm(tx - W[0]) + 0.5):
+                return 1e3      # Zn 자리(실제로는 다른 리간드가 찬 곳) 옆 자세 금지
             return e_ff(X, S, Q, W)[0]
         r = minimize(f, p0, method='Powell', options={'maxiter': 4000, 'xtol': 1e-3, 'ftol': 1e-4})
         if best is None or r.fun < best.fun:
@@ -292,7 +298,8 @@ def poses(X, S, Q, ti, kind, open_dir=None, rng=np.random.default_rng(7), n_caps
     pick = (acc_t[:2] + don_t[:2]) if (acc_t and don_t) else (acc_t + don_t + rest)[:4]
     for name, W in pick:
         out.append((name, W))
-    return [(n, W) for n, W in out if ok_geom(X, W)]
+    keep = lambda W: ok_geom(X, W) and (not len(PCX) or np.min(np.linalg.norm(PCX[:, None, :] - W[None, :3, :], axis=2)) >= 3.0)
+    return [(n, W) for n, W in out if keep(W)]
 
 
 if __name__ == '__main__':
@@ -303,16 +310,19 @@ if __name__ == '__main__':
         if cfg['find'] in ('openzn', 'opencu'):
             X, S, Q, ti, ncap, qc, od, charge = build_openzn(a, q, nb, t)
         else:
-            X, S, Q, ti, ncap, qc = build_linker(a, q, nb, t); od = None; charge = 0
+            X, S, Q, ti, pcx, pcq = build_linker(a, q, nb, t); od = None; charge = -1; ncap = 0; qc = float(pcq[0]) if len(pcq) else 0.0
+            globals()['PCX'] = pcx; globals()['PCQ'] = pcq
         ps = poses(X, S, Q, ti, cfg['find'], od, n_caps=ncap)
         rows = []
         for name, W in ps:
             e, lj, c = e_ff(X, S, Q, W)
             rows.append({'pose': name, 'E_ff': round(e, 3), 'E_lj': round(lj, 3), 'E_coul': round(c, 3),
                          'water': [[float(v) for v in w] for w in W[:3]]})
-        res[site] = {'cif': cfg['cif'], 'target_index_in_cif': int(t), 'n_frag': len(X), 'n_caps': ncap, 'cap_charge': round(qc, 4),
+        res[site] = {'cif': cfg['cif'], 'target_index_in_cif': int(t), 'n_frag': len(X), 'n_caps': ncap, 'pc_charge_each': round(qc, 4),
+                     'pc_xyz': [[float(v) for v in x] for x in PCX], 'pc_q': [float(v) for v in PCQ],
+                     'pc_q_dft': [(-charge) / len(PCX)] * len(PCX) if len(PCX) else [],   # DFT 는 형식 음이온(−1) → 점전하 합 +1 로 중성
                      'frag_charge_total': round(float(Q.sum()), 6), 'dft_charge': charge,
                      'frag_symbols': S, 'frag_xyz': [[float(v) for v in x] for x in X], 'poses': rows}
-        print(f"{site:10s} 조각 {len(X):3d}원자 (막은 H {ncap}, 각 {qc:+.3f} e) 전하합 {Q.sum():+.4f} → 자세 {len(rows)}: "
+        print(f"{site:10s} 조각 {len(X):3d}원자 (Zn 점전하 {len(PCX)}, 각 {qc:+.3f} e) 조각 전하합 {Q.sum():+.4f} → 자세 {len(rows)}: "
               + ' · '.join(f"{r['pose']} {r['E_ff']:.1f}" for r in rows), flush=True)
     json.dump(res, open(os.path.join(HERE, 'e7_poses.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)

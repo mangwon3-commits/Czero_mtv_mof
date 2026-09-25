@@ -15,19 +15,22 @@ def run(site, pose, basis):
     d = P[site]; w = [x for x in d['poses'] if x['pose'] == pose][0]
     D.energy.cycles = []
     t = time.time()
-    e, conv = D.cp_bind(d['frag_symbols'], d['frag_xyz'], w['water'], basis, d.get('dft_charge', 0))
+    e, conv = D.cp_bind(d['frag_symbols'], d['frag_xyz'], w['water'], basis, d.get('dft_charge', 0), (d.get('pc_xyz', []), d.get('pc_q_dft', [])))
     row = {'site': site, 'pose': pose, 'basis': basis, 'E_dft': round(e, 3), 'E_ff': w['E_ff'], 'converged': conv,
            'scf_cycles': D.energy.cycles, 'seconds': round(time.time() - t, 1)}
+    R['rows'] = [r for r in R['rows'] if (r['site'], r['pose'], r['basis']) != (site, pose, basis)]   # 수렴 못 한 옛 행 교체
     R['rows'].append(row); json.dump(R, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(json.dumps(row, ensure_ascii=False), flush=True)
     return row
 
 
 for site, d in P.items():                                   # ① 거르기
-    for w in d['poses']:
-        run(site, w['pose'], 'def2-svp')
+    for pose in dict.fromkeys(w['pose'] for w in d['poses']):   # 같은 이름 자세 중복 제거(S5a 주개 둘)
+        run(site, pose, 'def2-svp')
 for site, d in P.items():                                   # ② 최종
     svp = [r for r in R['rows'] if r['site'] == site and r['basis'] == 'def2-svp' and r['converged']]
+    if not svp:
+        print(f'!! {site}: 수렴한 SVP 자세 없음 — 최종 단계 건너뜀', flush=True); continue
     best = min(svp, key=lambda r: r['E_dft'])['pose']
     for pose in dict.fromkeys([best, 'ff_min']):
         run(site, pose, 'def2-tzvp')
