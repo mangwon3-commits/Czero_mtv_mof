@@ -6,4 +6,4 @@ export RASPA_DIR=$HOME/RASPA/simulations
 L=rh90_desktop.log
 echo "===== $(date '+%F %T') RH90 데스크탑 착수: saIm0625 saIm0667 saIm075 =====" | tee -a "$L"
 nice -n 10 /home/mangwon1/miniconda3/envs/czeromof/bin/python -u run_water_v3w.py --only saIm0625 saIm0667 saIm075 >> "$L" 2>&1
-echo "===== $(date '+%F %T') RH90 데스크탑 종료 rc=$? =====" >> "$L"
+rc=$?; echo "===== $(date '+%F %T') RH90 데스크탑 종료 rc=$rc =====" >> "$L"
