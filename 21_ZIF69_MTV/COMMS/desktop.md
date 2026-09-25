@@ -5701,3 +5701,9 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 **받는 곳**: 전원 · laptop2(배정)  **답 필요**: laptop2 착수 한 줄
     E-24: −C≡N 100 헨리 S_ON **110.23 ± 1.32**(모체 87.80 대비 +12.48 단위) · S_OFF 63.4 · G 1.74 — NO₂ 의 S_ON 보존을 깸(`MAGI5_E22_VERDICT_20260925.md` §7). 후속: 데스크탑 사슬(E-24 F·CH₃ Widom 뒤 자동) CN 작동점 S_mix 3씨앗 → 물 4씨앗 · 관문 ⑤ 는 RASPA 없는 창.
     laptop2 10차 E-26: CN 습윤 TSA 작업 용량 — laptop 래퍼 `run_e25_humid_wc.py`(laptop 가지 ed08bc7a · c770ee50, 경로 지정 checkout) + env `HWC_V3W_TARGETS=e24_cn_100_h1,e24_cn_100_h2,e24_cn_100_h3 HWC_V3W_WORKERS=6 HWC_V3W_RESULT=humid_working_capacity_w2_e24cn_laptop2.json`. 입력 = `e24_cn_100_DDEC6.cif` 바이트 동일 사본 셋(md5 6267386d). **착수 간격 없는 원 러너로 띄우지 말 것**(같은 씨앗 → 같은 출력). 등록 `ASSIGN_MAGI5B` §laptop2 10차(e59a85ee).
+
+## 2026-09-25 21:32 — desktop(종합자): **E-24 판정 — −CH₃ 가 S_ON 154 로 최고(무극성 대조가 이김)** · **Junseok 14차 = E-24b 관문 + CH₃ 습윤 WC**(E-23 완주 뒤)
+**받는 곳**: Junseok(배정) · 전원  **답 필요**: Junseok 착수 한 줄
+    E-24(`MAGI5_E22_VERDICT_20260925.md` §7): 형판 4,8-치환 S_ON — 모체 87.8 · F 60.0 · NO₂ 88.9 · CN 110.2 · **CH₃ 154.1**. CH₃ 는 CO₂ 를 더 세게 붙듦(ΔU −35.4 대 −32.4). ⚠ 좋은 결과 → 기준 의심: PLD · 닿지 않는 주머니 안 쟀음(Zeo++ 는 RASPA 중 금지).
+    **Junseok 14차**(등록 ASSIGN_MAGI5B §HKHOME 14차 + Junseok 14차 E-24b): **E-23 완주 뒤, RASPA 없는 창에서** ① Zeo++ — `relax_tnf/{e22_parent,e22_no2_100,e24_ch3_100,e24_cn_100,e24_f_100}_relaxed.cif` 각각 `network -ha -res` · `-chan 1.65` · `-chan 1.82` · `-block 1.65` · `-block 1.82` → `results_e24b_access_junseok.json`(PLD · LCD · 통로 차원 · 닿지 않는 주머니 수·부피). 이완본 CIF 는 master(e22_* 는 이전 커밋 · e24_* 는 0da488c6). ② 그 뒤 CH₃ 습윤 TSA WC: laptop 착수 간격 래퍼 `run_e25_humid_wc.py` + env `HWC_V3W_TARGETS=e24_ch3_100_h1,e24_ch3_100_h2,e24_ch3_100_h3 HWC_V3W_WORKERS=10 HWC_V3W_RESULT=humid_working_capacity_w2_e24ch3_junseok.json`(사본 md5 ad678b85). **착수 간격 없는 원 러너 금지**(같은 씨앗).
+    데스크탑: CN 후속(S_mix → 물) 뒤 CH₃ S_mix 3씨앗 → 물 4씨앗 사슬.
