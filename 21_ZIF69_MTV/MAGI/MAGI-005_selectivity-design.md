@@ -248,7 +248,7 @@
 
 ### 7-2-2. 권고
     권고 A  **후보 선별 규칙**: G 는 후보마다 Widom ON/OFF 직접(구조당 20~80 분). 표지 조인 필수 — `probe_convention` · `formal_charge_nonzero` · 관문 ⑤(두 갈래). 물은 다씨앗(≥ 3)으로만 순위.
-    권고 B  **다음 설계 축(두 갈래, 후보 목록 나온 뒤 자료 0건 등록)**: (i) ZIF-69 gme 안의 **조합** — mslm × nb(ms50nb50 CIF 있음, 관문 미측) · mslm × sa — G 천장을 조합으로 넘으면서 mslm 의 물 이점 유지 여부 (ii) **Zn(bib)(bdtdc) 형판**에 −SO₂CH₃/−NO₂ 치환 → 바닥 41.6 에 G ↑ — 빌드(rdkit: 데스크탑·laptop) → GFN-FF 이완(데스크탑·laptop2) → PACMAN → 관문 ⑤(무치환 모체를 먼저 같은 처리) → Widom ON/OFF → 물 다씨앗.
+    권고 B  **다음 설계 축(두 갈래, 후보 목록 나온 뒤 자료 0건 등록)**: (i) ZIF-69 gme 안의 **조합** — mslm × nb(ms50nb50 CIF 있음, 관문 미측) · mslm × sa — G 천장을 조합으로 넘으면서 mslm 의 물 이점 유지 여부 **[2026-09-25 14:57 E-20: ms50nb50 은 G −1.65 단위 · 물 지수 1.68 로 둘 다 나빠짐 → mslm × nb 조합 닫음. 균형 후보 = mslm050 단독 · sa25nb75(G 4.78 · 지수 0.86)]** **[E-22a 진행: Zn(bib)(bdtdc) 4,8-자리는 이웃 링커로 혼잡 — 들어가는가 관문부터]** (ii) **Zn(bib)(bdtdc) 형판**에 −SO₂CH₃/−NO₂ 치환 → 바닥 41.6 에 G ↑ — 빌드(rdkit: 데스크탑·laptop) → GFN-FF 이완(데스크탑·laptop2) → PACMAN → 관문 ⑤(무치환 모체를 먼저 같은 처리) → Widom ON/OFF → 물 다씨앗.
     권고 C  **E-6 실험**(협력 랩): 시료 ZIF-69 모체 · saIm050 · sa50nb50 · MAF-66 · CALF-20(상용 기준) · (보류) Co(p-Me₂-bdp) — **mslm050 추가 권고(사용자 결정 필요)**.
     권고 D  **E-7**(데스크탑, 진행 중): mslm 의 −SO₂CH₃ 자리에서 힘장 물 오차 < 5 kJ/mol 이면 권고 B(i)·C 의 mslm 근거가 선다.
     사용자 안건  ① E-6 에 mslm050 추가 여부 ② 유연 골격 셀 이완 대체 도구(xtb GFN-FF 주기 셀 최적화 — 지원 여부 확인부터 / DFT 셀 이완 — 비용 큼) ③ 기존: §9-10 ②④ 정의 · 가중치/비대칭 · "ZIF" 범위 · E-7 판정 문턱(5 kJ/mol 차 vs 2배).
