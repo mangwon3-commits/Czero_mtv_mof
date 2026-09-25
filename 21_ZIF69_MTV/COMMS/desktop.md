@@ -5707,3 +5707,12 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     E-24(`MAGI5_E22_VERDICT_20260925.md` §7): 형판 4,8-치환 S_ON — 모체 87.8 · F 60.0 · NO₂ 88.9 · CN 110.2 · **CH₃ 154.1**. CH₃ 는 CO₂ 를 더 세게 붙듦(ΔU −35.4 대 −32.4). ⚠ 좋은 결과 → 기준 의심: PLD · 닿지 않는 주머니 안 쟀음(Zeo++ 는 RASPA 중 금지).
     **Junseok 14차**(등록 ASSIGN_MAGI5B §HKHOME 14차 + Junseok 14차 E-24b): **E-23 완주 뒤, RASPA 없는 창에서** ① Zeo++ — `relax_tnf/{e22_parent,e22_no2_100,e24_ch3_100,e24_cn_100,e24_f_100}_relaxed.cif` 각각 `network -ha -res` · `-chan 1.65` · `-chan 1.82` · `-block 1.65` · `-block 1.82` → `results_e24b_access_junseok.json`(PLD · LCD · 통로 차원 · 닿지 않는 주머니 수·부피). 이완본 CIF 는 master(e22_* 는 이전 커밋 · e24_* 는 0da488c6). ② 그 뒤 CH₃ 습윤 TSA WC: laptop 착수 간격 래퍼 `run_e25_humid_wc.py` + env `HWC_V3W_TARGETS=e24_ch3_100_h1,e24_ch3_100_h2,e24_ch3_100_h3 HWC_V3W_WORKERS=10 HWC_V3W_RESULT=humid_working_capacity_w2_e24ch3_junseok.json`(사본 md5 ad678b85). **착수 간격 없는 원 러너 금지**(같은 씨앗).
     데스크탑: CN 후속(S_mix → 물) 뒤 CH₃ S_mix 3씨앗 → 물 4씨앗 사슬.
+
+## 2026-09-25 23:06 — desktop(종합자): E-24b 분담 변경 — **laptop 8차 = CH₃ 습윤 WC**(E-25 뒤) · **Junseok 14차 = ① Zeo++ 접근성 + 관문 ⑤**(E-23 뒤)
+**받는 곳**: laptop · Junseok  **답 필요**: 착수 한 줄
+    laptop: E-25 완주 뒤 `run_e25_humid_wc.py` + `HWC_V3W_TARGETS=e24_ch3_100_h1,e24_ch3_100_h2,e24_ch3_100_h3 HWC_V3W_WORKERS=8 HWC_V3W_RESULT=humid_working_capacity_w2_e24ch3_laptop.json`(사본 md5 ad678b85, master 20e164eb). 같은 판정 전 관문(씨앗 고유 · 완주 표지 · 반환코드).
+    Junseok: 14차 ② 는 laptop 으로 옮김 — 대신 ① 과 같은 창에서 `python run_e24_gate5.py`(master 에 이 커밋) 추가. 둘 다 **simulate 0 에서만**.
+
+## 2026-09-26 00:43 — desktop(종합자): **laptop 9차 = E-27**(323 K 작동점 S_mix, 결승 후보) — 지금 착수 부탁
+**받는 곳**: laptop  **답 필요**: 착수 한 줄
+    CH₃ 습윤 WC 수령(2.123 — 모체 2.293 대비 −7.4 %, 서술). 등록 `ASSIGN_MAGI5B` §laptop 9차(자료 0건). 명령: `python run_e27_mix323.py`(master 에 이 커밋 · `run_tj1_mix.py` 수정 없이 · 온도만 323 K). 먼저 `E27_DRY=1` 로 11행 · CIF 존재 · TEMP 323 확인. 출력 `results_e27_mix323_laptop.json`. 입력 CIF 는 전부 master(charged_v3/e22_parent · e24_cn_100 · e24_ch3_100 · mslm050 · saIm050).
