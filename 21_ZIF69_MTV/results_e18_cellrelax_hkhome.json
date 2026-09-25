@@ -1,0 +1,65 @@
+{
+ "calf20": {
+  "tag": "calf20",
+  "src": "external_cif/CALF20_Zn2tz2ox_guestfree_P1.cif",
+  "status": "ok",
+  "zeo_before": {
+   "LCD": 4.34171,
+   "PLD": 2.84946,
+   "AV": 0.0,
+   "min_dist": 0.95,
+   "n_atoms": 44,
+   "AV_per_cell": 0.0
+  },
+  "zeo_after": {
+   "LCD": 3.46402,
+   "PLD": 2.47213,
+   "AV": 0.0,
+   "min_dist": 1.074,
+   "n_atoms": 1584,
+   "supercell_rep": 36,
+   "AV_per_cell": 0.0
+  },
+  "final_EDiff": 2.07000994123518e-09,
+  "outer_loops": 10,
+  "reps": [
+   4,
+   3,
+   3
+  ],
+  "cell_before": [
+   8.9138,
+   9.6935,
+   9.4836,
+   90.0,
+   115.895,
+   90.0
+  ],
+  "cell_after_per_cell": [
+   9.5165,
+   8.0928,
+   9.0361,
+   90.0,
+   115.895,
+   90.0
+  ],
+  "d_abc_pct": [
+   6.76,
+   -16.51,
+   -4.72
+  ],
+  "d_angles_deg": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "vol_before": 737.16,
+  "vol_after_per_cell": 626.04,
+  "d_vol_pct": -15.07,
+  "out_cif": "relax_e18/calf20_uff4mof_cellrelaxed.cif",
+  "validation_gate": {
+   "rule": "a,b,c ≤ 3 % · V ≤ 5 % vs 실험 셀(CCDC 2084733)",
+   "pass": false
+  }
+ }
+}

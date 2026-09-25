@@ -1,0 +1,96 @@
+{
+  "test": "MAGI-005 E-16 ② — 2017_Zn__dia_3_ASR_1 물 Widom (물 경쟁 지수)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §Junseok 7차",
+  "protocol": {
+    "water": "TIP5P-Ew 5자리 (19_WaterCompetition/water.def md5 6fc8850d)",
+    "NumberOfCycles": 15000,
+    "NumberOfInitializationCycles": 3000,
+    "forcefield": "UFF_MOF",
+    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+    "cutoff": 12.0,
+    "ewald": "1e-6",
+    "temp_K": 298.0,
+    "pressure_Pa": 1e-05,
+    "charges": "UseChargesFromCIFFile yes (CoRE PACMAN DDEC6)",
+    "kh_parser": "run_tb2_water_kh.read_kh(comp=water)",
+    "header_gate": "ff_gate.read_ff_header — 착수 전(10 사이클) + 본 계산 뒤"
+  },
+  "reference": {
+    "saIm050_KH_water": 0.000255883,
+    "saIm050_KH_water_err": 0.000171525,
+    "saIm050_KH_water_src": "v3w_water_kh/water_kh_ALLw_hkhome.json",
+    "saIm050_KH_CO2": 0.000175691,
+    "saIm050_KH_CO2_err": 5.56793e-06,
+    "saIm050_index": 1.456437723047851,
+    "saIm050_index_err": 0.9773784052426153
+  },
+  "KH_CO2_this": 0.00167535,
+  "KH_CO2_this_err": 3.17888e-05,
+  "KH_CO2_src": "core_pop_annotated.json (ON)",
+  "registered": "물 경쟁 지수 K_H(H2O)/K_H(CO2) ≥ saIm050 의 1.46 · 기각: 1.5 단위(합성 ±) 넘게 아래 — 판정문은 종합자",
+  "row": {
+    "name": "2017_Zn__dia_3_ASR_1",
+    "cif": "core_pop_cifs/2017_Zn__dia_3_ASR_1.cif",
+    "unit_cells": [
+      1,
+      2,
+      3
+    ],
+    "minutes": 10.3,
+    "header_gate_pre": {
+      "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+      "OwOw_eps": 89.633,
+      "OwHw": "ZERO_POTENTIAL",
+      "OwLw": "ZERO_POTENTIAL",
+      "HwHw": "ZERO_POTENTIAL",
+      "LwLw": "ZERO_POTENTIAL",
+      "ok": true
+    },
+    "KH_water": 0.000117155,
+    "KH_water_err": 3.73621e-05,
+    "read_error": null,
+    "header_gate": {
+      "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+      "OwOw_eps": 89.633,
+      "OwHw": "ZERO_POTENTIAL",
+      "OwLw": "ZERO_POTENTIAL",
+      "HwHw": "ZERO_POTENTIAL",
+      "LwLw": "ZERO_POTENTIAL",
+      "ok": true
+    },
+    "marker_finished": true,
+    "seed": 1790302450,
+    "water_sites_in_rundir": 5,
+    "data": "magi5_e16_runs/widom_water_2017_Zn__dia_3_ASR_1/Output/System_0/output_2017_Zn__dia_3_ASR_1_1.2.3_298.000000_1e-05.data",
+    "status": "ok"
+  },
+  "elapsed_s": 621,
+  "finished": "2026-09-25 11:24:30",
+  "index": 0.06992867162085535,
+  "index_err": 0.0223405088079205,
+  "index_minus_ref_units": -1.4182296045894436,
+  "combined_err": 0.9776336969276349,
+  "rejection_line_index": -0.010012822343601568,
+  "amended_reference": {
+    "src": "ASSIGN_MAGI5B_20260925.md §Junseok 7차 보완 ⓑ (master 817d89ed, 11:16 — 결과 전)",
+    "saIm050_KH_water_mean4": 0.0002354,
+    "saIm050_KH_water_mean4_err": 4.92e-05,
+    "saIm050_KH_CO2": 0.000175691,
+    "index": 1.3398523544176992,
+    "index_err": 0.28323808180919385
+  },
+  "index_minus_amended_units": -4.46970869280492,
+  "amended_rule": "단위 = d / √(±_ref² + ±_new²) · ≥ −1.5 성립 · < −1.5 기각(\"좁은 3D 카복실레이트는 물에 덜 취약\") · > +1.5 강한 성립",
+  "amended_band": "below(>1.5 units)",
+  "superseded": {
+    "note": "드라이버의 'reference'·'index_minus_ref_units'(saIm050 한 씨앗, 지수 1.46 ± 0.98) 는 판별력 0 — 보완 ⓑ 로 대체"
+  },
+  "components": {
+    "KH_water_over_saIm050_mean4": 0.4976847918436703,
+    "KH_CO2_over_saIm050": 9.535775879242532
+  },
+  "postprocess": {
+    "script": "magi5_e16_post_junseok.py",
+    "time": "2026-09-25 11:26:08"
+  }
+}

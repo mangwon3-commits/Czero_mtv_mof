@@ -151,6 +151,9 @@
   > 전부 "우리 최고 조성" 을 값의 최대로만 정의했고, 판정 둘이 그대로 물려받았습니다.
   > **탈락은 표지가 없으면 최대값으로 앉습니다** — §0 의 "실패가 결과처럼 보이는 것" 이
   > **결과 파일 쪽에서** 난 판이고, 09-21 이어받기 결함과 같은 계열입니다(**값이 아니라 표지가 자**).
+- **CoRE 행의 PLD < 3.64 Å 는 "탐침 규약값"** (2026-09-25 사용자 결정, `21_ZIF69_MTV/MAGI5_USER_DECISIONS_20260925.md` 2번).
+  N₂ 지름에서 통로가 끊겨(`-block 1.82` 와 동치, E-4b) 그 S 는 열역학 선택도가 아닙니다 — 순위·"그 위" 문장에 쓰지 마세요.
+  `core_pop_annotated.json` 의 `probe_convention` 열. 같은 표의 `formal_charge_nonzero`(짝이온 삭제)가 True 인 행도 설계 근거에서 뺍니다.
 - v1/v2/v3 는 서로 다른 구조에서 나왔습니다. **버전을 넘나들며 인용하지 마세요.**
   특히 `run_aryl_gcmc.py` 주석에 박힌 숫자는 08-14 결함 이전 판입니다.
 
@@ -298,6 +301,7 @@
 | T-BR-1 (CoRE 눈금 ↔ 우리 눈금 다리) · 철회 판정 | `21_ZIF69_MTV/BRIDGE_CORE_REGISTRATION_20260920.md` · `BRIDGE_CORE_RESULT_20260921.md` |
 | §AV · 「CoRE 모집단(우리 자)」 · **모집단 524 / 새로 도는 것 512** | `21_ZIF69_MTV/COREPOP_REGISTRATION_20260921.md` |
 | D1~D8 (내려받은 스크리닝 노트북의 결함 여덟) | `23_SCREENING/SCREENING_AUDIT_20260920.md` · `D8_GEMC_IS_WATER_20260921.md` |
+| 관문 ⑤ 두 갈래 · **처리 보정 자기 감소**(외부 골격) · `probe_convention` · `formal_charge_nonzero` | `21_ZIF69_MTV/MAGI5_USER_DECISIONS_20260925.md` §4 · 2·3번 |
 
 같은 이유로, 다른 기기의 세션에 일을 시킬 때는 **대화 맥락을 옮기려 하지 말고**
 읽을 파일을 지정하세요. 아이패드에서든 랩탑에서든 이 한 줄이면 부팅됩니다.
