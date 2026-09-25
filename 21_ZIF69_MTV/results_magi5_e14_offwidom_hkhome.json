@@ -1320,9 +1320,53 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "hkhome",
-   "status": "pending",
+   "status": "ok",
    "group": "-CH3",
    "frac": 0.5,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 636,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790299004,
+   "total_time_s_CO2": 2192.530048,
+   "KH_CO2": 2.6016e-05,
+   "KH_CO2_err": 1.50136e-07,
+   "dU_CO2": -20.4850224585,
+   "dU_CO2_err": 0.0425905255,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 636,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790299038,
+   "total_time_s_N2": 2164.79589,
+   "KH_N2": 2.73039e-06,
+   "KH_N2_err": 2.58502e-08,
+   "dU_N2": -12.4499155352,
+   "dU_N2_err": 0.0509140846,
    "on_ref": {
     "src": "results_v3.json",
     "KH_CO2": 5.62243e-05,
@@ -1332,7 +1376,15 @@
     "dU_CO2": null
    },
    "S_ON": 19.744243458595395,
-   "S_ON_err": 0.4842989766080483
+   "S_ON_err": 0.4842989766080483,
+   "S_OFF": 9.52830914264995,
+   "S_OFF_err": 0.10564767057422676,
+   "lnS_OFF": 2.2542672772287844,
+   "lnS_OFF_err": 0.011087766884192921,
+   "lnS_ON": 2.9828619784104973,
+   "ln_ratio": 0.7557397202903886,
+   "dlnKH_CO2_off_minus_on": -0.7706373144247098,
+   "dlnKH_N2_off_minus_on": -0.042042613242997226
   },
   {
    "name": "mbIm075_DDEC6",
@@ -1344,9 +1396,53 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "hkhome",
-   "status": "pending",
+   "status": "ok",
    "group": "-CH3",
    "frac": 0.75,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 654,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790299168,
+   "total_time_s_CO2": 2282.673762,
+   "KH_CO2": 2.80502e-05,
+   "KH_CO2_err": 2.52593e-07,
+   "dU_CO2": -20.7070217624,
+   "dU_CO2_err": 0.0321806989,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 654,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790299227,
+   "total_time_s_N2": 2261.718658,
+   "KH_N2": 2.88971e-06,
+   "KH_N2_err": 2.17507e-08,
+   "dU_N2": -12.5795647084,
+   "dU_N2_err": 0.0367384465,
    "on_ref": {
     "src": "results_v3.json",
     "KH_CO2": 6.24895e-05,
@@ -1356,7 +1452,15 @@
     "dU_CO2": null
    },
    "S_ON": 20.812974823726115,
-   "S_ON_err": 0.7734691314354145
+   "S_ON_err": 0.7734691314354145,
+   "S_OFF": 9.70692560845206,
+   "S_OFF_err": 0.1139254003833699,
+   "lnS_OFF": 2.272839610999483,
+   "lnS_OFF_err": 0.011736507003223784,
+   "lnS_ON": 3.035576581833626,
+   "ln_ratio": 0.7487340706873501,
+   "dlnKH_CO2_off_minus_on": -0.8010027805607117,
+   "dlnKH_N2_off_minus_on": -0.03826580972656835
   },
   {
    "name": "mbIm100_DDEC6",
