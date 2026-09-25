@@ -24,6 +24,9 @@ M.REG_REF = 'ASSIGN_MAGI5B_20260925.md §HKHOME 20차 + laptop 10차 예측 (1)~
 TAG = {'cl': 'e24c_cl_100', 'c2h5': 'e24c_c2h5_100'}[SET]
 BLOCK = {'CO2': os.path.join(HERE, 'e28b_blocks', 'e24c_c2h5_100_block1.65.block'),
          'N2': os.path.join(HERE, 'e28b_blocks', 'e24c_c2h5_100_block1.82.block')} if SET == 'c2h5' else {}
+# 러너가 S_Henry 를 숫자로 찍으므로 None 을 못 줌(04:12 첫 기동이 여기서 죽음) — **298 K** 값을 넣고 비는 인용 금지로 표지.
+SH = {'cl': (128.33, 2.90, '298 K E-24c Widom ON(results_magi5_e3_e24c_cl_100_widom_hkhome.json) — 온도 다름 · 비 인용 금지'),
+      'c2h5': (188.56, 4.27, '298 K E-24c 막음 Widom ON(Junseok results_e24c_och3_blockpockets_junseok.json) — 온도 다름 · 비 인용 금지')}[SET]
 ANCH = {g: f"Component {i} MoleculeName              {g}\n            MoleculeDefinition        TraPPE\n" for i, g in ((0, 'CO2'), (1, 'N2'))}
 
 
@@ -31,7 +34,7 @@ def targets():
     t = []
     for k in (1, 2, 3):
         t.append({'name': f'{TAG}_s{k}', 'cif': os.path.join(HERE, 'charged_v3', f'{TAG}_DDEC6.cif'), 'group': '형판 설계(새 1 · 2위)',
-                  'dim': 3, 'S_Henry': None, 'S_Henry_err': None, 'S_Henry_src': '— (323 K 헨리 값 없음 · 비 인용 금지)', 'L': None, 'L_src': '—'})
+                  'dim': 3, 'S_Henry': SH[0], 'S_Henry_err': SH[1], 'S_Henry_src': SH[2], 'L': None, 'L_src': '—'})
     for x in t:
         a = read(x['cif']); uc = M.rg.unit_cells(a); x['unit_cells'] = uc; x['N_super'] = len(a) * uc[0] * uc[1] * uc[2]
     return t
