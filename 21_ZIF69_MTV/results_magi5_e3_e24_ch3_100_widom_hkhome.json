@@ -1,0 +1,48 @@
+{
+ "tag": "e24_ch3_100",
+ "cif": "charged_v3/e24_ch3_100_DDEC6.cif",
+ "protocol": "run_aryl_gcmc.run_one widom (CLAUDE.md §1)",
+ "off_method": "CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)",
+ "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "host": "hkhome",
+ "elapsed_s": 1883,
+ "finished": "2026-09-25 21:28:21",
+ "rows": [
+  {
+   "name": "e24_ch3_100_DDEC6",
+   "charges": "on",
+   "temp_K": 298.0,
+   "KH_CO2": 0.00251234,
+   "KH_CO2_err": 3.85933e-05,
+   "dU_CO2": -35.4265831284,
+   "dU_CO2_err": 0.0547809998,
+   "status_CO2": "ok",
+   "KH_N2": 1.63063e-05,
+   "KH_N2_err": 1.51092e-07,
+   "dU_N2": -20.002253757,
+   "dU_N2_err": 0.0352440059,
+   "status_N2": "ok",
+   "selectivity": 154.07173914376654,
+   "selectivity_err": 2.763996467292026,
+   "Qst_CO2_rt_corrected": 37.904292988563995
+  },
+  {
+   "name": "e24_ch3_100_DDEC6_q0",
+   "charges": "off",
+   "temp_K": 298.0,
+   "KH_CO2": 0.00116458,
+   "KH_CO2_err": 1.6186e-05,
+   "dU_CO2": -32.8176860031,
+   "dU_CO2_err": 0.0349222105,
+   "status_CO2": "ok",
+   "KH_N2": 1.42749e-05,
+   "KH_N2_err": 1.49121e-07,
+   "dU_N2": -19.4688005623,
+   "dU_N2_err": 0.0272647912,
+   "status_N2": "ok",
+   "selectivity": 81.58235784488858,
+   "selectivity_err": 1.4184475177828613,
+   "Qst_CO2_rt_corrected": 35.295395863264
+  }
+ ]
+}
