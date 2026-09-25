@@ -9,7 +9,8 @@
  },
  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
  "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
- "finished": false,
+ "finished": true,
+ "seed_dup": 0,
  "rows": [
   {
    "name": "e24_cn_100",
@@ -65,6 +66,25 @@
    "header_gate_ok": true,
    "marker_finished": true,
    "seed": 1790343221,
+   "water_sites_in_rundir": 5,
+   "status": "ok"
+  },
+  {
+   "name": "e24_cn_100",
+   "seed_idx": 4,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "returncode": 0,
+   "minutes": 18.5,
+   "KH_water": 0.000204379,
+   "KH_water_err": 5.80316e-05,
+   "read_error": null,
+   "header_gate_ok": true,
+   "marker_finished": true,
+   "seed": 1790344392,
    "water_sites_in_rundir": 5,
    "status": "ok"
   }
