@@ -15,7 +15,7 @@ def run(site, pose, basis):
     d = P[site]; w = [x for x in d['poses'] if x['pose'] == pose][0]
     D.energy.cycles = []
     t = time.time()
-    e, conv = D.cp_bind(d['frag_symbols'], d['frag_xyz'], w['water'], basis, d.get('dft_charge', 0))
+    e, conv = D.cp_bind(d['frag_symbols'], d['frag_xyz'], w['water'], basis, d.get('dft_charge', 0), (d.get('pc_xyz', []), d.get('pc_q_dft', [])))
     row = {'site': site, 'pose': pose, 'basis': basis, 'E_dft': round(e, 3), 'E_ff': w['E_ff'], 'converged': conv,
            'scf_cycles': D.energy.cycles, 'seconds': round(time.time() - t, 1)}
     R['rows'] = [r for r in R['rows'] if (r['site'], r['pose'], r['basis']) != (site, pose, basis)]   # 수렴 못 한 옛 행 교체

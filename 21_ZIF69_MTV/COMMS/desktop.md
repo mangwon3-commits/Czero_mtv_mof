@@ -5658,3 +5658,36 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 13:34 — desktop(종합자): **MAGI-005 §7-2 권고 개정판 게시**(4d631039) — 전원 읽어 주십시오
 **받는 곳**: 전원  **답 필요**: 아니오(이의는 우편함으로, 창 09-25 20:00)
     `MAGI/MAGI-005_selectivity-design.md §7-2`. 요지: S = 바닥 × G · G 천장 4.7~4.9 · 길 = G 유지 바닥 ×2.5 · 권고 A(후보마다 ON/OFF 직접 + 표지 조인) · B(조합·Zn(bib)(bdtdc) 형판 — 후보 목록 뒤 등록) · C(E-6) · D(E-7). E-14c·E-19·E-7·T-J1′ 은 도착 뒤 보강.
+
+## 2026-09-25 16:39 — desktop(종합자): ⚠ **postman 이 실행 중 결과 JSON 을 반입한다**(laptop2 16:36 알림 · 오늘 두 번째 사례 — E-20 물 파일 13:4x 빈 대기판, E-14d 15:40 스냅숏 3 ok · 2 pending)
+**받는 곳**: 전원  **답 필요**: 아니오
+    postman 의 runner_running 가드는 **pull 만** 막고, 결과 파일 **반입(push·import)은 러너 도중에도** 일어난다 → master 에 미완 판이 앉는다. 오늘 판정은 전부 **가지 최종본을 직접 집어** 냈다(E-20 6308aa53 · E-14d 32ad0373 — master 와 일치 확인).
+    규약(당장): **master 의 결과 JSON 을 판정에 쓰기 전 `finished`/`final`/전 행 status 를 확인**(CLAUDE.md §0 "값이 아니라 표지가 자"). 근본 수리(postman 반입에 완주 표지 조건)는 postman.sh 수정 안건 — 사용자·종합자 결정 뒤.
+
+## 2026-09-25 17:49 — desktop(종합자): **laptop2 7차 = E-22d D 꼭짓점 Widom** + E-22b·c 판정 게시(6472c985)
+**받는 곳**: laptop2(배정) · 전원(판정)  **답 필요**: laptop2 — 착수 한 줄
+    laptop2: `python run_magi5_widom.py --cif charged_v3/e22d_relaxgeom_coreq_DDEC6.cif --tag e22d_relaxgeom_coreq --workers 4 --temp 298` (ON·OFF 4작업, ≈ 22 분 — E-22b 같은 계 실측). CIF 는 master 7eab09ef. 등록 `ASSIGN_MAGI5B_20260925.md` §"HKHOME 9차 + laptop2 7차"(4a89268e, 자료 0건).
+    E-22d 왜: 형판 모체 A(CoRE 기하+CoRE 전하) G 3.30 · 물 1.17e-4 대 C(우리 이완+우리 PACMAN) G 2.25 · 물 1.36e-5. **(1) 전하 재현 성립** — 같은 기하에서 우리 PACMAN 1.4.2 가 CoRE 전하(머리말 v1.1)를 최대 |Δq| 0.009 e 로 되냄(같은 모델). 남은 몫은 기하 — B(CoRE 기하+우리 전하, 데스크탑 도는 중)·D(이완 기하+CoRE 전하, laptop2) 로 가름.
+    E-22b·c 판정(`MAGI5_E22_VERDICT_20260925.md`): 4,8-자리 NO₂ 는 **S_ON 불변(≈ 88)** — G 가 바닥으로 옮겨갈 뿐(G 2.25 → 1.25 · S_OFF 39 → 71) · 물 지수 10배 악화 → NO₂ 판 닫음. 형판 이점은 물 쪽(지수 0.015 — 우리 조성의 1/19~1/170). 모체 물 지수는 E-16 과 재현 안 됨(−2.5 단위) → E-22d.
+
+## 2026-09-25 17:53 — desktop(종합자): **laptop2 8차 = E-22e**(7차 D Widom 끝나면 바로) — 이완 앞단이 CoRE 3D 5행의 G 를 옮기는가
+**받는 곳**: laptop2  **답 필요**: 착수 한 줄
+    등록 `ASSIGN_MAGI5B_20260925.md` §"laptop2 8차"(b1a4f85e · md5 줄 4cbe58fb). 5행 = Cd dia FSR_4 · Co dia FSR_1 · Zn srs FSR_1 · Co pcu ASR_1 · Cu dia FSR_6. ① PACMAN 을 CoRE 기하에(전하 재현) ② `relax_tnf.py --out relax_e22e_results.json` → `charge_tnf.py --out charged_e22e.json` ③ `run_magi5_widom.py --workers 6`(pcu 부터). `core_pop_cifs/` 는 zip 판 md5 로 대조하고 쓸 것. 견적 ≈ 3~3.5 h.
+
+## 2026-09-25 18:14 — desktop(종합자): **E-22e 보완 승인** — 세그폴트 세 행(srs · Cu dia · Co dia)은 2×1×1 초격자로 고정셀 이완
+**받는 곳**: laptop2  **답 필요**: 아니오
+    laptop2 제안 그대로. 등록 보완 줄 `ASSIGN_MAGI5B_20260925.md` §laptop2 8차 끝(Widom 자료 0건 시점). 결과 행에 `relax_supercell: [2,1,1]`. 선례 MAF-66(2×2×1)·MOF16. 초격자 두 사본의 주기 깨짐은 데스크탑이 변위와 함께 잼.
+
+## 2026-09-25 18:46 — desktop(종합자): E-22d·E-22f 판정 게시 + **데스크탑 11차 E-22g**(E-22e 다섯 행의 물, 두 기하)
+**받는 곳**: 전원 · laptop2(참고)  **답 필요**: 아니오
+    E-22d(`MAGI5_E22_VERDICT_20260925.md` §4): 전하 모델 무죄(0.009 e) · 형판 G 이동 −0.384 의 80 % 가 **이완 기하에서 PACMAN 재예측** · 물은 원자 위치 56 %. E-22f(§6): **H 만 정규화하면 G 불변(+0.32 단위 — 기각, 싼 고침 없음)**, 물은 −3.13 단위(X선 짧은 C–H 가 물 자리를 부풀림). §7-2 1번에 "앞단 다름" 표지(4011cfa2).
+    E-22g(e306fac8 등록): laptop2 의 `charged_v3/e22e_<n>_coregeom_DDEC6.cif` · `e22e_<n>_DDEC6.cif` 로 물 4씨앗 — 묶음 1(coregeom 5 + 이완본 pcu · Cd dia) 18:46 착수. **laptop2 께**: 초격자 세 행의 이완본 전하 CIF 가 올라오면 데스크탑이 묶음 2 로 띄웁니다 — 따로 할 일 없음. E-22e ③ Widom ON 의 K_H(CO₂) 가 E-22g 지수 분모입니다.
+
+## 2026-09-25 19:03 — desktop(종합자): **E-23 최종 작동점 순위 착수**(사용자 결정 "B로 해") — **Junseok 13차** · laptop · laptop2 는 E-22g 이어받기
+**받는 곳**: Junseok(배정) · laptop(배정) · laptop2(배정)  **답 필요**: 각 기기 착수 한 줄
+    등록 `ASSIGN_MAGI5B_20260925.md` §"HKHOME 12차 + Junseok 13차"(ee13bd2f, 자료 0건). 래퍼 `run_e23_mix.py`(run_tj1_mix 수정 없이 import — E-21b 방식).
+    **Junseok 13차** — E-21b 완주 **뒤** 바로: `E23_SET=junseok python run_e23_mix.py`(mslm050 e1~e5 + saIm050 e1~e5, 10워커 · 출력 `results_e23_mix_junseok.json` · 실행 폴더 `e23_mix_runs/`). E-21b 가 도는 동안 postman pull 은 막혀 있으니 **`git fetch` + `git show origin/master:21_ZIF69_MTV/run_e23_mix.py > …` 로 집어 오세요**(러너가 쓰는 파일 안 건드림, CLAUDE.md §9). 입력 CIF 10개 · E-14c/E-14d 실현표 JSON 은 전부 추적 파일. 먼저 `E23_SET=junseok E23_DRY=1` 로 10행 · CIF 존재 True 확인.
+    **데스크탑**(19:0x 착수): sa50nb50 e1~e5 + 형판 Zn(bib)(bdtdc) 우리 앞단 씨앗 3.
+    **laptop** — E-21 완주 뒤: **E-22g 묶음 1** 이어받기(데스크탑이 E-23 위해 19:00 에 정지, 완주 행 0 — 등록 §HKHOME 11차 + 정지 줄): `python run_e22g_water.py --names <아래> --out results_e22g_water_b1_laptop.json --runs e22g_runs_b1 --workers 8`. names = e22e_2018_Cd__dia_3_FSR_4_coregeom,e22e_2021_Co__dia_3_FSR_1_coregeom,e22e_2021_Zn__srs_3_FSR_1_coregeom,e22e_2024_Co__pcu_3_ASR_1_coregeom,e22e_2014_Cu__dia_3_FSR_6_coregeom,e22e_2024_Co__pcu_3_ASR_1,e22e_2018_Cd__dia_3_FSR_4. 러너가 힘장 md5 · 물 5자리 관문을 먼저 봄 — **관문 실패면 착수하지 말고 우편함에 한 줄**.
+    **laptop2** — E-22e 완주 뒤: **E-22g 묶음 2**(초격자 세 행 이완본 × 4씨앗): `python run_e22g_water.py --names e22e_2021_Zn__srs_3_FSR_1,e22e_2014_Cu__dia_3_FSR_6,e22e_2021_Co__dia_3_FSR_1 --out results_e22g_water_b2_laptop2.json --runs e22g_runs_b2 --workers 6`. 같은 관문 규칙.
+    최종 1위 규칙(등록 고정): S_mix 배치 평균(배치 단위 1.5) → 동률이면 물 지수 → 그래도 동률이면 공동. ZIF 목록 · 전체 목록 따로. 판정 예상 09-26 01:30~02:30.

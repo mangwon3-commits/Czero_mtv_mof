@@ -1,0 +1,567 @@
+{
+ "test": "MAGI-005 E-14d mslm050 배치 평균 G (전하 OFF Widom)",
+ "assign": "ASSIGN_MAGI5B_20260925.md §laptop2 5차 E-14d",
+ "registration": "ASSIGN_MAGI5B_20260925.md §laptop2 5차 예측((1) saIm050 배치 평균 4.381 과 1.5 배치 단위 안 · (2) G CV < S_ON CV)",
+ "machine": "laptop2",
+ "workers": 6,
+ "protocol": {
+  "widom_cycles": 15000,
+  "widom_init": 3000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "temp_K": 298.0,
+  "charges": "OFF — UseChargesFromCIFFile no, ChargeMethod Ewald(흡착질 전하 유지)",
+  "supercell": "unit_cells() 규칙",
+  "co2": "García-Sánchez 2009 (경로 TraPPE/CO2.def, TraPPE 아님)",
+  "n2": "TraPPE N2(3자리)"
+ },
+ "note": "판정 없음(종합자가 씀). ± 는 RASPA 95 % CI. S_OFF ± 는 두 K_H 의 상대 ± 를 제곱합으로 합성. ln_ratio = ln S_OFF / ln S_ON (점추정). 외부 계열(CoRE) 행은 우리 물질 결과가 아님. seed 10개 · 겹침 0건 · 벽시계 125.4 min",
+ "rows": [
+  {
+   "name": "mslm050e1_DDEC6",
+   "key": "mslm050e1",
+   "cif": "charged_v3/mslm050e1_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(mslm050 e1, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지: 미확인 — 데스크탑 run_e14d_gate5.py 가 돌리는 중(판정 전 조인, 탈락 실현 제외 — CLAUDE.md §2)",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "ok",
+   "set": "mslm050",
+   "realization": 1,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790314206,
+   "total_time_s_CO2": 3919.589387,
+   "KH_CO2": 2.40876e-05,
+   "KH_CO2_err": 2.69498e-07,
+   "dU_CO2": -21.4752087805,
+   "dU_CO2_err": 0.0957504386,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790314219,
+   "total_time_s_N2": 3993.840316,
+   "KH_N2": 2.04555e-06,
+   "KH_N2_err": 3.03854e-08,
+   "dU_N2": -12.3654288039,
+   "dU_N2_err": 0.0316299536,
+   "on_ref": {
+    "src": "results_v3ens_mslm050.json",
+    "KH_CO2": 0.000170297,
+    "KH_CO2_err": 6.55231e-06,
+    "KH_N2": 2.30531e-06,
+    "KH_N2_err": 2.12835e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 34.156123415864,
+    "selectivity": 73.87162680940958,
+    "selectivity_err": 2.92294872265654
+   },
+   "S_ON": 73.87162680940958,
+   "S_ON_err": 2.92294872265654,
+   "S_OFF": 11.77561047151133,
+   "S_OFF_err": 0.21898513400780506,
+   "lnS_OFF": 2.4660304832729287,
+   "lnS_OFF_err": 0.018596499479801458,
+   "lnS_ON": 4.302328813897443,
+   "ln_ratio": 0.5731850330237713,
+   "dlnKH_CO2_off_minus_on": -1.955846786278921,
+   "dlnKH_N2_off_minus_on": -0.11954845565440675,
+   "G": 6.2732736436999845,
+   "G_err": 0.2742685237132071
+  },
+  {
+   "name": "mslm050e2_DDEC6",
+   "key": "mslm050e2",
+   "cif": "charged_v3/mslm050e2_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(mslm050 e2, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지: 미확인 — 데스크탑 run_e14d_gate5.py 가 돌리는 중(판정 전 조인, 탈락 실현 제외 — CLAUDE.md §2)",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "ok",
+   "set": "mslm050",
+   "realization": 2,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790314231,
+   "total_time_s_CO2": 3964.145008,
+   "KH_CO2": 2.74445e-05,
+   "KH_CO2_err": 4.87907e-07,
+   "dU_CO2": -21.7341182238,
+   "dU_CO2_err": 0.1037035883,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790314243,
+   "total_time_s_N2": 4014.879295,
+   "KH_N2": 2.23556e-06,
+   "KH_N2_err": 1.98491e-08,
+   "dU_N2": -12.6375663109,
+   "dU_N2_err": 0.0366876518,
+   "on_ref": {
+    "src": "results_v3ens_mslm050.json",
+    "KH_CO2": 0.0001963,
+    "KH_CO2_err": 5.13529e-06,
+    "KH_N2": 2.51181e-06,
+    "KH_N2_err": 1.67118e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 34.424749181963996,
+    "selectivity": 78.1508155473543,
+    "selectivity_err": 2.109541861471467
+   },
+   "S_ON": 78.1508155473543,
+   "S_ON_err": 2.109541861471467,
+   "S_OFF": 12.27634239295747,
+   "S_OFF_err": 0.2439531150319195,
+   "lnS_OFF": 2.5076740276162934,
+   "lnS_OFF_err": 0.019871807678797496,
+   "lnS_ON": 4.358640492479756,
+   "ln_ratio": 0.5753339904823409,
+   "dlnKH_CO2_off_minus_on": -1.9674783177012083,
+   "dlnKH_N2_off_minus_on": -0.11651185283774596,
+   "G": 6.3659690358739764,
+   "G_err": 0.2133808307503965
+  },
+  {
+   "name": "mslm050e3_DDEC6",
+   "key": "mslm050e3",
+   "cif": "charged_v3/mslm050e3_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(mslm050 e3, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지: 미확인 — 데스크탑 run_e14d_gate5.py 가 돌리는 중(판정 전 조인, 탈락 실현 제외 — CLAUDE.md §2)",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "ok",
+   "set": "mslm050",
+   "realization": 3,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790314255,
+   "total_time_s_CO2": 3864.12122,
+   "KH_CO2": 3.34652e-05,
+   "KH_CO2_err": 2.23181e-07,
+   "dU_CO2": -22.1895267666,
+   "dU_CO2_err": 0.0242728086,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790314268,
+   "total_time_s_N2": 3936.096674,
+   "KH_N2": 2.67814e-06,
+   "KH_N2_err": 1.64206e-08,
+   "dU_N2": -13.0556169667,
+   "dU_N2_err": 0.0175393549,
+   "on_ref": {
+    "src": "results_v3ens_mslm050.json",
+    "KH_CO2": 0.00019359,
+    "KH_CO2_err": 7.91438e-06,
+    "KH_N2": 2.98991e-06,
+    "KH_N2_err": 4.29975e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 34.694747206963996,
+    "selectivity": 64.74776832747474,
+    "selectivity_err": 2.8060232713908926
+   },
+   "S_ON": 64.74776832747474,
+   "S_ON_err": 2.8060232713908926,
+   "S_OFF": 12.495687305368651,
+   "S_OFF_err": 0.11320125921065084,
+   "lnS_OFF": 2.5253835692061823,
+   "lnS_OFF_err": 0.009059226310986112,
+   "lnS_ON": 4.170499234000736,
+   "ln_ratio": 0.6055350756613367,
+   "dlnKH_CO2_off_minus_on": -1.7552364276878645,
+   "dlnKH_N2_off_minus_on": -0.11012076289331132,
+   "G": 5.181609202052975,
+   "G_err": 0.22941313959790677
+  },
+  {
+   "name": "mslm050e4_DDEC6",
+   "key": "mslm050e4",
+   "cif": "charged_v3/mslm050e4_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(mslm050 e4, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지: 미확인 — 데스크탑 run_e14d_gate5.py 가 돌리는 중(판정 전 조인, 탈락 실현 제외 — CLAUDE.md §2)",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "ok",
+   "set": "mslm050",
+   "realization": 4,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790318127,
+   "total_time_s_CO2": 3383.243438,
+   "KH_CO2": 4.0742e-05,
+   "KH_CO2_err": 2.23756e-07,
+   "dU_CO2": -23.0988726869,
+   "dU_CO2_err": 0.0523591473,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790318144,
+   "total_time_s_N2": 3453.105819,
+   "KH_N2": 3.07936e-06,
+   "KH_N2_err": 4.4135e-08,
+   "dU_N2": -13.5853015619,
+   "dU_N2_err": 0.0636790093,
+   "on_ref": {
+    "src": "results_v3ens_mslm050.json",
+    "KH_CO2": 0.000277675,
+    "KH_CO2_err": 1.3129e-05,
+    "KH_N2": 3.44926e-06,
+    "KH_N2_err": 2.65377e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 36.451149881263994,
+    "selectivity": 80.50277450815538,
+    "selectivity_err": 3.856386344560224
+   },
+   "S_ON": 80.50277450815538,
+   "S_ON_err": 3.856386344560224,
+   "S_OFF": 13.230671308323807,
+   "S_OFF_err": 0.203074017861738,
+   "lnS_OFF": 2.582537718209467,
+   "lnS_OFF_err": 0.015348731226810701,
+   "lnS_ON": 4.388291649770399,
+   "ln_ratio": 0.5885063993740226,
+   "dlnKH_CO2_off_minus_on": -1.919191863657818,
+   "dlnKH_N2_off_minus_on": -0.11343793209688562,
+   "G": 6.084557059286078,
+   "G_err": 0.30606922768370587
+  },
+  {
+   "name": "mslm050e5_DDEC6",
+   "key": "mslm050e5",
+   "cif": "charged_v3/mslm050e5_DDEC6.cif",
+   "charges": "off",
+   "identity": "우리 v3 앙상블 실현(mslm050 e5, ZIF-69 gme)",
+   "identity_note": "관문 ⑤ 표지: 미확인 — 데스크탑 run_e14d_gate5.py 가 돌리는 중(판정 전 조인, 탈락 실현 제외 — CLAUDE.md §2)",
+   "dim": 3,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "laptop2",
+   "status": "ok",
+   "set": "mslm050",
+   "realization": 5,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790318226,
+   "total_time_s_CO2": 3455.02558,
+   "KH_CO2": 3.2039e-05,
+   "KH_CO2_err": 1.48781e-07,
+   "dU_CO2": -22.2028240379,
+   "dU_CO2_err": 0.0292506204,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790318247,
+   "total_time_s_N2": 3478.850473,
+   "KH_N2": 2.604e-06,
+   "KH_N2_err": 2.27262e-08,
+   "dU_N2": -13.1787176694,
+   "dU_N2_err": 0.0626002951,
+   "on_ref": {
+    "src": "results_v3ens_mslm050.json",
+    "KH_CO2": 0.000199903,
+    "KH_CO2_err": 8.8323e-06,
+    "KH_N2": 2.92304e-06,
+    "KH_N2_err": 3.24398e-08,
+    "dU_CO2": null,
+    "Qst_CO2_rt_corrected": 33.904180442664,
+    "selectivity": 68.38873227872352,
+    "selectivity_err": 3.1154772416183927
+   },
+   "S_ON": 68.38873227872352,
+   "S_ON_err": 3.1154772416183927,
+   "S_OFF": 12.303763440860216,
+   "S_OFF_err": 0.12163452986337059,
+   "lnS_OFF": 2.5099051863804958,
+   "lnS_OFF_err": 0.009885961352233746,
+   "lnS_ON": 4.225208078291372,
+   "ln_ratio": 0.5940311435254744,
+   "dlnKH_CO2_off_minus_on": -1.8308783381706764,
+   "dlnKH_N2_off_minus_on": -0.1155754462597998,
+   "G": 5.558358839345674,
+   "G_err": 0.25910707408748657
+  }
+ ],
+ "e14d_summary": {
+  "formula": "RULER_DECISION_20260828.md 187~196 — 배치 단위 d/√(SD₁²+SD₂²)(판정 자), 단위(±) d/√((±̄₁/√n₁)²+(±̄₂/√n₂)²)",
+  "G_def": "G = S_ON/S_OFF, G_err = G·√((±ON/S_ON)²+(±OFF/S_OFF)²) (±는 95 % CI)",
+  "comparator": "saIm050 = results_magi5_e14c_offwidom_laptop2.json e14c_summary.realizations.saIm050",
+  "gate5_join": "미적용 — 종합자(데스크탑 run_e14d_gate5.py) 판정 전 조인",
+  "realizations_mslm050": [
+   {
+    "name": "mslm050_DDEC6",
+    "realization": 0,
+    "S_ON": 58.11340946697725,
+    "S_ON_err": 1.7018725134342632,
+    "S_OFF": 12.378133567708677,
+    "S_OFF_err": 0.16277112349828354,
+    "G": 4.694844271076537,
+    "G_err": 0.15071491260178843,
+    "src": "E-14 results_magi5_e14_offwidom_hkhome.json"
+   },
+   {
+    "name": "mslm050e1_DDEC6",
+    "realization": 1,
+    "S_ON": 73.87162680940958,
+    "S_ON_err": 2.92294872265654,
+    "S_OFF": 11.77561047151133,
+    "S_OFF_err": 0.21898513400780506,
+    "G": 6.2732736436999845,
+    "G_err": 0.2742685237132071,
+    "src": "E-14d"
+   },
+   {
+    "name": "mslm050e2_DDEC6",
+    "realization": 2,
+    "S_ON": 78.1508155473543,
+    "S_ON_err": 2.109541861471467,
+    "S_OFF": 12.27634239295747,
+    "S_OFF_err": 0.2439531150319195,
+    "G": 6.3659690358739764,
+    "G_err": 0.2133808307503965,
+    "src": "E-14d"
+   },
+   {
+    "name": "mslm050e3_DDEC6",
+    "realization": 3,
+    "S_ON": 64.74776832747474,
+    "S_ON_err": 2.8060232713908926,
+    "S_OFF": 12.495687305368651,
+    "S_OFF_err": 0.11320125921065084,
+    "G": 5.181609202052975,
+    "G_err": 0.22941313959790677,
+    "src": "E-14d"
+   },
+   {
+    "name": "mslm050e4_DDEC6",
+    "realization": 4,
+    "S_ON": 80.50277450815538,
+    "S_ON_err": 3.856386344560224,
+    "S_OFF": 13.230671308323807,
+    "S_OFF_err": 0.203074017861738,
+    "G": 6.084557059286078,
+    "G_err": 0.30606922768370587,
+    "src": "E-14d"
+   },
+   {
+    "name": "mslm050e5_DDEC6",
+    "realization": 5,
+    "S_ON": 68.38873227872352,
+    "S_ON_err": 3.1154772416183927,
+    "S_OFF": 12.303763440860216,
+    "S_OFF_err": 0.12163452986337059,
+    "G": 5.558358839345674,
+    "G_err": 0.25910707408748657,
+    "src": "E-14d"
+   }
+  ],
+  "primary": "n6",
+  "n6": {
+   "mslm050": {
+    "n": 6,
+    "G_mean": 5.69310200855587,
+    "G_SD": 0.6661659466844974,
+    "G_CV": 0.11701282458725504,
+    "G_err_mean": 0.2388256180724152,
+    "S_ON_mean": 70.6291878230158,
+    "S_ON_SD": 8.49507448371058,
+    "S_ON_CV": 0.12027710845263757
+   },
+   "saIm050_E14c": {
+    "n": 6,
+    "G_mean": 4.380557278422725,
+    "G_SD": 0.43122980157017415,
+    "G_CV": 0.09844176760209922,
+    "G_err_mean": 0.24002766434014564,
+    "S_ON_mean": 58.31440379800273,
+    "S_ON_SD": 6.548309437255524,
+    "S_ON_CV": 0.11229317305443846
+   },
+   "d_G": 1.312544730133145,
+   "batch_unit": 1.6539972361036845,
+   "batch_unit_denominator": 0.7935592040196524,
+   "pm_unit": 9.49512963798916,
+   "pm_unit_denominator": 0.13823347128213725,
+   "CV_check_mslm050": {
+    "G_CV": 0.11701282458725504,
+    "S_ON_CV": 0.12027710845263757,
+    "G_CV_lt_S_ON_CV": true
+   }
+  },
+  "n5_e1_e5": {
+   "mslm050": {
+    "n": 5,
+    "G_mean": 5.892753556051738,
+    "G_SD": 0.505732916193279,
+    "G_CV": 0.08582285197959816,
+    "G_err_mean": 0.25644775916654056,
+    "S_ON_mean": 73.1323434942235,
+    "S_ON_SD": 6.573769903753352,
+    "S_ON_CV": 0.08988868111785031
+   },
+   "saIm050_E14c": {
+    "n": 5,
+    "G_mean": 4.2857598245634705,
+    "G_SD": 0.4062631508841684,
+    "G_CV": 0.09479372795360708,
+    "G_err_mean": 0.24755286769891752,
+    "S_ON_mean": 56.93613640271964,
+    "S_ON_SD": 6.273219907735502,
+    "S_ON_CV": 0.1101799367516594
+   },
+   "d_G": 1.6069937314882674,
+   "batch_unit": 2.4772412500416787,
+   "batch_unit_denominator": 0.6487029599806762,
+   "pm_unit": 10.081275454462885,
+   "pm_unit_denominator": 0.15940381142714105,
+   "CV_check_mslm050": {
+    "G_CV": 0.08582285197959816,
+    "S_ON_CV": 0.08988868111785031,
+    "G_CV_lt_S_ON_CV": true
+   }
+  },
+  "judgement": "없음 — 종합자"
+ }
+}
