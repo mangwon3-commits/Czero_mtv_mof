@@ -40,6 +40,10 @@ CORE = [('2016_Co__sql_2_FSR_19', 'L<0.2'), ('2024_Ni__sql_2_FSR_4', 'L<0.2'), (
 if os.environ.get('TJ1_EXTRA'):
     CORE = CORE + [tuple(x.split(':', 1)) for x in os.environ['TJ1_EXTRA'].split(',') if x]
 ONLY_EXTRA = bool(os.environ.get('TJ1_ONLY_EXTRA'))
+# 결과 파일 머리 — E-21(`run_e21_mix.py`)이 import 해 덮어씀. T-J1′ 값은 그대로.
+TEST = 'T-J1′ 이원 공동 지표 S_mix/S_Henry'
+ASSIGN_REF = 'ASSIGN_MAGI5B_20260925.md §laptop 5차'
+REG_REF = 'MAGI/MAGI-005_R1_junseok.md §T-J1′ + R3 J-13'
 
 
 def targets():
@@ -48,7 +52,7 @@ def targets():
     mx = json.load(open(os.path.join(HERE, 'results_v4mix.json')))
     mx = {r['name']: r for r in (mx['rows'] if isinstance(mx, dict) else mx) if isinstance(r, dict)}
     for n in OURS:
-        src, r = ('results_v4mix.json', mx[n]) if n == 'sa50nb50' else ('results_v3.json', v3[n])
+        src, r = ('results_v4mix.json', mx[n]) if (n == 'sa50nb50' or n not in v3) else ('results_v3.json', v3[n])
         L = r['loading_015bar'] / (r['KH_CO2'] * 15000.0)
         t.append({'name': n, 'cif': os.path.join(HERE, 'charged_v3', n + '_DDEC6.cif'), 'group': '우리', 'dim': 3,
                   'S_Henry': r['selectivity'], 'S_Henry_err': r.get('selectivity_err'), 'S_Henry_src': src, 'L': L,
@@ -179,6 +183,8 @@ def row_of(x, v, st, rc, seed, mins):
             s = (nc / nn) / (X_CO2 / (1 - X_CO2)); rel = math.hypot(ec / nc, en / nn)
             r.update({'S_mix': s, 'S_mix_err': s * rel, 'ratio_Smix_over_SHenry': s / x['S_Henry'],
                       'ratio_err': s * rel / x['S_Henry']})
+            if x.get('S_Henry_err'):   # 합성 ± (T-J1′ 판정 뒤 종합자 병기 방식) — ratio_err 는 S_mix ± 만
+                r['ratio_err_with_SHenry'] = s / x['S_Henry'] * math.hypot(rel, x['S_Henry_err'] / x['S_Henry'])
         r['finished'] = time.strftime('%F %T')
     return r
 
@@ -199,8 +205,8 @@ def main():
     bx = {x['name']: x for x in T}
 
     def save(note=''):
-        json.dump({'test': 'T-J1′ 이원 공동 지표 S_mix/S_Henry', 'assign': 'ASSIGN_MAGI5B_20260925.md §laptop 5차',
-                   'registration': 'MAGI/MAGI-005_R1_junseok.md §T-J1′ + R3 J-13',
+        json.dump({'test': TEST, 'assign': ASSIGN_REF,
+                   'registration': REG_REF,
                    'protocol': {'mix': {'CO2': X_CO2, 'N2': 1 - X_CO2}, 'P_Pa': P_TOT, 'T_K': TEMP, 'init': INIT, 'cycles': CYCLES,
                                 'forcefield': 'UFF_MOF', 'ff_md5': FF_MD5, 'cutoff': rg.CUTOFF, 'ewald': 1e-6, 'blocking': False},
                    'note': ('판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. '
