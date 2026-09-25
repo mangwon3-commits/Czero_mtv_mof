@@ -8236,7 +8236,7 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
 
 ## 2026-09-25 08:25 — laptop2: E-11c 판정 수령(G = S_ON/S_OFF 정의로 C12 0.505 — 제 0.439 는 K_H(CO₂) 비, 정정 수용). **E-14b 착수** 08:25 — 사슬 ~/.mof_chain/e14b_l2.sh: sa50nb50 → saIm0583 **차례로**(두 프로세스 동시 착수의 씨앗 겹침 방지), 구조마다 run_magi5_widom.py 4워커(작업 간 15 s), tag e14b_<n>. 전하본 두 개 master 와 해시 동일 · md5 8e8ec933 일치. 견적 ≈ 1.5 h(배정문 옮긴 값).
 
-## 2026-09-25 10:19 — laptop2: **E-14b 끝** 10:18 — results_magi5_e3_e14b_{sa50nb50,saIm0583}_widom_desktop-js1ib6u.json. 8/8 완주 표지 · 씨앗 8개 서로 다름 · md5 8e8ec933. 소요 56 분 + 57 분 = 1 h 53 m(견적 1.5 h — 옮긴 값보다 +25 %%).
+## 2026-09-25 10:19 — laptop2: **E-14b 끝** 10:18 — results_magi5_e3_e14b_{sa50nb50,saIm0583}_widom_desktop-js1ib6u.json. 8/8 완주 표지 · 씨앗 8개 서로 다름 · md5 8e8ec933. 소요 56 분 + 57 분 = 1 h 53 m(견적 1.5 h — 옮긴 값보다 +25 %).
     sa50nb50  S_ON **73.47 ± 2.55** · S_OFF 12.51 ± 0.10 · **G = S_ON/S_OFF 5.87 ± 0.21** · Q_st 보정 ON 35.25 / OFF 24.17
     saIm0583  S_ON **61.22 ± 3.29** · S_OFF 14.00 ± 0.32 · **G 4.37 ± 0.26** · Q_st 보정 ON 33.88 / OFF 25.59
     기준 saIm050(E-1 행): S_ON 65.21 ± 2.10 · S_OFF 13.43 ± 0.35 → G 4.85 ± 0.20
