@@ -740,7 +740,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2020[Cu][kgm]2",
    "asr_fsr_pair": "2020[Cu][kgm]2[ASR]1",
@@ -780,6 +780,26 @@
    "KH_CO2_err": 2.08306e-06,
    "dU_CO2": -29.6052099923,
    "dU_CO2_err": 0.0543469798,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 168,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790293477,
+   "total_time_s_N2": 1031.986736,
+   "KH_N2": 5.245e-06,
+   "KH_N2_err": 4.00555e-08,
+   "dU_N2": -17.4395129684,
+   "dU_N2_err": 0.0367075348,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.0003896,
@@ -789,7 +809,15 @@
     "dU_CO2": -33.7393499253
    },
    "S_ON": 70.06790976058932,
-   "S_ON_err": 1.2249082967586287
+   "S_ON_err": 1.2249082967586287,
+   "S_OFF": 31.070924690181126,
+   "S_OFF_err": 0.46263775005381824,
+   "lnS_OFF": 3.436272484474197,
+   "lnS_OFF_err": 0.014889732271148617,
+   "lnS_ON": 4.24946491120522,
+   "ln_ratio": 0.8086365121908047,
+   "dlnKH_CO2_off_minus_on": -0.8715728454459227,
+   "dlnKH_N2_off_minus_on": -0.058380418714899594
   },
   {
    "name": "2018_Zn__sql_2_ASR_3",
@@ -801,7 +829,7 @@
    "dim": 2,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "junseok",
-   "status": "pending",
+   "status": "ok",
    "set": "2D",
    "series": "2018[Zn][sql]2",
    "asr_fsr_pair": "2018[Zn][sql]2[FSR]4",
@@ -841,6 +869,26 @@
    "KH_CO2_err": 1.26518e-06,
    "dU_CO2": -26.911117328,
    "dU_CO2_err": 0.0085222462,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 108,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790293531,
+   "total_time_s_N2": 972.760574,
+   "KH_N2": 4.28727e-06,
+   "KH_N2_err": 3.57498e-08,
+   "dU_N2": -16.7029546011,
+   "dU_N2_err": 0.0247236039,
    "on_ref": {
     "src": "core_pop_annotated.json",
     "KH_CO2": 0.000436381,
@@ -850,7 +898,15 @@
     "dU_CO2": -32.2056396371
    },
    "S_ON": 89.4920224765186,
-   "S_ON_err": 3.0057012857845047
+   "S_ON_err": 3.0057012857845047,
+   "S_OFF": 27.585153256034726,
+   "S_OFF_err": 0.37415872519962373,
+   "lnS_OFF": 3.3172777024832847,
+   "lnS_OFF_err": 0.013563771849546281,
+   "lnS_ON": 4.494149486967534,
+   "ln_ratio": 0.7381324791493855,
+   "dlnKH_CO2_off_minus_on": -1.3055878457510446,
+   "dlnKH_N2_off_minus_on": -0.12871606126679533
   },
   {
    "name": "2018_Zn__sql_2_FSR_4",
