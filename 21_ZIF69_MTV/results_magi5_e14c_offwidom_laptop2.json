@@ -265,7 +265,7 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop2",
-   "status": "pending",
+   "status": "ok",
    "set": "sa50nb50",
    "realization": 4,
    "run_status_CO2": "ok",
@@ -292,6 +292,26 @@
    "KH_CO2_err": 3.11408e-07,
    "dU_CO2": -22.8365858344,
    "dU_CO2_err": 0.070407476,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790303404,
+   "total_time_s_N2": 4035.891966,
+   "KH_N2": 2.61829e-06,
+   "KH_N2_err": 2.8988e-08,
+   "dU_N2": -12.7638826766,
+   "dU_N2_err": 0.04247778,
    "on_ref": {
     "src": "results_v3ens_mix10.json",
     "KH_CO2": 0.000265439,
@@ -304,7 +324,15 @@
     "selectivity_err": 3.292535279135919
    },
    "S_ON": 87.94933219353963,
-   "S_ON_err": 3.292535279135919
+   "S_ON_err": 3.292535279135919,
+   "S_OFF": 13.423761309862543,
+   "S_OFF_err": 0.1903505550145584,
+   "lnS_OFF": 2.5970263687162434,
+   "lnS_OFF_err": 0.014180120654760625,
+   "lnS_ON": 4.476760878130745,
+   "ln_ratio": 0.5801128180428128,
+   "dlnKH_CO2_off_minus_on": -2.0218372574547283,
+   "dlnKH_N2_off_minus_on": -0.14210274804022693
   },
   {
    "name": "sa50nb50e5_DDEC6",
@@ -316,9 +344,53 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop2",
-   "status": "pending",
+   "status": "ok",
    "set": "sa50nb50",
    "realization": 5,
+   "run_status_CO2": "ok",
+   "header_gate_CO2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "C_co2": [
+      29.933,
+      2.745
+     ],
+     "O_co2": [
+      85.671,
+      3.017
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_CO2": 1790303422,
+   "total_time_s_CO2": 3991.973357,
+   "KH_CO2": 2.39371e-05,
+   "KH_CO2_err": 1.41763e-07,
+   "dU_CO2": -20.9789324515,
+   "dU_CO2_err": 0.08314964,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 672,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790303467,
+   "total_time_s_N2": 4014.09646,
+   "KH_N2": 2.02137e-06,
+   "KH_N2_err": 2.17468e-08,
+   "dU_N2": -11.5655001316,
+   "dU_N2_err": 0.03954457,
    "on_ref": {
     "src": "results_v3ens_mix10.json",
     "KH_CO2": 0.000126545,
@@ -331,7 +403,15 @@
     "selectivity_err": 3.442753522753949
    },
    "S_ON": 56.667353299419645,
-   "S_ON_err": 3.442753522753949
+   "S_ON_err": 3.442753522753949,
+   "S_OFF": 11.842018037271753,
+   "S_OFF_err": 0.145429408729061,
+   "lnS_OFF": 2.471654057269356,
+   "lnS_OFF_err": 0.012280796083178913,
+   "lnS_ON": 4.037198265357323,
+   "ln_ratio": 0.6122201325801362,
+   "dlnKH_CO2_off_minus_on": -1.6651684195170398,
+   "dlnKH_N2_off_minus_on": -0.0996242114290726
   },
   {
    "name": "saIm050e1_DDEC6",
@@ -343,7 +423,7 @@
    "dim": 3,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop2",
-   "status": "pending",
+   "status": "ok",
    "set": "saIm050",
    "realization": 1,
    "run_status_CO2": "ok",
@@ -370,6 +450,26 @@
    "KH_CO2_err": 4.89302e-07,
    "dU_CO2": -23.0599358271,
    "dU_CO2_err": 0.0924842486,
+   "run_status_N2": "ok",
+   "header_gate_N2": {
+    "framework_pseudo_atoms": 648,
+    "framework_nonzero_charge": 0,
+    "charges_off_ok": true,
+    "lj": {
+     "N_n2": [
+      38.298,
+      3.306
+     ]
+    },
+    "lj_ok": true,
+    "ok": true
+   },
+   "seed_N2": 1790303499,
+   "total_time_s_N2": 3864.349703,
+   "KH_N2": 2.80489e-06,
+   "KH_N2_err": 2.36856e-08,
+   "dU_N2": -13.1079713118,
+   "dU_N2_err": 0.0637356805,
    "on_ref": {
     "src": "results_v3ens_mix10.json",
     "KH_CO2": 0.000214645,
@@ -382,7 +482,15 @@
     "selectivity_err": 2.1416957661015465
    },
    "S_ON": 67.797547039296,
-   "S_ON_err": 2.1416957661015465
+   "S_ON_err": 2.1416957661015465,
+   "S_OFF": 13.553080512961293,
+   "S_OFF_err": 0.20863765938352657,
+   "lnS_OFF": 2.606613865616934,
+   "lnS_OFF_err": 0.015394113477301265,
+   "lnS_ON": 4.216526014930445,
+   "ln_ratio": 0.6181899166249855,
+   "dlnKH_CO2_off_minus_on": -1.7310073125289167,
+   "dlnKH_N2_off_minus_on": -0.12109516321540546
   },
   {
    "name": "saIm050e2_DDEC6",
