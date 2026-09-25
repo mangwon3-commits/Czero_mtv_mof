@@ -1,0 +1,103 @@
+{
+  "test": "MAGI-005 E-28c 분석 — (1) 격자 CO₂ 대 습윤 WC ads · (2) 물 분포 영역",
+  "machine": "junseok",
+  "assign": "ASSIGN_MAGI5B §Junseok 18차",
+  "grid": {
+    "dims": [
+      90,
+      90,
+      90
+    ],
+    "cell_parameters_supercell": [
+      "24.404000",
+      "28.362000",
+      "27.912000",
+      "90.000000",
+      "99.608000",
+      "90.000000"
+    ],
+    "rep": [
+      1,
+      2,
+      3
+    ]
+  },
+  "(1)_C2H5": {
+    "grid_CO2": [
+      1.6941493057,
+      0.0355578712
+    ],
+    "grid_water": [
+      0.0365002124,
+      0.002256208
+    ],
+    "wc_ads_each": [
+      [
+        1.6638985797,
+        0.0270763952
+      ],
+      [
+        1.6574554206,
+        0.0450644052
+      ],
+      [
+        1.662353922,
+        0.037461294
+      ]
+    ],
+    "wc_ads_mean": 1.6612359741,
+    "wc_ads_mean_err": 0.02109293290186226,
+    "units": 0.7960970216219411,
+    "within_1.5": true,
+    "wc_src": "v3w_humid_wc/humid_working_capacity_w2_e24f_c2h5_junseok.json"
+  },
+  "(1)_Cl": {
+    "grid_CO2": [
+      3.1744877153,
+      0.0489944279
+    ],
+    "grid_water": [
+      0.0184142849,
+      0.0056319659
+    ],
+    "note": "laptop2 E-24f Cl 습윤 WC 가 아직 저장소에 없음 — 비교는 그 뒤(종합자)"
+  },
+  "(2)_C2H5_regions": {
+    "CO2_block1.65": {
+      "n_spheres": 2,
+      "radii": [
+        5.001,
+        4.993
+      ],
+      "grid_fraction": 0.325761316872428,
+      "water_fraction_inside": 0.6389284327682154,
+      "CO2_fraction_inside": 0.0,
+      "water_enrichment": 1.9613391758801964
+    },
+    "water_block1.30": {
+      "n_spheres": 4,
+      "radii": [
+        2.147,
+        2.436,
+        2.254,
+        2.133
+      ],
+      "grid_fraction": 0.06002469135802469,
+      "water_fraction_inside": 0.0,
+      "CO2_fraction_inside": 0.0,
+      "water_enrichment": 0.0
+    },
+    "N2_block1.82": {
+      "n_spheres": 2,
+      "radii": [
+        4.059,
+        4.611
+      ],
+      "grid_fraction": 0.21781069958847737,
+      "water_fraction_inside": 0.528795133945904,
+      "CO2_fraction_inside": 0.0,
+      "water_enrichment": 2.4277739107628227
+    }
+  },
+  "note": "몫 = 영역 안 COM 밀도 합 / 전체 합(단위 무관). grid_fraction = 영역 안 격자점 비율(부피 몫 어림). 기계적 사실뿐 — 판정은 종합자."
+}
