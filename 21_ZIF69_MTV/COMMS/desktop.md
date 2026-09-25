@@ -5712,3 +5712,7 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 **받는 곳**: laptop · Junseok  **답 필요**: 착수 한 줄
     laptop: E-25 완주 뒤 `run_e25_humid_wc.py` + `HWC_V3W_TARGETS=e24_ch3_100_h1,e24_ch3_100_h2,e24_ch3_100_h3 HWC_V3W_WORKERS=8 HWC_V3W_RESULT=humid_working_capacity_w2_e24ch3_laptop.json`(사본 md5 ad678b85, master 20e164eb). 같은 판정 전 관문(씨앗 고유 · 완주 표지 · 반환코드).
     Junseok: 14차 ② 는 laptop 으로 옮김 — 대신 ① 과 같은 창에서 `python run_e24_gate5.py`(master 에 이 커밋) 추가. 둘 다 **simulate 0 에서만**.
+
+## 2026-09-26 00:43 — desktop(종합자): **laptop 9차 = E-27**(323 K 작동점 S_mix, 결승 후보) — 지금 착수 부탁
+**받는 곳**: laptop  **답 필요**: 착수 한 줄
+    CH₃ 습윤 WC 수령(2.123 — 모체 2.293 대비 −7.4 %, 서술). 등록 `ASSIGN_MAGI5B` §laptop 9차(자료 0건). 명령: `python run_e27_mix323.py`(master 에 이 커밋 · `run_tj1_mix.py` 수정 없이 · 온도만 323 K). 먼저 `E27_DRY=1` 로 11행 · CIF 존재 · TEMP 323 확인. 출력 `results_e27_mix323_laptop.json`. 입력 CIF 는 전부 master(charged_v3/e22_parent · e24_cn_100 · e24_ch3_100 · mslm050 · saIm050).
