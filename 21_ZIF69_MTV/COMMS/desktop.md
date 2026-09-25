@@ -5673,3 +5673,31 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-25 17:53 — desktop(종합자): **laptop2 8차 = E-22e**(7차 D Widom 끝나면 바로) — 이완 앞단이 CoRE 3D 5행의 G 를 옮기는가
 **받는 곳**: laptop2  **답 필요**: 착수 한 줄
     등록 `ASSIGN_MAGI5B_20260925.md` §"laptop2 8차"(b1a4f85e · md5 줄 4cbe58fb). 5행 = Cd dia FSR_4 · Co dia FSR_1 · Zn srs FSR_1 · Co pcu ASR_1 · Cu dia FSR_6. ① PACMAN 을 CoRE 기하에(전하 재현) ② `relax_tnf.py --out relax_e22e_results.json` → `charge_tnf.py --out charged_e22e.json` ③ `run_magi5_widom.py --workers 6`(pcu 부터). `core_pop_cifs/` 는 zip 판 md5 로 대조하고 쓸 것. 견적 ≈ 3~3.5 h.
+
+## 2026-09-25 18:14 — desktop(종합자): **E-22e 보완 승인** — 세그폴트 세 행(srs · Cu dia · Co dia)은 2×1×1 초격자로 고정셀 이완
+**받는 곳**: laptop2  **답 필요**: 아니오
+    laptop2 제안 그대로. 등록 보완 줄 `ASSIGN_MAGI5B_20260925.md` §laptop2 8차 끝(Widom 자료 0건 시점). 결과 행에 `relax_supercell: [2,1,1]`. 선례 MAF-66(2×2×1)·MOF16. 초격자 두 사본의 주기 깨짐은 데스크탑이 변위와 함께 잼.
+
+## 2026-09-25 18:46 — desktop(종합자): E-22d·E-22f 판정 게시 + **데스크탑 11차 E-22g**(E-22e 다섯 행의 물, 두 기하)
+**받는 곳**: 전원 · laptop2(참고)  **답 필요**: 아니오
+    E-22d(`MAGI5_E22_VERDICT_20260925.md` §4): 전하 모델 무죄(0.009 e) · 형판 G 이동 −0.384 의 80 % 가 **이완 기하에서 PACMAN 재예측** · 물은 원자 위치 56 %. E-22f(§6): **H 만 정규화하면 G 불변(+0.32 단위 — 기각, 싼 고침 없음)**, 물은 −3.13 단위(X선 짧은 C–H 가 물 자리를 부풀림). §7-2 1번에 "앞단 다름" 표지(4011cfa2).
+    E-22g(e306fac8 등록): laptop2 의 `charged_v3/e22e_<n>_coregeom_DDEC6.cif` · `e22e_<n>_DDEC6.cif` 로 물 4씨앗 — 묶음 1(coregeom 5 + 이완본 pcu · Cd dia) 18:46 착수. **laptop2 께**: 초격자 세 행의 이완본 전하 CIF 가 올라오면 데스크탑이 묶음 2 로 띄웁니다 — 따로 할 일 없음. E-22e ③ Widom ON 의 K_H(CO₂) 가 E-22g 지수 분모입니다.
+
+## 2026-09-25 19:03 — desktop(종합자): **E-23 최종 작동점 순위 착수**(사용자 결정 "B로 해") — **Junseok 13차** · laptop · laptop2 는 E-22g 이어받기
+**받는 곳**: Junseok(배정) · laptop(배정) · laptop2(배정)  **답 필요**: 각 기기 착수 한 줄
+    등록 `ASSIGN_MAGI5B_20260925.md` §"HKHOME 12차 + Junseok 13차"(ee13bd2f, 자료 0건). 래퍼 `run_e23_mix.py`(run_tj1_mix 수정 없이 import — E-21b 방식).
+    **Junseok 13차** — E-21b 완주 **뒤** 바로: `E23_SET=junseok python run_e23_mix.py`(mslm050 e1~e5 + saIm050 e1~e5, 10워커 · 출력 `results_e23_mix_junseok.json` · 실행 폴더 `e23_mix_runs/`). E-21b 가 도는 동안 postman pull 은 막혀 있으니 **`git fetch` + `git show origin/master:21_ZIF69_MTV/run_e23_mix.py > …` 로 집어 오세요**(러너가 쓰는 파일 안 건드림, CLAUDE.md §9). 입력 CIF 10개 · E-14c/E-14d 실현표 JSON 은 전부 추적 파일. 먼저 `E23_SET=junseok E23_DRY=1` 로 10행 · CIF 존재 True 확인.
+    **데스크탑**(19:0x 착수): sa50nb50 e1~e5 + 형판 Zn(bib)(bdtdc) 우리 앞단 씨앗 3.
+    **laptop** — E-21 완주 뒤: **E-22g 묶음 1** 이어받기(데스크탑이 E-23 위해 19:00 에 정지, 완주 행 0 — 등록 §HKHOME 11차 + 정지 줄): `python run_e22g_water.py --names <아래> --out results_e22g_water_b1_laptop.json --runs e22g_runs_b1 --workers 8`. names = e22e_2018_Cd__dia_3_FSR_4_coregeom,e22e_2021_Co__dia_3_FSR_1_coregeom,e22e_2021_Zn__srs_3_FSR_1_coregeom,e22e_2024_Co__pcu_3_ASR_1_coregeom,e22e_2014_Cu__dia_3_FSR_6_coregeom,e22e_2024_Co__pcu_3_ASR_1,e22e_2018_Cd__dia_3_FSR_4. 러너가 힘장 md5 · 물 5자리 관문을 먼저 봄 — **관문 실패면 착수하지 말고 우편함에 한 줄**.
+    **laptop2** — E-22e 완주 뒤: **E-22g 묶음 2**(초격자 세 행 이완본 × 4씨앗): `python run_e22g_water.py --names e22e_2021_Zn__srs_3_FSR_1,e22e_2014_Cu__dia_3_FSR_6,e22e_2021_Co__dia_3_FSR_1 --out results_e22g_water_b2_laptop2.json --runs e22g_runs_b2 --workers 6`. 같은 관문 규칙.
+    최종 1위 규칙(등록 고정): S_mix 배치 평균(배치 단위 1.5) → 동률이면 물 지수 → 그래도 동률이면 공동. ZIF 목록 · 전체 목록 따로. 판정 예상 09-26 01:30~02:30.
+
+## 2026-09-25 19:54 — desktop(종합자): **laptop 7차 = E-25**(E-22g 묶음 1 완주 뒤) — 형판 습윤 TSA 작업 용량 · 사용자 권고 ① 무응답 30분 → 권고안 실행
+**받는 곳**: laptop  **답 필요**: 착수 한 줄
+    등록 `ASSIGN_MAGI5B_20260925.md` §laptop 7차(자료 0건). 명령: `HWC_V3W_TARGETS=e22_parent_h1,e22_parent_h2,e22_parent_h3 HWC_V3W_WORKERS=8 HWC_V3W_RESULT=humid_working_capacity_w2_e22parent_laptop.json python run_humid_wc_v3w.py`(러너 수정 없이). 입력 CIF 셋은 `e22_parent_DDEC6.cif` 의 바이트 동일 사본(md5 f15ce100) — master 반입 뒤 경로 지정 checkout 으로. 러너의 힘장 md5 관문이 먼저 봄.
+    E-21 수령 — 값 · 표지 종합자 검산 일치, 판정 `MAGI5_TJ1_VERDICT_20260925.md §E-21`(ρ −0.482 → 띠). E-22g 9번째 작업부터 착수 간격 0 → 씨앗 감사 좋습니다.
+
+## 2026-09-25 20:31 — desktop(종합자): **E-24 (3) 성립 — 형판 4,8-(CN)₂ 가 설계 후보** · **laptop2 10차 = E-26**(E-22g 묶음 2 뒤)
+**받는 곳**: 전원 · laptop2(배정)  **답 필요**: laptop2 착수 한 줄
+    E-24: −C≡N 100 헨리 S_ON **110.23 ± 1.32**(모체 87.80 대비 +12.48 단위) · S_OFF 63.4 · G 1.74 — NO₂ 의 S_ON 보존을 깸(`MAGI5_E22_VERDICT_20260925.md` §7). 후속: 데스크탑 사슬(E-24 F·CH₃ Widom 뒤 자동) CN 작동점 S_mix 3씨앗 → 물 4씨앗 · 관문 ⑤ 는 RASPA 없는 창.
+    laptop2 10차 E-26: CN 습윤 TSA 작업 용량 — laptop 래퍼 `run_e25_humid_wc.py`(laptop 가지 ed08bc7a · c770ee50, 경로 지정 checkout) + env `HWC_V3W_TARGETS=e24_cn_100_h1,e24_cn_100_h2,e24_cn_100_h3 HWC_V3W_WORKERS=6 HWC_V3W_RESULT=humid_working_capacity_w2_e24cn_laptop2.json`. 입력 = `e24_cn_100_DDEC6.cif` 바이트 동일 사본 셋(md5 6267386d). **착수 간격 없는 원 러너로 띄우지 말 것**(같은 씨앗 → 같은 출력). 등록 `ASSIGN_MAGI5B` §laptop2 10차(e59a85ee).
