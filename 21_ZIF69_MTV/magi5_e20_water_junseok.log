@@ -1,0 +1,47 @@
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  [착수 전 머리말 관문] ok True · HwHw ZERO_POTENTIAL · OwHw ZERO_POTENTIAL · OwLw ZERO_POTENTIAL · LwLw ZERO_POTENTIAL · OwOw ε 89.633
+E-20 ② 8작업 · 워커 8 · 착수 간격 15 s · 착수 13:38:22
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/queues.py", line 244, in _feed
+    obj = _ForkingPickler.dumps(obj)
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+_pickle.PicklingError: Can't pickle <function one at 0x7f1f0ffeb910>: import of module 'e19' failed
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/mangwon/.junseok_chain/magi5_e20_water.py", line 98, in <module>
+    sys.exit(main())
+  File "/home/mangwon/.junseok_chain/magi5_e20_water.py", line 85, in main
+    row = fu.result()
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/concurrent/futures/_base.py", line 451, in result
+    return self.__get_result()
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/concurrent/futures/_base.py", line 403, in __get_result
+    raise self._exception
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/queues.py", line 244, in _feed
+    obj = _ForkingPickler.dumps(obj)
+  File "/home/mangwon/miniconda3/envs/czeromof/lib/python3.10/multiprocessing/reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+_pickle.PicklingError: Can't pickle <function one at 0x7f1f0ffeb910>: import of module 'e19' failed
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  이전 결과 파일은 13:38 첫 기동의 빈 대기판(작업 0) — 덮어씀
+  [착수 전 머리말 관문] ok True · HwHw ZERO_POTENTIAL · OwHw ZERO_POTENTIAL · OwLw ZERO_POTENTIAL · LwLw ZERO_POTENTIAL · OwOw ε 89.633
+E-20 ② 8작업 · 워커 8 · 착수 간격 15 s · 착수 13:41:35
+  [    ok] sa25nb75  s1 K_H(H2O) 0.000136139 ± 1.9621e-05 · 관문 True · 표지 True · 씨앗 1790311312 · 68.5 분
+  [    ok] sa25nb75  s2 K_H(H2O) 0.000112665 ± 3.81552e-05 · 관문 True · 표지 True · 씨앗 1790311342 · 68.3 분
+  [    ok] sa25nb75  s3 K_H(H2O) 0.000108042 ± 2.95592e-05 · 관문 True · 표지 True · 씨앗 1790311373 · 68.0 분
+  [    ok] sa25nb75  s4 K_H(H2O) 9.4664e-05 ± 3.1511e-05 · 관문 True · 표지 True · 씨앗 1790311403 · 67.8 분
+  [    ok] ms50nb50  s4 K_H(H2O) 0.000206658 ± 0.000125181 · 관문 True · 표지 True · 씨앗 1790311388 · 68.1 분
+  [    ok] ms50nb50  s1 K_H(H2O) 0.000210532 ± 0.00016382 · 관문 True · 표지 True · 씨앗 1790311297 · 71.1 분
+  [    ok] ms50nb50  s2 K_H(H2O) 0.000148174 ± 0.000104299 · 관문 True · 표지 True · 씨앗 1790311327 · 70.7 분
+  [    ok] ms50nb50  s3 K_H(H2O) 0.000245242 ± 0.000189771 · 관문 True · 표지 True · 씨앗 1790311358 · 70.6 분
+
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_magi5_e20_water_junseok.json
+  ms50nb50  새 4 · 평균 0.0002026515 ± 7.2883875e-05 · 씨앗 간 SD 0.19861102438228506
+  sa25nb75  새 4 · 평균 0.0001128775 ± 1.48558e-05 · 씨앗 간 SD 0.15312569483147156
