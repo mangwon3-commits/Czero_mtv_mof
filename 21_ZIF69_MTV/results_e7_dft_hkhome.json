@@ -268,20 +268,6 @@
   },
   {
    "site": "S5b_Nfree",
-   "pose": "ff_min",
-   "basis": "def2-svp",
-   "E_dft": -25.818,
-   "E_ff": -16.503,
-   "converged": false,
-   "scf_cycles": [
-    50,
-    46,
-    7
-   ],
-   "seconds": 136.7
-  },
-  {
-   "site": "S5b_Nfree",
    "pose": "acc_N0_s0",
    "basis": "def2-svp",
    "E_dft": -43.708,
@@ -419,6 +405,20 @@
     7
    ],
    "seconds": 233.9
+  },
+  {
+   "site": "S5b_Nfree",
+   "pose": "ff_min",
+   "basis": "def2-svp",
+   "E_dft": -67.264,
+   "E_ff": -16.503,
+   "converged": true,
+   "scf_cycles": [
+    110,
+    46,
+    7
+   ],
+   "seconds": 417.2
   }
  ],
  "finished": false
