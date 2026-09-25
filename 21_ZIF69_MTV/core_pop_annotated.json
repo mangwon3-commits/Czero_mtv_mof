@@ -341,8 +341,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2010[Zn][pts]3[FSR]1",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": true,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · CIF 결합: COO⁻ 16(O–H 0) · CH₂ 8 · CH 8 = butane-1,2,3,4-tetracarboxylate⁴⁻ × 4 (C₈H₆O₈ × 4 = C₃₂H₂₄O₃₂ 원소 일치) · Zn²⁺ × 4 = +8 − 16 = **−8** → 짝양이온 삭제(ASR). CoRE 메타 짝 없음(DOI 미상). E-1 의 Zn pts(G 4.92) 행."
   },
   {
    "file": "2010_Zn__pts_3_FSR_1.cif",
@@ -377,8 +377,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2010[Zn][pts]3[ASR]1",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": true,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · ASR_1 과 조성·결합 같음(COO⁻ 16 · CH₂ 8 · CH 8) → −8. FSR 에서도 짝양이온 없음."
   },
   {
    "file": "2011_Zn__pcu_3_ASR_8.cif",
@@ -999,8 +999,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2014[Co][sql]2[FSR]1",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 6×[Co](0) + 8×[O-]C(=O)c1ccc(cc1)C(C(F)(F)F)(C(F)(F)F)(-2) · 금속 {'Co': 6} 이 +16 를 내야 함 · 흔한 산화수로 가능한 합 [12, 13, 14, 15, 16, 17, 18] → 균형(0)"
   },
   {
    "file": "2014_Co__sql_2_FSR_1.cif",
@@ -1035,8 +1035,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2014[Co][sql]2[ASR]1",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 6×[Co](0) + 8×[O-]C(=O)c1ccc(cc1)C(C(F)(F)F)(C(F)(F)F)(-2) · 금속 {'Co': 6} 이 +16 를 내야 함 · 흔한 산화수로 가능한 합 [12, 13, 14, 15, 16, 17, 18] → 균형(0)"
   },
   {
    "file": "2014_Cu__bcu_3_ASR_2.cif",
@@ -1251,8 +1251,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2014[Cu][dia]3[FSR]6",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Cu](0) + 8×[O-]C(=O)c1ccc(cc1)n1ncnc1(-1) · 금속 {'Cu': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [4, 5, 6, 7, 8] → 균형(0)"
   },
   {
    "file": "2014_Cu__dia_3_FSR_2.cif",
@@ -1431,8 +1431,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2014[Cu][dia]3[ASR]5",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Cu](0) + 8×[O-]C(=O)c1ccc(cc1)n1ncnc1(-1) · 금속 {'Cu': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [4, 5, 6, 7, 8] → 균형(0)"
   },
   {
    "file": "2014_Cu__dia_3_FSR_7.cif",
@@ -2773,8 +2773,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · MOFid 실패(no_mof). CIF 결합: COO⁻ 2 · Cd²⁺ → 0 — 단 N 8(Cd 결합 C2-N 4 · 미결합 C2-N 2 · C3-N 2)을 **중성 주개로 가정**한 값(아졸레이트 음이온이면 달라짐)."
   },
   {
    "file": "2016_Co__pts_3_ASR_3.cif",
@@ -2881,8 +2881,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2016[Co][pts]3[FSR]8",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 2×Cc1cc(C2=C[N]N=C2)c(cc1[C]1C=NN=C1)C(-2) + 2×[Co](0) · 금속 {'Co': 2} 이 +4 를 내야 함 · 흔한 산화수로 가능한 합 [4, 5, 6] → 균형(0) · MOFid 라디칼 4자리를 음이온 자리로 셈"
   },
   {
    "file": "2016_Co__pts_3_ASR_6.cif",
@@ -3025,8 +3025,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2016[Co][pts]3[ASR]5",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 2×Cc1cc(C2=C[N]N=C2)c(cc1[C]1C=NN=C1)C(-2) + 2×[Co](0) · 금속 {'Co': 2} 이 +4 를 내야 함 · 흔한 산화수로 가능한 합 [4, 5, 6] → 균형(0) · MOFid 라디칼 4자리를 음이온 자리로 셈"
   },
   {
    "file": "2016_Co__pts_3_FSR_9.cif",
@@ -3101,8 +3101,8 @@
     268.7
    ],
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · CIF 결합: COO⁻ 2 · DABCO N(C3, Co 결합) 2 · CH₂ 6 → Co(bdc)(dabco) → 0. anion_removed 표지 행이지만 FSR_17 과의 차는 H₂O(중성)."
   },
   {
    "file": "2016_Co__sql_2_ASR_2.cif",
@@ -3209,8 +3209,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_11.cif",
@@ -3245,8 +3245,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_12.cif",
@@ -3281,8 +3281,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 메타 짝 2개 모두 같은 값 · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_13.cif",
@@ -3317,8 +3317,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_14.cif",
@@ -3353,8 +3353,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 메타 짝 2개 모두 같은 값 · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_15.cif",
@@ -3389,8 +3389,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_16.cif",
@@ -3425,8 +3425,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_17.cif",
@@ -3461,8 +3461,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2016[Co][sql]2[ASR]17",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · Co + bdc²⁻(C₈H₄O₄) + H₂O + 나머지 C₆H₁₂N₂ = DABCO(중성, 이 계열 다른 행의 MOFid 에 있음) → Co²⁺ − 2 = 0. MOFid(ERROR)가 DABCO 를 빠뜨림."
   },
   {
    "file": "2016_Co__sql_2_FSR_18.cif",
@@ -3497,8 +3497,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_19.cif",
@@ -3533,8 +3533,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_2.cif",
@@ -3605,8 +3605,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_24.cif",
@@ -3641,8 +3641,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_25.cif",
@@ -3677,8 +3677,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_26.cif",
@@ -3713,8 +3713,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_27.cif",
@@ -3749,8 +3749,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_28.cif",
@@ -3785,8 +3785,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 메타 짝 2개 모두 같은 값 · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_6.cif",
@@ -3821,8 +3821,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_7.cif",
@@ -3857,8 +3857,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 메타 짝 2개 모두 같은 값 · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Co__sql_2_FSR_8.cif",
@@ -3893,8 +3893,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Co](0) · 금속 {'Co': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2, 3] → 균형(0)"
   },
   {
    "file": "2016_Cu__hcb_2_FSR_1.cif",
@@ -4726,7 +4726,7 @@
    "asr_fsr_pair": null,
    "probe_convention": false,
    "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · 메타 짝 없음. CIF 결합: COO⁻ 24 · 물 20(H 둘) · 에터 O 8 · **H 없는 금속 결합 O 4** · Cd²⁺ × 12(+24). 그 O 4 가 O²⁻ 면 −8 · OH⁻ 면 −4 · H 가 안 잡힌 물이면 0 — X선 구조는 물의 H 를 흔히 못 잡으므로 CIF 만으로는 못 가름."
   },
   {
    "file": "2017_Cd__met_3_ASR_1.cif",
@@ -4977,8 +4977,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2017[Co][pcu]3[FSR]1",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×Cc1nccn1CCCn1ccnc1C(0) + 4×[Co][Co](0) + 8×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) · 금속 {'Co': 8} 이 +16 를 내야 함 · 흔한 산화수로 가능한 합 [16, 17, 18, 19, 20, 21, 22, 23, 24] → 균형(0)"
   },
   {
    "file": "2017_Co__pcu_3_FSR_1.cif",
@@ -5013,8 +5013,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2017[Co][pcu]3[ASR]1",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×Cc1nccn1CCCn1ccnc1C(0) + 4×[Co][Co](0) + 8×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) · 금속 {'Co': 8} 이 +16 를 내야 함 · 흔한 산화수로 가능한 합 [16, 17, 18, 19, 20, 21, 22, 23, 24] → 균형(0)"
   },
   {
    "file": "2017_Co__qtz_3_ASR_1.cif",
@@ -6819,8 +6819,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2018[Cd][dia]3[FSR]3",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Cd](0) + 8×[O-]C(=O)c1ccc(cc1)n1ccnc1C(-1) · 금속 {'Cd': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2018_Cd__dia_3_ASR_5.cif",
@@ -6855,8 +6855,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2018[Cd][dia]3[FSR]4",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Cd](0) + 8×[O-]C(=O)c1ccc(cc1)n1ccnc1C(-1) · 금속 {'Cd': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2018_Cd__dia_3_ASR_6.cif",
@@ -6891,8 +6891,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2018[Cd][dia]3[FSR]5",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 메타에 이 판 없음 → 같은 계열·같은 조성 형제 2018_Cd__dia_3_ASR_4 의 MOFid 로 셈 · 4×[Cd](0) + 8×[O-]C(=O)c1ccc(cc1)n1ccnc1C(-1) · 금속 {'Cd': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2018_Cd__dia_3_FSR_3.cif",
@@ -6927,8 +6927,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2018[Cd][dia]3[ASR]4",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Cd](0) + 8×[O-]C(=O)c1ccc(cc1)n1ccnc1C(-1) · 금속 {'Cd': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2018_Cd__dia_3_FSR_4.cif",
@@ -6963,8 +6963,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2018[Cd][dia]3[ASR]5",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Cd](0) + 8×[O-]C(=O)c1ccc(cc1)n1ccnc1C(-1) · 금속 {'Cd': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2018_Cd__dia_3_FSR_5.cif",
@@ -6999,8 +6999,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2018[Cd][dia]3[ASR]6",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 메타에 이 판 없음 → 같은 계열·같은 조성 형제 2018_Cd__dia_3_ASR_4 의 MOFid 로 셈 · 4×[Cd](0) + 8×[O-]C(=O)c1ccc(cc1)n1ccnc1C(-1) · 금속 {'Cd': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2018_Cd__sql_2_ASR_1.cif",
@@ -7797,8 +7797,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2018[Zn][sql]2[FSR]4",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · FSR_4 와 조성·결합 같음 → 0."
   },
   {
    "file": "2018_Zn__sql_2_ASR_7.cif",
@@ -7869,8 +7869,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2018[Zn][sql]2[ASR]3",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · CIF 결합: COO⁻ 4 · 에터 O 2 · CH₂ 6 · CH₃ 2 → 5-butoxyisophthalate²⁻ × 2(남는 C₂₄H₂₄O₁₀ 와 일치) + bpe(중성) × 2 + Zn²⁺ × 2 → 0. MOFid(ERROR)가 카복실레이트를 빠뜨림."
   },
   {
    "file": "2018_Zn__sql_2_FSR_7.cif",
@@ -8769,8 +8769,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2019[Co][sql]2[FSR]2",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 2×[Co](0) + 2×[O-]C(=O)c1ccc(cc1)C1=NC(=[N]=C([N]1)c1c(-3) + 2×c1ncn(c1)c1ccc(cc1)c1ccc(cc1)n1cncc1(0) · 금속 {'Co': 2} 이 +6 를 내야 함 · 흔한 산화수로 가능한 합 [4, 5, 6] → 균형(0) · MOFid 라디칼 2자리를 음이온 자리로 셈"
   },
   {
    "file": "2019_Co__sql_2_FSR_2.cif",
@@ -8805,8 +8805,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2019[Co][sql]2[ASR]1",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 2×[Co](0) + 2×[O-]C(=O)c1ccc(cc1)C1=NC(=[N]=C([N]1)c1c(-3) + 2×c1ncn(c1)c1ccc(cc1)c1ccc(cc1)n1cncc1(0) · 금속 {'Co': 2} 이 +6 를 내야 함 · 흔한 산화수로 가능한 합 [4, 5, 6] → 균형(0) · MOFid 라디칼 2자리를 음이온 자리로 셈"
   },
   {
    "file": "2019_Cu__kgd_2_ASR_1.cif",
@@ -10295,8 +10295,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 2×C1CN2CCN1CC2(0) + 4×[O-]C(=O)c1c(F)c(F)c(c(c1F)F)c1c(F)c(F)c(-2) + 2×[Zn][Zn](0) · 금속 {'Zn': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2019_Zn__pcu_3_ASR_2.cif",
@@ -10475,8 +10475,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2019[Zn][pcu]3[FSR]6",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 8×[O-]C(=O)c1ccc(c2c1cccc2)C(=O)[O-](-2) + 4×[Zn][Zn](0) + 4×n1ccc(cc1)CCc1ccncc1(0) · 금속 {'Zn': 8} 이 +16 를 내야 함 · 흔한 산화수로 가능한 합 [16] → 균형(0)"
   },
   {
    "file": "2019_Zn__pcu_3_FSR_2.cif",
@@ -10655,8 +10655,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2019[Zn][pcu]3[ASR]6",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 8×[O-]C(=O)c1ccc(c2c1cccc2)C(=O)[O-](-2) + 4×[Zn][Zn](0) + 4×n1ccc(cc1)CCc1ccncc1(0) · 금속 {'Zn': 8} 이 +16 를 내야 함 · 흔한 산화수로 가능한 합 [16] → 균형(0)"
   },
   {
    "file": "2019_Zn__pts_3_ASR_1.cif",
@@ -12221,8 +12221,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2020[Cu][kgm]2[ASR]1",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 6×CN(c1cc(cc(c1)C(=O)[O-])C(=O)[O-])C(-2) + 3×[OH2][Cu][Cu][OH2](0) · 금속 {'Cu': 6} 이 +12 를 내야 함 · 흔한 산화수로 가능한 합 [6, 7, 8, 9, 10, 11, 12] → 균형(0)"
   },
   {
    "file": "2020_Cu__lvt_3_ASR_1.cif",
@@ -12621,8 +12621,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×O=C(c1cccc(n1)C(=O)Nc1cccc(c1)C(=O)[O-])(-2) + 2×[Cu][Cu](0) · 금속 {'Cu': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [4, 5, 6, 7, 8] → 균형(0)"
   },
   {
    "file": "2020_Cu__sql_2_ASR_7.cif",
@@ -14463,8 +14463,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2021[Co][dia]3[FSR]1",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Co](0) + 8×[O-]C(=O)c1ccc2c(c1)[nH]cn2(-1) · 금속 {'Co': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8, 9, 10, 11, 12] → 균형(0)"
   },
   {
    "file": "2021_Co__dia_3_FSR_1.cif",
@@ -14499,8 +14499,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2021[Co][dia]3[ASR]1",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Co](0) + 8×[O-]C(=O)c1ccc2c(c1)[nH]cn2(-1) · 금속 {'Co': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8, 9, 10, 11, 12] → 균형(0)"
   },
   {
    "file": "2021_Co__pcu_3_ASR_1.cif",
@@ -14535,8 +14535,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2021[Co][pcu]3[FSR]1",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Co](0) + 4×[O-]C(=O)c1ccc(cc1)c1ccc(cn1)C(=O)[O-](-2) + 4×n1ccc(cc1)c1ccc(cc1)c1ccncc1(0) · 금속 {'Co': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8, 9, 10, 11, 12] → 균형(0)"
   },
   {
    "file": "2021_Co__pcu_3_FSR_1.cif",
@@ -14571,8 +14571,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2021[Co][pcu]3[ASR]1",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Co](0) + 4×[O-]C(=O)c1ccc(cc1)c1ccc(cn1)C(=O)[O-](-2) + 4×n1ccc(cc1)c1ccc(cc1)c1ccncc1(0) · 금속 {'Co': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8, 9, 10, 11, 12] → 균형(0)"
   },
   {
    "file": "2021_Co__sql_2_FSR_4.cif",
@@ -15475,8 +15475,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · CIF 결합: COO⁻ 8(pyridine-3,5-dicarboxylate²⁻ × 4) · Zn²⁺ × 4 → 0. 남는 C₂₀H₃₆N₄O₄ = N-methylpyrrolidone × 4(CH₂ 12 · CH₃ 4 · N(C3) 4, 결합 용매 — 중성)."
   },
   {
    "file": "2022_Cd__nuc_3_ASR_1.cif",
@@ -16459,8 +16459,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×[Cd](0) + 2×[O-]C(=O)CCN1C(=O)c2c(C1=O)cncc2(-1) · 금속 {'Cd': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2] → 균형(0)"
   },
   {
    "file": "2023_Cd__rtl_3_ASR_1.cif",
@@ -16927,8 +16927,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×C1CN2CCN1CC2(0) + 4×[O-]C(=O)c1ccc(s1)C(=O)[O-](-2) + 4×[OH2][Ni](0) · 금속 {'Ni': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2023_Sc__bpq_3_ASR_1.cif",
@@ -17107,8 +17107,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 2×[O-]C(=O)c1cccc(c1)OCc1cc(cc(c1)C(=O)[O-(-3) + 1×[OH2][Zn][OH]1[Zn][OH]([Zn]1)[Zn][OH2](-2) · 금속 {'Zn': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2024_Cd__dia_3_ASR_1.cif",
@@ -17287,8 +17287,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2024[Co][pcu]3[FSR]1",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×O=C(Nc1ccncc1)Nc1ccncc1(0) + 4×[Co](0) + 4×[O-]C(=O)c1ccc(cc1)c1ccc(cc1)C(=O)[O-](-2) · 금속 {'Co': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8, 9, 10, 11, 12] → 균형(0)"
   },
   {
    "file": "2024_Co__pcu_3_FSR_1.cif",
@@ -17323,8 +17323,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2024[Co][pcu]3[ASR]1",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×O=C(Nc1ccncc1)Nc1ccncc1(0) + 4×[Co](0) + 4×[O-]C(=O)c1ccc(cc1)c1ccc(cc1)C(=O)[O-](-2) · 금속 {'Co': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8, 9, 10, 11, 12] → 균형(0)"
   },
   {
    "file": "2024_Co__sql_2_ASR_2.cif",
@@ -17359,8 +17359,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2024[Co][sql]2[FSR]3",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Co](0) + 4×[O-]C(=O)c1cc(COc2cccc(c2)C(=O)O)cc(c1)C(-2) + 4×n1ccc(cc1)CCc1ccncc1(0) · 금속 {'Co': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8, 9, 10, 11, 12] → 균형(0)"
   },
   {
    "file": "2024_Co__sql_2_FSR_2.cif",
@@ -17431,8 +17431,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2024[Co][sql]2[ASR]2",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[Co](0) + 4×[O-]C(=O)c1cc(COc2cccc(c2)C(=O)O)cc(c1)C(-2) + 4×n1ccc(cc1)CCc1ccncc1(0) · 금속 {'Co': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8, 9, 10, 11, 12] → 균형(0)"
   },
   {
    "file": "2024_Cu__srs_3_FSR_2.cif",
@@ -17759,8 +17759,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 1×C1CN2CCN1CC2(0) + 1×[O-]C(=O)c1ccc(cc1)C(=O)[O-](-2) + 1×[OH2][Ni](0) · 금속 {'Ni': 1} 이 +2 를 내야 함 · 흔한 산화수로 가능한 합 [2] → 균형(0)"
   },
   {
    "file": "2024_Zn__crb_3_ASR_1.cif",
@@ -18677,8 +18677,8 @@
    "anion_removed": null,
    "asr_fsr_pair": null,
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · CIF 결합: COO⁻ 8(4,4′-oxybis(benzoate)²⁻ × 4, 에터 O 4) · Zn²⁺ × 4 → 0. 남는 C₅₆H₃₂N₁₆S₈ = C₁₄H₈N₄S₂ × 4(중성 N,S 기둥 — thiazolothiazole-bipyridyl 형). MOFid 가 기둥을 빠뜨림."
   },
   {
    "file": "2024_Zn__sql_2_ASR_4.cif",
@@ -18713,8 +18713,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2024[Zn][sql]2[FSR]3",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[O-]C(=O)c1cc(COc2cccc(c2)C(=O)O)cc(c1)C(-2) + 4×[Zn](0) + 4×n1ccc(cc1)CCc1ccncc1(0) · 금속 {'Zn': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2024_Zn__sql_2_FSR_1.cif",
@@ -18785,8 +18785,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2024[Zn][sql]2[ASR]4",
    "probe_convention": false,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 자동(MOFid 성분 배수 + 흔한 산화수) · 4×[O-]C(=O)c1cc(COc2cccc(c2)C(=O)O)cc(c1)C(-2) + 4×[Zn](0) + 4×n1ccc(cc1)CCc1ccncc1(0) · 금속 {'Zn': 4} 이 +8 를 내야 함 · 흔한 산화수로 가능한 합 [8] → 균형(0)"
   },
   {
    "file": "2024_Zn__srs_3_ASR_1.cif",
@@ -18937,8 +18937,8 @@
    "anion_removed": null,
    "asr_fsr_pair": "2024[Zn][srs]3[ASR]2",
    "probe_convention": true,
-   "formal_charge_nonzero": null,
-   "formal_charge_src": "미확인"
+   "formal_charge_nonzero": false,
+   "formal_charge_src": "E-8c Junseok 40d6689d — 손 검토(CIF 결합 환경 + 조성 산수, e8c_conn) · FSR_1 과 같은 조성 Zn₄(pur)₄(OAc)₄ → 0."
   },
   {
    "file": "2024_Zn__ths_3_ASR_1.cif",
@@ -19161,7 +19161,8 @@
    "date": "2026-09-25",
    "by": "HKHOME(사용자 결정 2·3번, \"다 하고\")",
    "probe_convention": "PLD < 3.64 Å (= -block 1.82 에서 N₂ 통로 없음, E-4b 확인) → S 는 탐침 규약값, 열역학 선택도 순위에 안 씀",
-   "formal_charge_nonzero": "골격 형식 전하 ≠ 0(짝이온 삭제 — 음이온·양이온 모두). None = 미확인. 상위 68 채우기는 Junseok 배정"
+   "formal_charge_nonzero": "골격 형식 전하 ≠ 0(짝이온 삭제 — 음이온·양이온 모두). None = 미확인. 상위 68 채우기는 Junseok 배정",
+   "formal_charge_merge": "2026-09-25 E-8c 상위 68 병합(Junseok 40d6689d): True 3 · False 64 · None 1"
   }
  ]
 }
