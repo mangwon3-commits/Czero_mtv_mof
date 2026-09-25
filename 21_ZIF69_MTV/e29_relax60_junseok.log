@@ -1,0 +1,18 @@
+  !! 워커를 4 -> 2 로 낮춥니다 (가용 24.7 GB, Zeo++ 9.5 GB/건)
+E-29 — 대상 ['e24_ch3_100', 'e24_cn_100', 'e22_parent'] · OUTER_LOOP_CAP 60 · INNER 2000 · STRUCT /home/mangwon/mof_project/21_ZIF69_MTV/e29_stage · WORK /home/mangwon/mof_project/21_ZIF69_MTV/lmp_e29 · NETWORK /home/mangwon/miniconda3/envs/czeromof/bin/network · LMP /home/mangwon/miniconda3/envs/lammps_mof/bin/lmp_serial · IFACE 존재 True · python /home/mangwon/miniconda3/envs/lammps_mof/bin/python
+    e22_parent: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 60, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+    e24_cn_100: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 60, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+    e24_ch3_100: group 1개 제거(상한 32), min_eval 1e-6 -> 1e-4, 바깥루프 <= 60, 안쪽반복 <= 2000
+fatal: not a git repository (or any of the parent directories): .git
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+e24_cn_100 ok · 루프 26 · EDiff 9.31996873987373e-06 · 처리 뒤 PLD 3.89266 · LCD 5.24036 · AV/셀 97.4 · chan 16 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] · 셀 변화 {'a': 4.254248630922199, 'b': 2.685579391920252, 'c': -0.9794049880566534, 'V': 6.005586164090801} · 9.7 분
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+e22_parent ok · 루프 60 · EDiff 0.0166794469905653 · 처리 뒤 PLD 3.77548 · LCD 5.22475 · AV/셀 94.7 · chan 16 [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1] · 셀 변화 {'a': 3.956033481553193, 'b': -2.170221975046989, 'c': 1.11474049349873, 'V': 2.8336473103843822} · 20.7 분
+/home/mangwon/miniconda3/envs/lammps_mof/lib/python3.11/site-packages/ase/io/lammpsdata.py:72: FutureWarning: "style" is deprecated; please use "atom_style".
+  warnings.warn(
+e24_ch3_100 ok · 루프 60 · EDiff 0.0721352711498184 · 처리 뒤 PLD 2.11828 · LCD 4.46422 · AV/셀 0.0 · chan 0 [] · 셀 변화 {'a': 0.06226117766572209, 'b': -5.231608938380468, 'c': 4.589659296670811, 'V': -0.8203507579801442} · 25.6 분
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e29_relax60_junseok.json · 25.9 분 · 등록 {"(1)_CH3": {"PLD_after": 2.11828, "AV_per_cell_after": 0.0, "branch": "성립 쪽(닫힘 유지: PLD < 3.3 이거나 AV/셀 < 20)"}, "(2)_e24_cn_100": {"PLD_after": 3.89266, "AV_per_cell_after": 97.4, "open": true}, "(2)_e22_parent": {"PLD_after": 3.77548, "AV_per_cell_after": 94.7, "open": true}}
