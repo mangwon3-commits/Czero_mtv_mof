@@ -7735,3 +7735,4 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
     uff300_e24i/e24i_cl_open_{before,after}.cif 추가(cmp 일치) → 다섯 모두 올라감.
     ③ 관문 ⑤ 다시 적음(results_e24i_gate5_desktop-nvsrr9m.json, 이미 반입): 5/5 pass · LCD 감소 CH₃ 13.66 · Cl 6.47 · Br 6.96 · C₂H₅ −2.71 · CN 3.37 % · 루프 CH₃ 2 · 나머지 12.
     견적 기록: ② 19:00~20:00 → 실측 19:52(범위 안). Cl 이 최장(279 루프 · 125.5 분).
+    [19:56] E-24i 수령(HKHOME — CH₃ 셀 최소화 정지 기록은 판정문 §26-5). laptop 몫 끝 · 새 배정 없음(E-24j 모체 대조는 데스크탑) → **유휴**. RASPA · LAMMPS 0.
