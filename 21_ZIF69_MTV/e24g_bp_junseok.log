@@ -1,0 +1,22 @@
+착수 2026-09-26 12:13:16 · e24g_bp_junseok.py --tags e24g_cf3_100,e24h_c2h5_050a,e24h_c2h5_050b · 가지 HEAD 5d619c04
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+E-24g 막음 Widom 12작업 · 좌표 {"e24g_cf3_100": {"n_atoms": [228, 228], "symbols_same": true, "cell_max_diff": 0.0, "frac_max_diff": 4.886643423240855e-09}, "e24h_c2h5_050a": {"n_atoms": [228, 228], "symbols_same": true, "cell_max_diff": 0.0, "frac_max_diff": 4.994718971751411e-09}, "e24h_c2h5_050b": {"n_atoms": [228, 228], "symbols_same": true, "cell_max_diff": 0.0, "frac_max_diff": 4.991839941403953e-09}} · 계획 {"e24g_cf3_100 r1.65 CO2": {"block_file": "e24g_zeo_runs/e24g_cf3_100/block1.65/e24g_cf3_100_relaxed.block", "n_spheres": 8}, "e24g_cf3_100 r1.82 N2": {"block_file": "e24g_zeo_runs/e24g_cf3_100/block1.82/e24g_cf3_100_relaxed.block", "n_spheres": 8}, "e24h_c2h5_050a r1.65 CO2": {"block_file": "e24g_zeo_runs/e24h_c2h5_050a/block1.65/e24h_c2h5_050a_relaxed.block", "n_spheres": 2}, "e24h_c2h5_050a r1.82 N2": {"block_file": "e24g_zeo_runs/e24h_c2h5_050a/block1.82/e24h_c2h5_050a_relaxed.block", "n_spheres": 1}, "e24h_c2h5_050b r1.65 CO2": {"block_file": "e24g_zeo_runs/e24h_c2h5_050b/block1.65/e24h_c2h5_050b_relaxed.block", "n_spheres": 2}, "e24h_c2h5_050b r1.82 N2": {"block_file": "e24g_zeo_runs/e24h_c2h5_050b/block1.82/e24h_c2h5_050b_relaxed.block", "n_spheres": 1}}
+  [    ok] e24g_cf3_100 on r=1.65 CO2 K_H 1.86514e-29 ± 1.99143e-29 · N 48/48 · 표지 True · rc 0 · 씨앗 1790392397 · 10.6 분
+  [    ok] e24g_cf3_100 off r=1.65 CO2 K_H 1.33445e-26 ± 2.99029e-26 · N 48/48 · 표지 True · rc 0 · 씨앗 1790392413 · 10.6 분
+  [    ok] e24g_cf3_100 on r=1.82 N2 K_H 3.54445e-16 ± 4.92317e-16 · N 48/48 · 표지 True · rc 0 · 씨앗 1790392428 · 10.8 분
+  [    ok] e24g_cf3_100 off r=1.82 N2 K_H 9.90324e-17 ± 1.8392e-16 · N 48/48 · 표지 True · rc 0 · 씨앗 1790392443 · 10.8 분
+  [    ok] e24h_c2h5_050a on r=1.65 CO2 K_H 0.00157588 ± 5.66377e-05 · N 12/12 · 표지 True · rc 0 · 씨앗 1790392460 · 11.0 분
+  [    ok] e24h_c2h5_050a off r=1.65 CO2 K_H 0.000699731 ± 4.13346e-06 · N 12/12 · 표지 True · rc 0 · 씨앗 1790392475 · 11.1 분
+  [    ok] e24h_c2h5_050a on r=1.82 N2 K_H 1.13339e-05 ± 1.32157e-07 · N 6/6 · 표지 True · rc 0 · 씨앗 1790392491 · 11.2 분
+  [    ok] e24h_c2h5_050a off r=1.82 N2 K_H 9.88882e-06 ± 9.71473e-08 · N 6/6 · 표지 True · rc 0 · 씨앗 1790392506 · 11.3 분
+  [    ok] e24h_c2h5_050b on r=1.65 CO2 K_H 0.00170331 ± 3.27549e-05 · N 12/12 · 표지 True · rc 0 · 씨앗 1790392522 · 11.1 분
+  [    ok] e24h_c2h5_050b off r=1.65 CO2 K_H 0.000692399 ± 8.25959e-06 · N 12/12 · 표지 True · rc 0 · 씨앗 1790392537 · 11.2 분
+  [    ok] e24h_c2h5_050b on r=1.82 N2 K_H 1.13039e-05 ± 1.57237e-07 · N 6/6 · 표지 True · rc 0 · 씨앗 1790392554 · 11.2 분
+  [    ok] e24h_c2h5_050b off r=1.82 N2 K_H 9.9437e-06 ± 1.18274e-07 · N 6/6 · 표지 True · rc 0 · 씨앗 1790392569 · 11.2 분
+
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24g_blockpockets_junseok.json
+  e24g_cf3_100: S_ON 막음 None ± None · S_OFF 막음 None ± None · G 막음 None ± None · 차단 없음 참조 {'file': 'results_magi5_e3_e24g_cf3_100_widom_hkhome.json', 'S_ON': 191.4889082451491, 'S_OFF': 96.01339163370568}
+  e24h_c2h5_050a: S_ON 막음 139.04128322995615 ± 5.253613743930847 · S_OFF 막음 70.7598075402323 ± 0.8111346188511109 · G 막음 1.9649754297437945 ± 0.07758737781200573 · 차단 없음 참조 {'file': 'results_magi5_e3_e24h_c2h5_050a_widom_hkhome.json', 'S_ON': 181.94636550418306, 'S_OFF': 84.12872103507001}
+  e24h_c2h5_050b: S_ON 막음 150.68339245747043 ± 3.576266454318795 · S_OFF 막음 69.6319277532508 ± 1.172994555453329 · G 막음 2.1639985753580646 ± 0.0629817155074501 · 차단 없음 참조 {'file': 'results_magi5_e3_e24h_c2h5_050b_widom_hkhome.json', 'S_ON': 198.1607142857143, 'S_OFF': 85.05039886216065}
+드라이버 rc=0 · 끝 2026-09-26 12:27:20
