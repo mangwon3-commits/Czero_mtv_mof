@@ -1,0 +1,28 @@
+{
+ "test": "MAGI-005 E-24g · E-24h — UFF4MOF 이완 수렴(상한 300)",
+ "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 21차",
+ "machine": "hkhome",
+ "rule": "risk_screen.run_one 무수정 · OUTER_LOOP_CAP 300(래퍼) · INNER 2000 · min_eval 1e-4 · Zeo++ 호출 잠금(순차)",
+ "cap": 300,
+ "started": "2026-09-26 12:05:32",
+ "rows": {
+  "e24g_cf3_100": {
+   "status": "pending"
+  },
+  "e24g_br_100": {
+   "status": "pending"
+  },
+  "e24h_c2h5_050a": {
+   "status": "pending"
+  },
+  "e24h_c2h5_050b": {
+   "status": "pending"
+  },
+  "e24h_cl_050a": {
+   "status": "pending"
+  },
+  "e24h_cl_050b": {
+   "status": "pending"
+  }
+ }
+}
