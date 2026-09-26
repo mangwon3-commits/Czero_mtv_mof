@@ -109,9 +109,14 @@ def access():
 
 
 def blocked(tag):
-    d = load("results_e24g_blockpockets_hkhome.json", "bp")
-    if d is None:
-        return None, "results_e24g_blockpockets_hkhome.json 없음"
+    # 막음 Widom 담당이 데스크탑 → Junseok 으로 바뀜(24109aea) — 두 이름 다 봄, 둘 다 있으면 멈춤(어느 것이 정본인지 사람이 정함)
+    cands = [(f, load(f, "bp")) for f in ("results_e24g_blockpockets_junseok.json", "results_e24g_blockpockets_hkhome.json")]
+    have = [(f, d) for f, d in cands if d is not None]
+    if not have:
+        return None, "results_e24g_blockpockets_{junseok,hkhome}.json 없음"
+    if len(have) > 1 and any(tag in ((d.get("per_structure") or {})) for _, d in have[1:]) and tag in (have[0][1].get("per_structure") or {}):
+        return None, f"막음 파일 둘에 {tag} 가 다 있음 — 정본 지정 필요"
+    d = next((d for _, d in have if tag in (d.get("per_structure") or {})), have[0][1])
     v = (d.get("per_structure") or {}).get(tag)
     if v is None:
         return None, f"막음 파일에 {tag} 없음"
@@ -154,6 +159,9 @@ def s_on(tag, ACC):
         return None, "Zeo++ 미도착 — 주머니 여부 모름(막음값 필요 여부 미정)"
     if not a.get("ok"):
         return None, f"Zeo++ 관문 문제 {a}"
+    if a.get("ch165") == 0:
+        # 1.65 Å 에서 열린 통로 0 — 막으면 CO₂ 가 들어갈 곳이 없어 S_ON 이 정의되지 않음(CF₃: PLD 3.19 · 통로 0 · 주머니 10)
+        return None, f"CO₂ 탐침 통로 0(PLD {a['PLD']}) — S_ON 정의 불가 → 후속 제외"
     pockets = (a["pk165"] or 0) + (a["pk182"] or 0)
     if pockets > 0:
         b, why = blocked(tag)
@@ -251,7 +259,7 @@ def main():
             say(f"  {t}: (0) 탈락 · 대상 아님"); continue
         s, why = s_on(t, ACC)
         if s is None:
-            say(f"  {t}: 미완비 — {why}"); continue
+            say(f"  {t}: " + (f"**제외** — {why}" if "통로 0" in why else f"미완비 — {why}")); continue
         x = u(s["S"] - REF["Cl"]["S"], s["Se"], REF["Cl"]["Se"])
         say(f"  {t}: S_ON {s['S']:.2f} ± {s['Se']:.2f} [{s['src']}] − Cl → {x:+.2f} → **{'진입' if x > -TH else '제외'}**(100 %: Cl 보다 1.5 단위 넘게 낮지 않을 것)"
             + (" ⚠ CF₃ F···O 1.709 Å 표지 — 헤드라인 편입 전 UFF4MOF 에서 접촉 확인(판정 줄)" if t == "e24g_cf3_100" else ""))
