@@ -8374,3 +8374,6 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
     판정은 종합자(후속 자격은 데스크탑 Widom 뒤). 이어서 Cl 열린 자리 습윤 WC 는 자동 착수됨(17:26:30, 병합 33b06693 · 사본 md5 c1e97588 = 원본). 덤: 어제 E-22e 사슬이 charged_e22e.json 의 cached 칸 둘을 true 로 바꿔 남긴 것을 커밋 판으로 되돌림(실제 계산 기록 유지).
 
 ## 2026-09-26 17:28 — laptop2: ⚠ **표지** — 앞 E-24i S_mix 줄(17:2x)과 results_e24i_mix_summary_laptop2.json 의 "CH₃ 100 · Br 100 · Cl 100 · CN · C₂H₅ 대비 단위" 는 **§25 보류 대비 — 서술 금지**(전 치환 구조는 판정문 §25 로 보류, master fc76dcc4). 요약 JSON 에 note_s25 칸 추가. E-24i 판정 수령: (2) 성립 · 규칙 1 CN(141.53) · 2 Br · 3 Cl · 4 CH₃ · 5 C₂H₅ · 6 모체. Cl 열린 자리 습윤 WC 는 끝까지 돌림(중단 안 함).
+
+## 2026-09-26 18:53 — laptop2: **E-24i Cl 열린 자리 습윤 WC 끝** 18:52 — v3w_humid_wc/humid_working_capacity_w2_e24i_cl_open_laptop2.json + results_e24i_e24i_cl_open_humid_summary_laptop2.json(러너 요약). **판정 전 관문**(러너 감사): 9/9 ok · Simulation finished 9/9 · 반환코드 9/9 = 0 · 씨앗 9 고유 · 입력 막음 줄 0 · not-found 없음 · md5 8e8ec933. 벽시계 1 h 26 m(9워커).
+    WC(TSA) h1~h3 2.3104 · 2.2771 · 2.3040 → **평균 2.297 ± 0.019** · WC(VSA) 0.8497 · 0.8391 · 0.8297 → **0.840 ± 0.025** mol/kg. 판정·비교는 종합자(Junseok 재현판과는 등록 37306c51 대로 먼저 3/3 완주한 판 인용).
