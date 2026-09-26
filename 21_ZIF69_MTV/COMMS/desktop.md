@@ -5766,3 +5766,21 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     사용자 쪽 그림 작업에서 발견 → 종합자 재현(`MAGI5_E22_VERDICT_20260925.md` §25). 빌드부터 겹침 · 관문(0) `contacts()` 가 결합 그래프를 검사 대상 구조에서 다시 만들어 X–O 를 "결합" 으로 봄 · 무거운 원자 최소 접촉은 기록만 하고 관문 아님.
     보류 범위: E-24 · E-24b~h 의 모든 치환체 수(S · G · S_mix · 물 지수 · 습윤 WC · 323 K · 밀도 격자 치환 행) · E-23 확장 순위 §5 · §6. 유효: 모체 · ZIF-69 · 분해 · MAF-66 · CoRE.
     새 계산 없음(사용자 결정 대기). 관문(0) 고침 · 재선별 · 물리적 기하 재측정은 등록 뒤에 배정.
+
+
+## 2026-09-26 15:50 — desktop(종합자): **E-24i 분담**(사용자 "가용 자원 전부 · 시간 최소화") — master f5935fdf · 0e63eefb
+**받는 곳**: 전원 · cloud  **답 필요**: 착수 한 줄씩
+    데스크탑: Widom CH₃ · Cl · Br(워커 4씩, 16:0x 착수) + S_mix CN 먼저 띄움 → Widom 뒤 물 4씨앗 다섯.
+    laptop: Widom C₂H₅ · CN → UFF4MOF 상한 300 다섯(`run_e24i_relax.py`) → 관문 ⑤ 다섯(`run_e24i_gate5.py`).
+    laptop2: S_mix CH₃ · Br 먼저 띄움(`run_e24i_mix.py` — Widom 전이면 S_Henry 자리 채움 · 비 인용 금지).
+    Junseok: Zeo++ 다섯 → S_mix Cl · C₂H₅(주머니 있으면 막음).
+    cloud: 관문(0b) 독립 구현 · 형판 계열 재선별 · E-24i 검산(cloud 3차).
+    견적: Widom ≈ 16:40 · Zeo++ ≈ 16:40 · S_mix ≈ 17:40~18:00 · UFF4MOF ≈ 18:00~18:30(오늘 같은 계 실측).
+
+## 2026-09-26 16:41 — desktop(종합자): **Junseok — E-24i C₂H₅ open 막음 물 4씨앗 배정**(등록 27f32f80) · cloud 3차 ③ 채택(fc76dcc4)
+    Junseok: e24i_c2h5_open 물 Widom 4씨앗 · 막음 1.30(`e24i_zeo_runs/e24i_c2h5_open/block1.30`, 구 5) · E-24g e24h_c2h5_050a 물과 같은 틀 · 출력 `results_e24i_c2h5_open_water_blk_junseok.json`.
+          분모(K_H CO₂ ON 막음 1.65)는 데스크탑 `results_e24i_blockpockets_hkhome.json` — 판정 때 종합자가 원자료로 붙임. 시점: Cl S_mix 뒤 습윤 WC C₂H₅ 와 나란히. 늦어지면 알려 주면 데스크탑이 사본으로 돌림.
+    cloud: 3차 ③ 권고(보류 범위 보완) **채택** — 판정문 §25 보완 줄 · E-23 §7 보완 줄 · 문서 넷 표지. 종합자 검산 NO₂ O···O 1.500 Å 재현.
+          `LINKER_DESIGN_BRIEF.pdf` 는 08-14 커밋(74678847) — E-22 이전 판이라 영향 없음(클라우드 "09-25 20:36" 은 사본 체크아웃 시각).
+          `clash_gate.py` 한계 하나(서술): 치환기 성장 문턱 1.75 Å 가 S–CH₃ 1.80 을 못 이어 SO₂CH₃ 최악 짝을 S···C 로 냄 — 판정(충돌) 불변 · S 없는 E-24i 무관.
+
