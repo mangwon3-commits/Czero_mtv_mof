@@ -45,5 +45,5 @@ for tag, m in RUNS:
         print(f'  {tag} [{m}]: 관문 실패 {au}'); continue
     x = (s['tsa'] - par['tsa']) / math.hypot(s['tsa_e'], par['tsa_e'])
     xs = (s['tsa'] - par['tsa']) / math.hypot(s['tsa_sd'] / 3 ** .5, par['tsa_sd'] / 3 ** .5)
-    print(f"  {tag} [{m}] 9/9: WC_TSA {s['tsa']:.3f} ± {s['tsa_e']:.3f}(SD {s['tsa_sd']:.3f} · {', '.join('%.3f' % q for q in s['each'])}) · 모체 대비 {x:+.2f} 단위 · 씨앗 SD/√3 자 {xs:+.2f}"
+    print(f"  {tag} [{m}] 9/9: WC_TSA {s['tsa']:.3f} ± {s['tsa_e']:.3f}(SD {s['tsa_sd']:.3f} · {', '.join('%.3f' % q for q in s['each'])}) · 모체 대비 {x:+.2f} 단위 · 씨앗 SEM 자(SD/√3) {xs:+.2f}"
           f" · WC_VSA {s['vsa']:.3f} ± {s['vsa_e']:.3f} · ads CO₂ {s['ads_co2']:.3f} · 물 {s['ads_w']:.4f} · TSA 잔류 CO₂ {s['tsa_co2']:.3f} · 막음 {a.get('blocking')}")
