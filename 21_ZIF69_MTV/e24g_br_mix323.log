@@ -1,0 +1,13 @@
+착수 2026-09-26 13:41:12 · E27B_SET=br E27B_MACHINE=junseok E27B_WORKERS=3 python -u run_e24g_mix323.py · 가지 HEAD cde8e7f8
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+T-J1′ 이원 GCMC CO₂/N₂ 0.15/0.85 · 100000 Pa · 323.0 K · 5000+15000 · 워커 3 · md5 8e8ec933f9013c7e932da04dc256efd3
+  e24g_br_100_s1           N_super   1224 셀 [1, 2, 3] · S_Henry 144.5 (298 K E-24g Widom ON(results_magi5_e3_e24g_br_100_widom_hkhome.json) — 온도 다름 · 비 인용 금지) · L None
+  e24g_br_100_s2           N_super   1224 셀 [1, 2, 3] · S_Henry 144.5 (298 K E-24g Widom ON(results_magi5_e3_e24g_br_100_widom_hkhome.json) — 온도 다름 · 비 인용 금지) · L None
+  e24g_br_100_s3           N_super   1224 셀 [1, 2, 3] · S_Henry 144.5 (298 K E-24g Widom ON(results_magi5_e3_e24g_br_100_widom_hkhome.json) — 온도 다름 · 비 인용 금지) · L None
+  [ok] e24g_br_100_s1           S_mix 87.99006210500127 · 비 0.6088856280188311 · 29.0 min · 경과 0.48 h
+  [ok] e24g_br_100_s2           S_mix 90.12945811922347 · 비 0.6236901122359939 · 29.2 min · 경과 0.49 h
+  [ok] e24g_br_100_s3           S_mix 91.59290629233138 · 비 0.6338170804257932 · 29.2 min · 경과 0.50 h
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24g_mix323_br_junseok.json
+감사 {"seeds_unique": true, "rows": {"e24g_br_100_s1": {"status": "ok", "finished_marker": true, "n_blocked_lines_12": 0, "blocked_for_component": 0, "not_found": false}, "e24g_br_100_s2": {"status": "ok", "finished_marker": true, "n_blocked_lines_12": 0, "blocked_for_component": 0, "not_found": false}, "e24g_br_100_s3": {"status": "ok", "finished_marker": true, "n_blocked_lines_12": 0, "blocked_for_component": 0, "not_found": false}}}
+드라이버 rc=0 · 끝 2026-09-26 14:10:59
