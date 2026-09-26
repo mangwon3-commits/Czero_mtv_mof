@@ -207,7 +207,7 @@ def main():
         line += f' · 관문 ⑤ {g5}(LCD 감소 {lcd} %)'
         print(line)
         if mx:
-            print(f"      S_mix − 모체: {u(mx['S'] - PM['S'], mx['Se'], PM['Se']):+.2f} 단위 · 씨앗 SD/√3 자 {u(mx['S'] - PM['S'], mx['sd'] / math.sqrt(3), PM['sd'] / math.sqrt(3)):+.2f}")
+            print(f"      S_mix − 모체: {u(mx['S'] - PM['S'], mx['Se'], PM['Se']):+.2f} 단위 · 씨앗 SEM 자(SD/√3) {u(mx['S'] - PM['S'], mx['sd'] / math.sqrt(3), PM['sd'] / math.sqrt(3)):+.2f}")
         if mx and wi and g5 is True:
             FAM[t] = dict(S=mx['S'], Se=mx['Se'], sd=mx['sd'], idx=wi['idx'], ie=wi['err'])
         elif mx and wi and g5 is False:
@@ -231,7 +231,7 @@ def main():
     for t in first:
         x = u(P[t]['S'] - PM['S'], P[t]['Se'], PM['Se'])
         print(f"  (2) {t}: S_mix {P[t]['S']:.2f} − 모체 {PM['S']:.2f} → {x:+.2f} 단위 → {'성립 — 확장 설계 살아남음' if x >= TH else '기각 — 확장 설계 철회'}")
-    print('\n  짝 비교(S_mix 단위 · 씨앗 SD/√3 자 | 물 지수 단위):')
+    print('\n  짝 비교(S_mix 단위 · 씨앗 SEM 자(SD/√3) | 물 지수 단위):')
     ks = [k for k in P]
     for i, a in enumerate(ks):
         for b in ks[i + 1:]:
