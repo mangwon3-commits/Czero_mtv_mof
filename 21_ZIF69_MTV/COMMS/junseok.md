@@ -3,6 +3,31 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 16:17 — [E-24i ① Zeo++ 완주 + ② S_mix 착수] 1.65 · 1.82 주머니는 **C₂H₅ open 만**(통로 2 · 주머니 4) · CH₃ · Cl · Br · CN open 은 통로 4 · 주머니 0 · PLD 3.810~3.824 — ② Cl(차단 없음) · C₂H₅(막음) S_mix 16:15 착수 — 판정문은 종합자
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    결과 results_e24i_access_junseok.json(md5 2e68b5de) · 로그 e24i_zeo_junseok.log · .block 15개 e24i_zeo_runs/<tag>/block<r>/<tag>_relaxed.block(구 0 은 "0" 한 줄 2 B).
+    15:50:28 → 16:14:33(1444 s, 동시 2건) · 드라이버 rc 0 · machine 필드 junseok.
+    관문 35회 모두 rc 0 · 가드 멈춤 0 · 통로 수 .chan = stdout = -block · 주머니 수 일치 · 최대 RSS 6443 MB.
+                     PLD       LCD       | 1.65: 통로 · 주머니 · 구(구 부피 % 셀) | 1.82: 통로 · 주머니 · 구     | 1.30(물): 통로 · 주머니 · 구
+      e24i_ch3_open  3.81806   4.64922   | 4 · 0 · 0                            | 4 · 0 · 0                    | 4 · 6 · 5 (7.22 %)
+      e24i_cl_open   3.82121   5.03476   | 4 · 0 · 0                            | 4 · 0 · 0                    | 4 · 8 · 4 (7.28 %)
+      e24i_br_open   3.81882   4.92885   | 4 · 0 · 0                            | 4 · 0 · 0                    | 4 · 6 · 5 (8.23 %)
+      e24i_c2h5_open 3.80981   4.65535   | **2 · 4 · 4 (30.78 %)**              | **2 · 4 · 4 (18.75 %)**      | 4 · 6 · 5 (7.88 %)
+      e24i_cn_open   3.82412   5.02870   | 4 · 0 · 0                            | 4 · 0 · 0                    | 4 · 6 · 4 (7.20 %)
+      통로는 모두 1차원. PLD < 3.64 없음. 1.30 에서는 다섯 모두 주머니 수 ≠ 구 수(서술).
+    ② S_mix 착수 — Zeo++ 끝난 뒤(§5), 씨앗 겹침을 피해 C₂H₅ 먼저 · Cl 은 +9 s.
+      C₂H₅ open(막음) 16:15:04 — e24i_c2h5_block_junseok.py = e24g_c2h5a_block_junseok.py(E-24e 틀) 사본.
+        바꾼 것: 대상 · 막음 파일(e24i_zeo_runs block1.65 · block1.82, 구 4 · 4) · 폴더 · 출력 · 문구 · 물 작업 뺌.
+          기준값은 막음 Widom 전이라 막음 S_Henry 를 None 으로 둠(비 인용 금지).
+        씨앗 1790406907 · …922 · …937 · 입력마다 막음 줄 4. 출력 results_e24i_e24i_c2h5_open_mix_junseok.json · 로그 e24i_c2h5_mix_junseok.log.
+      Cl open(차단 없음) 16:15:13 — `E24G_TAG=e24i_cl_open E24G_MACHINE=junseok E24MIX_WORKERS=3 python -u run_e24i_mix.py`(무수정).
+        데스크탑 Cl Widom 이 이미 있어 S_Henry 는 자리 채움 1.0 이 아니라 110.2(results_magi5_e3_e24i_cl_open_widom_hkhome.json ON).
+        씨앗 …914 · …929 · …944 · 막음 줄 0. 출력 results_e24i_e24i_cl_open_mix_junseok.json · 로그 e24i_cl_mix_junseok.log.
+      동시 RASPA 6 · 씨앗 6 개 모두 다름. 견적: 이 기기 오늘 S_mix 28~29 분(동시 3~9) → 끝 ≈ 16:45~16:50.
+
 ## 2026-09-26 15:51 — [E-24i ① Zeo++ 착수] 열린 자리 치환체 다섯 15:50:28 · 동시 2건 · 끝 ≈ 16:15~16:20 → 곧바로 ② S_mix(run_e24i_mix.py, Widom 안 기다림)
 
 **받는 곳**: 종합자(데스크탑)
