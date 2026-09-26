@@ -1,5 +1,7 @@
 # `density_v3_tpl/` — 형판 Zn(bib)(bdtdc) 모체 · 4,8-치환체 CO₂ 밀도 격자 (E-28, 2026-09-26)
 
+> ⚠ **[§25 결함 보류 2026-09-26 16:37]** 치환체 네 구조(e24_ch3_100 · e24_cn_100 · e24_f_100 · e22_no2_100)의 격자는 치환기가 이웃 카복실 O 에 박힌 구조(`MAGI5_E22_VERDICT_20260925.md` §25) — **그림 인용 금지**. **e22_parent(모체) 격자만 유효.** E-24i(겹치지 않는 자리) 격자는 `density_v3_tpl4/`(E-28e).
+
 `run_density_tpl.py` 산출(`run_density_map` 무수정 import). 5구조(e22_parent · e24_ch3_100 · e24_cn_100 · e24_f_100 · e22_no2_100)
 × 전하 ON/OFF = 10작업. 밀도맵 규약 초기화 2,000 + 생산 5,000 · CO₂ 단성분 0.15 bar · 298 K · 90³ 격자 · DDEC6(`charged_v3/`).
 판정: `../MAGI5_E22_VERDICT_20260925.md` §13 · 등록 `../ASSIGN_MAGI5B_20260925.md` §HKHOME 15차.

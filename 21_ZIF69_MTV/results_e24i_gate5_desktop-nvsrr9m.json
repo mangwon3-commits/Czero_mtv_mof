@@ -1,0 +1,126 @@
+{
+ "rule": "risk_screen.py:414~423, LCD_ref = e22_parent 같은 처리 뒤 LCD(사용자 결정 4 (다)) — results_e22b_gate5_hkhome.json",
+ "LCD_ref_family": 5.24089,
+ "rows": {
+  "e24i_ch3_open": {
+   "status": "ok",
+   "before": {
+    "LCD": 4.64922,
+    "PLD": 3.81806,
+    "AV": 62.2241,
+    "min_dist": 1.076,
+    "n_atoms": 216,
+    "AV_per_cell": 62.2
+   },
+   "after": {
+    "LCD": 4.52505,
+    "PLD": 3.57773,
+    "AV": 507.039,
+    "min_dist": 1.079,
+    "n_atoms": 2592,
+    "supercell_rep": 12,
+    "AV_per_cell": 42.3
+   },
+   "LCD_drop_pct": 13.66,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 1.36844028020278e-06,
+   "outer_loops": 2
+  },
+  "e24i_cl_open": {
+   "status": "ok",
+   "before": {
+    "LCD": 5.03476,
+    "PLD": 3.82121,
+    "AV": 78.8913,
+    "min_dist": 1.076,
+    "n_atoms": 204,
+    "AV_per_cell": 78.9
+   },
+   "after": {
+    "LCD": 4.9016,
+    "PLD": 3.52562,
+    "AV": 806.466,
+    "min_dist": 1.079,
+    "n_atoms": 2448,
+    "supercell_rep": 12,
+    "AV_per_cell": 67.2
+   },
+   "LCD_drop_pct": 6.47,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 0.0636074098301833,
+   "outer_loops": 12
+  },
+  "e24i_br_open": {
+   "status": "ok",
+   "before": {
+    "LCD": 4.92885,
+    "PLD": 3.81882,
+    "AV": 71.7482,
+    "min_dist": 1.076,
+    "n_atoms": 204,
+    "AV_per_cell": 71.7
+   },
+   "after": {
+    "LCD": 4.87588,
+    "PLD": 3.30831,
+    "AV": 192.583,
+    "min_dist": 1.078,
+    "n_atoms": 2448,
+    "supercell_rep": 12,
+    "AV_per_cell": 16.0
+   },
+   "LCD_drop_pct": 6.96,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 0.956451518420181,
+   "outer_loops": 12
+  },
+  "e24i_c2h5_open": {
+   "status": "ok",
+   "before": {
+    "LCD": 4.65535,
+    "PLD": 3.80981,
+    "AV": 34.2867,
+    "min_dist": 1.076,
+    "n_atoms": 228,
+    "AV_per_cell": 34.3
+   },
+   "after": {
+    "LCD": 5.38317,
+    "PLD": 4.36265,
+    "AV": 1030.07,
+    "min_dist": 1.077,
+    "n_atoms": 2736,
+    "supercell_rep": 12,
+    "AV_per_cell": 85.8
+   },
+   "LCD_drop_pct": -2.71,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 7.64128031146993,
+   "outer_loops": 12
+  }
+ }
+}

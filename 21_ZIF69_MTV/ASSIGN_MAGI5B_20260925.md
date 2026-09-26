@@ -698,3 +698,28 @@
     **[E-24i (0a) · (0b) 판정 2026-09-26 15:48 — `results_e24i_fit_hkhome.json` · Widom 자료 0건]** 이완 5/5(1.7~3.6 분 · fmax < 0.05) · PACMAN 5/5.
       (0a) 다섯 모두 통과(변위 0.30~0.34 Å · 이종–H 2.20~2.28). **(0b) 다섯 모두 통과 → (0b′) 성립** — 최소 여유: CH₃ +0.247(C···O 3.467) · Cl +0.068(3.338) · Br −0.264(3.106, 겹침 0.26 < 0.4) · C₂H₅ +0.031(3.251) · CN −0.261(N···O 2.809).
       대조: 전 치환(E-24 · E-24c · E-24g) 은 같은 관문에서 여유 −0.74 ~ −1.72(탈락). 분담 착수: 데스크탑 Widom CH₃ · Cl · Br · laptop Widom C₂H₅ · CN → UFF4MOF · Junseok Zeo++ → S_mix · laptop2 S_mix 먼저 띄움(CH₃ · Br).
+
+
+## HKHOME 23차 [2026-09-26 16:11, 자료 0건 — E-24i 밀도 격자 없음] — **E-28e** E-24i 열린 자리 치환체 건조 · 습윤 밀도 격자(포스터 그림) — 사용자 지시 "습윤-건조 밀도맵 VTK 까지 계획해놔"
+    대상  E-24i 다섯(e24i_{ch3,cl,br,c2h5,cn}_open). 우선순위 = Widom S_ON 순(CH₃ · Br · Cl 먼저, 데스크탑 결과 16:08) → C₂H₅ · CN(laptop Widom 뒤).
+    자    E-28 · E-28b · E-28d 와 같음. 건조: CO₂ 0.15 bar · 298 K · 2,000+5,000 · 90³ · 전하 ON/OFF — `run_density_e24i.py`(= `run_density_e24g.py` 사본, 출력 density_v3_tpl4/<기기>).
+          습윤: CO₂ 15 kPa + H₂O 2852.1 Pa(RH90) · 298 K · 5,000+15,000 · 90³ — 막음 없음은 `run_density_water_v3w.py`(DW_SUB=tpl_<대상> DW_EXTRA=<대상>), 막음은 `run_e28e_density.py`(E-28c 사본).
+          **막음 규칙**: Junseok E-24i Zeo++ 에서 1.65 Å 막음 구 ≥ 1 인 구조만 — 건조 CO₂ block1.65 · 습윤 CO₂ block1.65 + 물 block1.30(E-28c 와 같은 짝). 없으면 막음 없음(E-28 Cl 과 같음).
+          뒤처리: 차분 VTK `10_DensityMap/export_diff_vtk.py`(압축 풀어 읽음) · 미리보기 그림 `plot_density_tpl.py`(dry4 · wet4 추가).
+    관문  완주 표지 · 막음이면 성분마다 N = 구 × 단위셀 · not-found 0 · rc 먼저 받기 · 씨앗(건조 ON/OFF 같은 초 착수는 알려진 조건 — 표지).
+    서술(판정 아님)  (1) 습윤 격자 CO₂ ÷ 건조 격자 CO₂(ON) — 물 경쟁 몫 · (2) 정전기 몫 f = 1 − OFF/ON · (3) 치환기가 CO₂ 통로 벽에 붙는지(c 투영 그림).
+    분담 · 비용  데스크탑: 물 4씨앗(E-24i, 16:1x~) 끝나는 대로 건조 10작업(≈ 10~15 분, E-28b 실측) + 습윤 5작업(≈ 25~55 분, E-28 · E-28d laptop 실측) 동시 → **≈ 17:30~17:50**.
+          다른 기기가 먼저 비면(Junseok S_mix 뒤 · laptop2 S_mix 뒤) 습윤 일부를 넘김.
+
+    **[E-24i 습윤 WC 보완 2026-09-26 16:20 — 자료 0건(E-24i 습윤 WC 없음) · 사용자 "습윤도 최종 3위까진 배정해놔"]** 대상 = **E-23 규칙 최종 3위까지**(E-24i 후보 중).
+      최종 순위(S_mix · 물 지수)는 ≈ 17:30 — 시간을 줄이려 **S_ON 상위로 먼저 띄움**(ρ(S_mix, S_Henry) 0.945): CH₃(128.2) · Br(127.6) 먼저, 셋째는 C₂H₅ 막음값(≈ 16:40) 보고 C₂H₅ · CN 중.
+      최종 3위와 다르면 빠진 후보를 추가 · 3위 밖으로 밀린 것은 서술로만(매몰비용 근거 금지).
+      자: E-24f · E-25 와 같음(RH90 · ads 298 K/15 kPa · TSA 373 K · VSA 298 K/5 kPa · 3씨앗 · 차단 없음 — 주머니 있으면 E-24f 막음 방식). 러너 `run_e24i_humid_wc.py`(Junseok Br 러너 사본, 대상 env).
+      분담: laptop — CH₃(관문 ⑤ 뒤, UFF4MOF 앞) · 데스크탑 — Br(E-28e 건조 뒤) · Junseok — 셋째(S_mix 뒤). laptop2 — S_mix 뒤 예비.
+      비용: 42 분(Junseok E-24f 9작업 · 워커 9) ~ 2 h 10 분(laptop2) — 기기마다 다름 → **≈ 18:00~18:30**.
+
+    **[E-24i C₂H₅ 물 지수 = 막음 조건 — 등록 보완 2026-09-26 16:40 · 자료 0건(E-24i 물 값 · 막음 Widom 값 안 봄)]** C₂H₅ open 은 Zeo++ 주머니 있음(1.65 구 4 · 1.30 구 5, Junseok 4591ce56).
+      E-24e · E-24g(C₂H₅ 계열)와 같은 자로 **물 지수 = K_H(물, 막음 1.30 · 4씨앗) ÷ K_H(CO₂ ON, 막음 1.65)**(분모 = 데스크탑 막음 Widom `results_e24i_blockpockets_hkhome.json` on_CO2@1.65).
+      데스크탑 `results_e24i_water_hkhome.json` 의 C₂H₅ 행(차단 없음)은 **서술**. S_ON · S_mix 도 막음값(이미 등록 — 판정의 뜻). 나머지 넷은 주머니 0 → 차단 없음 그대로.
+      분담: Junseok(러너 `magi5_e24e_junseok.py` 계열 · 물 전용 · E-24g C₂H₅ 50 a 와 같은 틀) — Cl S_mix 뒤 습윤 WC 와 나란히. 비용 4씨앗 × ≈ 14 분(E-24g 50 a Junseok 실측 13.5 분/씨앗).
+
