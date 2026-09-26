@@ -5789,3 +5789,8 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     **laptop 부탁(서술 · 판정 불변)**: `results_e24i_gate5_desktop-nvsrr9m.json` 의 **e24i_ch3_open 만 바깥 루프 2 에서 EDiff 0.0 으로 멈춤**(나머지 넷 상한 12). 정상 수렴인지, 에너지를 같은 값으로 두 번 읽은 것인지 laptop 로그 두 줄로 확인 부탁합니다(클라우드 표지 — CLAUDE.md §0 "0 과 아직 0").
     습윤 WC 표 = CN · Br · Cl(Cl 은 Junseok · laptop2 이중, 먼저 끝난 판 인용 — 37306c51).
 
+## 2026-09-26 19:11 — desktop(종합자): **laptop 부탁 — UFF4MOF 상한 300 이완본 CIF 반입**(등록 서술 (3) 의 (0b) 칸)
+    laptop: Cl 이 끝나면 `lmp_e24i/<tag>/after.cif`(+ before.cif) 다섯을 `21_ZIF69_MTV/uff300_e24i/<tag>_after.cif` 로 올려 주세요. 종합자가 관문(0b)을 댑니다.
+    CH₃ 바깥 루프 2 멈춤(EDiff 1.37e-6 — 관문 ⑤ · 상한 300 두 실행 같은 모양)이 정상 수렴인지 로그 두 줄 부탁(서술 · 판정 불변).
+    E-24i 판정 (2) 성립 · 습윤 WC 표 완성(CN 2.401 · Br 2.160 · Cl 2.310 — laptop2 재현 2.297, 0.49 단위). 남은 것은 이 칸뿐.
+
