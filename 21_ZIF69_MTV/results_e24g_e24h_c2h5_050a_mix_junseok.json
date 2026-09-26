@@ -1,0 +1,30 @@
+{
+  "test": "MAGI-005 E-24g 후속 — e24h_c2h5_050a(C₂H₅ 50 % a) S_mix 3씨앗(성분별 막음)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 21차 후속 등록 12:20(2aba255f)",
+  "machine": "junseok",
+  "ported_from": "magi5_e24e_junseok.py (E-24e)",
+  "protocol": "run_tj1_mix 틀(0.15/0.85 · 1e5 Pa · 298 K · 5,000+15,000) + CO₂ BlockPockets block1.65 · N₂ block1.82 (E-24g Zeo++ e24g_zeo_runs)",
+  "reference": {
+    "S_Henry_blocked": [
+      139.04128322995615,
+      5.253613743930847
+    ],
+    "S_Henry_unblocked_descriptive": 181.94636550418306,
+    "src": [
+      "results_e24g_blockpockets_junseok.json",
+      "results_magi5_e3_e24h_c2h5_050a_widom_hkhome.json"
+    ]
+  },
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "rows": [],
+  "summary": {
+    "n": 0,
+    "S_mix_each": [],
+    "S_mix_err_each": [],
+    "seeds": []
+  },
+  "final": false,
+  "written": "2026-09-26 12:43:26",
+  "elapsed_s": 892,
+  "note": "기계적 사실뿐 — 판정은 종합자. S_mix ± = 두 적재 상대 ± 제곱합, 평균 ± = ±̄/√3."
+}

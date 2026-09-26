@@ -1,0 +1,169 @@
+{
+  "test": "MAGI-005 E-24g 후속 — e24h_c2h5_050a(C₂H₅ 50 % a) 물 Widom 4씨앗(막음 1.3)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 21차 후속 등록 12:20(2aba255f)",
+  "ported_from": "magi5_e24e_junseok.py (E-24e)",
+  "machine": "junseok",
+  "protocol": "E-24 물 Widom 틀(= E-19: TIP5P-Ew 5자리 · 15,000 + 3,000 · 298 K · 전하 ON · read_kh(water) · 머리말 관문) + BlockPockets",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
+  "zeo_water_probe": {
+    "source": "results_e24g_access_junseok.json",
+    "chan": {
+      "n_channels_chanfile": 4,
+      "dimensionality": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "channels_stdout": 4,
+      "pockets_stdout": 4,
+      "chan_file_head": [
+        "e24h_c2h5_050a.chan   4 channels identified of dimensionality 1 1 1 1 ",
+        "Channel  0  5.27561  3.8184  5.27561",
+        "Channel  1  4.22274  3.1033  4.22274"
+      ],
+      "rc": 0,
+      "seconds": 1.0,
+      "peak_rss_MB": 0,
+      "stopped_by_guard": false
+    },
+    "block": {
+      "channels": 4,
+      "pockets": 4,
+      "nodes": 39063,
+      "accessible_nodes": 1623,
+      "n_spheres": 4,
+      "sphere_radii": [
+        2.252,
+        1.659,
+        2.146,
+        1.599
+      ],
+      "sphere_volume_sum_A3": 125.53214778238815,
+      "sphere_volume_pct_of_cell": 3.9541439491468275,
+      "block_file": "e24g_zeo_runs/e24h_c2h5_050a/block1.30/e24h_c2h5_050a_relaxed.block",
+      "rc": 0,
+      "seconds": 162.2,
+      "peak_rss_MB": 5718,
+      "stopped_by_guard": false
+    }
+  },
+  "denominator_KH_CO2_ON_blocked": [
+    0.00157588,
+    5.66377e-05
+  ],
+  "denominator_src": "results_e24g_blockpockets_junseok.json e24h_c2h5_050a on_CO2@1.65",
+  "rows": [
+    {
+      "block_radius": 1.3,
+      "seed_idx": 1,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.5,
+      "n_expected": 24,
+      "KH_water": 2.13995e-05,
+      "KH_water_err": 8.95269e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790393363,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 24,
+        "blocked_line": true,
+        "block_file": "e24h_c2h5_050a_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24g_blk_runs_e24h_c2h5_050a/water_b1.30_e24h_c2h5_050a_s1/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.3,
+      "seed_idx": 2,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.8,
+      "n_expected": 24,
+      "KH_water": 2.11008e-05,
+      "KH_water_err": 8.88123e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790393379,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 24,
+        "blocked_line": true,
+        "block_file": "e24h_c2h5_050a_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24g_blk_runs_e24h_c2h5_050a/water_b1.30_e24h_c2h5_050a_s2/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    },
+    {
+      "block_radius": 1.3,
+      "seed_idx": 3,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 13.4,
+      "n_expected": 24,
+      "KH_water": 2.11056e-05,
+      "KH_water_err": 4.91223e-07,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1790393394,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 24,
+        "blocked_line": true,
+        "block_file": "e24h_c2h5_050a_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "e24g_blk_runs_e24h_c2h5_050a/water_b1.30_e24h_c2h5_050a_s3/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
+    }
+  ],
+  "summary": {
+    "block1.30": {
+      "n": 3,
+      "KH_each": [
+        2.13995e-05,
+        2.11008e-05,
+        2.11056e-05
+      ],
+      "KH_err_each": [
+        8.95269e-07,
+        8.88123e-07,
+        4.91223e-07
+      ],
+      "seeds": [
+        1790393363,
+        1790393379,
+        1790393394
+      ],
+      "KH_mean": 2.1201966666666668e-05,
+      "KH_mean_err": 4.3774986085092023e-07,
+      "seed_SD_rel": 0.008069332526824053,
+      "index": 0.013454048954658139,
+      "index_err": 0.0005576527883783527
+    }
+  },
+  "final": false,
+  "written": "2026-09-26 12:43:26",
+  "elapsed_s": 892,
+  "note": "기계적 사실뿐 — 판정은 종합자. 평균 ± = ±̄/√4, 지수 ± = 두 상대 ± 제곱합."
+}
