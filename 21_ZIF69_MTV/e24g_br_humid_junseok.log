@@ -1,0 +1,45 @@
+착수 2026-09-26 13:02:55 · run_e24g_br_humid_wc.py · HWC_V3W_TARGETS=e24g_br_100_h1,h2,h3 · WORKERS=9 · RESULT=humid_working_capacity_w2_e24g_br_junseok.json · 가지 HEAD 9f52b2af
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  파일 관문 md5 8e8ec933f9013c7e932da04dc256efd3 일치
+E-24g 후속 보완 습윤 작업 용량(Br, 차단 없음) — 착수 간격 15 s(+ 2 s 잠금) · 작업 9 · 스모크 False · 사이클 15000+5000
+  CHARGED      /home/mangwon/mof_project/21_ZIF69_MTV/charged_v3
+  RUNS         /home/mangwon/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w
+  RESULT       /home/mangwon/mof_project/21_ZIF69_MTV/v3w_humid_wc/humid_working_capacity_w2_e24g_br_junseok.json
+  TARGETS      ['e24g_br_100_h1', 'e24g_br_100_h2', 'e24g_br_100_h3']
+  MAX_WORKERS  9
+습윤 작업 용량 — 물 분압 2852.1 Pa 고정, 작업 9개, 워커 9
+  ads  CO2  0.15 bar  298.0 K  -> RH  90.0%
+  tsa  CO2  0.15 bar  373.0 K  -> RH   2.8%
+  vsa  CO2  0.05 bar  298.0 K  -> RH  90.0%
+
+  [              ok] ads  e24g_br_100_h1 CO2 2.8065  물 0.010
+  [              ok] tsa  e24g_br_100_h1 CO2 0.8982  물 0.004
+  [              ok] vsa  e24g_br_100_h1 CO2 2.2362  물 0.017
+  [              ok] ads  e24g_br_100_h2 CO2 2.7707  물 0.009
+  [              ok] tsa  e24g_br_100_h2 CO2 0.8967  물 0.004
+  [              ok] vsa  e24g_br_100_h2 CO2 2.2314  물 0.020
+  [              ok] ads  e24g_br_100_h3 CO2 2.7915  물 0.010
+  [              ok] tsa  e24g_br_100_h3 CO2 0.8998  물 0.004
+  [              ok] vsa  e24g_br_100_h3 CO2 2.2245  물 0.017
+
+====================================================================================================
+조성                    흡착 CO2            TSA 잔류            VSA 잔류       WC(TSA)       WC(VSA)
+----------------------------------------------------------------------------------------------------
+e24g_br_100_h1     2.8065±0.0335     0.8982±0.0237     2.2362±0.0234 1.9083±0.0411 0.5702±0.0409
+e24g_br_100_h2     2.7707±0.0350     0.8967±0.0278     2.2314±0.0309 1.8739±0.0447 0.5393±0.0467
+e24g_br_100_h3     2.7915±0.0239     0.8998±0.0133     2.2245±0.0420 1.8916±0.0273 0.5669±0.0483
+
+[OK] humid_working_capacity_w2_e24g_br_junseok.json
+감사 {"n": 9, "n_ok": 9, "seeds_distinct": true}
+  ads  e24g_br_100_h1     ok True · 입력 막음 줄 0 · 완주 True · rc 0 · not-found False · 씨앗 1790395375
+  tsa  e24g_br_100_h1     ok True · 입력 막음 줄 0 · 완주 True · rc 0 · not-found False · 씨앗 1790395392
+  vsa  e24g_br_100_h1     ok True · 입력 막음 줄 0 · 완주 True · rc 0 · not-found False · 씨앗 1790395407
+  ads  e24g_br_100_h2     ok True · 입력 막음 줄 0 · 완주 True · rc 0 · not-found False · 씨앗 1790395423
+  tsa  e24g_br_100_h2     ok True · 입력 막음 줄 0 · 완주 True · rc 0 · not-found False · 씨앗 1790395438
+  vsa  e24g_br_100_h2     ok True · 입력 막음 줄 0 · 완주 True · rc 0 · not-found False · 씨앗 1790395454
+  ads  e24g_br_100_h3     ok True · 입력 막음 줄 0 · 완주 True · rc 0 · not-found False · 씨앗 1790395469
+  tsa  e24g_br_100_h3     ok True · 입력 막음 줄 0 · 완주 True · rc 0 · not-found False · 씨앗 1790395486
+  vsa  e24g_br_100_h3     ok True · 입력 막음 줄 0 · 완주 True · rc 0 · not-found False · 씨앗 1790395501
+요약 저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24g_br_humid_summary_junseok.json · {"WC_TSA_each": [1.9083, 1.8739, 1.8916], "WC_TSA_mean": 1.8912666666666667, "WC_TSA_mean_err": 0.02176610514844889, "WC_VSA_each": [0.5702, 0.5393, 0.5669], "WC_VSA_mean": 0.5588, "WC_VSA_mean_err": 0.02615396719429005}
+드라이버 rc=0 · 끝 2026-09-26 13:37:24
