@@ -1,0 +1,154 @@
+{
+  "test": "MAGI-005 E-24g · E-24h 막음 Widom(BlockPockets) — 주머니 있는 새 치환체, 전하 ON/OFF",
+  "machine": "hkhome",
+  "ported_from": "junseok magi5_e24c_bp_junseok.py (db4346e2)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 22차(E-24i)",
+  "zeo": "E-24i Junseok -ha -block r 50000 (results_e24i_access_junseok.json)",
+  "protocol": {
+    "widom_init": 3000,
+    "widom_cycles": 15000,
+    "forcefield": "UFF_MOF",
+    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+    "cutoff": 12.0,
+    "temp_K": 298.0,
+    "charges_on": "charged_v3 DDEC6",
+    "charges_off": "run_magi5_widom.zero_charge_copy(골격 전하 0, 흡착질 전하 · Ewald 유지)",
+    "pair": "CO₂@1.65 막음 / N₂@1.82 막음"
+  },
+  "gate": "stderr 에 Blocking-pocket not-found 없음 · .data N = 구 수 × 단위셀 수(등식) · 'Pockets are blocked' 줄 · Simulation finished",
+  "all_ok": true,
+  "seeds_distinct": true,
+  "per_structure": {
+    "e24i_c2h5_open": {
+      "coords": {
+        "n_atoms": [
+          228,
+          228
+        ],
+        "symbols_same": true,
+        "cell_max_diff": 0.0,
+        "frac_max_diff": 4.997676661400163e-09
+      },
+      "unblocked_reference_descriptive": {
+        "file": "results_magi5_e3_e24i_c2h5_open_widom_desktop-nvsrr9m.json",
+        "S_ON": 154.3430825076827,
+        "S_OFF": 69.51337875385376
+      },
+      "rows": {
+        "on_CO2@1.65": {
+          "minutes": 22.0,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 4,
+          "n_expected": 24,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24i_bp_runs/e24i_c2h5_open/on_r1.65_CO2/Output/System_0/output_e24i_c2h5_open_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790407133,
+          "n_blocked_reported": 24,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.000832592,
+          "KH_err": 2.28337e-05,
+          "dU": -34.2938141689,
+          "dU_err": 0.0851455281,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.5462126877911172
+        },
+        "off_CO2@1.65": {
+          "minutes": 22.2,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 4,
+          "n_expected": 24,
+          "returncode": 0,
+          "zero_charge_atoms": 228,
+          "block_pockets_used": true,
+          "data": "e24i_bp_runs/e24i_c2h5_open/off_r1.65_CO2/Output/System_0/output_e24i_c2h5_open_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790407148,
+          "n_blocked_reported": 24,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.00038953,
+          "KH_err": 6.51216e-06,
+          "dU": -31.436046998,
+          "dU_err": 0.0545421982,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.6665195132301207
+        },
+        "on_N2@1.82": {
+          "minutes": 22.6,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 4,
+          "n_expected": 24,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24i_bp_runs/e24i_c2h5_open/on_r1.82_N2/Output/System_0/output_e24i_c2h5_open_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790407163,
+          "n_blocked_reported": 24,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 6.55335e-06,
+          "KH_err": 1.00156e-07,
+          "dU": -19.1573347156,
+          "dU_err": 0.0292774006,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.6635598240187119
+        },
+        "off_N2@1.82": {
+          "minutes": 22.7,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 4,
+          "n_expected": 24,
+          "returncode": 0,
+          "zero_charge_atoms": 228,
+          "block_pockets_used": true,
+          "data": "e24i_bp_runs/e24i_c2h5_open/off_r1.82_N2/Output/System_0/output_e24i_c2h5_open_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790407179,
+          "n_blocked_reported": 24,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 5.85711e-06,
+          "KH_err": 5.89163e-08,
+          "dU": -18.6748898527,
+          "dU_err": 0.021705696,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.6966645891219122
+        }
+      },
+      "S_ON_blocked": 127.04830353941114,
+      "S_ON_blocked_err": 3.988784941532517,
+      "S_OFF_blocked": 66.50549503082578,
+      "S_OFF_blocked_err": 1.2975791640271943,
+      "G_blocked": 1.9103429495641422,
+      "G_blocked_err": 0.07061477922945543
+    }
+  },
+  "elapsed_s": 1408,
+  "finished": "2026-09-26 16:42:20",
+  "note": "기계적 사실뿐 — 판정문은 종합자. 차단 없음 참조는 서술(주머니 포함 상한)로만."
+}
