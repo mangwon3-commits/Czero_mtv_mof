@@ -144,8 +144,18 @@ def relax():
     for t, r in (d.get("rows") or {}).items():
         a = r.get("after") or {}
         ed = r.get("final_EDiff")
+        ca, cb = r.get("chan_after") or {}, r.get("chan_before") or {}
+        rep = a.get("supercell_rep")
+        ra = (r.get("cell_after_per_cell") or {}).get("rep_abc")
+        # 서술(판정 밖, 13회차): 이완 뒤 Zeo++ 는 초격자(rep_abc) 값이라 이완 전(단위셀) 수와 자가 다름.
+        # 1차원 통로는 c 축(c 복제는 한 통로로 이어짐) — 다 남으면 전 통로 × a복제 × b복제(CN · 모체 · Br 실측 4 → 16).
+        # 주머니는 유한하므로 셀 수(rep)로 나눔.
+        pc = (f"통로 {cb.get('n_channels')} · 주머니 {cb.get('pockets_stdout')}(단위셀) → 초격자 {ra} 통로 {ca['n_channels']}"
+              f"(다 남으면 {cb['n_channels'] * ra[0] * ra[1]}) · 주머니 {ca['pockets_stdout']}(셀당 {ca['pockets_stdout'] / rep:g})"
+              if rep and ra and cb.get("n_channels") is not None and ca.get("n_channels") is not None and ca.get("pockets_stdout") is not None
+              else "통로 수 없음")
         out[t] = dict(status=r.get("status"), PLD=a.get("PLD"), AV=a.get("AV_per_cell"), ED=ed, loops=r.get("outer_loops"),
-                      conv=(ed is not None and ed < 1e-4))
+                      conv=(ed is not None and ed < 1e-4), percell=pc, AVb=(r.get("before") or {}).get("AV_per_cell"))
     return out, None
 
 
@@ -244,6 +254,7 @@ def main():
             else:
                 br[t] = "열림" if (v["PLD"] >= PLD_MIN and v["AV"] > 0) else "닫힘"
             say(f"  {t}: PLD {v['PLD']:.3f} · AV/셀 {v['AV']} · 루프 {v['loops']} · EDiff {v['ED']:.3g} → {br[t]}")
+            say(f"      서술: AV/셀 {v['AVb']} → {v['AV']} · {v['percell']}")
         if any(b == "닫힘" for b in br.values()):
             verdict = "기각"
         elif all(b == "열림" for b in br.values()):
@@ -280,6 +291,7 @@ def main():
         cond = opened and x > -TH
         say(f"  {t}: UFF4MOF {'수렴' if v['conv'] else '미수렴'} · PLD {v['PLD']:.3f} · AV {v['AV']} → {'열림' if opened else '열림 아님'} · "
             f"S_ON {s['S']:.2f} − CN → {x:+.2f} → **{'진입' if cond else '제외'}**(50 %: UFF4MOF 수렴에서 열림 + CN 보다 1.5 단위 넘게 낮지 않을 것)")
+        say(f"      서술: AV/셀 {v['AVb']} → {v['AV']} · {v['percell']}")
     say("\n(판정 뜻 요약 — 등록) 후속을 거친 후보는 E-23 최종 1위 규칙(S_mix → 물 지수 → 공동)으로 전체 목록 편입 · 헤드라인은 그 규칙으로만 바뀜.")
 
 
