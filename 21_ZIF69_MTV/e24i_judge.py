@@ -128,7 +128,7 @@ def bp(tag):
 
 
 def water_blocked(tag, wb):
-    d = load(f'results_e24i_{tag}_water_blk_junseok.json')
+    d = load(f'results_{tag}_water_blk_junseok.json')
     if d is None:
         return None, '파일 없음'
     rs = [r for r in d.get('rows', []) if abs(r.get('block_radius', 0) - 1.3) < 1e-6]
@@ -137,6 +137,9 @@ def water_blocked(tag, wb):
           and r.get('block', {}).get('blocked_line') and r.get('block', {}).get('n_blocked') == r.get('n_expected')]
     if len(ok) != 4 or len({r['seed'] for r in ok}) != 4:
         return None, f'ok {len(ok)}/4'
+    n130 = load('results_e24i_access_junseok.json')['summary'][tag]['spheres_1.30']
+    if not all(r['n_expected'] == n130 * math.prod(r['unit_cells']) for r in ok):
+        return None, 'N ≠ 구(1.30) × 셀'
     k = [r['KH_water'] for r in ok]
     m, me = st.mean(k), st.mean(r['KH_water_err'] for r in ok) / 2
     i = m / wb['KH']
@@ -204,7 +207,7 @@ def main():
         line += f' · 관문 ⑤ {g5}(LCD 감소 {lcd} %)'
         print(line)
         if mx:
-            print(f"      S_mix − 모체: {u(mx['S'] - PM['S'], mx['Se'], PM['Se']):+.2f} 단위 · 씨앗 SD/√3 자 {u(mx['S'] - PM['S'], mx['sd'] / math.sqrt(3), PM['sd'] / math.sqrt(3)):+.2f}")
+            print(f"      S_mix − 모체: {u(mx['S'] - PM['S'], mx['Se'], PM['Se']):+.2f} 단위 · 씨앗 SEM 자(SD/√3) {u(mx['S'] - PM['S'], mx['sd'] / math.sqrt(3), PM['sd'] / math.sqrt(3)):+.2f}")
         if mx and wi and g5 is True:
             FAM[t] = dict(S=mx['S'], Se=mx['Se'], sd=mx['sd'], idx=wi['idx'], ie=wi['err'])
         elif mx and wi and g5 is False:
@@ -228,7 +231,7 @@ def main():
     for t in first:
         x = u(P[t]['S'] - PM['S'], P[t]['Se'], PM['Se'])
         print(f"  (2) {t}: S_mix {P[t]['S']:.2f} − 모체 {PM['S']:.2f} → {x:+.2f} 단위 → {'성립 — 확장 설계 살아남음' if x >= TH else '기각 — 확장 설계 철회'}")
-    print('\n  짝 비교(S_mix 단위 · 씨앗 SD/√3 자 | 물 지수 단위):')
+    print('\n  짝 비교(S_mix 단위 · 씨앗 SEM 자(SD/√3) | 물 지수 단위):')
     ks = [k for k in P]
     for i, a in enumerate(ks):
         for b in ks[i + 1:]:
