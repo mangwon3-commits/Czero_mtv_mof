@@ -1,0 +1,47 @@
+{
+  "target": "e24h_c2h5_050a",
+  "runner": "run_density_e24g.py (무수정) → run_density_map",
+  "block_file": "e24g_zeo_runs/e24h_c2h5_050a/block1.65/e24h_c2h5_050a_relaxed.block",
+  "rows": {
+    "q_on": {
+      "n_data": 1,
+      "finished": true,
+      "seed": 1790393322,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "n_blocked": 12,
+      "n_expected": 12,
+      "blocked_line": true,
+      "blockpockets_in_input": 1,
+      "grid_directive": true,
+      "com_grids_gz": [
+        "density_v3_tpl3/junseok/e24h_c2h5_050a__q_on/VTK/System_0/COMDensityProfile_CO2.vtk.gz"
+      ],
+      "input": "density_v3_tpl3/junseok/e24h_c2h5_050a__q_on/simulation.input",
+      "ok": true
+    },
+    "q_off": {
+      "n_data": 1,
+      "finished": true,
+      "seed": 1790393322,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "n_blocked": 12,
+      "n_expected": 12,
+      "blocked_line": true,
+      "blockpockets_in_input": 1,
+      "grid_directive": true,
+      "com_grids_gz": [
+        "density_v3_tpl3/junseok/e24h_c2h5_050a__q_off/VTK/System_0/COMDensityProfile_CO2.vtk.gz"
+      ],
+      "input": "density_v3_tpl3/junseok/e24h_c2h5_050a__q_off/simulation.input",
+      "ok": true
+    }
+  }
+}
