@@ -3,6 +3,33 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 16:55 — [E-24i ② S_mix 완주 + 막음 물 · 습윤 WC 착수] Cl open **111.15 ± 2.95** · C₂H₅ open(막음) **114.62 ± 6.92**(3씨앗씩) — 막음 물 4씨앗 16:51:18 · 습윤 WC C₂H₅(막음) 16:51:26 → CN 사슬 — 판정문은 종합자
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    S_mix(0.15/0.85 · 1 bar · 298 K · 5,000+15,000) — 관문 6/6: judge ok · 행 rc 0 · 완주 표지 · 씨앗 6 개 고유 · C₂H₅ 는 성분마다 막음 24/24(= 구 4 × 셀 6) · blocked 줄 · not-found 0 · Cl 막음 줄 0.
+                          s1                   s2                   s3                   평균(±̄/√3)         씨앗 SD
+      e24i_c2h5_open 막음  119.90 ± 12.52       105.41 ± 7.08        118.56 ± 16.35       **114.62 ± 6.92**    8.01
+      e24i_cl_open         112.38 ± 5.47        115.11 ± 4.19        105.96 ± 5.65        **111.15 ± 2.95**    4.70
+      적재(mol/kg): C₂H₅ N_CO₂ 1.453~1.495 · N_N₂ 0.071~0.078 · Cl N_CO₂ 2.957~2.999 · N_N₂ 0.147~0.158.
+      파일: results_e24i_e24i_c2h5_open_mix_junseok.json(md5 71af0212 · 16:15:04 → 16:32:50) · results_e24i_e24i_cl_open_mix_junseok.json(md5 e7d2688c · 16:15:13 → 16:50:34).
+        로그 e24i_c2h5_mix_junseok.log · e24i_cl_mix_junseok.log.
+      C₂H₅ 막음 S_Henry 는 데스크탑 막음 Widom 이 나올 때까지 비 인용 금지. Cl 의 러너 '비'(S_Henry 110.2 기준)는 러너 표지대로 서술. (2) 판정 · 모체 기준값은 종합자가 원자료로.
+    이어서(Cl 끝 16:50:34 → 빈 기기에서 master 병합 e1d4f6fa → 착수):
+      ① 막음 물 4씨앗(등록 27f32f80) 16:51:18 — e24i_c2h5_water_junseok.py = e24g_c2h5a_block_junseok.py(E-24e 틀) 사본.
+          바꾼 것: 대상 · 막음 파일(e24i block1.30, 구 5) · 폴더 · 출력 results_e24i_c2h5_open_water_blk_junseok.json · 문구 · S_mix 작업 뺌.
+          분모 K_H(CO₂ ON, 막음 1.65)는 자리 채움 None — 데스크탑 막음 Widom 원자료로 종합자가 붙임.
+        씨앗 1790409080 · …095 · …110 · …125 · 입력마다 물 막음 줄. 로그 e24i_c2h5_water_blk_junseok.log · 견적 ≈ 15~20 분(동시 13).
+      ② 습윤 WC C₂H₅ open(막음) 16:51:26 — run_e24i_c2h5_humid_wc.py = run_e24f_humid_wc.py 사본.
+          바꾼 것: 막음 파일(e24i block1.65 구 4 · block1.30 구 5) · 대상 · 출력 이름. CH₃ 대비 계산 뺌.
+        스모크 16:22 3/3(막음 CO₂ 24 · 물 30). 대상은 바이트 같은 사본 charged_v3/e24i_c2h5_open_h{1,2,3}_DDEC6.cif(md5 0a9107fb, 이 커밋에 올림).
+        워커 9 · 씨앗 9 개 모두 다름(1790409086 ~ …207) · 입력마다 막음 줄 2. 출력 humid_working_capacity_w2_e24i_c2h5_open_junseok.json · 로그 e24i_c2h5_humid_junseok.log.
+      ③ CN open(차단 없음) — C₂H₅ 드라이버 rc 줄이 뜨면 사슬이 곧바로 착수.
+          명령: master run_e24i_humid_wc.py 무수정(E24I_HWC_TAG=e24i_cn_open · E24I_MACHINE=junseok · 워커 9).
+          로그 e24i_cn_humid_junseok.log · 사슬 로그 e24i_hwc_chain_junseok.log.
+      견적: 습윤 WC C₂H₅ ≈ 17:30~17:35 · CN ≈ 18:05~18:15(이 기기 Br 습윤 34.5 분, 이번엔 물 4씨앗과 겹쳐 조금 더).
+
 ## 2026-09-26 16:39 — [§25 보류 표지 — Junseok 우편함] 아래 항목들의 형판 4,8-치환 수는 **인용 금지 · 서술로만**(결함 §25 · master 595c88dc · 보류 범위 보완 fc76dcc4) — 원 항목은 고치지 않음
 
 **받는 곳**: 종합자(데스크탑) · cloud 검증석
