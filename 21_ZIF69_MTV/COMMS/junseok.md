@@ -3,6 +3,33 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 12:59 — [E-24g 후속 · E-28d 완주 — C₂H₅ 50 a(막음)] S_mix **92.27 ± 2.55**(3씨앗) · 물 지수 **0.01351 ± 0.00055**(4씨앗) · 건조 격자 CO₂ ON 2.306 · 습윤 격자 CO₂ 2.303(습윤 ÷ 건조 **0.999 ± 0.040**) — 판정문은 종합자
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    12:28:34 ~ 12:57:35 · 드라이버 셋 모두 rc 0 · 착수 때 가지 HEAD 4fa8a91c.
+    ①② results_e24g_e24h_c2h5_050a_mix_junseok.json(md5 a1227d11) · results_e24g_e24h_c2h5_050a_water_junseok.json(md5 c363e6b6) · 로그 e24g_c2h5a_block_junseok.log · 둘 다 final True.
+      관문 7/7: judge ok · rc 0 · 성분마다 blocked 줄 · N 등식(S_mix CO₂ 12 · N₂ 6, 물 24) · not-found 0 · 물은 머리말 관문 · 표지 · 자리 5 · 씨앗 7 개 겹침 0.
+      S_mix(막음, 0.15/0.85 · 1 bar · 298 K): s1 91.67 ± 3.07 · s2 94.48 ± 4.15 · s3 90.66 ± 6.03 → **평균 92.27 ± 2.55**(±̄/√3) · 씨앗 SD 1.98 · 28.2~28.7 분.
+        N_CO₂ 2.206 · 2.224 · 2.179 mol/kg · N_N₂ 0.136 · 0.133 · 0.136.
+        S_mix ÷ S_Henry(막음 139.04 ± 5.25) = 0.664 ± 0.031 · ÷ 차단 없음 S_ON 181.95 = 0.507(서술).
+      물(1.30 막음, E-24 물 Widom 틀): K_H(H₂O) 2.140e-5 · 2.110e-5 · 2.111e-5 · 2.155e-5 → 평균 2.1289e-5 ± 4.07e-7(±̄/√4 · 씨앗 SD 1.0 %) · 12.5~13.8 분.
+        **물 지수 = K_H(H₂O) ÷ K_H(CO₂ ON, 막음 1.65) = 0.01351 ± 0.00055** — 분모 1.57588e-3 ± 5.66e-5 는 막음 Widom JSON 원자료.
+    ③ 건조 격자(E-28d, run_density_e24g.py 무수정) → density_v3_tpl3/junseok/.
+        파일: density_results.json(md5 807d4581) · 감사 e28d_dry_audit.json(러너가 안 만들어 이 기기가 씀) · 입력 · COM 격자 CO₂ gz ON · OFF.
+      CO₂ 0.15 bar · 298 K: **ON 2.3058 ± 0.0667 · OFF 1.9029 ± 0.0985 mol/kg** · 정전기 몫 17.5 % · 12:28:41 → 12:35:07.
+      관문: 완주 · 막음 12/12(ON · OFF 각각) · blocked 줄 · 입력의 막음 1줄 · 격자 지시문. 러너가 stderr 를 버리므로 not-found 는 .data 의 막음 수 등식으로만 봄.
+    ④ 습윤 격자(RH90, run_e28d_density_junseok.py).
+        파일: density_water_v3w/tpl_e24h_c2h5_050a/{water_results.json · e28d_audit.json} · water_runs_density_v3w/rh90_e24h_c2h5_050a/{simulation.input · VTK/System_0/COMDensityProfile_{CO2,water}.vtk.gz}.
+      **CO₂ 2.3027 ± 0.0638 · 물 0.0384 ± 0.0090 mol/kg** · 완주 · 12:29:13 → 12:56:46.
+      감사 block_ok True: CO₂ 12 · 물 24 · 성분마다 blocked 줄 · not-found 0 · rc 0.
+    서술(E-28d 등록): **습윤 CO₂ ÷ 건조 CO₂(ON) = 0.999 ± 0.040**(2.3027 / 2.3058).
+    씨앗: S_mix 1790393317 · …333 · …348 · 물 …363 · …379 · …394 · 1790394175 · 습윤 …353 · 건조 ON · OFF …322.
+      10 개 중 고유 9 — 건조 ON · OFF 가 같음(러너가 같은 초에 띄움 · 서로 다른 계).
+    자격 · 순위(E-23 규칙) 계산은 종합자 몫. 기준 원자료: 위 두 JSON · results_e24g_blockpockets_junseok.json.
+    Junseok 비었습니다(simulate 0). 다음 배정 기다립니다.
+
 ## 2026-09-26 12:31 — [E-24g 막음 Widom 완주 + C₂H₅ 50 a 후속 넷 착수] C₂H₅ 50 a 막음 S_ON **139.04 ± 5.25** · b **150.68 ± 3.58**(차단 없음 181.95 · 198.16) · CF₃ 막음 K_H 는 0 과 구별 안 됨(통로 0) — ①② 막음 S_mix · 물 · ③ 건조 · ④ 습윤 격자 12:28~12:29 착수 — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)

@@ -1,0 +1,20 @@
+착수 2026-09-26 12:29:13 · ④ 습윤 격자 run_e28d_density_junseok.py (DW_SUB=tpl_e24h_c2h5_050a · DW_EXTRA=e24h_c2h5_050a · E28C_BLOCK=1) · 가지 HEAD 4fa8a91c
+E-28d 밀도 격자 — 대상 e24h_c2h5_050a · 막음 True · 결과 /home/mangwon/mof_project/21_ZIF69_MTV/density_water_v3w/tpl_e24h_c2h5_050a · 작업 /home/mangwon/mof_project/21_ZIF69_MTV/water_runs_density_v3w
+물 밀도 격자 — T-4·T-6 선행 (ASSIGN_20260905 §2)
+  RH 90%  격자 90^3  초기화 5000 + 생산 15000
+  대상 e24h_c2h5_050a
+  결과 /home/mangwon/mof_project/21_ZIF69_MTV/density_water_v3w/tpl_e24h_c2h5_050a/water_results.json
+  작업 /home/mangwon/mof_project/21_ZIF69_MTV/water_runs_density_v3w
+
+[1/1] e24h_c2h5_050a RH90
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+    [막음] CO₂ 2 구 · 물 4 구 삽입 — rh90_e24h_c2h5_050a
+    [격자] 90^3 지시자 추가 — rh90_e24h_c2h5_050a
+  [격자 보존] /home/mangwon/mof_project/21_ZIF69_MTV/water_runs_density_v3w/rh90_e24h_c2h5_050a/VTK — 삭제하지 않습니다
+    -> ok
+
+끝. 적재 1/1 -> /home/mangwon/mof_project/21_ZIF69_MTV/density_water_v3w/tpl_e24h_c2h5_050a/water_results.json
+VTK 는 각 작업의 VTK/System_0/ 아래.
+감사 {"target": "e24h_c2h5_050a", "run_dir": "water_runs_density_v3w/rh90_e24h_c2h5_050a", "blocking": true, "driver_rc": 0, "finished": true, "seed": 1790393353, "unit_cells": [1, 2, 3], "grid_directive": true, "blockpockets_in_input": 2, "block": {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24h_c2h5_050a_co2.block"}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "e24h_c2h5_050a_water.block"}}, "n_expected": {"CO2": 12, "water": 24}, "stderr_not_found": false, "returncode": 0, "block_ok": true, "com_grids_gz": ["water_runs_density_v3w/rh90_e24h_c2h5_050a/VTK/System_0/COMDensityProfile_CO2.vtk.gz", "water_runs_density_v3w/rh90_e24h_c2h5_050a/VTK/System_0/COMDensityProfile_water.vtk.gz"]}
+드라이버 rc=0 · 끝 2026-09-26 12:56:46

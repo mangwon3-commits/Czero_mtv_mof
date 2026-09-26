@@ -1,0 +1,20 @@
+착수 2026-09-26 12:28:34 · ①② e24g_c2h5a_block_junseok.py · 가지 HEAD 4fa8a91c
+  [파일 관문] /home/mangwon/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+E-24g 후속 e24h_c2h5_050a — CIF charged_v3/e24h_c2h5_050a_DDEC6.cif · 막음 CO₂ 2 구 · N₂ 1 구 · 물 4 구 · 단위셀 [1, 2, 3] · 워커 6 · S_mix 3 + 물 1.3 ×4 · 기준(원자료) K_H(CO₂ ON 막음) 0.00157588 ± 5.66377e-05 · S_Henry 막음 139.04128322995615 ± 5.253613743930847 · 차단 없음 181.94636550418306
+[A] 새로 안 돌림 — E-24g Zeo++ 1.30 기록: {"source": "results_e24g_access_junseok.json", "chan": {"n_channels_chanfile": 4, "dimensionality": [1, 1, 1, 1], "channels_stdout": 4, "pockets_stdout": 4, "chan_file_head": ["e24h_c2h5_050a.chan   4 channels identified of dimensionality 1 1 1 1 ", "Channel  0  5.27561  3.8184  5.27561", "Channel  
+[B] RASPA 7작업 · 워커 6 착수 12:28:35
+  [    ok] 물 막음1.30 s1 K_H 2.13995e-05 ± 8.95269e-07 · N 24/24 · 관문 True · 표지 True · rc 0 · 씨앗 1790393363 · 13.5 분
+  [    ok] 물 막음1.30 s3 K_H 2.11056e-05 ± 4.91223e-07 · N 24/24 · 관문 True · 표지 True · rc 0 · 씨앗 1790393394 · 13.4 분
+  [    ok] 물 막음1.30 s2 K_H 2.11008e-05 ± 8.88123e-07 · N 24/24 · 관문 True · 표지 True · rc 0 · 씨앗 1790393379 · 13.8 분
+  [    ok] 물 막음1.30 s4 K_H 2.15494e-05 ± 9.79809e-07 · N 24/24 · 관문 True · 표지 True · rc 0 · 씨앗 1790394175 · 12.5 분
+  [    ok] S_mix s1 91.6729106622653 ± 3.0652083328056974 · N_CO2 2.206219728 · N_N2 0.1363752029 · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24h_c2h5_050a_co2.block"}, "N2": {"n_blocked": 6, "blocked_line": true, "block_file": "e24h_c2h5_050a_n2.block"}} · rc 0 · 씨앗 1790393317 · 28.6 분
+  [    ok] S_mix s3 90.65717167185007 ± 6.03141629561863 · N_CO2 2.1786004383 · N_N2 0.1361767884 · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24h_c2h5_050a_co2.block"}, "N2": {"n_blocked": 6, "blocked_line": true, "block_file": "e24h_c2h5_050a_n2.block"}} · rc 0 · 씨앗 1790393348 · 28.2 분
+  [    ok] S_mix s2 94.48201714974046 ± 4.150117762451583 · N_CO2 2.2244490543 · N_N2 0.1334138674 · 막음 {"CO2": {"n_blocked": 12, "blocked_line": true, "block_file": "e24h_c2h5_050a_co2.block"}, "N2": {"n_blocked": 6, "blocked_line": true, "block_file": "e24h_c2h5_050a_n2.block"}} · rc 0 · 씨앗 1790393333 · 28.7 분
+씨앗 7개 · 겹침 0
+
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24g_e24h_c2h5_050a_mix_junseok.json
+저장 /home/mangwon/mof_project/21_ZIF69_MTV/results_e24g_e24h_c2h5_050a_water_junseok.json
+  S_mix {"n": 3, "S_mix_mean": 92.27069982795194, "S_mix_mean_err": 2.549336761752611, "seed_SD": 1.9812558258321655, "ratio_Smix_over_SHenry_blocked": 0.6636208878721885, "ratio_err": 0.031063046808075465, "ratio_vs_unblocked_SHenry_descriptive": 0.5071313162660047}
+  물 block1.30 {"n": 4, "KH_mean": 2.1288825e-05, "KH_mean_err": 4.06803e-07, "seed_SD_rel": 0.01047097936803, "index": 0.01350916630707922, "index_err": 0.0005498835330506205}
+드라이버 rc=0 · 끝 2026-09-26 12:57:35
