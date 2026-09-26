@@ -225,9 +225,66 @@ def wet2(base=None):
     p = os.path.join(OUT, 'e28c_humid_cl_c2h5.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
 
 
+E28D_ROWS = [('e24g_br_100', 'Br2', 'laptop'), ('e24h_cl_050a', 'Cl2 50 % (a)', 'laptop'), ('e24h_c2h5_050a', '(C2H5)2 50 % (a) 막음', 'junseok')]
+E28D_BLOCK = {'e24h_c2h5_050a': os.path.join(HERE, 'e24g_zeo_runs', 'e24h_c2h5_050a', 'block1.65', 'e24h_c2h5_050a_relaxed.block')}
+
+
+def _circles(ax, t, a_len, b_len):
+    if t not in E28D_BLOCK:
+        return
+    blk = [l.split() for l in open(E28D_BLOCK[t]).read().split('\n')[1:] if l.strip()]
+    for bb in blk:
+        fa, fb, r = float(bb[0]), float(bb[1]), float(bb[3])
+        for sa in (-1, 0, 1):
+            for sb in (-1, 0, 1):
+                ax.add_patch(plt.Circle(((fa + sa) * a_len, (fb + sb) * b_len), r, fill=False, ls='--', lw=0.8, ec='#00e5ff'))
+    ax.set_xlim(0, a_len); ax.set_ylim(0, b_len)
+
+
+def dry3():
+    """E-28d — E-24g · E-24h 새 치환체(Br · Cl 50 % a · C₂H₅ 50 % a 막음) 건조 CO₂ 격자 ON/OFF/차분. 격자는 density_v3_tpl3/<기기>/."""
+    P = {}
+    for t, _, m in E28D_ROWS:
+        D = os.path.join(HERE, 'density_v3_tpl3', m)
+        on = proj_c(read_grid(os.path.join(D, f'{t}__q_on', 'VTK', 'System_0', 'COMDensityProfile_CO2.vtk.gz')))
+        off = proj_c(read_grid(os.path.join(D, f'{t}__q_off', 'VTK', 'System_0', 'COMDensityProfile_CO2.vtk.gz')))
+        P[t] = (on, off, on - off)
+    vmax = max(max(p[0].max(), p[1].max()) for p in P.values()); dmax = max(abs(p[2]).max() for p in P.values())
+    fig, axs = plt.subplots(3, 3, figsize=(10.4, 8.0))
+    for i, (t, lab, _) in enumerate(E28D_ROWS):
+        _, _, cp = atoms_ab(t); a_len, b_len = cp[0], cp[1]
+        on, off, d = P[t]
+        im1 = panel(axs[i, 0], on, a_len, b_len, 'magma', 0, vmax, f'{lab} — 전하 ON')
+        panel(axs[i, 1], off, a_len, b_len, 'magma', 0, vmax, f'{lab} — 전하 OFF')
+        im3 = panel(axs[i, 2], d, a_len, b_len, 'RdBu_r', -dmax, dmax, f'{lab} — ON-OFF 차분')
+        for j in range(3):
+            overlay(axs[i, j], t, a_len, b_len); _circles(axs[i, j], t, a_len, b_len)
+    fig.colorbar(im1, ax=axs[:, :2], shrink=0.6, label='CO₂ 밀도 (c 투영, 합 100 %)')
+    fig.colorbar(im3, ax=axs[:, 2], shrink=0.6, label='정전기 차분 (%p)')
+    fig.suptitle('E-28d 건조 CO₂ 밀도 — 새 치환체 · 0.15 bar · 298 K · c 투영\n(C2H5 50 %: 점선 원 = 막은 주머니)', fontsize=10)
+    os.makedirs(OUT, exist_ok=True)
+    p = os.path.join(OUT, 'e28d_dry_br_cl50_c2h550.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
+
+
+def wet3():
+    """E-28d — 같은 셋의 습윤(RH90) CO₂ · 물 격자. water_runs_density_v3w/rh90_<tag>/."""
+    fig, axs = plt.subplots(3, 2, figsize=(7.4, 8.0))
+    for i, (t, lab, _) in enumerate(E28D_ROWS):
+        _, _, cp = atoms_ab(t); a_len, b_len = cp[0], cp[1]
+        for j, m in enumerate(('CO2', 'water')):
+            g = proj_c(read_grid(os.path.join(WET, f'rh90_{t}', 'VTK', 'System_0', f'COMDensityProfile_{m}.vtk.gz')))
+            panel(axs[i, j], g, a_len, b_len, 'magma' if m == 'CO2' else 'Blues', 0, g.max(), f'{lab} — {"CO₂" if m == "CO2" else "H₂O (영역 서술만)"}')
+            overlay(axs[i, j], t, a_len, b_len); _circles(axs[i, j], t, a_len, b_len)
+    fig.suptitle('E-28d 습윤 — CO2 15 kPa + H2O 2852 Pa (RH90) · 298 K · c 투영\n(물 적재가 작아 물 격자는 잡음 큼 — 영역 서술만)', fontsize=10)
+    os.makedirs(OUT, exist_ok=True)
+    p = os.path.join(OUT, 'e28d_humid_br_cl50_c2h550.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
+
+
 if __name__ == '__main__':
     what = sys.argv[1:] or ['dry', 'wet']
     if 'dry' in what: dry()
     if 'wet' in what: wet()
     if 'dry2' in what: dry2()
     if 'wet2' in what: wet2(os.environ.get('E28C_BASE'))
+    if 'dry3' in what: dry3()
+    if 'wet3' in what: wet3()
