@@ -155,13 +155,14 @@ def main():
                     bwhy = f"막음 S_ON 이 K_H 비와 다름 {S2}"; continue
                 v = dict(S=s["S_ON_blocked"], Se=s["S_ON_blocked_err"], src=f"막음 · {n} · 막음 수 {R['on_CO2@1.65'].get('n_blocked_reported')}={R['on_CO2@1.65'].get('n_expected')}")
                 BDEN[t] = (R["on_CO2@1.65"]["KH"], R["on_CO2@1.65"]["KH_err"])
+                v["S_off"] = R["off_CO2@1.65"]["KH"] / R["off_N2@1.82"]["KH"]   # 서술 G 도 막음끼리
             if v is None:
                 print(f"  {t}: 주머니 {a.get('pk165')}·{a.get('pk182')} — {bwhy}(차단 없는 {w['S']:.2f} 는 서술)"); continue
         else:
-            v = dict(S=w["S"], Se=w["Se"], src="차단 없음(주머니 0)")
+            v = dict(S=w["S"], Se=w["Se"], src="차단 없음(주머니 0)", S_off=w["S_off"])
         x = u(v["S"] - PAR_W["S"], v["Se"], PAR_W["Se"])
         son[t], xs[t] = v, x
-        print(f"  {t}: S_ON {v['S']:.2f} ± {v['Se']:.2f} [{v['src']}] − 모체 → {x:+.2f} 단위 → 후속 **{'진입' if x >= TH else '제외'}** · G {w['G']:.3f} · S_OFF {w['S_off']:.1f}")
+        print(f"  {t}: S_ON {v['S']:.2f} ± {v['Se']:.2f} [{v['src']}] − 모체 → {x:+.2f} 단위 → 후속 **{'진입' if x >= TH else '제외'}** · G {v['S'] / v['S_off']:.3f} · S_OFF {v['S_off']:.1f}")
     if len(son) == 5 or (xs and any(x >= TH for x in xs.values())):
         print(f"  → (1) **{'성립' if any(x >= TH for x in xs.values()) else '기각'}**" + ("" if len(son) == 5 else " (한 후보 이상으로 이미 성립 — 나머지 미완비)"))
     else:
@@ -186,13 +187,14 @@ def main():
         for n, d in watf.items():
             if t in POCKET:
                 # 주머니 있음: 등록 보완(27f32f80) — 물 K_H 는 막음 1.30 · 4씨앗, 분모는 막음 K_H(CO₂ ON @1.65)
-                rows = [r for r in (d or {}).get("rows", []) if n.startswith(f"results_e24i_{t}_water_") and r.get("status") == "ok"
+                rows = [r for r in (d or {}).get("rows", []) if (n.startswith(f"results_e24i_{t}_water_") or n.startswith(f"results_e24i_{t[5:]}_water_blk_"))
+                        and r.get("status") == "ok"
                         and abs((r.get("block_radius") or 0) - 1.30) < 1e-6 and r.get("marker_finished")
                         and (r.get("block") or {}).get("n_blocked") == r.get("n_expected")]
                 den = BDEN.get(t)
             else:
                 rows = [r for r in (d or {}).get("rows", []) if r.get("name") in (t, t + "_DDEC6") and r.get("status") == "ok"
-                        and not n.startswith(f"results_e24i_{t}_water_")]
+                        and not n.startswith(f"results_e24i_{t}_water_") and "_water_blk_" not in n]
                 den = (W[t][0]["KH"], W[t][0]["KHe"]) if W[t][0] is not None else None
             if len(rows) == 4 and den is not None and len({r.get("seed") for r in rows}) == 4:
                 k = [r["KH_water"] for r in rows]; ke = [r["KH_water_err"] for r in rows]
