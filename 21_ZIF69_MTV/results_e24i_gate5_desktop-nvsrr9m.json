@@ -1,0 +1,36 @@
+{
+ "rule": "risk_screen.py:414~423, LCD_ref = e22_parent 같은 처리 뒤 LCD(사용자 결정 4 (다)) — results_e22b_gate5_hkhome.json",
+ "LCD_ref_family": 5.24089,
+ "rows": {
+  "e24i_ch3_open": {
+   "status": "ok",
+   "before": {
+    "LCD": 4.64922,
+    "PLD": 3.81806,
+    "AV": 62.2241,
+    "min_dist": 1.076,
+    "n_atoms": 216,
+    "AV_per_cell": 62.2
+   },
+   "after": {
+    "LCD": 4.52505,
+    "PLD": 3.57773,
+    "AV": 507.039,
+    "min_dist": 1.079,
+    "n_atoms": 2592,
+    "supercell_rep": 12,
+    "AV_per_cell": 42.3
+   },
+   "LCD_drop_pct": 13.66,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 1.36844028020278e-06,
+   "outer_loops": 2
+  }
+ }
+}
