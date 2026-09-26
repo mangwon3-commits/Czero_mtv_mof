@@ -16,15 +16,145 @@
     ]
   },
   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
-  "rows": [],
+  "rows": [
+    {
+      "seed_idx": 1,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 28.6,
+      "n_expected": {
+        "CO2": 12,
+        "N2": 6
+      },
+      "seed": 1790393317,
+      "judge": "ok",
+      "block": {
+        "CO2": {
+          "n_blocked": 12,
+          "blocked_line": true,
+          "block_file": "e24h_c2h5_050a_co2.block"
+        },
+        "N2": {
+          "n_blocked": 6,
+          "blocked_line": true,
+          "block_file": "e24h_c2h5_050a_n2.block"
+        }
+      },
+      "stderr_not_found": false,
+      "data": "e24g_blk_runs_e24h_c2h5_050a/mix_e24h_c2h5_050a_s1/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_100000.data",
+      "N_CO2": 2.206219728,
+      "N_CO2_err": 0.0356891142,
+      "N_N2": 0.1363752029,
+      "N_N2_err": 0.0039907122,
+      "S_mix": 91.6729106622653,
+      "S_mix_err": 3.0652083328056974,
+      "status": "ok"
+    },
+    {
+      "seed_idx": 2,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 28.7,
+      "n_expected": {
+        "CO2": 12,
+        "N2": 6
+      },
+      "seed": 1790393333,
+      "judge": "ok",
+      "block": {
+        "CO2": {
+          "n_blocked": 12,
+          "blocked_line": true,
+          "block_file": "e24h_c2h5_050a_co2.block"
+        },
+        "N2": {
+          "n_blocked": 6,
+          "blocked_line": true,
+          "block_file": "e24h_c2h5_050a_n2.block"
+        }
+      },
+      "stderr_not_found": false,
+      "data": "e24g_blk_runs_e24h_c2h5_050a/mix_e24h_c2h5_050a_s2/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_100000.data",
+      "N_CO2": 2.2244490543,
+      "N_CO2_err": 0.0496167719,
+      "N_N2": 0.1334138674,
+      "N_N2_err": 0.005048405,
+      "S_mix": 94.48201714974046,
+      "S_mix_err": 4.150117762451583,
+      "status": "ok"
+    },
+    {
+      "seed_idx": 3,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 28.2,
+      "n_expected": {
+        "CO2": 12,
+        "N2": 6
+      },
+      "seed": 1790393348,
+      "judge": "ok",
+      "block": {
+        "CO2": {
+          "n_blocked": 12,
+          "blocked_line": true,
+          "block_file": "e24h_c2h5_050a_co2.block"
+        },
+        "N2": {
+          "n_blocked": 6,
+          "blocked_line": true,
+          "block_file": "e24h_c2h5_050a_n2.block"
+        }
+      },
+      "stderr_not_found": false,
+      "data": "e24g_blk_runs_e24h_c2h5_050a/mix_e24h_c2h5_050a_s3/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_100000.data",
+      "N_CO2": 2.1786004383,
+      "N_CO2_err": 0.032034697,
+      "N_N2": 0.1361767884,
+      "N_N2_err": 0.0088357834,
+      "S_mix": 90.65717167185007,
+      "S_mix_err": 6.03141629561863,
+      "status": "ok"
+    }
+  ],
   "summary": {
-    "n": 0,
-    "S_mix_each": [],
-    "S_mix_err_each": [],
-    "seeds": []
+    "n": 3,
+    "S_mix_each": [
+      91.6729106622653,
+      94.48201714974046,
+      90.65717167185007
+    ],
+    "S_mix_err_each": [
+      3.0652083328056974,
+      4.150117762451583,
+      6.03141629561863
+    ],
+    "seeds": [
+      1790393317,
+      1790393333,
+      1790393348
+    ],
+    "S_mix_mean": 92.27069982795194,
+    "S_mix_mean_err": 2.549336761752611,
+    "seed_SD": 1.9812558258321655,
+    "ratio_Smix_over_SHenry_blocked": 0.6636208878721885,
+    "ratio_err": 0.031063046808075465,
+    "ratio_vs_unblocked_SHenry_descriptive": 0.5071313162660047
   },
-  "final": false,
-  "written": "2026-09-26 12:43:26",
-  "elapsed_s": 892,
+  "final": true,
+  "written": "2026-09-26 12:57:35",
+  "elapsed_s": 1740,
   "note": "기계적 사실뿐 — 판정은 종합자. S_mix ± = 두 적재 상대 ± 제곱합, 평균 ± = ±̄/√3."
 }
