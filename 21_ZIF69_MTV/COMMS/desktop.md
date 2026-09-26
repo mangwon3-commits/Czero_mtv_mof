@@ -5740,3 +5740,22 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-26 11:25 — desktop(종합자): **cloud 2차 배정** — E-24g · E-24h 검증석 + 이식 감사 · 판정 준비 스크립트 · 기하 서술 둘 (사용자 지시)
 **받는 곳**: cloud  **답 필요**: cloud.md 에 착수 줄(가지로 읽음)
     `ASSIGN_MAGI5B_20260925.md` §cloud 2차. 계산 없음. 순서 권고: ① 이식 감사(지금) → ③ 기하 서술 → ② 판정 준비(데스크탑 Widom ≈ 13시 전에) → ④ 30분 검산(≈ 18:00 까지).
+
+## 2026-09-26 12:07 — desktop(종합자): **Junseok — E-24g 막음 Widom 부탁**(Zeo++ 뒤, 주머니 있는 구조만) · 데스크탑은 UFF4MOF 중이라 RASPA 불가
+**받는 곳**: Junseok  **답 필요**: 착수 한 줄
+    `ASSIGN_MAGI5B_20260925.md` §HKHOME 21차 분담 변경 줄. 관문(0) 통과 6구조(e24g_br_100 · e24g_cf3_100 · e24h_c2h5_050a · b · e24h_cl_050a · b) 중 1.65 또는 1.82 에서 막음 구 ≥ 1 인 것 전부 · ON/OFF · E-24c 막음 드라이버 틀(출력 `results_e24g_blockpockets_junseok.json`).
+
+
+## 2026-09-26 12:21 — desktop(종합자): **E-24g 후속 · E-28d 배정 — laptop2 · laptop · Junseok**(사용자 "최대한 앞당길 수 있게") · master 7b02dcc8
+**받는 곳**: laptop2 · laptop · Junseok  **답 필요**: 착수 한 줄씩
+    등록 `ASSIGN_MAGI5B_20260925.md` §HKHOME 21차 "후속 등록" 줄(자료 0건). 판정 `MAGI5_E22_VERDICT_20260925.md` §24. 모든 러너는 master 에 있고 상대 경로(HERE = 파일 위치).
+    **laptop2**(워커 6) — 작동점 S_mix 3씨앗 × 2:
+        E24G_TAG=e24g_br_100  E24G_MACHINE=laptop2 E24MIX_WORKERS=3 python -u run_e24g_mix.py > e24g_br_mix.log
+        E24G_TAG=e24h_cl_050a E24G_MACHINE=laptop2 E24MIX_WORKERS=3 python -u run_e24g_mix.py > e24g_cl050a_mix.log   (두 개 동시, 착수 20 s 간격)
+        출력 results_e24g_<tag>_mix_laptop2.json. 판정 전 관문: 완주 표지 · 씨앗 고유 · rc(먼저 받기) · md5.
+    **laptop**(워커 8) — ① 물 4씨앗: python -u run_e22g_water.py --names e24g_br_100,e24h_cl_050a --out results_e24g_water_laptop.json --runs e24g_water_runs --workers 8
+        ② 끝나면 동시에: 건조 격자 DENSITY_E24G_TARGETS=e24g_br_100,e24h_cl_050a DENSITY_E24G_SUB=laptop DENSITY_E24G_WORKERS=4 python -u run_density_e24g.py
+           · 습윤 격자 두 개: DW_EXTRA=<tag> DW_SUB=tpl_<tag> python -u run_density_water_v3w.py <tag>   (<tag> = e24g_br_100 · e24h_cl_050a, 각각 따로 띄움)
+        결과: density_v3_tpl3/laptop/ · density_water_v3w/tpl_<tag>/ · water_runs_density_v3w/rh90_<tag>/VTK(.vtk.gz 커밋).
+    **Junseok**(막음 Widom 뒤) — C₂H₅ 50 a(막음): ① 막음 S_mix 3씨앗(E-24e 드라이버 틀, CO₂@1.65 · N₂@1.82 = e24g_zeo_runs/e24h_c2h5_050a/) ② 막음 물 4씨앗(1.30) ③ 건조 격자 DENSITY_E24G_TARGETS=e24h_c2h5_050a DENSITY_E24G_SUB=junseok python -u run_density_e24g.py(1.65 막음 내장) ④ 습윤 격자(run_e28c_density.py 틀, CO₂ 1.65 · 물 1.30 막음).
+    데스크탑: UFF4MOF 6구조(12:05~) → (4c) 판정 → 남는 것.
