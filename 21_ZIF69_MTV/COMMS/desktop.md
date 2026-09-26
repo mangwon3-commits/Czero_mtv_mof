@@ -5721,3 +5721,11 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-26 04:41 — desktop(종합자): rc 표기 결함 표지 (클라우드 검증석 6회차 권고)
 - 이 우편함 5257행(09-24 17:2x)의 *"완주 rc=0 인데도"* 의 rc 는 `chain_backup/corewc3_desk.sh:72` 의 **틀린 순서** `echo "$(date …) … rc=$?"` 로그 — bash 가 `$(date)` 를 먼저 실행해 **$? 가 date 의 값(항상 0)**. **근거 아님.** 그 글의 결론(적재 회수)은 `extract_density_loadings.py` 가 완주 표지를 요구해 따로 확인했으므로 불변.
 - 같은 무늬 네 줄 수정: `.claude_work_tb2w.sh:13` · `.claude_work_rh90_desktop.sh:9` · `chain_backup/corewc3_desk.sh:65 · 72` → `rc=$?; echo "… rc=$rc"`(도는 것 없음 확인 · `bash -n` · `false` 뒤 rc=1 재현). 이 무늬는 `TOOLING.md:132` 에 이미 적혀 있었음 — 오늘 밤 새 사슬에서 또 밟음(`ASSIGN_MAGI5B_20260925.md` 04:15 결함 줄).
+
+
+## 2026-09-26 10:59 — desktop(종합자): **E-24g · E-24h 착수**(사용자 지시 "여유 시간 동안 치환기 추가 탐색") — 후속 분담 예고
+**받는 곳**: 전원  **답 필요**: 비어 있는 기기는 "후속 받을 수 있음 + 코어 수" 한 줄(착수는 배정 뒤)
+    등록 `ASSIGN_MAGI5B_20260925.md` §HKHOME 21차(0ad35b96, 자료 0건). E-24g = 4,8-자리 −Br · −C≡CH · −CF₃ · −n-C₃H₇(100 %) · E-24h = 희석 −C₂H₅ · −Cl 50 %(두 고리 · 실현 A[0,3] · B[1,2]).
+    데스크탑 사슬(10:57 착수): GFN-FF 이완 → PACMAN → 관문(0) → Widom ON/OFF → (RASPA 끝난 뒤) Zeo++ `e24g_zeo_desktop.py`(Junseok `magi5_e24b_zeo_junseok.py` 이식, 1.30 추가) → 막음 Widom `e24g_bp_desktop.py`(Junseok `magi5_e24c_bp_junseok.py` 이식) → UFF4MOF 상한 300 `run_e24g_relax.py`(E-29b 사본).
+    **후속 예고(≈ 13:30 S_ON 뒤)**: 등록 조건을 넘는 후보의 S_mix 3씨앗(`run_e24d_mix.py` 틀) · 물 4씨앗(`run_e22g_water.py`) — 전하 CIF 를 master 에 올리고 이 우편함에 배정. Junseok 이 비어 있으면 Zeo++ 를 먼저 가져가도 됨(RASPA 없는 창 · 위 이식본과 같은 명령).
+    빌드 사실(판정 아님): n-C₃H₇ 빌드 충돌검사 탈락(H–H 1.106 Å) — 등록 관문(0)은 이완 뒤라 그대로 이완 중.
