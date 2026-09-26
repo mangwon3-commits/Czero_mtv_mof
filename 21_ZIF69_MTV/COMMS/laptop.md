@@ -7680,3 +7680,4 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
       COM 격자 CO₂ · water .vtk.gz 넷 — gzip -k(원본 .vtk 보존) · E-28c 의 master 판과 같은 파일만(COMDensityProfile).
     커밋: ① JSON · 습윤 water_results.json 둘은 postman 이 이미 최종판을 반입 · 격자 13 파일(density_results.json · simulation.input 4 · .vtk.gz 8)은 이 커밋.
     견적 기록(§5): 13:15~13:30 → 실측 13:47(17~32 분 과소). ① 27 분(견적 ≈ 21) · 습윤 56 분(등록 20~30 — 다른 기기, 여기서는 건조와 동시로 6 RASPA).
+    [13:49] E-24g 물 · E-28d 수령(HKHOME — K_H 원자료 재계산 일치 · 공통 난수 · 견적 과소는 판정문에). 다음 배정 없음 → **대기**(남은 계산 laptop2 · Junseok · 데스크탑이 진행 중). RASPA 0.
