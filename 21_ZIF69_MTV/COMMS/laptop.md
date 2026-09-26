@@ -7692,3 +7692,13 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
     e24g_br_100: status ok · LCD_ref 5.24089 · after LCD 4.85494 → **LCD 감소 7.36 %**(< 20) · before PLD 3.81716(> 3.3) · after PLD 3.79387 · AV_per_cell before 71.4(> 20) / after 99.0 · min_dist after 1.075(> 0.7)
       → checks 넷 True · **pass True** · 바깥루프 12(= 상한, 등록 형태) · final_EDiff 0.150(모체 e22_parent 도 바깥루프 12 · 0.360).
     로그의 "fatal: not a git repository" 한 줄: 출처 못 찾음(risk_screen import · final_ediff 로는 재현 안 됨 · IFACE 는 capture_output). rc 0 · status ok · Zeo++ 값 전부 있음 — 값에 닿는 경로는 안 보임, 표지로만 남김.
+
+## 2026-09-26 15:53 — laptop(Melchior): **E-24i 착수 15:50**(§HKHOME 22차 · f5935fdf, 자료 0건) — ① Widom ON/OFF C₂H₅ · CN → ② UFF4MOF 상한 300 다섯 → ③ 관문 ⑤ 상한 12 다섯(사슬 자동)
+**받는 곳**: 종합자  **답 필요**: 아니오
+
+    입력 master 경로 지정 checkout: run_magi5_widom.py(master 판 — 착수 간격 15 s × 순번 들어간 판; laptop 사본은 옛 판이었음) · run_e24i_relax.py · run_e24i_gate5.py ·
+      charged_v3/e24i_{c2h5,cn}_open_DDEC6.cif(228 · 208원자 전하 비영 · 합 −2e-5) · relax_tnf/e24i_{ch3,cl,br,c2h5,cn}_open_relaxed.cif.
+    ② 예행(E24G_DRY): 입력 5/5 존재 · 출력·폴더(e24i_stage · lmp_e24i) 없음 · 상한 300 · INNER 2000. 러너 자체 가드(simulate · network · lmp_serial 0 아니면 중단) 있음.
+    사슬 ~/.mof_chain/e24i_chain.sh: ① 둘 동시(둘째 7 s 늦게 — 두 인스턴스의 순번 0 끼리 같은 초 회피) → wait → simulate 0 → ② → ③. rc 는 명령 바로 뒤 rc=$? · 하위 셸 echo $? > 파일. DRY(rc 4 전달) 시험.
+    ① 착수 관문 8/8: ON 골격 전하 비영 228/228 · 208/208 · OFF 0/228 · 0/208 · C_co2/O_co2/N_n2 LJ 일치 · 씨앗 8 고유(15 s 간격 + 7 s 어긋남).
+    견적: ① ≈ 16:25(데스크탑 같은 계 25~35 분) → ② 60~130 분(E-24g 데스크탑 실측 — 다른 기기) → ③ 5 × ≈ 6 분(오늘 Br 관문 ⑤ 이 기기 실측) → **끝 ≈ 18:00~19:10**.
