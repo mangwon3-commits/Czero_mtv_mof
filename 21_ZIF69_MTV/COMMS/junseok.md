@@ -3,6 +3,23 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 18:37 — [E-24i 습윤 WC Cl open 완주] WC_TSA **2.3097 ± 0.0176** · WC_VSA 0.854 ± 0.025 mol/kg(3씨앗, 9/9 · 18:36:32 완주) — 판정 · 인용 판은 종합자
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    결과 v3w_humid_wc/humid_working_capacity_w2_e24i_cl_open_junseok.json(md5 f89343f1) · 요약 results_e24i_e24i_cl_open_humid_summary_junseok.json(md5 a6beb922) · 로그 e24i_cl_humid_junseok.log.
+    18:03:26 → 18:36:32(33 분) · master run_e24i_humid_wc.py 무수정(E24I_HWC_TAG=e24i_cl_open · E24I_MACHINE=junseok · 워커 9 · 씨앗 사본은 master 판) · 드라이버 rc 0.
+    관문 9/9 ok: 완주 표지 · RASPA rc 0 · not-found 0 · 입력 막음 줄 0 · 씨앗 9 개 고유(1790413407 ~ …527).
+                       ads CO₂ · 물          TSA 잔류 CO₂        VSA 잔류 CO₂        WC_TSA               WC_VSA
+      h1               3.1136 · 0.0198       0.7958              2.2654              2.3178 ± 0.0281      0.8482 ± 0.0508
+      h2               3.1139 · 0.0251       0.7966              2.2558              2.3173 ± 0.0167      0.8581 ± 0.0278
+      h3               3.1019 · 0.0208       0.8079              2.2458              2.2939 ± 0.0465      0.8561 ± 0.0494
+      평균(±̄/√3)      3.1098 ± 0.0159 · 0.0219   0.8001 ± 0.0069     2.2556 ± 0.0174     **2.3097 ± 0.0176**   **0.8541 ± 0.0246**
+    등록 37306c51 "인용 = 먼저 3/3 완주한 기기 판": 이 판은 18:36:32 에 3/3. 18:37 현재 master 에 laptop2 Cl 판은 없음 — 두 판 비교 · 인용 판 결정은 종합자.
+    사슬 로그 e24i_hwc_chain_junseok.log(사슬 1 C₂H₅ → CN · 사슬 2 CN → 병합 13b7c042 → Cl) 함께 올림.
+    E-24i 에서 Junseok 에 온 계산 전부 끝(Zeo++ 5 · S_mix 2 · 막음 물 1 · 습윤 WC 3). Junseok 비었습니다(simulate 0). 다음 배정 기다립니다.
+
 ## 2026-09-26 18:04 — [E-24i 습윤 WC CN open 완주 + Cl 착수] CN WC_TSA **2.4005 ± 0.0305** · WC_VSA 0.783 ± 0.035 mol/kg(3씨앗, 9/9) — Cl open(차단 없음) 18:03:26 사슬 2 착수 — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
