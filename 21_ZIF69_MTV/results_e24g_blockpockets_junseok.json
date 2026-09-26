@@ -1,0 +1,404 @@
+{
+  "test": "MAGI-005 E-24g · E-24h 막음 Widom(BlockPockets) — 주머니 있는 새 치환체, 전하 ON/OFF",
+  "machine": "junseok",
+  "ported_from": "junseok magi5_e24c_bp_junseok.py (db4346e2)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 21차 · 분담 변경 12:07(24109aea)",
+  "zeo": "E-24g -ha -block r 50000 (results_e24g_access_junseok.json)",
+  "protocol": {
+    "widom_init": 3000,
+    "widom_cycles": 15000,
+    "forcefield": "UFF_MOF",
+    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+    "cutoff": 12.0,
+    "temp_K": 298.0,
+    "charges_on": "charged_v3 DDEC6",
+    "charges_off": "run_magi5_widom.zero_charge_copy(골격 전하 0, 흡착질 전하 · Ewald 유지)",
+    "pair": "CO₂@1.65 막음 / N₂@1.82 막음"
+  },
+  "gate": "stderr 에 Blocking-pocket not-found 없음 · .data N = 구 수 × 단위셀 수(등식) · 'Pockets are blocked' 줄 · Simulation finished",
+  "all_ok": true,
+  "seeds_distinct": true,
+  "per_structure": {
+    "e24g_cf3_100": {
+      "coords": {
+        "n_atoms": [
+          228,
+          228
+        ],
+        "symbols_same": true,
+        "cell_max_diff": 0.0,
+        "frac_max_diff": 4.886643423240855e-09
+      },
+      "unblocked_reference_descriptive": {
+        "file": "results_magi5_e3_e24g_cf3_100_widom_hkhome.json",
+        "S_ON": 191.4889082451491,
+        "S_OFF": 96.01339163370568
+      },
+      "rows": {
+        "on_CO2@1.65": {
+          "minutes": 10.6,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 8,
+          "n_expected": 48,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24g_cf3_100/on_r1.65_CO2/Output/System_0/output_e24g_cf3_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392397,
+          "n_blocked_reported": 48,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 1.86514e-29,
+          "KH_err": 1.99143e-29,
+          "dU": 91.6528739554,
+          "dU_err": 8.7392012289,
+          "status": "ok",
+          "KH_effectively_zero": true,
+          "KH_over_unblocked": 9.025555163052682e-27
+        },
+        "off_CO2@1.65": {
+          "minutes": 10.6,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 8,
+          "n_expected": 48,
+          "returncode": 0,
+          "zero_charge_atoms": 228,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24g_cf3_100/off_r1.65_CO2/Output/System_0/output_e24g_cf3_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392413,
+          "n_blocked_reported": 48,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 1.33445e-26,
+          "KH_err": 2.99029e-26,
+          "dU": 77.241851316,
+          "dU_err": 6.8512592409,
+          "status": "ok",
+          "KH_effectively_zero": true,
+          "KH_over_unblocked": 1.4212333508708775e-23
+        },
+        "on_N2@1.82": {
+          "minutes": 10.8,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 8,
+          "n_expected": 48,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24g_cf3_100/on_r1.82_N2/Output/System_0/output_e24g_cf3_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392428,
+          "n_blocked_reported": 48,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 3.54445e-16,
+          "KH_err": 4.92317e-16,
+          "dU": 16.5633640973,
+          "dU_err": 5.3918447021,
+          "status": "ok",
+          "KH_effectively_zero": true,
+          "KH_over_unblocked": 3.2843918530736296e-11
+        },
+        "off_N2@1.82": {
+          "minutes": 10.8,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 8,
+          "n_expected": 48,
+          "returncode": 0,
+          "zero_charge_atoms": 228,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24g_cf3_100/off_r1.82_N2/Output/System_0/output_e24g_cf3_100_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392443,
+          "n_blocked_reported": 48,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 9.90324e-17,
+          "KH_err": 1.8392e-16,
+          "dU": 21.4396784737,
+          "dU_err": 6.7463122548,
+          "status": "ok",
+          "KH_effectively_zero": true,
+          "KH_over_unblocked": 1.0126799219571255e-11
+        }
+      }
+    },
+    "e24h_c2h5_050a": {
+      "coords": {
+        "n_atoms": [
+          228,
+          228
+        ],
+        "symbols_same": true,
+        "cell_max_diff": 0.0,
+        "frac_max_diff": 4.994718971751411e-09
+      },
+      "unblocked_reference_descriptive": {
+        "file": "results_magi5_e3_e24h_c2h5_050a_widom_hkhome.json",
+        "S_ON": 181.94636550418306,
+        "S_OFF": 84.12872103507001
+      },
+      "rows": {
+        "on_CO2@1.65": {
+          "minutes": 11.0,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 2,
+          "n_expected": 12,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24h_c2h5_050a/on_r1.65_CO2/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392460,
+          "n_blocked_reported": 12,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.00157588,
+          "KH_err": 5.66377e-05,
+          "dU": -35.4169019938,
+          "dU_err": 0.1313267984,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.5815484537604251
+        },
+        "off_CO2@1.65": {
+          "minutes": 11.1,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 2,
+          "n_expected": 12,
+          "returncode": 0,
+          "zero_charge_atoms": 228,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24h_c2h5_050a/off_r1.65_CO2/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392475,
+          "n_blocked_reported": 12,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.000699731,
+          "KH_err": 4.13346e-06,
+          "dU": -32.5995850514,
+          "dU_err": 0.0548113639,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.6409377776556475
+        },
+        "on_N2@1.82": {
+          "minutes": 11.2,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 1,
+          "n_expected": 6,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24h_c2h5_050a/on_r1.82_N2/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392491,
+          "n_blocked_reported": 6,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 1.13339e-05,
+          "KH_err": 1.32157e-07,
+          "dU": -19.2996346649,
+          "dU_err": 0.0477837659,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.7610015174506828
+        },
+        "off_N2@1.82": {
+          "minutes": 11.3,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 1,
+          "n_expected": 6,
+          "returncode": 0,
+          "zero_charge_atoms": 228,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24h_c2h5_050a/off_r1.82_N2/Output/System_0/output_e24h_c2h5_050a_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392506,
+          "n_blocked_reported": 6,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 9.88882e-06,
+          "KH_err": 9.71473e-08,
+          "dU": -18.7310127138,
+          "dU_err": 0.0307396546,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.762032534734798
+        }
+      },
+      "S_ON_blocked": 139.04128322995615,
+      "S_ON_blocked_err": 5.253613743930847,
+      "S_OFF_blocked": 70.7598075402323,
+      "S_OFF_blocked_err": 0.8111346188511109,
+      "G_blocked": 1.9649754297437945,
+      "G_blocked_err": 0.07758737781200573
+    },
+    "e24h_c2h5_050b": {
+      "coords": {
+        "n_atoms": [
+          228,
+          228
+        ],
+        "symbols_same": true,
+        "cell_max_diff": 0.0,
+        "frac_max_diff": 4.991839941403953e-09
+      },
+      "unblocked_reference_descriptive": {
+        "file": "results_magi5_e3_e24h_c2h5_050b_widom_hkhome.json",
+        "S_ON": 198.1607142857143,
+        "S_OFF": 85.05039886216065
+      },
+      "rows": {
+        "on_CO2@1.65": {
+          "minutes": 11.1,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 2,
+          "n_expected": 12,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24h_c2h5_050b/on_r1.65_CO2/Output/System_0/output_e24h_c2h5_050b_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392522,
+          "n_blocked_reported": 12,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.00170331,
+          "KH_err": 3.27549e-05,
+          "dU": -35.8838922107,
+          "dU_err": 0.0967228043,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.5684919848207223
+        },
+        "off_CO2@1.65": {
+          "minutes": 11.2,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 2,
+          "n_expected": 12,
+          "returncode": 0,
+          "zero_charge_atoms": 228,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24h_c2h5_050b/off_r1.65_CO2/Output/System_0/output_e24h_c2h5_050b_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392537,
+          "n_blocked_reported": 12,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 0.000692399,
+          "KH_err": 8.25959e-06,
+          "dU": -32.5825971233,
+          "dU_err": 0.0229731121,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.629293452575708
+        },
+        "on_N2@1.82": {
+          "minutes": 11.2,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 1,
+          "n_expected": 6,
+          "returncode": 0,
+          "zero_charge_atoms": null,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24h_c2h5_050b/on_r1.82_N2/Output/System_0/output_e24h_c2h5_050b_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392554,
+          "n_blocked_reported": 6,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 1.13039e-05,
+          "KH_err": 1.57237e-07,
+          "dU": -19.3448972385,
+          "dU_err": 0.0236179435,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.7476124338624339
+        },
+        "off_N2@1.82": {
+          "minutes": 11.2,
+          "unit_cells": [
+            1,
+            2,
+            3
+          ],
+          "n_spheres_per_uc": 1,
+          "n_expected": 6,
+          "returncode": 0,
+          "zero_charge_atoms": 228,
+          "block_pockets_used": true,
+          "data": "e24g_bp_runs/e24h_c2h5_050b/off_r1.82_N2/Output/System_0/output_e24h_c2h5_050b_DDEC6_1.2.3_298.000000_1e-05.data",
+          "seed": 1790392569,
+          "n_blocked_reported": 6,
+          "pockets_blocked_line": true,
+          "stderr_not_found": false,
+          "marker_finished": true,
+          "KH": 9.9437e-06,
+          "KH_err": 1.18274e-07,
+          "dU": -18.7256015644,
+          "dU_err": 0.025602472,
+          "status": "ok",
+          "KH_effectively_zero": false,
+          "KH_over_unblocked": 0.7686367571578752
+        }
+      },
+      "S_ON_blocked": 150.68339245747043,
+      "S_ON_blocked_err": 3.576266454318795,
+      "S_OFF_blocked": 69.6319277532508,
+      "S_OFF_blocked_err": 1.172994555453329,
+      "G_blocked": 2.1639985753580646,
+      "G_blocked_err": 0.0629817155074501
+    }
+  },
+  "elapsed_s": 844,
+  "finished": "2026-09-26 12:27:20",
+  "note": "기계적 사실뿐 — 판정문은 종합자. 차단 없음 참조는 서술(주머니 포함 상한)로만."
+}
