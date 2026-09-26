@@ -17,7 +17,7 @@
   "ewald": 1e-06,
   "blocking": false
  },
- "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 완료 · seed 3개 겹침 0건 · 벽시계 1.60 h",
  "rows": [
   {
    "name": "e24i_br_open_s1",
@@ -35,13 +35,22 @@
    ],
    "N_super": 1224,
    "cif": "charged_v3/e24i_br_open_DDEC6.cif",
-   "status": "pending",
-   "returncode": null,
-   "seed": null,
-   "minutes": null,
+   "status": "ok",
+   "returncode": 0,
+   "seed": 1790405437,
+   "minutes": 94.1,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop2",
-   "flexible": null
+   "flexible": null,
+   "N_CO2": 2.8535414986,
+   "N_CO2_err": 0.0516852226,
+   "N_N2": 0.1214634842,
+   "N_N2_err": 0.0089287868,
+   "S_mix": 133.12699366865903,
+   "S_mix_err": 10.078861599286293,
+   "ratio_Smix_over_SHenry": 133.12699366865903,
+   "ratio_err": 10.078861599286293,
+   "finished": "2026-09-26 17:24:45"
   },
   {
    "name": "e24i_br_open_s2",
@@ -59,13 +68,22 @@
    ],
    "N_super": 1224,
    "cif": "charged_v3/e24i_br_open_DDEC6.cif",
-   "status": "pending",
-   "returncode": null,
-   "seed": null,
-   "minutes": null,
+   "status": "ok",
+   "returncode": 0,
+   "seed": 1790405452,
+   "minutes": 95.5,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop2",
-   "flexible": null
+   "flexible": null,
+   "N_CO2": 2.8354606744,
+   "N_CO2_err": 0.0278265992,
+   "N_N2": 0.1278754465,
+   "N_N2_err": 0.0066582503,
+   "S_mix": 125.65047417657829,
+   "S_mix_err": 6.657593283819534,
+   "ratio_Smix_over_SHenry": 125.65047417657829,
+   "ratio_err": 6.657593283819534,
+   "finished": "2026-09-26 17:26:20"
   },
   {
    "name": "e24i_br_open_s3",
@@ -83,13 +101,22 @@
    ],
    "N_super": 1224,
    "cif": "charged_v3/e24i_br_open_DDEC6.cif",
-   "status": "pending",
-   "returncode": null,
-   "seed": null,
-   "minutes": null,
+   "status": "ok",
+   "returncode": 0,
+   "seed": 1790405467,
+   "minutes": 94.8,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "laptop2",
-   "flexible": null
+   "flexible": null,
+   "N_CO2": 2.82256399,
+   "N_CO2_err": 0.0624767654,
+   "N_N2": 0.1276799044,
+   "N_N2_err": 0.0092597486,
+   "S_mix": 125.27052986003541,
+   "S_mix_err": 9.49874018537322,
+   "ratio_Smix_over_SHenry": 125.27052986003541,
+   "ratio_err": 9.49874018537322,
+   "finished": "2026-09-26 17:25:57"
   }
  ]
 }
