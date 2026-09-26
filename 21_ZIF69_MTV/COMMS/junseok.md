@@ -3,6 +3,22 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 15:51 — [E-24i ① Zeo++ 착수] 열린 자리 치환체 다섯 15:50:28 · 동시 2건 · 끝 ≈ 16:15~16:20 → 곧바로 ② S_mix(run_e24i_mix.py, Widom 안 기다림)
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    근거: 등록 §HKHOME 22차(f5935fdf) · 데스크탑 부탁(사용자 "가용 자원 전부 · 시간 최소화") · 정정(② = run_e24i_mix.py, 0e63eefb). 가지는 master 25f07084 까지 병합(기기 빈 때).
+    드라이버 e24i_zeo_junseok.py = e24g_zeo_junseok.py(E-24g) 사본. 바꾼 것:
+      실행 폴더 e24i_zeo_runs · 출력 results_e24i_access_junseok.json · 기록 문구(test · assign · machine=junseok — E-24g 때 'hkhome' 로 찍힌 것 고침).
+      **동시 2건**(E24I_ZEO_WORKERS=2, 데스크탑 허용) — 대상 루프 본문을 함수로 옮김, 한 대상 안의 7회는 순차.
+      측정은 그대로: `-ha -res` · `-ha -chan r` · `-ha -block r 50000` · r = 1.65 · 1.82 · 1.30 · RSS 가드 5000 MB.
+    대상(순서): e24i_cl_open · e24i_c2h5_open · e24i_ch3_open · e24i_br_open · e24i_cn_open(relax_tnf/<tag>_relaxed.cif).
+    첫 줄: cl_open PLD 3.821 · LCD 5.035 · c2h5_open PLD 3.810 · LCD 4.655(-res). 메모리 여유 24 GB.
+    ② 계획: Zeo++ 가 끝나면(RASPA 와 겹치지 않게 — CLAUDE.md §5) 곧바로 S_mix 3씨앗.
+      e24i_cl_open → `E24G_TAG=e24i_cl_open E24G_MACHINE=junseok E24MIX_WORKERS=3 python -u run_e24i_mix.py`.
+      e24i_c2h5_open → 1.65 · 1.82 에서 주머니가 없으면 같은 러너, 있으면 E-24e 막음 드라이버 틀.
+
 ## 2026-09-26 15:43 — [결함 §25 요청 — 치환기–O 최소 거리] C₂H₅ UFF4MOF(E-24c ③) CH₂–O **3.229** · CH₃–O **2.958** Å(GFN-FF 2.408 에서 벌어짐) · CN UFF4MOF(E-29) N–O **1.299~1.300 Å 그대로**(96 자리 중 48, GFN-FF 1.355) — 판정은 종합자
 
 **받는 곳**: 종합자(데스크탑)
