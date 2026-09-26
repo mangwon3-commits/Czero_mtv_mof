@@ -5729,3 +5729,9 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     데스크탑 사슬(10:57 착수): GFN-FF 이완 → PACMAN → 관문(0) → Widom ON/OFF → (RASPA 끝난 뒤) Zeo++ `e24g_zeo_desktop.py`(Junseok `magi5_e24b_zeo_junseok.py` 이식, 1.30 추가) → 막음 Widom `e24g_bp_desktop.py`(Junseok `magi5_e24c_bp_junseok.py` 이식) → UFF4MOF 상한 300 `run_e24g_relax.py`(E-29b 사본).
     **후속 예고(≈ 13:30 S_ON 뒤)**: 등록 조건을 넘는 후보의 S_mix 3씨앗(`run_e24d_mix.py` 틀) · 물 4씨앗(`run_e22g_water.py`) — 전하 CIF 를 master 에 올리고 이 우편함에 배정. Junseok 이 비어 있으면 Zeo++ 를 먼저 가져가도 됨(RASPA 없는 창 · 위 이식본과 같은 명령).
     빌드 사실(판정 아님): n-C₃H₇ 빌드 충돌검사 탈락(H–H 1.106 Å) — 등록 관문(0)은 이완 뒤라 그대로 이완 중.
+
+## 2026-09-26 11:08 — desktop(종합자): **E-24g Zeo++ = Junseok**(15b06ff0 수락) · 입력 master 9017176b · 데스크탑은 Zeo++ 안 띄움
+**받는 곳**: Junseok  **답 필요**: 완주 때 results_e24g_access_junseok.json + `.block` 파일(e24g_zeo_runs/<tag>/block<r>/<tag>_relaxed.block 구조)
+    (0) 판정: Br · CF₃ · C₂H₅ 50 a·b · Cl 50 a·b 통과 · C≡CH(H···O 1.734) · n-C₃H₇(변위 1.081) 탈락 → (3) 성립. 탈락 둘도 서술 (5)로 재 주면 됨.
+    ⚠ CF₃ 이완본 F···O 1.709 Å(형판 계열 이전 2.39~2.77) — 표지(ASSIGN §HKHOME 21차 (0) 판정 줄). A · B 는 대칭 동치로 보임 — 둘 다 재서 차 0 확인.
+    데스크탑 Widom 6구조 11:06 착수(≈ 13시). 주머니가 나오면 데스크탑이 `e24g_bp_desktop.py` 로 막음 Widom.

@@ -1,0 +1,751 @@
+{
+ "test": "MAGI-005 E-24g · E-24h 빌드",
+ "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 21차",
+ "builder": "build_e24_bdtdc.py → build_e22_bdtdc.py(6bad71ad) import",
+ "template": "core_pop_cifs/2017_Zn__dia_3_ASR_1.cif",
+ "seed": 3618,
+ "torsion_step_deg": 5,
+ "rings": [
+  0,
+  1,
+  2,
+  3
+ ],
+ "half_A_rings": [
+  0,
+  3
+ ],
+ "half_B_rings": [
+  1,
+  2
+ ],
+ "rows": [
+  {
+   "name": "E24g_ZnDia_Br_100",
+   "kind": "Br",
+   "fraction": 1.0,
+   "n_substituted": 8,
+   "rings": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "sweeps_changed": [
+    0
+   ],
+   "torsion_deg": {
+    "136": 0.0,
+    "137": 0.0,
+    "138": 0.0,
+    "139": 0.0,
+    "160": 0.0,
+    "161": 0.0,
+    "162": 0.0,
+    "163": 0.0
+   },
+   "fragment_local": [
+    [
+     "Br",
+     [
+      1.8907,
+      0.0,
+      0.0
+     ]
+    ]
+   ],
+   "formula": "C88H64Br8N16O16S8Zn4",
+   "n_atoms": 204,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    2.284,
+    "H-H"
+   ],
+   "substituent_nonbonded_min_A": [
+    2.605,
+    "H-Br"
+   ],
+   "nonbonded_ge_1.0": true,
+   "C-X_range": [
+    1.891,
+    1.891
+   ],
+   "substituent_internal_bond_range": null,
+   "clash_check": {
+    "name": "E24g_ZnDia_Br_100.cif",
+    "n_atoms": 204,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E24g_ZnDia_CCH_100",
+   "kind": "CCH",
+   "fraction": 1.0,
+   "n_substituted": 8,
+   "rings": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "sweeps_changed": [
+    8,
+    0
+   ],
+   "torsion_deg": {
+    "136": 245.0,
+    "137": 245.0,
+    "138": 245.0,
+    "139": 245.0,
+    "160": 245.0,
+    "161": 245.0,
+    "162": 245.0,
+    "163": 245.0
+   },
+   "fragment_local": [
+    [
+     "C",
+     [
+      1.4308,
+      0.0,
+      0.0
+     ]
+    ],
+    [
+     "C",
+     [
+      2.6317,
+      -0.0,
+      0.0
+     ]
+    ],
+    [
+     "H",
+     [
+      3.6967,
+      -0.0,
+      0.0
+     ]
+    ]
+   ],
+   "formula": "C104H72N16O16S8Zn4",
+   "n_atoms": 220,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    1.397,
+    "O-H"
+   ],
+   "substituent_nonbonded_min_A": [
+    1.397,
+    "O-H"
+   ],
+   "nonbonded_ge_1.0": true,
+   "C-X_range": [
+    1.431,
+    1.431
+   ],
+   "substituent_internal_bond_range": [
+    1.065,
+    1.201
+   ],
+   "clash_check": {
+    "name": "E24g_ZnDia_CCH_100.cif",
+    "n_atoms": 220,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E24g_ZnDia_CF3_100",
+   "kind": "CF3",
+   "fraction": 1.0,
+   "n_substituted": 8,
+   "rings": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "sweeps_changed": [
+    8,
+    0
+   ],
+   "torsion_deg": {
+    "136": 330.0,
+    "137": 330.0,
+    "138": 330.0,
+    "139": 330.0,
+    "160": 335.0,
+    "161": 335.0,
+    "162": 335.0,
+    "163": 335.0
+   },
+   "fragment_local": [
+    [
+     "C",
+     [
+      1.5084,
+      -0.0,
+      -0.0
+     ]
+    ],
+    [
+     "F",
+     [
+      2.0444,
+      -1.0864,
+      -0.6244
+     ]
+    ],
+    [
+     "F",
+     [
+      2.0444,
+      1.0864,
+      -0.6244
+     ]
+    ],
+    [
+     "F",
+     [
+      2.0269,
+      -0.0,
+      1.2591
+     ]
+    ]
+   ],
+   "formula": "C96H64F24N16O16S8Zn4",
+   "n_atoms": 228,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    1.597,
+    "H-F"
+   ],
+   "substituent_nonbonded_min_A": [
+    1.597,
+    "H-F"
+   ],
+   "nonbonded_ge_1.0": true,
+   "C-X_range": [
+    1.508,
+    1.508
+   ],
+   "substituent_internal_bond_range": [
+    1.362,
+    1.363
+   ],
+   "clash_check": {
+    "name": "E24g_ZnDia_CF3_100.cif",
+    "n_atoms": 228,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E24g_ZnDia_nC3H7_100",
+   "kind": "nC3H7",
+   "fraction": 1.0,
+   "n_substituted": 8,
+   "rings": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "sweeps_changed": [
+    8,
+    0
+   ],
+   "torsion_deg": {
+    "136": 300.0,
+    "137": 300.0,
+    "138": 300.0,
+    "139": 300.0,
+    "160": 355.0,
+    "161": 355.0,
+    "162": 355.0,
+    "163": 355.0
+   },
+   "fragment_local": [
+    [
+     "C",
+     [
+      1.5082,
+      -0.0,
+      0.0
+     ]
+    ],
+    [
+     "C",
+     [
+      2.0733,
+      -0.0,
+      1.4208
+     ]
+    ],
+    [
+     "C",
+     [
+      3.5937,
+      -0.0,
+      1.4136
+     ]
+    ],
+    [
+     "H",
+     [
+      1.8721,
+      -0.8759,
+      -0.5522
+     ]
+    ],
+    [
+     "H",
+     [
+      1.8721,
+      0.8759,
+      -0.5521
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7169,
+      -0.8805,
+      1.9693
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7169,
+      0.8805,
+      1.9693
+     ]
+    ],
+    [
+     "H",
+     [
+      3.9777,
+      -0.0,
+      2.4385
+     ]
+    ],
+    [
+     "H",
+     [
+      3.9835,
+      0.8874,
+      0.9048
+     ]
+    ],
+    [
+     "H",
+     [
+      3.9835,
+      -0.8875,
+      0.9048
+     ]
+    ]
+   ],
+   "formula": "C112H120N16O16S8Zn4",
+   "n_atoms": 276,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    1.106,
+    "H-H"
+   ],
+   "substituent_nonbonded_min_A": [
+    1.106,
+    "H-H"
+   ],
+   "nonbonded_ge_1.0": true,
+   "C-X_range": [
+    1.508,
+    1.508
+   ],
+   "substituent_internal_bond_range": [
+    1.094,
+    1.529
+   ],
+   "clash_check": {
+    "name": "E24g_ZnDia_nC3H7_100.cif",
+    "n_atoms": 276,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 8,
+    "worst": [
+     1.099,
+     "H-C"
+    ],
+    "h_clashes": 8,
+    "squashed_bonds": 0,
+    "pass": false
+   }
+  },
+  {
+   "name": "E24h_ZnDia_C2H5_050a",
+   "kind": "C2H5",
+   "fraction": 0.5,
+   "n_substituted": 4,
+   "rings": [
+    0,
+    3
+   ],
+   "sweeps_changed": [
+    4,
+    0
+   ],
+   "torsion_deg": {
+    "136": 270.0,
+    "137": 270.0,
+    "162": 165.0,
+    "163": 165.0
+   },
+   "fragment_local": [
+    [
+     "C",
+     [
+      1.5071,
+      -0.0,
+      0.0
+     ]
+    ],
+    [
+     "C",
+     [
+      2.0729,
+      0.0,
+      -1.4119
+     ]
+    ],
+    [
+     "H",
+     [
+      1.8761,
+      0.8761,
+      0.5472
+     ]
+    ],
+    [
+     "H",
+     [
+      1.8761,
+      -0.8761,
+      0.5471
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7491,
+      0.8853,
+      -1.9697
+     ]
+    ],
+    [
+     "H",
+     [
+      3.167,
+      0.0,
+      -1.3811
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7491,
+      -0.8852,
+      -1.9697
+     ]
+    ]
+   ],
+   "formula": "C96H88N16O16S8Zn4",
+   "n_atoms": 228,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    1.847,
+    "H-H"
+   ],
+   "substituent_nonbonded_min_A": [
+    1.847,
+    "H-H"
+   ],
+   "nonbonded_ge_1.0": true,
+   "C-X_range": [
+    1.507,
+    1.507
+   ],
+   "substituent_internal_bond_range": [
+    1.095,
+    1.521
+   ],
+   "clash_check": {
+    "name": "E24h_ZnDia_C2H5_050a.cif",
+    "n_atoms": 228,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E24h_ZnDia_C2H5_050b",
+   "kind": "C2H5",
+   "fraction": 0.5,
+   "n_substituted": 4,
+   "rings": [
+    1,
+    2
+   ],
+   "sweeps_changed": [
+    4,
+    0
+   ],
+   "torsion_deg": {
+    "138": 270.0,
+    "139": 270.0,
+    "160": 165.0,
+    "161": 165.0
+   },
+   "fragment_local": [
+    [
+     "C",
+     [
+      1.5071,
+      -0.0,
+      0.0
+     ]
+    ],
+    [
+     "C",
+     [
+      2.0729,
+      0.0,
+      -1.4119
+     ]
+    ],
+    [
+     "H",
+     [
+      1.8761,
+      0.8761,
+      0.5472
+     ]
+    ],
+    [
+     "H",
+     [
+      1.8761,
+      -0.8761,
+      0.5471
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7491,
+      0.8853,
+      -1.9697
+     ]
+    ],
+    [
+     "H",
+     [
+      3.167,
+      0.0,
+      -1.3811
+     ]
+    ],
+    [
+     "H",
+     [
+      1.7491,
+      -0.8852,
+      -1.9697
+     ]
+    ]
+   ],
+   "formula": "C96H88N16O16S8Zn4",
+   "n_atoms": 228,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    1.847,
+    "H-H"
+   ],
+   "substituent_nonbonded_min_A": [
+    1.847,
+    "H-H"
+   ],
+   "nonbonded_ge_1.0": true,
+   "C-X_range": [
+    1.507,
+    1.507
+   ],
+   "substituent_internal_bond_range": [
+    1.095,
+    1.521
+   ],
+   "clash_check": {
+    "name": "E24h_ZnDia_C2H5_050b.cif",
+    "n_atoms": 228,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E24h_ZnDia_Cl_050a",
+   "kind": "Cl",
+   "fraction": 0.5,
+   "n_substituted": 4,
+   "rings": [
+    0,
+    3
+   ],
+   "sweeps_changed": [
+    0
+   ],
+   "torsion_deg": {
+    "136": 0.0,
+    "137": 0.0,
+    "162": 0.0,
+    "163": 0.0
+   },
+   "fragment_local": [
+    [
+     "Cl",
+     [
+      1.7209,
+      -0.0,
+      0.0
+     ]
+    ]
+   ],
+   "formula": "C88H68Cl4N16O16S8Zn4",
+   "n_atoms": 204,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    2.161,
+    "O-Cl"
+   ],
+   "substituent_nonbonded_min_A": [
+    2.161,
+    "O-Cl"
+   ],
+   "nonbonded_ge_1.0": true,
+   "C-X_range": [
+    1.721,
+    1.721
+   ],
+   "substituent_internal_bond_range": null,
+   "clash_check": {
+    "name": "E24h_ZnDia_Cl_050a.cif",
+    "n_atoms": 204,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  },
+  {
+   "name": "E24h_ZnDia_Cl_050b",
+   "kind": "Cl",
+   "fraction": 0.5,
+   "n_substituted": 4,
+   "rings": [
+    1,
+    2
+   ],
+   "sweeps_changed": [
+    0
+   ],
+   "torsion_deg": {
+    "138": 0.0,
+    "139": 0.0,
+    "160": 0.0,
+    "161": 0.0
+   },
+   "fragment_local": [
+    [
+     "Cl",
+     [
+      1.7209,
+      -0.0,
+      0.0
+     ]
+    ]
+   ],
+   "formula": "C88H68Cl4N16O16S8Zn4",
+   "n_atoms": 204,
+   "all_pair_min_A": 0.929,
+   "nonbonded_min_A(topo>=3)": [
+    2.161,
+    "O-Cl"
+   ],
+   "substituent_nonbonded_min_A": [
+    2.161,
+    "O-Cl"
+   ],
+   "nonbonded_ge_1.0": true,
+   "C-X_range": [
+    1.721,
+    1.721
+   ],
+   "substituent_internal_bond_range": null,
+   "clash_check": {
+    "name": "E24h_ZnDia_Cl_050b.cif",
+    "n_atoms": 204,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   }
+  }
+ ]
+}
