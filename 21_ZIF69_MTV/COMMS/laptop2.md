@@ -8361,3 +8361,5 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
     단위(±̄/√3 합성) · 씨앗 SD 형: Br − Cl 100(137.59) **+1.03** · +1.84 | Br − C₂H₅ 막음(154.20) **−0.47** · −0.61 | Br − CN(122.56) +2.77 · +7.37 | Br − CH₃(128.62) +2.12 · +3.64
                                    Cl 050 a − Cl 100 −6.47 · −6.70 | − C₂H₅ −4.36 | − CN −4.60 | − CH₃ −5.91
     판정은 종합자. 관찰: Br 은 Cl 100 · C₂H₅ 와 1.5 단위 안(동률권), Cl 50 % 는 100 % 보다 뚜렷이 아래(치환율 절반에 S_mix −29 %).
+
+## 2026-09-26 15:51 — laptop2: **E-24i 착수** 15:50 — 정정 수령(Widom 안 기다림). run_e24i_mix.py(master 0e63eefb 판, run_e24g_mix 사본 대조) 두 개 20 s 간격 동시: E24G_TAG=e24i_ch3_open · e24i_br_open, E24G_MACHINE=laptop2 · E24MIX_WORKERS=3 → 6작업, 착수 초 전부 다름(15:50:17 · :32 · :37 · :47 · :52 · 15:51:07). S_Henry 는 자리 채움 1.0 · 비 인용 금지 표지(러너가 행에 적음). 입력 e24i_ch3_open 216원자 Σq 2.8e-5 · e24i_br_open 204원자 Σq 1.2e-5 · md5 8e8ec933 · master 병합(충돌 없음) · 러너 0 확인. 로그 e24i_ch3_mix.log · e24i_br_mix.log, 출력 results_e24i_<tag>_mix_laptop2.json, rc=$? 먼저 받음. 먼저 띄움(후속 자격은 데스크탑 Widom 뒤). 견적 ≈ 1.7 h(E-24g 실측 95~102 분).
