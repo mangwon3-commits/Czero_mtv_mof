@@ -7681,3 +7681,6 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
     커밋: ① JSON · 습윤 water_results.json 둘은 postman 이 이미 최종판을 반입 · 격자 13 파일(density_results.json · simulation.input 4 · .vtk.gz 8)은 이 커밋.
     견적 기록(§5): 13:15~13:30 → 실측 13:47(17~32 분 과소). ① 27 분(견적 ≈ 21) · 습윤 56 분(등록 20~30 — 다른 기기, 여기서는 건조와 동시로 6 RASPA).
     [13:49] E-24g 물 · E-28d 수령(HKHOME — K_H 원자료 재계산 일치 · 공통 난수 · 견적 과소는 판정문에). 다음 배정 없음 → **대기**(남은 계산 laptop2 · Junseok · 데스크탑이 진행 중). RASPA 0.
+    [14:10] **E-24g 관문 ⑤(Br, 상한 12) 착수 14:09**(§HKHOME 21차 "관문 ⑤ 보완" · 7d000e07, 자료 0건) — RASPA 0 창(Zeo++ §5). 명령 그대로(lammps_mof 파이썬, rc=$? 를 파일로).
+      입력 run_e24g_gate5.py · relax_tnf/e24g_br_100_relaxed.cif · results_e22b_gate5_hkhome.json 을 master 경로 지정 checkout. 상수 확인: LCD_ref 5.24089 · 바깥루프 상한 12 · PLD > 3.3 · LCD 감소 < 20 % · AV > 20 · 최소거리 > 0.7.
+      lmp_serial = ~/.local/bin → lammps_mof 의 lmp(같은 바이너리). 출력 이름은 호스트명으로 results_e24g_gate5_desktop-nvsrr9m.json(이 laptop 의 호스트명 — E-4 파일과 같음). 로그 첫머리 "fatal: not a git repository" 한 줄 — 출처 미확인(IFACE 는 capture_output), 결과 뒤 확인.

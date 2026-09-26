@@ -1,0 +1,97 @@
+{
+ "rule": "risk_screen.py:414~423, LCD_ref = e22_parent 같은 처리 뒤 LCD(사용자 결정 4 (다)), OUTER_LOOP_CAP 12",
+ "rows": {
+  "e22_parent": {
+   "status": "ok",
+   "before": {
+    "LCD": 5.26553,
+    "PLD": 3.81832,
+    "AV": 105.717,
+    "min_dist": 1.074,
+    "n_atoms": 204,
+    "AV_per_cell": 105.7
+   },
+   "after": {
+    "LCD": 5.24089,
+    "PLD": 3.71074,
+    "AV": 1136.7,
+    "min_dist": 1.079,
+    "n_atoms": 2448,
+    "supercell_rep": 12,
+    "AV_per_cell": 94.7
+   },
+   "LCD_drop_pct": 0.0,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 0.359708339970894,
+   "outer_loops": 12
+  },
+  "e22_no2_050": {
+   "status": "ok",
+   "before": {
+    "LCD": 5.28171,
+    "PLD": 3.81705,
+    "AV": 84.9232,
+    "min_dist": 1.075,
+    "n_atoms": 212,
+    "AV_per_cell": 84.9
+   },
+   "after": {
+    "LCD": 5.65036,
+    "PLD": 4.4069,
+    "AV": 855.347,
+    "min_dist": 1.075,
+    "n_atoms": 2544,
+    "supercell_rep": 12,
+    "AV_per_cell": 71.3
+   },
+   "LCD_drop_pct": -7.81,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 0.252477409179846,
+   "outer_loops": 12
+  },
+  "e22_no2_100": {
+   "status": "ok",
+   "before": {
+    "LCD": 5.19757,
+    "PLD": 3.77461,
+    "AV": 61.9066,
+    "min_dist": 1.077,
+    "n_atoms": 220,
+    "AV_per_cell": 61.9
+   },
+   "after": {
+    "LCD": 4.77367,
+    "PLD": 4.03442,
+    "AV": 600.526,
+    "min_dist": 1.074,
+    "n_atoms": 2640,
+    "supercell_rep": 12,
+    "AV_per_cell": 50.0
+   },
+   "LCD_drop_pct": 8.91,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 0.477576743470308,
+   "outer_loops": 12
+  }
+ },
+ "LCD_ref_family": 5.24089,
+ "finished": true
+}
