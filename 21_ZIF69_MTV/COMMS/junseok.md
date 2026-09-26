@@ -3,6 +3,25 @@
 이 파일은 **Junseok 만** 씁니다. 규약은 `21_ZIF69_MTV/COMMS.md`.
 
 
+## 2026-09-26 18:04 — [E-24i 습윤 WC CN open 완주 + Cl 착수] CN WC_TSA **2.4005 ± 0.0305** · WC_VSA 0.783 ± 0.035 mol/kg(3씨앗, 9/9) — Cl open(차단 없음) 18:03:26 사슬 2 착수 — 판정문은 종합자
+
+**받는 곳**: 종합자(데스크탑)
+**답 필요**: 아니오
+
+    결과 v3w_humid_wc/humid_working_capacity_w2_e24i_cn_open_junseok.json(md5 3b2c63da) · 요약 results_e24i_e24i_cn_open_humid_summary_junseok.json(md5 b1dafb4c) · 로그 e24i_cn_humid_junseok.log.
+    17:14:12 → 18:03:10 · master run_e24i_humid_wc.py 무수정(E24I_HWC_TAG=e24i_cn_open · E24I_MACHINE=junseok · 워커 9) · 드라이버 rc 0.
+    관문 9/9 ok: 완주 표지 · RASPA rc 0 · not-found 0 · 입력 막음 줄 0 · 씨앗 9 개 고유(1790410452 ~ …572).
+                       ads CO₂ · 물                TSA 잔류 CO₂        VSA 잔류 CO₂        WC_TSA               WC_VSA
+      h1               3.3080 · 0.0693             0.9046              2.5238              2.4034 ± 0.0631      0.7842 ± 0.0606
+      h2               3.2647 · **0.3365 ± 0.1597** 0.9131             2.4839              2.3516 ± 0.0594      0.7809 ± 0.0717
+      h3               3.3433 · 0.0779             0.8966              2.5584              2.4466 ± 0.0362      0.7849 ± 0.0480
+      평균(±̄/√3)      3.3053 ± 0.0266 · 0.1612     0.9048 ± 0.0136     2.5220 ± 0.0199     **2.4005 ± 0.0305**   **0.7833 ± 0.0347**
+      서술: ads 물 적재가 h2 만 0.3365 로 h1 · h3(0.069 · 0.078)의 4 배 이상, 실행 안 ± 도 0.16 으로 큼(물이 한 실행 안에서 크게 출렁임).
+        VSA 물도 0.13~0.15 ± 0.06~0.12. 관문은 모두 통과 — 판정 · 인용은 종합자.
+    Cl open(차단 없음, 등록 37306c51) — 사슬 2 가 CN rc 줄을 보고 18:03:24 확인 → 빈 기기에서 master 병합(13b7c042) → 18:03:26 착수.
+      같은 명령(E24I_HWC_TAG=e24i_cl_open · 워커 9 · 씨앗 사본은 master 판) · 출력 humid_working_capacity_w2_e24i_cl_open_junseok.json · 로그 e24i_cl_humid_junseok.log.
+      견적 ≈ 18:40~18:55(CN 은 49 분 걸림 — ads 가 느림).
+
 ## 2026-09-26 17:15 — [E-24i 습윤 WC C₂H₅ open(막음) 완주 + CN 착수] WC_TSA **1.1074 ± 0.0345** · WC_VSA 0.396 ± 0.040 mol/kg(3씨앗, 9/9) — CN open(차단 없음) 17:14:12 사슬 착수 — 판정문은 종합자
 
 **받는 곳**: 종합자(데스크탑)
