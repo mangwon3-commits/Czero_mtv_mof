@@ -653,3 +653,12 @@
       **RASPA 를 같이 못 띄움**(CLAUDE.md §5). 그래서 **막음 Widom = Junseok**(막음 파일 보유 · E-24c 막음 Widom 과 같은 드라이버 `magi5_e24c_bp_junseok.py` 틀 — 대상 · 경로 · 출력만 `results_e24g_blockpockets_junseok.json`).
       대상 규칙(등록 뜻 그대로): 관문(0) 통과 6구조 중 **1.65 Å(CO₂) 또는 1.82 Å(N₂)에서 막음 구가 1개 이상**인 것 전부 · 전하 ON/OFF · E-24c 와 같은 관문(not-found 0 · 구 수 × 단위셀 수 등식 · 'Pockets are blocked' · finished).
       데스크탑 이식본 `e24g_bp_desktop.py` 는 예비(Junseok 이 못 하면 UFF4MOF 뒤 데스크탑이). 차단 없는 Widom 6구조는 12:04 완주(md5: Br e97ff3ce · CF₃ 08a55334 · C₂H₅50a fe7d9c0e · b a54c44ec · Cl50a de77c89e · b 4dc7d6fa) — 판정은 주머니 결과 뒤.
+
+    **[E-24g · E-24h (1) · (4a) 판정 2026-09-26 12:20 — `MAGI5_E22_VERDICT_20260925.md` §24]** (1) Br **성립**(+3.85 단위 · 관문(0) 경계 표지) · (4a) **기각**(C₂H₅ 50 % 통로 3 · 주머니 2) · CF₃ 통로 0 → 설계 근거에서 뺌 · (4b) · (4c) 대기.
+    **[E-24g 후속 등록 2026-09-26 12:20 — 자료 0건(후속 S_mix · 물 · 밀도 격자 없음) · 사용자 "최대한 앞당길 수 있게"]**
+      Br: 후속 조건 충족 → S_mix 3씨앗(`run_e24g_mix.py`, `E24G_TAG=e24g_br_100`) · 물 4씨앗(`run_e22g_water.py --names e24g_br_100`, 차단 없음 — Cl 100 · E-24d 와 같은 자) · UFF4MOF(데스크탑 진행 중).
+      **먼저 띄움**(CLAUDE.md §2 09-06 결정 — 등록된 배정 · 저촉 없음 · 자격은 판정 뒤 · 매몰비용을 근거로 안 씀): Cl 50 a(S_mix · 물, 차단 없음) · C₂H₅ 50 a(막음 S_mix · 1.30 막음 물 — E-24e 방식). 자격(UFF4MOF 열림 · S_ON ≥ CN − 1.5 단위 · C₂H₅ 는 막음 S_ON)을 못 넘으면 결과는 서술로만. 실현 b 는 후속 안 함(대칭 동치 · a 가 대표).
+      **E-28d**(그림 · 판정 없음): 건조 CO₂ 격자 ON/OFF(`run_density_e24g.py`) + 습윤 RH90 격자(`run_density_water_v3w.py`, 막음은 Junseok `run_e28c_density.py`) — Br · Cl 50 a · C₂H₅ 50 a(막음). CF₃ 는 통로 0 이라 뺌. 관문: E-28 · E-28b · E-28c 와 같음(완주 표지 · 막음 수 등식). 서술: 습윤 격자 CO₂ ÷ 건조 격자 CO₂.
+      Br 습윤 TSA WC 3씨앗(E-24f 방식, 서술) — 후속 S_mix 에서 Br 이 1위 후보군에 들면.
+      분담: **laptop2** — S_mix Br · Cl 50 a(각 워커 3). **laptop** — 물 4씨앗 Br · Cl 50 a(워커 8) → 건조 격자 Br · Cl 50 a → 습윤 격자 Br · Cl 50 a. **Junseok** — (막음 Widom 뒤) C₂H₅ 50 a 막음 S_mix · 막음 물 · 건조(막음) · 습윤(막음) 격자. **데스크탑** — UFF4MOF(진행 중) → 남는 것 · 판정.
+      비용: S_mix 59~85 분(데스크탑 · laptop2 실측, 같은 계) · 막음 S_mix ≈ 21 분(Junseok E-24e) · 물 14~17 분 · 건조 격자 ≈ 10 분(E-28b) · 습윤 격자 20~30 분(E-28 · E-28c) → **≈ 14:00~14:30**(받는 기기의 착수 지연 5~30 분 별도).
