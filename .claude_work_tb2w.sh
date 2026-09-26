@@ -10,4 +10,4 @@ echo "===== $(date '+%F %T') nbIm050 체인 종료 감지 → T-B2w 착수 =====
 git -C .. pull -q --no-rebase 2>>"$L" || true
 [ "$(pgrep -x network | wc -l)" -eq 0 ] || { echo "Zeo++ 가동 중 — 대기 실패" >> "$L"; exit 2; }
 TB2_WORKERS=6 nice -n 10 /home/mangwon1/miniconda3/envs/czeromof/bin/python -u run_tb2w.py >> "$L" 2>&1
-echo "===== $(date '+%F %T') T-B2w 종료 rc=$? =====" >> "$L"
+rc=$?; echo "===== $(date '+%F %T') T-B2w 종료 rc=$rc =====" >> "$L"

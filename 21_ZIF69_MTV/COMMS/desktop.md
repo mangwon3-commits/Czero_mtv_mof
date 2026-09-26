@@ -5716,3 +5716,46 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 ## 2026-09-26 00:43 — desktop(종합자): **laptop 9차 = E-27**(323 K 작동점 S_mix, 결승 후보) — 지금 착수 부탁
 **받는 곳**: laptop  **답 필요**: 착수 한 줄
     CH₃ 습윤 WC 수령(2.123 — 모체 2.293 대비 −7.4 %, 서술). 등록 `ASSIGN_MAGI5B` §laptop 9차(자료 0건). 명령: `python run_e27_mix323.py`(master 에 이 커밋 · `run_tj1_mix.py` 수정 없이 · 온도만 323 K). 먼저 `E27_DRY=1` 로 11행 · CIF 존재 · TEMP 323 확인. 출력 `results_e27_mix323_laptop.json`. 입력 CIF 는 전부 master(charged_v3/e22_parent · e24_cn_100 · e24_ch3_100 · mslm050 · saIm050).
+
+
+## 2026-09-26 04:41 — desktop(종합자): rc 표기 결함 표지 (클라우드 검증석 6회차 권고)
+- 이 우편함 5257행(09-24 17:2x)의 *"완주 rc=0 인데도"* 의 rc 는 `chain_backup/corewc3_desk.sh:72` 의 **틀린 순서** `echo "$(date …) … rc=$?"` 로그 — bash 가 `$(date)` 를 먼저 실행해 **$? 가 date 의 값(항상 0)**. **근거 아님.** 그 글의 결론(적재 회수)은 `extract_density_loadings.py` 가 완주 표지를 요구해 따로 확인했으므로 불변.
+- 같은 무늬 네 줄 수정: `.claude_work_tb2w.sh:13` · `.claude_work_rh90_desktop.sh:9` · `chain_backup/corewc3_desk.sh:65 · 72` → `rc=$?; echo "… rc=$rc"`(도는 것 없음 확인 · `bash -n` · `false` 뒤 rc=1 재현). 이 무늬는 `TOOLING.md:132` 에 이미 적혀 있었음 — 오늘 밤 새 사슬에서 또 밟음(`ASSIGN_MAGI5B_20260925.md` 04:15 결함 줄).
+
+
+## 2026-09-26 10:59 — desktop(종합자): **E-24g · E-24h 착수**(사용자 지시 "여유 시간 동안 치환기 추가 탐색") — 후속 분담 예고
+**받는 곳**: 전원  **답 필요**: 비어 있는 기기는 "후속 받을 수 있음 + 코어 수" 한 줄(착수는 배정 뒤)
+    등록 `ASSIGN_MAGI5B_20260925.md` §HKHOME 21차(0ad35b96, 자료 0건). E-24g = 4,8-자리 −Br · −C≡CH · −CF₃ · −n-C₃H₇(100 %) · E-24h = 희석 −C₂H₅ · −Cl 50 %(두 고리 · 실현 A[0,3] · B[1,2]).
+    데스크탑 사슬(10:57 착수): GFN-FF 이완 → PACMAN → 관문(0) → Widom ON/OFF → (RASPA 끝난 뒤) Zeo++ `e24g_zeo_desktop.py`(Junseok `magi5_e24b_zeo_junseok.py` 이식, 1.30 추가) → 막음 Widom `e24g_bp_desktop.py`(Junseok `magi5_e24c_bp_junseok.py` 이식) → UFF4MOF 상한 300 `run_e24g_relax.py`(E-29b 사본).
+    **후속 예고(≈ 13:30 S_ON 뒤)**: 등록 조건을 넘는 후보의 S_mix 3씨앗(`run_e24d_mix.py` 틀) · 물 4씨앗(`run_e22g_water.py`) — 전하 CIF 를 master 에 올리고 이 우편함에 배정. Junseok 이 비어 있으면 Zeo++ 를 먼저 가져가도 됨(RASPA 없는 창 · 위 이식본과 같은 명령).
+    빌드 사실(판정 아님): n-C₃H₇ 빌드 충돌검사 탈락(H–H 1.106 Å) — 등록 관문(0)은 이완 뒤라 그대로 이완 중.
+
+## 2026-09-26 11:08 — desktop(종합자): **E-24g Zeo++ = Junseok**(15b06ff0 수락) · 입력 master 9017176b · 데스크탑은 Zeo++ 안 띄움
+**받는 곳**: Junseok  **답 필요**: 완주 때 results_e24g_access_junseok.json + `.block` 파일(e24g_zeo_runs/<tag>/block<r>/<tag>_relaxed.block 구조)
+    (0) 판정: Br · CF₃ · C₂H₅ 50 a·b · Cl 50 a·b 통과 · C≡CH(H···O 1.734) · n-C₃H₇(변위 1.081) 탈락 → (3) 성립. 탈락 둘도 서술 (5)로 재 주면 됨.
+    ⚠ CF₃ 이완본 F···O 1.709 Å(형판 계열 이전 2.39~2.77) — 표지(ASSIGN §HKHOME 21차 (0) 판정 줄). A · B 는 대칭 동치로 보임 — 둘 다 재서 차 0 확인.
+    데스크탑 Widom 6구조 11:06 착수(≈ 13시). 주머니가 나오면 데스크탑이 `e24g_bp_desktop.py` 로 막음 Widom.
+
+
+## 2026-09-26 11:25 — desktop(종합자): **cloud 2차 배정** — E-24g · E-24h 검증석 + 이식 감사 · 판정 준비 스크립트 · 기하 서술 둘 (사용자 지시)
+**받는 곳**: cloud  **답 필요**: cloud.md 에 착수 줄(가지로 읽음)
+    `ASSIGN_MAGI5B_20260925.md` §cloud 2차. 계산 없음. 순서 권고: ① 이식 감사(지금) → ③ 기하 서술 → ② 판정 준비(데스크탑 Widom ≈ 13시 전에) → ④ 30분 검산(≈ 18:00 까지).
+
+## 2026-09-26 12:07 — desktop(종합자): **Junseok — E-24g 막음 Widom 부탁**(Zeo++ 뒤, 주머니 있는 구조만) · 데스크탑은 UFF4MOF 중이라 RASPA 불가
+**받는 곳**: Junseok  **답 필요**: 착수 한 줄
+    `ASSIGN_MAGI5B_20260925.md` §HKHOME 21차 분담 변경 줄. 관문(0) 통과 6구조(e24g_br_100 · e24g_cf3_100 · e24h_c2h5_050a · b · e24h_cl_050a · b) 중 1.65 또는 1.82 에서 막음 구 ≥ 1 인 것 전부 · ON/OFF · E-24c 막음 드라이버 틀(출력 `results_e24g_blockpockets_junseok.json`).
+
+
+## 2026-09-26 12:21 — desktop(종합자): **E-24g 후속 · E-28d 배정 — laptop2 · laptop · Junseok**(사용자 "최대한 앞당길 수 있게") · master 7b02dcc8
+**받는 곳**: laptop2 · laptop · Junseok  **답 필요**: 착수 한 줄씩
+    등록 `ASSIGN_MAGI5B_20260925.md` §HKHOME 21차 "후속 등록" 줄(자료 0건). 판정 `MAGI5_E22_VERDICT_20260925.md` §24. 모든 러너는 master 에 있고 상대 경로(HERE = 파일 위치).
+    **laptop2**(워커 6) — 작동점 S_mix 3씨앗 × 2:
+        E24G_TAG=e24g_br_100  E24G_MACHINE=laptop2 E24MIX_WORKERS=3 python -u run_e24g_mix.py > e24g_br_mix.log
+        E24G_TAG=e24h_cl_050a E24G_MACHINE=laptop2 E24MIX_WORKERS=3 python -u run_e24g_mix.py > e24g_cl050a_mix.log   (두 개 동시, 착수 20 s 간격)
+        출력 results_e24g_<tag>_mix_laptop2.json. 판정 전 관문: 완주 표지 · 씨앗 고유 · rc(먼저 받기) · md5.
+    **laptop**(워커 8) — ① 물 4씨앗: python -u run_e22g_water.py --names e24g_br_100,e24h_cl_050a --out results_e24g_water_laptop.json --runs e24g_water_runs --workers 8
+        ② 끝나면 동시에: 건조 격자 DENSITY_E24G_TARGETS=e24g_br_100,e24h_cl_050a DENSITY_E24G_SUB=laptop DENSITY_E24G_WORKERS=4 python -u run_density_e24g.py
+           · 습윤 격자 두 개: DW_EXTRA=<tag> DW_SUB=tpl_<tag> python -u run_density_water_v3w.py <tag>   (<tag> = e24g_br_100 · e24h_cl_050a, 각각 따로 띄움)
+        결과: density_v3_tpl3/laptop/ · density_water_v3w/tpl_<tag>/ · water_runs_density_v3w/rh90_<tag>/VTK(.vtk.gz 커밋).
+    **Junseok**(막음 Widom 뒤) — C₂H₅ 50 a(막음): ① 막음 S_mix 3씨앗(E-24e 드라이버 틀, CO₂@1.65 · N₂@1.82 = e24g_zeo_runs/e24h_c2h5_050a/) ② 막음 물 4씨앗(1.30) ③ 건조 격자 DENSITY_E24G_TARGETS=e24h_c2h5_050a DENSITY_E24G_SUB=junseok python -u run_density_e24g.py(1.65 막음 내장) ④ 습윤 격자(run_e28c_density.py 틀, CO₂ 1.65 · 물 1.30 막음).
+    데스크탑: UFF4MOF 6구조(12:05~) → (4c) 판정 → 남는 것.

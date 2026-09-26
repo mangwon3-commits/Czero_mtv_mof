@@ -167,7 +167,67 @@ def wet():
     print('저장', p)
 
 
+def dry2():
+    """E-28b — 새 1 · 2위(Cl · C₂H₅ 막음). C₂H₅ 의 막음 구(block1.65)를 ab 면에 원으로 겹침(구의 c 투영 = 반지름 r 원)."""
+    D2 = os.path.join(HERE, 'density_v3_tpl2')
+    rows = [('e24c_cl_100', 'Cl₂ (규칙 1위)'), ('e24c_c2h5_100', '(C2H5)2 막음')]   # 맑은 고딕에 ₅ 글리프 없음 — ASCII
+    P = {}
+    for t, _ in rows:
+        on = proj_c(read_grid(os.path.join(D2, f'{t}__q_on', 'VTK', 'System_0', 'COMDensityProfile_CO2.vtk.gz')))
+        off = proj_c(read_grid(os.path.join(D2, f'{t}__q_off', 'VTK', 'System_0', 'COMDensityProfile_CO2.vtk.gz')))
+        P[t] = (on, off, on - off)
+    vmax = max(max(p[0].max(), p[1].max()) for p in P.values()); dmax = max(abs(p[2]).max() for p in P.values())
+    fig, axs = plt.subplots(2, 3, figsize=(10.4, 5.4))
+    blk = [l.split() for l in open(os.path.join(HERE, 'e28b_blocks', 'e24c_c2h5_100_block1.65.block')).read().split('\n')[1:] if l.strip()]
+    for i, (t, lab) in enumerate(rows):
+        _, _, cp = atoms_ab(t); a_len, b_len = cp[0], cp[1]
+        on, off, d = P[t]
+        im1 = panel(axs[i, 0], on, a_len, b_len, 'magma', 0, vmax, f'{lab} — 전하 ON')
+        panel(axs[i, 1], off, a_len, b_len, 'magma', 0, vmax, f'{lab} — 전하 OFF')
+        im3 = panel(axs[i, 2], d, a_len, b_len, 'RdBu_r', -dmax, dmax, f'{lab} — ON-OFF 차분')
+        for j in range(3):
+            overlay(axs[i, j], t, a_len, b_len)
+            if t == 'e24c_c2h5_100':
+                for bb in blk:
+                    fa, fb, r = float(bb[0]), float(bb[1]), float(bb[3])
+                    for sa in (-1, 0, 1):
+                        for sb in (-1, 0, 1):
+                            axs[i, j].add_patch(plt.Circle(((fa + sa) * a_len, (fb + sb) * b_len), r, fill=False, ls='--', lw=0.8, ec='#00e5ff'))
+                axs[i, j].set_xlim(0, a_len); axs[i, j].set_ylim(0, b_len)
+    fig.colorbar(im1, ax=axs[:, :2], shrink=0.6, label='CO₂ 밀도 (c 투영, 합 100 %)')
+    fig.colorbar(im3, ax=axs[:, 2], shrink=0.6, label='정전기 차분 (%p)')
+    fig.suptitle('E-28b 건조 CO₂ 밀도 — 새 1 · 2위(4,8-Cl2 · 4,8-(C2H5)2) · 0.15 bar · 298 K · c 투영\n(C2H5: 점선 원 = 막은 주머니 — 안쪽 밀도 0, 앞단 강건 1위)', fontsize=10)
+    os.makedirs(OUT, exist_ok=True)
+    p = os.path.join(OUT, 'e28b_dry_cl_c2h5.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
+
+
+def wet2(base=None):
+    """E-28c — 새 1 · 2위 습윤(RH90). base = 격자 폴더 루트(기본 water_runs_density_v3w). C₂H₅ 는 CO₂ 막은 구(block1.65)를 점선 원으로."""
+    base = base or WET
+    rows = [('e24c_cl_100', 'Cl2'), ('e24c_c2h5_100', '(C2H5)2 막음')]
+    blk = [l.split() for l in open(os.path.join(HERE, 'e28b_blocks', 'e24c_c2h5_100_block1.65.block')).read().split('\n')[1:] if l.strip()]
+    fig, axs = plt.subplots(2, 2, figsize=(7.4, 5.4))
+    for i, (t, lab) in enumerate(rows):
+        _, _, cp = atoms_ab(t); a_len, b_len = cp[0], cp[1]
+        for j, m in enumerate(('CO2', 'water')):
+            g = proj_c(read_grid(os.path.join(base, f'rh90_{t}', 'VTK', 'System_0', f'COMDensityProfile_{m}.vtk.gz')))
+            panel(axs[i, j], g, a_len, b_len, 'magma' if m == 'CO2' else 'Blues', 0, g.max(), f'{lab} — {"CO₂" if m == "CO2" else "H₂O (영역 서술만)"}')
+            overlay(axs[i, j], t, a_len, b_len)
+            if t == 'e24c_c2h5_100':
+                for bb in blk:
+                    fa, fb, r = float(bb[0]), float(bb[1]), float(bb[3])
+                    for sa in (-1, 0, 1):
+                        for sb in (-1, 0, 1):
+                            axs[i, j].add_patch(plt.Circle(((fa + sa) * a_len, (fb + sb) * b_len), r, fill=False, ls='--', lw=0.8, ec='#00e5ff'))
+                axs[i, j].set_xlim(0, a_len); axs[i, j].set_ylim(0, b_len)
+    fig.suptitle('E-28c 습윤 — CO2 15 kPa + H2O 2852 Pa (RH90) · 298 K · c 투영\n(C2H5: 점선 원 = CO2 가 못 가는 통로 — 물의 64 % 가 여기에)', fontsize=10)
+    os.makedirs(OUT, exist_ok=True)
+    p = os.path.join(OUT, 'e28c_humid_cl_c2h5.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
+
+
 if __name__ == '__main__':
     what = sys.argv[1:] or ['dry', 'wet']
     if 'dry' in what: dry()
     if 'wet' in what: wet()
+    if 'dry2' in what: dry2()
+    if 'wet2' in what: wet2(os.environ.get('E28C_BASE'))

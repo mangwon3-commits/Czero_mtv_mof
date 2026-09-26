@@ -1,0 +1,129 @@
+{
+ "test": "MAGI-005 E-24g · E-24h — UFF4MOF 이완 수렴(상한 300)",
+ "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 21차",
+ "machine": "hkhome",
+ "rule": "risk_screen.run_one 무수정 · OUTER_LOOP_CAP 300(래퍼) · INNER 2000 · min_eval 1e-4 · Zeo++ 호출 잠금(순차)",
+ "cap": 300,
+ "started": "2026-09-26 12:05:32",
+ "rows": {
+  "e24g_cf3_100": {
+   "status": "ok",
+   "before": {
+    "LCD": 4.23489,
+    "PLD": 3.18713,
+    "AV": 0.0,
+    "min_dist": 1.074,
+    "n_atoms": 228,
+    "AV_per_cell": 0.0
+   },
+   "after": {
+    "LCD": 4.16156,
+    "PLD": 2.49789,
+    "AV": 0.0,
+    "min_dist": 1.077,
+    "n_atoms": 2736,
+    "supercell_rep": 12,
+    "AV_per_cell": 0.0
+   },
+   "final_EDiff": 3.37505798597704e-05,
+   "outer_loops": 25,
+   "minutes": 13.5,
+   "cell_before": {
+    "a": 24.404,
+    "b": 14.181,
+    "c": 9.304,
+    "alpha": 90.0,
+    "beta": 99.608,
+    "gamma": 90.0,
+    "V": 3174.6984782755267,
+    "n_atoms": 228
+   },
+   "chan_before": {
+    "probe_radius": 1.65,
+    "rc": 0,
+    "n_channels": 0,
+    "dimensionality": [],
+    "channels_stdout": 0,
+    "pockets_stdout": 10,
+    "chan_file_head": [
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e24g/e24g_cf3_100/before.cif.chan1.65   0 channels identified of dimensionality ",
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e24g/e24g_cf3_100/before.cif.chan1.65 summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+    ]
+   },
+   "cell_after_supercell": {
+    "a": 49.823275997219056,
+    "b": 28.416503457523348,
+    "c": 29.650026402635092,
+    "alpha": 90.0,
+    "beta": 99.60800029118649,
+    "gamma": 90.0,
+    "V": 41389.76031393271,
+    "n_atoms": 2736
+   },
+   "cell_after_per_cell": {
+    "rep_abc": [
+     2,
+     2,
+     3
+    ],
+    "a": 24.911637998609528,
+    "b": 14.208251728761674,
+    "c": 9.883342134211697,
+    "alpha": 90.0,
+    "beta": 99.60800029118649,
+    "gamma": 90.0,
+    "V": 3449.146692827726,
+    "rep_product_eq_supercell_rep": true
+   },
+   "cell_change_pct": {
+    "a": 2.0801425938761198,
+    "b": 0.19217071265548763,
+    "c": 6.226807117494587,
+    "V": 8.644859234042206
+   },
+   "cell_change_deg": {
+    "alpha": 0.0,
+    "beta": 2.9118648114945245e-07,
+    "gamma": 0.0
+   },
+   "chan_after": {
+    "probe_radius": 1.65,
+    "rc": 0,
+    "n_channels": 0,
+    "dimensionality": [],
+    "channels_stdout": 0,
+    "pockets_stdout": 48,
+    "chan_file_head": [
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e24g/e24g_cf3_100/after.cif.chan1.65   0 channels identified of dimensionality ",
+     "/home/mangwon1/mof_project/21_ZIF69_MTV/lmp_e24g/e24g_cf3_100/after.cif.chan1.65 summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+    ]
+   }
+  },
+  "e24g_br_100": {
+   "status": "pending"
+  },
+  "e24h_c2h5_050a": {
+   "status": "pending"
+  },
+  "e24h_c2h5_050b": {
+   "status": "pending"
+  },
+  "e24h_cl_050a": {
+   "status": "pending"
+  },
+  "e24h_cl_050b": {
+   "status": "pending"
+  }
+ },
+ "registered": {
+  "e24g_cf3_100": {
+   "PLD_after": 2.49789,
+   "AV_per_cell_after": 0.0,
+   "open": false,
+   "channels_after_1.65": 0,
+   "final_EDiff": 3.37505798597704e-05,
+   "outer_loops": 25,
+   "converged": true
+  }
+ }
+}

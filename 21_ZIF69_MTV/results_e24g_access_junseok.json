@@ -1,0 +1,1224 @@
+{
+  "test": "MAGI-005 E-24g · E-24h — 새 치환체 접근성(Zeo++)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 21차",
+  "machine": "hkhome",
+  "ported_from": "junseok magi5_e24b_zeo_junseok.py (255cf19e)",
+  "made": "2026-09-26 12:12:35",
+  "zeo": "/home/mangwon/miniconda3/envs/czeromof/bin/network",
+  "flags": "-ha",
+  "block_samples": 50000,
+  "radii": [
+    1.65,
+    1.82,
+    1.3
+  ],
+  "PLD_threshold": 3.64,
+  "guard_MB": 5000,
+  "rows": [
+    {
+      "tag": "e24g_br_100",
+      "cif": "relax_tnf/e24g_br_100_relaxed.cif",
+      "n_atoms": 204,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 2.0,
+          "peak_rss_MB": 290,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 4.91961,
+      "PLD_Df": 3.81716,
+      "Dif": 4.91961,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24g_br_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  4.91956  3.81705  4.91956",
+            "Channel  1  4.91961  3.81716  4.91961"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 39148,
+          "accessible_nodes": 1186,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24g_zeo_runs/e24g_br_100/block1.65/e24g_br_100_relaxed.block",
+          "rc": 0,
+          "seconds": 155.3,
+          "peak_rss_MB": 5681,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24g_br_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  4.91956  3.81705  4.91956",
+            "Channel  1  4.91393  3.81286  4.91393"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 39148,
+          "accessible_nodes": 963,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24g_zeo_runs/e24g_br_100/block1.82/e24g_br_100_relaxed.block",
+          "rc": 0,
+          "seconds": 154.4,
+          "peak_rss_MB": 5167,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.30": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 4,
+          "chan_file_head": [
+            "e24g_br_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  4.91956  3.81705  4.91956",
+            "Channel  1  4.91393  3.81286  4.91393"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 4,
+          "nodes": 39148,
+          "accessible_nodes": 1711,
+          "n_spheres": 4,
+          "sphere_radii": [
+            2.682,
+            2.704,
+            2.582,
+            2.725
+          ],
+          "sphere_volume_sum_A3": 320.4000783591114,
+          "sphere_volume_pct_of_cell": 10.092299490852762,
+          "block_file": "e24g_zeo_runs/e24g_br_100/block1.30/e24g_br_100_relaxed.block",
+          "rc": 0,
+          "seconds": 160.2,
+          "peak_rss_MB": 6160,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24g_cch_100",
+      "cif": "relax_tnf/e24g_cch_100_relaxed.cif",
+      "n_atoms": 220,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 2.0,
+          "peak_rss_MB": 309,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 5.00414,
+      "PLD_Df": 3.82743,
+      "Dif": 5.00028,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24g_cch_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.00028  3.82743  5.00028",
+            "Channel  1  5.00398  3.81891  5.00398"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 41435,
+          "accessible_nodes": 1227,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24g_zeo_runs/e24g_cch_100/block1.65/e24g_cch_100_relaxed.block",
+          "rc": 0,
+          "seconds": 167.1,
+          "peak_rss_MB": 5138,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24g_cch_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.00398  3.81891  5.00398",
+            "Channel  1  5.00028  3.82743  5.00028"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 41435,
+          "accessible_nodes": 1027,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24g_zeo_runs/e24g_cch_100/block1.82/e24g_cch_100_relaxed.block",
+          "rc": 0,
+          "seconds": 167.1,
+          "peak_rss_MB": 4994,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.30": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 4,
+          "chan_file_head": [
+            "e24g_cch_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.00028  3.82743  5.00028",
+            "Channel  1  5.00398  3.81891  5.00398"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 4,
+          "nodes": 41435,
+          "accessible_nodes": 1827,
+          "n_spheres": 4,
+          "sphere_radii": [
+            2.442,
+            2.375,
+            2.461,
+            2.46
+          ],
+          "sphere_volume_sum_A3": 241.89823026015029,
+          "sphere_volume_pct_of_cell": 7.619565508833698,
+          "block_file": "e24g_zeo_runs/e24g_cch_100/block1.30/e24g_cch_100_relaxed.block",
+          "rc": 0,
+          "seconds": 173.5,
+          "peak_rss_MB": 6294,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24g_cf3_100",
+      "cif": "relax_tnf/e24g_cf3_100_relaxed.cif",
+      "n_atoms": 228,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 2.0,
+          "peak_rss_MB": 320,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 4.23489,
+      "PLD_Df": 3.18713,
+      "Dif": 4.11929,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 0,
+          "dimensionality": [],
+          "channels_stdout": 0,
+          "pockets_stdout": 10,
+          "chan_file_head": [
+            "e24g_cf3_100.chan   0 channels identified of dimensionality ",
+            "e24g_cf3_100.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 0,
+          "pockets": 10,
+          "nodes": 45553,
+          "accessible_nodes": 833,
+          "n_spheres": 8,
+          "sphere_radii": [
+            3.469,
+            3.192,
+            3.191,
+            3.116,
+            4.662,
+            4.539,
+            5.938,
+            5.226
+          ],
+          "sphere_volume_sum_A3": 2864.697887925152,
+          "sphere_volume_pct_of_cell": 90.23527454743466,
+          "block_file": "e24g_zeo_runs/e24g_cf3_100/block1.65/e24g_cf3_100_relaxed.block",
+          "rc": 0,
+          "seconds": 158.6,
+          "peak_rss_MB": 6036,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 0,
+          "dimensionality": [],
+          "channels_stdout": 0,
+          "pockets_stdout": 8,
+          "chan_file_head": [
+            "e24g_cf3_100.chan   0 channels identified of dimensionality ",
+            "e24g_cf3_100.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 0,
+          "pockets": 8,
+          "nodes": 45553,
+          "accessible_nodes": 533,
+          "n_spheres": 8,
+          "sphere_radii": [
+            2.626,
+            2.342,
+            2.424,
+            2.429,
+            5.7,
+            4.861,
+            4.748,
+            4.727
+          ],
+          "sphere_volume_sum_A3": 2396.8206313041155,
+          "sphere_volume_pct_of_cell": 75.49758339903987,
+          "block_file": "e24g_zeo_runs/e24g_cf3_100/block1.82/e24g_cf3_100_relaxed.block",
+          "rc": 0,
+          "seconds": 156.6,
+          "peak_rss_MB": 5344,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.30": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 4,
+          "chan_file_head": [
+            "e24g_cf3_100.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  4.18986  3.18713  4.18986",
+            "Channel  1  4.23489  3.11653  4.23489"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 4,
+          "nodes": 45553,
+          "accessible_nodes": 1739,
+          "n_spheres": 4,
+          "sphere_radii": [
+            1.827,
+            1.877,
+            1.811,
+            1.85
+          ],
+          "sphere_volume_sum_A3": 104.59663986269565,
+          "sphere_volume_pct_of_cell": 3.2946952467596793,
+          "block_file": "e24g_zeo_runs/e24g_cf3_100/block1.30/e24g_cf3_100_relaxed.block",
+          "rc": 0,
+          "seconds": 161.5,
+          "peak_rss_MB": 6129,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24g_nc3h7_100",
+      "cif": "relax_tnf/e24g_nc3h7_100_relaxed.cif",
+      "n_atoms": 276,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 2.0,
+          "peak_rss_MB": 379,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 4.71169,
+      "PLD_Df": 3.68276,
+      "Dif": 4.71166,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 2,
+          "dimensionality": [
+            1,
+            1
+          ],
+          "channels_stdout": 2,
+          "pockets_stdout": 2,
+          "chan_file_head": [
+            "e24g_nc3h7_100.chan   2 channels identified of dimensionality 1 1 ",
+            "Channel  0  4.71166  3.68276  4.71166",
+            "Channel  1  4.71169  3.6827  4.71169"
+          ],
+          "rc": 0,
+          "seconds": 2.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 2,
+          "pockets": 2,
+          "nodes": 43589,
+          "accessible_nodes": 527,
+          "n_spheres": 2,
+          "sphere_radii": [
+            3.371,
+            3.178
+          ],
+          "sphere_volume_sum_A3": 294.95061954631456,
+          "sphere_volume_pct_of_cell": 9.290665603825458,
+          "block_file": "e24g_zeo_runs/e24g_nc3h7_100/block1.65/e24g_nc3h7_100_relaxed.block",
+          "rc": 0,
+          "seconds": 146.5,
+          "peak_rss_MB": 5400,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 2,
+          "dimensionality": [
+            1,
+            1
+          ],
+          "channels_stdout": 2,
+          "pockets_stdout": 2,
+          "chan_file_head": [
+            "e24g_nc3h7_100.chan   2 channels identified of dimensionality 1 1 ",
+            "Channel  0  4.71166  3.68276  4.71166",
+            "Channel  1  4.71169  3.6827  4.71169"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 2,
+          "pockets": 2,
+          "nodes": 43589,
+          "accessible_nodes": 411,
+          "n_spheres": 2,
+          "sphere_radii": [
+            3.234,
+            2.874
+          ],
+          "sphere_volume_sum_A3": 241.12312316573275,
+          "sphere_volume_pct_of_cell": 7.595150368318099,
+          "block_file": "e24g_zeo_runs/e24g_nc3h7_100/block1.82/e24g_nc3h7_100_relaxed.block",
+          "rc": 0,
+          "seconds": 145.6,
+          "peak_rss_MB": 5570,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.30": {
+        "chan": {
+          "n_channels_chanfile": 2,
+          "dimensionality": [
+            1,
+            1
+          ],
+          "channels_stdout": 2,
+          "pockets_stdout": 8,
+          "chan_file_head": [
+            "e24g_nc3h7_100.chan   2 channels identified of dimensionality 1 1 ",
+            "Channel  0  4.71166  3.68276  4.71166",
+            "Channel  1  4.71169  3.6827  4.71169"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 2,
+          "pockets": 8,
+          "nodes": 43589,
+          "accessible_nodes": 969,
+          "n_spheres": 8,
+          "sphere_radii": [
+            1.789,
+            4.809,
+            1.751,
+            4.747,
+            2.279,
+            2.268,
+            2.359,
+            2.211
+          ],
+          "sphere_volume_sum_A3": 1159.2184234621257,
+          "sphere_volume_pct_of_cell": 36.51428415626434,
+          "block_file": "e24g_zeo_runs/e24g_nc3h7_100/block1.30/e24g_nc3h7_100_relaxed.block",
+          "rc": 0,
+          "seconds": 152.5,
+          "peak_rss_MB": 5444,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24h_c2h5_050a",
+      "cif": "relax_tnf/e24h_c2h5_050a_relaxed.cif",
+      "n_atoms": 228,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 5.27561,
+      "PLD_Df": 3.8184,
+      "Dif": 5.27561,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 3,
+          "dimensionality": [
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 3,
+          "pockets_stdout": 2,
+          "chan_file_head": [
+            "e24h_c2h5_050a.chan   3 channels identified of dimensionality 1 1 1 ",
+            "Channel  0  5.27561  3.8184  5.27561",
+            "Channel  1  5.25448  3.81395  5.25448"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 3,
+          "pockets": 2,
+          "nodes": 39063,
+          "accessible_nodes": 1000,
+          "n_spheres": 2,
+          "sphere_radii": [
+            3.179,
+            5.304
+          ],
+          "sphere_volume_sum_A3": 759.4453953179586,
+          "sphere_volume_pct_of_cell": 23.92181180401371,
+          "block_file": "e24g_zeo_runs/e24h_c2h5_050a/block1.65/e24h_c2h5_050a_relaxed.block",
+          "rc": 0,
+          "seconds": 159.3,
+          "peak_rss_MB": 6204,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 3,
+          "dimensionality": [
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 3,
+          "pockets_stdout": 1,
+          "chan_file_head": [
+            "e24h_c2h5_050a.chan   3 channels identified of dimensionality 1 1 1 ",
+            "Channel  0  5.27561  3.8184  5.27561",
+            "Channel  1  5.25448  3.81395  5.25448"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 3,
+          "pockets": 1,
+          "nodes": 39063,
+          "accessible_nodes": 804,
+          "n_spheres": 1,
+          "sphere_radii": [
+            4.339
+          ],
+          "sphere_volume_sum_A3": 342.09951619005477,
+          "sphere_volume_pct_of_cell": 10.775811263055154,
+          "block_file": "e24g_zeo_runs/e24h_c2h5_050a/block1.82/e24h_c2h5_050a_relaxed.block",
+          "rc": 0,
+          "seconds": 153.2,
+          "peak_rss_MB": 6134,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.30": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 4,
+          "chan_file_head": [
+            "e24h_c2h5_050a.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.27561  3.8184  5.27561",
+            "Channel  1  4.22274  3.1033  4.22274"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 4,
+          "nodes": 39063,
+          "accessible_nodes": 1623,
+          "n_spheres": 4,
+          "sphere_radii": [
+            2.252,
+            1.659,
+            2.146,
+            1.599
+          ],
+          "sphere_volume_sum_A3": 125.53214778238815,
+          "sphere_volume_pct_of_cell": 3.9541439491468275,
+          "block_file": "e24g_zeo_runs/e24h_c2h5_050a/block1.30/e24h_c2h5_050a_relaxed.block",
+          "rc": 0,
+          "seconds": 162.2,
+          "peak_rss_MB": 5718,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24h_c2h5_050b",
+      "cif": "relax_tnf/e24h_c2h5_050b_relaxed.cif",
+      "n_atoms": 228,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 5.27572,
+      "PLD_Df": 3.81863,
+      "Dif": 5.27572,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 3,
+          "dimensionality": [
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 3,
+          "pockets_stdout": 2,
+          "chan_file_head": [
+            "e24h_c2h5_050b.chan   3 channels identified of dimensionality 1 1 1 ",
+            "Channel  0  5.25434  3.8137  5.25434",
+            "Channel  1  4.63255  3.79668  4.63255"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 3,
+          "pockets": 2,
+          "nodes": 39064,
+          "accessible_nodes": 1000,
+          "n_spheres": 2,
+          "sphere_radii": [
+            2.602,
+            5.463
+          ],
+          "sphere_volume_sum_A3": 756.761483834831,
+          "sphere_volume_pct_of_cell": 23.837271130261744,
+          "block_file": "e24g_zeo_runs/e24h_c2h5_050b/block1.65/e24h_c2h5_050b_relaxed.block",
+          "rc": 0,
+          "seconds": 158.3,
+          "peak_rss_MB": 6008,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 3,
+          "dimensionality": [
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 3,
+          "pockets_stdout": 1,
+          "chan_file_head": [
+            "e24h_c2h5_050b.chan   3 channels identified of dimensionality 1 1 1 ",
+            "Channel  0  5.25434  3.8137  5.25434",
+            "Channel  1  4.63255  3.79668  4.63255"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 3,
+          "pockets": 1,
+          "nodes": 39064,
+          "accessible_nodes": 805,
+          "n_spheres": 1,
+          "sphere_radii": [
+            5.232
+          ],
+          "sphere_volume_sum_A3": 599.9763730834162,
+          "sphere_volume_pct_of_cell": 18.898688401089323,
+          "block_file": "e24g_zeo_runs/e24h_c2h5_050b/block1.82/e24h_c2h5_050b_relaxed.block",
+          "rc": 0,
+          "seconds": 154.3,
+          "peak_rss_MB": 5192,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.30": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 4,
+          "chan_file_head": [
+            "e24h_c2h5_050b.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  4.63255  3.79668  4.63255",
+            "Channel  1  5.25434  3.8137  5.25434"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 4,
+          "nodes": 39064,
+          "accessible_nodes": 1624,
+          "n_spheres": 4,
+          "sphere_radii": [
+            1.639,
+            2.28,
+            1.566,
+            2.309
+          ],
+          "sphere_volume_sum_A3": 135.6867017605745,
+          "sphere_volume_pct_of_cell": 4.274002797087002,
+          "block_file": "e24g_zeo_runs/e24h_c2h5_050b/block1.30/e24h_c2h5_050b_relaxed.block",
+          "rc": 0,
+          "seconds": 162.3,
+          "peak_rss_MB": 6389,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24h_cl_050a",
+      "cif": "relax_tnf/e24h_cl_050a_relaxed.cif",
+      "n_atoms": 204,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 5.26931,
+      "PLD_Df": 3.81836,
+      "Dif": 5.26931,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24h_cl_050a.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.26931  3.81836  5.26931",
+            "Channel  1  5.00369  3.80433  5.00369"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 37924,
+          "accessible_nodes": 1209,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24g_zeo_runs/e24h_cl_050a/block1.65/e24h_cl_050a_relaxed.block",
+          "rc": 0,
+          "seconds": 152.1,
+          "peak_rss_MB": 5265,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24h_cl_050a.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.26931  3.81836  5.26931",
+            "Channel  1  5.01564  3.8101  5.01564"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 37924,
+          "accessible_nodes": 987,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24g_zeo_runs/e24h_cl_050a/block1.82/e24h_cl_050a_relaxed.block",
+          "rc": 0,
+          "seconds": 152.3,
+          "peak_rss_MB": 5863,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.30": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 6,
+          "chan_file_head": [
+            "e24h_cl_050a.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.26931  3.81836  5.26931",
+            "Channel  1  5.00369  3.80433  5.00369"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 6,
+          "nodes": 37924,
+          "accessible_nodes": 1785,
+          "n_spheres": 4,
+          "sphere_radii": [
+            2.269,
+            1.913,
+            2.352,
+            1.769
+          ],
+          "sphere_volume_sum_A3": 155.97173440296552,
+          "sphere_volume_pct_of_cell": 4.912962143343082,
+          "block_file": "e24g_zeo_runs/e24h_cl_050a/block1.30/e24h_cl_050a_relaxed.block",
+          "rc": 0,
+          "seconds": 162.6,
+          "peak_rss_MB": 6199,
+          "stopped_by_guard": false
+        }
+      }
+    },
+    {
+      "tag": "e24h_cl_050b",
+      "cif": "relax_tnf/e24h_cl_050b_relaxed.cif",
+      "n_atoms": 204,
+      "cell_volume_A3": 3174.6984782755267,
+      "runs": [
+        {
+          "cmd": "-ha -res",
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        }
+      ],
+      "LCD_Di": 5.26937,
+      "PLD_Df": 3.81847,
+      "Dif": 5.26937,
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24h_cl_050b.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.01556  3.80996  5.01556",
+            "Channel  1  5.24838  3.8135  5.24838"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 37922,
+          "accessible_nodes": 1208,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24g_zeo_runs/e24h_cl_050b/block1.65/e24h_cl_050b_relaxed.block",
+          "rc": 0,
+          "seconds": 153.4,
+          "peak_rss_MB": 5325,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24h_cl_050b.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.01556  3.80996  5.01556",
+            "Channel  1  5.24838  3.8135  5.24838"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 0,
+          "nodes": 37923,
+          "accessible_nodes": 986,
+          "n_spheres": 0,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "e24g_zeo_runs/e24h_cl_050b/block1.82/e24h_cl_050b_relaxed.block",
+          "rc": 0,
+          "seconds": 153.6,
+          "peak_rss_MB": 5319,
+          "stopped_by_guard": false
+        }
+      },
+      "r1.30": {
+        "chan": {
+          "n_channels_chanfile": 4,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 4,
+          "pockets_stdout": 6,
+          "chan_file_head": [
+            "e24h_cl_050b.chan   4 channels identified of dimensionality 1 1 1 1 ",
+            "Channel  0  5.01556  3.80996  5.01556",
+            "Channel  1  5.24838  3.8135  5.24838"
+          ],
+          "rc": 0,
+          "seconds": 1.0,
+          "peak_rss_MB": 0,
+          "stopped_by_guard": false
+        },
+        "block": {
+          "channels": 4,
+          "pockets": 6,
+          "nodes": 37923,
+          "accessible_nodes": 1784,
+          "n_spheres": 5,
+          "sphere_radii": [
+            1.893,
+            2.333,
+            1.479,
+            1.438,
+            2.283
+          ],
+          "sphere_volume_sum_A3": 157.44883359551827,
+          "sphere_volume_pct_of_cell": 4.959489371130556,
+          "block_file": "e24g_zeo_runs/e24h_cl_050b/block1.30/e24h_cl_050b_relaxed.block",
+          "rc": 0,
+          "seconds": 163.6,
+          "peak_rss_MB": 5622,
+          "stopped_by_guard": false
+        }
+      }
+    }
+  ],
+  "summary": {
+    "e24g_br_100": {
+      "PLD": 3.81716,
+      "LCD": 4.91961,
+      "PLD_lt_3.64": false,
+      "channels_1.65": 4,
+      "channels_1.82": 4,
+      "channels_1.30": 4,
+      "pockets_1.65": 0,
+      "pockets_1.82": 0,
+      "pockets_1.30": 4,
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 4
+    },
+    "e24g_cch_100": {
+      "PLD": 3.82743,
+      "LCD": 5.00414,
+      "PLD_lt_3.64": false,
+      "channels_1.65": 4,
+      "channels_1.82": 4,
+      "channels_1.30": 4,
+      "pockets_1.65": 0,
+      "pockets_1.82": 0,
+      "pockets_1.30": 4,
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 4
+    },
+    "e24g_cf3_100": {
+      "PLD": 3.18713,
+      "LCD": 4.23489,
+      "PLD_lt_3.64": true,
+      "channels_1.65": 0,
+      "channels_1.82": 0,
+      "channels_1.30": 4,
+      "pockets_1.65": 10,
+      "pockets_1.82": 8,
+      "pockets_1.30": 4,
+      "spheres_1.65": 8,
+      "spheres_1.82": 8,
+      "spheres_1.30": 4
+    },
+    "e24g_nc3h7_100": {
+      "PLD": 3.68276,
+      "LCD": 4.71169,
+      "PLD_lt_3.64": false,
+      "channels_1.65": 2,
+      "channels_1.82": 2,
+      "channels_1.30": 2,
+      "pockets_1.65": 2,
+      "pockets_1.82": 2,
+      "pockets_1.30": 8,
+      "spheres_1.65": 2,
+      "spheres_1.82": 2,
+      "spheres_1.30": 8
+    },
+    "e24h_c2h5_050a": {
+      "PLD": 3.8184,
+      "LCD": 5.27561,
+      "PLD_lt_3.64": false,
+      "channels_1.65": 3,
+      "channels_1.82": 3,
+      "channels_1.30": 4,
+      "pockets_1.65": 2,
+      "pockets_1.82": 1,
+      "pockets_1.30": 4,
+      "spheres_1.65": 2,
+      "spheres_1.82": 1,
+      "spheres_1.30": 4
+    },
+    "e24h_c2h5_050b": {
+      "PLD": 3.81863,
+      "LCD": 5.27572,
+      "PLD_lt_3.64": false,
+      "channels_1.65": 3,
+      "channels_1.82": 3,
+      "channels_1.30": 4,
+      "pockets_1.65": 2,
+      "pockets_1.82": 1,
+      "pockets_1.30": 4,
+      "spheres_1.65": 2,
+      "spheres_1.82": 1,
+      "spheres_1.30": 4
+    },
+    "e24h_cl_050a": {
+      "PLD": 3.81836,
+      "LCD": 5.26931,
+      "PLD_lt_3.64": false,
+      "channels_1.65": 4,
+      "channels_1.82": 4,
+      "channels_1.30": 4,
+      "pockets_1.65": 0,
+      "pockets_1.82": 0,
+      "pockets_1.30": 6,
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 4
+    },
+    "e24h_cl_050b": {
+      "PLD": 3.81847,
+      "LCD": 5.26937,
+      "PLD_lt_3.64": false,
+      "channels_1.65": 4,
+      "channels_1.82": 4,
+      "channels_1.30": 4,
+      "pockets_1.65": 0,
+      "pockets_1.82": 0,
+      "pockets_1.30": 6,
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 5
+    }
+  },
+  "elapsed_s": 3825,
+  "note": "기계적 사실뿐. 주머니 부피 = .block 구 부피 합(겹침 무시). PLD = Df · LCD = Di (-res). 1.30 은 물 탐침(서술)."
+}
