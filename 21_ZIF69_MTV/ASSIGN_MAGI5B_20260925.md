@@ -648,3 +648,8 @@
     ③ **기하 서술 둘(판정 아님)**: (a) E-24h 실현 A(고리 [0,3]) · B([1,2])가 대칭 동치인지 — 모체 대칭 연산으로 A → B 가 겹치는지(이완본 · 전하본 기준 최대 원자 차). (b) CF₃ 이완본 F···O 1.709 Å — 그 O 가 어느 원자(자유 카복실 O?)인지 · 모체 대비 C–O · Zn–O 변화 · 결합 생성처럼 보이는지.
     ④ **검산 재개**: 지금부터 E-24g · E-24h 마지막 판정(≈ 18:00)까지 30분 확인 — 1~10회차와 같은 형식(숫자 일치 · 등록 선후 · 완주 표지 · 관문 조인).
     하지 않는 것: RASPA · Zeo++ · LAMMPS 계산 · 판정문 작성(종합자) · 남의 가지 러너 파일 수정.
+
+    **[E-24g · E-24h 분담 변경 2026-09-26 12:07 — 막음 Widom 자료 0건 · 주머니 결과(Junseok Zeo++) 아직 안 옴]** 데스크탑은 12:05 부터 UFF4MOF 상한 300(`run_e24g_relax.py`, 6구조 — 안에 Zeo++ 호출)이 돌아
+      **RASPA 를 같이 못 띄움**(CLAUDE.md §5). 그래서 **막음 Widom = Junseok**(막음 파일 보유 · E-24c 막음 Widom 과 같은 드라이버 `magi5_e24c_bp_junseok.py` 틀 — 대상 · 경로 · 출력만 `results_e24g_blockpockets_junseok.json`).
+      대상 규칙(등록 뜻 그대로): 관문(0) 통과 6구조 중 **1.65 Å(CO₂) 또는 1.82 Å(N₂)에서 막음 구가 1개 이상**인 것 전부 · 전하 ON/OFF · E-24c 와 같은 관문(not-found 0 · 구 수 × 단위셀 수 등식 · 'Pockets are blocked' · finished).
+      데스크탑 이식본 `e24g_bp_desktop.py` 는 예비(Junseok 이 못 하면 UFF4MOF 뒤 데스크탑이). 차단 없는 Widom 6구조는 12:04 완주(md5: Br e97ff3ce · CF₃ 08a55334 · C₂H₅50a fe7d9c0e · b a54c44ec · Cl50a de77c89e · b 4dc7d6fa) — 판정은 주머니 결과 뒤.
