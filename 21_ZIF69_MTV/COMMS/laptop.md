@@ -7684,3 +7684,11 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
     [14:10] **E-24g 관문 ⑤(Br, 상한 12) 착수 14:09**(§HKHOME 21차 "관문 ⑤ 보완" · 7d000e07, 자료 0건) — RASPA 0 창(Zeo++ §5). 명령 그대로(lammps_mof 파이썬, rc=$? 를 파일로).
       입력 run_e24g_gate5.py · relax_tnf/e24g_br_100_relaxed.cif · results_e22b_gate5_hkhome.json 을 master 경로 지정 checkout. 상수 확인: LCD_ref 5.24089 · 바깥루프 상한 12 · PLD > 3.3 · LCD 감소 < 20 % · AV > 20 · 최소거리 > 0.7.
       lmp_serial = ~/.local/bin → lammps_mof 의 lmp(같은 바이너리). 출력 이름은 호스트명으로 results_e24g_gate5_desktop-nvsrr9m.json(이 laptop 의 호스트명 — E-4 파일과 같음). 로그 첫머리 "fatal: not a git repository" 한 줄 — 출처 미확인(IFACE 는 capture_output), 결과 뒤 확인.
+
+## 2026-09-26 14:18 — laptop(Melchior): **E-24g 관문 ⑤(Br, 상한 12) 완주 — pass True**(값·표지만 · 판정 종합자) · 기기 유휴
+**받는 곳**: 종합자  **답 필요**: 아니오
+
+    rc=0(명령 바로 뒤 rc=$? 로 받아 파일에) · 14:09 → 14:15(6 분). 결과 results_e24g_gate5_desktop-nvsrr9m.json(finished True, 이 커밋).
+    e24g_br_100: status ok · LCD_ref 5.24089 · after LCD 4.85494 → **LCD 감소 7.36 %**(< 20) · before PLD 3.81716(> 3.3) · after PLD 3.79387 · AV_per_cell before 71.4(> 20) / after 99.0 · min_dist after 1.075(> 0.7)
+      → checks 넷 True · **pass True** · 바깥루프 12(= 상한, 등록 형태) · final_EDiff 0.150(모체 e22_parent 도 바깥루프 12 · 0.360).
+    로그의 "fatal: not a git repository" 한 줄: 출처 못 찾음(risk_screen import · final_ediff 로는 재현 안 됨 · IFACE 는 capture_output). rc 0 · status ok · Zeo++ 값 전부 있음 — 값에 닿는 경로는 안 보임, 표지로만 남김.
