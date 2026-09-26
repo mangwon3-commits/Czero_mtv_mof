@@ -33,7 +33,9 @@ def zero_charge_copy(cif, out):
     return n
 
 def _one(args):
-    cif, gas, temp, runs = args
+    cif, gas, temp, runs = args[:4]
+    # 씨앗 간격(2026-09-25 laptop 지적): 동시 착수는 초 단위 씨앗이 겹침 → 작업 순번 × 15 s
+    if len(args) > 4: time.sleep(15 * int(args[4]))
     rg.TEMP = float(temp); rg.RUNS = runs
     name, g, mode, res, st = rg.run_one((cif, gas, 'widom'))
     return name, g, res, st
@@ -52,7 +54,7 @@ def main():
     if 'off' in a.charges:
         q0 = os.path.join(runs, os.path.basename(a.cif).replace('.cif', '_q0.cif'))
         n = zero_charge_copy(a.cif, q0); print(f'  전하 OFF 사본: {q0} ({n} 원자 전하 0)', flush=True); cifs['off'] = q0
-    jobs = [(c, g, a.temp, runs) for ch, c in cifs.items() for g in a.gases.split(',')]
+    jobs = [(c, g, a.temp, runs, k) for k, (c, g) in enumerate((c, g) for ch, c in cifs.items() for g in a.gases.split(','))]
     print(f'  Widom {len(jobs)}작업 (tag {a.tag}, {a.temp} K, 워커 {a.workers}) — 착수 {time.strftime("%F %T")}', flush=True)
     host = socket.gethostname().lower()
     out = os.path.join(HERE, f'results_magi5_e3_{a.tag}_widom_{host}.json')
