@@ -7710,3 +7710,4 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
       ⚠ ③ 의 rc 는 사슬 교체로 **못 받음** — 결과 JSON 의 finished · 행 status 로 대신 적음(로그에 명시).
       입력: run_e24i_humid_wc.py · charged_v3/e24i_ch3_open_h{1,2,3} 경로 지정 checkout — md5 a8e6a165 셋 = master 원본. 러너 import 확인: 9작업 · 착수 간격 15 s + 2 s 잠금 · rc 기록 감쌈 확인.
       견적: ③ ≈ 16:40 → 습윤 WC ≈ 17:50(E-25 같은 계 이 기기 실측: ads 54 · vsa 40 · tsa 27 분, 9워커라 한 판) → ② ≈ 19:00~20:00.
+    [finished · 씨앗 8 고유 · rc 0 둘(사슬 로그) · JSON finished — postman 이 이미 반입.\n      S(ON/OFF): C₂H₅ open 154.34 ± 3.76 / 69.51 ± 1.05 · CN open 116.59 ± 2.63 / 53.56 ± 0.73(값만 — 판정 종합자).\n] E-24i ① Widom 감사(16:12 완주 · 22 분): 출력 8/8 Simulation    [16:22] E-24i ① Widom 감사(16:12 완주 · 22 분): 출력 8/8 Simulation
