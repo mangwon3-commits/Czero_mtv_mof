@@ -91,6 +91,36 @@
    "pass": true,
    "final_EDiff": 0.956451518420181,
    "outer_loops": 12
+  },
+  "e24i_c2h5_open": {
+   "status": "ok",
+   "before": {
+    "LCD": 4.65535,
+    "PLD": 3.80981,
+    "AV": 34.2867,
+    "min_dist": 1.076,
+    "n_atoms": 228,
+    "AV_per_cell": 34.3
+   },
+   "after": {
+    "LCD": 5.38317,
+    "PLD": 4.36265,
+    "AV": 1030.07,
+    "min_dist": 1.077,
+    "n_atoms": 2736,
+    "supercell_rep": 12,
+    "AV_per_cell": 85.8
+   },
+   "LCD_drop_pct": -2.71,
+   "checks": {
+    "PLD": true,
+    "LCD_drop": true,
+    "AV": true,
+    "min_dist": true
+   },
+   "pass": true,
+   "final_EDiff": 7.64128031146993,
+   "outer_loops": 12
   }
  }
 }
