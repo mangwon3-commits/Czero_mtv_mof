@@ -280,6 +280,80 @@ def wet3():
     p = os.path.join(OUT, 'e28d_humid_br_cl50_c2h550.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
 
 
+E28E_ROWS = [('e24i_ch3_open', '(CH3)2 열린 자리'), ('e24i_br_open', 'Br2 열린 자리'), ('e24i_c2h5_open', '(C2H5)2 열린 자리 막음'),
+             ('e24i_cn_open', '(CN)2 열린 자리'), ('e24i_cl_open', 'Cl2 열린 자리')]
+E28E_BLOCK = {('e24i_c2h5_open', 'CO2'): os.path.join(HERE, 'e24i_zeo_runs', 'e24i_c2h5_open', 'block1.65', 'e24i_c2h5_open_relaxed.block'),
+              ('e24i_c2h5_open', 'water'): os.path.join(HERE, 'e24i_zeo_runs', 'e24i_c2h5_open', 'block1.30', 'e24i_c2h5_open_relaxed.block')}
+
+
+def _vtk(stem):
+    """압축본 우선, 없으면 풀린 판. 둘 다 없으면 None."""
+    for p in (stem + '.gz', stem):
+        if os.path.exists(p):
+            return p
+    return None
+
+
+def _circles4(ax, t, m, a_len, b_len):
+    f = E28E_BLOCK.get((t, m))
+    if f is None:
+        return
+    E28D_BLOCK[t + '#' + m] = f
+    _circles(ax, t + '#' + m, a_len, b_len)
+
+
+def dry4():
+    """E-28e — E-24i 열린 자리 치환체 건조 CO₂ 격자 ON/OFF/차분(주 제안 모체 행을 맨 위에 대조로). 격자 density_v3_tpl4/<기기>/."""
+    sub = os.environ.get('E28E_SUB', 'hkhome')
+    D4 = os.path.join(HERE, 'density_v3_tpl4', sub)
+    P, rows = {}, [('e22_parent', '모체(주 제안)', DRY)] + [(t, lab, D4) for t, lab in E28E_ROWS]
+    for t, lab, D in rows:
+        g = [_vtk(os.path.join(D, f'{t}__q_{q}', 'VTK', 'System_0', 'COMDensityProfile_CO2.vtk')) for q in ('on', 'off')]
+        if None in g:
+            print(f'  {t}: 건조 격자 없음 — 건너뜀'); continue
+        on, off = proj_c(read_grid(g[0])), proj_c(read_grid(g[1]))
+        P[t] = (lab, on, off, on - off)
+    if len(P) < 2:
+        print('E-28e 건조 격자 부족'); return
+    vmax = max(max(p[1].max(), p[2].max()) for p in P.values()); dmax = max(abs(p[3]).max() for p in P.values())
+    fig, axs = plt.subplots(len(P), 3, figsize=(10.4, 2.65 * len(P)), squeeze=False)
+    for i, (t, (lab, on, off, d)) in enumerate(P.items()):
+        _, _, cp = atoms_ab(t); a_len, b_len = cp[0], cp[1]
+        im1 = panel(axs[i, 0], on, a_len, b_len, 'magma', 0, vmax, f'{lab} — 전하 ON')
+        panel(axs[i, 1], off, a_len, b_len, 'magma', 0, vmax, f'{lab} — 전하 OFF')
+        im3 = panel(axs[i, 2], d, a_len, b_len, 'RdBu_r', -dmax, dmax, f'{lab} — ON-OFF 차분')
+        for j in range(3):
+            overlay(axs[i, j], t, a_len, b_len); _circles4(axs[i, j], t, 'CO2', a_len, b_len)
+    fig.colorbar(im1, ax=axs[:, :2], shrink=0.6, label='CO₂ 밀도 (c 투영, 합 100 %)')
+    fig.colorbar(im3, ax=axs[:, 2], shrink=0.6, label='정전기 차분 (%p)')
+    fig.suptitle('E-28e 건조 CO₂ 밀도 — 겹치지 않는 링커에만 4,8-치환(E-24i) · 0.15 bar · 298 K · c 투영\n(연두 별 = 치환기 · 점선 원 = 막은 주머니 · 맨 위 = 모체 대조)', fontsize=10)
+    os.makedirs(OUT, exist_ok=True)
+    p = os.path.join(OUT, 'e28e_dry_e24i_open.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
+
+
+def wet4():
+    """E-28e — 같은 다섯(+ 모체 대조)의 습윤(RH90) CO₂ · 물 격자. water_runs_density_v3w/rh90_<tag>/."""
+    rows = [('e22_parent', '모체(주 제안)')] + E28E_ROWS
+    G = {}
+    for t, lab in rows:
+        g = [_vtk(os.path.join(WET, f'rh90_{t}', 'VTK', 'System_0', f'COMDensityProfile_{m}.vtk')) for m in ('CO2', 'water')]
+        if None in g:
+            print(f'  {t}: 습윤 격자 없음 — 건너뜀'); continue
+        G[t] = (lab, g)
+    if len(G) < 2:
+        print('E-28e 습윤 격자 부족'); return
+    fig, axs = plt.subplots(len(G), 2, figsize=(7.4, 2.65 * len(G)), squeeze=False)
+    for i, (t, (lab, g)) in enumerate(G.items()):
+        _, _, cp = atoms_ab(t); a_len, b_len = cp[0], cp[1]
+        for j, m in enumerate(('CO2', 'water')):
+            img = proj_c(read_grid(g[j]))
+            panel(axs[i, j], img, a_len, b_len, 'magma' if m == 'CO2' else 'Blues', 0, img.max(), f'{lab} — {"CO₂" if m == "CO2" else "H₂O (영역 서술만)"}')
+            overlay(axs[i, j], t, a_len, b_len); _circles4(axs[i, j], t, m, a_len, b_len)
+    fig.suptitle('E-28e 습윤 — CO2 15 kPa + H2O 2852 Pa (RH90) · 298 K · c 투영 · E-24i 열린 자리 치환체\n(색 척도는 칸마다 따로 — 칸 사이 밝기 비교 금지 · 물 격자는 영역 서술만)', fontsize=10)
+    os.makedirs(OUT, exist_ok=True)
+    p = os.path.join(OUT, 'e28e_humid_e24i_open.png'); fig.savefig(p, dpi=200, bbox_inches='tight'); plt.close(fig); print('저장', p)
+
+
 if __name__ == '__main__':
     what = sys.argv[1:] or ['dry', 'wet']
     if 'dry' in what: dry()
@@ -288,3 +362,5 @@ if __name__ == '__main__':
     if 'wet2' in what: wet2(os.environ.get('E28C_BASE'))
     if 'dry3' in what: dry3()
     if 'wet3' in what: wet3()
+    if 'dry4' in what: dry4()
+    if 'wet4' in what: wet4()
