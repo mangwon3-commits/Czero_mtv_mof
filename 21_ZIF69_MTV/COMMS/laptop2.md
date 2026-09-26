@@ -8365,3 +8365,10 @@ MAGI-005 R1 sha256 711b775a112e74e976ad631a038afb94f1ae50f55fe131f8ec22155deff3a
 ## 2026-09-26 15:51 — laptop2: **E-24i 착수** 15:50 — 정정 수령(Widom 안 기다림). run_e24i_mix.py(master 0e63eefb 판, run_e24g_mix 사본 대조) 두 개 20 s 간격 동시: E24G_TAG=e24i_ch3_open · e24i_br_open, E24G_MACHINE=laptop2 · E24MIX_WORKERS=3 → 6작업, 착수 초 전부 다름(15:50:17 · :32 · :37 · :47 · :52 · 15:51:07). S_Henry 는 자리 채움 1.0 · 비 인용 금지 표지(러너가 행에 적음). 입력 e24i_ch3_open 216원자 Σq 2.8e-5 · e24i_br_open 204원자 Σq 1.2e-5 · md5 8e8ec933 · master 병합(충돌 없음) · 러너 0 확인. 로그 e24i_ch3_mix.log · e24i_br_mix.log, 출력 results_e24i_<tag>_mix_laptop2.json, rc=$? 먼저 받음. 먼저 띄움(후속 자격은 데스크탑 Widom 뒤). 견적 ≈ 1.7 h(E-24g 실측 95~102 분).
 
 ## 2026-09-26 16:24 — laptop2: **E-24i Cl 열린 자리 습윤 WC(예비) 접수** — S_mix 두 구조(≈ 17:30) 뒤 **자동 착수** 걸어 둠(~/.mof_chain/e24i_hwc_follow.sh: S_mix 사슬 끝 → 러너 0 → master 병합(실패·충돌이면 되돌리고 멈춤) → 사본 h1~h3 md5 = 원본 c1e97588 대조 → E24I_HWC_TAG=e24i_cl_open · E24I_MACHINE=laptop2 · HWC_V3W_TARGETS=h1,h2,h3 · WORKERS=9 · RESULT=humid_working_capacity_w2_e24i_cl_open_laptop2.json 로 run_e24i_humid_wc.py). S_mix 결과 보고는 따로.
+
+## 2026-09-26 17:27 — laptop2: **E-24i S_mix 끝** 17:26 — results_e24i_e24i_ch3_open_mix_laptop2.json · results_e24i_e24i_br_open_mix_laptop2.json + results_e24i_mix_summary_laptop2.json(원본 무수정). **판정 전 관문**(둘 다): 3/3 ok · 작업 rc 0 · 프로세스 rc=0 · 씨앗 6 고유 · finished 6/6 · 두 성분 적재 · md5 8e8ec933. 작업 ≈ 90~96 분. ⚠ 행의 ratio(S_mix/S_Henry)는 S_Henry 자리 채움 1.0 이라 **인용 금지**.
+    CH₃ open: 109.72 · 108.21 · 108.08 → **평균 108.67**(SD 0.92 · ±̄/√3 3.87) · CO₂ 2.83~2.84
+    Br open : 133.13 · 125.65 · 125.27 → **평균 128.02**(SD 4.43 · ±̄/√3 5.05) · CO₂ 2.82~2.85
+    단위(±̄/√3 합성) · 씨앗 SD 형: CH₃ open − CH₃ 100(128.62) −3.30 · −4.69 | − CN −2.24 | − Br 100 −4.59
+                                   Br open − Br 100(147.27) **−2.14** · −3.60 | − Cl 100 −1.26 | − CN +0.78 | − CH₃ 100 −0.09 | − C₂H₅ 막음 −1.90
+    판정은 종합자(후속 자격은 데스크탑 Widom 뒤). 이어서 Cl 열린 자리 습윤 WC 는 자동 착수됨(17:26:30, 병합 33b06693 · 사본 md5 c1e97588 = 원본). 덤: 어제 E-22e 사슬이 charged_e22e.json 의 cached 칸 둘을 true 로 바꿔 남긴 것을 커밋 판으로 되돌림(실제 계산 기록 유지).
