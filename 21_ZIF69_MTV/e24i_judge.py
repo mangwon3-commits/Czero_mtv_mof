@@ -128,7 +128,7 @@ def bp(tag):
 
 
 def water_blocked(tag, wb):
-    d = load(f'results_e24i_{tag}_water_blk_junseok.json')
+    d = load(f'results_{tag}_water_blk_junseok.json')
     if d is None:
         return None, '파일 없음'
     rs = [r for r in d.get('rows', []) if abs(r.get('block_radius', 0) - 1.3) < 1e-6]
@@ -137,6 +137,9 @@ def water_blocked(tag, wb):
           and r.get('block', {}).get('blocked_line') and r.get('block', {}).get('n_blocked') == r.get('n_expected')]
     if len(ok) != 4 or len({r['seed'] for r in ok}) != 4:
         return None, f'ok {len(ok)}/4'
+    n130 = load('results_e24i_access_junseok.json')['summary'][tag]['spheres_1.30']
+    if not all(r['n_expected'] == n130 * math.prod(r['unit_cells']) for r in ok):
+        return None, 'N ≠ 구(1.30) × 셀'
     k = [r['KH_water'] for r in ok]
     m, me = st.mean(k), st.mean(r['KH_water_err'] for r in ok) / 2
     i = m / wb['KH']
