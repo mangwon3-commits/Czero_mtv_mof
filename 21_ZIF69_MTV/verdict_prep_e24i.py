@@ -84,6 +84,7 @@ if PAR_W is None:
     sys.exit(f"모체 Widom 읽기 실패 {why}")
 import final_crosscheck_e23 as F  # noqa: E402  (모체 S_mix 원자료: results_e23_mix_*)
 PAR_MIX = dict(S=F.S["tpl"]["mean"], Se=F.S["tpl"]["pm"])
+POCKET, BDEN = set(), {}   # 주머니 있는 태그 · 막음 분모 K_H(CO₂ ON @1.65)
 
 
 def main():
@@ -127,6 +128,7 @@ def main():
     bpf = files("results_e24i_blockpockets_*.json", "bp")
     print("\n## (1) · 후속 조건 — S_ON(주머니 있으면 막음값) ≥ 모체 + 1.5 단위")
     son, xs = {}, {}
+    global POCKET, BDEN
     for t in TAGS:
         w, why = W[t]
         a = acc.get(t)
@@ -137,13 +139,24 @@ def main():
         if a.get("ch") == 0:
             print(f"  {t}: CO₂ 탐침 통로 0 → S_ON 정의 불가(제외)"); continue
         if (a.get("pk165") or 0) + (a.get("pk182") or 0) > 0:
-            v = None
+            POCKET.add(t)
+            v, bwhy = None, "막음 Widom 미도착"
             for n, d in bpf.items():
                 s = ((d or {}).get("per_structure") or {}).get(t)
-                if s and s.get("S_ON_blocked") is not None:
-                    v = dict(S=s["S_ON_blocked"], Se=s["S_ON_blocked_err"], src="막음")
+                if not s or s.get("S_ON_blocked") is None:
+                    continue
+                R = s.get("rows") or {}
+                bad = [k for k, r in R.items() if r.get("status") != "ok" or r.get("returncode") != 0 or not r.get("marker_finished")
+                       or not r.get("pockets_blocked_line") or r.get("n_blocked_reported") != r.get("n_expected") or r.get("stderr_not_found")]
+                if bad or not d.get("seeds_distinct") or not d.get("finished"):
+                    bwhy = f"막음 관문 문제 {bad} · 씨앗 고유 {d.get('seeds_distinct')} · finished {d.get('finished')}"; continue
+                S2 = R["on_CO2@1.65"]["KH"] / R["on_N2@1.82"]["KH"]
+                if abs(S2 - s["S_ON_blocked"]) > 1e-6 * S2:
+                    bwhy = f"막음 S_ON 이 K_H 비와 다름 {S2}"; continue
+                v = dict(S=s["S_ON_blocked"], Se=s["S_ON_blocked_err"], src=f"막음 · {n} · 막음 수 {R['on_CO2@1.65'].get('n_blocked_reported')}={R['on_CO2@1.65'].get('n_expected')}")
+                BDEN[t] = (R["on_CO2@1.65"]["KH"], R["on_CO2@1.65"]["KH_err"])
             if v is None:
-                print(f"  {t}: 주머니 {a.get('pk165')}·{a.get('pk182')} — 막음 Widom 미도착(차단 없는 {w['S']:.2f} 는 서술)"); continue
+                print(f"  {t}: 주머니 {a.get('pk165')}·{a.get('pk182')} — {bwhy}(차단 없는 {w['S']:.2f} 는 서술)"); continue
         else:
             v = dict(S=w["S"], Se=w["Se"], src="차단 없음(주머니 0)")
         x = u(v["S"] - PAR_W["S"], v["Se"], PAR_W["Se"])
@@ -161,17 +174,31 @@ def main():
         c = [d for n, d in mixf.items() if n.startswith(f"results_e24i_{t}_mix_")]
         if len(c) == 1 and c[0]:
             rows = [r for r in c[0].get("rows", []) if r.get("status") == "ok"]
+            if t in POCKET:
+                rows = [r for r in rows if all(((r.get("block") or {}).get(g) or {}).get("n_blocked") == (r.get("n_expected") or {}).get(g)
+                                               and ((r.get("block") or {}).get(g) or {}).get("blocked_line") for g in ("CO2", "N2"))]
+            elif any(r.get("block") for r in rows):
+                rows = []   # 주머니 0 인데 막음 실행 — 자가 다름
             if len(rows) == 3 and len({r.get("seed") for r in rows}) == 3:
                 s = [r["N_CO2"] / r["N_N2"] * (0.85 / 0.15) for r in rows]
                 e = [x * math.hypot(r["N_CO2_err"] / r["N_CO2"], r["N_N2_err"] / r["N_N2"]) for x, r in zip(s, rows)]
                 MIX[t] = dict(S=st.mean(s), Se=st.mean(e) / math.sqrt(3), sd=st.stdev(s))
         for n, d in watf.items():
-            rows = [r for r in (d or {}).get("rows", []) if r.get("name") in (t, t + "_DDEC6") and r.get("status") == "ok"]
-            if len(rows) == 4 and W[t][0] is not None:
+            if t in POCKET:
+                # 주머니 있음: 등록 보완(27f32f80) — 물 K_H 는 막음 1.30 · 4씨앗, 분모는 막음 K_H(CO₂ ON @1.65)
+                rows = [r for r in (d or {}).get("rows", []) if n.startswith(f"results_e24i_{t}_water_") and r.get("status") == "ok"
+                        and abs((r.get("block_radius") or 0) - 1.30) < 1e-6 and r.get("marker_finished")
+                        and (r.get("block") or {}).get("n_blocked") == r.get("n_expected")]
+                den = BDEN.get(t)
+            else:
+                rows = [r for r in (d or {}).get("rows", []) if r.get("name") in (t, t + "_DDEC6") and r.get("status") == "ok"
+                        and not n.startswith(f"results_e24i_{t}_water_")]
+                den = (W[t][0]["KH"], W[t][0]["KHe"]) if W[t][0] is not None else None
+            if len(rows) == 4 and den is not None and len({r.get("seed") for r in rows}) == 4:
                 k = [r["KH_water"] for r in rows]; ke = [r["KH_water_err"] for r in rows]
                 m, me = st.mean(k), st.mean(ke) / 2
-                i = m / W[t][0]["KH"]
-                WAT[t] = dict(idx=i, err=i * math.hypot(me / m, W[t][0]["KHe"] / W[t][0]["KH"]), note="차단 없는 분모(주머니 있으면 막음 분모로 바꿔야 함)")
+                i = m / den[0]
+                WAT[t] = dict(idx=i, err=i * math.hypot(me / m, den[1] / den[0]), src=n + (" (막음 1.30 ÷ 막음 분모)" if t in POCKET else " (차단 없음)"))
     print("\n## (2) E-23 규칙 1위(후속 거친 후보) S_mix ≥ 모체 + 1.5 단위")
     fam = [t for t in TAGS if xs.get(t, -9) >= TH]
     if not fam:
@@ -179,7 +206,7 @@ def main():
     miss = [t for t in fam if t not in MIX or t not in WAT]
     for t in fam:
         print(f"  {t}: S_mix {('%.2f ± %.2f (SD %.2f)' % (MIX[t]['S'], MIX[t]['Se'], MIX[t]['sd'])) if t in MIX else '미완비'} · "
-              f"물 지수 {('%.5f ± %.5f' % (WAT[t]['idx'], WAT[t]['err'])) if t in WAT else '미완비'}")
+              f"물 지수 {('%.5f ± %.5f [%s]' % (WAT[t]['idx'], WAT[t]['err'], WAT[t]['src'])) if t in WAT else '미완비'}")
     if miss:
         print(f"  미완비 {miss} — 판정량 보류"); return
     cand = [a for a in fam if all(u(MIX[a]["S"] - MIX[b]["S"], MIX[a]["Se"], MIX[b]["Se"]) > -TH for b in fam if b != a)]
