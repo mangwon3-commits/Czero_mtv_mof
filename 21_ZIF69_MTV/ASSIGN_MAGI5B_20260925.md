@@ -717,3 +717,9 @@
       자: E-24f · E-25 와 같음(RH90 · ads 298 K/15 kPa · TSA 373 K · VSA 298 K/5 kPa · 3씨앗 · 차단 없음 — 주머니 있으면 E-24f 막음 방식). 러너 `run_e24i_humid_wc.py`(Junseok Br 러너 사본, 대상 env).
       분담: laptop — CH₃(관문 ⑤ 뒤, UFF4MOF 앞) · 데스크탑 — Br(E-28e 건조 뒤) · Junseok — 셋째(S_mix 뒤). laptop2 — S_mix 뒤 예비.
       비용: 42 분(Junseok E-24f 9작업 · 워커 9) ~ 2 h 10 분(laptop2) — 기기마다 다름 → **≈ 18:00~18:30**.
+
+    **[E-24i C₂H₅ 물 지수 = 막음 조건 — 등록 보완 2026-09-26 16:40 · 자료 0건(E-24i 물 값 · 막음 Widom 값 안 봄)]** C₂H₅ open 은 Zeo++ 주머니 있음(1.65 구 4 · 1.30 구 5, Junseok 4591ce56).
+      E-24e · E-24g(C₂H₅ 계열)와 같은 자로 **물 지수 = K_H(물, 막음 1.30 · 4씨앗) ÷ K_H(CO₂ ON, 막음 1.65)**(분모 = 데스크탑 막음 Widom `results_e24i_blockpockets_hkhome.json` on_CO2@1.65).
+      데스크탑 `results_e24i_water_hkhome.json` 의 C₂H₅ 행(차단 없음)은 **서술**. S_ON · S_mix 도 막음값(이미 등록 — 판정의 뜻). 나머지 넷은 주머니 0 → 차단 없음 그대로.
+      분담: Junseok(러너 `magi5_e24e_junseok.py` 계열 · 물 전용 · E-24g C₂H₅ 50 a 와 같은 틀) — Cl S_mix 뒤 습윤 WC 와 나란히. 비용 4씨앗 × ≈ 14 분(E-24g 50 a Junseok 실측 13.5 분/씨앗).
+
