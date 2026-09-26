@@ -251,7 +251,104 @@
    "status": "pending"
   },
   "e24i_cn_open": {
-   "status": "pending"
+   "status": "ok",
+   "before": {
+    "LCD": 5.0287,
+    "PLD": 3.82412,
+    "AV": 78.0976,
+    "min_dist": 1.075,
+    "n_atoms": 208,
+    "AV_per_cell": 78.1
+   },
+   "after": {
+    "LCD": 5.11193,
+    "PLD": 3.2963,
+    "AV": 0.0,
+    "min_dist": 1.079,
+    "n_atoms": 2496,
+    "supercell_rep": 12,
+    "AV_per_cell": 0.0
+   },
+   "final_EDiff": 7.80588497946155e-05,
+   "outer_loops": 94,
+   "minutes": 49.4,
+   "cell_before": {
+    "a": 24.404,
+    "b": 14.181,
+    "c": 9.304,
+    "alpha": 90.0,
+    "beta": 99.608,
+    "gamma": 90.0,
+    "V": 3174.6984782755267,
+    "n_atoms": 208
+   },
+   "chan_before": {
+    "probe_radius": 1.65,
+    "rc": 0,
+    "n_channels": 4,
+    "dimensionality": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "channels_stdout": 4,
+    "pockets_stdout": 0,
+    "chan_file_head": [
+     "/home/skyjun/mof_project/21_ZIF69_MTV/lmp_e24i/e24i_cn_open/before.cif.chan1.65   4 channels identified of dimensionality 1 1 1 1 ",
+     "Channel  0  5.02866  3.82396  5.02866",
+     "Channel  1  5.02817  3.81586  5.02817",
+     "Channel  2  5.0287  3.82412  5.0287"
+    ]
+   },
+   "cell_after_supercell": {
+    "a": 51.45374166288265,
+    "b": 28.35703931199659,
+    "c": 27.841330523790425,
+    "alpha": 90.0,
+    "beta": 99.60800029118649,
+    "gamma": 90.0,
+    "V": 40052.78704106324,
+    "n_atoms": 2496
+   },
+   "cell_after_per_cell": {
+    "rep_abc": [
+     2,
+     2,
+     3
+    ],
+    "a": 25.726870831441325,
+    "b": 14.178519655998295,
+    "c": 9.280443507930142,
+    "alpha": 90.0,
+    "beta": 99.60800029118649,
+    "gamma": 90.0,
+    "V": 3337.7322534219365,
+    "rep_product_eq_supercell_rep": true
+   },
+   "cell_change_pct": {
+    "a": 5.4207131267059685,
+    "b": -0.01749061421411626,
+    "c": -0.25318671614206667,
+    "V": 5.135409748738364
+   },
+   "cell_change_deg": {
+    "alpha": 0.0,
+    "beta": 2.9118648114945245e-07,
+    "gamma": 0.0
+   },
+   "chan_after": {
+    "probe_radius": 1.65,
+    "rc": 0,
+    "n_channels": 0,
+    "dimensionality": [],
+    "channels_stdout": 0,
+    "pockets_stdout": 60,
+    "chan_file_head": [
+     "/home/skyjun/mof_project/21_ZIF69_MTV/lmp_e24i/e24i_cn_open/after.cif.chan1.65   0 channels identified of dimensionality ",
+     "/home/skyjun/mof_project/21_ZIF69_MTV/lmp_e24i/e24i_cn_open/after.cif.chan1.65 summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+    ]
+   }
   }
  },
  "registered": {
@@ -271,6 +368,15 @@
    "channels_after_1.65": 16,
    "final_EDiff": 3.74409501091577e-05,
    "outer_loops": 82,
+   "converged": true
+  },
+  "e24i_cn_open": {
+   "PLD_after": 3.2963,
+   "AV_per_cell_after": 0.0,
+   "open": false,
+   "channels_after_1.65": 0,
+   "final_EDiff": 7.80588497946155e-05,
+   "outer_loops": 94,
    "converged": true
   }
  }
