@@ -1,0 +1,152 @@
+{
+  "test": "MAGI-005 E-24i — e24i_c2h5_open(C₂H₅ 열린 자리) S_mix 3씨앗(성분별 막음, 먼저 띄움)",
+  "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 22차(f5935fdf) · 데스크탑 부탁(S_mix 먼저 띄움)",
+  "machine": "junseok",
+  "ported_from": "e24g_c2h5a_block_junseok.py ← magi5_e24e_junseok.py (E-24e)",
+  "protocol": "run_tj1_mix 틀(0.15/0.85 · 1e5 Pa · 298 K · 5,000+15,000) + CO₂ BlockPockets block1.65 · N₂ block1.82 (E-24i Zeo++ e24i_zeo_runs)",
+  "reference": {
+    "S_Henry_blocked": null,
+    "S_Henry_unblocked_descriptive": null,
+    "unblocked_file": null,
+    "note": "막음 Widom 전 먼저 띄움 — 비 인용 금지(판정 때 원자료로 다시 냄)"
+  },
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "rows": [
+    {
+      "seed_idx": 1,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 17.3,
+      "n_expected": {
+        "CO2": 24,
+        "N2": 24
+      },
+      "seed": 1790406907,
+      "judge": "ok",
+      "block": {
+        "CO2": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "e24i_c2h5_open_co2.block"
+        },
+        "N2": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "e24i_c2h5_open_n2.block"
+        }
+      },
+      "stderr_not_found": false,
+      "data": "e24i_blk_runs_e24i_c2h5_open/mix_e24i_c2h5_open_s1/Output/System_0/output_e24i_c2h5_open_DDEC6_1.2.3_298.000000_100000.data",
+      "N_CO2": 1.4952759986,
+      "N_CO2_err": 0.0439460412,
+      "N_N2": 0.0706702621,
+      "N_N2_err": 0.0070840934,
+      "S_mix": 119.89810716625787,
+      "S_mix_err": 12.524691140266397,
+      "status": "ok"
+    },
+    {
+      "seed_idx": 2,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 17.2,
+      "n_expected": {
+        "CO2": 24,
+        "N2": 24
+      },
+      "seed": 1790406922,
+      "judge": "ok",
+      "block": {
+        "CO2": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "e24i_c2h5_open_co2.block"
+        },
+        "N2": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "e24i_c2h5_open_n2.block"
+        }
+      },
+      "stderr_not_found": false,
+      "data": "e24i_blk_runs_e24i_c2h5_open/mix_e24i_c2h5_open_s2/Output/System_0/output_e24i_c2h5_open_DDEC6_1.2.3_298.000000_100000.data",
+      "N_CO2": 1.4526268154,
+      "N_CO2_err": 0.0127598147,
+      "N_N2": 0.078090962,
+      "N_N2_err": 0.0052010825,
+      "S_mix": 105.40979062254775,
+      "S_mix_err": 7.08138922069428,
+      "status": "ok"
+    },
+    {
+      "seed_idx": 3,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 17.2,
+      "n_expected": {
+        "CO2": 24,
+        "N2": 24
+      },
+      "seed": 1790406937,
+      "judge": "ok",
+      "block": {
+        "CO2": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "e24i_c2h5_open_co2.block"
+        },
+        "N2": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "e24i_c2h5_open_n2.block"
+        }
+      },
+      "stderr_not_found": false,
+      "data": "e24i_blk_runs_e24i_c2h5_open/mix_e24i_c2h5_open_s3/Output/System_0/output_e24i_c2h5_open_DDEC6_1.2.3_298.000000_100000.data",
+      "N_CO2": 1.486307666,
+      "N_CO2_err": 0.0455460074,
+      "N_N2": 0.0710373288,
+      "N_N2_err": 0.009553749,
+      "S_mix": 118.56315897020798,
+      "S_mix_err": 16.35413896321224,
+      "status": "ok"
+    }
+  ],
+  "summary": {
+    "n": 3,
+    "S_mix_each": [
+      119.89810716625787,
+      105.40979062254775,
+      118.56315897020798
+    ],
+    "S_mix_err_each": [
+      12.524691140266397,
+      7.08138922069428,
+      16.35413896321224
+    ],
+    "seeds": [
+      1790406907,
+      1790406922,
+      1790406937
+    ],
+    "S_mix_mean": 114.62368558633787,
+    "S_mix_mean_err": 6.920547435643073,
+    "seed_SD": 8.00733519807632
+  },
+  "final": true,
+  "written": "2026-09-26 16:32:50",
+  "elapsed_s": 1065,
+  "note": "기계적 사실뿐 — 판정은 종합자. S_mix ± = 두 적재 상대 ± 제곱합, 평균 ± = ±̄/√3."
+}
