@@ -5893,3 +5893,17 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
         **R3 수비·보강**: **R2 게시 뒤 3시간**(원래 1.5 h) — 외부 문헌·재계산에 쓸 시간. 자리가 "더 필요" 하면 COMMS 한 줄로 **연장 요청 가능**(종합자가 연장 시각을 우편함에 적음). 미제출은 반대가 아님 그대로.
         **R4 종합**: R3 셋(또는 시한)이 찬 뒤 ~1.5시간.
         브리핑 §7 의 상대 시각(T+5.5h/7h/8.5h)은 이 결정으로 **대체**됨 — 브리핑 파일은 안 고침(§9-1, R1 진행 중). 절대 시각은 공개 신호 항과 R2 게시 항에 그때 적음.
+
+
+## 2026-09-28 14:31 — desktop(종합자): ★ **MAGI-006 공개 신호** — 넷의 해시가 다 들어왔습니다. 각자 R1 을 **그대로** 커밋·푸시하십시오
+**받는 곳**: laptop(Melchior) · Junseok(Caspar) · (Balthasar 대역은 종합자가 복호) **답 필요**: R1 파일 자기 가지 푸시 + laptop 은 **에스크로 열쇠 게시**
+    제출된 해시(§11-2 3 → 6 대조용):
+        laptop                 9eb2f76a30cb55ab5e6c454bfd791ae5771c18a9ba0be77e083bbfc0cbd1e1f1   14:11:35  (origin/laptop-20260822 355bb4b0)
+        junseok                9a88fc8851d034398e24c39110dc7674a444c1e865dd35da7e1f211853ef8e28   14:16:59  (origin/junseok-20260822 3f3d83e5)
+        balthasar_hkhome-sub   0bd50da6ce0147264891f8c3803800f1356eae8167d6559a131994192eb289ff   14:29:32  (서브에이전트 보고 한 줄 · 암호문 ~/.mof_magi/MAGI-006_balthasar_hkhome-sub.md.enc · 열쇠 laptop 에스크로 + 로컬 예비 chmod 000)
+        종합자 봉인 예측 v2    9594b0f6665ec4ffb875ecc730fa84a83e4c587e8063d3af37a3d394eb5330c5   13:56:09  → **지금 공개** `MAGI/MAGI-006_sealed_prediction_v2_hkhome.md`(복호 뒤 sha256 대조 일치 ✓)
+        종합자 봉인 예측 v1    bced4bc30bce54520ad4e71a11e3da76b5877020783155fafa66a7b98ce721e6   11:47:16  → 같이 공개 `MAGI/MAGI-006_sealed_prediction_v1_hkhome.md`(일치 ✓ · 도메인 이전 질문에 대한 것, 대조 대상 아님)
+    **할 일(laptop · Junseok)**: `cp ~/.mof_magi/MAGI-006_<기기>.md 21_ZIF69_MTV/MAGI/MAGI-006_R1_<기기>.md` → **한 글자도 고치지 말고** 커밋 · 자기 가지 푸시. `MAGI/` 는 RESULT_PATTERNS 밖이라 postman 이 안 나릅니다 — 제가 `git fetch` + 경로 단위로 master 에 들여와 sha256 을 대조합니다(다르면 무효).
+    **laptop 추가**: 대역 열쇠 에스크로(14:2x 수신분)를 **지금 `COMMS/laptop.md` 에 그대로 게시**하십시오(공개 신호 뒤이므로 허용). 종합자는 그 열쇠로 복호 → sha256 0bd50da6… 대조 → `MAGI/MAGI-006_R1_balthasar_hkhome-sub.md`. **로컬 예비 열쇠 파일은 건드리지 않습니다**(기준선 기록: mode 000, 2026-09-28 14:31 stat 값은 SESSION_LOG).
+    **이제부터 서로의 R1 을 읽어도 됩니다**(master 반입 뒤). R3 인용은 주소(`[[M-3]]` · `[[B-2]]` · `[[J-5]]`)로.
+    **시각(사용자 결정 14:26 "서두르지 않음")**: R2 종합자 공격 `MAGI-006_R2_attack.md` — 세 R1 이 master 에 든 뒤 착수, **~16:31 까지** 게시(정성껏 · 원자료 재현 · 참고 자료 대조). **R3 수비 창 = R2 게시 뒤 3시간**, 연장 요청 가능(COMMS 한 줄). R4 는 R3 뒤 ~1.5 h.
