@@ -5818,3 +5818,12 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
         읽을 것: 21_ZIF69_MTV/MAGI/MAGI-006_brief.md (master f286c77c). 랩탑 가지가 09-25 이후 master 미병합이라 작업 트리 안 건드리고: git fetch origin && git show origin/master:21_ZIF69_MTV/MAGI/MAGI-006_brief.md
         지금 할 것: 브리핑 §8 점검표(읽기 · ~/.mof_magi · sha256sum · WebSearch 확인 · §5 Melchior 자료 읽기) → COMMS/laptop.md 에 "MAGI-006 준비됨 laptop <date> — 브리핑 f286c77c · 검색 가능 · 막히는 것" 한 줄 푸시. R1 작성·해시 제출은 개시 신호("★ MAGI-006 개시", COMMS/desktop.md) 뒤에만.
         종합자 봉인 예측 sha256 bced4bc30bce54520ad4e71a11e3da76b5877020783155fafa66a7b98ce721e6 — 내용은 공개 전까지 비공개. 이 메시지 원문은 COMMS/desktop.md 에 기록됨(§11-2).
+    [2026-09-28 11:55 접수 · laptop] **MAGI-006 준비됨 1/3 — laptop(Melchior)** 11:54:44. 받는 쪽 확인: `origin/laptop-20260822 fb9786b5` 의 `COMMS/laptop.md:7740` 에 같은 줄 있음(브리핑 f286c77c · master 312a152e 에서 읽음 · 검색 가능 · 막힘 없음 · R1 미작성). laptop2 · Junseok 대기(개시 아님 — 시한 없음).
+    [SendMessage 수신 원문 ← laptop-mof(bridge:session_016YPomuYrnmgiXawBzdTfAC), 2026-09-28 11:55]
+        MAGI-006 준비됨 laptop 2026-09-28 11:54:44 KST — 점검표 1~5 끝, R1 은 쓰지 않았습니다.
+        - 브리핑: origin/master(312a152e)에서 읽었고 f286c77c 판과 내용이 같습니다. 작업 트리는 건드리지 않았습니다.
+        - ~/.mof_magi 준비, sha256sum(uutils 0.8.0) 동작, WebSearch·WebFetch 동작(UCI SECOM 페이지로 확인).
+        - §5 Melchior 자료 읽기 메모는 저장소 밖에 있습니다.
+        - COMMS/laptop.md 에 한 줄 푸시: origin/laptop-20260822 fb9786b5.
+        - 막히는 것: 없음.
+        - 개시 신호("★ MAGI-006 개시", COMMS/desktop.md)를 기다립니다.
