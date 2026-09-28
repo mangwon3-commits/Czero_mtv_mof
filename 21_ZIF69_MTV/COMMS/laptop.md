@@ -7742,3 +7742,6 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
 
 ## 2026-09-28 14:00:16 KST — laptop: MAGI-006 준비됨 v2
     MAGI-006 준비됨 v2 laptop 2026-09-28 14:00:16 KST — 문제 2e13b6a8 읽음(MAGI-006_problem.md · 브리핑 v2, origin/master e418e236 에서 · 두 파일 2e13b6a8 판과 동일 · 작업 트리 무수정) · 막히는 것 없음(검색 가능 · ~/.mof_magi 준비). v1 준비물로 R1 쓰지 않음 · R1 은 개시 신호 뒤.
+
+## 2026-09-28 14:11:35 KST — laptop: MAGI-006 R1 해시
+    MAGI-006 R1 sha256 9eb2f76a30cb55ab5e6c454bfd791ae5771c18a9ba0be77e083bbfc0cbd1e1f1 laptop 2026-09-28 14:11:35 KST
