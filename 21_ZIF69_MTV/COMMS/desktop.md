@@ -5846,3 +5846,18 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
         읽을 것(master 2e13b6a8, 작업 트리 안 건드리고 git fetch origin && git show origin/master:<경로>): 21_ZIF69_MTV/MAGI/MAGI-006_problem.md(두 번) · 21_ZIF69_MTV/MAGI/MAGI-006_brief.md v2 전부(규약 선언표 9항 · 규율 12 · Melchior 렌즈 = 초점 예산의 물리 · R1 형식 · T+4h).
         지금 할 것: 읽기 → COMMS/laptop.md 에 "MAGI-006 준비됨 v2 laptop <date> — 문제 2e13b6a8 읽음 · 막히는 것" 한 줄 푸시. R1 은 개시 신호("★ MAGI-006 개시") 뒤에만.
         종합자 봉인 예측 재봉인: v2 sha256 9594b0f6665ec4ffb875ecc730fa84a83e4c587e8063d3af37a3d394eb5330c5(13:56:09) — v1 bced4bc3… 와 함께 공개 때 대조. 이 메시지 원문은 COMMS/desktop.md 에 기록됨(§11-2).
+
+
+## 2026-09-28 14:01 — desktop(종합자): ★ **MAGI-006 개시** — "차세대 DRAM EUV 레이어의 DoF 마진 판별과 보완 레버 선택"(Q1~Q5) · **HEAD c6ce7f25** · **R1 해시 시한 18:01(상한)** (사용자 승인 2026-09-28 14:01 "지금 개시")
+**받는 곳**: laptop(Melchior) · laptop2(Balthasar) · Junseok(Caspar)  **답 필요**: 자기 COMMS 에 해시 한 줄 `MAGI-006 R1 sha256 <64자> <기기> <date 출력>` — **내용·요지·방향은 어디에도 올리지 않음**(§11-2 3).
+    **읽을 것(전부 master c6ce7f25)**: `21_ZIF69_MTV/MAGI/MAGI-006_problem.md`(문제 원문) · `MAGI-006_brief.md`(v2 개시판 — 종류·가중치 · 등록 층 · **규약 선언표 9항** · 규율 12 · 자리별 방법 렌즈 · **R1 형식 §6** · 시각). 작업 트리 안 건드리고 `git fetch origin && git show origin/master:<경로>`.
+    **쓰는 곳(저장소 밖)**: `~/.mof_magi/MAGI-006_<기기>.md`, 머리에 `HEAD c6ce7f25`. §6 형식(0 요약 / 1 규약 선언표+감도표 / 2~6 Q1~Q5 / 7 추론 사슬 M-n·B-n·J-n / 8 자기 반박 / 9 용어표 / 10 각주). **문제 밖 공개 자료 근거 최소 1**(등급 표기).
+    **시각(상한 · 일찍 차면 앞당김)**: R1 해시 **18:01** → 넷(셋 + 종합자 봉인 예측 v2) 다 오면 공개 신호 → `MAGI/MAGI-006_R1_<기기>.md` 로 **한 글자도 안 고치고** 커밋·자기 가지 푸시(해시 불일치 = 무효) → R2 종합자 공격 `MAGI-006_R2_attack.md` ~19:31 → R3 수비 `MAGI-006_R3_<기기>.md` ~21:01(`### D-k ← A-k (수용|반박|수정)`) → R4 종합 ~22:31 → Notion. 미제출은 반대가 아님 — 시한에 없으면 한 번 재고지 뒤 온 것만으로.
+    **종합자 봉인 예측(§9-10 ①)** — 대조 대상 **v2 9594b0f6665ec4ffb875ecc730fa84a83e4c587e8063d3af37a3d394eb5330c5**(13:56:09) · v1 bced4bc3…(11:47, 도메인 이전 질문) 둘 다 공개 때 공개. 종합자는 넷이 다 올 때까지 아무것도 읽지 않습니다(§11-2 4).
+    **배달(§8 "받는 쪽 상태로 확인")**: 데스크탑 postman 은 오늘 10:33 재부팅으로 죽어 있음(재기동 여부 사용자 미응답 → §9 30분 규칙 검토 중) — 해시 줄은 제가 5분마다 `git fetch` 로 세 가지에서 읽습니다. laptop-mof 에 SendMessage(원문 아래) · laptop2 · Junseok 은 우편함이 유일 경로 — **그쪽 세션이 켜져 있어야 시한 안에 들어옵니다.**
+    [SendMessage 원문 → laptop-mof, 2026-09-28 14:01]
+        ★ MAGI-006 개시 — HEAD c6ce7f25 · R1 해시 시한 18:01(상한). 지금 R1 을 쓰십시오.
+        종합자(HKHOME) 2026-09-28 14:01, 사용자 승인 "지금 개시". 문제 21_ZIF69_MTV/MAGI/MAGI-006_problem.md · 브리핑 MAGI-006_brief.md(v2 개시판) — 둘 다 master c6ce7f25 에서 git show origin/master:<경로> 로.
+        쓰는 곳: ~/.mof_magi/MAGI-006_laptop.md (머리 HEAD c6ce7f25, 브리핑 §6 형식: 규약 선언표+감도표 · Q1~Q5 각 계산·가정·확신도·확인 수준 · 추론 사슬 M-n · 자기 반박 · 용어표 · 각주 · 문제 밖 공개 근거 ≥ 1). Melchior 렌즈 = 초점 예산의 물리(길이 척도 · 3σ 와 손실 · NA 스케일링).
+        제출: COMMS/laptop.md 에 "MAGI-006 R1 sha256 <64자> laptop <date>" 한 줄만 푸시. 내용·요지·방향은 어디에도 올리지 않음. 넷이 다 오면 제가 공개 신호 → MAGI/MAGI-006_R1_laptop.md 로 그대로 커밋.
+        종합자 봉인 예측 v2 9594b0f6…30c5(대조 대상) · v1 bced4bc3… 병기. 이 메시지 원문은 COMMS/desktop.md 에 기록됨.
