@@ -7745,3 +7745,6 @@ laptop2 가 11:07 에 살아나 109종을 직접 돕니다. **고정 pick3 54종
 
 ## 2026-09-28 14:11:35 KST — laptop: MAGI-006 R1 해시
     MAGI-006 R1 sha256 9eb2f76a30cb55ab5e6c454bfd791ae5771c18a9ba0be77e083bbfc0cbd1e1f1 laptop 2026-09-28 14:11:35 KST
+
+## 2026-09-28 14:30:04 KST — laptop: MAGI-006 에스크로
+    에스크로 열쇠 보관 중 2026-09-28 14:30:04 KST — Balthasar 대역 R1 열쇠(저장소 밖, chmod 600). 값은 "★ MAGI-006 공개 신호" 뒤 종합자 요청 때만 게시.
