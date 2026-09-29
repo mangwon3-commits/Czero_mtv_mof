@@ -1,0 +1,95 @@
+{
+ "test": "E-24i 추가 3씨앗(_s4~_s6) — e24i_br_open 작동점 S_mix (discussion_workflow 20260929-1521 열린 결정 2)",
+ "assign": "24_DISCUSSION_WORKFLOW/E24I_SEEDS_REGISTRATION_20260929.md",
+ "registration": "같은 파일 — 판정 규칙 d = (CN̄₆ − Br̄₆)/√(e_CN²+e_Br²), e = ±̄/√6; d ≥ 1.5 유지 / < 1.5 공동 1위",
+ "protocol": {
+  "mix": {
+   "CO2": 0.15,
+   "N2": 0.85
+  },
+  "P_Pa": 100000.0,
+  "T_K": 298.0,
+  "init": 5000,
+  "cycles": 15000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "ewald": 1e-06,
+  "blocking": false
+ },
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "rows": [
+  {
+   "name": "e24i_br_open_s4",
+   "group": "형판 설계(비-ZIF, 우리 앞단)",
+   "dim": 3,
+   "S_Henry": 127.60008881766312,
+   "S_Henry_err": 3.104448097553232,
+   "S_Henry_src": "results_magi5_e3_e24i_br_open_widom_hkhome.json ON",
+   "L": null,
+   "L_src": "—",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "N_super": 1224,
+   "cif": "charged_v3/e24i_br_open_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "hkhome",
+   "flexible": null
+  },
+  {
+   "name": "e24i_br_open_s5",
+   "group": "형판 설계(비-ZIF, 우리 앞단)",
+   "dim": 3,
+   "S_Henry": 127.60008881766312,
+   "S_Henry_err": 3.104448097553232,
+   "S_Henry_src": "results_magi5_e3_e24i_br_open_widom_hkhome.json ON",
+   "L": null,
+   "L_src": "—",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "N_super": 1224,
+   "cif": "charged_v3/e24i_br_open_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "hkhome",
+   "flexible": null
+  },
+  {
+   "name": "e24i_br_open_s6",
+   "group": "형판 설계(비-ZIF, 우리 앞단)",
+   "dim": 3,
+   "S_Henry": 127.60008881766312,
+   "S_Henry_err": 3.104448097553232,
+   "S_Henry_src": "results_magi5_e3_e24i_br_open_widom_hkhome.json ON",
+   "L": null,
+   "L_src": "—",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "N_super": 1224,
+   "cif": "charged_v3/e24i_br_open_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "hkhome",
+   "flexible": null
+  }
+ ]
+}
