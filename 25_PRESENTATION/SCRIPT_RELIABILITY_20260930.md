@@ -150,10 +150,10 @@ ZIF-69 에서 익힌 것 두 가지를 그대로 옮겼다. **극성 치환기�
 
 [1] Y.-S. Bae, R. Q. Snurr, *Angew. Chem. Int. Ed.* **2011**, 50, 11586–11596. doi:10.1002/anie.201101891
 [2] P. G. Boyd et al., *Nature* **2019**, 576, 253–256. doi:10.1038/s41586-019-1798-7
-[3] Kwon, Rajendran, Woo, *ACS Cent. Sci.* **2025**. doi:10.1021/acscentsci.5c00777
+[3] O. Kwon, M. Gibaldi, K. N. Pai, A. Rajendran, T. K. Woo, "Identification of Metal–Organic Frameworks for near Practical Energy Limit CO₂ Capture from Wet Flue Gases: An Integrated Atomistic and Process Simulation Screening of Experimental MOFs," *ACS Cent. Sci.* **2025**, 11, 1438–1451. doi:10.1021/acscentsci.5c00777
 [4] R. Banerjee, A. Phan, B. Wang, C. Knobler, H. Furukawa, M. O'Keeffe, O. M. Yaghi, *Science* **2008**, 319, 939–943. doi:10.1126/science.1152516
 [5] R. Banerjee, H. Furukawa, D. Britt, C. Knobler, M. O'Keeffe, O. M. Yaghi, *J. Am. Chem. Soc.* **2009**, 131, 3875–3877. doi:10.1021/ja809459e
-[6] A. J. White, M. Gibaldi, J. Burner, R. A. Mayo, T. K. Woo, *J. Am. Chem. Soc.* **2025**, 147, 17579–17583.
+[6] A. J. White, M. Gibaldi, J. Burner, R. A. Mayo, T. K. Woo, "High Structural Error Rates in 'Computation-Ready' MOF Databases Discovered by Checking Metal Oxidation States," *J. Am. Chem. Soc.* **2025**, 147, 17579–17583. PMID 40375712 (DOI 미확인)
 [7] A. K. Rappé, C. J. Casewit, K. S. Colwell, W. A. Goddard III, W. M. Skiff, *J. Am. Chem. Soc.* **1992**, 114, 10024–10035. doi:10.1021/ja00051a040
 [8] M. A. Addicoat, N. Vankova, I. F. Akter, T. Heine, *J. Chem. Theory Comput.* **2014**, 10, 880–891. doi:10.1021/ct400952t
 [9] A. García-Sánchez, C. O. Ania, J. B. Parra, D. Dubbeldam, T. J. H. Vlugt, R. Krishna, S. Calero, *J. Phys. Chem. C* **2009**, 113, 8814–8820. doi:10.1021/jp810871f
@@ -171,7 +171,7 @@ ZIF-69 에서 익힌 것 두 가지를 그대로 옮겼다. **극성 치환기�
 [21] Lin et al., *Inorg. Chem.* **2012**. doi:10.1021/ic301463z
 [22] A. Phan, C. J. Doonan, F. J. Uribe-Romo, C. B. Knobler, M. O'Keeffe, O. M. Yaghi, *Acc. Chem. Res.* **2010**, 43, 58–67. doi:10.1021/ar900116g
 
-DOI 확인: [1][2][4][5][7]~[10][12]~[16][19][22] 는 2026-09-30 웹 검색으로 저널·권·쪽 대조. [3][11][17][18][20][21] 은 저장소 문헌 기록(`LITERATURE_20260819.md` · `LIT_CHECK_E24_20260926.md` · `23_SCREENING/upstream/README.md` · `TNF_RESULTS_20260910.md` · `MAGI5_E3B_VERDICT_20260925.md`). [6] 은 포스터 v18 참고문헌 그대로(DOI 미기재).
+DOI 확인: [1][2][4][5][7]~[10][12]~[16][19][22] 는 2026-09-30 웹 검색으로 저널·권·쪽 대조. [3] 은 웹 검색으로 제목·저자·권·쪽 확인; [11][17][18][20][21] 은 저장소 문헌 기록(`LITERATURE_20260819.md` · `LIT_CHECK_E24_20260926.md` · `23_SCREENING/upstream/README.md` · `TNF_RESULTS_20260910.md` · `MAGI5_E3B_VERDICT_20260925.md`). [6] 은 포스터 v18 참고문헌 그대로(DOI 미기재).
 
 ## 수치의 저장소 위치
 - 파이프라인 입력·Kwon 2025 대조: `CLAUDE.md §1` · `21_ZIF69_MTV/AUDIT_20260814.md:107-155` · `LITERATURE_20260819.md:18-45`
