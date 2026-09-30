@@ -37,7 +37,7 @@ def core_label(k):
 for c in core:
     rows.append(mk(c['key'], core_label(c['key']), 'CoRE', c['KH_CO2'], c['KH_CO2_err'], c['KH_N2'], c['KH_N2_err'], c['PLD'],
                    LCD=c.get('LCD'), dim=c.get('dim'), topo=c.get('topo'), metal=c.get('metal'), set=c.get('set'),
-                   probe_convention=c.get('probe_convention'), formal_charge_nonzero=c.get('formal_charge_nonzero'), gate5=None))
+                   probe_convention=c.get('probe_convention'), formal_charge_nonzero=c.get('formal_charge_nonzero'), gate5=None, file=c.get('file')))
 # --- ZIF-69 base + 30 치환 (results_v3) with gate5 (risk_results_v3)
 risk = {r['name']: r for r in rows_of(J(os.path.join(Z, 'risk_results_v3.json')))}
 for r in rows_of(J(os.path.join(Z, 'results_v3.json'))):
@@ -193,6 +193,24 @@ for r in sorted(excluded, key=lambda r: -r['S']):
         L.append(f"| {r['label']} | {r['type']} | {r['excluded']} | {r['S']:.1f} |")
 nco = sum(1 for r in excluded if r['type'] == 'CoRE')
 L.append(f"\n(CoRE 제외 {nco}행 중 S < 60 은 표에서 생략 — CSV 에 전부 있음.)\n")
+L.append("## F. 같은 물질, 두 앞단 — CoRE 행(배포 기하·CoRE 전하) 대 우리 앞단(GFN-FF 이완·우리 PACMAN)\n")
+L.append("| 물질 | CoRE 행 S ± | 우리 앞단 S ± | 비(우리/CoRE) | 출처 |"); L.append("|---|---|---|---|---|")
+byk = {r['name']: r for r in rows if r['type'] == 'CoRE'}
+pairs = [('2017[Zn][dia]3[FSR]1', 'Zn(bib)(bdtdc) 형판', next(r for r in rows if r['name'] == 'e22_parent'), 'e22_parent')]
+for k in E22E_KEYS:
+    fname = (byk.get(k) or {}).get('file', '')[:-4]
+    fs = glob.glob(os.path.join(Z, f'results_magi5_e3_e22e_{fname}_widom_*.json'))
+    if not fs: continue
+    w = widom_on(fs[0]); S = w['KH_CO2'] / w['KH_N2']
+    pairs.append((k, k.replace('[', ' ').replace(']', ''), dict(S=S, S_err=sel_err(w['KH_CO2'], w['KH_CO2_err'], w['KH_N2'], w['KH_N2_err'], S)), os.path.basename(fs[0])))
+ratios = []
+for k, lab, ours, src in pairs:
+    c = byk.get(k)
+    if not c: continue
+    ratios.append(ours['S'] / c['S'])
+    L.append(f"| {lab} | {c['S']:.1f} ± {c['S_err']:.1f} | {ours['S']:.1f} ± {ours['S_err']:.1f} | **{ours['S'] / c['S']:.2f}** | {src} |")
+ratios.sort()
+L.append(f"\n비의 범위 {ratios[0]:.2f}~{ratios[-1]:.2f}, 중앙값 **{ratios[len(ratios)//2]:.2f}**(n = {len(ratios)}). 우리 앞단이 같은 물질을 **낮게** 읽는다 — 그래서 B 표의 우리 행 자리는 보수적 하한이고, CoRE 앞단으로 옮기면 대략 이 비의 역수만큼 위로 간다(물질마다 다름 · 외삽 금지).\n")
 L.append("## E. 읽는 법 · 한계\n")
 L.append("- 이 표의 순위 축은 **무한희석 헨리 선택도**다. 작동점(15:85 혼합, 1 bar) 선택도 S_mix 와 물 지수·습윤 WC 는 우리 조성에만 있어 병기 열로만 둔다 — CoRE 행과 그 축으로 견주지 않는다.")
 L.append("- 같은 자(UFF_MOF · García-Sánchez CO₂ · PACMAN DDEC6 · 298 K Widom 15,000)에서 낸 값끼리의 순위다. 이 자는 ZIF 에서 실험 헨리 선택도를 1.6~2.1배 높게 읽는다(`MAGI5_E2_VERDICT`) — 절대값이 아니라 **자리**만 읽을 것.")
