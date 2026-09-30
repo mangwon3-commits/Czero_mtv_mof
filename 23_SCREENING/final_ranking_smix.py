@@ -104,7 +104,7 @@ for r in sorted(side, key=lambda r: -r['S']):
 L.append("\n## 일치 검사 · 예측 대조\n")
 for n_ in notes: L.append(f"- {n_}")
 rets = sorted(r['ret'] for r in core3)
-if rets: L.append(f"- CoRE 3D 유지비: 중앙 **{rets[len(rets)//2]:.2f}**, 범위 {rets[0]:.2f}~{rets[-1]:.2f} (n = {len(rets)}) — 등록 예측 ≈ 0.9.")
+if rets: L.append(f"- CoRE 3D 유지비: 중앙값 **{st.median(rets):.2f}**(1단계 21행만 {st.median([r['ret'] for r in core3 if r['src'].startswith('coremix')]):.2f}), 범위 {rets[0]:.2f}~{rets[-1]:.2f} (n = {len(rets)}) — 등록 예측 ≈ 0.9.")
 cn = next(r for r in main if r['name'] == 'e24i_cn_open'); above = [r['label'] for r in core3 if r['S'] - cn['S'] >= 1.5 * math.hypot(r['S_err'], cn['S_err'])]
 L.append(f"- −CN(141.5)보다 1.5 단위 위인 CoRE 3D 행: **{len(above)}** {above} — 등록 예측 0~1.")
 par = next(r for r in main if r['name'] == 'e22_parent'); near = [(r['label'], round(r['S'], 1)) for r in core3 if abs(r['S'] - par['S']) < 1.5 * math.hypot(r['S_err'], par['S_err'])]
