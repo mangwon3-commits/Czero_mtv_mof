@@ -17,7 +17,7 @@
   "ewald": 1e-06,
   "blocking": false
  },
- "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 완료 · seed 21개 겹침 0건 · 벽시계 6.55 h",
  "rows": [
   {
    "name": "2024_Co__pcu_3_ASR_1",
@@ -647,13 +647,23 @@
    ],
    "N_super": 1680,
    "cif": "core_pop_cifs/2021_Co__dia_3_FSR_1.cif",
-   "status": "pending",
-   "returncode": null,
-   "seed": null,
-   "minutes": null,
+   "status": "ok",
+   "returncode": 0,
+   "seed": 1790774793,
+   "minutes": 87.0,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "hkhome",
-   "flexible": null
+   "flexible": null,
+   "N_CO2": 3.1112687487,
+   "N_CO2_err": 0.0304425669,
+   "N_N2": 0.3954489177,
+   "N_N2_err": 0.0272362336,
+   "S_mix": 44.58356596812099,
+   "S_mix_err": 3.1014900205048894,
+   "ratio_Smix_over_SHenry": 0.6117649113003063,
+   "ratio_err": 0.042557896078785226,
+   "ratio_err_with_SHenry": 0.04340373651739909,
+   "finished": "2026-09-30 23:53:31"
   },
   {
    "name": "2017_Zn__dia_3_FSR_1",
@@ -705,13 +715,23 @@
    ],
    "N_super": 1224,
    "cif": "core_pop_cifs/2017_Zn__dia_3_ASR_1.cif",
-   "status": "pending",
-   "returncode": null,
-   "seed": null,
-   "minutes": null,
+   "status": "ok",
+   "returncode": 0,
+   "seed": 1790776804,
+   "minutes": 54.1,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "hkhome",
-   "flexible": null
+   "flexible": null,
+   "N_CO2": 3.3840112293,
+   "N_CO2_err": 0.0354321635,
+   "N_N2": 0.168700559,
+   "N_N2_err": 0.0094083669,
+   "S_mix": 113.66923587194515,
+   "S_mix_err": 6.450047238800095,
+   "ratio_Smix_over_SHenry": 0.829096424885297,
+   "ratio_err": 0.04704624839789493,
+   "ratio_err_with_SHenry": 0.050933977128020926,
+   "finished": "2026-09-30 23:54:12"
   }
  ]
 }
