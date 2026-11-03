@@ -30,6 +30,14 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-03 18:5x · 랩탑(Melchior)  [완료] Zn(bib)(bdtdc) 본선 보강 E·A·B 배정 등록 + MAGI-007 예약 — 계산 0건
+하는 일: 사용자 지시(본선 진출, 약 2주 결론 보강). laptop2 · HKHOME 이 꺼져 있어 랩탑이 배정과 토론 예약을 대신 적음.
+  `21_ZIF69_MTV/ASSIGN_ZNBDT_SUPP_20261103.md`(E 습윤 3성분 선택도 18작업 · A 격자 이완본 S_mix 9작업 · B 323 K S_mix 6작업, 읽는 법 자료 0건 등록,
+  포스터 수정 7건 대기 목록) · `21_ZIF69_MTV/MAGI/MAGI-007_brief.md`(예약판 — 개시 아님) · MAGI README 목록 줄.
+건드리는 파일: 위 두 문서 · MAGI/README.md 목록 · COMMS/laptop.md · 이 파일. 계산 파일 · 결과 JSON · 포스터는 안 건드림.
+쓰는 코어: 0
+다음: laptop2 · HKHOME 이 켜지면 ASSIGN 을 읽고 E 부터 착수. 종합자 확정 둘(A 셋째 칸 · MAGI-007 채택). MAGI-007 개시 시점은 사용자 결정(권고: E 첫 결과 전).
+
 ## 09-19 15:0x · desktop (Fable 5.1, 새 세션)  [진행중] 11:0x 세션 잠김 → 이 세션이 A~G 계승 · postman master · ⑤ 7/7 → WC §10 · T-RT-1 판정 · 1C/1D 등록 · T-NF-1 (가) 착수
 
 **11:0x 데스크탑 세션(원격 HKHOME, pid 1530)은 auto mode 안전 분류기가 "이전 대화 내용 때문에 평가 불가" 로 모든 도구 호출을 거부**(쓰기 → 읽기까지)해 닫혔습니다. 프로세스·브리지는 멀쩡했고 잠긴 것은 그 대화였습니다. 화면 보관 `~/.claude_work/rc_backup/pane_20260919_1438_full.txt`. 그 세션의 마지막 답(지시문 1~4 + postman.sh)은 전사에서 회수했습니다.
