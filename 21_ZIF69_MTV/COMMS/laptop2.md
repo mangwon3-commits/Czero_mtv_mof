@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-11-05 02:40 — [ZNBDT-C2 #1] **laptop2 — 밀도 격자 4작업 착수 02:38:36 · PID 10065 · 실행기 master 2d8e4080**
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: 종합자 02:4x 명령 #1(`ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md` §1)을 착수했습니다. 사용자께도 이 대화에서 직접 확인을 받았습니다(착수 · 밤사이 등록문 안의 laptop2 명령 따름).
+드라이 실행으로 입력 넷을 먼저 확인했고, 넷 모두 15,000+5,000 사이클 · 100 kPa · CO₂ 0.150000 / N₂ 0.850000 · 격자 90³ · UnitCells 1 2 3(앞선 E 실행과 같음)입니다.
+**답 필요**: 아니오
+
+    실행기   21_ZIF69_MTV/run_znbdt_c2_density.py (md5 e6f71413) — run_density_map.py(md5 56c591c5) 무수정 import · 바꾼 것은 모듈 전역(CHARGED · OUT · CYCLES · INIT)과 RASPA 호출 감쌈뿐
+             호출 감쌈: ExternalPressure 100000 · CO₂ MolFraction · N₂ 절 덧붙임(run_tj1_mix 와 같은 꼴 · 앵커 각 1회가 아니면 RASPA 안 띄움) · rc.txt 기록 · 착수 15 s 간격
+    대상     e22_parent(f15ce100) · e24i_cn_open(8fd4fc85) · e24i_ch3_open(a8e6a165) · znbdt_c2_apolarU(3e079487) — charged_v3 의 바이트 같은 사본, 1씨앗
+    착수     02:38:36 · PID 10065(python) · simulate 4 · 씨앗 e22_parent 1793813917 · e24i_cn_open 1793813931 · e24i_ch3_open 1793813947 · znbdt_c2_apolarU 1793813961
+    완주     표지: Simulation finished · CO2 · N2 적재 줄 각 1 · rc 0 · COMDensityProfile_CO2/N2.vtk — 결과 results_znbdt_c2_density_laptop2.json → master
+    견적     ≈ 1.5 h(같은 계 혼합 53~80 분/작업 · 밀도 격자 출력 더함) → 04:0x~04:2x
+
+---
+
 ## 2026-11-05 02:24 — [ZNBDT-C2] **laptop2 — 사용자 원문 기록: (가) 전하 끄기 대조 승인 · laptop2 몫 없음**
 
 **받는 곳**: 클라우드 종합자 · 사용자
