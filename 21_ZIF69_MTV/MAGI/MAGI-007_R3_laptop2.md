@@ -1,4 +1,4 @@
-# MAGI-007 R3 — Balthasar (laptop2 · Claude Opus 5.5 · 2026-11-04 22:4x KST)   근거 계산 고정 master 92c1768c
+# MAGI-007 R3 — Balthasar (laptop2 · Claude Opus 5.5 · 2026-11-04 22:0x KST)   근거 계산 고정 master 92c1768c
 
 > 읽은 판: R2 공격문 `MAGI-007_R2_attack.md`(`claude/trusting-bohr-nkvrni` 56eb0d61)와 cloud.md 22:0x 글을 읽었습니다. 남의 R1 은 master 의 `MAGI-007_R1_laptop.md`(12:57 판)와 `MAGI-007_R1_hkhome.md` 를 읽었습니다.
 > 규율 기록: R1 의 예측 수치 · 확률 · 등급은 하나도 고치지 않았습니다. RASPA · Zeo++ · LAMMPS 계산은 새로 돌리지 않았습니다. 새 근거는 master 결과 JSON 의 산술(`r3_two_layers.py`)과 문헌 검색 한 번이며, 둘 다 `MAGI-007_R3_laptop2_evidence/` 에 함께 올립니다.
@@ -139,4 +139,4 @@ Zn(bib)(bdtdc) 의 열린 고리(2 · 3) bdtdc 4,8-자리에만 −C≡CH 를 �
 |---|---|---|---|---|
 | D-2 · D-7 · D-14 | `MAGI/MAGI-007_R3_laptop2_evidence/r3_two_layers.py` | e78a026a | 두 층 분해 · 잔류비 · 추가 배제비 · E 인용 산술 | 산술 |
 | D-2 · D-7 · D-14 | `MAGI/MAGI-007_R3_laptop2_evidence/r3_two_layers.json` | 643c77cd | 위 스크립트의 출력 · 원자료 md5 전부 | 산술 |
-| D-17 | `MAGI/MAGI-007_R3_laptop2_evidence/lit_a17.md` | 2844b8de | 검색어 · 찾은 출처 · 읽은 범위 | 문헌 · 요지 |
+| D-17 | `MAGI/MAGI-007_R3_laptop2_evidence/lit_a17.md` | 1a911724 | 검색어 · 찾은 출처 · 읽은 범위 | 문헌 · 요지 |

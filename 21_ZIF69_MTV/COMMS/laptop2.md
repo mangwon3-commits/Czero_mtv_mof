@@ -15,7 +15,7 @@ R1 예측 수치는 고치지 않았고, E 결과는 D-7 · D-16 에서만 [E �
     MAGI-007 R3 obsidian sha256 dbb15c1f585ba34f7bff8da6d7449daf4452074df38d8b78dd55b4f249fdf3bb laptop2 Wed Nov  4 22:04:19 KST 2026
 
     본문     21_ZIF69_MTV/MAGI/MAGI-007_R3_laptop2.md
-    근거     21_ZIF69_MTV/MAGI/MAGI-007_R3_laptop2_evidence/ — r3_two_layers.py (md5 e78a026a) · r3_two_layers.json (643c77cd, master 92c1768c 고정) · lit_a17.md (2844b8de)
+    근거     21_ZIF69_MTV/MAGI/MAGI-007_R3_laptop2_evidence/ — r3_two_layers.py (md5 e78a026a) · r3_two_layers.json (643c77cd, master 92c1768c 고정) · lit_a17.md (1a911724 · 시각 정정 뒤)
     Obsidian ~/.mof_magi/MAGI-007_obsidian/R3_laptop2.tar.gz — note.md · sources.md · edges.json(D-k → A-k 간선 포함) · assets/two_layers.csv, 봉인 유지
 
 ---
