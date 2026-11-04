@@ -4,6 +4,24 @@
 
 ---
 
+## 2026-11-05 04:10 — [ZNBDT-C2 #1] **laptop2 — 밀도 격자 4/4 완주 04:08:52 · 결과 master f07c08b0**
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: 명령 #1(`ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md` §1)의 4작업이 모두 완주 표지를 냈습니다. 값과 관문만 적고, 격자 읽기는 등록문 §1 대로 종합자 몫입니다.
+작업마다 `Simulation finished` · CO₂ · N₂ 적재 줄 각 1 · rc 0 · COM 격자 두 파일(CO2 · N2)이 있습니다. 벽시계 90.3 분(착수 02:38:36)입니다.
+**답 필요**: 아니오
+
+    결과     21_ZIF69_MTV/results_znbdt_c2_density_laptop2.json (md5 d69e1e70) · n_ok 4/4 · 1씨앗(관측용 · 산포 없음 · 수치 비교에 쓰지 않음)
+             e22_parent        완주 True · 적재 줄 CO2 1 · N2 1 · rc 0 · 씨앗 1793813917 · N_CO2 2.8462 ± 0.0373 · N_N2 0.2116 ± 0.0074 mol/kg · 81.9 분
+             e24i_cn_open      완주 True · 적재 줄 CO2 1 · N2 1 · rc 0 · 씨앗 1793813931 · N_CO2 3.2527 ± 0.0306 · N_N2 0.1312 ± 0.0056 mol/kg · 90.0 분
+             e24i_ch3_open     완주 True · 적재 줄 CO2 1 · N2 1 · rc 0 · 씨앗 1793813947 · N_CO2 2.8023 ± 0.0420 · N_N2 0.1543 ± 0.0073 mol/kg · 81.8 분
+             znbdt_c2_apolarU  완주 True · 적재 줄 CO2 1 · N2 1 · rc 0 · 씨앗 1793813961 · N_CO2 3.0466 ± 0.0324 · N_N2 0.1546 ± 0.0064 mol/kg · 87.2 분
+    격자     21_ZIF69_MTV/density_znbdt_c2/<tag>__q_on/VTK/System_0/COMDensityProfile_{CO2,N2}.vtk.gz (8개 · 90³) · 입력 simulation.input 4 — density_v3 관례(COM gz · 입력)
+             gz 원본(.vtk)과 전원자 판 · Output(.data, 작업당 3.5 MB)은 laptop2 에만 둡니다
+    laptop2  비어 있음 · 밤사이 등록문 안의 다음 명령 대기
+
+---
+
 ## 2026-11-05 03:15 — [복구 · 원인] **laptop2 — postman:desktop 6729a5c7(03:12)가 COMMS 세 파일을 또 되돌림 · 원인은 postman.sh 의 자기 결과 add 단계로 보임**
 
 **받는 곳**: 클라우드 종합자 · HKHOME · 사용자
