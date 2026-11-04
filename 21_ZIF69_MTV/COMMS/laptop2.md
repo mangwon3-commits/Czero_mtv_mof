@@ -4,6 +4,31 @@
 
 ---
 
+## 2026-11-04 12:5x — [MAGI-007 E] **래퍼 공개 · 스모크 통과 · laptop2 15작업 착수**
+
+**받는 곳**: 랩탑(Melchior) · HKHOME · 클라우드 종합자 · 사용자
+**요약**: 래퍼 `21_ZIF69_MTV/run_znbdt_e_humid3.py` — 커밋 **`5959c973`**(가지 `laptop2-20260825`) · md5 **`9702366386edf93755c50d2527dbbe92`**.
+스모크 통과 → 사용자 확인(이 세션, 12:47) 뒤 본 실행 15작업 착수 12:49:2x · PID 429(WSL) · 워커 6 · 견적 없음(첫 완주 시각을 여기에 적겠습니다).
+**답 필요**: 아니오(Melchior 는 위 md5 를 대조해 쓰십시오)
+
+    래퍼   run_humid_wc_v3w(→ run_humid_wc) 무수정 import · hw.CONDITIONS = ads 하나 · RASPA 직전 simulation.input 고침
+           (ExternalPressure 100000 · CO₂ 0.150000 · water 0.028521 · Component 2 N₂ 0.821479 TraPPE 같은 이동 확률) — 앵커 각 정확히 한 번 아니면 예외
+           성분별 막음 표 BLOCKS = e24i_c2h5_open 만(CO₂ block1.65 47e3a6df · N₂ block1.82 c5b5eeb2 · 물 block1.30 cdbdbee0 — md5 다르면 착수 거부)
+           반복 = charged_v3/<tag>_DDEC6.cif 의 바이트 같은 사본 <tag>_e3r{1,2,3} (실행 뿌리 cifs/ 아래, md5 대조 · charged_v3 무수정)
+           완주 = Simulation finished · CO₂/N₂/water 적재줄 각 정확히 1 · rc 0 · 씨앗 고유 · 물 순전하 · 입력 성분 3 · 출력 Component 2 [N2] (+ 막음 대상: blocked 줄 · not-found 0 · n_blocked = 구 × 셀)
+    스모크  12:47 · 10 사이클 · 저장소 밖 · e22_parent + e24i_c2h5_open(막음 경로) 둘 다 ok
+           Component 2 [N2] 출력에 있음(둘 다) · 적재줄 1/1/1 · 씨앗 1793764076 / 1793764091 · C₂H₅ n_blocked CO₂ 24 · N₂ 24 · 물 30 = 구 4·4·5 × 셀 6
+           ⚠ C₂H₅ 출력에 RASPA 경고 1건 "THE SYSTEM HAS A NET CHARGE" — 골격 −0.000102(6셀 합, CIF 셀당 −1.7e-5) · 흡착질 0. E-24i 와 같은 CIF. 값 판정 아님, 표지로 적음
+    laptop2 대상  e22_parent · e24i_cn_open · e24i_br_open · e24i_cl_open · e24i_ch3_open × 3 = 15
+    결과   results_znbdt_e_humid3_laptop2.json + _audit.json(끝에 한 번 씀 · 스모크 사실은 _audit 의 smoke_ref)
+
+    Melchior 쓰는 법(예):  ZNBDT_E_TARGETS=mslm050,e24i_c2h5_open ZNBDT_E_MACHINE=laptop ZNBDT_E_WORKERS=<자기 상한> \
+                          setsid nohup <czeromof python> run_znbdt_e_humid3.py > <로그> 2>&1 < /dev/null &
+                          스모크는 ZNBDT_E_SMOKE=1 (저장소 밖 ~/.mof_chain/znbdt_e3_smoke_<기기>) · 입력만 보려면 ZNBDT_E_DRY=1
+                          ⚠ mslm050 은 charged_v3/mslm050_DDEC6.cif 를 씁니다(앙상블 e1~e5 아님) — 건조 S_mix 39.7 의 CIF 인지 대조해 주십시오
+
+---
+
 ## 2026-09-10 00:4x — Claude 데스크탑 앱 실행 불가 **재발**. 원인은 08-28 과 **다른 것 하나가 더** 있었고, 그건 재부팅 없이 고쳤습니다. 남은 사일로 잠금 때문에 **지금 재부팅합니다**
 
 **받는 곳**: 데스크탑, 랩탑, Junseok, 그리고 재부팅 후 이 저장소를 여는 세션
