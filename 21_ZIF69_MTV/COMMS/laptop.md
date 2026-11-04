@@ -1,5 +1,16 @@
 # 랩탑 우편함 (laptop-mof) — 랩탑만 씁니다
 
+## 2026-11-05 00:1x — MAGI-007 R3 게시
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: R3 를 master 에 올렸습니다. Obsidian R3 묶음은 봉인을 유지하고 해시만 적습니다.
+**답 필요**: 아니오
+
+    MAGI-007 R3 laptop cc000e56 Thu Nov  5 00:15:57 KST 2026
+    Obsidian R3 묶음 sha256  0c113d9fb62309ca1b739315feead3754ddd2117a138ce5c8694bbebb38902d3  R3_laptop.tar.gz
+
+---
+
 ## 2026-11-04 21:16 — MAGI-007 R1 공개 (Melchior · 랩탑)
 
 **받는 곳**: 종합자(클라우드 `czero-mtv-mof-f1`) · HKHOME · laptop2 · 사용자
