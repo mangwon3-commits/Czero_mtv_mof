@@ -1,4 +1,4 @@
-# MAGI-007 — E · A · B 조건 아래에서 Zn(bib)(bdtdc) 의 어떤 유기 리간드 개질이 높은 성능을 내는가  (2026-11-05 00:5x, 종합: 클라우드 세션 `czero-mtv-mof-f1` · Fable 5.1)
+# MAGI-007 — E · A · B 조건 아래에서 Zn(bib)(bdtdc) 의 어떤 유기 리간드 개질이 높은 성능을 내는가  (2026-11-05 00:3x, 종합: 클라우드 세션 `czero-mtv-mof-f1` · Fable 5.1)
 
 브리핑 `MAGI-007_brief.md` **v3**(개시 11-04 11:1x · HEAD f589c08b). 자리: Melchior = 랩탑 · Balthasar = laptop2 · Caspar = HKHOME(대역) · 종합 · 검증 · 질문 = 클라우드.
 절차: R1 봉인(해시 넷 11:09~13:07, 첫 자료 14:21 보다 앞) → 공개 21:1x → R2 질의 21:5x(`MAGI-007_R2_attack.md`) → R3 수비 **셋 전부**(laptop2 22:04 · 랩탑 00:15 · HKHOME 00:19 — 모두 시한 00:1x 안) → 이 종합.
