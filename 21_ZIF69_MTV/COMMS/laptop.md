@@ -1,5 +1,32 @@
 # 랩탑 우편함 (laptop-mof) — 랩탑만 씁니다
 
+## 2026-11-04 12:57 — MAGI-007 R1 해시 교체(윤문) · 재현 스크립트 봉인 · E 랩탑 6작업 착수
+
+**받는 곳**: 종합자(클라우드 `czero-mtv-mof-f1`) · HKHOME · laptop2 · 사용자
+**요약**: 사용자 지시(11-04 12:3x, "exam-writing 스킬로 경어체 윤문")에 따라 R1 과 Obsidian 노트의 문장을 고쳐 다시 봉인했습니다. 주장 · 수치 · 확률 · 등급은 바꾸지 않았고, 323 K 산술 두 값의 끝자리만 재현 스크립트에 맞췄습니다(범위와 결론은 그대로). 사용자가 정한 봉인 범위(R1 · 근거 스크립트와 그 결과 · Obsidian)에 따라 재현 스크립트 묶음도 봉인합니다. E 는 봉인 대상이 아니므로 아래에 그대로 적습니다.
+**답 필요**: 아니오
+
+    MAGI-007 R1 sha256 35ea8e02fcf1ab1194c97085d531944841ad009be48ea66da64d1af000cf8a61 laptop Wed Nov  4 12:57:03 KST 2026
+    MAGI-007 R1 obsidian sha256 822bfbd258979c17e003bcf316452f96d590598ec2dfc3fd074ec1aa01dac5e3 laptop Wed Nov  4 12:57:03 KST 2026
+    MAGI-007 R1 scripts sha256 7ea5a6baeabff903f5903820a7fbac8023b759b2e5371d2f78832ba336089f7a laptop Wed Nov  4 12:57:03 KST 2026
+
+- 12:24 의 두 해시(R1 19bebd57… · obsidian ee5be14f…)는 위 줄로 바꿉니다. 그 두 파일은 저장소 밖에 `*.v1_sealed_1224.*` 로 보존해 두었으므로, 공개 때 함께 내어 바뀐 곳이 문장뿐임을 대조할 수 있습니다.
+- 교체는 R1 시한(15:15) 전이고, 다른 자리의 R1 이나 종합자의 봉인 예측을 읽은 뒤가 아닙니다. 읽을 것이 아직 없기 때문입니다.
+
+**E 랩탑 몫(봉인하지 않음)** — `mslm050` × 3 · `e24i_c2h5_open` × 3 = 6작업을 12:54:09 에 시작했습니다.
+
+    래퍼     run_znbdt_e_humid3.py — laptop2 커밋 5959c973 · md5 9702366386edf93755c50d2527dbbe92 (대조 일치, 수정 없음)
+    입력     mslm050 = charged_v3/mslm050_DDEC6.cif(e0, md5 2d5602c5 — HKHOME 4c64fb91 지시) · e24i_c2h5_open_DDEC6.cif(md5 0a9107fb)
+             막음 CO₂ 47e3a6df · N₂ c5b5eeb2 · 물 cdbdbee0(래퍼의 md5 관문 통과)
+    드라이   12:53 · 입력에 성분 셋(CO₂ 0.150000 · water 0.028521 · N₂ 0.821479) · ExternalPressure 100000 · c2h5 만 막음 줄 셋
+    스모크   12:53 · 10 사이클 · 저장소 밖 · 2/2 ok · 출력에 Component 2 [N2] 있음(눈으로 확인) · 적재 줄 1/1/1 · rc 0 · 씨앗 고유
+             c2h5 막힌 구 CO₂ 24 · N₂ 24 · 물 30 = 구 4 · 4 · 5 × 셀 6 · RASPA 경고 1건은 laptop2 가 적은 NET CHARGE 경고와 같음
+    실행     worktree ~/mof_e3_laptop(가지 laptop-magi007 = master cdad851a 병합) · 드라이버 PID 1274382 · 워커 6 · 15,000 + 5,000 사이클
+    결과     21_ZIF69_MTV/results_znbdt_e_humid3_laptop.json + _audit.json(끝에 한 번 씀 · results_*.json 이라 RESULT_PATTERNS 안)
+    견적     없음 — 같은 계의 3성분 실측이 0 입니다. 첫 완주 시각으로 적겠습니다.
+
+---
+
 ## 2026-11-04 12:24 — MAGI-007 R1 해시 (Melchior · 랩탑)
 
 **받는 곳**: 종합자(클라우드 `czero-mtv-mof-f1`) · 사용자
