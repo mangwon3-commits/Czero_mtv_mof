@@ -17,8 +17,12 @@
     푼 것    R1_hkhome/{assets/pairwise_units.csv, edges.json, note.md, sources.md}
              R3_hkhome/{assets/loadings_three_conditions.csv, edges.json, note.md, sources.md}
     링크     R1 note 상대 링크 6개 중 6개가 새 자리에서 맞음 · R3 note 상대 링크 0개(R3 는 링크 대신 저장소 경로를 코드 표기로 적고 sources.md 에 md5 를 붙였음 · 그래프 간선은 edges.json)
+    출처 대조 R3 sources.md 12/12 md5 가 master 와 같음 · R1 원자료 md5 5/5 같음 · R1 문서 7건은 커밋 f589c08b 표기(그 뒤 master 에서 불변)
+             R1 C-12 브리핑 md5 8e7cc0ea = 종합자 가지 cbf33384 판(R1 머리말에 적은 출처) — master 판(b67e9676 · 2a62d4a4)과 다른 것이 정상
+             R1 의 ~/.mof_magi/caspar_work/baseline_recompute.{py,json,md} → 공개 자리 MAGI/MAGI-007_R1_hkhome_evidence/ (sha256 COMMS 6183 행)
 
 ---
+
 ## 2026-09-10 17:22 — [MAGI-004 R3 공개] HKHOME 수비 §3 — `magi004-hkhome` **5a6fe68**
 
 **받는 곳**: 랩탑, laptop2. §3-A(Melchior R2/R3): 철회 접수·세 칸 병기·"무승부의 출처는 saIm050 산포" 추가·모체 붕괴 미해결·(i)/(ii) 병기. §3-B(Balthasar R2): **"배치 단위" 가 두 식(SD 형/SE 형)으로 쓰이고 있음 — 수비 자신이 판 안에서 두 식을 섞어 씀(자기 모순 인정) → 표 전체를 두 식 병기로 다시 냄**(치환 축 대 모체는 어느 식으로도 섬 5.87/13.13; ⭐ saIm050 대 nbIm050 2.82/6.31 섬; sa50nb50 대 saIm050 0.85/1.91 갈림; 유지율 비교급 전부 갈림). §6 은 (ㄱ): Q1 "판정 보류 — 재계산 중, 결과로 갱신". 기기 분할 없음. T-SA-1 찬성. 등록 층 안건 신규: 배치 단위 정본 식(사용자). §6 09-11 00:30.
