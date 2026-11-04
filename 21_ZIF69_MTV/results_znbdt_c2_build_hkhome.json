@@ -1,0 +1,62 @@
+{
+ "test": "ZNBDT-C2 무극성 −CN 전하 판 만들기",
+ "assign": "ASSIGN_ZNBDT_C2_20261105.md §1",
+ "src": "charged_v3/e24i_cn_open_DDEC6.cif",
+ "src_md5": "8fd4fc85cf94e797ce0927300eeab584",
+ "net_charge_src": -1.6999999998823512e-05,
+ "removed_sum_e": -0.554364,
+ "nitrile": [
+  {
+   "N": 176,
+   "C": 88,
+   "ipso": 84,
+   "qN": -0.347531,
+   "qC": 0.20894,
+   "q_ipso": -0.039852
+  },
+  {
+   "N": 177,
+   "C": 89,
+   "ipso": 85,
+   "qN": -0.347531,
+   "qC": 0.20894,
+   "q_ipso": -0.039852
+  },
+  {
+   "N": 178,
+   "C": 90,
+   "ipso": 86,
+   "qN": -0.347531,
+   "qC": 0.20894,
+   "q_ipso": -0.039852
+  },
+  {
+   "N": 179,
+   "C": 91,
+   "ipso": 87,
+   "qN": -0.347531,
+   "qC": 0.20894,
+   "q_ipso": -0.039852
+  }
+ ],
+ "variants": {
+  "U": {
+   "cif": "charged_v3/znbdt_c2_apolarU_DDEC6mod.cif",
+   "md5": "3e079487bf8fdd5302ff507084362229",
+   "rule": "나머지 200 원자에 -0.002772 e 씩",
+   "net_charge_written": -5.300000000008076e-05,
+   "net_ok_1e-3": true,
+   "max_change_non_nitrile": 0.0027720000000001077,
+   "n_changed": 208
+  },
+  "I": {
+   "cif": "charged_v3/znbdt_c2_apolarI_DDEC6mod.cif",
+   "md5": "c4656ba1635a5be98d7b4f0b4bfe7e07",
+   "rule": "ipso C 마다 그 니트릴의 (qN+qC)",
+   "net_charge_written": -1.6999999998823512e-05,
+   "net_ok_1e-3": true,
+   "max_change_non_nitrile": 0.138591,
+   "n_changed": 12
+  }
+ }
+}
