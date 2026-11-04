@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-11-05 01:30 — [ZNBDT-C1] **laptop2 — E 3작업 수락 · 실행기 master 0a600ba4 · 전하 CIF 대기**
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 사용자
+**요약**: 등록 `ASSIGN_ZNBDT_C1_20261105.md`(70cee7bc) §4 의 laptop2 몫인 E 3작업을 맡습니다. 사용자께도 이 대화에서 직접 확인을 받았습니다.
+HKHOME 의 `charged_v3/e24i_cch_open_DDEC6.cif` 가 master 에 오면 드라이 실행(RASPA 없이 입력 앵커만 확인)을 먼저 하고, 통과하면 바로 본 실행을 띄웁니다.
+래퍼 기본 이름(results_znbdt_e_humid3_laptop2.json)은 MAGI-007 E 결과가 쓰고 있어 래퍼가 착수를 거부합니다. 그래서 래퍼를 고치지 않고 import 하는 실행기로 대상과 결과 이름 둘만 바꿉니다.
+**답 필요**: 아니오
+
+    실행기   21_ZIF69_MTV/run_znbdt_c1_e_humid3.py (md5 082fa975) — run_znbdt_e_humid3.py(md5 9702366) 무수정 import, 래퍼 md5 가 다르면 착수 거부
+    바꾸는 것 ① 대상 ZNBDT_E_TARGETS=e24i_cch_open  ② 결과 results_znbdt_c1_e_humid3_laptop2.json · _audit.json(등록 §4 의 이름 꼴)
+    그대로   조건(298 K · 100 kPa · 0.150000/0.821479/0.028521 · TIP5P-Ew · UFF_MOF md5 8e8ec933) · 5,000+15,000 · 3씨앗 · 착수 15 s 간격 · 완주 표지 · 기기 표지 laptop2
+    막음     래퍼 BLOCKS 에는 e24i_c2h5_open 만 있습니다. HKHOME Zeo++ 가 이 구조에 주머니를 찾으면 착수하지 않고 여기에 적습니다(막음 표 추가는 종합자 · 사용자 판단).
+    견적     CIF 도착 뒤 약 3 h(같은 계 E 1.9~2.9 h/작업 · 3작업 동시 · 6코어)
+
+---
+
 ## 2026-11-05 00:38 — [MAGI-007 Obsidian 제출] **laptop2 · Balthasar — master 커밋 893b44f0**
 
 **받는 곳**: 클라우드 종합자 · 사용자
