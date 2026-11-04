@@ -88,6 +88,28 @@
 > **대안**: 주 축 기준선을 "E 를 돈 넷 + 모체" 로 좁히고 −C₂H₅ 는 "S_humid 없음" 으로 표에 적음(등록 문구를 고치는 일 → 사용자 몫).
 > **30분 규칙 안 씁니다**(새 배정 착수 + 등록 대상 변경 = CLAUDE.md §9 경계 ②). **E 는 등록된 18작업 그대로 먼저 돕니다 — 막지 않습니다.**
 
+### 7. 추가 — 결과가 master 에 오는 경로를 미리 쟀습니다 (HKHOME 은 한 줄 더 해야 합니다)
+
+종합자는 **master(또는 만든 기기 가지)의 원자료만** 읽을 수 있으므로, 결과 경로가 `postman.sh` 의 `RESULT_PATTERNS` 안에 있는지 **글롭을 실제로 전개해** 확인했습니다(postman 머리말 (8) — 안 들어간 경로는 영영 안 옴).
+
+    OK   results_znbdt_e_humid3_<기기>.json        <- results_*.json
+    OK   results_znbdt_a_uff300mix_<기기>.json     <- results_*.json
+    OK   results_znbdt_b_mix323_<기기>.json        <- results_*.json
+    OK   charged_v3/<tag>_uff300_DDEC6.cif         <- charged_v3/*_DDEC6.cif
+    OK   v3w_humid_wc*/*.json                      <- (E 를 습윤 러너 출력으로도 남기면 그쪽도 옴)
+    ⚠ 없음  A 의 Zeo++ **막음 파일**(`*.block` · 막음 산출 폴더)  — RESULT_PATTERNS 밖
+
+**그래서 HKHOME 에 한 줄 더 부탁합니다.** A 의 막음은 **측정의 정의**인데 막음 파일이 master 에 오지 않으므로, 종합자가 검증할 수 있게 **결과 JSON 안에** 다음을 넣어 주십시오(E-24i 선례 `results_e24i_blockpockets_hkhome.json` 의 `protocol` · `gate` 칸과 같은 모양):
+
+- 막음 파일마다 **이름 · md5 · 구 수 · 탐침 반지름**(CO₂ 1.65 · N₂ 1.82)
+- RASPA 출력의 **`Number of pockets blocked in a unitcell`** 값과 **× 셀 수 = 총 막은 구 수** 등식
+- 성분마다 `Pockets are blocked for this component` 줄 있음 · **not-found 0**
+- ⚠ 그리고 **사용자 제시값(−CN 60 · 모체 24, 12셀 기준)과 대조한 결과** — 다르면 `ASSIGN §A` 관문 3 대로 **돌리지 말고 멈추고** 우편함에 적으십시오
+
+같은 이유로 laptop2 의 E 는 **세 성분 적재 줄이 각각 정확히 한 번**임을 센 결과(수)와 **스모크에서 `Component 2 [N2]` 를 봤다는 사실**을 결과 JSON 또는 `_audit.json`(이 이름도 `results_*.json` 안에 들어오게 `results_znbdt_e_humid3_<기기>_audit.json` 로)에 남겨 주십시오.
+
+---
+
 ### 6. 종합자가 R2 까지 할 일 (미리 적어 둡니다 — 겸임의 약점 대비, v3 §4)
 
 - R1 셋이 들어오기 전: 저장소 원자료로 **기준선 재계산**(두 순위표의 원 JSON) · 두 판본 차 · E · A · B 등록문의 자 일치 · `build_e24i_bdtdc.py` 의 빌드 가능 범위 · `postman.sh` RESULT_PATTERNS 에 E · A · B 결과 경로가 있는지. **R1 은 읽지 않습니다 — 아직 읽을 것이 없습니다.**
