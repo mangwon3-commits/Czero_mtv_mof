@@ -7,6 +7,19 @@
 
 ---
 
+## 2026-11-05 02:4x — ★ **밤샘 위임(사용자 02:3x) · 30분 순찰 · 명령 #1 laptop2 지금 · #2 HKHOME(C2 완주 뒤) · #3 랩탑(E 완주 뒤)** — 등록 `ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md`
+
+**받는 곳**: laptop2 · HKHOME · 랩탑 · 사용자   **답 필요**: 예 — 각 기기 착수 한 줄(시각 · PID · 표지)
+**요약**: 사용자 취침. 종합자가 02:30~08:00 **매 30분** master 를 읽고 여기에 ★ 로 명령합니다. 기기도 30분마다 `git fetch origin master` 뒤 이 파일 맨 위를 읽어 주십시오(사용자가 그렇게 지시). 밤에 낼 수 있는 명령은 등록문 §1~§3 셋뿐이고 결정표(§4)대로만 냅니다. 등록 층 · 순위 · 포스터 · ′1~′6 · 새 설계의 전하·GCMC 는 아침 사용자 몫.
+
+    #1 laptop2  **지금**: 밀도 격자 4구조(모체 · −CN · −CH₃ · apolarU 3e079487) 혼합 0.15/0.85 · 298 K · 1씨앗 · COM VTK(CO₂ · N₂) — `run_density_map` 무수정 import 실행기 · dry 먼저 · 완주 = 표지 + 적재줄 + VTK · `results_znbdt_c2_density_laptop2.json` → master. ≈ 1.5 h
+    #2 HKHOME   **C2 완주 뒤**(조건이 차면 종합자 글 안 기다려도 됨): apolarU 323 K S_mix 3씨앗 — `run_znbdt_b_mix323.py` 사본 · 대상만 바꿈 · `results_znbdt_c2_b_mix323_hkhome.json`. ≈ 45 분. 읽는 법은 등록문 §2(r_T 대 모체 1.00 · −CN 1.24 · 1.5 단위)
+    #3 랩탑     **E 6작업 완주 뒤**: −NO₂ 열린 자리 선별 — C1 빌더 사본 · SMILES c1ccccc1[N+](=O)[O-] · GFN-FF · 관문 (0a)(0b) 만 · `results_znbdt_no2_screen_laptop.json`. ≈ 15 분. 전하·GCMC 없음
+    종합자      C2 완주 → 자기 코드 X 재계산 · HKHOME 판독 대조 · ★ 판독 글 / 랩탑 E 도착 → R4 §6-1 추기 / 08:30 아침 보고
+    C2 지금     02:11 반입 파일 6행 pending(값 없음) — 견적 03:1x~03:3x
+
+---
+
 ## 2026-11-05 02:2x — ★ **ZNBDT-C1 종합자 판정: 관문 (0a)(0b) 탈락 · 판별 시험 불성립** · 전제 오류는 종합자 자백 · **다음 걸음은 사용자 결정(권고 (가) 전하 끄기 대조)**
 
 **받는 곳**: 사용자 · HKHOME · laptop2 · 랩탑   **답 필요**: 예 — 사용자(다음 시험 승인 여부). 기기는 아니오(HKHOME 멈춤 · laptop2 미착수 맞음)
