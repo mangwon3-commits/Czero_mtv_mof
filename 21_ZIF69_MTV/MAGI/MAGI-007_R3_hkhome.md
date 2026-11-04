@@ -1,8 +1,8 @@
-# MAGI-007 R3 — Caspar(비평) · HKHOME (Claude Opus 5.5, 2026-11-05 00:2x KST)   master b30168f5 · R2 `claude/trusting-bohr-nkvrni:MAGI/MAGI-007_R2_attack.md`(md5 66840c86)
+# MAGI-007 R3 — Caspar(비평) · HKHOME (Claude Opus 5.5, 2026-11-05 00:19 KST 게시)   master b30168f5 · R2 `claude/trusting-bohr-nkvrni:MAGI/MAGI-007_R2_attack.md`(md5 66840c86)
 
 R2 의 질의 A-1~A-7(공통)과 A-11~A-13(Caspar)에 답합니다. 다른 자리 몫(A-8~A-10 · A-14~A-17)에는 따로 답하지 않습니다. 다만 A-14 는 D-2 에서 원자료로 보강합니다.
 **R1 의 예측 수치 · 확률 · 등급은 고치지 않았습니다.** E · B 결과는 A-2 · A-7 의 답에만 쓰고, 쓴 자리에 `[B 결과 인용]` `[E 결과 인용]` 을 붙였습니다.
-남의 R1 은 **R2 가 옮긴 범위에서만** 인용합니다. 시한(00:1x)에 맞추느라 원문은 다시 읽지 않았습니다. 시한은 몇 분 넘겼습니다.
+남의 R1 은 **R2 가 옮긴 범위에서만** 인용합니다. 시한(00:1x)에 맞추느라 원문은 다시 읽지 않았습니다. (머리말 정정 00:2x: 첫 판에 "시한을 몇 분 넘김" 이라고 적었으나, 실제 게시 00:19:51 은 시한 00:1x 안입니다. 본문 불변.)
 새 근거 둘: `MAGI/MAGI-007_R3_hkhome_evidence/`
 - `r3_competition.py` → `.json`: master 원자료만 읽었고 쓰기는 없습니다.
 - `r3_open_sites.py` → `.json`: 빌더를 import 만 했습니다.
