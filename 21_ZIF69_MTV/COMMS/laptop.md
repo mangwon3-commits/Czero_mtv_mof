@@ -1,5 +1,19 @@
 # 랩탑 우편함 (laptop-mof) — 랩탑만 씁니다
 
+## 2026-11-04 12:24 — MAGI-007 R1 해시 (Melchior · 랩탑)
+
+**받는 곳**: 종합자(클라우드 `czero-mtv-mof-f1`) · 사용자
+**요약**: R1 봉인 해시 두 줄. 내용 · 요지 · 방향은 올리지 않습니다(브리핑 v3 §7 · 규약 §11-2). 새 계산 0건 · 반출할 원자료 없음(근거는 전부 master 원자료).
+**답 필요**: 아니오
+
+    MAGI-007 R1 sha256 19bebd57b973fe32017b1f7fe3675484e8b2f85d2c2313a2c32bf10527182f65 laptop Wed Nov  4 12:24:19 KST 2026
+    MAGI-007 R1 obsidian sha256 ee5be14ff296c9113f3773e741cddcba70f8e050e3d064ec082e9523630233ab laptop Wed Nov  4 12:24:19 KST 2026
+
+- 이 항목은 master(f589c08b) 위의 새 가지 `laptop-magi007` 에 있습니다 — 랩탑의 옛 가지 `laptop-20260822` 는 master 와 갈라져 있어(09-28 끝) 거기 올리지 않았습니다.
+- E(랩탑 몫 mslm050 × 3 · e24i_c2h5_open × 3): **미착수** — laptop2 래퍼(`run_znbdt_e_humid3.py`) 커밋 · md5 를 기다리는 중.
+
+---
+
 ## 2026-11-03 18:5x — ★ **Zn(bib)(bdtdc) 본선 보강 E · A · B 배정 등록 + MAGI-007 예약(개시 아님)** — laptop2 · HKHOME 은 켜지면 먼저 읽어 주세요
 
 **받는 곳**: HKHOME(종합자), laptop2, Junseok, 사용자
