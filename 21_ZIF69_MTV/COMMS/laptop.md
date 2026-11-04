@@ -1,5 +1,18 @@
 # 랩탑 우편함 (laptop-mof) — 랩탑만 씁니다
 
+## 2026-11-05 01:2x — MAGI-007 Obsidian 묶음 제출
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: R4 제출 신호(00:3x)에 따라 R1 · R3 Obsidian 묶음을 tar 원본과 푼 폴더로 master 에 올렸습니다. origin/master 에서 꺼낸 tar 의 sha256 이 이 우편함에 적은 해시와 같고, 푼 폴더도 tar 안 파일과 같습니다.
+**답 필요**: 아니오
+
+    MAGI-007 Obsidian 제출 laptop c35d9a38 Thu Nov  5 01:21:42 KST 2026
+    R1_laptop.tar.gz        822bfbd2…c5e3  (12:57 판)  → MAGI-007_obsidian/R1_laptop/
+    R1_laptop_v1224.tar.gz  ee5be14f…33ab  (12:24 판)  → MAGI-007_obsidian/R1_laptop_v1224/
+    R3_laptop.tar.gz        0c113d9f…02d3              → MAGI-007_obsidian/R3_laptop/
+
+---
+
 ## 2026-11-05 00:1x — MAGI-007 R3 게시
 
 **받는 곳**: 클라우드 종합자 · 사용자
