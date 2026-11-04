@@ -1,0 +1,255 @@
+{
+  "test": "ZnBDT 보강 A — UFF4MOF 상한 300 이완본 막음 파일(Zeo++)",
+  "assign": "ASSIGN_ZNBDT_SUPP_20261103.md §A",
+  "machine": "hkhome",
+  "ported_from": "e24g_zeo_desktop.py (E-24g/E-24i 데스크탑 이식)",
+  "started": "2026-11-04 12:53:50",
+  "zeo": "/home/mangwon1/miniconda3/envs/czeromof/bin/network",
+  "flags": "-ha",
+  "block_samples": 50000,
+  "radii": [
+    1.65,
+    1.82
+  ],
+  "guard_MB": 1500,
+  "rows": [
+    {
+      "tag": "e22_parent",
+      "cif": "uff300_e24i/e22_parent_after.cif",
+      "cif_md5": "4f80dd4ca570a89ef359233d1bc0c1ea",
+      "n_atoms": 2448,
+      "cell_volume_A3": 39007.63398635358,
+      "cellpar": [
+        50.78617260354976,
+        27.787823757227606,
+        28.033974919722883,
+        90.0,
+        99.60800029118649,
+        90.0
+      ],
+      "runs": [],
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 8,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 8,
+          "pockets_stdout": 24,
+          "chan_file_head": [
+            "e22_parent.chan   8 channels identified of dimensionality 1 1 1 1 1 1 1 1 ",
+            "Channel  0  5.5449  4.06803  5.5449",
+            "Channel  1  5.53649  4.06639  5.53649"
+          ],
+          "rc": 0,
+          "seconds": 12.0,
+          "peak_rss_MB": 449,
+          "stopped_by_guard": false,
+          "pre_counts": {
+            "simulate": 0,
+            "network": 0
+          }
+        },
+        "block": {
+          "channels": 8,
+          "pockets": 24,
+          "nodes": 443568,
+          "accessible_nodes": 12363,
+          "n_spheres": null,
+          "sphere_radii": [],
+          "sphere_volume_sum_A3": 0,
+          "sphere_volume_pct_of_cell": 0.0,
+          "block_file": "znbdt_a_zeo_runs/e22_parent/block1.65/e22_parent_after.block",
+          "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+          "n_block_files": 1,
+          "block_ok": false,
+          "rc": -9,
+          "seconds": 987.4,
+          "peak_rss_MB": 17157,
+          "stopped_by_guard": true,
+          "pre_counts": {
+            "simulate": 0,
+            "network": 0
+          }
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 8,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 8,
+          "pockets_stdout": 24,
+          "chan_file_head": [
+            "e22_parent.chan   8 channels identified of dimensionality 1 1 1 1 1 1 1 1 ",
+            "Channel  0  5.5449  4.06803  5.5449",
+            "Channel  1  5.53649  4.06639  5.53649"
+          ],
+          "rc": 0,
+          "seconds": 10.0,
+          "peak_rss_MB": 449,
+          "stopped_by_guard": false,
+          "pre_counts": {
+            "simulate": 0,
+            "network": 0
+          }
+        }
+      }
+    },
+    {
+      "tag": "e24i_cn_open",
+      "cif": "uff300_e24i/e24i_cn_open_after.cif",
+      "cif_md5": "ea0001e582aaf4dc7f75dce1d60304ba",
+      "n_atoms": 2496,
+      "cell_volume_A3": 40052.78704106324,
+      "cellpar": [
+        51.45374166288265,
+        28.35703931199659,
+        27.841330523790425,
+        90.0,
+        99.60800029118649,
+        90.0
+      ],
+      "runs": [],
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 0,
+          "dimensionality": [],
+          "channels_stdout": 0,
+          "pockets_stdout": 60,
+          "chan_file_head": [
+            "e24i_cn_open.chan   0 channels identified of dimensionality ",
+            "e24i_cn_open.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+          ],
+          "rc": 0,
+          "seconds": 6.0,
+          "peak_rss_MB": 315,
+          "stopped_by_guard": false,
+          "pre_counts": {
+            "simulate": 0,
+            "network": 0
+          }
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 0,
+          "dimensionality": [],
+          "channels_stdout": 0,
+          "pockets_stdout": 48,
+          "chan_file_head": [
+            "e24i_cn_open.chan   0 channels identified of dimensionality ",
+            "e24i_cn_open.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+          ],
+          "rc": 0,
+          "seconds": 6.0,
+          "peak_rss_MB": 313,
+          "stopped_by_guard": false,
+          "pre_counts": {
+            "simulate": 0,
+            "network": 0
+          }
+        }
+      }
+    },
+    {
+      "tag": "e24i_br_open",
+      "cif": "uff300_e24i/e24i_br_open_after.cif",
+      "cif_md5": "2344c9e64a6a678f71434506938a3de5",
+      "n_atoms": 2448,
+      "cell_volume_A3": 39781.539119626184,
+      "cellpar": [
+        51.1689377907965,
+        28.164660758296503,
+        27.99662931461874,
+        90.0,
+        99.60800029118651,
+        90.0
+      ],
+      "runs": [],
+      "r1.65": {
+        "chan": {
+          "n_channels_chanfile": 16,
+          "dimensionality": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "channels_stdout": 16,
+          "pockets_stdout": 0,
+          "chan_file_head": [
+            "e24i_br_open.chan   16 channels identified of dimensionality 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ",
+            "Channel  0  4.97658  3.32399  4.97658",
+            "Channel  1  4.99458  3.34867  4.99458"
+          ],
+          "rc": 0,
+          "seconds": 18.0,
+          "peak_rss_MB": 458,
+          "stopped_by_guard": false,
+          "pre_counts": {
+            "simulate": 0,
+            "network": 0
+          }
+        }
+      },
+      "r1.82": {
+        "chan": {
+          "n_channels_chanfile": 0,
+          "dimensionality": [],
+          "channels_stdout": 0,
+          "pockets_stdout": 48,
+          "chan_file_head": [
+            "e24i_br_open.chan   0 channels identified of dimensionality ",
+            "e24i_br_open.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+          ],
+          "rc": 0,
+          "seconds": 6.0,
+          "peak_rss_MB": 341,
+          "stopped_by_guard": false,
+          "pre_counts": {
+            "simulate": 0,
+            "network": 0
+          }
+        }
+      }
+    }
+  ],
+  "note": "기계적 사실뿐. 입력은 2×2×3 초격자(12셀) — 구 · 통로 · 주머니 수는 초격자 기준. 주머니 부피 = .block 구 부피 합(겹침 무시).",
+  "attempt1": {
+    "when": "2026-11-04 12:36~12:51",
+    "what": "e22_parent r=1.65 -block · guard 5000 MB · 921.2 s · peak RSS 13620 MB · rc -9(가드 kill) · .block 0 바이트",
+    "moved_to": "~/.claude_work/znbdt_a_zeo_attempt1/ (저장소 밖)"
+  },
+  "elapsed_s": 1103,
+  "aborted": "2026-11-04 13:12 HKHOME — 드라이버(PID 19892)와 자식 network(PID 23523)를 PID 로 정지. e22_parent r=1.65 -block 이 두 번 다 메모리 가드에 걸림(1차 가드 5,000 MB: 921 s · 최대 RSS 13,620 MB · 2차 가드 1,500 MB: 987 s · 최대 RSS 17,157 MB, 증가가 끝까지 가속). 남은 -block 5건(모체 1.82 는 착수 직후 정지)은 안 돌림. -chan 6건은 모두 rc 0 으로 끝남(아래 rows). 0 바이트 .block 은 저장소 밖으로 옮김: znbdt_a_zeo_runs/e22_parent/block1.82/e22_parent_after.block, znbdt_a_zeo_runs/e22_parent/block1.65/e22_parent_after.block",
+  "all_blocks_ok": false,
+  "marked": "2026-11-04 13:12:55"
+}
