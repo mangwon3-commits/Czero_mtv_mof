@@ -19,7 +19,7 @@
     링크     R1 note 상대 링크 6개 중 6개가 새 자리에서 맞음 · R3 note 상대 링크 0개(R3 는 링크 대신 저장소 경로를 코드 표기로 적고 sources.md 에 md5 를 붙였음 · 그래프 간선은 edges.json)
     출처 대조 R3 sources.md 12/12 md5 가 master 와 같음 · R1 원자료 md5 5/5 같음 · R1 문서 7건은 커밋 f589c08b 표기(그 뒤 master 에서 불변)
              R1 C-12 브리핑 md5 8e7cc0ea = 종합자 가지 cbf33384 판(R1 머리말에 적은 출처) — master 판(b67e9676 · 2a62d4a4)과 다른 것이 정상
-             R1 의 ~/.mof_magi/caspar_work/baseline_recompute.{py,json,md} → 공개 자리 MAGI/MAGI-007_R1_hkhome_evidence/ (sha256 COMMS 6183 행)
+             R1 의 ~/.mof_magi/caspar_work/baseline_recompute.{py,json,md} → 공개 자리 MAGI/MAGI-007_R1_hkhome_evidence/ (R1 공개 커밋 cc7768cf · 제출 해시와 5/5 일치)
 
 ---
 
