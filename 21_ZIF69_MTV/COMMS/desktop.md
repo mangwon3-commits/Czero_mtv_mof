@@ -6224,3 +6224,31 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 - ⚠ B 가 도는 동안 HKHOME 은 **수동 merge 를 하지 않습니다**(CLAUDE.md §6). 그 사이 우편함 글은 master 가 앞서 있으면 B 가 끝난 뒤에 올립니다.
 
     커밋에 실은 것(전부 새 파일): 위 CIF 셋 · `charged_znbdt_a.json` · `znbdt_a_zeo.py` · `znbdt_a_zeo_runs/`(-chan 6 + 실패한 -block 로그) · `results_znbdt_a_access_hkhome.json` · `run_znbdt_a_uff300mix.py`(A 래퍼, 막음 파일이 생길 때까지 안 띄움) · `run_znbdt_b_mix323.py`.
+
+
+## 2026-11-04 14:5x — HKHOME: **B 완주(6/6)** — 값과 관문만(판정은 종합자, ASSIGN §B 읽는 법) · 공용 파일 손 병합 끝
+
+    **받는 곳**: 클라우드 종합자 · 사용자   **답 필요**: 아니오
+
+### B — `results_znbdt_b_mix323_hkhome.json`(master c2cb779d · md5 542a7969)
+- 착수 13:38~13:39(15 s 간격) · 끝 ≈ 14:27 · 작업당 **40.9~47.6 분**(298 K 같은 구조 HKHOME 53~56 분보다 빠름 — 견적 14:30~14:50 의 앞쪽 바깥).
+- 관문: 6/6 `ok` · 실행 폴더마다 `Simulation finished` **2**(정상) · 씨앗 6개 고유 · 힘장 md5 8e8ec933 · T 323.0 K · CIF md5 대조(착수 전 관문) 통과 · 막음 없음(등록대로).
+
+| 행 | 씨앗 | S_mix ± | N_CO₂ | N_N₂ |
+|---|---|---|---|---|
+| e24i_cn_open_s1 | 1793767128 | 84.12 ± 3.53 | 2.384 | 0.1606 |
+| e24i_cn_open_s2 | 1793767143 | 81.55 ± 4.59 | 2.378 | 0.1652 |
+| e24i_cn_open_s3 | 1793767158 | 82.01 ± 1.33 | 2.374 | 0.1640 |
+| e24i_br_open_s1 | 1793767173 | 77.50 ± 3.27 | 2.039 | 0.1491 |
+| e24i_br_open_s2 | 1793767188 | 76.86 ± 3.79 | 2.041 | 0.1505 |
+| e24i_br_open_s3 | 1793767203 | 76.94 ± 2.72 | 2.020 | 0.1488 |
+
+- B-1 · B-2 의 계산(평균 · 1.5 단위 · 배치 단위 · 유지비)은 **종합자가 등록 읽는 법대로** 내십시오. 모체 대조는 등록대로 `results_e27_mix323_laptop.json`(다시 안 돌림). S_Henry 칸은 298 K 값(비 인용 금지).
+- ⚠ HKHOME R1 에는 B 예측이 봉인돼 있습니다(12:38). 이 보고는 그 뒤의 자료이고, R1 은 고치지 않았습니다.
+
+### 공용 파일 손 병합(사용자 승인 14:4x) — `64652547`
+- `MACHINE_CAPABILITIES.md` ← `origin/junseok-20260822`(master + Junseok 09-25 자기 줄 갱신 · 바뀐 master 줄은 Junseok 줄 둘뿐 — 스크립트가 줄 단위로 확인) + HKHOME 자기 줄 하나(12셀 초격자 `-block` 메모리 실패 실측).
+- `watchdog.log` ← `origin/laptop-20260822`(master + 81줄, 지운 줄 0).
+- 가져올 것 없음: `origin/junseok`(08-29 낡은 가지 — 가지 쪽이 지운 것뿐) · laptop 의 MACHINE_CAPABILITIES(master 줄 둘이 없는 판) · `loadings_from_output.json`(master 그대로).
+- B 가 도는 중이라 merge 없이 파일 단위 `git checkout <가지> -- <경로>`(CLAUDE.md §6 허용 경로).
+- 남는 소음: `origin/junseok` 은 쓰이지 않는 가지라 postman 재기동마다 경고 셋이 다시 뜹니다. 가지 삭제는 사용자 몫(되돌릴 수 없음).
