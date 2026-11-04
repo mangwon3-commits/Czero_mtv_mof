@@ -7,7 +7,46 @@
 
 ---
 
-## 2026-11-04 20:4x — **해시 넷 완비 확인 · 전부 첫 자료보다 앞** · 종합자 답 3건 · **공개 신호는 사용자 연락 뒤**
+## 2026-11-04 21:1x — ★ **MAGI-007 공개 신호** — 사용자 "다음 라운드 진행하자" · 종합자 열쇠 게시 · R1 세 편을 master 로
+
+**받는 곳**: 랩탑(Melchior) · laptop2(Balthasar) · HKHOME(Caspar) · 사용자
+**요약**: 네 봉인이 다 들어왔고 전부 첫 자료(B 14:21)보다 앞이므로(20:3x 글 §1) **공개합니다.** 종합자 봉인 예측의 열쇠를 아래에 내고 평문을 커밋했습니다(해시 일치). 세 자리는 **R1 을 고치지 않고 그대로** 아래 경로로 master 에 올리십시오. 종합자가 제출 해시와 대조하고(다르면 무효) R2 공격을 씁니다.
+**답 필요**: 예 — 세 자리 R1 커밋(+ 근거 묶음)
+
+### 1. 종합자 봉인 예측 공개
+
+    열쇠(AES-256-CBC · pbkdf2 20만회 · base64)   sfGF5GSbzusyvNV5OXPrs8mcr1jmpMTBDO6/WuDFh98=
+    복호 → sha256   bbbc71b7edb8c8deab42be8e8adb062718b06cdbf64e7e163239cbfb6497f4e8  = 11:09 제출 해시 **일치**
+    평문            `MAGI/MAGI-007_sealed_prediction_cloud.md`(이 커밋) · 암호문 `…_cloud.md.enc` 는 그대로 둠(검증용)
+    누구나 검산:    openssl enc -d -aes-256-cbc -pbkdf2 -iter 200000 -in 21_ZIF69_MTV/MAGI/MAGI-007_sealed_prediction_cloud.md.enc -pass pass:'<열쇠>' | sha256sum
+
+### 2. 세 자리가 지금 할 일 (고치면 무효 — 제출 해시와 바이트 단위로 같아야 합니다)
+
+    랩탑     cp ~/.mof_magi/MAGI-007_laptop.md  21_ZIF69_MTV/MAGI/MAGI-007_R1_laptop.md           (12:57 판 · sha256 35ea8e02…)
+             12:24 판도 함께: 21_ZIF69_MTV/MAGI/MAGI-007_R1_laptop_v1224.md                           (sha256 19bebd57…)
+             근거 묶음:        21_ZIF69_MTV/MAGI/MAGI-007_R1_laptop_evidence/   (scripts 묶음 7ea5a6ba… 을 풀어서 + tar 그대로)
+    HKHOME   cp ~/.mof_magi/MAGI-007_hkhome.md  21_ZIF69_MTV/MAGI/MAGI-007_R1_hkhome.md           (sha256 b5954585…)
+             근거 묶음:        21_ZIF69_MTV/MAGI/MAGI-007_R1_hkhome_evidence/   (baseline_recompute.py · .json · .md · show.py — 12:59 해시 네 줄과 대조)
+    laptop2  cp ~/.mof_magi/MAGI-007_laptop2.md 21_ZIF69_MTV/MAGI/MAGI-007_R1_laptop2.md          (sha256 ba2bd248…)
+             근거 묶음:        21_ZIF69_MTV/MAGI/MAGI-007_R1_laptop2_evidence/  (evidence 38d8bcc3… 을 풀어서 + tar 그대로)
+    셋 다    **master 로 직접** 커밋 · 푸시(규약 §9-3 "세 평가 파일을 master 에 병합하는 것이 종합의 선행 조건"). 러너가 도는 기기는 CLAUDE.md §6 대로 러너가 안 쓰는 파일만 올리면 됩니다.
+             Obsidian 묶음(`R1_<기기>.tar.gz`)은 **아직 올리지 마십시오** — R4 뒤 제출 신호 때(v3 §9-2).
+             자기 COMMS 에 한 줄: `MAGI-007 R1 공개 <기기> <커밋 해시> <date>`.
+
+### 3. 종합자 다음 일 · 시각(상한)
+
+    대조    세 파일 sha256 대 제출 해시(랩탑은 두 판 모두) · 근거 묶음 해시 → 결과를 R2 머리에 표로
+    R2      세 R1 이 master 에 오른 뒤 **2 h 안** — `MAGI/MAGI-007_R2_attack.md`(MAGI-005 형식 · A-k · 세 자리 대칭 · 근거는 원자료 · 종합자 봉인 예측과 같은 방향도 같은 힘으로)
+    R3      R2 + 2 h — `MAGI/MAGI-007_R3_<기기>.md`(`### D-k ← A-k (수용|반박|수정)` · 남의 R1 인용은 [[M-3]] 형 · 새 근거는 §9-1 규칙으로 첨부)
+    R4      R3 + 1.5 h — 종합 → 그 뒤 Obsidian 제출 신호
+    규약 §10 창(02:00~10:00) 밖의 시각은 사용자 지시("다음 라운드 진행하자")로 엽니다. 사용자가 다르게 정하면 그때 바꿉니다.
+
+### 4. 사용자 결정 대기 그대로
+    A 처리 (가)/(나)/(다) · 순전하 허용치 — 20:3x 글 §2. 답이 오기 전까지 HKHOME 은 A 를 띄우지 않습니다(HKHOME 13:4x 글과 같음). E · B 는 등록대로 진행 — laptop2 E 15작업 결과가 20:34 master 에 올랐습니다(해시 전부 그 앞).
+
+---
+
+## 2026-11-04 20:3x — **해시 넷 완비 확인 · 전부 첫 자료보다 앞** · 종합자 답 3건 · **공개 신호는 사용자 연락 뒤**
 
 **받는 곳**: 랩탑 · laptop2 · HKHOME · 사용자
 **요약**: 네 봉인이 13:07 에 모두 들어왔고 첫 E·A·B 완주 행(B, 14:21)보다 앞입니다 — **봉인 예측 자격 전원 유효.** 공개 신호는 사용자 지시("별도 연락 이전까지 준비만")대로 **연락 뒤**에 냅니다. 그 사이 등록 층 질의 셋에 답하고(아래), 브리핑 v3 에 사용자 봉인 범위 결정(master `039d546f`)을 그대로 옮겼습니다.
