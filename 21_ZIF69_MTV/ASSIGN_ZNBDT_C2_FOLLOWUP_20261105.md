@@ -31,13 +31,15 @@
 - 둘 다 안 또는 둘 다 밖 → 판별 불가(서술만). 보조: S_mix(323)/S_mix(298) 비(−CN 0.591 · 모체 0.669).
 ZNBDT-C2 주 판독(§2-4)과 **따로** 적고, 둘이 어긋나면 어긋난다고 적습니다(한 수로 다른 층을 말하지 않음 — R4 교훈 ㄱ).
 
-## 3. 명령 #3 — 랩탑: −NO₂ 열린 자리 선별 (빌드 · 이완 · 관문 (0a)(0b) 만) — **조건: E 6작업 완주 뒤**
+## 3. 명령 #3 — −NO₂ 열린 자리 선별 (빌드 · 이완 · 관문 (0a)(0b) 만) — **빌드 = 랩탑(E 완주 뒤) · 이완·관문 = HKHOME(C2 완주 뒤)**
+
+> **[03:0x 기기 변경 — 랩탑 02:5x 보고: 랩탑에 xtb 없음(`MACHINE_CAPABILITIES.md`)]** 랩탑은 빌드와 빌더 충돌 검사까지만 하고 `znbdt_no2_screen/E24i_ZnDia_NO2_open.cif` · `znbdt_no2_build.json` 을 master 로. **이완 + (0a)(0b) 는 HKHOME** 이 C2 완주 뒤(1코어 · 약 3분 · #2 와 같이 돌아도 됨) `relax_tnf.py --job e24i_no2_open=znbdt_no2_screen/E24i_ZnDia_NO2_open.cif` → `znbdt_c2_screen/screen_measure.py` 와 같은 측정으로 잇고 `results_znbdt_no2_screen_hkhome.json` 을 올립니다. 문턱 · 산출 항목은 아래 그대로(바뀐 것은 기기만).
 
 | 항목 | 내용 |
 |---|---|
 | 빌드 | `build_znbdt_c1_bdtdc.py`(HKHOME 61b4ee4a) 사본 → `KINDS=('NO2',)` · `B.SMILES['NO2']='c1ccccc1[N+](=O)[O-]'`(E-22 NO₂ 와 같은 조각) · 출력 `znbdt_no2_screen/` · 이름 `e24i_no2_open` |
 | 이완 · 관문 | `relax_tnf.py` GFN-FF 고정셀 → (0a) 이종–H ≥ 1.8 · 변위 ≤ 1.0 / (0b) `clash_gate.check` 겹침 < 0.4 — ZNBDT-C2 §0 선별과 같은 코드 · 같은 문턱 |
-| 산출 | `results_znbdt_no2_screen_laptop.json`(거리 · 겹침 · 최악 짝 · 자리별) → master. **전하 · Widom · GCMC 는 하지 않음** |
+| 산출 | 랩탑: `znbdt_no2_screen/E24i_ZnDia_NO2_open.cif` · `znbdt_no2_build.json` / HKHOME: `results_znbdt_no2_screen_hkhome.json`(거리 · 겹침 · 최악 짝 · 자리별) → master. **전하 · Widom · GCMC 는 하지 않음** |
 | 견적 | 같은 계 실측(HKHOME C1 빌드~이완 3.2 분 + 측정) → ≈ 15 분 |
 
 **뜻**: ZNBDT-C2 가 극성 쪽이면 다음 설계는 "극성을 키우되 물을 덜 끄는 자리" 이고 −NO₂ 가 첫 후보입니다(R4 §5-1 · ASSIGN_C1 §3). 들어가는지(관문)만 밤에 봅니다. 통과/탈락 어느 쪽도 **설계 결정이 아니라 가능성 표**입니다 — 다음 걸음은 아침 사용자.

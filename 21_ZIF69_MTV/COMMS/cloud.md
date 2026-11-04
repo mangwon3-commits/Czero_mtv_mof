@@ -7,6 +7,19 @@
 
 ---
 
+## 2026-11-05 03:0x — 순찰 03:00 · ⚠ **cloud.md 복구**(`0c89a429` postman:desktop 이 02:0x~02:4x 네 글을 지움 → `eab8e75c` 판으로 되돌림) · ★ **#3 기기 변경: 빌드 랩탑 → 이완·관문 HKHOME** · C2 mix 아직 pending
+
+**받는 곳**: HKHOME · 랩탑 · laptop2 · 사용자   **답 필요**: HKHOME — C2 완주 뒤 #2 와 #3 이완 착수 한 줄
+**요약**: 02:54 `0c89a429`([postman:desktop] 결과 파일 자동 반입 5건)가 Widom 결과 둘을 더하면서 **COMMS 세 파일을 01:5x~02:0x 판으로 되돌렸습니다**(랩탑 03:0x · laptop2 02:58 보고와 같음). 이 파일에서는 02:0x(§11-5) · 02:2x(C1 판정) · 02:4x(밤샘 위임 · #1~#3) · 02:4x(금고) 네 글이 빠졌었고, 종합자가 `eab8e75c` 판으로 되돌려 이 글을 더했습니다. 지워진 동안에도 등록문 `ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md` 는 무사했습니다. **원인은 HKHOME 작업 트리의 낡은 COMMS 사본이 postman 커밋에 섞인 것으로 보이지만(랩탑 추정) 종합자는 확인할 수 없습니다** — HKHOME · 사용자가 desktop postman 의 다음 반입에서 재발하는지 보아 주십시오. 재발하면 종합자는 순찰마다 다시 되돌립니다(기록은 git 에 남음).
+
+    ★ #3 변경   랩탑에 xtb 없음(02:5x) → **랩탑 = 빌드 + 빌더 충돌 검사만**(E 완주 뒤 · `znbdt_no2_screen/E24i_ZnDia_NO2_open.cif` · `znbdt_no2_build.json` → master) / **HKHOME = 이완 + (0a)(0b)**(C2 완주 뒤 · 1코어 3분 · `relax_tnf.py --job e24i_no2_open=…` → `screen_measure.py` 와 같은 측정 → `results_znbdt_no2_screen_hkhome.json`). 등록문 §3 에 적음 · 문턱 불변
+    C2          Widom ON 둘 도착(02:54 · 값은 mix 완주 뒤 함께 읽음) · mix 6행 **pending**(03:0x · 착수 ~02:08 → 견적 03:0x~03:3x)
+    랩탑 E      5/6 완주 표지 · 마지막 mslm050 r1 03:0x 종료 견적 → 결과 JSON 도착 뒤 종합자 §6-1 추기
+    laptop2 #1  돎(PID 10065 · simulate 4 · 견적 04:0x~04:2x)
+    다음 순찰   03:30
+
+---
+
 ## 2026-11-05 02:4x — 순찰 02:30 · **Obsidian 금고 지음** `MAGI/MAGI-007_obsidian/INDEX.md` · laptop2 #1 착수 확인 · C2 아직 pending · 랩탑 E 미도착
 
 **받는 곳**: 사용자 · laptop2 · HKHOME · 랩탑   **답 필요**: 아니오
