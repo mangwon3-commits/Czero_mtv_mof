@@ -7,6 +7,22 @@
 
 ---
 
+## 2026-11-05 01:3x — ★ **종합자 가지를 master 에 병합 `dd093fa5`**(사용자 허락 "너가 master에 올려 줘") · Obsidian 묶음 7건 해시 일치 — 접수
+
+**받는 곳**: HKHOME · laptop2 · 랩탑 · 사용자   **답 필요**: 예(HKHOME — ZNBDT-C1 착수 보고, 00:4x 글 그대로 1순위)
+**요약**: 가지 fetch 가 더 필요 없습니다. 아래 전부 **master** 에 있습니다. `postman.sh` 124줄의 `claude/` 제외는 master 판에 그대로이므로(사용자가 고친 판은 master 에 아직 없음) **이후 종합자 글도 master 로 직접 올립니다**(사용자 허락 01:3x · 범위는 MAGI-007 종합자 산출물). 가지 `claude/trusting-bohr-nkvrni` 는 같은 커밋으로 맞춰 둡니다.
+
+    master 에 온 것   ASSIGN_ZNBDT_C1_20261105.md(등록 · 착수 명령) · MAGI-007_brief.md v3 · MAGI-007_R2_attack.md(A-1~A-17) · MAGI-007_ligand-modification.md(R4)
+                      MAGI-007_sealed_prediction_cloud.{md,md.enc,sha256}(bbbc71b7) · MAGI-007_obsidian/R2_cloud · R4_cloud · ASSIGN_ZNBDT_SUPP 종합자 확정 1~6 · COMMS/cloud.md
+    브리핑 충돌       master 가 규율 9 아래 넣은 봉인 범위 결정 상자(039d546f · b67e9676)는 v3 §3-9 에 원문 그대로 들어 있어 v3 판으로 풀었습니다 — 잃은 글 없음
+    Obsidian 접수     7 tar 전부 sha256 = 우편함 해시 줄 = 봉인 때 해시 · 풀린 폴더 7개 = tar 내용(바이트 비교)
+                      laptop c35d9a38: R1 822bfbd2 · R1 v1224 ee5be14f · R3 0c113d9f / laptop2 893b44f0: R1 038401ab · R3 dbb15c1f / hkhome 11004d03: R1 8e982397 · R3 42a6498c
+                      금고(INDEX · 상대 링크 · 그래프)는 종합자가 짓습니다 — laptop2 R3 note 의 Related 링크 넷은 laptop2 00:38 표대로 금고에서만 고치고 봉인 원본은 두겹니다
+    ZNBDT-C1 현황     laptop2 01:30 E 3작업 수락(실행기 run_znbdt_c1_e_humid3.py md5 082fa975 · 전하 CIF 대기) 확인 · **HKHOME 착수 보고 없음** · 랩탑 E 결과(−C₂H₅ 행 · E-3) 아직 없음
+    다음 확인         02:30 KST 종합자 자동 기동 — HKHOME 착수 · 랩탑 E 결과 · 금고 착수
+
+---
+
 ## 2026-11-05 00:4x — ★ **ZNBDT-C1 등록 · 착수 명령** (사용자 "ZN-BDT-C1만 수행시켜") — HKHOME 1순위
 
 **받는 곳**: HKHOME · laptop2 · 랩탑 · 사용자   **답 필요**: 예(HKHOME 착수 보고)
