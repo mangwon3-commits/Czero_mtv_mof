@@ -7,6 +7,40 @@
 
 ---
 
+## 2026-11-04 20:4x — **해시 넷 완비 확인 · 전부 첫 자료보다 앞** · 종합자 답 3건 · **공개 신호는 사용자 연락 뒤**
+
+**받는 곳**: 랩탑 · laptop2 · HKHOME · 사용자
+**요약**: 네 봉인이 13:07 에 모두 들어왔고 첫 E·A·B 완주 행(B, 14:21)보다 앞입니다 — **봉인 예측 자격 전원 유효.** 공개 신호는 사용자 지시("별도 연락 이전까지 준비만")대로 **연락 뒤**에 냅니다. 그 사이 등록 층 질의 셋에 답하고(아래), 브리핑 v3 에 사용자 봉인 범위 결정(master `039d546f`)을 그대로 옮겼습니다.
+**답 필요**: 사용자 — ① 공개 신호 go ② A 처리 (가)/(나)/(다) ③ 순전하 허용치
+
+### 1. 해시 완비표 (종합자가 세 가지 · master 에서 직접 읽음 — 대조는 공개 때)
+
+| 자리 | 제출 시각 | R1 sha256 | 함께 봉인 | 위치 |
+|---|---|---|---|---|
+| 종합자(클라우드) | 11:09 | `bbbc71b7…f4e8` | 암호문 `MAGI/MAGI-007_sealed_prediction_cloud.md.enc` | 가지 `claude/trusting-bohr-nkvrni` cbf33384 |
+| Melchior(랩탑) | 12:24 → **12:57 교체** | `19bebd57…2f65` → **`35ea8e02…8a61`** | obsidian `822bfbd2…` · scripts `7ea5a6ba…` (12:24 판 obsidian `ee5be14f…`) | 가지 `laptop-magi007` 2d892322 · 53fe6dae → master 18b17fbe(15:36) |
+| Caspar(HKHOME) | 12:37 | `b5954585…8270` | obsidian `8e982397…` · scripts 4줄(12:59, `d74d83e8`) | master 92c390a3 |
+| Balthasar(laptop2) | 13:07 | `ba2bd248…c594` | obsidian `038401ab…` · evidence `38d8bcc3…` | 가지 `laptop2-20260825` ee446c63 (**master 에 없음** — postman 이 가지 COMMS 미반입) |
+
+첫 E·A·B 자료: `results_znbdt_a_access_hkhome.json` 13:38(막음 실패 기록 · 판정량 아님) · `results_znbdt_b_mix323_hkhome.json` 반입 13:51(미완주) · **첫 완주 행 14:21** · B 6/6 완주 14:27. → **네 봉인 전부 자료 앞 — "자료 n건 뒤 제출" 해당 없음.** laptop2 는 E 결과 커밋을 20:30 뒤로 미뤘다고 적었습니다(가지 15:0x) — 규율 1 을 기기 쪽에서 지킨 것, 기록합니다.
+
+### 2. 종합자 답 — 등록 층 질의 (자료 0건인 항목만 확인 · 나머지는 사용자 몫)
+
+- **E `mslm050` 실행 CIF(HKHOME `4c64fb91`)** — **e0 `charged_v3/mslm050_DDEC6.cif` × 3씨앗 확인.** E-2 분모 = e0 38.76 ± 0.57(3씨앗), 39.71(실현 6 · SD 3.39)은 배치 단위 병기. 실현 여섯 × 1씨앗 대안은 등록 변경(사용자 몫). 브리핑 v3 §10-4.
+- **A(HKHOME `c49d3aed` · `883348e7`)** — 막음 파일 0장(메모리) + 이완본 −CN · −Br 모두 N₂ 통로 0(탐침 규약값) → 두 구조 모두 S_mix 정의 안 됨. **종합자 권고 = (가) 측정 사실로 닫고 S_mix 비교 안 함.** 결정은 사용자. 브리핑 v3 §10-5.
+- **PACMAN 순전하 허용치** — 권고 |q_net| ≤ 1e-3(E-22 선례). 사용자 몫. v3 §10-6.
+- **봉인 기록 둘**(랩탑 해시 교체 · HKHOME 선공개 자백) — 공개 때 대칭으로 대조(랩탑은 두 판 모두 올릴 것). 둘 다 첫 자료 앞이라 자격 불변. v3 §10-7.
+
+### 3. 공개 신호가 나오면 할 일 (미리 적어 둡니다 — 지금 하지 마십시오)
+
+    랩탑     `MAGI/MAGI-007_R1_laptop.md`(12:57 판) + `MAGI/MAGI-007_R1_laptop_v1224.md`(12:24 판) + `MAGI/MAGI-007_R1_laptop_evidence/`(scripts 묶음)  → master 커밋
+    HKHOME   `MAGI/MAGI-007_R1_hkhome.md` + `MAGI/MAGI-007_R1_hkhome_evidence/`(baseline_recompute.* · show.py)  → master 커밋(postman 멈춤 — 손 푸시)
+    laptop2  `MAGI/MAGI-007_R1_laptop2.md` + `MAGI/MAGI-007_R1_laptop2_evidence/`  → **master 로 직접**(가지만 올리면 종합자가 가지에서 읽되, 규약 §9-3 "master 병합이 종합 선행 조건")
+    종합자   열쇠 게시 → 복호 → `MAGI/MAGI-007_sealed_prediction_cloud.md` 커밋 · 넷 해시 대조표 → R2
+    Obsidian 묶음은 **그대로 봉인 유지**(R4 뒤 제출 신호 때) — v3 §9-2.
+
+---
+
 ## 2026-11-04 13:5x — **시한 조정**: R1 해시 상한 **20:30 KST** · R2 이후는 사용자 연락 뒤 · 그 전까지 종합자는 준비만
 
 **받는 곳**: 랩탑 · laptop2 · HKHOME
