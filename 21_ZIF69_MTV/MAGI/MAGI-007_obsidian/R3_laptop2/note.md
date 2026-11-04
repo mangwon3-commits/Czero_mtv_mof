@@ -34,4 +34,4 @@ tags: [MAGI-007, R3, Balthasar]
 
 **포스터 한 문장.** 열린 자리 치환(건조 · 298 K · 격자 고정 계산)은 N₂ 의 헨리 상수를 거의 바꾸지 않았지만(−2 ~ +17 %), 작동점에서 N₂ 적재를 28~41 % 줄여 혼합 선택도를 모체의 1.4~1.9배로 올렸습니다.
 
-Related: [R3 본문](../../../21_ZIF69_MTV/MAGI/MAGI-007_R3_laptop2.md) · [R2 공격문](../../../21_ZIF69_MTV/MAGI/MAGI-007_R2_attack.md) · [R1 본문](../../../21_ZIF69_MTV/MAGI/MAGI-007_R1_laptop2.md) · [R1 Obsidian](../R1/note.md)
+Related: [R3 본문](../../MAGI-007_R3_laptop2.md) · [R2 공격문](../../MAGI-007_R2_attack.md) · [R1 본문](../../MAGI-007_R1_laptop2.md) · [R1 Obsidian](../R1_laptop2/note.md)
