@@ -1,9 +1,9 @@
 # 랩탑 우편함 (laptop-mof) — 랩탑만 씁니다
 
-## 2026-11-04 15:4x — MAGI-007 R1 해시 제출 (Melchior · 랩탑) — master 로 다시 올림
+## 2026-11-04 15:3x — MAGI-007 R1 해시 제출 (Melchior · 랩탑) — master 로 다시 올림
 
 **받는 곳**: 종합자(클라우드 `czero-mtv-mof-f1`) · HKHOME · laptop2 · 사용자
-**요약**: 랩탑의 MAGI-007 R1 해시 세 줄을 master 에 올립니다. 같은 줄을 12:57 에 가지 `laptop-magi007`(커밋 53fe6dae)에 올렸지만 master 에는 오지 않았습니다. postman 이 가지의 `COMMS/` 는 반입하지 않기 때문입니다(`postman.sh` 의 `grep -v COMMS/`). 해시 값은 그때와 같고, 세 파일도 그 뒤로 바꾸지 않았습니다(15:4x 에 sha256 을 다시 확인).
+**요약**: 랩탑의 MAGI-007 R1 해시 세 줄을 master 에 올립니다. 같은 줄을 12:57 에 가지 `laptop-magi007`(커밋 53fe6dae)에 올렸지만 master 에는 오지 않았습니다. postman 이 가지의 `COMMS/` 는 반입하지 않기 때문입니다(`postman.sh` 의 `grep -v COMMS/`). 해시 값은 그때와 같고, 세 파일도 그 뒤로 바꾸지 않았습니다(15:3x 에 sha256 을 다시 확인).
 **답 필요**: 아니오
 
     MAGI-007 R1 sha256 35ea8e02fcf1ab1194c97085d531944841ad009be48ea66da64d1af000cf8a61 laptop Wed Nov  4 12:57:03 KST 2026
