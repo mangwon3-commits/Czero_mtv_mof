@@ -1,0 +1,166 @@
+{
+ "registration": "ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md §1 (b5991256)",
+ "machine": "laptop2",
+ "dry": false,
+ "launcher": "run_znbdt_c2_density.py",
+ "launcher_md5": "e6f71413217ff4c5ae5de3be5501c022",
+ "module": "run_density_map.py",
+ "module_md5": "56c591c508e3505d6b75dc8995c5fc46",
+ "conditions": {
+  "T_K": 298.0,
+  "P_Pa": 100000,
+  "y": {
+   "CO2": 0.15,
+   "N2": 0.85
+  },
+  "cycles": 15000,
+  "init": 5000,
+  "grid": 90,
+  "cutoff": 12.0,
+  "forcefield": "UFF_MOF",
+  "charges": "DDEC6 on (Ewald)",
+  "seeds_per_structure": 1
+ },
+ "note": "관측용 1씨앗 — 산포 없음, 수치 비교에 쓰지 않음. 판정 없음(종합자).",
+ "n_ok": 4,
+ "n_rows": 4,
+ "wall_minutes": 90.3,
+ "rows": [
+  {
+   "name": "e22_parent",
+   "dir": "density_znbdt_c2/e22_parent__q_on",
+   "status": "ok (밀도격자 4개, COM gz)",
+   "cif_src": "charged_v3/e22_parent_DDEC6.cif",
+   "cif_md5": "f15ce100dbbaa49714fdb2e5dabfe9ff",
+   "cif_copy": "density_znbdt_c2/cifs/e22_parent_DDEC6.cif",
+   "returncode": 0,
+   "minutes": 81.9,
+   "n_data": 1,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "N2": 1
+   },
+   "N_CO2": 2.8462488239,
+   "N_CO2_err": 0.0372534758,
+   "N_N2": 0.2115728301,
+   "N_N2_err": 0.0073970665,
+   "seed": 1793813917,
+   "com_grids": {
+    "CO2": {
+     "vtk": true,
+     "vtk_bytes": 1826605,
+     "gz_md5": "154d8d5f10d6856c1d9c470f0fa99bcf"
+    },
+    "N2": {
+     "vtk": true,
+     "vtk_bytes": 1653919,
+     "gz_md5": "bd6e7bd97c8b434563417a87e4850c8b"
+    }
+   },
+   "ok": true
+  },
+  {
+   "name": "e24i_cn_open",
+   "dir": "density_znbdt_c2/e24i_cn_open__q_on",
+   "status": "ok (밀도격자 4개, COM gz)",
+   "cif_src": "charged_v3/e24i_cn_open_DDEC6.cif",
+   "cif_md5": "8fd4fc85cf94e797ce0927300eeab584",
+   "cif_copy": "density_znbdt_c2/cifs/e24i_cn_open_DDEC6.cif",
+   "returncode": 0,
+   "minutes": 90.0,
+   "n_data": 1,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "N2": 1
+   },
+   "N_CO2": 3.2527127473,
+   "N_CO2_err": 0.030566934,
+   "N_N2": 0.1311804168,
+   "N_N2_err": 0.0056269174,
+   "seed": 1793813931,
+   "com_grids": {
+    "CO2": {
+     "vtk": true,
+     "vtk_bytes": 1774531,
+     "gz_md5": "70288058353f51e63bffb82821d773c2"
+    },
+    "N2": {
+     "vtk": true,
+     "vtk_bytes": 1682407,
+     "gz_md5": "f64306efa14d5f540e8e7bcaf3845c65"
+    }
+   },
+   "ok": true
+  },
+  {
+   "name": "e24i_ch3_open",
+   "dir": "density_znbdt_c2/e24i_ch3_open__q_on",
+   "status": "ok (밀도격자 4개, COM gz)",
+   "cif_src": "charged_v3/e24i_ch3_open_DDEC6.cif",
+   "cif_md5": "a8e6a165aaa036205631d834ec82f6bb",
+   "cif_copy": "density_znbdt_c2/cifs/e24i_ch3_open_DDEC6.cif",
+   "returncode": 0,
+   "minutes": 81.8,
+   "n_data": 1,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "N2": 1
+   },
+   "N_CO2": 2.8022832839,
+   "N_CO2_err": 0.0420143033,
+   "N_N2": 0.1542518852,
+   "N_N2_err": 0.0072724385,
+   "seed": 1793813947,
+   "com_grids": {
+    "CO2": {
+     "vtk": true,
+     "vtk_bytes": 1751041,
+     "gz_md5": "8d6d79062be155054d1c7a7bcbd08dea"
+    },
+    "N2": {
+     "vtk": true,
+     "vtk_bytes": 1665475,
+     "gz_md5": "7ca8eee5abdd3ff1d1be8f3aeb31204f"
+    }
+   },
+   "ok": true
+  },
+  {
+   "name": "znbdt_c2_apolarU",
+   "dir": "density_znbdt_c2/znbdt_c2_apolarU__q_on",
+   "status": "ok (밀도격자 4개, COM gz)",
+   "cif_src": "charged_v3/znbdt_c2_apolarU_DDEC6mod.cif",
+   "cif_md5": "3e079487bf8fdd5302ff507084362229",
+   "cif_copy": "density_znbdt_c2/cifs/znbdt_c2_apolarU_DDEC6.cif",
+   "returncode": 0,
+   "minutes": 87.2,
+   "n_data": 1,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "N2": 1
+   },
+   "N_CO2": 3.0465557049,
+   "N_CO2_err": 0.0323736723,
+   "N_N2": 0.1546115474,
+   "N_N2_err": 0.0063990135,
+   "seed": 1793813961,
+   "com_grids": {
+    "CO2": {
+     "vtk": true,
+     "vtk_bytes": 1776535,
+     "gz_md5": "0c36b58173c1fcb91386dd1e57915604"
+    },
+    "N2": {
+     "vtk": true,
+     "vtk_bytes": 1685833,
+     "gz_md5": "815695e04b111e2d5d634248d4dc3314"
+    }
+   },
+   "ok": true
+  }
+ ]
+}
