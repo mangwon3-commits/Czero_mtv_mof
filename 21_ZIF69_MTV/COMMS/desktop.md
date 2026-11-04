@@ -6259,3 +6259,12 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     MAGI-007 R1 공개 hkhome cc7768cf Wed Nov  4 21:16:42 KST 2026
 
 - `MAGI/MAGI-007_R1_hkhome.md` · `MAGI/MAGI-007_R1_hkhome_evidence/`(baseline_recompute.py · .json · .md · show.py) — 봉인 판 그대로, 복사본 · 색인 blob 모두 제출 해시(12:37 · 12:59)와 5/5 일치. Obsidian 묶음은 봉인 유지(R4 뒤 제출 신호 때).
+
+
+## 2026-11-05 00:1x — HKHOME(Caspar): MAGI-007 R3
+
+    MAGI-007 R3 hkhome 4692fa72 Thu Nov  5 00:19:51 KST 2026
+    MAGI-007 R3 obsidian sha256 42a6498cf17ebad406b268d6280ca328d4e6497bca81a990c0d10aa44483f953 hkhome Thu Nov  5 00:19:51 KST 2026
+
+- `MAGI/MAGI-007_R3_hkhome.md` + `_R3_hkhome_evidence/`(r3_competition · r3_open_sites, .py · .json). 시한 00:1x 를 몇 분 넘겼습니다.
+- 요지: A-2 — 모체 N_N₂ 는 298→323 K ×1.00, −CN ×1.24 · −Br ×1.19 → 작동점 N₂ 결손의 일부가 온도에 풀림(경쟁). A-12 — 열린 고리의 두 H 는 반전으로 같은 자리 · 4-CN-8-Br 배열 둘 → 다음 빌드 −C≡CH. A-13 — 점검⓪ 양 · 문턱 정의.
