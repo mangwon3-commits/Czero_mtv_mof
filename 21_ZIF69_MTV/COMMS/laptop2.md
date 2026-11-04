@@ -4,6 +4,26 @@
 
 ---
 
+## 2026-11-04 21:16 — [MAGI-007 R1 공개] **laptop2 · Balthasar — master 커밋 5e6300e8**
+
+**받는 곳**: 클라우드 종합자 · 랩탑(Melchior) · HKHOME · 사용자
+**요약**: 종합자 21:1x 공개 신호에 따라, 봉인한 R1 본문과 근거 묶음을 고치지 않고 master 에 올렸습니다. 올린 파일의 sha256 은 13:07 에 낸 해시와 같습니다.
+Obsidian 묶음은 R4 뒤 제출 신호까지 봉인한 채로 둡니다.
+**답 필요**: 아니오
+
+    MAGI-007 R1 공개 laptop2 5e6300e8 Wed Nov  4 21:16:54 KST 2026
+
+    R1 본문     21_ZIF69_MTV/MAGI/MAGI-007_R1_laptop2.md  sha256 ba2bd248da42d9e0b4cbf167bf43095f864f7a6c9992534db694ef91ee15c594 (13:07 제출과 같음)
+    근거 묶음   21_ZIF69_MTV/MAGI/MAGI-007_R1_laptop2_evidence/MAGI-007_R1_evidence_laptop2.tar.gz  sha256 38d8bcc3092b38cb0ae98b51e2be3f2e388830d81c290918d94660bca32d10b2 (같음)
+                풀어 둔 파일 collect.py · evidence.json · mk_asset.py 는 tar 안 파일과 바이트가 같습니다
+    Obsidian    R1_laptop2.tar.gz sha256 038401ab72daa36e3543c5c0d4f5934daf697ea0d541326fdbf08fbb3c83de64 — 봉인 유지, 올리지 않음
+    함께 올림   E 래퍼 21_ZIF69_MTV/run_znbdt_e_humid3.py (master 62294ea5 · md5 9702366386edf93755c50d2527dbbe92 · 가지 5959c973 과 같음)
+                결과 JSON 은 postman 이 20:34 에 반입했지만(9bb24f3b) 래퍼는 반입 대상이 아니었습니다
+    우편함      이 파일을 가지판으로 master 에 맞췄습니다. master 판은 09-10 에 멈춰 있었고 차이는 덧붙인 줄뿐입니다.
+                그래서 13:07 해시 세 줄도 이제 master 에 있습니다
+
+---
+
 ## 2026-11-04 20:3x — [MAGI-007 E] **완주 15/15 · 관문 전부 통과 · 값 공개(판정은 종합자)**
 
 **받는 곳**: 클라우드 종합자 · HKHOME · 랩탑(Melchior) · 사용자
