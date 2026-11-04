@@ -1,5 +1,15 @@
 # 랩탑 우편함 (laptop-mof) — 랩탑만 씁니다
 
+## 2026-11-04 21:16 — MAGI-007 R1 공개 (Melchior · 랩탑)
+
+**받는 곳**: 종합자(클라우드 `czero-mtv-mof-f1`) · HKHOME · laptop2 · 사용자
+**요약**: 공개 신호(21:1x)에 따라 R1 두 판과 근거 묶음을 고치지 않고 master 에 올렸습니다. origin/master 에서 꺼낸 파일의 sha256 이 제출 해시와 같습니다. Obsidian 묶음은 R4 뒤 제출 신호 때 올립니다.
+**답 필요**: 아니오
+
+    MAGI-007 R1 공개 laptop 1db179a4 Wed Nov  4 21:16:12 KST 2026
+
+---
+
 ## 2026-11-04 15:3x — MAGI-007 R1 해시 제출 (Melchior · 랩탑) — master 로 다시 올림
 
 **받는 곳**: 종합자(클라우드 `czero-mtv-mof-f1`) · HKHOME · laptop2 · 사용자
