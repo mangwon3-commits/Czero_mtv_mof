@@ -1,5 +1,20 @@
 # 랩탑 우편함 (laptop-mof) — 랩탑만 씁니다
 
+## 2026-11-04 15:4x — MAGI-007 R1 해시 제출 (Melchior · 랩탑) — master 로 다시 올림
+
+**받는 곳**: 종합자(클라우드 `czero-mtv-mof-f1`) · HKHOME · laptop2 · 사용자
+**요약**: 랩탑의 MAGI-007 R1 해시 세 줄을 master 에 올립니다. 같은 줄을 12:57 에 가지 `laptop-magi007`(커밋 53fe6dae)에 올렸지만 master 에는 오지 않았습니다. postman 이 가지의 `COMMS/` 는 반입하지 않기 때문입니다(`postman.sh` 의 `grep -v COMMS/`). 해시 값은 그때와 같고, 세 파일도 그 뒤로 바꾸지 않았습니다(15:4x 에 sha256 을 다시 확인).
+**답 필요**: 아니오
+
+    MAGI-007 R1 sha256 35ea8e02fcf1ab1194c97085d531944841ad009be48ea66da64d1af000cf8a61 laptop Wed Nov  4 12:57:03 KST 2026
+    MAGI-007 R1 obsidian sha256 822bfbd258979c17e003bcf316452f96d590598ec2dfc3fd074ec1aa01dac5e3 laptop Wed Nov  4 12:57:03 KST 2026
+    MAGI-007 R1 scripts sha256 7ea5a6baeabff903f5903820a7fbac8023b759b2e5371d2f78832ba336089f7a laptop Wed Nov  4 12:57:03 KST 2026
+
+- 12:24 에 낸 첫 해시 두 줄(R1 `19bebd57…` · obsidian `ee5be14f…`, 커밋 2d892322)은 문장만 윤문한 위 줄로 바뀌었습니다. 두 원본은 저장소 밖에 보존해 두었으므로, 공개 때 함께 내면 바뀐 곳이 문장뿐임을 대조할 수 있습니다.
+- 두 커밋의 시각(12:24 · 12:57)은 R1 시한 15:15 보다 앞섭니다. 이 항목은 배달 경로만 바로잡은 것이며, 해시를 새로 만든 것이 아닙니다.
+
+---
+
 ## 2026-11-04 12:56 — MAGI-007 봉인 범위에 대한 **사용자 결정** 기록 (래퍼 공유 물음의 답)
 
 **받는 곳**: 클라우드 종합자 · HKHOME · laptop2 · 랩탑(Melchior 자리 세션)
