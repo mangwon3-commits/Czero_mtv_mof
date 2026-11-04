@@ -1,0 +1,315 @@
+{
+ "assign": "ASSIGN_ZNBDT_C2_20261105.md §2",
+ "p_Pa": {
+  "CO2": 15000.0,
+  "N2": 85000.0
+ },
+ "bound": 0.86,
+ "unit": 1.5,
+ "reproduce_gate": {
+  "values": {
+   "cn": [
+    0.72,
+    0.72
+   ],
+   "ch3": [
+    1.01,
+    1.01
+   ],
+   "br": [
+    0.86,
+    0.86
+   ],
+   "cl": [
+    0.85,
+    0.85
+   ]
+  },
+  "pass_": true
+ },
+ "rows": {
+  "parent": {
+   "KH_CO2": 0.000925609,
+   "KH_N2": 1.05417e-05,
+   "N_CO2": 2.8317265601,
+   "N_N2": 0.21272166076666665,
+   "S_mix": 75.43479143290368,
+   "n_mix": 3,
+   "r_CO2": 0.20395412174399052,
+   "r_N2": 0.23740077726794448,
+   "S_mix_over_S_Henry": 0.8591218763519377,
+   "e_rel_own": 0.0315657678386829,
+   "marks": {
+    "mix_bad": [],
+    "seeds_unique": true,
+    "mix_rows": [
+     "e22_parent_s1",
+     "e22_parent_s2",
+     "e22_parent_s3"
+    ],
+    "widom_cif": "charged_v3/e22_parent_DDEC6.cif"
+   },
+   "src_md5": {
+    "results_magi5_e3_e22_parent_widom_desktop-js1ib6u.json": "46e48ca4260943ef2229117d7be2f921",
+    "results_e23_mix_desktop.json": "c4047087384c8384d317704a4927c995"
+   }
+  },
+  "cn": {
+   "KH_CO2": 0.00143266,
+   "KH_N2": 1.22884e-05,
+   "N_CO2": 3.2484950107833335,
+   "N_N2": 0.13179221301666666,
+   "S_mix": 139.77390796223168,
+   "n_mix": 6,
+   "r_CO2": 0.15116380303227717,
+   "r_N2": 0.12617563097925605,
+   "S_mix_over_S_Henry": 1.1988871683463542,
+   "e_rel_own": 0.03634261657067544,
+   "marks": {
+    "mix_bad": [],
+    "seeds_unique": true,
+    "mix_rows": [
+     "e24i_cn_open_s1",
+     "e24i_cn_open_s2",
+     "e24i_cn_open_s3",
+     "e24i_cn_open_s4",
+     "e24i_cn_open_s5",
+     "e24i_cn_open_s6"
+    ],
+    "widom_cif": "charged_v3/e24i_cn_open_DDEC6.cif"
+   },
+   "src_md5": {
+    "results_magi5_e3_e24i_cn_open_widom_desktop-nvsrr9m.json": "efc833fc569fd629ddc0bbe2158f6d93",
+    "results_e24i_e24i_cn_open_mix_hkhome.json": "de99ae929c3e29b110a7fdb7091976fb",
+    "results_e24i_e24i_cn_open_mix_s456_hkhome.json": "c5e8843c0efbf0ac4b3752e8cce9b799"
+   },
+   "X": 0.7170971982006846,
+   "e_X": 0.02606118851811313,
+   "vs_parent": {
+    "KH_CO2": 1.547802581867722,
+    "KH_N2": 1.1656943377254145,
+    "N_CO2": 1.147178211539117,
+    "N_N2": 0.6195523885140635,
+    "S_mix": 1.852910378715041,
+    "op_over_henry": 1.3954797350023855
+   }
+  },
+  "br": {
+   "KH_CO2": 0.00132172,
+   "KH_N2": 1.03583e-05,
+   "N_CO2": 2.83579643085,
+   "N_N2": 0.12566233421666664,
+   "S_mix": 127.92177955635113,
+   "n_mix": 6,
+   "r_CO2": 0.14303566215991284,
+   "r_N2": 0.14272423105615972,
+   "S_mix_over_S_Henry": 1.0025210855389584,
+   "e_rel_own": 0.03338713774549564,
+   "marks": {
+    "mix_bad": [],
+    "seeds_unique": true,
+    "mix_rows": [
+     "e24i_br_open_s1",
+     "e24i_br_open_s2",
+     "e24i_br_open_s3",
+     "e24i_br_open_s4",
+     "e24i_br_open_s5",
+     "e24i_br_open_s6"
+    ],
+    "widom_cif": "charged_v3/e24i_br_open_DDEC6.cif"
+   },
+   "src_md5": {
+    "results_magi5_e3_e24i_br_open_widom_hkhome.json": "f1e49add6b90f9720b413e1802a03049",
+    "results_e24i_e24i_br_open_mix_laptop2.json": "fad165b0303bb4820eb3bc940344d8fc",
+    "results_e24i_e24i_br_open_mix_s456_hkhome.json": "1459f1fc1706d333c68b487bede835ef"
+   },
+   "X": 0.8572425727038084,
+   "e_X": 0.028620875856165115,
+   "vs_parent": {
+    "KH_CO2": 1.427946357479238,
+    "KH_N2": 0.982602426553592,
+    "N_CO2": 1.0014372400242826,
+    "N_N2": 0.5907359587348514,
+    "S_mix": 1.6957928447397193,
+    "op_over_henry": 1.1669136977351016
+   }
+  },
+  "cl": {
+   "KH_CO2": 0.00123975,
+   "KH_N2": 1.12496e-05,
+   "N_CO2": 2.9840273891666667,
+   "N_N2": 0.15228434603333332,
+   "S_mix": 111.15048066704355,
+   "n_mix": 3,
+   "r_CO2": 0.1604639316618494,
+   "r_N2": 0.15925726617556424,
+   "S_mix_over_S_Henry": 1.008589189201027,
+   "e_rel_own": 0.030148632123018545,
+   "marks": {
+    "mix_bad": [],
+    "seeds_unique": true,
+    "mix_rows": [
+     "e24i_cl_open_s1",
+     "e24i_cl_open_s2",
+     "e24i_cl_open_s3"
+    ],
+    "widom_cif": "charged_v3/e24i_cl_open_DDEC6.cif"
+   },
+   "src_md5": {
+    "results_magi5_e3_e24i_cl_open_widom_hkhome.json": "d11d374c98a5718fde01994a9c5933c4",
+    "results_e24i_e24i_cl_open_mix_junseok.json": "e7d2688cdf5e8d79962ac75101422a8f"
+   },
+   "X": 0.8526527110284091,
+   "e_X": 0.025706312913489945,
+   "vs_parent": {
+    "KH_CO2": 1.339388445877255,
+    "KH_N2": 1.0671523568304924,
+    "N_CO2": 1.0537837343522634,
+    "N_N2": 0.7158854697001134,
+    "S_mix": 1.4734644128486467,
+    "op_over_henry": 1.1739768442211804
+   }
+  },
+  "ch3": {
+   "KH_CO2": 0.00140371,
+   "KH_N2": 1.09487e-05,
+   "N_CO2": 2.8377537214666666,
+   "N_N2": 0.1479871089,
+   "S_mix": 108.66807701389341,
+   "n_mix": 3,
+   "r_CO2": 0.13477397855049197,
+   "r_N2": 0.15901657827762522,
+   "S_mix_over_S_Henry": 0.8475925759608572,
+   "e_rel_own": 0.041244744197340456,
+   "marks": {
+    "mix_bad": [],
+    "seeds_unique": true,
+    "mix_rows": [
+     "e24i_ch3_open_s1",
+     "e24i_ch3_open_s2",
+     "e24i_ch3_open_s3"
+    ],
+    "widom_cif": "charged_v3/e24i_ch3_open_DDEC6.cif"
+   },
+   "src_md5": {
+    "results_magi5_e3_e24i_ch3_open_widom_hkhome.json": "bc1d66c017b6d541b9d062ca2242fd04",
+    "results_e24i_e24i_ch3_open_mix_laptop2.json": "65c562a437a6748acd719ecfa457c457"
+   },
+   "X": 1.0136469197749658,
+   "e_X": 0.04180760791254055,
+   "vs_parent": {
+    "KH_CO2": 1.5165258764770007,
+    "KH_N2": 1.038608573569728,
+    "N_CO2": 1.0021284404545239,
+    "N_N2": 0.6956842493925728,
+    "S_mix": 1.4405564720166217,
+    "op_over_henry": 0.9865801340782556
+   }
+  },
+  "U": {
+   "KH_CO2": 0.00141292,
+   "KH_N2": 1.21606e-05,
+   "N_CO2": 3.0576228992333334,
+   "N_N2": 0.15266144693333333,
+   "S_mix": 113.50504359610751,
+   "n_mix": 3,
+   "r_CO2": 0.14426968732522405,
+   "r_N2": 0.14769148090925593,
+   "S_mix_over_S_Henry": 0.9769055807510864,
+   "e_rel_own": 0.04656169335419553,
+   "marks": {
+    "mix_bad": [],
+    "seeds_unique": true,
+    "mix_rows": [
+     "znbdt_c2_apolarU_s1",
+     "znbdt_c2_apolarU_s2",
+     "znbdt_c2_apolarU_s3"
+    ],
+    "widom_cif": "charged_v3/znbdt_c2_apolarU_DDEC6mod.cif",
+    "complete": true
+   },
+   "src_md5": {
+    "results_magi5_e3_znbdt_c2_apolarU_widom_hkhome.json": "b115cd9b29a3ad573c2a10d16fa8c920",
+    "results_znbdt_c2_znbdt_c2_apolarU_mix_hkhome.json": "08dded7abd0652bb829c25ad7f17eb85"
+   },
+   "X": 0.8794895925481921,
+   "e_X": 0.04095052471643529,
+   "vs_parent": {
+    "KH_CO2": 1.526476082233427,
+    "KH_N2": 1.1535710559017995,
+    "N_CO2": 1.079773358881571,
+    "N_N2": 0.7176582130053363,
+    "S_mix": 1.504677635346362,
+    "op_over_henry": 1.1370977827957192
+   }
+  },
+  "I": {
+   "KH_CO2": 0.00308631,
+   "KH_N2": 1.37566e-05,
+   "N_CO2": 3.467597860866667,
+   "N_N2": 0.10915907746666666,
+   "S_mix": 180.05954599995007,
+   "n_mix": 3,
+   "r_CO2": 0.07490277733748212,
+   "r_N2": 0.09335333154880665,
+   "S_mix_over_S_Henry": 0.8025788564670798,
+   "e_rel_own": 0.048204525243239295,
+   "marks": {
+    "mix_bad": [],
+    "seeds_unique": true,
+    "mix_rows": [
+     "znbdt_c2_apolarI_s1",
+     "znbdt_c2_apolarI_s2",
+     "znbdt_c2_apolarI_s3"
+    ],
+    "widom_cif": "charged_v3/znbdt_c2_apolarI_DDEC6mod.cif",
+    "complete": true
+   },
+   "src_md5": {
+    "results_magi5_e3_znbdt_c2_apolarI_widom_hkhome.json": "ebebe97c6e84c309d9246c601f703756",
+    "results_znbdt_c2_znbdt_c2_apolarI_mix_hkhome.json": "c6c76a7bad730eb7c314284593e6b534"
+   },
+   "X": 1.070735618929978,
+   "e_X": 0.05161430217154557,
+   "vs_parent": {
+    "KH_CO2": 3.3343560834002264,
+    "KH_N2": 1.304969786656801,
+    "N_CO2": 1.2245525079032389,
+    "N_N2": 0.5131544999848544,
+    "S_mix": 2.3869562383572847,
+    "op_over_henry": 0.9341851005762364
+   }
+  }
+ },
+ "overall": "보정 방식에 민감 — 판별 불가",
+ "reads": {
+  "U": {
+   "X": 0.8794895925481921,
+   "e_X": 0.04095052471643529,
+   "d_units": {
+    "cn": 3.345537995109478,
+    "ch3": 2.2924265167868367,
+    "br": 0.4452878561466483,
+    "cl": 0.5550499748569447
+   },
+   "polarity_share": 0.5476059578994773,
+   "polarity_share_pm": 0.16312424761989014,
+   "verdict": "중간 — 두 몫이 섞임",
+   "c1_binary": "극성"
+  },
+  "I": {
+   "X": 1.070735618929978,
+   "e_X": 0.05161430217154557,
+   "d_units": {
+    "cn": 6.116132023992297,
+    "ch3": 0.8594818564479489,
+    "br": 3.617388107475109,
+    "cl": 3.782122179372934
+   },
+   "polarity_share": 1.1925097041128474,
+   "polarity_share_pm": 0.24257739501693776,
+   "verdict": "극성",
+   "c1_binary": "극성"
+  }
+ }
+}

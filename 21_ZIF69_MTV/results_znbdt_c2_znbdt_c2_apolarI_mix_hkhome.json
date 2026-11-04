@@ -17,7 +17,7 @@
   "ewald": 1e-06,
   "blocking": false
  },
- "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 완료 · seed 3개 겹침 0건 · 벽시계 1.07 h",
  "rows": [
   {
    "name": "znbdt_c2_apolarI_s1",
@@ -68,13 +68,22 @@
    ],
    "N_super": 1248,
    "cif": "charged_v3/znbdt_c2_apolarI_DDEC6mod.cif",
-   "status": "pending",
-   "returncode": null,
-   "seed": null,
-   "minutes": null,
+   "status": "ok",
+   "returncode": 0,
+   "seed": 1793812222,
+   "minutes": 63.8,
    "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
    "machine": "hkhome",
-   "flexible": null
+   "flexible": null,
+   "N_CO2": 3.4737573854,
+   "N_CO2_err": 0.0444297373,
+   "N_N2": 0.1068066545,
+   "N_N2_err": 0.0087681046,
+   "S_mix": 184.30148642033657,
+   "S_mix_err": 15.312434075701526,
+   "ratio_Smix_over_SHenry": 184.30148642033657,
+   "ratio_err": 15.312434075701526,
+   "finished": "2026-11-05 03:14:12"
   },
   {
    "name": "znbdt_c2_apolarI_s3",
