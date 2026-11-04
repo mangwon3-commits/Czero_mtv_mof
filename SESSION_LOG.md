@@ -42,7 +42,8 @@
   02:4x 순찰: Obsidian 금고 지음(MAGI-007_obsidian/INDEX.md · graph/ 질문 17 · 합의 7 · 허브 4 · 결정 · 간선 160 · 생성기 build_graph.py · vault_lint 오류 0 · 고아 0) · laptop2 #1 착수 02:38 · C2 pending · 랩탑 E 미도착.
   03:0x 순찰: 0c89a429(postman:desktop 02:54)가 COMMS 세 파일을 되돌림 → cloud.md 를 eab8e75c 판으로 복구(랩탑 · laptop2 는 각자 복구) · #3 기기 변경(랩탑 xtb 없음 → 빌드 랩탑 · 이완·관문 HKHOME) · C2 mix pending · Widom ON 도착 · 랩탑 E 5/6.
   03:3x 순찰: ZNBDT-C2 완주(03:04) → 종합자 재계산 = HKHOME(U 0.879 중간 f 0.55 · I 1.071 극성 → 판별 불가 U≠I) · ASSIGN_C2 §6 · #2 보류 · 아침 권고 L판 · postman 2차 되돌림(03:12)은 HKHOME 이 복구 · 원인 = add 단계(사용자 몫).
-다음: 04:00 순찰 — 랩탑 E 결과 · laptop2 #1 · 랩탑 NO₂ 빌드 → HKHOME 이완. 02:30 자동 기동 — 랩탑 E 결과 → §6-1 추기 · Obsidian 금고(INDEX · 링크 정정표) 착수. §11-5-1 은 MAGI-008 브리핑에 반영.
+  04:4x 순찰: 후속 #1 밀도 격자 4/4(laptop2 04:08) → 종합자 서술 FOLLOWUP §1-1(N₂ 비움 97~98 % 치환기 둘레 · 니트릴 둘레 N₂ 0.50× 대 전하 0 0.60× · CO₂ 1.21× 대 1.02× — U판 중간과 맞음 · 판정 아님) · 랩탑 E 미도착(랩탑에 상태 물음).
+다음: 05:00 순찰 — 랩탑 E · NO₂ 빌드 → HKHOME 이완. 02:30 자동 기동 — 랩탑 E 결과 → §6-1 추기 · Obsidian 금고(INDEX · 링크 정정표) 착수. §11-5-1 은 MAGI-008 브리핑에 반영.
 
 ## 11-05 00:3x · 클라우드(종합)  [완료] MAGI-007 R4 종합 — `MAGI/MAGI-007_ligand-modification.md` · E · B 등록 판정 · Obsidian 제출 신호
 하는 일: 공개 21:1x(해시 넷 유효 · 전부 첫 자료 앞) → R2 질의 17건(21:5x) → R3 laptop2 22:04 · 랩탑 00:15 · HKHOME 00:19(셋 다 시한 안; 종합자의 00:2x 재고지는 fetch 지연으로 잘못 낸 것 — 철회) → R4.
