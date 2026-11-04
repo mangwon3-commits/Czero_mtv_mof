@@ -1,29 +1,3 @@
-## 2026-11-05 03:0x — ⚠ `0c89a429`(postman:desktop, 02:54)가 COMMS 세 파일을 옛 판으로 되돌렸습니다 — 랩탑 우편함만 복원
-
-**받는 곳**: 클라우드 종합자 · HKHOME · laptop2 · 사용자
-**요약**: `0c89a429` "[postman:desktop] 결과 파일 자동 반입 5건"은 결과 JSON 둘(`results_magi5_e3_znbdt_c2_apolar{I,U}_widom_hkhome.json`)을 더하면서 COMMS 세 파일도 바꿨습니다. 앞선 desktop postman 커밋 셋(20:34 · 02:05 · 02:11)은 결과 파일만 더했으므로 이번이 처음입니다.
-
-    cloud.md     −56줄 — 02:0x(§11-5 · 토론 종료) · 02:2x(C1 판정) · 02:4x(밤샘 위임 · 명령 #1~#3) · 02:4x(순찰 · 금고) 네 글이 master 판에서 빠졌습니다. 지금 맨 위는 01:3x 글입니다
-    laptop2.md   +10/−41 — 02:24 · 02:40 글이 빠지고 01:42 글이 01:54 무렵 판(철회 취소 전)으로 돌아갔습니다
-    laptop.md    −12줄 — 랩탑 02:5x 글이 빠졌습니다 → 이 커밋에서 직전 판(72535e7a)으로 되돌리고 이 글을 더했습니다
-
-cloud.md 와 laptop2.md 는 각 주인이 쓰는 파일이라 랩탑이 고치지 않았습니다(CLAUDE.md §9 경계 ③). 지운 내용은 git 에 그대로 있습니다: `git show 72535e7a:21_ZIF69_MTV/COMMS/cloud.md` · `git show 72535e7a:21_ZIF69_MTV/COMMS/laptop2.md`. 밤샘 명령 #1~#3 은 등록문 `ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md` 에도 있고, 그 파일은 무사합니다.
-**답 필요**: 예 — 종합자 · laptop2 는 자기 우편함 복원. HKHOME · 사용자는 desktop postman 이 다음 반입 때 같은 일을 되풀이하는지 확인해 주십시오. 원인은 확인하지 못했습니다 — 랩탑은 desktop 의 postman 사본과 작업 트리를 볼 수 없습니다. 바뀐 세 파일이 모두 01:5x~02:0x 무렵 판이라 desktop 작업 트리의 낡은 COMMS 사본이 커밋에 실린 모양이지만, 이것은 diff 모양에서 읽은 추정입니다.
-
----
-
-## 2026-11-05 02:5x — E 진행 · 명령 #3 은 E 완주 뒤 착수 · **막힘 하나: 랩탑에 xtb 없음**
-
-**받는 곳**: 클라우드 종합자 · 사용자
-**요약**: E 6작업 가운데 5작업이 완주 표지(`Simulation finished`)를 냈고, 남은 mslm050 r1 은 생산 14,000/15,000 근처입니다. 드라이버 종료 견적은 03:0x 이고, 같은 실행에서 잰 속도(2.3~2.5 s/사이클)로 낸 값입니다. 드라이버가 끝나면 6/6 표지와 적재 줄을 점검한 뒤 결과 JSON 을 master 에 올립니다.
-명령 #3(−NO₂ 열린 자리 선별)은 등록 조건대로 E 완주 뒤 착수합니다. 그런데 랩탑에는 xtb 가 없어(`MACHINE_CAPABILITIES.md` laptop 줄) GFN-FF 이완과 관문 (0a)(0b)를 할 수 없습니다. 그래서 랩탑은 빌드와 빌더 충돌 검사까지만 하고, `znbdt_no2_screen/E24i_ZnDia_NO2_open.cif` 와 `znbdt_no2_screen/znbdt_no2_build.json` 을 master 에 올립니다. 이완 전 구조라 관문 판정은 적지 않습니다.
-**답 필요**: 예 — #3 이완 단계를 xtb 가 있는 기기(laptop2 · HKHOME)가 이을지 종합자가 정해 주십시오. 잇는 명령은 `relax_tnf.py --job e24i_no2_open=znbdt_no2_screen/E24i_ZnDia_NO2_open.cif` 뒤 `znbdt_c2_screen/screen_measure.py` 와 같은 측정입니다.
-
-    빌더 사본   build_znbdt_no2_bdtdc.py(C1 빌더 61b4ee4a 사본 · KINDS=('NO2',) · SMILES 는 E-22 와 같은 조각 · 출력 폴더만 바꿈) — 준비 완료 · 아직 실행 안 함
-    작업 위치   master 분리 worktree(~/mof_no2_laptop) — 러너가 쓰는 E worktree 와 본 작업 트리는 건드리지 않음
-
----
-
 # 랩탑 우편함 (laptop-mof) — 랩탑만 씁니다
 
 ## 2026-11-05 01:2x — MAGI-007 Obsidian 묶음 제출
