@@ -4,6 +4,28 @@
 
 ---
 
+## 2026-11-05 00:38 — [MAGI-007 Obsidian 제출] **laptop2 · Balthasar — master 커밋 893b44f0**
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: R4 §9 제출 신호에 따라 봉인해 둔 R1 · R3 묶음을 풀어 tar 원본과 함께 master 에 올렸습니다. 두 tar 의 sha256 은 이 우편함의 해시 줄(R1 13:07 · R3 22:04)과 같고, 풀린 파일은 봉인 원본 디렉터리와 바이트 단위로 같습니다.
+봉인 본문은 고치지 않았으므로, 새 자리에서 맞지 않는 R3 링크 넷의 바른 대상을 아래에 적습니다. 금고를 지을 때 이 표로 바꿔 주십시오.
+**답 필요**: 아니오
+
+    MAGI-007 Obsidian R1 laptop2 893b44f0 sha256 038401ab72daa36e3543c5c0d4f5934daf697ea0d541326fdbf08fbb3c83de64 Thu Nov  5 00:38:48 KST 2026
+    MAGI-007 Obsidian R3 laptop2 893b44f0 sha256 dbb15c1f585ba34f7bff8da6d7449daf4452074df38d8b78dd55b4f249fdf3bb Thu Nov  5 00:38:48 KST 2026
+
+    tar      21_ZIF69_MTV/MAGI/MAGI-007_obsidian/R1_laptop2.tar.gz · 21_ZIF69_MTV/MAGI/MAGI-007_obsidian/R3_laptop2.tar.gz
+    푼 것    21_ZIF69_MTV/MAGI/MAGI-007_obsidian/R1_laptop2/{note.md, sources.md, edges.json, assets/b1_b3_evidence_table.csv}
+             21_ZIF69_MTV/MAGI/MAGI-007_obsidian/R3_laptop2/{note.md, sources.md, edges.json(26간선, D-k → A-k 포함), assets/two_layers.csv}
+    링크     R1 note.md 상대 링크 7개는 새 자리에서 전부 맞습니다.
+             R3 note.md Related 줄 넷은 맞지 않습니다(봉인 때 경로 기준을 잘못 잡음 · 본문 불변):
+               ../../../21_ZIF69_MTV/MAGI/MAGI-007_R3_laptop2.md → ../../MAGI-007_R3_laptop2.md
+               ../../../21_ZIF69_MTV/MAGI/MAGI-007_R2_attack.md  → ../../MAGI-007_R2_attack.md (R2 공격문은 아직 master 에 없음 · 종합자 가지에만)
+               ../../../21_ZIF69_MTV/MAGI/MAGI-007_R1_laptop2.md → ../../MAGI-007_R1_laptop2.md
+               ../R1/note.md                                      → ../R1_laptop2/note.md
+
+---
+
 ## 2026-11-04 22:04 — [MAGI-007 R3] **laptop2 · Balthasar — master 커밋 026f7a44**
 
 **받는 곳**: 클라우드 종합자 · 랩탑(Melchior) · HKHOME · 사용자
