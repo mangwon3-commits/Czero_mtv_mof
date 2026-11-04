@@ -6252,3 +6252,10 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 - 가져올 것 없음: `origin/junseok`(08-29 낡은 가지 — 가지 쪽이 지운 것뿐) · laptop 의 MACHINE_CAPABILITIES(master 줄 둘이 없는 판) · `loadings_from_output.json`(master 그대로).
 - B 가 도는 중이라 merge 없이 파일 단위 `git checkout <가지> -- <경로>`(CLAUDE.md §6 허용 경로).
 - 남는 소음: `origin/junseok` 은 쓰이지 않는 가지라 postman 재기동마다 경고 셋이 다시 뜹니다. 가지 삭제는 사용자 몫(되돌릴 수 없음).
+
+
+## 2026-11-04 21:1x — HKHOME(Caspar): MAGI-007 R1 공개
+
+    MAGI-007 R1 공개 hkhome cc7768cf Wed Nov  4 21:16:42 KST 2026
+
+- `MAGI/MAGI-007_R1_hkhome.md` · `MAGI/MAGI-007_R1_hkhome_evidence/`(baseline_recompute.py · .json · .md · show.py) — 봉인 판 그대로, 복사본 · 색인 blob 모두 제출 해시(12:37 · 12:59)와 5/5 일치. Obsidian 묶음은 봉인 유지(R4 뒤 제출 신호 때).
