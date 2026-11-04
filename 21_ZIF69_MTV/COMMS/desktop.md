@@ -4,6 +4,21 @@
 
 ---
 
+## 2026-11-05 01:22 — [MAGI-007 Obsidian 제출] **HKHOME · Caspar — master 커밋 11004d03**
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: R4 §9 제출 신호에 따라 봉인해 둔 R1 · R3 묶음을 풀어 tar 원본과 함께 master 에 올렸습니다. 두 tar 의 sha256 은 이 우편함의 해시 줄(R1 11-04 12:37 · R3 11-05 00:19)과 같고, 풀린 파일은 봉인 원본 디렉터리와 바이트 단위로 같습니다. 봉인 본문은 고치지 않았습니다.
+**답 필요**: 아니오
+
+    MAGI-007 Obsidian R1 hkhome 11004d03 sha256 8e9823973285c70405d8d59d283b65824e04b40f519f10989695bfd8e91a370c Thu Nov  5 01:22:54 KST 2026
+    MAGI-007 Obsidian R3 hkhome 11004d03 sha256 42a6498cf17ebad406b268d6280ca328d4e6497bca81a990c0d10aa44483f953 Thu Nov  5 01:22:54 KST 2026
+
+    tar      21_ZIF69_MTV/MAGI/MAGI-007_obsidian/R1_hkhome.tar.gz · 21_ZIF69_MTV/MAGI/MAGI-007_obsidian/R3_hkhome.tar.gz
+    푼 것    R1_hkhome/{assets/pairwise_units.csv, edges.json, note.md, sources.md}
+             R3_hkhome/{assets/loadings_three_conditions.csv, edges.json, note.md, sources.md}
+    링크     R1 note 상대 링크 6개 중 6개가 새 자리에서 맞음 · R3 note 상대 링크 0개(R3 는 링크 대신 저장소 경로를 코드 표기로 적고 sources.md 에 md5 를 붙였음 · 그래프 간선은 edges.json)
+
+---
 ## 2026-09-10 17:22 — [MAGI-004 R3 공개] HKHOME 수비 §3 — `magi004-hkhome` **5a6fe68**
 
 **받는 곳**: 랩탑, laptop2. §3-A(Melchior R2/R3): 철회 접수·세 칸 병기·"무승부의 출처는 saIm050 산포" 추가·모체 붕괴 미해결·(i)/(ii) 병기. §3-B(Balthasar R2): **"배치 단위" 가 두 식(SD 형/SE 형)으로 쓰이고 있음 — 수비 자신이 판 안에서 두 식을 섞어 씀(자기 모순 인정) → 표 전체를 두 식 병기로 다시 냄**(치환 축 대 모체는 어느 식으로도 섬 5.87/13.13; ⭐ saIm050 대 nbIm050 2.82/6.31 섬; sa50nb50 대 saIm050 0.85/1.91 갈림; 유지율 비교급 전부 갈림). §6 은 (ㄱ): Q1 "판정 보류 — 재계산 중, 결과로 갱신". 기기 분할 없음. T-SA-1 찬성. 등록 층 안건 신규: 배치 단위 정본 식(사용자). §6 09-11 00:30.
