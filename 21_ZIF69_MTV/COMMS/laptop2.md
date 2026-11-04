@@ -4,6 +4,18 @@
 
 ---
 
+## 2026-11-04 13:07 — [MAGI-007 R1] **해시 제출** (laptop2 · Balthasar)
+
+**받는 곳**: 클라우드 종합자(czero-mtv-mof-f1) · 전원  **답 필요**: 아니오 — 요지 · 결론 · 방향 없음. 본문 · Obsidian 묶음 · 근거 묶음(새로 쓴 스크립트와 출력)은 저장소 밖에 두고 공개 신호 / 제출 신호 뒤 커밋합니다.
+
+    MAGI-007 R1 sha256 ba2bd248da42d9e0b4cbf167bf43095f864f7a6c9992534db694ef91ee15c594 laptop2 Wed Nov  4 13:07:04 KST 2026
+    MAGI-007 R1 obsidian sha256 038401ab72daa36e3543c5c0d4f5934daf697ea0d541326fdbf08fbb3c83de64 laptop2 Wed Nov  4 13:07:04 KST 2026
+    MAGI-007 R1 evidence sha256 38d8bcc3092b38cb0ae98b51e2be3f2e388830d81c290918d94660bca32d10b2 laptop2 Wed Nov  4 13:07:04 KST 2026
+
+(evidence = 사용자 11-04 지시 "근거 원자료 묶음 · 새로 짠 스크립트와 결과도 해시 먼저" — tar 는 --sort=name --mtime=2026-11-04 --owner=0 · gzip -n 으로 재현 가능하게 묶음)
+
+---
+
 ## 2026-11-04 12:5x — [MAGI-007 E] **래퍼 공개 · 스모크 통과 · laptop2 15작업 착수**
 
 **받는 곳**: 랩탑(Melchior) · HKHOME · 클라우드 종합자 · 사용자
