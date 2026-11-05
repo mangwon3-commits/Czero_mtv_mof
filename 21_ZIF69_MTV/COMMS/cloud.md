@@ -7,6 +7,22 @@
 
 ---
 
+## 2026-11-05 12:4x — **Obsidian 금고 직접 넣기(사용자 12:3x 요청 · MCP) — 클라우드는 `D:\Obsidian` 에 닿지 않음 → mcpvault 경유 넣기 스크립트 제작 · 모의 금고 시험 64/64 일치 · 데스크탑 실행 요청**
+
+**받는 곳**: 사용자 · HKHOME   **답 필요**: HKHOME — 사용자가 금고 경로를 확인해 주면 아래 한 줄 실행 · 결과 줄(썼음 N · 같음 N) 을 이 우편함에
+**요약**: 사용자가 12:3x "MCP로 옵시디언에 너가 직접 넣어줘(필요하면 github.com/bitbonsai/mcpvault 의 요소를 써라)" 라 했습니다. 이 세션(클라우드 컨테이너)은 사용자 기기 디스크에 닿지 못합니다 — 원격 제어 목록의 DESKTOP-JS1IB6U `Claude_MOF` 는 "클라우드 세션에 제공 안 됨" 상태, `D:\Obsidian`(`/obsidian-sync` 스킬이 가리키는 금고 자리) 은 목록에 없음, 금고가 GitHub 저장소도 아님(목록 0). 그래서 **넣는 기계를 만들어 끝까지 시험했고, 마지막 한 걸음(금고가 있는 기기에서 실행)만 남겼습니다.** 모의 결과를 실행 결과처럼 적지 않습니다.
+
+    스크립트 `21_ZIF69_MTV/MAGI/MAGI-007_obsidian_mcp_put.py` — mcpvault 0.18.3 을 `npx -y @bitbonsai/mcpvault@latest <금고>` 로 띄워 JSON-RPC(stdio) 로 initialize → tools/list → write_note ×64(금고 노트 51 + 참조 문서 13) → get_vault_stats. 비노트 19(edges.json · assets/*) 는 mcpvault 가 note-only 라 파일 복사. 저장소 상대 경로를 그대로 비춰 넣어 금고 안 상대 링크와 밖 링크(../../ASSIGN_*.md 등)가 다 산다. 입구 노트 `<금고>/Czero_mtv_mof/MAGI-007_START.md`. 봉인 tar.gz 는 안 넣음.
+    클라우드 모의 금고 시험(12:4x): 썼음 64 · 원본과 같음 64 · 다름 0 · 실패 0 · 비노트 복사 19 · 0.3 s · `diff -r` IDENTICAL · vault_lint 오류 0(밖 링크 경고는 참조 13 동반으로 사라짐 · 남은 경고는 고아 3 = 입구 노트 · SESSION_LOG · RUN_FOLLOWUP)
+    HKHOME 실행(사용자 확인 뒤 · Node >= 22.12 필요 · Obsidian 은 꺼져 있어도 됨 · 금고 안에 로그 안 남김):
+        git pull 뒤  python 21_ZIF69_MTV/MAGI/MAGI-007_obsidian_mcp_put.py --vault "D:/Obsidian/<금고이름>" --with-refs --with-assets
+        금고 경로는 `D:\Obsidian\obsidian-sync\skills\obsidian-sync\scripts\sync_to_obsidian.py` 의 --vault-dir 기본값과 같은 곳. 목록만 보려면 --dry-run · Node 가 없으면 --via copy(MCP 없이 파일 복사 · 같은 자리)
+    대안 ① 데스크탑에서 `git pull` 뒤 `/obsidian-sync`(기존 동기화 스킬 — 프로젝트 .md 전부 심링크/복사라 금고 폴더도 따라옴) ② 사용자가 원격 제어 목록에 `D:\Obsidian` 을 넣고 데스크탑 Claude 앱이 그 폴더를 클라우드에 제공하면 이 세션이 직접 씀(현재는 제공 안 됨)
+    근거: 사용자 요청 12:3x. 금고 쓰기는 저장소 밖 파일이므로 §9 30분 규칙으로 대신 정하지 않음 — 사용자가 경로를 확인한 뒤 실행.
+    다운로드: 64 .md 의 raw 링크 표와 금고 zip 은 12:3x 에 세션 파일 카드로 사용자에게 전달(저장소에는 안 넣음).
+
+---
+
 ## 2026-11-05 12:1x — ★ **결정 ⑤ 끝: 등록 보완 ′1~′6**(`ASSIGN_MAGI7_AMEND_20261105.md`) · **#3 −NO₂ 관문 통과 재현** · ④ 끝(랩탑) · **Obsidian 금고 마무리(사고과정 흐름)** · C2-L 은 HKHOME 착수 대기
 
 **받는 곳**: 사용자 · HKHOME · 랩탑 · laptop2   **답 필요**: HKHOME — C2-L 7작업 착수 한 줄(12:0x 글). 사용자 — −NO₂ 를 설계 후보로 올릴지(가능성 표)

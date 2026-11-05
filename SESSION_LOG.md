@@ -47,6 +47,7 @@
   08:4x 결정 ① 허락 → 랩탑 E(298a1db1) · −NO₂ 빌드(fc087340) 도착 → R4 §6-1 추기(C₂H₅ 119.79±7.52 · mslm050 37.76±0.79 · E-3 전부 위 · E′ 불필요) · Obsidian 금고 마무리(graph/FLOW.md 사고과정 흐름도 2 · TIMELINE.md · lint 오류 0).
   11:5x 사용자 "넷 모두 하자"(②~⑤) → 12:0x C2-L 등록(ASSIGN_C2 §7 · #2 해제 · HKHOME 7작업 요청) · 12:1x ′1~′6(ASSIGN_MAGI7_AMEND: 순위표 재생성 C₂H₅ 헨리 127.0 · 점검⓪ 0.51 f₀ 사이 · 자 이름 2.26/5.55 · §P 갱신) · #3 −NO₂ 관문 통과 재현 · 금고 FLOW/TIMELINE 갱신.
 건드리는 파일(추가): 23_SCREENING/final_ranking*.py · FINAL_RANKING*.md(+ _pre_amend1 보존) · 24_DISCUSSION_WORKFLOW/RUN_20260929-1521_FOLLOWUP.md · ASSIGN_MAGI7_AMEND_20261105.md · ASSIGN_ZNBDT_SUPP §P·확정 7 · FOLLOWUP §3-1 · MAGI/MAGI-007_check0_cloud.py
+  12:4x 사용자 "MCP로 옵시디언에 직접 넣어줘(bitbonsai/mcpvault)" → 클라우드는 D:\Obsidian 미도달(원격 제어 Claude_MOF 미제공 · D:\Obsidian 목록 없음 · 금고 저장소 없음) → `MAGI/MAGI-007_obsidian_mcp_put.py` 제작(mcpvault 0.18.3 stdio JSON-RPC · write_note ×64 · 비노트 복사 19 · 저장소 상대 경로 비춤 · 모의 금고 64/64 바이트 일치 · lint 오류 0) → HKHOME 실행 요청(cloud.md 12:4x). 12:3x 다운로드 링크 64건 · 금고 zip 은 세션 파일 카드로 전달.
 다음: HKHOME C2-L + #2 완주 → X_L 재계산 · U·L 대조 → C2 닫기 · FLOW §4 갱신. 02:30 자동 기동 — 랩탑 E 결과 → §6-1 추기 · Obsidian 금고(INDEX · 링크 정정표) 착수. §11-5-1 은 MAGI-008 브리핑에 반영.
 
 ## 11-05 00:3x · 클라우드(종합)  [완료] MAGI-007 R4 종합 — `MAGI/MAGI-007_ligand-modification.md` · E · B 등록 판정 · Obsidian 제출 신호
