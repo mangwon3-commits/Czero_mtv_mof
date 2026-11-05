@@ -7,6 +7,20 @@
 
 ---
 
+## 2026-11-05 12:0x — ★ **사용자 결정 ②③ 접수(11:5x "넷 모두 하자") → ZNBDT-C2-L 등록(ASSIGN_C2 §7 · 자료 0건) · #2 보류 해제 — HKHOME 7작업 착수 요청** · ④ 랩탑 · ⑤ 종합자 진행
+
+**받는 곳**: HKHOME · 사용자 · 랩탑 · laptop2   **답 필요**: HKHOME — L판 빌드(md5 · 리간드 원자 수 · 순전하) · 7작업 착수 한 줄 · #3 이완 착수(빌드 fc087340 도착 10:2x)
+**요약**: 결정 ② 민감도 판 L · ③ #2 해제를 **`ASSIGN_ZNBDT_C2_20261105.md` §7** 에 자료 0건으로 등록했습니다(읽는 법 · 종합자 예측 포함). 원 C2 의 판독 "판별 불가" 는 그대로이고, C2-L 은 U 와 L 이 같은 갈래면 그것으로 C2 를 닫습니다.
+
+    HKHOME 지금  ① L판: build_znbdt_c2_apolar.py 사본에 'L' — 니트릴 C·N 0 · 짝 합 −0.1386 e 를 **그 리간드(Zn 뗀 연결 성분) 비수소 원자 전부에 균등** → charged_v3/znbdt_c2_apolarL_DDEC6mod.cif · |q| ≤ 1e-3 · 빌드 JSON 에 variants.L
+                 ② Widom ON(CO₂·N₂) + S_mix 3씨앗(apolarL) + **#2 apolarU 323 K 3씨앗** = 7 작업 동시 · ≈ 1.2 h
+                 ③ **#3 −NO₂ 이완 + (0a)(0b)**(빌드 znbdt_no2_screen/E24i_ZnDia_NO2_open.cif · 1코어 3분) → results_znbdt_no2_screen_hkhome.json — 아직 착수 줄이 없습니다
+    읽는 법     X_L §2 그대로 · U·L 같은 갈래 → C2 닫음 / 다르면 "보정 방식에 민감 — 닫지 않음" · K_H(CO₂) 모체비가 I 쪽(3.3)이면 L 도 부적절로 먼저 적음 · #2 는 FOLLOWUP §2
+    예측(종합자) X_L 0.85~0.92 · 중간 0.7 · K_H(CO₂) 1.45~1.60 · U=L 0.75 · #2 r_T 1.00~1.10(0.6)
+    ④ ⑤        ④ postman.sh add 단계 — 랩탑 11:5x 착수(12:4x 까지) · ⑤ ′1~′6 등록 · §P 갱신 — 종합자 이어서(다음 글)
+
+---
+
 ## 2026-11-05 08:4x — ★ **결정 ① 접수 → 랩탑 E 추기 끝(R4 §6-1) · −NO₂ 빌드 도착 → HKHOME #3 이완·관문 착수 요청** · **Obsidian 금고 마무리 — 사고과정 흐름 `graph/FLOW.md`**
 
 **받는 곳**: 사용자 · HKHOME · 랩탑 · laptop2   **답 필요**: HKHOME — #3 이완 + (0a)(0b) 착수·완주 한 줄(빌드 `znbdt_no2_screen/E24i_ZnDia_NO2_open.cif` fc087340 · 3분). 사용자 — 결정 ②~⑤
