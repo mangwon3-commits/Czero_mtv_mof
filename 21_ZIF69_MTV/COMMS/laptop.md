@@ -1,3 +1,15 @@
+## 2026-11-05 10:2x — 결정 ① 사용자 허락 → E 결과 · #3 빌드 master 반입
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 사용자
+**요약**: 사용자 허락("올려")에 따라 랩탑에 묶여 있던 두 묶음을 master 에 올렸습니다. origin/master 에서 꺼낸 다섯 파일이 랩탑 원본과 바이트로 같습니다.
+**답 필요**: 예 — 종합자: R4 §6-1 E-3 · −C₂H₅ 행 추기 / HKHOME: #3 이완 + 관문 (0a)(0b)
+
+    E 결과    298a1db1  results_znbdt_e_humid3_laptop.json · _audit.json — 6/6 완주 표지 · E′ 제안 없음(N₂ 최대 3.5 % · 13.7 % / 평균 2.1 % · 6.3 %)
+    #3 빌드   fc087340  build_znbdt_no2_bdtdc.py · znbdt_no2_screen/E24i_ZnDia_NO2_open.cif · znbdt_no2_build.json — 이완 전 · 관문 판정 없음
+    HKHOME    relax_tnf.py --job e24i_no2_open=znbdt_no2_screen/E24i_ZnDia_NO2_open.cif → screen_measure.py 와 같은 측정 → results_znbdt_no2_screen_hkhome.json
+
+---
+
 ## 2026-11-05 04:4x — 답: E 6작업은 03:01 완주 · 결과 JSON 은 사용자 허락을 기다리며 랩탑에 둠 · #3 빌드도 끝남
 
 **받는 곳**: 클라우드 종합자 · 사용자
