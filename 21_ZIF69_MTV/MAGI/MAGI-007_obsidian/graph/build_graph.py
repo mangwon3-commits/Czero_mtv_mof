@@ -250,6 +250,7 @@ out += '# 종합자 — 클라우드 · 종합 · 공격적 검증자 · 질문�
 out += f'- 브리핑 v3 {L(p, os.path.join(MAGI, "MAGI-007_brief.md"), "본문")} · 봉인 예측 {L(p, os.path.join(MAGI, "MAGI-007_sealed_prediction_cloud.md"), "평문")}(sha256 bbbc71b7…)\n'
 out += f'- R2 질의: {L(p, os.path.join(ROOT, "R2_cloud", "note.md"), "그래프 판")} · {L(p, os.path.join(ROOT, "R2_cloud", "sources.md"), "참고 자료")} · {L(p, os.path.join(MAGI, "MAGI-007_R2_attack.md"), "본문")}\n'
 out += f'- R4 종합: {L(p, os.path.join(ROOT, "R4_cloud", "note.md"), "그래프 판")} · {L(p, os.path.join(ROOT, "R4_cloud", "sources.md"), "참고 자료")} · {L(p, os.path.join(MAGI, "MAGI-007_ligand-modification.md"), "본문")} · {L(p, DECP, "결정 노드")}\n\n'
+out += f'- 흐름: {L(p, os.path.join(G, "FLOW.md"), "사고과정 흐름")} · {L(p, os.path.join(G, "TIMELINE.md"), "타임라인")}\n\n'
 out += '## 질문 17 (R2)\n\n' + ''.join(f'- {L(p, qpath(k), k)} {a["stars"]} {esc(a["title"])} — 수비 {sum(1 for b in ("R3_laptop", "R3_laptop2", "R3_hkhome") for e in EDGES[b] if e["to"] == k)}건\n' for k, a in A.items())
 out += '\n## 합의 7 (R4)\n\n' + ''.join(f'- {L(p, spath(k), k)} {esc(s["title"])}\n' for k, s in S.items())
 out += '\n## 종합자 자신에게 건 간선\n\n' + ''.join(f'- {node_link(p, e["from"], e["bundle"])} **{e["type"]}** → {node_link(p, e["to"], e["bundle"])}' + (f' — {esc(e["note"])}' if e['note'] else '') + '\n' for e in ALL if e['to'].startswith('SYN') or e['from'].startswith('SYN'))
@@ -279,7 +280,8 @@ p = os.path.join(ROOT, 'INDEX.md'); out = fm('MAGI-007 Obsidian 금고', ['MAGI-
 out += '# MAGI-007 Obsidian 금고 — 리간드 개질 토론(E · A · B 조건)의 자리별 참고 자료와 종합자 질문\n\n'
 out += '**여는 법**: 이 폴더의 링크 중 `../../`·`../../../` 로 나가는 것은 저장소 문서를 가리킵니다. Obsidian 에서 그 링크까지 따라가려면 **`21_ZIF69_MTV/` (또는 저장소 뿌리)를 금고로 여십시오**. 이 폴더만 열면 묶음 안 링크와 그래프 층만 보입니다. 봉인 원본은 각 `R*_<기기>.tar.gz`(sha256 은 `COMMS/<기기>.md` 해시 줄과 같음) 이고, 풀린 폴더는 금고용 사본입니다 — 사본 중 손댄 곳은 `R3_laptop2/note.md` 의 Related 링크 넷(laptop2 00:38 정정표)뿐입니다.\n\n'
 out += '## 그래프 층 (종합자가 edges.json 에서 생성 · `graph/build_graph.py`)\n\n'
-out += f'- {L(p, hub("cloud"), "종합자")}: 질문 17 · 합의 7 · 봉인 예측 · 결정 — 여기서 시작\n'
+out += f'- {L(p, os.path.join(G, "FLOW.md"), "사고과정 흐름")}: 절차 흐름도 · 논리 흐름도 · 마디 여섯 · 열린 것 — **여기서 시작**\n- {L(p, os.path.join(G, "TIMELINE.md"), "타임라인")}: 11-03 등록 → 11-05 보완 단계, 시각 · 누가 · 어디\n'
+out += f'- {L(p, hub("cloud"), "종합자")}: 질문 17 · 합의 7 · 봉인 예측 · 결정\n'
 for s2 in ('laptop', 'laptop2', 'hkhome'): out += f'- {L(p, hub(s2), SEATS[s2][0] + " (" + SEATS[s2][2] + " · " + SEATS[s2][3] + ")")}: R1 주장 노드 · 받은 질의 · 수비 · 종합 인용\n'
 out += f'- {L(p, DECP, "결정 노드")}: R4 §5 권고 · 사용자 결정 · R4 뒤 ZNBDT-C1 / C2\n- {L(p, os.path.join(G, "EDGES.md"), "간선 전체")}: {len(ALL)} 간선 표와 자리 사이 흐름 그림\n'
 out += '\n### 질문 (R2 · 종합자 → 자리)\n\n' + ''.join(f'- {L(p, qpath(k), k + " · " + a["title"])}: {a["stars"] or "—"} · {clip(a["section"], 30)}\n' for k, a in A.items())

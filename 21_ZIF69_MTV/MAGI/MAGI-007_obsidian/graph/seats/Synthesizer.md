@@ -11,6 +11,8 @@ aliases: [종합자, Synthesizer]
 - R2 질의: [그래프 판](../../R2_cloud/note.md) · [참고 자료](../../R2_cloud/sources.md) · [본문](../../../MAGI-007_R2_attack.md)
 - R4 종합: [그래프 판](../../R4_cloud/note.md) · [참고 자료](../../R4_cloud/sources.md) · [본문](../../../MAGI-007_ligand-modification.md) · [결정 노드](../decisions.md)
 
+- 흐름: [사고과정 흐름](../FLOW.md) · [타임라인](../TIMELINE.md)
+
 ## 질문 17 (R2)
 
 - [A-1](../questions/A-1.md) ★ 종합자 오류가 먼저입니다. −C₂H₅ 를 E 에 넣자는 권고 근거로 "323 K 단독 선두(E-27b 92.99)" 를 적었는데, Melchior(§4 쓸 수 … — 수비 3건

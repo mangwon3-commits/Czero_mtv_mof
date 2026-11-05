@@ -11,7 +11,9 @@ aliases: [MAGI-007 금고]
 
 ## 그래프 층 (종합자가 edges.json 에서 생성 · `graph/build_graph.py`)
 
-- [종합자](graph/seats/Synthesizer.md): 질문 17 · 합의 7 · 봉인 예측 · 결정 — 여기서 시작
+- [사고과정 흐름](graph/FLOW.md): 절차 흐름도 · 논리 흐름도 · 마디 여섯 · 열린 것 — **여기서 시작**
+- [타임라인](graph/TIMELINE.md): 11-03 등록 → 11-05 보완 단계, 시각 · 누가 · 어디
+- [종합자](graph/seats/Synthesizer.md): 질문 17 · 합의 7 · 봉인 예측 · 결정
 - [Melchior (랩탑 · 이론)](graph/seats/Melchior.md): R1 주장 노드 · 받은 질의 · 수비 · 종합 인용
 - [Balthasar (laptop2 · 실용)](graph/seats/Balthasar.md): R1 주장 노드 · 받은 질의 · 수비 · 종합 인용
 - [Caspar (HKHOME · 비평)](graph/seats/Caspar.md): R1 주장 노드 · 받은 질의 · 수비 · 종합 인용
