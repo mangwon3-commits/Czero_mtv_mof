@@ -1,0 +1,156 @@
+{
+ "test": "ZNBDT-C2 후속 #3 — 열린 자리 4,8-(NO₂)₂ 관문 (0a)(0b) (HKHOME 이완 · 측정)",
+ "assign": "ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md §3",
+ "build": "znbdt_no2_screen/E24i_ZnDia_NO2_open.cif",
+ "relaxed": "relax_tnf/e24i_no2_open_relaxed.cif",
+ "relax_record": "results_znbdt_no2_relax_hkhome.json",
+ "n_framework_matched": 200,
+ "max_framework_disp_A": 0.433,
+ "min_heteroatom_H": [
+  2.129,
+  "H···O",
+  "H111",
+  "O190"
+ ],
+ "gate0a_pass": "True",
+ "gate0b": {
+  "cif": "relax_tnf/e24i_no2_open_relaxed.cif",
+  "n_sub_atoms": 12,
+  "n_groups": 4,
+  "min_margin_A": 0.144,
+  "worst_pair": "O198···O196 3.184",
+  "n_clash_pairs": 0,
+  "pass_0b": true
+ },
+ "gate0b_pass": true,
+ "gate_all_pass": true,
+ "sites": [
+  {
+   "N": 172,
+   "ipso_C": 84,
+   "closest_contact_any": [
+    2.389,
+    "O192···H152"
+   ],
+   "max_overlap_gate_scope": [
+    -0.144,
+    "O192···O194 3.184"
+   ],
+   "max_overlap_excluded_scope(부착 C 2결합 안 · 관문 밖 · 서술)": [
+    0.446,
+    "O193···S205 2.874"
+   ]
+  },
+  {
+   "N": 173,
+   "ipso_C": 85,
+   "closest_contact_any": [
+    2.389,
+    "O194···H153"
+   ],
+   "max_overlap_gate_scope": [
+    -0.144,
+    "O194···O192 3.184"
+   ],
+   "max_overlap_excluded_scope(부착 C 2결합 안 · 관문 밖 · 서술)": [
+    0.446,
+    "O195···S204 2.874"
+   ]
+  },
+  {
+   "N": 174,
+   "ipso_C": 86,
+   "closest_contact_any": [
+    2.389,
+    "O196···H154"
+   ],
+   "max_overlap_gate_scope": [
+    -0.144,
+    "O196···O198 3.184"
+   ],
+   "max_overlap_excluded_scope(부착 C 2결합 안 · 관문 밖 · 서술)": [
+    0.445,
+    "O197···S207 2.875"
+   ]
+  },
+  {
+   "N": 175,
+   "ipso_C": 87,
+   "closest_contact_any": [
+    2.389,
+    "O198···H155"
+   ],
+   "max_overlap_gate_scope": [
+    -0.144,
+    "O198···O196 3.184"
+   ],
+   "max_overlap_excluded_scope(부착 C 2결합 안 · 관문 밖 · 서술)": [
+    0.445,
+    "O199···S206 2.875"
+   ]
+  }
+ ],
+ "contacts_after": {
+  "C···O": [
+   2.839,
+   "C83",
+   "O197"
+  ],
+  "C···H": [
+   2.653,
+   "C19",
+   "H115"
+  ],
+  "C···C": [
+   2.717,
+   "C82",
+   "C83"
+  ],
+  "C···N": [
+   2.985,
+   "C36",
+   "N166"
+  ],
+  "H···H": [
+   2.196,
+   "H146",
+   "H147"
+  ],
+  "H···O": [
+   2.129,
+   "H111",
+   "O190"
+  ],
+  "H···N": [
+   2.618,
+   "H143",
+   "N165"
+  ],
+  "H···S": [
+   3.005,
+   "H101",
+   "S207"
+  ],
+  "N···O": [
+   3.297,
+   "N163",
+   "O190"
+  ],
+  "N···S": [
+   3.16,
+   "N175",
+   "S206"
+  ],
+  "O···S": [
+   2.874,
+   "O193",
+   "S205"
+  ],
+  "O···O": [
+   3.184,
+   "O196",
+   "O198"
+  ]
+ },
+ "note": "판정 아님 — 가능성 표. 전하 · Widom · GCMC 는 하지 않음(명령 §3)."
+}
