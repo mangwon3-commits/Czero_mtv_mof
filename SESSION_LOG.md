@@ -45,7 +45,9 @@
   04:4x 순찰: 후속 #1 밀도 격자 4/4(laptop2 04:08) → 종합자 서술 FOLLOWUP §1-1(N₂ 비움 97~98 % 치환기 둘레 · 니트릴 둘레 N₂ 0.50× 대 전하 0 0.60× · CO₂ 1.21× 대 1.02× — U판 중간과 맞음 · 판정 아님) · 랩탑 E 미도착(랩탑에 상태 물음).
   05:00~08:00 순찰: 바뀐 것 없음(랩탑 E 결과 · −NO₂ 빌드는 03:04 권한 거부로 랩탑에 묶임 — 사용자 허락 대기). 08:0x 아침 보고 초안(결정 ①~⑤) cloud.md.
   08:4x 결정 ① 허락 → 랩탑 E(298a1db1) · −NO₂ 빌드(fc087340) 도착 → R4 §6-1 추기(C₂H₅ 119.79±7.52 · mslm050 37.76±0.79 · E-3 전부 위 · E′ 불필요) · Obsidian 금고 마무리(graph/FLOW.md 사고과정 흐름도 2 · TIMELINE.md · lint 오류 0).
-다음: 사용자 결정 ②~⑤ · HKHOME #3 이완·관문 → 종합자 관문 수 서술 · L판 승인 시 등록. 02:30 자동 기동 — 랩탑 E 결과 → §6-1 추기 · Obsidian 금고(INDEX · 링크 정정표) 착수. §11-5-1 은 MAGI-008 브리핑에 반영.
+  11:5x 사용자 "넷 모두 하자"(②~⑤) → 12:0x C2-L 등록(ASSIGN_C2 §7 · #2 해제 · HKHOME 7작업 요청) · 12:1x ′1~′6(ASSIGN_MAGI7_AMEND: 순위표 재생성 C₂H₅ 헨리 127.0 · 점검⓪ 0.51 f₀ 사이 · 자 이름 2.26/5.55 · §P 갱신) · #3 −NO₂ 관문 통과 재현 · 금고 FLOW/TIMELINE 갱신.
+건드리는 파일(추가): 23_SCREENING/final_ranking*.py · FINAL_RANKING*.md(+ _pre_amend1 보존) · 24_DISCUSSION_WORKFLOW/RUN_20260929-1521_FOLLOWUP.md · ASSIGN_MAGI7_AMEND_20261105.md · ASSIGN_ZNBDT_SUPP §P·확정 7 · FOLLOWUP §3-1 · MAGI/MAGI-007_check0_cloud.py
+다음: HKHOME C2-L + #2 완주 → X_L 재계산 · U·L 대조 → C2 닫기 · FLOW §4 갱신. 02:30 자동 기동 — 랩탑 E 결과 → §6-1 추기 · Obsidian 금고(INDEX · 링크 정정표) 착수. §11-5-1 은 MAGI-008 브리핑에 반영.
 
 ## 11-05 00:3x · 클라우드(종합)  [완료] MAGI-007 R4 종합 — `MAGI/MAGI-007_ligand-modification.md` · E · B 등록 판정 · Obsidian 제출 신호
 하는 일: 공개 21:1x(해시 넷 유효 · 전부 첫 자료 앞) → R2 질의 17건(21:5x) → R3 laptop2 22:04 · 랩탑 00:15 · HKHOME 00:19(셋 다 시한 안; 종합자의 00:2x 재고지는 fetch 지연으로 잘못 낸 것 — 철회) → R4.

@@ -49,6 +49,6 @@ aliases: [종합자, Synthesizer]
 - [SYN-sealed](../../../MAGI-007_sealed_prediction_cloud.md) **인용** → [Melchior M-C2 둘째 후보인 열린 자리 −CN/−Br 이종 한 쌍은 두 끝의 가산성을 시험합니다. 넘을 확률은 0.05 입니다 `［가설］`](../../R1_laptop/note.md) — 같은 방향(혼합 CN/Br)
 - [SYN-sealed](../../../MAGI-007_sealed_prediction_cloud.md) **인용** → [Caspar C-후보①](../../R1_hkhome/note.md) — 같은 방향(혼합 CN/Br)
 - [SYN-sealed](../../../MAGI-007_sealed_prediction_cloud.md) **인용** → [Balthasar B-6 후보 ② bib 의 2-메틸이미다졸 판](../../R1_laptop2/note.md) — 같은 방향(bib 2-Me)
-- [SYN-sealed](../../../MAGI-007_sealed_prediction_cloud.md) **반박** → [DEC-ZNBDT-C1 다음 계산 = 열린 자리 4,8-(C≡CH)₂ (R4 §5-1 · 사용자 승인 11-05 00:4x → Z…](../decisions.md) — §9-10 ① 불일치 — 종합자 후보와 다름
+- [SYN-sealed](../../../MAGI-007_sealed_prediction_cloud.md) **반박** → [DEC-ZNBDT-C1 다음 계산 = 열린 자리 4,8-(C≡CH)₂ (R4 §5-1 · 사용자 승인 11-05 00:4x) → …](../decisions.md) — §9-10 ① 불일치 — 종합자 후보와 다름
 
 Related: [Melchior](Melchior.md) · [Balthasar](Balthasar.md) · [Caspar](Caspar.md) · [간선 전체](../EDGES.md) · [INDEX](../../INDEX.md)

@@ -63,11 +63,24 @@ p = widom_on(os.path.join(Z, 'results_magi5_e3_e22_parent_widom_desktop-js1ib6u.
 rows.append(mk('e22_parent', 'Zn(bib)(bdtdc) 모체(형판)', '모체', p['KH_CO2'], p['KH_CO2_err'], p['KH_N2'], p['KH_N2_err'], g22['e22_parent']['before']['PLD'],
                LCD=g22['e22_parent']['before']['LCD'], gate5=g22['e22_parent']['pass'], LCD_drop=g22['e22_parent']['LCD_drop_pct'], S_stored_err=p.get('selectivity_err')))
 g24 = J(os.path.join(Z, 'results_e24i_gate5_desktop-nvsrr9m.json'))['rows']
+# ′1 (2026-11-05, MAGI-007 R4 §5-2 · 사용자 승인): 주머니 구조는 막음 Widom 의 S 로(K_H 는 막음 판이 기록되지 않아 비움) — A-3 결함 정정
+BLK = J(os.path.join(Z, 'results_e24i_blockpockets_hkhome.json')).get('per_structure', {})
 for f in sorted(glob.glob(os.path.join(Z, 'results_magi5_e3_e24i_*_open_widom_*.json'))):
     tag = os.path.basename(f).split('e24i_')[1].split('_open')[0]; key = f'e24i_{tag}_open'
     w = widom_on(f); g = g24[key]
+    if key in BLK and BLK[key].get('S_ON_blocked') is not None:
+        r_ = dict(name=key, label=f"Zn(bib)(bdtdc) 열린 자리 {E24_KO[tag]} (막음 Widom · ′1)", type='설계', KH_CO2=None, KH_CO2_err=None, KH_N2=None, KH_N2_err=None,
+                  S=BLK[key]['S_ON_blocked'], S_err=BLK[key]['S_ON_blocked_err'], PLD=g['before']['PLD'], LCD=g['before']['LCD'], gate5=g['pass'], LCD_drop=g['LCD_drop_pct'])
+        rows.append(r_); continue
     rows.append(mk(key, f"Zn(bib)(bdtdc) 열린 자리 {E24_KO[tag]}", '설계', w['KH_CO2'], w['KH_CO2_err'], w['KH_N2'], w['KH_N2_err'], g['before']['PLD'],
                    LCD=g['before']['LCD'], gate5=g['pass'], LCD_drop=g['LCD_drop_pct'], S_stored_err=w.get('selectivity_err')))
+# ′1: §B 병기 열의 S_mix 는 손으로 적은 문자열(ours_extra) 대신 원자료에서(평균 · ±̄/√n · 씨앗 수) — CN · Br 6씨앗 통일
+def _smix(files, pre):
+    v = [r for f in files for r in rows_of(J(f)) if r.get('status') == 'ok' and r.get('S_mix') is not None and (r.get('name') or pre).startswith(pre)]   # 이름 없는 행(junseok c2h5 파일)은 파일로 귀속
+    if not v: return None
+    m = sum(r['S_mix'] for r in v) / len(v); e = sum(r['S_mix_err'] for r in v) / len(v) / math.sqrt(len(v)); return f"{m:.1f} ± {e:.1f} ({len(v)}씨앗)"
+SMIX_RAW = {f'e24i_{t}_open': _smix(sorted(glob.glob(os.path.join(Z, f'results_e24i_e24i_{t}_open_mix_*.json'))), f'e24i_{t}_open_s') for t in E24_KO}
+SMIX_RAW['e22_parent'] = _smix([os.path.join(Z, 'results_e23_mix_desktop.json')], 'e22_parent_s')
 # --- 문헌 앵커 (선택 파일)
 anch_path = os.path.join(HERE, 'anchors_20260930.json')
 if os.path.exists(anch_path):
@@ -83,7 +96,8 @@ for r in rows:
 # --- 관문
 excluded = []
 def gate(r):
-    if not (0 < r['KH_CO2'] < WIDOM_SANITY_MAX and 0 < r['KH_N2'] < WIDOM_SANITY_MAX): return 'Widom 건전성'
+    if r.get('KH_CO2') is None: pass   # ′1 막음 행: K_H 미기록 — S 만 순위 축에
+    elif not (0 < r['KH_CO2'] < WIDOM_SANITY_MAX and 0 < r['KH_N2'] < WIDOM_SANITY_MAX): return 'Widom 건전성'
     if r.get('PLD') is None: return None
     if r['PLD'] < PLD_PROBE: return f"탐침 규약값(PLD {r['PLD']:.3f} < {PLD_PROBE})"
     if r.get('formal_charge_nonzero') is True: return '짝이온 삭제(formal charge ≠ 0)'
@@ -101,14 +115,15 @@ pos = 0
 for gi, g in enumerate(groups, 1):
     for r in g:
         pos += 1; r['S_cluster'] = gi; r['S_pos'] = pos
-gK, msgK = rank(kept, 'KH_CO2', 'KH_CO2_err')
+for r in kept: r.setdefault('K_cluster', '—'); r.setdefault('K_pos', None)
+gK, msgK = rank([r for r in kept if r.get('KH_CO2') is not None], 'KH_CO2', 'KH_CO2_err')
 posK = 0
 for gi, g in enumerate(gK, 1):
     for r in g:
         posK += 1; r['K_cluster'] = gi; r['K_pos'] = posK
 N = len(kept)
 pool = [r for r in kept if r['type'] == 'CoRE']
-poolS = sorted(r['S'] for r in pool); poolK = sorted(r['KH_CO2'] for r in pool)
+poolS = sorted(r['S'] for r in pool); poolK = sorted(r['KH_CO2'] for r in pool if r.get('KH_CO2') is not None)
 pool3 = sorted(r['S'] for r in pool if r.get('dim') == 3)
 def sep(r, ref):
     """1.5×합성 오차 밖으로 위/아래인 CoRE 풀 행 수와 구별 안 되는 행 수 (사슬 덩어리와 달리 행별로 읽힘)."""
@@ -126,8 +141,8 @@ def pct(sorted_vals, x):
 # --- 원본 점수(참고): 상위 5 % 클리핑 → min-max ×100 → 0.6/0.4
 def q95(vals):
     v = sorted(vals); k = 0.95 * (len(v) - 1); f = math.floor(k); c = min(f + 1, len(v) - 1); return v[f] + (v[c] - v[f]) * (k - f)
-sc, cc = q95([r['S'] for r in kept]), q95([r['KH_CO2'] for r in kept])
-sclip = [min(r['S'], sc) for r in kept]; cclip = [min(r['KH_CO2'], cc) for r in kept]
+sc, cc = q95([r['S'] for r in kept]), q95([r['KH_CO2'] for r in kept if r.get('KH_CO2') is not None])
+sclip = [min(r['S'], sc) for r in kept]; cclip = [min(r['KH_CO2'], cc) if r.get('KH_CO2') is not None else 0.0 for r in kept]   # 막음 행: K_H 몫 0(참고 점수)
 smin, smax, cmin, cmax = min(sclip), max(sclip), min(cclip), max(cclip)
 for r, s_, c_ in zip(kept, sclip, cclip):
     r['nb_score'] = 0.6 * (s_ - smin) / (smax - smin) * 100 + 0.4 * (c_ - cmin) / (cmax - cmin) * 100
@@ -137,7 +152,7 @@ for i, r in enumerate(nb_sorted, 1): r['nb_rank'] = i
 # --- 출력
 now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
 def fS(r): return f"{r['S']:.1f} ± {r['S_err']:.1f}"
-def fK(r): return f"{r['KH_CO2']:.2e} ± {r['KH_CO2_err']:.1e}"
+def fK(r): return '— (막음 Widom 의 K_H 미기록)' if r.get('KH_CO2') is None else f"{r['KH_CO2']:.2e} ± {r['KH_CO2_err']:.1e}"
 def desc(r):
     if r['type'] == 'CoRE': return f"{r.get('topo')} · {r.get('metal')} · {r.get('dim')}D · {r.get('set')}" + (' · 전하 미검사' if r.get('formal_charge_nonzero') is None else '')
     return r.get('source') or r.get('note') or ''
@@ -145,13 +160,14 @@ def ex(r):
     e = extra.get(r['name'], {})
     if not e: return ''
     parts = []
-    if 'S_mix' in e: parts.append(f"S_mix {e['S_mix']}")
+    if SMIX_RAW.get(r['name']): parts.append(f"S_mix {SMIX_RAW[r['name']]}")     # ′1: 원자료 · 씨앗 수 병기
+    elif 'S_mix' in e: parts.append(f"S_mix {e['S_mix']}" + (' (실현 6 평균 · 실현 SD)' if r['name'] in ('mslm050', 'saIm050', 'sa50nb50') else ''))
     if 'water_idx' in e: parts.append(f"물 {e['water_idx']}")
     if 'n_dry' in e: parts.append(f"건조 {e['n_dry']}")
     if 'wc_tsa' in e: parts.append(f"습윤 TSA {e['wc_tsa']}")
     return ' · '.join(parts)
 L = []
-L.append(f"# 최종 순위표 — CoRE 기존 물질 + 문헌 앵커 + 우리 모체·설계, 한 자(우리 298 K Widom) 위에 ({now}, HKHOME)\n")
+L.append(f"# 최종 순위표 — CoRE 기존 물질 + 문헌 앵커 + 우리 모체·설계, 한 자(우리 298 K Widom) 위에 ({now}, {os.environ.get('RANK_WHO', 'HKHOME')})\n")
 L.append(f"등록 `FINAL_RANKING_REGISTRATION_20260930.md` 그대로. 스크립트 `final_ranking.py`, 전체 행 `final_ranking_20260930.csv`. **새 시뮬레이션 0건.**\n")
 cnt = {}
 for r in rows: cnt[r['type']] = cnt.get(r['type'], 0) + 1
@@ -180,11 +196,11 @@ L.append(f"| 이름 | 부류 | 위치 / {N} | S ± | CoRE 풀 백분위(S) | 3D 
 L.append("|---|---|---|---|---|---|---|---|---|---|")
 for r in sorted([r for r in kept if r['type'] != 'CoRE'], key=lambda r: r['S_pos']):
     up, tie, dn = sep(r, pool); r['sep_up'], r['sep_tie'], r['sep_dn'] = up, tie, dn
-    L.append(f"| {r['label']} | {r['type']} | {r['S_pos']} | {fS(r)} | {pct(poolS, r['S'])} | {pct(pool3, r['S'])} | **{up} / {tie} / {dn}** | {fK(r)} | {pct(poolK, r['KH_CO2'])} | {ex(r)} |")
+    L.append(f"| {r['label']} | {r['type']} | {r['S_pos']} | {fS(r)} | {pct(poolS, r['S'])} | {pct(pool3, r['S'])} | **{up} / {tie} / {dn}** | {fK(r)} | {pct(poolK, r['KH_CO2']) if r.get('KH_CO2') is not None else '—'} | {ex(r)} |")
 L.append("\n## C. K_H(CO₂) 순위 — 상위 20행\n")
 L.append("| # | 덩어리 | 이름 | 부류 | K_H(CO₂) ± | S ± | S 덩어리 |")
 L.append("|---|---|---|---|---|---|---|")
-for r in sorted(kept, key=lambda r: r['K_pos'])[:20]:
+for r in sorted([r for r in kept if r.get('K_pos') is not None], key=lambda r: r['K_pos'])[:20]:   # ′1: K_H 미기록(막음) 행은 K_H 축에서 제외
     L.append(f"| {r['K_pos']} | **{r['K_cluster']}** | {r['label']} | {r['type']} | {fK(r)} | {fS(r)} | {r['S_cluster']} |")
 L.append("\n## D. 제외된 행\n")
 L.append("| 이름 | 부류 | 이유 | S(참고) |"); L.append("|---|---|---|---|")
@@ -218,6 +234,7 @@ L.append("- 덩어리는 **인접 행 사이** 차이가 1.5 × 합성 오차를
 L.append("- 덩어리 안은 동률이다(CLAUDE.md §2). 백분위는 '관문 통과 CoRE 풀 중 우리보다 낮은 비율' 이고 풀 정의 없이 인용하지 않는다(`COREPOP_REGISTRATION` (ㄴ)).")
 L.append("- 원본 노트북 점수는 임의 가중(0.6/0.4)·클리핑이라 순위 근거로 쓰지 않는다(감사 D5). 참고 열로만 둔다.")
 L.append("- CoRE 행의 `formal_charge_nonzero` 는 상위 69행만 검사됐다(나머지 '전하 미검사').")
+L.append("- ′1 (2026-11-05, MAGI-007 R4 §5-2): 주머니가 있는 −C₂H₅ 행은 **막음 Widom** S(CO₂ 1.65 · N₂ 1.82 탐침 막음)로 적었고 K_H 열은 비웠다(막음 판 K_H 미기록). §B 의 S_mix 병기는 원자료 평균(씨앗 수 병기)이며 CN · Br 은 6씨앗이다. 정정 전 표 `FINAL_RANKING_20260930_pre_amend1.md`.")
 L.append("- ⚠ **앞단(전처리)이 다르다.** CoRE 행 = CoRE 배포 기하 + CoRE 수록 PACMAN 전하. 우리 행 = GFN-FF 고정셀 이완 기하 + 우리 PACMAN 전하. 힘장·프로토콜은 같지만 기하가 다르고, 같은 물질에서 그 차이가 크다 — Zn(bib)(bdtdc) 형판 한 물질이 **87.8**(우리 이완 기하·우리 전하, `e22_parent`) · **120.5**(우리 이완 기하·CoRE 전하, `e22d_relaxgeom_coreq`) · **140.1**(CoRE 기하·우리 전하, `e22d_coregeom`) · **139.8**(CoRE 행 `2017 Zn dia3 FSR1`, CoRE 기하·CoRE 전하)로 읽힌다(`MAGI5_E22_VERDICT_20260925.md` E-22d). 그래서 **표 안에 같은 물질이 두 번 있다**(CoRE 행 2 + 우리 모체 1 — CoRE 행에 표지). 우리 설계 조성을 CoRE 앞단으로 돌리면 자리가 위로 갈 가능성이 크지만(형판 1.6배), 그 수는 없다 — 이 표의 우리 행 자리는 **보수적 하한**으로 읽을 것. 우리 설계 안의 순위(형판 → 치환체)는 같은 앞단이라 그대로다.")
 open(os.path.join(HERE, 'FINAL_RANKING_20260930.md'), 'w', encoding='utf-8').write('\n'.join(L) + '\n')
 cols = ['S_pos', 'S_cluster', 'name', 'label', 'type', 'topo', 'metal', 'dim', 'set', 'PLD', 'LCD', 'S', 'S_err', 'KH_CO2', 'KH_CO2_err', 'KH_N2', 'KH_N2_err', 'K_pos', 'K_cluster', 'nb_score', 'nb_rank', 'gate5', 'LCD_drop', 'probe_convention', 'formal_charge_nonzero', 'excluded', 'sep_up', 'sep_tie', 'sep_dn', 'S3_pos', 'S3_cluster']
@@ -226,6 +243,6 @@ with open(os.path.join(HERE, 'final_ranking_20260930.csv'), 'w', newline='', enc
     for r in sorted(kept, key=lambda r: r['S_pos']) + sorted(excluded, key=lambda r: -r['S']): w.writerow(r)
 print(f"rows {len(rows)} kept {N} excluded {len(excluded)} | {msg} | {msgK}")
 for r in sorted([r for r in kept if r['type'] != 'CoRE'], key=lambda r: r['S_pos']):
-    print(f"  {r['S_pos']:>3} c{r['S_cluster']:<3} {r['label']:<34} S {r['S']:7.1f} ± {r['S_err']:5.1f}  pct {pct(poolS, r['S']):>14}  K {r['KH_CO2']:.2e} c{r['K_cluster']}")
+    print(f"  {r['S_pos']:>3} c{r['S_cluster']:<3} {r['label']:<34} S {r['S']:7.1f} ± {r['S_err']:5.1f}  pct {pct(poolS, r['S']):>14}  K {(f'{r['KH_CO2']:.2e}' if r.get('KH_CO2') is not None else '—')} c{r['K_cluster']}")
 print('excluded ours:', [(r['label'], r['excluded']) for r in excluded if r['type'] != 'CoRE'])
 print('top5:', [(r['S_pos'], r['label'], round(r['S'], 1)) for r in sorted(kept, key=lambda r: r['S_pos'])[:5]])

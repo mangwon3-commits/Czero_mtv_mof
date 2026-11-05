@@ -98,6 +98,6 @@ aliases: [Balthasar]
 - [S-5 Q2: 지금 다섯 설계를 주 축(S_humid)에서 1.5 단위 넘게 이길 개질은 저장소 근거로 제시된 것이 없습니다 — 세 자리 일치](../consensus/S-5.md) **근거** → B-D-17 — bib 층 맞추기 · 문헌
 - [S-6 Q3: HKHOME 이 비었으므로(A 닫힘) −C≡CH 는 착수 뒤 2~3일, bib 판은 점검⓪ 통과 뒤 3~5일](../consensus/S-6.md) **근거** → B-D-16 — 일정 재산정
 - [S-7 Q4: 지금 쓸 수 있는 문장 / 쓸 수 없는 문장](../consensus/S-7.md) **근거** → B-R3-§4 — 두 층 문장
-- [DEC-′2 관문 ⑤ 결과에 이완 후 PLD · AV · 두 탐침 통로 수 서술 열 (승인 대기)](../decisions.md) **근거** → B-D-4 — N₂ 통로 수 열 제안
+- [DEC-′2 ′2 관문 ⑤ 서술 열 **등록** — 다음 관문 ⑤ 실행 때 HKHOME 이 추가](../decisions.md) **근거** → B-D-4 — N₂ 통로 수 열 제안
 
 Related: [Melchior](Melchior.md) · [Caspar](Caspar.md) · [Synthesizer](Synthesizer.md) · [간선 전체](../EDGES.md) · [INDEX](../../INDEX.md)

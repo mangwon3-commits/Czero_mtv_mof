@@ -56,11 +56,18 @@ def widom_on(path):
     for r in rows_of(J(path)):
         if r.get('charges') == 'on' and r.get('status_CO2') == 'ok' and r.get('status_N2') == 'ok': return r
 KO = {'cn': '−CN', 'br': '−Br', 'cl': '−Cl', 'ch3': '−CH₃', 'c2h5': '−C₂H₅'}
+# ′1 (2026-11-05, MAGI-007 R4 §5-2 · 사용자 승인 11:5x): 주머니가 있는 구조의 S_Henry 는 **막음 Widom**(results_e24i_blockpockets_hkhome.json) 값으로 —
+#    S_mix 가 막음 조건이므로 같은 조건의 S_Henry 를 한 행에 둔다(A-3: 차단 없음 154.3 과 막음 S_mix 114.6 을 한 행에 두던 결함).
+BLK = J(os.path.join(Z, 'results_e24i_blockpockets_hkhome.json')).get('per_structure', {})
 for tag in ('cn', 'br', 'cl', 'ch3', 'c2h5'):
-    w = widom_on(glob.glob(os.path.join(Z, f'results_magi5_e3_e24i_{tag}_open_widom_*.json'))[0])
-    SH, SHe = sel_err(w['KH_CO2'], w['KH_CO2_err'], w['KH_N2'], w['KH_N2_err'])
+    key = f'e24i_{tag}_open'; note = '우리 앞단'
+    if key in BLK and BLK[key].get('S_ON_blocked') is not None:
+        SH, SHe = BLK[key]['S_ON_blocked'], BLK[key]['S_ON_blocked_err']; note += ' · S_Henry = 막음 Widom(′1)'
+    else:
+        w = widom_on(glob.glob(os.path.join(Z, f'results_magi5_e3_e24i_{tag}_open_widom_*.json'))[0])
+        SH, SHe = sel_err(w['KH_CO2'], w['KH_CO2_err'], w['KH_N2'], w['KH_N2_err'])
     v = seeds(sorted(glob.glob(os.path.join(Z, f'results_e24i_e24i_{tag}_open_mix_*.json'))))
-    ours(f'Zn(bib)(bdtdc) 열린 자리 {KO[tag]}', f'e24i_{tag}_open', v, SH, SHe, extra=f'{len(v)}씨앗 · 우리 앞단')
+    ours(f'Zn(bib)(bdtdc) 열린 자리 {KO[tag]}', key, v, SH, SHe, extra=f'{len(v)}씨앗 · {note}')
 w = widom_on(os.path.join(Z, 'results_magi5_e3_e22_parent_widom_desktop-js1ib6u.json')); SH, SHe = sel_err(w['KH_CO2'], w['KH_CO2_err'], w['KH_N2'], w['KH_N2_err'])
 ours('Zn(bib)(bdtdc) 모체(형판, 우리 앞단)', 'e22_parent', seeds([os.path.join(Z, 'results_e23_mix_desktop.json')], lambda r: r['name'].startswith('e22_parent')), SH, SHe, extra='3씨앗 · 우리 앞단')
 v3 = {r['name']: r for r in rows_of(J(os.path.join(Z, 'results_v3.json')))}; v4 = {r['name']: r for r in rows_of(J(os.path.join(Z, 'results_v4mix.json')))}
@@ -68,7 +75,7 @@ ours('ZIF-69 모체', 'base', seeds([os.path.join(Z, 'results_tj1_mix_laptop.jso
 # ZIF-69 셋: E-23 §1 (6실현 평균 · ±̄/√n · 배치 SD) — 등록 표 값 그대로
 for nm, lab, m, e, sd, src in [('mslm050', 'ZIF-69 −SO₂CH₃ 50 %', 39.71, 0.38, 3.39, v3), ('saIm050', 'ZIF-69 −SO₃H 50 %', 38.80, 0.29, 2.66, v3), ('sa50nb50', 'ZIF-69 −SO₃H 50 % + −NO₂ 50 %', 38.05, 0.31, 5.07, v4)]:
     SH, SHe = src[nm]['selectivity'], src[nm]['selectivity_err']
-    rows.append(dict(name=nm, label=lab, type='설계', S=m, S_err=e, n_seed=6, sd=sd, S_H=SH, S_H_err=SHe, ret=m / SH, ret_err=m / SH * math.hypot(e / m, SHe / SH), dim=3, topo=None, metal=None, PLD=None, probe=False, fcz=None, src='E-23 §1 6실현(배치 SD 병기)'))
+    rows.append(dict(name=nm, label=lab, type='설계', S=m, S_err=e, n_seed='실현 6(e0~e5)', sd=sd, S_H=SH, S_H_err=SHe, ret=m / SH, ret_err=m / SH * math.hypot(e / m, SHe / SH), dim=3, topo=None, metal=None, PLD=None, probe=False, fcz=None, src='E-23 §1 6실현(배치 SD 병기)'))
 # ---- 관문·분류
 main = [r for r in rows if not r.get('probe') and r.get('fcz') is not True and r.get('dim') == 3]
 side = [r for r in rows if r not in main]
@@ -88,7 +95,7 @@ def sep(r, ref):
     return up, tie, dn
 now = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
 def f1(x, e): return f"{x:.1f} ± {e:.1f}"
-L = [f"# S_mix 축 3D 순위표 — CoRE 기존 물질(CoRE 앞단, 1씨앗) + 우리 모체·설계(우리 앞단, 3~6씨앗) ({now}, HKHOME)\n",
+L = [f"# S_mix 축 3D 순위표 — CoRE 기존 물질(CoRE 앞단, 1씨앗) + 우리 모체·설계(우리 앞단, 3~6씨앗) ({now}, {os.environ.get('RANK_WHO', 'HKHOME')})\n",
      f"등록 `COREMIX_REGISTRATION_20260930.md` §3. 자료: 1단계 `results_coremix_s60_hkhome.json` **{n_cm}/21 완주** + T-J1′ CoRE 6 + 우리 9. 스크립트 `final_ranking_smix.py`. 축 = 작동점 선택도 S_mix(CO₂/N₂ 0.15/0.85 · 1 bar · 298 K · 5,000+15,000). **{msg}**; 덩어리 안 동률.\n",
      "## G. S_mix 순위 — 3D · 탐침/짝이온 관문 통과 행 전부\n",
      "| # | 덩어리 | 물질 | 부류 | 씨앗 | S_mix ± | 씨앗 SD | S_Henry ± | 유지비 S_mix/S_Henry ± | 위상 · 금속 | CoRE 3D 행 중 1.5 단위 위/구별 불가/아래 |",
@@ -109,7 +116,7 @@ cn = next(r for r in main if r['name'] == 'e24i_cn_open'); above = [r['label'] f
 L.append(f"- −CN(141.5)보다 1.5 단위 위인 CoRE 3D 행: **{len(above)}** {above} — 등록 예측 0~1.")
 par = next(r for r in main if r['name'] == 'e22_parent'); near = [(r['label'], round(r['S'], 1)) for r in core3 if abs(r['S'] - par['S']) < 1.5 * math.hypot(r['S_err'], par['S_err'])]
 L.append(f"- 형판 모체(75.4)와 1.5 단위 안(2단계 +2씨앗 후보): {near}")
-L.append("\n## 읽는 법\n- CoRE 행은 1씨앗(± = RASPA 95 % CI), 우리 행은 3~6씨앗(± = ±̄/√n, 씨앗 SD 병기). 자가 다르므로 CoRE 행 사이 덩어리는 넓게 읽을 것.\n- 앞단 차이(CoRE 배포 기하 대 우리 GFN-FF 이완)는 `FINAL_RANKING_20260930.md` F절 그대로(같은 물질 비 0.62~0.98) — 우리 행 자리는 보수적 하한.\n- 유지비 > 1 은 작동점에서 선택도가 오르는 골격(CO₂ 협동 흡착 또는 N₂ 밀려남, 해석 미확인).")
+L.append("\n## 읽는 법\n- CoRE 행은 1씨앗(± = RASPA 95 % CI), 우리 행은 3~6씨앗(± = ±̄/√n, 씨앗 SD 병기). ZIF-69 셋의 '실현 6' 은 서로 다른 CIF 여섯(e0~e5)의 평균이고 SD 는 **실현 SD(배치 단위)** 다 — 같은 CIF 씨앗 반복이 아니다(′1 · MAGI-007 C-10).\n- −C₂H₅ 의 S_Henry 는 **막음 Widom**(CO₂ 1.65 · N₂ 1.82 탐침 막음) 값이다 — S_mix 와 같은 조건(′1 · MAGI-007 A-3). 정정 전 표는 `FINAL_RANKING_SMIX_20260930_pre_amend1.md`. 자가 다르므로 CoRE 행 사이 덩어리는 넓게 읽을 것.\n- 앞단 차이(CoRE 배포 기하 대 우리 GFN-FF 이완)는 `FINAL_RANKING_20260930.md` F절 그대로(같은 물질 비 0.62~0.98) — 우리 행 자리는 보수적 하한.\n- 유지비 > 1 은 작동점에서 선택도가 오르는 골격(CO₂ 협동 흡착 또는 N₂ 밀려남, 해석 미확인).")
 open(os.path.join(HERE, 'FINAL_RANKING_SMIX_20260930.md'), 'w', encoding='utf-8').write('\n'.join(L) + '\n')
 print(f"coremix ok {n_cm}/21 · main rows {len(main)} · {msg}")
 for r in sorted(main, key=lambda r: r['pos']): print(f"  {r['pos']:>2} c{r['cl']:<2} {r['label']:<40} {r['S']:7.1f} ± {r['S_err']:4.1f}  ret {r['ret']:.2f}  {r['type']}")

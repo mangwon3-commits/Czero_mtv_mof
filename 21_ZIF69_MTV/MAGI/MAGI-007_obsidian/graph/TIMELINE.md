@@ -31,6 +31,10 @@ aliases: [MAGI-007 타임라인]
 | 11-05 03:01 | 랩탑 E 6작업 완주(권한 거부로 08:3x 에 master) | 랩탑 | [S-2](consensus/S-2.md) |
 | 11-05 03:04 → 03:3x | **C2 완주 → 종합자 재계산 = HKHOME** → "보정 방식에 민감 — 판별 불가"(U 중간 f 0.55 · I 극성) | HKHOME · 종합자 | ASSIGN_C2 §5 · §6 |
 | 11-05 04:08 → 04:4x | 후속 #1 밀도 격자 완주 → 종합자 서술("자리는 막대 · 더 미는 몫은 전하") | laptop2 · 종합자 | FOLLOWUP §1-1 |
-| 11-05 08:0x~08:3x | 아침 보고 · 결정 ① 허락 → 랩탑 E · −NO₂ 빌드 master | 종합자 · 사용자 · 랩탑 | [FLOW](FLOW.md) |
+| 11-05 08:0x~10:2x | 아침 보고 · 결정 ① 허락 → 랩탑 E · −NO₂ 빌드 master → 종합자 E-3 · −C₂H₅ 추기(08:4x) | 종합자 · 사용자 · 랩탑 | [FLOW](FLOW.md) |
+| 11-05 11:5x | 사용자 "넷 모두 하자" — 결정 ②~⑤ 전부 권고안 | 사용자(랩탑 세션) | [결정 노드](decisions.md) |
+| 11-05 12:0x | **ZNBDT-C2-L 등록**(민감도 판 L · #2 해제 · 종합자 예측) → HKHOME 7작업 요청 | 종합자 | [ASSIGN_ZNBDT_C2 §7](../../../ASSIGN_ZNBDT_C2_20261105.md) |
+| 11-05 12:07 | #3 −NO₂ 관문 (0a)(0b) **통과**(HKHOME) · postman add 단계 수정(랩탑 · 결정 ④) | HKHOME · 랩탑 | FOLLOWUP §3-1 |
+| 11-05 12:1x | **′1~′6 등록·실행** — 순위표 재생성(−C₂H₅ 헨리 127.0 · 1위 사라짐) · 점검⓪ 사이 · 자 이름 소급 · §P 갱신 | 종합자 | [ASSIGN_MAGI7_AMEND](../../../ASSIGN_MAGI7_AMEND_20261105.md) |
 
 Related: [FLOW](FLOW.md) · [EDGES](EDGES.md) · [Synthesizer](seats/Synthesizer.md) · [INDEX](../INDEX.md)

@@ -237,12 +237,12 @@ graph LR
 | [S-7 Q4: 지금 쓸 수 있는 문장 / 쓸 수 없는 문장](consensus/S-7.md) | 근거 | [A-4 Caspar §4-7 재현. risk_screen.py 414~421행: 'PLD': (m0［'PLD'］ …) > CO2_KINETIC · 'AV': (m0.g…](questions/A-4.md) | 관문 ⑤ 읽기 금지 |
 | [S-7 Q4: 지금 쓸 수 있는 문장 / 쓸 수 없는 문장](consensus/S-7.md) | 근거 | [Melchior R3 §5](../../MAGI-007_R3_laptop.md) | 두 층 문장 |
 | [S-7 Q4: 지금 쓸 수 있는 문장 / 쓸 수 없는 문장](consensus/S-7.md) | 근거 | [Balthasar R3 §4](../../MAGI-007_R3_laptop2.md) | 두 층 문장 |
-| [DEC-ZNBDT-C1 다음 계산 = 열린 자리 4,8-(C≡CH)₂ (R4 §5-1 · 사용자 승인 11-05 00:4x → Z…](decisions.md) | 근거 | [S-5 Q2: 지금 다섯 설계를 주 축(S_humid)에서 1.5 단위 넘게 이길 개질은 저장소 근거로 제시된 것이 없습니다 — 세 자리 일치](consensus/S-5.md) |  |
-| [DEC-′1 순위표 두 개의 −C₂H₅ 행을 막음 Widom 으로 재생성 (승인 대기)](decisions.md) | 근거 | [A-3 Caspar §4-6 재현. 23_SCREENING/final_ranking_smix.py 60행과 final_ranking.py 66행은 results_mag…](questions/A-3.md) | 순위표 재생성 |
-| [DEC-′2 관문 ⑤ 결과에 이완 후 PLD · AV · 두 탐침 통로 수 서술 열 (승인 대기)](decisions.md) | 근거 | [A-4 Caspar §4-7 재현. risk_screen.py 414~421행: 'PLD': (m0［'PLD'］ …) > CO2_KINETIC · 'AV': (m0.g…](questions/A-4.md) | 관문 ⑤ 서술 열 |
-| [DEC-′2 관문 ⑤ 결과에 이완 후 PLD · AV · 두 탐침 통로 수 서술 열 (승인 대기)](decisions.md) | 근거 | [Balthasar D-4 수용](../R3_laptop2/note.md) | N₂ 통로 수 열 제안 |
-| [DEC-′3 씨앗 SD 자 / 씨앗 SEM 자 이름 소급 표기 (승인 대기)](decisions.md) | 근거 | [Caspar C-dissent-⑧](../R1_hkhome/note.md) | 자 이름 |
-| [DEC-′5 점검⓪ 을 C R3 D-13 정의로 등록 (승인 대기)](decisions.md) | 근거 | [Caspar C-점검⓪](../R1_hkhome/note.md) | 정의 뒤 등록 |
-| [SYN-sealed](../../MAGI-007_sealed_prediction_cloud.md) | 반박 | [DEC-ZNBDT-C1 다음 계산 = 열린 자리 4,8-(C≡CH)₂ (R4 §5-1 · 사용자 승인 11-05 00:4x → Z…](decisions.md) | §9-10 ① 불일치 — 종합자 후보와 다름 |
+| [DEC-ZNBDT-C1 다음 계산 = 열린 자리 4,8-(C≡CH)₂ (R4 §5-1 · 사용자 승인 11-05 00:4x) → …](decisions.md) | 근거 | [S-5 Q2: 지금 다섯 설계를 주 축(S_humid)에서 1.5 단위 넘게 이길 개질은 저장소 근거로 제시된 것이 없습니다 — 세 자리 일치](consensus/S-5.md) |  |
+| [DEC-′1 ′1 순위표 두 개 재생성 **끝 12:13** — −C₂H₅ 헨리 154.3 → 막음 127.0 ± 4.…](decisions.md) | 근거 | [A-3 Caspar §4-6 재현. 23_SCREENING/final_ranking_smix.py 60행과 final_ranking.py 66행은 results_mag…](questions/A-3.md) | 순위표 재생성 |
+| [DEC-′2 ′2 관문 ⑤ 서술 열 **등록** — 다음 관문 ⑤ 실행 때 HKHOME 이 추가](decisions.md) | 근거 | [A-4 Caspar §4-7 재현. risk_screen.py 414~421행: 'PLD': (m0［'PLD'］ …) > CO2_KINETIC · 'AV': (m0.g…](questions/A-4.md) | 관문 ⑤ 서술 열 |
+| [DEC-′2 ′2 관문 ⑤ 서술 열 **등록** — 다음 관문 ⑤ 실행 때 HKHOME 이 추가](decisions.md) | 근거 | [Balthasar D-4 수용](../R3_laptop2/note.md) | N₂ 통로 수 열 제안 |
+| [DEC-′3 ′3 자 이름 소급 표기 **끝** — 5.55 = 씨앗 SEM 자 · 씨앗 SD 자 2.26](decisions.md) | 근거 | [Caspar C-dissent-⑧](../R1_hkhome/note.md) | 자 이름 |
+| [DEC-′5 ′5 점검⓪ **계산 끝** — f_bib 0.277 대 f₀ 0.549(0.51) → 사이 · 서술만 ·…](decisions.md) | 근거 | [Caspar C-점검⓪](../R1_hkhome/note.md) | 정의 뒤 등록 |
+| [SYN-sealed](../../MAGI-007_sealed_prediction_cloud.md) | 반박 | [DEC-ZNBDT-C1 다음 계산 = 열린 자리 4,8-(C≡CH)₂ (R4 §5-1 · 사용자 승인 11-05 00:4x) → …](decisions.md) | §9-10 ① 불일치 — 종합자 후보와 다름 |
 
 Related: [종합자](seats/Synthesizer.md) · [INDEX](../INDEX.md)

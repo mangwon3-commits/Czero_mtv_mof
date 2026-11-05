@@ -81,7 +81,7 @@ aliases: [Caspar]
 - [S-2 E(습윤 3성분): 이 모델에서 물은 CO₂ 와도 N₂ 와도 자리를 다투지 않습니다 — 세 R1 예측 일치, E 결과가 확인](../consensus/S-2.md) **인용** → C-§6-급소 — E 가 재는 것의 한계
 - [S-5 Q2: 지금 다섯 설계를 주 축(S_humid)에서 1.5 단위 넘게 이길 개질은 저장소 근거로 제시된 것이 없습니다 — 세 자리 일치](../consensus/S-5.md) **인용** → C-후보① — 정의 미완 — 후순위
 - [S-5 Q2: 지금 다섯 설계를 주 축(S_humid)에서 1.5 단위 넘게 이길 개질은 저장소 근거로 제시된 것이 없습니다 — 세 자리 일치](../consensus/S-5.md) **인용** → C-점검⓪ — 정의 요청
-- [DEC-′3 씨앗 SD 자 / 씨앗 SEM 자 이름 소급 표기 (승인 대기)](../decisions.md) **근거** → C-dissent-⑧ — 자 이름
-- [DEC-′5 점검⓪ 을 C R3 D-13 정의로 등록 (승인 대기)](../decisions.md) **근거** → C-점검⓪ — 정의 뒤 등록
+- [DEC-′3 ′3 자 이름 소급 표기 **끝** — 5.55 = 씨앗 SEM 자 · 씨앗 SD 자 2.26](../decisions.md) **근거** → C-dissent-⑧ — 자 이름
+- [DEC-′5 ′5 점검⓪ **계산 끝** — f_bib 0.277 대 f₀ 0.549(0.51) → 사이 · 서술만 ·…](../decisions.md) **근거** → C-점검⓪ — 정의 뒤 등록
 
 Related: [Melchior](Melchior.md) · [Balthasar](Balthasar.md) · [Synthesizer](Synthesizer.md) · [간선 전체](../EDGES.md) · [INDEX](../../INDEX.md)

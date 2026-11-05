@@ -94,10 +94,15 @@ for line in R4:
     if in41 and line.startswith('### 4-2'): break
     m = re.match(r'^(\d)\.\s+\*\*(.+?)\*\*(.*)$', line)
     if in41 and m: S[f'S-{m.group(1)}'] = {'title': clip(m.group(2), 110), 'body': clip(m.group(3), 420)}
-DECS = {'DEC-ZNBDT-C1': '다음 계산 = 열린 자리 4,8-(C≡CH)₂ (R4 §5-1 · 사용자 승인 11-05 00:4x → ZNBDT-C1 등록 → 관문 (0a)(0b) 탈락 11-05 01:39, ASSIGN_ZNBDT_C1 §5)',
-        'DEC-′1': '순위표 두 개의 −C₂H₅ 행을 막음 Widom 으로 재생성 (승인 대기)', 'DEC-′2': '관문 ⑤ 결과에 이완 후 PLD · AV · 두 탐침 통로 수 서술 열 (승인 대기)',
-        'DEC-′3': '씨앗 SD 자 / 씨앗 SEM 자 이름 소급 표기 (승인 대기)', 'DEC-′4': 'ASSIGN §E mslm050 = e0 × 3씨앗 명시 (승인 대기)',
-        'DEC-′5': '점검⓪ 을 C R3 D-13 정의로 등록 (승인 대기)', 'DEC-′6': 'CN/Br 혼합 후순위 기록 (승인 대기)',
+DECS = {'DEC-ZNBDT-C1': '다음 계산 = 열린 자리 4,8-(C≡CH)₂ (R4 §5-1 · 사용자 승인 11-05 00:4x) → ZNBDT-C1 등록 → **관문 (0a)(0b) 탈락 01:39** · 전제 오류 종합자 자백(ASSIGN_ZNBDT_C1 §5) → 닫힘',
+        'DEC-′1': '′1 순위표 두 개 재생성 **끝 12:13** — −C₂H₅ 헨리 154.3 → 막음 127.0 ± 4.0(3D 헨리 1위 사라짐 · −Br 과 한 덩어리) · 정정 전 표 보존(ASSIGN_MAGI7_AMEND)',
+        'DEC-′2': '′2 관문 ⑤ 서술 열 **등록** — 다음 관문 ⑤ 실행 때 HKHOME 이 추가', 'DEC-′3': '′3 자 이름 소급 표기 **끝** — 5.55 = 씨앗 SEM 자 · 씨앗 SD 자 2.26',
+        'DEC-′4': '′4 mslm050 = e0 × 3씨앗 **재확인** — 38.76 ± 0.57 재계산 · 실현 평균 39.71 병기', 'DEC-′5': '′5 점검⓪ **계산 끝** — f_bib 0.277 대 f₀ 0.549(0.51) → 사이 · 서술만 · bib 빌더 미등록',
+        'DEC-′6': '′6 후순위 기록 **끝** — CN/Br 혼합(배열 둘) · −NO₂ 열린 자리(관문 통과 → 가능성 표)',
+        'DEC-ZNBDT-C2': '무극성 −CN 계산 대조(사용자 02:0x · HKHOME 등록 02:06) → 03:04 완주 → **"보정 방식에 민감 — 판별 불가"**(U 중간 f 0.55 · I 극성) · 종합자 재계산 일치',
+        'DEC-ZNBDT-C2-L': '사용자 결정 ②③(11:5x) → 민감도 판 L(리간드 분산) + #2 apolarU 323 K **등록 12:0x**(ASSIGN_C2 §7) → HKHOME 7작업(착수 대기)',
+        'DEC-#1': '후속 #1 밀도 격자(laptop2 04:08) → 종합자 서술: N₂ 비움 자리는 막대 둘레(97 %) · 전하는 CO₂ 를 모아 더 밂(0.60→0.50×)',
+        'DEC-#3': '후속 #3 −NO₂ 열린 자리 선별 → **관문 (0a)(0b) 통과**(HKHOME 12:07 · 종합자 재현) → 가능성 표 · 다음 걸음 사용자',
         'USER-21:2x-(가)': '사용자 결정 11-04 21:2x — A(격자 이완)를 측정 사실로 닫음 · PACMAN 순전하 |q| ≤ 1e-3',
         'SYN-sealed': '종합자 봉인 예측(11:09 · sha256 bbbc71b7…) — 결정과 불일치(§9-10 ①)', 'SYN-brief-§10-3': '브리핑 v3 §10-3 — C₂H₅ 92.99 전 치환판 혼용(종합자 자백 A-1)'}
 
@@ -206,7 +211,7 @@ for e in EDGES['R4_cloud']:
     if e['from'].startswith(('DEC', 'USER', 'SYN')) or e['to'].startswith(('DEC', 'USER')):
         out += f'- {node_link(p, e["from"], "R4_cloud")} **{e["type"]}** → {node_link(p, e["to"], "R4_cloud")}' + (f' — {esc(e["note"])}' if e['note'] else '') + '\n'
 out += '\n## R4 뒤 (보완 단계)\n\n'
-out += f'- ZNBDT-C1 — {L(p, os.path.join(ZIF, "ASSIGN_ZNBDT_C1_20261105.md"), "등록 · §5 판정(관문 탈락)")}\n- ZNBDT-C2 — {L(p, os.path.join(ZIF, "ASSIGN_ZNBDT_C2_20261105.md"), "무극성 −CN 계산 대조(HKHOME 등록 02:06)")} · {L(p, os.path.join(ZIF, "ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md"), "후속 세 건 · 밤샘 결정표")}\n- 규약 {L(p, os.path.join(ZIF, "MAGI_20260905.md"), "§11-5 라운드 중 격리 · 보완 단계")}\n'
+out += f'- ZNBDT-C1 — {L(p, os.path.join(ZIF, "ASSIGN_ZNBDT_C1_20261105.md"), "등록 · §5 판정(관문 탈락)")}\n- ZNBDT-C2 — {L(p, os.path.join(ZIF, "ASSIGN_ZNBDT_C2_20261105.md"), "무극성 −CN 계산 대조 · §5 HKHOME · §6 종합자 대조 · §7 C2-L 등록")} · {L(p, os.path.join(ZIF, "ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md"), "후속 #1 밀도 서술(§1-1) · #2 · #3 관문 통과(§3-1) · 밤샘 결정표")}\n- 등록 보완 ′1~′6 — {L(p, os.path.join(ZIF, "ASSIGN_MAGI7_AMEND_20261105.md"), "ASSIGN_MAGI7_AMEND_20261105.md")}(순위표 재생성 · 점검⓪ · 자 이름)\n- 규약 {L(p, os.path.join(ZIF, "MAGI_20260905.md"), "§11-5 라운드 중 격리 · 보완 단계")}\n- 아침 결정 ①~⑤(11-05 08:0x 보고 → ① 10:2x · ②~⑤ 11:5x 전부 권고안) — {L(p, os.path.join(ZIF, "COMMS", "cloud.md"), "종합자 우편함")}\n'
 out += f'\nRelated: {L(p, hub("cloud"), "종합자")} · {L(p, os.path.join(MAGI, "MAGI-007_ligand-modification.md"), "R4 §5")} · {L(p, os.path.join(ROOT, "INDEX.md"), "INDEX")}\n'
 wr(p, out)
 
