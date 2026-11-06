@@ -7,6 +7,8 @@
 판독(등록 §2-3): 기준 R_CN · R_CH3 를 원자료로 다시 내고, 표 값(0.72 · 1.01 · Br 0.86 · Cl 0.85)과 소수 둘째 자리까지 같아야 진행(재현 관문).
     주 판독 세 갈래: d_CN < 1.5 → 모양 · d_CH3 < 1.5 → 극성 · 둘 다 아님 → 중간(극성 몫 f = (X−X_CN)/(X_CH3−X_CN) ± 와 함께).
     C1 식 이분(X ≤ 0.86 모양 / > 0.86 극성)은 연속성 기록용으로만 함께 적음.  U 와 I 의 주 판독이 다르면 전체 = "보정 방식에 민감 — 판별 불가".
+C2-L(§7 · 종합자 등록 · 자료 0건에 이 코드 추가): L판도 같은 식 · U 와 L 의 주 판독이 같으면 그 갈래가 C2 의 닫는 판독, 다르면 "전하 끄기 대조는 보정 방식에 민감 — 닫지 않음".
+    보조(서술): L 의 K_H(CO₂) 모체비가 U 와 1.5 단위 안(자 = 두 판 Widom 상대 ±)이면 새 자리 없음 표지 · I 쪽(I 에 더 가까움)이면 L 도 부적절.
 완주 표지: 혼합 3행 모두 status ok · returncode 0 · 씨앗 고유 / Widom ON 두 기체 status ok / CIF md5 = results_znbdt_c2_build_hkhome.json.
 실행: python3 znbdt_c2_judge.py   (표준 라이브러리만) → results_znbdt_c2_judge_hkhome.json
 """
@@ -22,14 +24,16 @@ WIDOM = {'parent': 'results_magi5_e3_e22_parent_widom_desktop-js1ib6u.json',
          'cl': 'results_magi5_e3_e24i_cl_open_widom_hkhome.json',
          'ch3': 'results_magi5_e3_e24i_ch3_open_widom_hkhome.json',
          'U': 'results_magi5_e3_znbdt_c2_apolarU_widom_hkhome.json',
-         'I': 'results_magi5_e3_znbdt_c2_apolarI_widom_hkhome.json'}
+         'I': 'results_magi5_e3_znbdt_c2_apolarI_widom_hkhome.json',
+         'L': 'results_magi5_e3_znbdt_c2_apolarL_widom_hkhome.json'}
 MIX = {'parent': (['results_e23_mix_desktop.json'], 'e22_parent_s'),
        'cn': (['results_e24i_e24i_cn_open_mix_hkhome.json', 'results_e24i_e24i_cn_open_mix_s456_hkhome.json'], 'e24i_cn_open_s'),
        'br': (['results_e24i_e24i_br_open_mix_laptop2.json', 'results_e24i_e24i_br_open_mix_s456_hkhome.json'], 'e24i_br_open_s'),
        'cl': (['results_e24i_e24i_cl_open_mix_junseok.json'], 'e24i_cl_open_s'),
        'ch3': (['results_e24i_e24i_ch3_open_mix_laptop2.json'], 'e24i_ch3_open_s'),
        'U': (['results_znbdt_c2_znbdt_c2_apolarU_mix_hkhome.json'], 'znbdt_c2_apolarU_s'),
-       'I': (['results_znbdt_c2_znbdt_c2_apolarI_mix_hkhome.json'], 'znbdt_c2_apolarI_s')}
+       'I': (['results_znbdt_c2_znbdt_c2_apolarI_mix_hkhome.json'], 'znbdt_c2_apolarI_s'),
+       'L': (['results_znbdt_c2_znbdt_c2_apolarL_mix_hkhome.json'], 'znbdt_c2_apolarL_s')}
 md5 = lambda p: hashlib.md5(open(p, 'rb').read()).hexdigest()
 
 
@@ -59,7 +63,7 @@ def row(k, base):
     w, x = widom(k), mix(k)
     rC = x['NC'] / (w['KC'] * P['CO2']); rN = x['NN'] / (w['KN'] * P['N2'])
     r = dict(KH_CO2=w['KC'], KH_N2=w['KN'], N_CO2=x['NC'], N_N2=x['NN'], S_mix=x['S'], n_mix=x['n'], r_CO2=rC, r_N2=rN,
-             S_mix_over_S_Henry=x['S'] / w['S_H'], e_rel_own=math.sqrt(w['eKC'] ** 2 + w['eKN'] ** 2 + x['eNC'] ** 2 + x['eNN'] ** 2),
+             S_mix_over_S_Henry=x['S'] / w['S_H'], KH_CO2_rel_err=w['eKC'], e_rel_own=math.sqrt(w['eKC'] ** 2 + w['eKN'] ** 2 + x['eNC'] ** 2 + x['eNN'] ** 2),
              marks=dict(mix_bad=x['bad'], seeds_unique=x['seeds_unique'], mix_rows=x['names'], widom_cif=w['cif']),
              src_md5={WIDOM[k]: w['src_md5'], **x['src_md5']})
     if base:
@@ -106,15 +110,15 @@ def main():
         json.dump(out, open('results_znbdt_c2_judge_hkhome.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
         print('!! 기준값 재현 실패 — 판독하지 않습니다'); return 2
     build = json.load(open('results_znbdt_c2_build_hkhome.json'))
-    reads, marks_ok = {}, True
-    for v in ('U', 'I'):
+    reads, done = {}, {}
+    for v in ('U', 'I', 'L'):
         if not (os.path.exists(WIDOM[v]) and all(os.path.exists(f) for f in MIX[v][0])):
             print(f'{v}판: 결과 파일 아직 없음'); continue
         R[v] = row(v, base)
         cif = R[v]['marks']['widom_cif']; want = build['variants'][v]['md5']
         ok = (R[v]['n_mix'] == 3 and not R[v]['marks']['mix_bad'] and R[v]['marks']['seeds_unique']
               and md5(cif) == want and os.path.basename(cif) == os.path.basename(build['variants'][v]['cif']))
-        R[v]['marks']['complete'] = ok; marks_ok &= ok
+        R[v]['marks']['complete'] = ok; done[v] = ok
         reads[v] = read_one(v, R)
         o = reads[v]
         print(f"{v}판 X = {o['X']:.3f} ± {o['e_X']:.3f} · 단위 거리 CN {o['d_units']['cn']:.2f} · CH₃ {o['d_units']['ch3']:.2f} · "
@@ -123,8 +127,23 @@ def main():
     if set(reads) == {'U', 'I'}:
         vu, vi = reads['U']['verdict'], reads['I']['verdict']
         overall = vu if vu == vi else '보정 방식에 민감 — 판별 불가'
-        out['overall'] = overall if marks_ok else f'표지 미비 — 판독 보류({overall})'
+        out['overall'] = overall if done['U'] and done['I'] else f'표지 미비 — 판독 보류({overall})'
         print('전체 판독:', out['overall'])
+    if set(reads) >= {'U', 'L'}:   # §7 C2-L(자료 0건 등록) — 원 C2 판독(overall)은 그대로 두고 따로 적음
+        vu, vl = reads['U']['verdict'], reads['L']['verdict']
+        c2l = vu if vu == vl else '전하 끄기 대조는 보정 방식에 민감 — 닫지 않음'
+        # 보조(서술 · §7): K_H(CO₂) 모체비 — 모체 항은 견주는 두 판에 같아 지워지므로 자 = 각 판 Widom 상대 ± 만
+        kr = {v: (R[v]['vs_parent']['KH_CO2'], R[v]['vs_parent']['KH_CO2'] * R[v]['KH_CO2_rel_err']) for v in ('U', 'I', 'L')}
+        dku = abs(kr['L'][0] - kr['U'][0]) / math.hypot(kr['L'][1], kr['U'][1])
+        dki = abs(kr['L'][0] - kr['I'][0]) / math.hypot(kr['L'][1], kr['I'][1])
+        aux = ('U 와 1.5 단위 안 — L 이 새 CO₂ 자리를 만들지 않았다는 표지' if dku < UNIT else
+               'I 쪽 — L 도 새 자리를 만든 판(부적절) · 전체 판독 전에 적음' if abs(kr['L'][0] - kr['I'][0]) < abs(kr['L'][0] - kr['U'][0]) else
+               'U 와 1.5 단위 밖이나 I 쪽은 아님 — 서술만')
+        out['C2L'] = dict(assign='ASSIGN_ZNBDT_C2_20261105.md §7', U=vu, L=vl, f_U=reads['U']['polarity_share'], f_L=reads['L']['polarity_share'],
+                          overall=c2l if done['U'] and done['L'] else f'표지 미비 — 판독 보류({c2l})',
+                          aux_KH_CO2_vs_parent={v: dict(ratio=a, pm=b) for v, (a, b) in kr.items()} | dict(d_units_L_U=dku, d_units_L_I=dki, read=aux))
+        print(f"C2-L 보조: K_H(CO₂) 모체비 L {kr['L'][0]:.3f} ± {kr['L'][1]:.3f} · U {kr['U'][0]:.3f} · I {kr['I'][0]:.3f} · 단위 거리 L–U {dku:.2f} · L–I {dki:.2f} → {aux}")
+        print('C2-L 전체 판독:', out['C2L']['overall'])
     out['reads'] = reads
     json.dump(out, open('results_znbdt_c2_judge_hkhome.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     return 0

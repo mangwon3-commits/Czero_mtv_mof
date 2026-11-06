@@ -57,6 +57,68 @@
    "net_ok_1e-3": true,
    "max_change_non_nitrile": 0.138591,
    "n_changed": 12
+  },
+  "L": {
+   "cif": "charged_v3/znbdt_c2_apolarL_DDEC6mod.cif",
+   "md5": "cbcb7d87a9d394eaa109db93264c31cc",
+   "assign": "ASSIGN_ZNBDT_C2_20261105.md §7 (C2-L)",
+   "builder": "build_znbdt_c2_apolarL.py",
+   "rule": "니트릴 C·N 0 · 짝 합을 그 리간드(Zn 뗀 원판 nb 그래프의 ipso C 연결 성분)의 비수소 원자(니트릴 C·N 제외)에 균등",
+   "ligands": [
+    {
+     "component_n": 22,
+     "component_formula": {
+      "C": 14,
+      "O": 4,
+      "H": 2,
+      "N": 2
+     },
+     "nitrile_N": [
+      176,
+      177
+     ],
+     "n_target": 16,
+     "target_formula": {
+      "C": 12,
+      "O": 4
+     },
+     "added_sum_e": -0.277182,
+     "per_atom_e": -0.017323875,
+     "S_bonded_but_outside_component": [
+      200,
+      201
+     ]
+    },
+    {
+     "component_n": 22,
+     "component_formula": {
+      "C": 14,
+      "O": 4,
+      "H": 2,
+      "N": 2
+     },
+     "nitrile_N": [
+      178,
+      179
+     ],
+     "n_target": 16,
+     "target_formula": {
+      "C": 12,
+      "O": 4
+     },
+     "added_sum_e": -0.277182,
+     "per_atom_e": -0.017323875,
+     "S_bonded_but_outside_component": [
+      202,
+      203
+     ]
+    }
+   ],
+   "note_S": "원판 nb 그래프(C–S 1.735~1.746 Å > 1.6 Å 문턱)에서 티오펜 S 는 리간드 성분 밖 — 분배 원자에 S 없음(리간드마다 S 2개 · 등록 문구 \"원판 nb 그래프\" 대로 함 · \"bdtdc 비수소 전부\" 로 읽으면 분배 원자 +S)",
+   "net_charge_written": -2.0999999998938534e-05,
+   "net_ok_1e-3": true,
+   "max_change_non_nitrile": 0.017324000000000006,
+   "n_changed": 40
   }
  }
 }
