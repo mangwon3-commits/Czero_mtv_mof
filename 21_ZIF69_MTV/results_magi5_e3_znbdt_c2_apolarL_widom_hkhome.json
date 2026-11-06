@@ -1,0 +1,30 @@
+{
+ "tag": "znbdt_c2_apolarL",
+ "cif": "charged_v3/znbdt_c2_apolarL_DDEC6mod.cif",
+ "protocol": "run_aryl_gcmc.run_one widom (CLAUDE.md §1)",
+ "off_method": "CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)",
+ "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "host": "hkhome",
+ "elapsed_s": 1636,
+ "finished": "2026-11-06 09:51:45",
+ "rows": [
+  {
+   "name": "znbdt_c2_apolarL_DDEC6mod",
+   "charges": "on",
+   "temp_K": 298.0,
+   "KH_CO2": 0.00183023,
+   "KH_CO2_err": 1.66974e-05,
+   "dU_CO2": -34.6209891146,
+   "dU_CO2_err": 0.0512682842,
+   "status_CO2": "ok",
+   "KH_N2": 1.27017e-05,
+   "KH_N2_err": 1.13512e-07,
+   "dU_N2": -18.5970244135,
+   "dU_N2_err": 0.0122273954,
+   "status_N2": "ok",
+   "selectivity": 144.09331034428462,
+   "selectivity_err": 1.840206726363297,
+   "Qst_CO2_rt_corrected": 37.098698974764
+  }
+ ]
+}
