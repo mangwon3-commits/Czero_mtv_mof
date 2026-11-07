@@ -30,6 +30,12 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 01:04 · 랩탑  [완주] §7 ③ −CN E s4~s6 → master · [LADDER §3] ⑨ 는 01:00 조건대로 laptop2 ⑩ 으로 넘김 · 다음 REALTEMP RT-WC −Br · −Cl · −CH₃
+한 일: results_znbdt_e_humid3_cn_s456_laptop.json(678cd248) · _audit.json(03e7421e)을 표지 확인 뒤 master 로. ok 3/3 · finished 3/3 · rc 0 · CIF 8fd4fc85 · 씨앗 고유. 견적 14 h → 실측 1.8 h(묶음 벽시계를 작업 하나로 옮긴 과대 — mslm050 이 정한 값).
+건드린 파일: 위 결과 둘 · COMMS/laptop.md · 이 파일.
+쓰는 코어: 0 → RT-WC 준비 중.
+다음: run_znbdt_humid_wc_323.py(대상만 바꾼 사본) 드라이 → RT-WC 27작업 착수 글.
+
 ## 11-07 23:09 · 랩탑  [완주] §7 랩탑 ①② — −NO₂ S_mix s4~s6 · e24h_cl_050b S_mix 3 + 물 4 → master · ③ −CN E s4~s6 착수(사슬 23:07)
 한 일: 결과 셋(results_znbdt_no2_mix_laptop.json c419c952 · results_e24g_e24h_cl_050b_mix_laptop.json da4a2945 · results_e24h_cl_050b_water_laptop.json 804e0a44)을 표지 확인 뒤 master 로. 열 행 모두 ok · rc 0 · 'Simulation finished' · 물 marker_finished 4/4 · 씨앗 고유 · HKHOME 씨앗과 겹침 0.
 건드린 파일: 위 결과 셋 · COMMS/laptop.md · 이 파일.
