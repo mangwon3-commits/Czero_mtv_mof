@@ -30,6 +30,9 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 02:06 · 랩탑  [진행] RT-WC 견적 갱신 — tsa 41~42 분 · vsa 50~51 분 · ads > 54 분 → 완주 04:xx~05:xx(같은 계 실측) · 5/27 · 씨앗 13 고유
+다음: 완주 → 감사 · 요약 확인 → v3w_humid_wc_323/humid_wc_323_znbdt_laptop.json · 요약 · status.jsonl master 로.
+
 ## 11-08 01:15 · 랩탑  [착수] REALTEMP §3 RT-WC −Br · −Cl · −CH₃(27작업 · 워커 8) · 실행기 run_znbdt_humid_wc_323.py 반입
 하는 일: 323 K RH90 습윤 TSA/VSA 작업 용량, 바이트 같은 사본 _h1~_h3 × ads/tsa/vsa. 래퍼 run_humid_wc_v3w_323.py 무수정 import + 착수 간격(15 s + 2 s · 씨앗 겹침 방지) · 기록 · 감사.
 실행 위치: ~/mof_run_1108(master ba146baf worktree) · 로그 ~/.mof_chain/logs_1108/rtwc.log · 드라이버 PID 984055 · 착수 01:11:37
