@@ -46,5 +46,6 @@ aliases: [MAGI-007 타임라인]
 | 11-07 18:3x | 사용자 "권고 따르고 · 계산 배분 우편함에" → C2 종결 · 규약 §9-11 · §9-12 등록 · **새 배정 #4 −NO₂ 관문(HKHOME) · #5 배치 민감도(랩탑 → laptop2 → HKHOME ⑤)** · #6 보류 | 사용자 · 종합자 | [ASSIGN_ZNBDT_NO2_PLACEMENT](../../../ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md) · [결정 노드](decisions.md) |
 | 11-07 18:2x~20:3x | HKHOME #4 전 단계 완주(전하 · Widom · 물 · S_mix · 323 K · ⑤) · 랩탑 #5 빌드 · laptop2 #5 관문 **탈락** · 랩탑 · laptop2 §10 공격 | HKHOME · 랩탑 · laptop2 | 세 우편함 |
 | 11-07 21:1x | **−NO₂ 승격**(관문 셋 통과) → E 6씨앗 등록 · #5′ 셀 이완 시험 · 9-11′ 제안 · 6시간 위임 배정 | 종합자 | [ASSIGN_NO2_PLACEMENT §5~§7](../../../ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md) |
+| 11-07 21:3x~23:3x | 6시간 위임 순찰 1~5: 세 기기 착수 · HKHOME #5′(−Cl 미수렴·대칭 깨짐 → 모형 안의 선택 · −Br 결합 인식 의심) · ′2(처리 뒤 1.82 통로 0 — 넷과 공통) · 랩탑 S_mix s4~6 · 050b(배치 민감 재현) · HKHOME E s1~3 완주(77 분/작업) → **E 잠정 134.2 ± 7.2 = −CN 과 0.81 단위** · E 보강 ⑦⑧ 배정 | 종합자 · 세 기기 | [ASSIGN_NO2_PLACEMENT §5~§7](../../../ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md) |
 
 Related: [FLOW](FLOW.md) · [EDGES](EDGES.md) · [Synthesizer](seats/Synthesizer.md) · [INDEX](../INDEX.md)
