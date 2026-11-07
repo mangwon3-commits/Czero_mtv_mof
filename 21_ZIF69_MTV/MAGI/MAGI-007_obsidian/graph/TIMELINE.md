@@ -44,5 +44,7 @@ aliases: [MAGI-007 타임라인]
 | 11-06 10:5x | 사용자 "다른 길로 계산해" → §10 **자료 후 규칙**(K_H(CO₂) −CN 과 1.5 단위 안 → U 하나) → 중간 f 0.55 · HKHOME 우편함에 보완 부탁 | 사용자(HKHOME 세션) · HKHOME | [ASSIGN_ZNBDT_C2 §10](../../../ASSIGN_ZNBDT_C2_20261105.md) |
 | 11-06 16:0x | **종합자 판정 §11** — 재계산 셋째 자리 일치 · C2-L 닫지 않음 확정 · #2 확정 · L판 S 제외 = 종합자 등록 결함(결과 유효) · §10 두 줄 처리 · 예측 5건 다 틀림 | 종합자 | [ASSIGN_ZNBDT_C2 §11](../../../ASSIGN_ZNBDT_C2_20261105.md) · [결정 노드](decisions.md) |
 | 11-07 18:3x | 사용자 "권고 따르고 · 계산 배분 우편함에" → C2 종결 · 규약 §9-11 · §9-12 등록 · **새 배정 #4 −NO₂ 관문(HKHOME) · #5 배치 민감도(랩탑 → laptop2 → HKHOME ⑤)** · #6 보류 | 사용자 · 종합자 | [ASSIGN_ZNBDT_NO2_PLACEMENT](../../../ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md) · [결정 노드](decisions.md) |
+| 11-07 18:2x~20:3x | HKHOME #4 전 단계 완주(전하 · Widom · 물 · S_mix · 323 K · ⑤) · 랩탑 #5 빌드 · laptop2 #5 관문 **탈락** · 랩탑 · laptop2 §10 공격 | HKHOME · 랩탑 · laptop2 | 세 우편함 |
+| 11-07 21:1x | **−NO₂ 승격**(관문 셋 통과) → E 6씨앗 등록 · #5′ 셀 이완 시험 · 9-11′ 제안 · 6시간 위임 배정 | 종합자 | [ASSIGN_NO2_PLACEMENT §5~§7](../../../ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md) |
 
 Related: [FLOW](FLOW.md) · [EDGES](EDGES.md) · [Synthesizer](seats/Synthesizer.md) · [INDEX](../INDEX.md)
