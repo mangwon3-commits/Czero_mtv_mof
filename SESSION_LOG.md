@@ -30,6 +30,13 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 01:15 · 랩탑  [착수] REALTEMP §3 RT-WC −Br · −Cl · −CH₃(27작업 · 워커 8) · 실행기 run_znbdt_humid_wc_323.py 반입
+하는 일: 323 K RH90 습윤 TSA/VSA 작업 용량, 바이트 같은 사본 _h1~_h3 × ads/tsa/vsa. 래퍼 run_humid_wc_v3w_323.py 무수정 import + 착수 간격(15 s + 2 s · 씨앗 겹침 방지) · 기록 · 감사.
+실행 위치: ~/mof_run_1108(master ba146baf worktree) · 로그 ~/.mof_chain/logs_1108/rtwc.log · 드라이버 PID 984055 · 착수 01:11:37
+건드리는 파일: 실행 worktree 의 v3w_humid_wc_323/humid_wc_323_znbdt_laptop.json · 요약 · 실행 폴더 · COMMS/laptop.md · 이 파일 · 실행기(새 파일).
+쓰는 코어: 8
+다음: 첫 작업 완주 시각으로 견적 갱신 → 완주(6~16 h 견적, 출처 등록 §3 · 다른 계) → 결과 master.
+
 ## 11-08 01:04 · 랩탑  [완주] §7 ③ −CN E s4~s6 → master · [LADDER §3] ⑨ 는 01:00 조건대로 laptop2 ⑩ 으로 넘김 · 다음 REALTEMP RT-WC −Br · −Cl · −CH₃
 한 일: results_znbdt_e_humid3_cn_s456_laptop.json(678cd248) · _audit.json(03e7421e)을 표지 확인 뒤 master 로. ok 3/3 · finished 3/3 · rc 0 · CIF 8fd4fc85 · 씨앗 고유. 견적 14 h → 실측 1.8 h(묶음 벽시계를 작업 하나로 옮긴 과대 — mslm050 이 정한 값).
 건드린 파일: 위 결과 둘 · COMMS/laptop.md · 이 파일.
