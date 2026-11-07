@@ -2,11 +2,12 @@
 """ZNBDT −NO₂ 열린 자리 E 습윤 3성분 — HKHOME. 사용자 11-07 "일단 돌려". `run_znbdt_c1_e_humid3.py` 사본(바꾼 것: 대상 · 결과 이름 · 기기 기본 hkhome).
 
 `run_znbdt_e_humid3.py`(md5 9702366) 를 **무수정 import** 하고 두 가지만 바꿉니다.
-  ① 대상: env ZNBDT_E_TARGETS = e24i_cch_open(열린 자리 4,8-(C≡CH)₂, charged_v3/e24i_cch_open_DDEC6.cif · HKHOME 작성)
-  ② 결과 이름: 등록 §4 의 `results_znbdt_c1_*_<기기>.json` 에 맞춰 OUT · AUDIT 만 바꿈.
+  ① 대상: env ZNBDT_E_TARGETS = e24i_no2_open(열린 자리 −NO₂, charged_v3/e24i_no2_open_DDEC6.cif md5 3a2a53ac · HKHOME 작성)
+  ② 결과 이름: 등록 `ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md` §6 의 `results_znbdt_no2_e_humid3_<기기>.json` 에 맞춰 OUT · AUDIT 만 바꿈.
+  ③ (11-07 21:4x 추가) 착수 간격 60 s — 등록 §6 "착수 60 s 이상 간격" · laptop2 s4~s6 실행기와 같음. 반복 번호는 래퍼 기본 1 · 2 · 3(= 등록 s1~s3).
      기본 이름(results_znbdt_e_humid3_laptop2.json)은 MAGI-007 E 결과가 이미 차지해 래퍼가 착수를 거부하기 때문입니다.
 조건 · 앵커 · 완주 표지 · 씨앗 · 막음 표(BLOCKS) · 반복 수(3)는 래퍼 그대로입니다. 래퍼 md5 가 다르면 착수하지 않습니다.
-막음: 래퍼 BLOCKS 에는 e24i_c2h5_open 만 있으므로, HKHOME Zeo++ 가 이 구조에 주머니를 찾으면 이 실행기로 돌리지 않고 우편함에 적습니다.
+막음: 래퍼 BLOCKS 에 e24i_no2_open 을 아래에서 더함(물 1.30 구 4 · CO₂ · N₂ 구 0 — 같은 파일이 master 에 있어 laptop2 도 씀).
 """
 import os
 import sys
@@ -23,6 +24,8 @@ E.BLOCKS['e24i_no2_open'] = {
     'CO2': (os.path.join(_ZB, 'block1.65', 'e24i_no2_open_relaxed.block'), '897316929176464ebc9ad085f31e7284'),
     'N2': (os.path.join(_ZB, 'block1.82', 'e24i_no2_open_relaxed.block'), '897316929176464ebc9ad085f31e7284'),
     'water': (os.path.join(_ZB, 'block1.30', 'e24i_no2_open_relaxed.block'), '46b306e39cc368360e8e74d6459ad123')}
+
+E.STAGGER = 60.0                                           # 등록 §6 착수 60 s 이상 간격(11-07 21:4x)
 
 WANT = '9702366386edf93755c50d2527dbbe92'
 if E.md5(os.path.abspath(E.__file__)) != WANT:

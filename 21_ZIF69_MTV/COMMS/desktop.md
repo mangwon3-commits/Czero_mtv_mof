@@ -6367,3 +6367,15 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 - **① 막음 파일**(이 커밋): `znbdt_no2_zeo_runs/e24i_no2_open/block1.30/e24i_no2_open_relaxed.block` md5 **46b306e39cc368360e8e74d6459ad123**(구 4) · `block1.65/…` · `block1.82/…` md5 **897316929176464ebc9ad085f31e7284**(구 0). laptop2 `run_znbdt_no2_e_humid3_s456.py` 의 표와 같은 경로 · 같은 md5 입니다.
 - **순서 변경**: §7 은 ② E → ③ #5′ LAMMPS → ④ Zeo++(RASPA 0 일 때) 순서입니다. 그런데 관문 ⑤ 처리 코드(`risk_screen.run_one`)는 이완 앞뒤로 Zeo++ 를 같이 돌려서, E(작업당 15~19 h) 뒤로 미루면 ③ · ④ 가 내일 저녁까지 밀립니다. 그래서 **③ #5′ 셀 이완 + 이완본 Zeo++ 와 ④ ′2 열 Zeo++ 를 먼저 돌리고**(RASPA 0 상태 · 관문 ⑤ 실측 −NO₂ 1건 5.5 분 → 둘이면 ≈ 15 분, 같은 계 실측을 옮김), **끝나는 대로 ② E s1~s3 를 띄웁니다**. E 는 ≈ 20 분 늦어지고 ③ · ④ 는 오늘 밤에 나옵니다.
 - **#5′ 입력**: laptop2 의 `relax_tnf/e24j_{cl,br}_ovl_relaxed.cif`(2e5acbac). 이 기기 작업트리에는 postman reset 때문에 그 파일이 없어서, 추적 경로는 건드리지 않고 `git show HEAD:…` 로 실행 폴더에만 꺼냅니다(md5 기록).
+
+## 2026-11-07 21:38 — HKHOME: §7 ③ · ④ · ② 사슬 착수(21:37) — 실행기 셋 · 검사기 재현 일치 · 값은 아직 아무것도 안 읽음
+
+**받는 곳**: 종합자 · 사용자   **답 필요**: 아니오
+- **사슬** `~/.mof_chain/hk_s7_chain.sh`(기록 `hk_s7_chain.log`): ③ #5′ → ④ ′2 → Zeo++ 0 · simulate ≤ 5 확인 → ② E s1~s3. RASPA 0 인 지금 Zeo++ 가 든 단계를 먼저 끝냅니다(위 글의 순서 변경).
+- **③ `run_e24j_cellrelax.py`**(새로 씀): `risk_screen.run_one` 무수정 import(관문 ⑤ 처리 = UFF4MOF 셀 이완 · 이완 앞뒤 Zeo++ · 판정식 `run_e24i_gate5.py` 와 같음) → `results_e24j_cellrelax_hkhome.json`. 이완본 (0a)(0b) 는 laptop2 `e24j_measure.py` 측정 그대로 → `results_e24j_screen_cellrelax_hkhome.json`.
+  - 입력은 `git show HEAD:` 로 실행 폴더에만 꺼냄: `relax_tnf/e24j_cl_ovl_relaxed.cif` 8f6b6039 · `e24j_br_ovl_relaxed.cif` bb4e8d33(2e5acbac) · 빌드본 84e234e5 · bbc992f5(754b9049).
+  - **검사기 확인(드라이)**: 같은 코드로 고정셀 입력을 재니 laptop2 `results_e24j_screen_laptop2.json` 과 **세 값 모두 같았습니다**(겹침 여유 · 골격 변위 · 이종–H 최소, −Cl · −Br 둘 다). 이미 접수된 값이라 새 자료는 아닙니다.
+  - **셀이 바뀐 구조를 재는 방법(제 선택 — 종합자 확인 바람)**: LAMMPS 슈퍼셀은 복제 0 을 단위셀로 접습니다. −NO₂ 관문 ⑤ 산출물에서 12개 복제의 분수좌표 편차가 전부 같아 접기가 정확함을 먼저 확인했고, 행마다 그 편차 · 원소 순서 일치를 기록합니다. 골격 변위의 기준(빌드본)과 (0b) 짝짓기용 모체 원자는 **이완 셀로 분수좌표 그대로 옮겨** 씁니다. 그래서 변위에 셀 변형 몫은 빠지고, 셀 변화율은 따로 열로 둡니다. 짝짓기가 셀 변형 때문에 끊겼는지는 치환기 원자 수가 고정셀과 같은지(`sub_count_match`)로 봅니다.
+- **④ `znbdt_no2_gate5_p2.py`**(새로 씀): −NO₂ 관문 ⑤ 처리 산출물을 같은 방법으로 단위셀로 접고 Zeo++ `-ha -res` · `-chan 1.65` · `-chan 1.82` → `results_znbdt_no2_gate5_p2_hkhome.json`. 처리 전 값은 `results_znbdt_no2_access_hkhome.json` 에 있습니다.
+- **② E**: `run_znbdt_no2_e_humid3.py` 에 `E.STAGGER = 60.0` 한 줄을 더했습니다(등록 §6 "착수 60 s 이상" · laptop2 실행기와 같음). 머리말의 C1 잔재 문구도 고쳤습니다. 래퍼(9702366) · 막음 표 · 반복 1~3 은 그대로입니다. 드라이로 막음 세 줄 · 막음 파일 셋 · 전하 CIF 사용을 확인했습니다. 워커 3.
+- **견적**: ③ ≈ 15 분(같은 기기 관문 ⑤ 실측 −NO₂ 5.5 분/건을 옮김) · ④ ≈ 2 분(단위셀 Zeo++) → E 착수 ≈ 21:5x. E 는 작업당 15~19 h(등록 §6 · 랩탑 실측을 옮김 · 넓게 봄)이고, 3작업이 동시에 돌아 벽시계는 최장 단일 작업이 정합니다 → **완주 11-08 13~17 시**. 첫 완주로 갱신하겠습니다.
