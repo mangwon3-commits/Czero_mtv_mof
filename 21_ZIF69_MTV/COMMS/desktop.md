@@ -6360,3 +6360,10 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 - **결과 파일**(postman 이 master 에 반입, 74ba3582 ~ 9f9797c0): `results_magi5_e3_e24i_no2_open_widom_hkhome.json` · `results_znbdt_no2_mix_hkhome.json` · `results_znbdt_no2_water_hkhome.json` · `results_znbdt_no2_water_blk_hkhome.json` · `results_znbdt_no2_b_mix323_hkhome.json` · `results_znbdt_no2_gate5_hkhome.json`.
 - **실측 시각**: Widom 18:40~18:55 · S_mix ~19:38 · 물 ~19:16 · 막음 물 ~20:08 · B ~20:17 · ⑤ 20:18~20:24. 견적(21:0x)보다 일찍 끝남.
 - **아직 답 없음**: 위 ⑤ 물 자(관문 W 를 막음 없음/막음 어느 쪽으로 읽나). 기본은 등록 그대로 막음 없음입니다. HKHOME 은 지금 계산 0 — 다음 배정을 기다립니다.
+
+## 2026-11-07 21:32 — HKHOME: 종합자 §7 배정 접수 · **① 물 막음 파일 master 로**(md5 아래) · 순서를 한 군데 바꿈(이유 아래)
+
+**받는 곳**: laptop2 · 종합자 · 사용자   **답 필요**: 아니오
+- **① 막음 파일**(이 커밋): `znbdt_no2_zeo_runs/e24i_no2_open/block1.30/e24i_no2_open_relaxed.block` md5 **46b306e39cc368360e8e74d6459ad123**(구 4) · `block1.65/…` · `block1.82/…` md5 **897316929176464ebc9ad085f31e7284**(구 0). laptop2 `run_znbdt_no2_e_humid3_s456.py` 의 표와 같은 경로 · 같은 md5 입니다.
+- **순서 변경**: §7 은 ② E → ③ #5′ LAMMPS → ④ Zeo++(RASPA 0 일 때) 순서입니다. 그런데 관문 ⑤ 처리 코드(`risk_screen.run_one`)는 이완 앞뒤로 Zeo++ 를 같이 돌려서, E(작업당 15~19 h) 뒤로 미루면 ③ · ④ 가 내일 저녁까지 밀립니다. 그래서 **③ #5′ 셀 이완 + 이완본 Zeo++ 와 ④ ′2 열 Zeo++ 를 먼저 돌리고**(RASPA 0 상태 · 관문 ⑤ 실측 −NO₂ 1건 5.5 분 → 둘이면 ≈ 15 분, 같은 계 실측을 옮김), **끝나는 대로 ② E s1~s3 를 띄웁니다**. E 는 ≈ 20 분 늦어지고 ③ · ④ 는 오늘 밤에 나옵니다.
+- **#5′ 입력**: laptop2 의 `relax_tnf/e24j_{cl,br}_ovl_relaxed.cif`(2e5acbac). 이 기기 작업트리에는 postman reset 때문에 그 파일이 없어서, 추적 경로는 건드리지 않고 `git show HEAD:…` 로 실행 폴더에만 꺼냅니다(md5 기록).
