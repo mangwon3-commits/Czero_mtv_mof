@@ -1,4 +1,39 @@
 
+## 2026-11-07 23:09 — [§7] 랩탑 ①② 완주 · 결과 셋 master 반입 · ③ −CN E s4~s6 은 사슬이 띄움(23:07)
+
+**받는 곳**: 클라우드 종합자 · HKHOME · laptop2 · 사용자
+**요약**: ① −NO₂ S_mix s4~s6 과 ② `e24h_cl_050b` S_mix 3씨앗 · 물 4씨앗이 22:46~23:03 에 끝났고, 열 행 모두 완주 표지가 있습니다. 결과 JSON 셋을 이 글과 같은 커밋으로 master 에 올립니다. 사슬은 23:07 에 ③ 을 띄웠습니다. 판정은 종합자 몫이므로 아래에는 표지와 원값만 적습니다.
+**답 필요**: 아니오 — 21:38 글의 이름 물음은 아래 "이름" 의 선례로 갈음합니다. 종합자가 등록문 이름을 원하면 파일 이름만 바꾸겠습니다.
+
+    결과 ①    results_znbdt_no2_mix_laptop.json(md5 c419c952) · 3행 e24i_no2_open_s1~s3(= 등록 s4~s6)
+              status ok 3/3 · returncode 0 3/3 · .data 'Simulation finished' 3/3 · ff_md5 8e8ec933 · CIF charged_v3/e24i_no2_open_DDEC6.cif(3a2a53ac)
+              씨앗 1794054871 · …886 · …901 · 71.2~71.7 분 · S_Henry 자리 111.05(HKHOME Widom ON)
+              원값 S_mix 130.69 ± 4.36 · 135.68 ± 3.97 · 131.96 ± 7.71(러너의 ± 그대로)
+    결과 ② S_mix  results_e24g_e24h_cl_050b_mix_laptop.json(md5 da4a2945) · 3행 e24h_cl_050b_s1~s3
+              status ok 3/3 · returncode 0 3/3 · 'Simulation finished' 3/3 · ff_md5 8e8ec933 · CIF charged_v3/e24h_cl_050b_DDEC6.cif(d1cd9ab7)
+              씨앗 1794054937 · …952 · …967 · 70.0~70.3 분 · S_Henry 자리 109.36(050b Widom ON)
+              원값 S_mix 100.18 ± 5.33 · 102.40 ± 3.56 · 103.06 ± 3.27
+    결과 ② 물  results_e24h_cl_050b_water_laptop.json(md5 804e0a44) · 4행 seed_idx 1~4
+              status ok 4/4 · returncode 0 4/4 · marker_finished 4/4 · header_gate_ok 4/4 · 'Simulation finished' 4/4 · 물 자리 5(TIP5P-Ew)
+              씨앗 1794055004 · …6375 · …7765 · …9153 · 17.1~23.2 분
+              원값 KH_water 1.66233e-05 · 1.69167e-05 · 1.67949e-05 · 1.65757e-05(러너 단위 그대로)
+              러너는 050a 물을 낸 run_e22g_water.py(desktop.md 의 laptop ① 줄과 같은 러너)이고, 출력 이름만 등록문대로 주었습니다.
+    씨앗      ①② 의 열 씨앗이 모두 서로 다르고, HKHOME −NO₂ s1~s3(1794044514 · …529 · …544)와도 겹치지 않습니다.
+    이름      050a 의 S_mix 도 같은 러너(run_e24g_mix.py)가 results_e24g_e24h_cl_050a_mix_laptop2.json 으로 냈습니다.
+              그래서 이번 이름 results_e24g_e24h_cl_050b_mix_laptop.json 은 050a 와 같은 꼴이고, 두 실현을 나란히 찾기에도 이 꼴이 낫습니다.
+    ③        사슬이 23:06:59 에 드라이버 셋의 끝과 위 표지 셋을 기록하고, 23:07 에 run_znbdt_e_humid3.py 를 띄웠습니다(드라이버 PID 977585 · simulate 3).
+              입력 100 kPa · CO₂ 0.150000 · 물 0.028521 · N₂ 0.821479 · 5,000 + 15,000 사이클 · 파일 관문 md5 8e8ec933 일치 · 출력 results_znbdt_e_humid3_cn_s456_laptop.json
+              씨앗 1794060419 · …434 · …449 는 laptop2 −CN s1~s3(1793764213 · …228 · …243)와 겹치지 않습니다.
+              행 이름 e24i_cn_open_e3r1~3 은 laptop2 판과 같지만, 파일 이름이 달라 두 판이 섞이지 않습니다. 6씨앗으로 합칠 때는 파일로 가르십시오.
+              완주 견적 11-08 13~15시(출처: 11-04 랩탑 E 6작업 동시 실측 · 이번에는 3작업만 돌아 더 이를 수 있음). 첫 진행률로 다시 적겠습니다.
+    사슬 경고  사슬의 동시 실행 검사가 networkd-dispatcher 를 'network'(Zeo++)로 잘못 잡아 경고 한 줄을 남겼습니다. 이 검사는 기록만 하고 막지 않아 착수에는 영향이 없었고,
+              목록에 다른 simulate 나 Zeo++ network 는 없었습니다. 다음 사슬부터는 프로세스 이름을 정확히(pgrep -x) 맞추겠습니다.
+    견적 채점  S_mix 견적 1.6 h → 실측 1.2 h(출처가 다른 기기 실측이라 0.4 h 과대) · 물 작업당 25 분 → 실측 17~23 분(같은 기기 실측 출처, 맞음).
+              그래서 ③ 착수도 견적(23:1x~23:4x)보다 일렀습니다.
+    정리      실행 폴더(znbdt_no2_mix_runs · e24g_mix_runs_e24h_cl_050b · e22g_runs_050b)는 랩탑 실행 worktree 에 그대로 두었습니다. .data 원본이 필요하면 우편함에 적어 주십시오.
+
+---
+
 ## 2026-11-07 21:38 — [§7] 랩탑 착수: ① −NO₂ S_mix s4~s6 · ② `e24h_cl_050b` S_mix 3 + 물 4 → 둘이 끝나면 ③ −CN E s4~s6(사슬)
 
 **받는 곳**: 클라우드 종합자 · HKHOME · laptop2 · 사용자

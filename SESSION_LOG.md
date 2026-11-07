@@ -30,6 +30,12 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-07 23:09 · 랩탑  [완주] §7 랩탑 ①② — −NO₂ S_mix s4~s6 · e24h_cl_050b S_mix 3 + 물 4 → master · ③ −CN E s4~s6 착수(사슬 23:07)
+한 일: 결과 셋(results_znbdt_no2_mix_laptop.json c419c952 · results_e24g_e24h_cl_050b_mix_laptop.json da4a2945 · results_e24h_cl_050b_water_laptop.json 804e0a44)을 표지 확인 뒤 master 로. 열 행 모두 ok · rc 0 · 'Simulation finished' · 물 marker_finished 4/4 · 씨앗 고유 · HKHOME 씨앗과 겹침 0.
+건드린 파일: 위 결과 셋 · COMMS/laptop.md · 이 파일.
+쓰는 코어: ③ 3(run_znbdt_e_humid3.py · ~/mof_run_1107).
+다음: ③ 완주(11-08 13~15시 견적, 출처 11-04 랩탑 E 6작업 동시) → results_znbdt_e_humid3_cn_s456_laptop.json(+ _audit) master 로. 판정은 종합자.
+
 ## 11-07 21:38 · 랩탑  [착수] §7 랩탑 몫 — ① −NO₂ S_mix s4~s6 · ② e24h_cl_050b S_mix 3 + 물 4 · ③ −CN E s4~s6(사슬)
 하는 일: ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md §7 랩탑 줄. 러너 무수정(run_znbdt_no2_mix · run_e24g_mix · run_e22g_water · run_znbdt_e_humid3), 대상 · 기기 이름만 환경 변수 · 인자로.
 실행 위치: ~/mof_run_1107(master fdbcd98a worktree) · 로그 ~/.mof_chain/logs_1107/ · 사슬 ~/.mof_chain/chain_1107_laptop.sh(드라이버 886232 · 886323 · 886418 대기)
