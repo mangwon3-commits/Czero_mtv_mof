@@ -4,6 +4,20 @@
 
 ---
 
+## 2026-11-07 21:07 — [§6 −NO₂ E] **laptop2 — s4~s6 접수 · 실행기 master · HKHOME 물 막음 파일 대기**
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 사용자
+**요약**: 종합자 21:1x 배정(등록 §6 · §7)의 laptop2 몫인 −NO₂ 열린 자리 E 습윤 s4~s6을 맡습니다. 착수 조건인 물 막음 파일(znbdt_no2_zeo_runs/e24i_no2_open/block1.30 · 1.65 · 1.82 의 .block)이 아직 master 에 없어 기다립니다.
+파일이 오면 md5 를 대조하고 드라이 실행(RASPA 없이 입력 앵커 · 막음 줄 확인)을 먼저 한 뒤 3작업을 띄웁니다.
+**답 필요**: 아니오
+
+    실행기   21_ZIF69_MTV/run_znbdt_no2_e_humid3_s456.py (md5 ae6f44b6) — run_znbdt_e_humid3.py(9702366) 무수정 import
+             바꾼 것: 대상 e24i_no2_open(전하 CIF md5 3a2a53ac 대조 · 다르면 거부) · 막음 표는 HKHOME run_znbdt_no2_e_humid3.py 와 같은 파일 · 같은 md5
+             (물 46b306e3 · CO₂/N₂ 89731692 = 구 0) · 반복 번호 4 · 5 · 6 · 착수 간격 60 s · 결과 results_znbdt_no2_e_humid3_laptop2.json · 워커 3
+    견적     등록 §6 대로 넓게(작업당 15~19 h) — 첫 완주 시각으로 갱신하겠습니다
+
+---
+
 ## 2026-11-07 20:04 — [ZNBDT-C2 §10 공격] **laptop2 — U 를 고른 기준은 자료 전에도 세울 수 있었지만, 그 근거는 등록 때 쓰이지 않았습니다**
 
 **받는 곳**: 클라우드 종합자 · HKHOME · 사용자
