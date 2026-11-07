@@ -7,6 +7,21 @@
 
 ---
 
+## 2026-11-07 16:3x — ★ **계산 배분(사용자 11-07 "권고 따르고 · 계산 배분 우편함에") — `ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md`(자료 0건 등록)** · C2 종결 · 규약 §9-11 · §9-12 등록
+
+**받는 곳**: HKHOME · 랩탑 · laptop2 · 사용자   **착수**: 각 기기가 이 글을 읽는 대로(§9 30분 규칙 안 · 환경 변경 없음) — 등록문 §1 · §2 의 단계 · 파일 이름 그대로. 막히면 멈추고 자기 우편함에.
+
+    HKHOME  #4 −NO₂ 열린 자리 관문(싼 것 먼저): 4-1 이완본 relax_tnf/e24i_no2_open_relaxed.cif 에 e24i 와 같은 PACMAN → charged_v3/e24i_no2_open_DDEC6.cif(md5 기록) → 4-2 run_magi5_widom.py --charges on CO₂·N₂ 298 K → 4-3 run_e22c_water.py 사본 4씨앗(E-22c 규약) → 물 지수. 관문 W(지수 ≤ −CN 0.119 + 1.5 단위) · H(S_ON ≥ 모체 87.80 − 1.5 단위) 둘 다 통과 때만 4-4 S_mix 3씨앗(run_e24i_mix 사본 · 태그 e24i_no2_open). 반나절. 그 뒤 #5 의 관문 ⑤(e24j 둘 · Zeo++ 는 RASPA 와 동시 금지).
+    랩탑    #5 빌드: build_e24i_bdtdc.py 사본 build_e24j_bdtdc.py — OPEN_RINGS=(0, 1)(겹침 고리) · KINDS=('Cl','Br') · 출력 e24j_candidates/ · 이름 e24j_cl_ovl · e24j_br_ovl · 빌더 충돌 검사 · e24j_build.json → master(분 단위). laptop2 의 전하 CIF 가 master 에 오면 −Br S_mix 3씨앗(run_e24i_mix 사본 태그 e24j_br_ovl).
+    laptop2 #5 이완·관문·전하·Widom·S_mix·물: relax_tnf.py GFN-FF → (0a)(0b)(#3 과 같은 코드·문턱) → results_e24j_screen_laptop2.json(탈락이면 그 치환기는 끝) → PACMAN charged_v3/e24j_{cl,br}_ovl_DDEC6.cif → run_magi5_widom.py --charges on → −Cl S_mix 3씨앗(태그 e24j_cl_ovl) → run_e22c_water.py 규약 4씨앗 results_e24j_water_laptop2.json. 반나절~하루.
+    종합자  §2-0 새 계산 없이: 열린 자리(고리 2·3) 대 100 %(네 고리) — Br(Widom·S_mix·물) · Cl·CH₃·CN(Widom·물) 나란히(오늘). 판정은 전부 종합자 · 읽는 법은 등록문 §1 · §2 에 고정.
+    읽는 법 요지: #4 → S_mix 가 −CN 139.8 과 1.5 단위 안이거나 위면 승격(E 습윤은 다음 등록) · #5 → Δ(S_mix · 물 지수 · S_ON) 셋 다 1.5 단위 안이면 "배치 둔감", 하나라도 밖이면 "배치 민감 → 열린 자리 가정 꼬리표 · #6 초격자 무작위 실현(사용자)".
+    종합자 예측(자료 0건): #4 지수 0.06~0.13 · S_ON 85~100 · S_mix 110~140 · 승격 확률 ≈ 0.3 / #5 −Cl 관문 통과 0.8 · Δ1 밖(겹침 쪽 낮음) 0.6 · −Br (0b) 탈락 0.4
+    기록: 사용자 결정 11-07 — L′ 없음(ASSIGN_C2 §12) · 규약 §9-11(전하 끄기 대조 사전 관문) · §9-12(CIF 실측 병기) · R4 §11 ㉢⁗ · 금고 FLOW §4 · TIMELINE · 결정 노드
+    대기: 랩탑 · laptop2 §10 공격(HKHOME 부탁) · HKHOME Obsidian 넣기(11-05 12:4x) 실행 여부 한 줄
+
+---
+
 ## 2026-11-06 16:0x — ★ **C2-L · #2 종합자 판정(ASSIGN_C2 §11)** — 재계산 소수 셋째 자리 일치 · C2-L **"닫지 않음" 확정** · #2 **"풀림은 전하 없이도 남음" 확정** · L판 S 제외 = **종합자 등록 결함(결과 유효)** · §10 자료 후 규칙은 꼬리표 달고 두 줄 처리 · 예측 5건 다 틀림
 
 **받는 곳**: 사용자 · HKHOME · 랩탑 · laptop2   **답 필요**: 사용자 — L′(S 포함) 여부(권고 불필요) · §10 을 다음 전하 끄기 대조의 사전 관문으로 등록할지 · −NO₂ 설계 승격. 랩탑 · laptop2 — §10 공격(HKHOME 부탁 그대로 · 종합자 공격 ㄱ~ㄹ 은 §11-4, 결론 아님). HKHOME — 11-05 12:4x Obsidian 넣기 실행 여부 한 줄.
