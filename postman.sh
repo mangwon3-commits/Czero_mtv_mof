@@ -75,6 +75,40 @@ file_broken(){
   esac
   return 1
 }
+# (21) 2026-11-05 — ★ **남의 우편함을 올리지 않습니다** (사용자 결정 ④ 11-05 11:5x · 랩탑 Melchior 가 고침).
+#   데스크탑 postman 이 02:54(0c89a429) · 03:12(6729a5c7) 두 번 COMMS 세 파일을 옛 판으로 되돌렸습니다.
+#   네 고리가 이어진 길입니다: 러너가 돌아 pull 을 건너뜀(`runner_running` 가드) → 결과 push 가 거절됨
+#   → (14) `reset --mixed` 가 HEAD 만 origin 끝으로 옮기고 작업트리는 그대로 둠 → 작업트리에 남은
+#   **낡은 남의 우편함**이 새 HEAD 와 달라 보임 → add 단계가 그것을 결과처럼 올림.
+#   반입 단계(12)는 이미 `grep -v COMMS/` 로 우편함을 빼고 있었는데 add 단계에는 그 규칙이 없었습니다.
+#   그래서 add 단계도 COMMS 는 **자기 우편함(COMMS/<기기>.md)만** 올립니다.
+#   ⚠ 빼기만 하면 그 낡은 사본이 수정된 추적 파일로 남고, `tracked_dirty` 가 러너가 끝난 뒤에도 pull 을
+#   **영영** 막습니다. 그래서 **그 파일의 옛 판과 바이트가 같은 사본**은 HEAD 판으로 되돌립니다.
+#   COMMS 는 러너가 읽지도 쓰지도 않으므로 §6 위험이 없습니다. 옛 판 어디와도 다른 수정(이 기기에서
+#   누가 남의 우편함을 고친 것)은 올리지도 되돌리지도 않고 알리기만 합니다.
+#   남의 우편함을 손으로 복구했다면 **직접 커밋하십시오** — 옛 판으로 복구한 사본은 postman 이 낡은 사본으로 봅니다.
+OWNBOX="21_ZIF69_MTV/COMMS/$MACHINE.md"
+old_copy(){  # 작업트리 판이 HEAD 이력 속 그 파일의 어느 옛 판과 바이트가 같으면 참(= 낡은 사본)
+  local h c; h=$(git hash-object -- "$1" 2>/dev/null) || return 1
+  for c in $(git rev-list -n 500 HEAD -- "$1" 2>/dev/null); do
+    [ "$(git rev-parse -q --verify "$c:$1" 2>/dev/null)" = "$h" ] && return 0
+  done; return 1
+}
+other_boxes(){  # 남의 우편함 중 HEAD 와 다른 것 — 낡은 사본(또는 빠진 파일)은 HEAD 판으로, 새 수정은 알리기만
+  git status --porcelain --untracked-files=no -- 21_ZIF69_MTV/COMMS 2>/dev/null | while IFS= read -r l; do
+    f=${l:3}; case "$f" in 21_ZIF69_MTV/COMMS/*.md) ;; *) continue;; esac
+    [ "$f" = "$OWNBOX" ] && continue
+    if [ ! -e "$f" ] || old_copy "$f"; then
+      git checkout -q HEAD -- "$f" 2>>"$LOG" && { say "(21) 남의 우편함 낡은 사본 -> HEAD 판: $f"
+        inbox "[(21)] 남의 우편함 낡은 사본을 HEAD 판으로 되돌림(올리지 않음): $f"; }
+    else
+      git reset -q -- "$f" 2>/dev/null   # 누가 스테이지에 올려 두었어도 커밋에 실리지 않게
+      w="$STATE/.warned_$(basename "$f")"; h=$(git hash-object -- "$f")
+      [ "$(cat "$w" 2>/dev/null)" = "$h" ] || { echo "$h" > "$w"
+        inbox "!! **남의 우편함이 이 기기에서 고쳐져 있습니다 — 올리지 않습니다**: $f (그 필자에게 넘기거나 손으로 커밋하십시오)"; }
+    fi
+  done
+}
 # (4) 15:1x 데스크탑 실측 — ensure_guards 가 띄우는 wsl_keepalive.sh 가 상시 돌아 repo_bash_running 이 늘 참이 됐음(pull 영구 건너뜀). 저장소 밖 감시자 셋은 제외.
 tracked_dirty(){ git status --porcelain --untracked-files=no | grep -vE "^ M \.claude/" | grep -q .; }
 # (3) 첫 틱 범람 방지 — 이미 있는 로그는 지금 크기부터 증분만 본다
@@ -184,7 +218,10 @@ while :; do
       done
   # (5) 15:4x 데스크탑 실측 — 안 맞는 글롭이 하나라도 있으면(예: tnf_widom_*.json 이 아직 없음) git add 가 rc=128 로
   #     **아무것도 안 올림**. ③ 이 조용히 죽어 있었음(15:07 기동 뒤 푸시 0건). 패턴별로 add 하고 실패는 로그에.
-  for p in $RESULT_PATTERNS; do [ -e "$p" ] && { git add "$p" 2>>"$LOG" || say "add 실패 $p"; }; done
+  other_boxes                                                                    # (21) 남의 우편함 낡은 사본 정리
+  for p in $RESULT_PATTERNS; do [ -e "$p" ] || continue
+    case "$p" in 21_ZIF69_MTV/COMMS/*) [ "$p" = "$OWNBOX" ] || continue;; esac   # (21) 우편함은 자기 것만
+    git add "$p" 2>>"$LOG" || say "add 실패 $p"; done
   # (10) 깨진 것은 스테이지에서 도로 뺍니다. **다음 틱에 다시 봅니다** — 러너가 덮어쓰면 저절로 풀립니다.
   for f in $(git diff --cached --name-only); do
     [ -f "$f" ] || continue

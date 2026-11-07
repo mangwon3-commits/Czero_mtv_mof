@@ -1,0 +1,145 @@
+{
+ "assign": "ASSIGN_ZNBDT_C2_FOLLOWUP_20261105.md §2 (보류 해제 = ASSIGN_ZNBDT_C2_20261105.md §7)",
+ "unit": 1.5,
+ "reproduce_gate": {
+  "values": {
+   "parent": [
+    1.0,
+    1.0
+   ],
+   "cn": [
+    1.24,
+    1.24
+   ],
+   "br": [
+    1.19,
+    1.19
+   ]
+  },
+  "pass_": true
+ },
+ "rows": {
+  "parent": {
+   "r_T": 1.0003273108142776,
+   "e_r": 0.03355606501127056,
+   "N_N2_298": 0.21272166076666665,
+   "N_N2_323": 0.21279128686666668,
+   "S_ratio_323_298": 0.6692214419465026,
+   "n298": 3,
+   "n323": 3,
+   "marks": {
+    "bad298": [],
+    "bad323": [],
+    "seeds_unique": true,
+    "cif323": [
+     "charged_v3/e22_parent_DDEC6.cif"
+    ],
+    "rows323": [
+     "e22_parent_s1",
+     "e22_parent_s2",
+     "e22_parent_s3"
+    ]
+   },
+   "src_md5": {
+    "results_e23_mix_desktop.json": "c4047087384c8384d317704a4927c995",
+    "results_e27_mix323_laptop.json": "b083741502eeccd3fd338c2397daab7c"
+   }
+  },
+  "cn": {
+   "r_T": 1.2390190985412495,
+   "e_r": 0.04291117712023877,
+   "N_N2_298": 0.13179221301666666,
+   "N_N2_323": 0.16329306896666665,
+   "S_ratio_323_298": 0.5906782849953881,
+   "n298": 6,
+   "n323": 3,
+   "marks": {
+    "bad298": [],
+    "bad323": [],
+    "seeds_unique": true,
+    "cif323": [
+     "charged_v3/e24i_cn_open_DDEC6.cif"
+    ],
+    "rows323": [
+     "e24i_cn_open_s1",
+     "e24i_cn_open_s2",
+     "e24i_cn_open_s3"
+    ]
+   },
+   "src_md5": {
+    "results_e24i_e24i_cn_open_mix_hkhome.json": "de99ae929c3e29b110a7fdb7091976fb",
+    "results_e24i_e24i_cn_open_mix_s456_hkhome.json": "c5e8843c0efbf0ac4b3752e8cce9b799",
+    "results_znbdt_b_mix323_hkhome.json": "542a79699e05ea6820d30d88abae36ad"
+   }
+  },
+  "br": {
+   "r_T": 1.1892279859744392,
+   "e_r": 0.03729933150611213,
+   "N_N2_298": 0.12566233421666664,
+   "N_N2_323": 0.14944116463333335,
+   "S_ratio_323_298": 0.60273201318538,
+   "n298": 6,
+   "n323": 3,
+   "marks": {
+    "bad298": [],
+    "bad323": [],
+    "seeds_unique": true,
+    "cif323": [
+     "charged_v3/e24i_br_open_DDEC6.cif"
+    ],
+    "rows323": [
+     "e24i_br_open_s1",
+     "e24i_br_open_s2",
+     "e24i_br_open_s3"
+    ]
+   },
+   "src_md5": {
+    "results_e24i_e24i_br_open_mix_laptop2.json": "fad165b0303bb4820eb3bc940344d8fc",
+    "results_e24i_e24i_br_open_mix_s456_hkhome.json": "1459f1fc1706d333c68b487bede835ef",
+    "results_znbdt_b_mix323_hkhome.json": "542a79699e05ea6820d30d88abae36ad"
+   }
+  },
+  "U": {
+   "r_T": 1.158961960954452,
+   "e_r": 0.056883533086998096,
+   "N_N2_298": 0.15266144693333333,
+   "N_N2_323": 0.1769288099,
+   "S_ratio_323_298": 0.6149257802382497,
+   "n298": 3,
+   "n323": 3,
+   "marks": {
+    "bad298": [],
+    "bad323": [],
+    "seeds_unique": true,
+    "cif323": [
+     "charged_v3/znbdt_c2_apolarU_DDEC6mod.cif"
+    ],
+    "rows323": [
+     "znbdt_c2_apolarU_s1",
+     "znbdt_c2_apolarU_s2",
+     "znbdt_c2_apolarU_s3"
+    ],
+    "complete": true
+   },
+   "src_md5": {
+    "results_znbdt_c2_znbdt_c2_apolarU_mix_hkhome.json": "08dded7abd0652bb829c25ad7f17eb85",
+    "results_znbdt_c2_b_mix323_hkhome.json": "cc9a12c07abae3eff47187af1f60851e"
+   }
+  }
+ },
+ "read": {
+  "r_T": 1.158961960954452,
+  "e_r": 0.056883533086998096,
+  "d_units": {
+   "parent": 2.401971652056914,
+   "cn": 1.1235488662103879,
+   "br": 0.44494542066337905
+  },
+  "verdict": "풀림은 전하 없이도 남음 — 모양/다른 원인",
+  "aux_S_ratio": {
+   "U": 0.6149257802382497,
+   "cn": 0.5906782849953881,
+   "parent": 0.6692214419465026
+  }
+ }
+}

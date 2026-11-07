@@ -1,0 +1,1748 @@
+{
+ "nodes": [
+  {
+   "id": "M-1",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-1. 절대 마진은 **규칙에 따라 부호가 바뀝니다**(LP: 선형 −15.5 · Mack +3.5 · RSS +24.6). 그래서 \"마진이 양수인가\" 만으로는 LP·M1 을 판정할 수 없습니다. [산술 — 표 1-3]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M-2",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-2. 같은 레이어 · 같은 장비군에서 **N+1 마진 − N 마진**을 취하면 공통 항(스캐너 · 웨이퍼 · LS · 렌즈 · 레지스트)이 지워집니다. 남는 것은 ΔDoF 와 ΔT 뿐이라 **선형과 Mack 에서는 값이 정확히 같고, RSS 에서도 거의 같습니다.** [산술]",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "M-3",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-3. 차분은 \"**현 세대의 손실이 그 마진에서 나온 것**\" 을 기준점으로 삼습니다. 현 세대 LP 는 이미 **0.3 % > 목표 0.2 %** 입니다. 그러므로 LP 는 **차분이 0 이어도 부족**합니다. [양산 12개월]",
+   "grade": "양산 12개월",
+   "footnotes": []
+  },
+  {
+   "id": "M-4",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-4. 무작위항만 있고 그것이 정규분포이면, 창 밖으로 나갈 확률(양쪽)은 반창을 σ 단위로 쟀을 때 2Φ(−k) 입니다. **목표 0.2 % 는 k = 3.09(양쪽) 또는 2.88(한쪽)** 입니다. 흔히 쓰는 \"±3σ\" 는 0.27 % 로, 목표보다 조금 느슨합니다. [산술 — scipy.stats.norm]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M-5",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-5. 민감도: LP 의 무작위 σ ≈ 24.5/6 = 4.1 nm(Mack, S 16). 반창 1 nm 는 k 를 0.25 옮깁니다. k 가 3 근처에서 0.5 줄면(반창 2 nm) 꼬리 확률은 **약 4.6배**가 됩니다(Φ(−3) = 0.13 % → Φ(−2.5) = 0.62 %). → **마진 수 nm 가 손실 수 배**입니다. 절대 예산이 몇 nm 틀리면 손실 예측이 자릿수로 틀리는 이유입니다. [산술]",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "M-6",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-6. 계통항(토포)은 확률이 아니라 **면적**으로 손실을 만듭니다. 다이 손실 ≈ Σ_자리 (그 높이를 가진 면적 비율) × (그 자리의 무작위 꼬리 확률)입니다. 예(LP, Mack, S 16): 평균 토포 자리는 마진 +3.5 → k ≈ 3.43 → 꼬리 0.03 %. 최대 토포 자리는 마진 −8.5 → k ≈ 1.96 → 꼬리 2.5 %. 최대 토포 면적이 전체의 수 % 만 되어도 다이 손실은 0.1~0.3 % 대가 됩니다. [산술 · 가설: 결함은 창 경계에서 계단처럼 켜진다]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M-7",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-7. MC 는 토포(80)가 DA(48)보다 큽니다. Photo 레버만으로는 최대 +10 nm 인데 부족분은 50~90 nm 이므로 **평탄화 없이는 닫히지 않습니다**. [산술]",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "M-8",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-8. 어긋남은 규칙과 무관합니다.** 세 규칙 모두 M1 의 계산 마진이 LP 보다 작습니다(선형 −20.5 < −1.5 · Mack −4.6 < +17.5 · RSS +21.5 < +37.9). 그런데 손실은 LP 가 더 큽니다. 세 스캐너 해석(10 · 16 · 20)에서도 같습니다. **\"마진이 클수록 손실이 작다\" 는 단조 대응이 두 레이어 사이에서 성립하지 않습니다.** [산술 · 양산 12개월]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M-9",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-9. Rayleigh 초점 심도는 해상 한계에서 DOF = k₂ λ / NA² 이고, 같은 피치의 3-빔 결상에서는 DOF < p² / λ 입니다. 둘 다 Mack 강의록 [전문 — 2쪽 전부 읽음] 의 식입니다. Mack 은 이것이 \"오늘의 리소그래피에는 맞지 않는다\" 는 단서도 같이 적었습니다. → **피치를 고정하면 DoF 는 NA 와 거의 무관하고, NA² 배율은 해상 한계로 피치를 줄일 때의 값**입니다. 0.33 → 0.55 의 순수 NA² 비는 (0.33/0.55)² = **0.36** 입니다. [산술]",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "M-10",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-10. 문제 §6 의 0.55NA LP급 CD 공통 DoF 40~55 [모의] 를 N+1 LP 88 로 나누면 **0.45~0.63** 입니다 → 두 극단 사이. 공개 요지들도 \"DoF 가 1/NA² 로 줄어 약 1/3\" 이라고 적습니다 [요지 — 블로그 · SPIE 초록 검색 요약]. **토포(nm)는 NA 와 무관합니다**(문제 §6 가정). 따라서 창 대비 토포의 비중은 **1/0.45~1/0.63 = 1.6~2.2배**로 커집니다. [산술]",
+   "grade": "모의",
+   "footnotes": []
+  },
+  {
+   "id": "M-11",
+   "type": "claim",
+   "seat": "M",
+   "text": "M-11. 커패시터 뒤 ILD 단차는 MC 로 가고 그 위의 M1 까지 **물려받습니다**(문제 §1 공정 순서 · 두 레이어 토포가 80 · 65 로 같은 원천). **ILD 평탄화 1회는 EUV 레이어 두 개에 동시에 듣습니다.** [산술 · 문제 §1]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-1",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-1. MC 는 부족.**  [산술 · FEM 1장]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-2",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-2. M1 은 부족.**  [산술 · FEM 3장 · 양산 12개월]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-3",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-3. LP 는 부족.**  [산술 · FEM 2장 · 양산 12개월]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-4",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-4. 어느 절대 예산도 \"마진 ≥ 0 ⇒ 손실 ≤ 0.2 %\" 를 현 세대에서 지키지 못한다.**  [산술]",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "J-5",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-5. 판정은 차분으로.**  [산술 · 가설]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-6",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-6. 18 칸 전부에서 부호가 거꾸로다.**  [산술, m6_calc §4]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-7a",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-7a. 레이어마다 \"마진 → 손실\" 대응이 다름.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-7b",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-7b. M1 의 셀–페리 단차가 공통 창을 **통째로** 먹지 않음 — 최소 피치 라인 · 라인 끝이 한쪽 높이에만 있고 다른 쪽 패턴의 창이 넓으면, 실효 소모는 단차보다 작음[가설].",
+   "grade": "가설",
+   "footnotes": []
+  },
+  {
+   "id": "J-7c",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-7c. LP 전용 오차의 과소 계상.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-7d",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-7d. 손실의 시간 구조.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-9",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-9. 파일럿 추정과 차분이 같은 쪽이다 — 대략의 기울기**(판정 근거 아님, 크기 감각).  [산술 + 가설 · 표본 작음]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-10",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-10. Photo 레버가 메우는 폭은 DoF 에 비례해 줄고, 오차 항목은 NA 와 무관해 그대로다.**  [산술 · 외부 전문 1 · 외부 요지 1]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J-11",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-11. 평탄화가 필요해지는 잔여 단차 문턱이 내려간다.**  [산술]",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "J-12",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-12. 평탄화 1회의 수혜 레이어 수 n 이 레버 순서를 바꾼다.**  [산술]",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "J-8",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-8. 패턴 편차는 공통 DoF 안(겹침 산술) — 팹 표준 문서는 이중 계상                 [산술]",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "J-13",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-13. X1 은 0.2 % 보장이 아님(0.19 ~ 1.2 %)                                          [가설]",
+   "grade": "가설",
+   "footnotes": []
+  },
+  {
+   "id": "J-14",
+   "type": "claim",
+   "seat": "J",
+   "text": "J-14. D1 순가치 −216 ~ +324억/년 — 부호 미정                                         [산술 · 표본 작음]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J:fnp",
+   "type": "footnote",
+   "seat": "J",
+   "text": "문제 정본 c6ce7f25:21_ZIF69_MTV/MAGI/MAGI-006_problem.md — §1(상황 · 목표 0.2 %) · §2-1 · 2-2 · 2-3(표) · §3(오차 항목 · 결합 규칙 셋) · §4(레버) · §5(경제성) · §6(N+2) · §7(Q1 ~ Q5) · §8(답변 조건). 전부 가상 데이터.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J:fnc",
+   "type": "footnote",
+   "seat": "J",
+   "text": "계산 ~/.mof_magi/MAGI-006/junseok/m6_calc.py(sha256 24363771…6e33) → m6_calc.out(7c59e29f…bcca8). §0 경제성 상수 · §1 겹침 · §2 무작위 합 · §3 감도표 · §4 현 세대 · §5 차분 · §6 기울기 · §7 레버 · §8 비용 · §9 Q4.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J:fne1",
+   "type": "footnote",
+   "seat": "J",
+   "text": "imec, \"High-NA EUV lithography: the next step after EUVL\"(imec-int.com/en/articles/high-na-euvl-next-major-step-lithography) — WebFetch 2026-09-28 14:1x.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J:fne2",
+   "type": "footnote",
+   "seat": "J",
+   "text": "C. A. Mack, focus effects 연작(lithoguru.com 논문 목록: \"Understanding focus effects in submicron optical lithography\" 1988 · Part 2 1989 · review 1993 · Part 4 1995) — 검색 요약 수준.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J:fns",
+   "type": "footnote",
+   "seat": "J",
+   "text": "못 찾음: Mack 방식(무작위 RSS + 계통 선형)을 원문으로 적은 공개 문헌 — 검색어 \"Chris Mack focus budget random errors root sum square systematic errors added linearly\".",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B-1",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-1. 이 문제의 판정 자는 CD DoF 가 아니라 결함 인지 공통 DoF 다.** `[가설 — 선택]`",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B-2",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-2. 패턴 간 최적 초점 편차는 공통 DoF 안에 이미 있다.** `[산술]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B-3",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-3. 잔여 토포는 공통 DoF 안에 없다.** `[산술]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B-4",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-4. 선형·Mack 에서 \"같은 칸 앵커 차\" 는 규칙·스캐너 값·폭 불명 항에 무관하다.** `[산술]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B-5",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-5. MC 는 어떤 선택으로도 부족하다.** `[산술]` `[FEM 1장]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B-6",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-6. 현 세대 LP·M1 의 순위가 모든 선택에서 역전돼 있다.** `[산술]` `[양산 12개월]` `[FEM 6장]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B-7",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-7. MC/M1 스택에서 앵커 마진과 손실이 로그 선형으로 늘어선다(e-배 약 17.5 nm), LP 는 같은 기울기로 약 25 nm 옮겨진 곡선이다.** `[가설]` `[산술]`",
+   "grade": "가설",
+   "footnotes": []
+  },
+  {
+   "id": "B-8",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-8. D1 은 격자 전체에서 제 값을 못 번다.** `[산술]` + B-7 `[가설]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B-9",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-9. MC 는 고치느냐가 아니라 무엇으로 고치느냐의 문제다.** `[산술]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B-10",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-10. 실적 있는 레버와 없는 레버의 가치 차는 \"기대 이득\" 보다 \"분산\" 에 있다.** `[가설]`",
+   "grade": "가설",
+   "footnotes": []
+  },
+  {
+   "id": "B-11",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-11. X1 은 가장 비싸고, 정량 안 된 오버레이 위험을 지며, N+2 경로를 잘라낸다.** `[산술]` `[모의]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B-12",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-12. 결정 순서는 되돌릴 수 없음과 리드타임이 정한다 — D1 이 가장 먼저 닫히고, X1 은 가장 늦게까지 열어 둘 수 있다.** `[가설 — 일정 논리]`",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B-13",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-13. 0.55NA 에서 Photo 레버의 nm 천장은 거의 그대로이고 평탄화 문턱은 약 9~20 nm 내려간다.** `[산술]` + `[가정: 결함 인지 비율·오차 항 빌림]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B-14",
+   "type": "claim",
+   "seat": "B",
+   "text": "B-14. 평탄화의 경제성 문턱은 수혜 레이어 수에 반비례한다.** `[산술]`",
+   "grade": "산술",
+   "footnotes": []
+  },
+  {
+   "id": "B:fnE1",
+   "type": "footnote",
+   "seat": "B",
+   "text": "ASML Netherlands B.V., US7148494B2 \"Level sensor, lithographic apparatus and device manufacturing method\" — https://patents.google.com/patent/US7148494B2/en — 검색어 \"level sensor process dependency apparent topography air gauge AGILE leveling metal stack\". 읽은 범위 **`[요지]`**(페이지 요약에서 인용 문장 확인: 센서 빛이 하부막에서도 반사되어 교란되며 \"this disturbance is process dependent, i.e. it depends on the processes previously ca",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B:fnE2",
+   "type": "footnote",
+   "seat": "B",
+   "text": "EUV 마스크 한 장 $0.5~1M 대라는 검색 요약 — 검색어 \"EUV photomask cost per mask set million dollars 2024\", 원문 미열람 **`[미확인]`** → 판정 근거로 쓰지 않음. 크기 감각만: 문제의 레이어당 5 억원은 이 대역의 낮은 끝 이하.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B:fnE3",
+   "type": "footnote",
+   "seat": "B",
+   "text": "SemiEngineering, \"Perspectives On Why EUV Photomasks Are More Expensive\" — https://semiengineering.com/perspectives-on-why-euv-photomasks-are-more-expensive/ — **`[요지]`**(블랭크·포드·펠리클이 EUV 마스크 비용의 50~60 % 이상, EUV 마스크 TAT 가 길다는 정성 논의; 수치 TAT 없음). 용도: P1 이 일회성 금액은 작아도 **마스크 TAT·OPC 인력이 일정 병목**이라는 §3-5 의 순서 논리.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-1",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-1. \"세 갈래가 독립\" 은 과장입니다 — 파일럿 손실 추정과 파일럿 DoF 는 같은 웨이퍼에서 났습니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M:R1",
+   "type": "document",
+   "seat": "M",
+   "text": "M R1",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B:R1",
+   "type": "document",
+   "seat": "B",
+   "text": "B R1",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J:R1",
+   "type": "document",
+   "seat": "J",
+   "text": "J R1",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-2",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-2. P2 이득의 기준(분산/진폭)이 갈리고, 한 R1 의 \"차 < 0.1 nm\" 는 재현되지 않습니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-3",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-3. \"잔여 토포는 결함 인지 DoF 안에 없다\" — 세 판정 전부가 이 한 전제에 서 있는데, 반증 조건을 적은 자리는 하나뿐입니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-4",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-4. 마진 한 수를 손실로 옮기는 자리마다 [가설] 이 수 를 낳고, 그 수가 아래로 흘러 결과처럼 보입니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-5",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-5. Q3 의 원인 후보는 넷·여섯·다섯이 나열됐지만, 어느 것도 \"두 레이어를 동시에 맞히는가\" 를 한 줄이라도 셈하지 않았습니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-6",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-6. X1 의 손실을 수로 낸 것은 다른 장비의 기울기를 옮긴 [가설] 위의 수입니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-7",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-7. 레버 뒤 \"확보\" 를 보정 안 된 절대 예산으로 냈고, 원인 a 의 양날을 한쪽만 적었습니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-8",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-8. D1 규칙이 세 판에서 셋으로 갈립니다 — 하나로 등록해야 합니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-9",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-9. LS 14 의 성질 — 자기 표에서 \"상수 오프셋은 창을 안 좁힌다\" 라 적고도 14 전부를 무작위 RSS 에 넣었습니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-10",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-10. Q4 의 \"C3 급 필요\" 는 실현성 검토 없이 나왔고, 0.55NA LP 의 \"토포 0 이어도 못 채움\" 은 맞춘 오프셋 위에 세워졌습니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-11",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-11. 화폐화 누락 — M·J 는 공정 기간 +1.2일 · OPC 인·주 · P2 운영비 · X1 오버레이 위험을 셈하지 않았습니다.",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-12",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-12. 정보 다양성 — 출처가 겹칩니다(§9-10 ③ 집계용, 공격 아님).",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "A-13",
+   "type": "attack",
+   "seat": "HK",
+   "text": "A-13. 형식 — 세 R1 모두 규약 선언표 9항 · 감도표 · 이중 계상 · 확인 수준 꼬리표 · 용어표 · 자기 반박 · 각주를 갖췄습니다(기록, 공격 없음).",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M:D-1",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-1 ← A-1 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:D-2",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-2 ← A-2 (수정)",
+   "grade": "수정",
+   "footnotes": []
+  },
+  {
+   "id": "M:fnm92",
+   "type": "footnote",
+   "seat": "M",
+   "text": "[^m92]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M:D-3",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-3 ← A-3 (반박)",
+   "grade": "반박",
+   "footnotes": []
+  },
+  {
+   "id": "M:fnm95",
+   "type": "footnote",
+   "seat": "M",
+   "text": "[^m95]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M:D-5",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-5 ← A-5 (수정)",
+   "grade": "수정",
+   "footnotes": []
+  },
+  {
+   "id": "M:fnasd2",
+   "type": "footnote",
+   "seat": "M",
+   "text": "[^asd2]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M:fnR3a",
+   "type": "footnote",
+   "seat": "M",
+   "text": "[^R3a]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M:D-6",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-6 ← A-6 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:D-7",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-7 ← A-7 (수정)",
+   "grade": "수정",
+   "footnotes": []
+  },
+  {
+   "id": "M:D-8",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-8 ← A-8 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:fnN4",
+   "type": "footnote",
+   "seat": "M",
+   "text": "[^N4]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M:D-9",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-9 ← A-9 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:D-10",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-10 ← A-10 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:D-11",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-11 ← A-11 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:D-12",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-12 ← A-12 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:D-13",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-13 ← A-13 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:fnoai",
+   "type": "footnote",
+   "seat": "M",
+   "text": "[^oai]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M:D-M1",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-M1 ← A-M1 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:D-M2",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-M2 ← A-M2 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "M:fnhighna",
+   "type": "footnote",
+   "seat": "M",
+   "text": "[^highna]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "M:D-M3",
+   "type": "defense",
+   "seat": "M",
+   "text": "D-M3 ← A-M3 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "J:D-1",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-1 ← A-1 (수정)",
+   "grade": "수정",
+   "footnotes": []
+  },
+  {
+   "id": "J:D-3",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-3 ← A-3 (반박)",
+   "grade": "반박",
+   "footnotes": []
+  },
+  {
+   "id": "J:fnR3b",
+   "type": "footnote",
+   "seat": "J",
+   "text": "[^R3b]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J:D-4",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-4 ← A-4 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "J:D-5",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-5 ← A-5 (수정)",
+   "grade": "수정",
+   "footnotes": []
+  },
+  {
+   "id": "J:fnR3a",
+   "type": "footnote",
+   "seat": "J",
+   "text": "[^R3a]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "J:D-7",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-7 ← A-7 (수정)",
+   "grade": "수정",
+   "footnotes": []
+  },
+  {
+   "id": "J:D-9",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-9 ← A-9 (수정)",
+   "grade": "수정",
+   "footnotes": []
+  },
+  {
+   "id": "J:D-10",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-10 ← A-10 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "J:D-11",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-11 ← A-11 (수정)",
+   "grade": "수정",
+   "footnotes": []
+  },
+  {
+   "id": "J:D-12",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-12 ← A-12 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "J:D-13",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-13 ← A-13 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "J:D-J5",
+   "type": "defense",
+   "seat": "J",
+   "text": "D-J5 ← A-J5 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-1",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-1 ← A-1 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-2",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-2 ← A-2 (수정)",
+   "grade": "수정",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-3",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-3 ← A-3 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-4",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-4 ← A-4 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-5",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-5 ← A-5 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:fnN3",
+   "type": "footnote",
+   "seat": "B",
+   "text": "[^N3]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B:D-6",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-6 ← A-6 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-7",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-7 ← A-7 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-8",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-8 ← A-8 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-9",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-9 ← A-9 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:fnN1",
+   "type": "footnote",
+   "seat": "B",
+   "text": "[^N1]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B:D-10",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-10 ← A-10 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:fnN5",
+   "type": "footnote",
+   "seat": "B",
+   "text": "[^N5]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B:fnN6",
+   "type": "footnote",
+   "seat": "B",
+   "text": "[^N6]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B:D-11",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-11 ← A-11 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:fnN7",
+   "type": "footnote",
+   "seat": "B",
+   "text": "[^N7]",
+   "grade": null,
+   "footnotes": []
+  },
+  {
+   "id": "B:D-12",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-12 ← A-12 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-13",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-13 ← A-13 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-B1",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-B1 ← A-B1 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-B2",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-B2 ← A-B2 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-B3",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-B3 ← A-B3 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-B4",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-B4 ← A-B4 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  },
+  {
+   "id": "B:D-B5",
+   "type": "defense",
+   "seat": "B",
+   "text": "D-B5 ← A-B5 (수용)",
+   "grade": "수용",
+   "footnotes": []
+  }
+ ],
+ "edges": [
+  {
+   "src": "A-1",
+   "dst": "M:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-1",
+   "dst": "B:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-1",
+   "dst": "J:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-1",
+   "dst": "M:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-1",
+   "dst": "B:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-2",
+   "dst": "J:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-2",
+   "dst": "M:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-2",
+   "dst": "B:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-6",
+   "dst": "M:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-6",
+   "dst": "B:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-6",
+   "dst": "J:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-7",
+   "dst": "M:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-7",
+   "dst": "B:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-7",
+   "dst": "J:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-7",
+   "dst": "J:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-7",
+   "dst": "B:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-8",
+   "dst": "J:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-8",
+   "dst": "B:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-8",
+   "dst": "M:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-9",
+   "dst": "B:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "A-10",
+   "dst": "B:R1",
+   "type": "attacks-section",
+   "text": ""
+  },
+  {
+   "src": "M:D-1",
+   "dst": "A-1",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-1",
+   "dst": "B-3",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "M:D-2",
+   "dst": "A-2",
+   "type": "defends-수정",
+   "text": ""
+  },
+  {
+   "src": "M:D-2",
+   "dst": "B-3",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "M:D-2",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-3",
+   "dst": "A-3",
+   "type": "defends-반박",
+   "text": ""
+  },
+  {
+   "src": "M:D-3",
+   "dst": "B-3",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "M:D-3",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-3",
+   "dst": "M:fnm95",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-5",
+   "dst": "A-5",
+   "type": "defends-수정",
+   "text": ""
+  },
+  {
+   "src": "M:D-5",
+   "dst": "M:fnasd2",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-5",
+   "dst": "M:fnR3a",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-6",
+   "dst": "A-6",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-7",
+   "dst": "A-7",
+   "type": "defends-수정",
+   "text": ""
+  },
+  {
+   "src": "M:D-8",
+   "dst": "A-8",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-8",
+   "dst": "M:fnN4",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-8",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-8",
+   "dst": "M:fnasd2",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-9",
+   "dst": "A-9",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-9",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-9",
+   "dst": "M:fnasd2",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-9",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-10",
+   "dst": "A-10",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-10",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-11",
+   "dst": "A-11",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-11",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-12",
+   "dst": "A-12",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-12",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-12",
+   "dst": "M:fnm95",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-13",
+   "dst": "A-13",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-13",
+   "dst": "J-11",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "M:D-13",
+   "dst": "M:fnoai",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-M1",
+   "dst": "A-M1",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-M1",
+   "dst": "M:fnoai",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-M1",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-M2",
+   "dst": "A-M2",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-M2",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-M2",
+   "dst": "M:fnoai",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-M2",
+   "dst": "M:fnhighna",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-M3",
+   "dst": "A-M3",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "M:D-M3",
+   "dst": "M:fnm92",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-M3",
+   "dst": "M:fnoai",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "M:D-M3",
+   "dst": "M:fnhighna",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-1",
+   "dst": "A-1",
+   "type": "defends-수정",
+   "text": ""
+  },
+  {
+   "src": "J:D-3",
+   "dst": "A-3",
+   "type": "defends-반박",
+   "text": ""
+  },
+  {
+   "src": "J:D-3",
+   "dst": "B-3",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "J:D-3",
+   "dst": "J:fnR3b",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-4",
+   "dst": "A-4",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "J:D-4",
+   "dst": "M-5",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "J:D-4",
+   "dst": "B-7",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "J:D-4",
+   "dst": "M-4",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "J:D-5",
+   "dst": "A-5",
+   "type": "defends-수정",
+   "text": ""
+  },
+  {
+   "src": "J:D-5",
+   "dst": "M-4",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "J:D-5",
+   "dst": "J:fnR3a",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-7",
+   "dst": "A-7",
+   "type": "defends-수정",
+   "text": ""
+  },
+  {
+   "src": "J:D-9",
+   "dst": "A-9",
+   "type": "defends-수정",
+   "text": ""
+  },
+  {
+   "src": "J:D-9",
+   "dst": "B-13",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "J:D-9",
+   "dst": "J:fnR3a",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-9",
+   "dst": "J:fnR3a",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-10",
+   "dst": "A-10",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "J:D-10",
+   "dst": "B-13",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "J:D-10",
+   "dst": "J:fnR3a",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-10",
+   "dst": "J:fnR3b",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-11",
+   "dst": "A-11",
+   "type": "defends-수정",
+   "text": ""
+  },
+  {
+   "src": "J:D-11",
+   "dst": "J:fnR3a",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-11",
+   "dst": "J:fnR3b",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-12",
+   "dst": "A-12",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "J:D-12",
+   "dst": "J:fnR3a",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-12",
+   "dst": "J:fnR3b",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "J:D-13",
+   "dst": "A-13",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "J:D-J5",
+   "dst": "A-J5",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "J:D-J5",
+   "dst": "B-12",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "B:D-1",
+   "dst": "A-1",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-2",
+   "dst": "A-2",
+   "type": "defends-수정",
+   "text": ""
+  },
+  {
+   "src": "B:D-3",
+   "dst": "A-3",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-4",
+   "dst": "A-4",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-5",
+   "dst": "A-5",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-5",
+   "dst": "J-7b",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "B:D-5",
+   "dst": "B:fnN3",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-6",
+   "dst": "A-6",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-7",
+   "dst": "A-7",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-8",
+   "dst": "A-8",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-9",
+   "dst": "A-9",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-9",
+   "dst": "B:fnN1",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-10",
+   "dst": "A-10",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-10",
+   "dst": "B:fnN5",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-10",
+   "dst": "B:fnN6",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-11",
+   "dst": "A-11",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-11",
+   "dst": "J-7b",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "B:D-11",
+   "dst": "B:fnN5",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-11",
+   "dst": "B:fnN6",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-11",
+   "dst": "B:fnN1",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-11",
+   "dst": "B:fnN7",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-12",
+   "dst": "A-12",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-12",
+   "dst": "J-7b",
+   "type": "cites-other-seat",
+   "text": ""
+  },
+  {
+   "src": "B:D-12",
+   "dst": "B:fnN1",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-12",
+   "dst": "B:fnN7",
+   "type": "footnote",
+   "text": ""
+  },
+  {
+   "src": "B:D-13",
+   "dst": "A-13",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-B1",
+   "dst": "A-B1",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-B2",
+   "dst": "A-B2",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-B3",
+   "dst": "A-B3",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-B4",
+   "dst": "A-B4",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-B5",
+   "dst": "A-B5",
+   "type": "defends-수용",
+   "text": ""
+  },
+  {
+   "src": "B:D-B5",
+   "dst": "B:fnN1",
+   "type": "footnote",
+   "text": ""
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+[
+ {"from": "B-1", "to": "src:results_e24i_*_open_mix", "type": "근거", "note": "열린 자리 다섯의 S_mix · 적재(원자료 재계산)"},
+ {"from": "B-1", "to": "src:results_e23_mix_desktop", "type": "근거", "note": "모체 S_mix · 적재"},
+ {"from": "B-2", "to": "src:humid_working_capacity_w2_e24i", "type": "근거", "note": "습윤 이원 ads 의 물 · CO₂ 적재"},
+ {"from": "B-2", "to": "B-1", "type": "인용", "note": "N₂ 감소 기제가 물에도 남는다는 예측의 전제"},
+ {"from": "B-3", "to": "src:results_e24i_relax300_laptop", "type": "근거", "note": "이완본 통로 수 · 주머니 수"},
+ {"from": "B-3", "to": "B-1", "type": "인용", "note": "통로 폭에 걸린 기제라 격자 이완에 민감"},
+ {"from": "B-4", "to": "src:results_e27_mix323_laptop", "type": "근거", "note": "모체 323 K / 298 K 비"},
+ {"from": "B-4", "to": "B-1", "type": "인용", "note": "기하 기제면 온도는 비율만 낮춤"},
+ {"from": "B-5", "to": "B-1", "type": "인용", "note": "−CN 의 CO₂ +15 % 출처를 구분하는 대조"},
+ {"from": "B-5", "to": "src:build_e24g_bdtdc", "type": "근거", "note": "SMILES 이미 있음 · 전 자리 치환 탈락 기록"},
+ {"from": "B-6", "to": "src:build_e22_bdtdc", "type": "근거", "note": "빌더는 6원 고리 C–H 만 찾음 → 확장 필요"},
+ {"from": "B-7", "to": "src:MACHINE_CAPABILITIES", "type": "근거", "note": "rdkit · LAMMPS 는 랩탑 · HKHOME 만"},
+ {"from": "B-7", "to": "B-5", "type": "인용", "note": "① 일정 5~7일"},
+ {"from": "B-7", "to": "B-6", "type": "인용", "note": "② 일정 7~10일"},
+ {"from": "B-8", "to": "src:FINAL_RANKING_SMIX_G", "type": "근거", "note": "기준선 정본"},
+ {"from": "B-9", "to": "B-2", "type": "인용", "note": "E 3회 비교 기대 차 1.5 단위 근처"},
+ {"from": "B-9", "to": "B-3", "type": "인용", "note": "이완본 −CN 통로 0"},
+ {"from": "B-9", "to": "src:FINAL_RANKING_SMIX_G", "type": "근거", "note": "CoRE 기하 모체 113.7 대 이완 · PACMAN 모체 75.4"},
+ {"from": "B-10", "to": "src:ASSIGN_ZNBDT_SUPP_A_table", "type": "반박", "note": "값이 정해지지 않는 경우의 칸이 표에 없음"},
+ {"from": "B-10", "to": "B-3", "type": "인용", "note": "통로 0 → 적재 0 근처"}
+]

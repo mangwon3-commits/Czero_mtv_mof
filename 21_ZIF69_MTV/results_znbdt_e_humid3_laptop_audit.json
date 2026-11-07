@@ -1,0 +1,204 @@
+{
+ "audit_summary": {
+  "n": 6,
+  "n_ok": 6,
+  "seeds_distinct": true,
+  "loading_line_counts_all_1": true,
+  "component2_N2_seen_all": true
+ },
+ "smoke_ref": "laptop smoke 2026-11-04 12:53 · ~/.mof_chain/znbdt_e3_smoke_laptop · 2/2 ok · C2[N2] seen",
+ "rows": [
+  {
+   "name": "mslm050_e3r1",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1793764450,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 0,
+   "block": null
+  },
+  {
+   "name": "mslm050_e3r2",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1793764465,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 0,
+   "block": null
+  },
+  {
+   "name": "mslm050_e3r3",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1793764481,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 0,
+   "block": null
+  },
+  {
+   "name": "e24i_c2h5_open_e3r1",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1793764494,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 3,
+   "block": {
+    "CO2": {
+     "n_blocked": 24,
+     "blocked_line": true,
+     "block_file": "blk_co2.block",
+     "n_spheres": 4,
+     "n_cells": 6,
+     "expected_n_blocked": 24,
+     "n_blocked_eq_spheres_x_cells": true
+    },
+    "N2": {
+     "n_blocked": 24,
+     "blocked_line": true,
+     "block_file": "blk_n2.block",
+     "n_spheres": 4,
+     "n_cells": 6,
+     "expected_n_blocked": 24,
+     "n_blocked_eq_spheres_x_cells": true
+    },
+    "water": {
+     "n_blocked": 30,
+     "blocked_line": true,
+     "block_file": "blk_water.block",
+     "n_spheres": 5,
+     "n_cells": 6,
+     "expected_n_blocked": 30,
+     "n_blocked_eq_spheres_x_cells": true
+    }
+   }
+  },
+  {
+   "name": "e24i_c2h5_open_e3r2",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1793764509,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 3,
+   "block": {
+    "CO2": {
+     "n_blocked": 24,
+     "blocked_line": true,
+     "block_file": "blk_co2.block",
+     "n_spheres": 4,
+     "n_cells": 6,
+     "expected_n_blocked": 24,
+     "n_blocked_eq_spheres_x_cells": true
+    },
+    "N2": {
+     "n_blocked": 24,
+     "blocked_line": true,
+     "block_file": "blk_n2.block",
+     "n_spheres": 4,
+     "n_cells": 6,
+     "expected_n_blocked": 24,
+     "n_blocked_eq_spheres_x_cells": true
+    },
+    "water": {
+     "n_blocked": 30,
+     "blocked_line": true,
+     "block_file": "blk_water.block",
+     "n_spheres": 5,
+     "n_cells": 6,
+     "expected_n_blocked": 30,
+     "n_blocked_eq_spheres_x_cells": true
+    }
+   }
+  },
+  {
+   "name": "e24i_c2h5_open_e3r3",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1793764524,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 3,
+   "block": {
+    "CO2": {
+     "n_blocked": 24,
+     "blocked_line": true,
+     "block_file": "blk_co2.block",
+     "n_spheres": 4,
+     "n_cells": 6,
+     "expected_n_blocked": 24,
+     "n_blocked_eq_spheres_x_cells": true
+    },
+    "N2": {
+     "n_blocked": 24,
+     "blocked_line": true,
+     "block_file": "blk_n2.block",
+     "n_spheres": 4,
+     "n_cells": 6,
+     "expected_n_blocked": 24,
+     "n_blocked_eq_spheres_x_cells": true
+    },
+    "water": {
+     "n_blocked": 30,
+     "blocked_line": true,
+     "block_file": "blk_water.block",
+     "n_spheres": 5,
+     "n_cells": 6,
+     "expected_n_blocked": 30,
+     "n_blocked_eq_spheres_x_cells": true
+    }
+   }
+  }
+ ]
+}

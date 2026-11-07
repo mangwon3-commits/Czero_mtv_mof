@@ -1,0 +1,98 @@
+{
+ "test": "ZNBDT-C2 §0 선별 — 열린 자리 무질소 후보가 들어가는가(관문 0a · 0b)",
+ "assign": "ASSIGN_ZNBDT_C2_20261105.md §0",
+ "method": "build_znbdt_c1_bdtdc.py 사본(KINDS I·F·CN·CCH, 출력만 바꿈; Br 은 이 빌더 사전에 없어 E-24i 이완본 재측정) → relax_tnf.GFN-FF 고정셀(OUT 만 바꿈) → C1 측정 코드와 같은 (0a) + clash_gate.check (0b). I 의 Bondi 1.98 Å 는 선별 코드에서만 보탬.",
+ "note": "scripts·CIF 는 znbdt_c2_screen/ (스크립트 안의 경로는 실행 당시 세션 scratch 경로 — 재실행 때 인자로 바꿀 것)",
+ "rows": {
+  "I (screen)": {
+   "het_H": 2.26,
+   "disp": 0.312,
+   "gate0a": "True",
+   "margin": -0.437,
+   "worst": "I156···O189 3.063",
+   "gate0b": false,
+   "subst": [
+    "C···N 2.975",
+    "C···I 3.509",
+    "H···N 2.607",
+    "H···I 3.05",
+    "I···O 3.063",
+    "I···S 3.424"
+   ]
+  },
+  "F (screen)": {
+   "het_H": 2.277,
+   "disp": 0.307,
+   "gate0a": "True",
+   "margin": 0.725,
+   "worst": "F88···O189 3.715",
+   "gate0b": true,
+   "subst": [
+    "C···N 2.974",
+    "C···F 2.959",
+    "F···S 3.174",
+    "F···H 2.782",
+    "H···N 2.606",
+    "N···O 3.5"
+   ]
+  },
+  "CN (E-24i)": {
+   "het_H": 2.204,
+   "disp": 0.339,
+   "gate0a": "True",
+   "margin": -0.261,
+   "worst": "N179···O194 2.809",
+   "gate0b": true,
+   "subst": [
+    "C···N 2.978",
+    "H···N 2.492",
+    "N···O 2.809"
+   ]
+  },
+  "Br (E-24i)": {
+   "het_H": 2.279,
+   "disp": 0.305,
+   "gate0a": "True",
+   "margin": -0.264,
+   "worst": "Br0···O189 3.106",
+   "gate0b": true,
+   "subst": [
+    "Br···S 3.4",
+    "Br···H 3.009",
+    "Br···C 3.327",
+    "Br···O 3.106",
+    "C···N 2.973",
+    "H···N 2.605"
+   ]
+  },
+  "Cl (E-24i)": {
+   "het_H": 2.271,
+   "disp": 0.313,
+   "gate0a": "True",
+   "margin": 0.068,
+   "worst": "Cl91···O190 3.338",
+   "gate0b": true,
+   "subst": [
+    "C···N 2.974",
+    "C···Cl 3.175",
+    "Cl···S 3.355",
+    "Cl···H 2.9",
+    "Cl···O 3.338",
+    "H···N 2.607"
+   ]
+  },
+  "CCH (C1)": {
+   "het_H": 1.734,
+   "disp": 0.315,
+   "gate0a": false,
+   "margin": -0.445,
+   "worst": "C95···O198 2.775",
+   "gate0b": false,
+   "subst": [
+    "C···N 2.976",
+    "H···N 2.604",
+    "N···O 3.341"
+   ]
+  }
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "test": "ZNBDT #4 4-1 −NO2 열린 자리 PACMAN DDEC6 전하",
+ "registration": "ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md §1 4-1",
+ "machine": "hkhome",
+ "made": "2026-11-07 18:29",
+ "script": "charge_tnf.py (coremof_tools/bin/python · czeromof 에는 PACMANCharge 없음)",
+ "src": "relax_tnf/e24i_no2_open_relaxed.cif",
+ "src_md5": "ddcdae7491d740eb46303cd876482ac8",
+ "cif": "charged_v3/e24i_no2_open_DDEC6.cif",
+ "cif_md5": "3a2a53acd57a784be9c7bd5710f3c12d",
+ "charged_tnf_row": {
+  "tag": "e24i_no2_open",
+  "cif": "/home/mangwon1/mof_project/21_ZIF69_MTV/charged_v3/e24i_no2_open_DDEC6.cif",
+  "net_charge": 2.0999999990278795e-05,
+  "atoms": 212,
+  "cached": false,
+  "net_q_tol": 5e-05,
+  "ok": true,
+  "source": "relax_tnf (GFN-FF, 셀 고정)",
+  "series": "T-NF (TNF_REGISTRATION_20260910.md)"
+ },
+ "note": "순전하 관문 |q| ≤ 1e-3(11-04 사용자 결정) · charge_tnf 자체 관문 5e-5. postman 자동 반입 000401fb 와 md5 같음."
+}

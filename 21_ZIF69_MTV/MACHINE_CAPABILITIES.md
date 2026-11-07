@@ -14,7 +14,7 @@
 | **desktop** (HKHOME) | 전부 — RASPA · Zeo++ · LAMMPS 관문 · xtb · PACMAN · rdkit | (현재 알려진 제약 없음) |
 | **laptop2** | **RASPA GCMC·Widom · xtb 이완 · PACMAN 전하** | **rdkit 빌드 · LAMMPS 위험도 관문** · **Zeo++ 대량** |
 | **laptop** | **RASPA GCMC·Widom · Zeo++(소량) · rdkit 빌드 · LAMMPS 위험도 관문** | **xtb 이완**(환경 자체가 없음) · **Zeo++ 대량** |
-| **Junseok** (원격지) | **RASPA GCMC · LAMMPS 위험도 관문 · Zeo++(동시 2건)** | **rdkit 빌드 · xtb 이완 · PACMAN 전하** · Zeo++ 대량 · (Widom 미확인) |
+| **Junseok** (원격지) | **RASPA GCMC·Widom · LAMMPS 위험도 관문 · Zeo++(동시 2건)** | **rdkit 빌드 · xtb 이완 · PACMAN 전하** · Zeo++ 대량 |
 
 ## 2. desktop (HKHOME) — 2026-09-21 23:2x 실측
 
@@ -90,7 +90,7 @@
     RASPA `simulate` 는 czeromof 안(`envs/czeromof/bin/simulate`). `~/RASPA/simulations/bin/` 에는 없습니다.
 
     ✅ **RASPA GCMC**          08-28~29 물 러너 RH0 재현성 반복 20회 완주, 실패 0
-    ?  **Widom**               같은 `simulate` 라 될 것이지만 **이 기기에서 돌린 적이 없습니다** — 미확인
+    ✅ **Widom**               09-25 MAGI-005 E-2 4작업 완주, 표지 4/4 · 실패 0 (그 전까지 미확인)
     ✅ **LAMMPS 위험도 관문**   `lammps_mof` 에서 `lammps_interface`·`ase`·`numpy` import 됨.
                               `lmp_serial` 은 **`envs/lammps_mof/bin/`** 에 있고 **PATH 에 없습니다**
                               (랩탑은 `~/.local/bin` 이라 PATH 로 잡힘 — **다릅니다**, 절대경로로 부르십시오).
@@ -101,6 +101,10 @@
     ⚠ **Zeo++**               `czeromof/bin/network` 있고 응답. v3 9.5 GB/건 · WSL 23 GiB → **동시 2건 상한.**
                               실측 반례: 08-27 `ZEO_GB_PER_JOB=4.0` 으로 4건을 띄워 **전역 OOM → WSL 다운**
                               (커널 로그 total-vm 9.47 GB/건). §5 대로 RASPA 와 동시 실행 금지.
+                              ⚠ `-block` 은 **표본 수**로 커집니다(09-25 실측): MAF-66(304원자 · -ha 10,704 입자) 표본 50,000 →
+                              최대 RSS 6.4 GB · 300 s / 표본 357,000 → 25.4 GB · WSL 가용 429 MB 에서 멈춤(OOM 직전). CoRE 62원자는 50,000 에 34 s.
+                              같은 50,000 표본(09-25 E-4b): ZIF-7 522원자 **11.7 GB** · 367 s · ZIF-8 276원자 9.0 GB · ZIF-90 252원자 9.0 GB —
+                              원자 수에 비례하지 않음. ZIF-7 두 건을 같이 띄우면 ≈ 23 GB(WSL 25 GB) → 큰 셀 -block 은 **한 번에 한 건**.
     ❌ **rdkit 빌드**          czeromof · lammps_mof 둘 다 import 실패
     ❌ **xtb 이완**            `spectra` 환경 없음 · `xtb` 바이너리 없음
     ❌ **PACMAN 전하**         `PACMANCharge` import 실패(두 환경 모두). 저장소는 `coremof_tools/bin/python`
@@ -119,6 +123,12 @@
                   nbIm025 RH0 물 러너 · 동시성 1 (09-24 §2)   4회 58.5~59.8 분
                   Q_st 저피복 GCMC (0.01·0.02 bar · 283/298/313 K) 18작업 · 워커 10 (09-24)
                     작업당 26.5~43.1 분 (중앙 29.5) · 벽시계 72 분 · 최장 = 283 K 0.02 bar
+                  Widom (초기화 3,000 + 생산 15,000) · v3 base·nbIm100 2×2×2 · 4작업 · 워커 4 동시 (09-25 MAGI-005 E-2)
+                    N₂ 24.1 / 26.7 · CO₂ 25.9 / 27.2 분 · 벽시계 28 분
+                  GCMC 흡착(초기화 5,000 + 생산 15,000) · MAF-66 2×2×2(2,432 원자) · 4작업 동시 (09-25 MAGI-005 E-3b)
+                    저적재(N₂ 1 bar · CO₂ 0.15 bar) 10.7 / 13.0 분 · CO₂ 298 K 1 bar 73.1 분 · 273 K 1 bar 126.4 분
+                    → 상자 속 분자 수(≈ 9 · 22 · 122 · 205)에 거의 비례 — 고적재 GCMC 견적은 적재로 환산하십시오
+                  Widom + BlockPockets · CoRE 62원자 3×3×4 · 8작업 동시 (09-25 MAGI-005 E-2b) — 작업당 12.8~13.3 분 · 벽시계 15 분
 
     ⚠ **경합 배수 — 같은 구조(e1)의 짝만 적습니다.**
       동시성 1 (98.2 분, **1회**) 대 3~4 (105.7~107.1 분, 7회) -> 3~4 에서 **약 +8 %**.
@@ -144,3 +154,5 @@
   로그인되면 cron 이 postman 을 되살립니다(`mail_guard_junseok.sh`). 도는 계산은 되살리지 않습니다.
 
 > **[desktop 2026-09-25 12:02]** ✅ **DFT(pyscf 2.14.0)** — conda 환경 `dft`(python 3.11), 사용자 결정 1번(`MAGI5_USER_DECISIONS_20260925.md`). 확인: H₂O RHF/def2-SVP −75.960975 Eh. 기존 환경 무변경. 다른 기기에는 없음.
+
+> **[desktop 2026-11-04 14:4x]** ⚠ **Zeo++ `-block` 이 UFF4MOF 이완 초격자(2×2×3 = 12셀)에서 메모리로 세 번 죽었습니다** — `uff300_e24i/*_after.cif` 의 PACMAN 전하본(2,448~2,496 원자) · `network -ha` 입자 81,648 · Voronoi 노드 443,568 · 표본 50,000(E-24i 와 같은 수): 모체 1.65 Å 최대 RSS 13.6 · 17.2 GB, −Br 1.65 Å 17.2 GB(WSL 19 GB) · 분당 ≈ 1 GB 증가 · 주머니 수와 무관. `-chan` 은 같은 구조에서 문제없음(6건 rc 0). 위 Junseok 09-25 실측("-block 은 표본 수로 커짐 · 큰 셀은 한 번에 한 건")과 같은 방향 — **12셀 초격자는 한 건도 HKHOME 에 안 들어갑니다.** 기록 `results_znbdt_a_access_hkhome.json`(883348e7).

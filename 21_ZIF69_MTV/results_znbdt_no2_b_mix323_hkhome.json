@@ -1,0 +1,95 @@
+{
+ "test": "ZNBDT −NO2 열린 자리 작동점 S_mix 323 K",
+ "assign": "사용자 11-07 일단 돌려 · 사슬 틀 ASSIGN_ZNBDT_C1_20261105.md §1",
+ "registration": "등록 보완 대기(종합자 · 첫 결과 읽기 전)",
+ "protocol": {
+  "mix": {
+   "CO2": 0.15,
+   "N2": 0.85
+  },
+  "P_Pa": 100000.0,
+  "T_K": 323.0,
+  "init": 5000,
+  "cycles": 15000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "ewald": 1e-06,
+  "blocking": false
+ },
+ "note": "판정 없음(종합자). ± 는 RASPA 95 % CI, S_mix ± 는 두 적재의 상대 ± 제곱합. ok = 완주 표지 + 두 성분 적재 각 1줄 + 반환코드 0. 진행 중",
+ "rows": [
+  {
+   "name": "e24i_no2_open_s1",
+   "group": "형판 설계 후보(−NO₂ 열린 자리)",
+   "dim": 3,
+   "S_Henry": 111.04554481788725,
+   "S_Henry_err": 1.5330529590254345,
+   "S_Henry_src": "results_magi5_e3_e24i_no2_open_widom_hkhome.json ON (298 K) — 온도 다름 · 비 인용 금지",
+   "L": null,
+   "L_src": "—",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "N_super": 1272,
+   "cif": "charged_v3/e24i_no2_open_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "hkhome",
+   "flexible": null
+  },
+  {
+   "name": "e24i_no2_open_s2",
+   "group": "형판 설계 후보(−NO₂ 열린 자리)",
+   "dim": 3,
+   "S_Henry": 111.04554481788725,
+   "S_Henry_err": 1.5330529590254345,
+   "S_Henry_src": "results_magi5_e3_e24i_no2_open_widom_hkhome.json ON (298 K) — 온도 다름 · 비 인용 금지",
+   "L": null,
+   "L_src": "—",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "N_super": 1272,
+   "cif": "charged_v3/e24i_no2_open_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "hkhome",
+   "flexible": null
+  },
+  {
+   "name": "e24i_no2_open_s3",
+   "group": "형판 설계 후보(−NO₂ 열린 자리)",
+   "dim": 3,
+   "S_Henry": 111.04554481788725,
+   "S_Henry_err": 1.5330529590254345,
+   "S_Henry_src": "results_magi5_e3_e24i_no2_open_widom_hkhome.json ON (298 K) — 온도 다름 · 비 인용 금지",
+   "L": null,
+   "L_src": "—",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "N_super": 1272,
+   "cif": "charged_v3/e24i_no2_open_DDEC6.cif",
+   "status": "pending",
+   "returncode": null,
+   "seed": null,
+   "minutes": null,
+   "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+   "machine": "hkhome",
+   "flexible": null
+  }
+ ]
+}
