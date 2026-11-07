@@ -30,6 +30,13 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-07 21:38 · 랩탑  [착수] §7 랩탑 몫 — ① −NO₂ S_mix s4~s6 · ② e24h_cl_050b S_mix 3 + 물 4 · ③ −CN E s4~s6(사슬)
+하는 일: ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md §7 랩탑 줄. 러너 무수정(run_znbdt_no2_mix · run_e24g_mix · run_e22g_water · run_znbdt_e_humid3), 대상 · 기기 이름만 환경 변수 · 인자로.
+실행 위치: ~/mof_run_1107(master fdbcd98a worktree) · 로그 ~/.mof_chain/logs_1107/ · 사슬 ~/.mof_chain/chain_1107_laptop.sh(드라이버 886232 · 886323 · 886418 대기)
+건드리는 파일: 실행 worktree 의 결과 JSON · 실행 폴더 · COMMS/laptop.md · 이 파일.
+쓰는 코어: 7(① 3 · ② 3 · 물 1) → ③ 3
+다음: ①② 완주(23:1x~23:4x 견적) → 결과 master · ③ 자동 착수 → 11-08 13~15시 완주 견적.
+
 ## 11-07 20:33 · 랩탑  [완료] ZNBDT-C2 §10 공격(HKHOME 부탁) → COMMS/laptop.md · #5 −Br S_mix 소멸(laptop2 관문 탈락) · 랩탑 비어 있음
 하는 일: §10 허용 관문의 양(K_H(CO₂) 모체비)이 C2 두 끝점(−CN · −CH₃)을 구분하는지 master 원자료로 다시 셈(새 계산 없음). MAGI/MAGI-007_znbdt_c2_s10_attack_laptop.{py,json}.
 결과: 두 끝점 0.78 단위(관문 안) · §7 은 자료 전에 이 양을 서술로 둠 · 두 기체 같음 관문(ㄷ)은 N₂ 에서 올바른 대조를 떨어뜨림 · ㄹ 의 "보수적" 반박. laptop2 · 종합자 글을 먼저 읽었음(독립 확인 아님).
