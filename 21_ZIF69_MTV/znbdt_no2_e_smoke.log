@@ -1,0 +1,12 @@
+  [파일 관문] /home/mangwon1/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+  파일 관문 md5 8e8ec933f9013c7e932da04dc256efd3 일치
+Zn(bib)(bdtdc) E 습윤 3성분 — 기기 hkhome · 대상 ['e24i_no2_open'] · 반복 [1] · 작업 1 · 워커 6 · 사이클 10+0 · 스모크 True · 드라이 False
+  RUNS /home/mangwon1/.mof_chain/znbdt_e3_smoke_hkhome/runs
+  OUT  /home/mangwon1/.mof_chain/znbdt_e3_smoke_hkhome/results_znbdt_no2_e_humid3_hkhome_smoke.json
+  [          ok] ads e24i_no2_open_e3r1  CO2 0.5922 · water 0.03611 · N2 0.3755  18:43:34
+  [파일 관문] /home/mangwon1/RASPA/simulations/share/raspa/forcefield/UFF_MOF/force_field_mixing_rules.def
+              md5 8e8ec933f9013c7e932da04dc256efd3  (**일치**)
+감사 {"n": 1, "n_ok": 1, "seeds_distinct": true, "loading_line_counts_all_1": true, "component2_N2_seen_all": true}
+  e24i_no2_open_e3r1       ok True · 완주 True · 적재줄 {'CO2': 1, 'water': 1, 'N2': 1} · C2[N2] True · rc 0 · 씨앗 1794044612 · 막음 {"CO2": {"n_blocked": 0, "blocked_line": true, "block_file": "blk_co2.block", "n_spheres": 0, "n_cells": 6, "expected_n_blocked": 0, "n_blocked_eq_spheres_x_cells": true}, "N2": {"n_blocked": 0, "blocked_line": true, "block_file": "blk_n2.block", "n_spheres": 0, "n_cells": 6, "expected_n_blocked": 0, "n_blocked_eq_spheres_x_cells": true}, "water": {"n_blocked": 24, "blocked_line": true, "block_file": "blk_water.block", "n_spheres": 4, "n_cells": 6, "expected_n_blocked": 24, "n_blocked_eq_spheres_x_cells": true}} · S_humid 8.64 ± 8.51
+  e24i_no2_open      n 1 · S_humid 8.64 ± 8.51 · SD None · N₂ 상대 ± [0.699]
