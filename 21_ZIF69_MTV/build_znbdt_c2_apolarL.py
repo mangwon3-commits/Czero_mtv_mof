@@ -4,7 +4,7 @@
   L판  니트릴 C · N 전하 0(U·I 와 같음) → 빠진 짝 합(qN+qC)을 그 니트릴이 붙은 리간드의 비수소 원자(니트릴 C·N 제외) 전부에 균등 분배.
        리간드 = 결합 그래프에서 Zn 을 뗀 뒤 ipso C 가 속한 연결 성분 — **등록 문구대로 원판 `nb` 그래프**(N–C 는 < 1.2 Å, 그 밖은 < 1.6 Å).
        한 리간드에 니트릴 둘이면 두 짝 합을 그 리간드에 더함.
-  주의(기록만): 이 `nb` 그래프는 C–S(1.735~1.746 Å)를 1.6 Å 밖으로 보아 티오펜 S 가 리간드 성분에 들지 않습니다 — 분배 원자에 S 없음.
+  주의(기록만): 이 `nb` 그래프는 C–S(1.735~1.753 Å)를 1.6 Å 밖으로 보아 티오펜 S 가 리간드 성분에 들지 않습니다 — 분배 원자에 S 없음.
        "bdtdc 비수소 전부"(S 포함) 와 다른 점은 결과 JSON `variants.L.note_S` 에 원자 수와 함께 적습니다.
 니트릴 짝 · 원판 md5 는 기존 기록(results_znbdt_c2_build_hkhome.json, U·I)과 같아야 진행(assert). U·I 판 파일은 건드리지 않고 md5 만 다시 봅니다.
 실행: czeromof 파이썬 — `python build_znbdt_c2_apolarL.py` (21_ZIF69_MTV 에서)
@@ -89,7 +89,7 @@ def main():
         'assign': 'ASSIGN_ZNBDT_C2_20261105.md §7 (C2-L)', 'builder': 'build_znbdt_c2_apolarL.py',
         'rule': '니트릴 C·N 0 · 짝 합을 그 리간드(Zn 뗀 원판 nb 그래프의 ipso C 연결 성분)의 비수소 원자(니트릴 C·N 제외)에 균등',
         'ligands': ligrec,
-        'note_S': (f'원판 nb 그래프(C–S 1.735~1.746 Å > 1.6 Å 문턱)에서 티오펜 S 는 리간드 성분 밖 — 분배 원자에 S 없음'
+        'note_S': (f'원판 nb 그래프(C–S 1.735~1.753 Å > 1.6 Å 문턱)에서 티오펜 S 는 리간드 성분 밖 — 분배 원자에 S 없음'
                    f'(리간드마다 S {nS // max(len(ligrec), 1)}개 · 등록 문구 "원판 nb 그래프" 대로 함 · "bdtdc 비수소 전부" 로 읽으면 분배 원자 +S)'),
         'net_charge_written': float(qw.sum()), 'net_ok_1e-3': bool(abs(qw.sum()) <= 1e-3),
         'max_change_non_nitrile': float(max(abs(qw[k] - q0[k]) for k in range(len(a)) if k not in nit)),
