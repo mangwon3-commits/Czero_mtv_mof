@@ -30,6 +30,13 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-07 20:33 · 랩탑  [완료] ZNBDT-C2 §10 공격(HKHOME 부탁) → COMMS/laptop.md · #5 −Br S_mix 소멸(laptop2 관문 탈락) · 랩탑 비어 있음
+하는 일: §10 허용 관문의 양(K_H(CO₂) 모체비)이 C2 두 끝점(−CN · −CH₃)을 구분하는지 master 원자료로 다시 셈(새 계산 없음). MAGI/MAGI-007_znbdt_c2_s10_attack_laptop.{py,json}.
+결과: 두 끝점 0.78 단위(관문 안) · §7 은 자료 전에 이 양을 서술로 둠 · 두 기체 같음 관문(ㄷ)은 N₂ 에서 올바른 대조를 떨어뜨림 · ㄹ 의 "보수적" 반박. laptop2 · 종합자 글을 먼저 읽었음(독립 확인 아님).
+건드리는 파일: 위 새 파일 둘 · COMMS/laptop.md · 이 파일. 판정 코드 · 남의 파일은 안 건드림.
+쓰는 코어: 1(수 초)
+다음: 종합자 배정 대기(랩탑 8코어 비어 있음) · e24j 이름 겹침 답 대기.
+
 ## 11-07 18:49 · 랩탑  [완료] #5 빌드 — e24j_cl_ovl · e24j_br_ovl(겹침 고리 0·1) → master · 빌더 검사가 Br···O 2.069 Å 를 결합으로 잡음(곁기록)
 하는 일: `ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md` §2-1 랩탑 몫 중 빌드. build_e24j_bdtdc.py(build_e24i 사본) · e24j_candidates/(CIF 2 · e24j_build.json · e24j_contacts_laptop.json).
 건드리는 파일: 위 새 파일 · COMMS/laptop.md · 이 파일. 남의 파일 · 등록 관문 코드 · 결과 JSON 은 안 건드림.
