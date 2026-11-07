@@ -1,0 +1,376 @@
+{
+ "test": "#5 배치 민감도 — 겹침 고리(0·1) 4,8-치환 −Cl · −Br 관문 (0a)(0b) (laptop2 이완 · 측정)",
+ "assign": "ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md §2-1",
+ "relax_record": "results_e24j_relax_laptop2.json",
+ "code": "znbdt_no2_measure.py(#3) 와 같은 측정 · 같은 문턱",
+ "rows": {
+  "e24j_cl_ovl": {
+   "build": "e24j_candidates/e24j_cl_ovl.cif",
+   "relaxed": "relax_tnf/e24j_cl_ovl_relaxed.cif",
+   "substituent": "Cl",
+   "n_framework_matched": 200,
+   "max_framework_disp_A": 0.319,
+   "min_heteroatom_H": [
+    2.013,
+    "H···O",
+    "H148",
+    "O181"
+   ],
+   "gate0a_pass": "True",
+   "gate0b": {
+    "cif": "relax_tnf/e24j_cl_ovl_relaxed.cif",
+    "n_sub_atoms": 4,
+    "n_groups": 4,
+    "min_margin_A": -0.74,
+    "worst_pair": "Cl91···O182 2.530",
+    "n_clash_pairs": 12,
+    "pass_0b": false
+   },
+   "gate0b_pass": false,
+   "gate_all_pass": false,
+   "sites": [
+    {
+     "X": 88,
+     "ipso_C": 60,
+     "graph_neighbors_of_X": [
+      "C60"
+     ],
+     "graph_nonC_neighbor(서술 — 랩탑 18:49 ⚠)": false,
+     "closest_contact_any": [
+      2.53,
+      "Cl88···O181"
+     ],
+     "min_X_O": [
+      2.53,
+      "Cl88···O181"
+     ],
+     "max_bondi_overlap_from_X": [
+      0.74,
+      "Cl88···O181 2.530"
+     ]
+    },
+    {
+     "X": 89,
+     "ipso_C": 61,
+     "graph_neighbors_of_X": [
+      "C61"
+     ],
+     "graph_nonC_neighbor(서술 — 랩탑 18:49 ⚠)": false,
+     "closest_contact_any": [
+      2.53,
+      "Cl89···O180"
+     ],
+     "min_X_O": [
+      2.53,
+      "Cl89···O180"
+     ],
+     "max_bondi_overlap_from_X": [
+      0.74,
+      "Cl89···O180 2.530"
+     ]
+    },
+    {
+     "X": 90,
+     "ipso_C": 62,
+     "graph_neighbors_of_X": [
+      "C62"
+     ],
+     "graph_nonC_neighbor(서술 — 랩탑 18:49 ⚠)": false,
+     "closest_contact_any": [
+      2.53,
+      "Cl90···O183"
+     ],
+     "min_X_O": [
+      2.53,
+      "Cl90···O183"
+     ],
+     "max_bondi_overlap_from_X": [
+      0.74,
+      "Cl90···O183 2.530"
+     ]
+    },
+    {
+     "X": 91,
+     "ipso_C": 63,
+     "graph_neighbors_of_X": [
+      "C63"
+     ],
+     "graph_nonC_neighbor(서술 — 랩탑 18:49 ⚠)": false,
+     "closest_contact_any": [
+      2.53,
+      "Cl91···O182"
+     ],
+     "min_X_O": [
+      2.53,
+      "Cl91···O182"
+     ],
+     "max_bondi_overlap_from_X": [
+      0.74,
+      "Cl91···O182 2.530"
+     ]
+    }
+   ],
+   "contacts_after": {
+    "C···H": [
+     2.661,
+     "C23",
+     "H123"
+    ],
+    "C···O": [
+     2.799,
+     "C51",
+     "O183"
+    ],
+    "C···Cl": [
+     3.0,
+     "C4",
+     "Cl88"
+    ],
+    "C···C": [
+     2.752,
+     "C82",
+     "C83"
+    ],
+    "C···N": [
+     2.982,
+     "C32",
+     "N174"
+    ],
+    "Cl···H": [
+     2.648,
+     "Cl88",
+     "H96"
+    ],
+    "Cl···O": [
+     2.53,
+     "Cl91",
+     "O182"
+    ],
+    "Cl···S": [
+     3.057,
+     "Cl88",
+     "S193"
+    ],
+    "Cl···N": [
+     3.25,
+     "Cl88",
+     "N164"
+    ],
+    "H···N": [
+     2.615,
+     "H147",
+     "N169"
+    ],
+    "H···H": [
+     2.175,
+     "H148",
+     "H149"
+    ],
+    "H···O": [
+     2.013,
+     "H148",
+     "O181"
+    ],
+    "H···S": [
+     3.045,
+     "H159",
+     "S198"
+    ],
+    "N···O": [
+     3.527,
+     "N160",
+     "O188"
+    ],
+    "O···S": [
+     2.926,
+     "O179",
+     "S195"
+    ]
+   }
+  },
+  "e24j_br_ovl": {
+   "build": "e24j_candidates/e24j_br_ovl.cif",
+   "relaxed": "relax_tnf/e24j_br_ovl_relaxed.cif",
+   "substituent": "Br",
+   "n_framework_matched": 200,
+   "max_framework_disp_A": 0.58,
+   "min_heteroatom_H": [
+    1.776,
+    "H···O",
+    "H151",
+    "O182"
+   ],
+   "gate0a_pass": false,
+   "gate0b": {
+    "cif": "relax_tnf/e24j_br_ovl_relaxed.cif",
+    "n_sub_atoms": 4,
+    "n_groups": 4,
+    "min_margin_A": -1.464,
+    "worst_pair": "Br0···O181 1.906",
+    "n_clash_pairs": 20,
+    "pass_0b": false
+   },
+   "gate0b_pass": false,
+   "gate_all_pass": false,
+   "sites": [
+    {
+     "X": 0,
+     "ipso_C": 64,
+     "graph_neighbors_of_X": [
+      "C64",
+      "O181"
+     ],
+     "graph_nonC_neighbor(서술 — 랩탑 18:49 ⚠)": true,
+     "closest_contact_any": [
+      1.906,
+      "Br0···O181"
+     ],
+     "min_X_O": [
+      1.906,
+      "Br0···O181"
+     ],
+     "max_bondi_overlap_from_X": [
+      1.464,
+      "Br0···O181 1.906"
+     ]
+    },
+    {
+     "X": 1,
+     "ipso_C": 65,
+     "graph_neighbors_of_X": [
+      "C65",
+      "O180"
+     ],
+     "graph_nonC_neighbor(서술 — 랩탑 18:49 ⚠)": true,
+     "closest_contact_any": [
+      1.906,
+      "Br1···O180"
+     ],
+     "min_X_O": [
+      1.906,
+      "Br1···O180"
+     ],
+     "max_bondi_overlap_from_X": [
+      1.464,
+      "Br1···O180 1.906"
+     ]
+    },
+    {
+     "X": 2,
+     "ipso_C": 66,
+     "graph_neighbors_of_X": [
+      "C66",
+      "O183"
+     ],
+     "graph_nonC_neighbor(서술 — 랩탑 18:49 ⚠)": true,
+     "closest_contact_any": [
+      1.906,
+      "Br2···O183"
+     ],
+     "min_X_O": [
+      1.906,
+      "Br2···O183"
+     ],
+     "max_bondi_overlap_from_X": [
+      1.464,
+      "Br2···O183 1.906"
+     ]
+    },
+    {
+     "X": 3,
+     "ipso_C": 67,
+     "graph_neighbors_of_X": [
+      "C67",
+      "O182"
+     ],
+     "graph_nonC_neighbor(서술 — 랩탑 18:49 ⚠)": true,
+     "closest_contact_any": [
+      1.906,
+      "Br3···O182"
+     ],
+     "min_X_O": [
+      1.906,
+      "Br3···O182"
+     ],
+     "max_bondi_overlap_from_X": [
+      1.464,
+      "Br3···O182 1.906"
+     ]
+    }
+   ],
+   "contacts_after": {
+    "Br···C": [
+     2.896,
+     "Br3",
+     "C11"
+    ],
+    "Br···N": [
+     3.123,
+     "Br1",
+     "N165"
+    ],
+    "Br···O": [
+     2.967,
+     "Br3",
+     "O178"
+    ],
+    "Br···H": [
+     2.441,
+     "Br3",
+     "H99"
+    ],
+    "C···H": [
+     2.66,
+     "C27",
+     "H123"
+    ],
+    "C···O": [
+     2.719,
+     "C55",
+     "O182"
+    ],
+    "C···C": [
+     2.752,
+     "C86",
+     "C87"
+    ],
+    "C···N": [
+     2.974,
+     "C36",
+     "N174"
+    ],
+    "H···O": [
+     1.776,
+     "H151",
+     "O182"
+    ],
+    "H···H": [
+     2.208,
+     "H148",
+     "H149"
+    ],
+    "H···N": [
+     2.61,
+     "H140",
+     "N174"
+    ],
+    "H···S": [
+     3.05,
+     "H159",
+     "S198"
+    ],
+    "N···O": [
+     3.506,
+     "N167",
+     "O190"
+    ],
+    "O···S": [
+     2.958,
+     "O184",
+     "S196"
+    ]
+   }
+  }
+ },
+ "note": "판정은 종합자. 탈락이면 그 치환기는 여기서 끝(등록 §2-1)."
+}
