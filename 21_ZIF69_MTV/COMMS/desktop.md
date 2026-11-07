@@ -6353,3 +6353,10 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 - **자원**: simulate 상한 8(Widom 4 + S_mix 3 → 물 4 + 막음 물 1 + S_mix 3 → 물 + B 3). 사슬 `~/.mof_chain/no2_chain_v2.sh`(PID 2270541) · 기록 `znbdt_no2_chain.log`. v1(E 포함 · 막음 물만)은 등록을 읽고 18:46 에 PID 로 멈췄습니다(아무것도 안 띄운 채).
 - **견적(출처: 같은 격자 실측을 옮김)**: Widom ≈ 20 분(E-24i 19~22 분) · S_mix 53~80 분(HKHOME 실측) · 물 ≈ 45~50 분/작업(E-22g 다른 계 · 넓게 봄) · 막음 물 ≈ 17 분/작업(E-24i C₂H₅ Junseok) × 4 순차 · B 41~42 분 · 관문 ⑤ 미실측 → **RASPA 끝 ≈ 21:0x · ⑤ 는 그 뒤**. 묶는 쪽은 최장 단일 작업(S_mix 뒤의 B).
 - **postman 18:45 reset --mixed 무늬 재발**: 작업트리에 cloud.md · 등록문(없음으로 보임) · MAGI · SESSION_LOG 의 옛 판이 남았습니다. postman 은 자기 우편함만 올리므로 되돌림 커밋은 안 납니다. 작업트리 복구(`git checkout HEAD -- …`)는 이 세션에서 권한이 거부돼 사용자 확인 뒤에 합니다 — 그 전까지 이 기기에서 `git commit -a` 금지.
+
+## 2026-11-07 21:02 — HKHOME: **#4 −NO₂ 열린 자리 전부 완주**(표지만 확인 · 값은 아직 아무것도 안 읽음 · 판정은 종합자)
+
+- **완주 표지**: Widom ON/OFF `.data` 4/4 `Simulation finished` · 행 status ok · S_mix 3씨앗 3/3(rc 0 · 씨앗 셋 다름) · 4-3 물(막음 없음) 4/4(marker · 머리말 관문 · 물 5자리 · seed_dup 0) · 서술 막음 물 4/4(n_blocked 24 = 구 4 × 셀 6) · B 323 K 3/3 · 관문 ⑤ status ok(바깥 루프 12 · Zeo++ 워커 1). CIF md5 3a2a53ac 일치(전 단계). 로그에 Traceback 없음.
+- **결과 파일**(postman 이 master 에 반입, 74ba3582 ~ 9f9797c0): `results_magi5_e3_e24i_no2_open_widom_hkhome.json` · `results_znbdt_no2_mix_hkhome.json` · `results_znbdt_no2_water_hkhome.json` · `results_znbdt_no2_water_blk_hkhome.json` · `results_znbdt_no2_b_mix323_hkhome.json` · `results_znbdt_no2_gate5_hkhome.json`.
+- **실측 시각**: Widom 18:40~18:55 · S_mix ~19:38 · 물 ~19:16 · 막음 물 ~20:08 · B ~20:17 · ⑤ 20:18~20:24. 견적(21:0x)보다 일찍 끝남.
+- **아직 답 없음**: 위 ⑤ 물 자(관문 W 를 막음 없음/막음 어느 쪽으로 읽나). 기본은 등록 그대로 막음 없음입니다. HKHOME 은 지금 계산 0 — 다음 배정을 기다립니다.
