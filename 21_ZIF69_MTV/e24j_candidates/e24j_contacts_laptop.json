@@ -1,0 +1,221 @@
+{
+ "what": "#5 빌드 곁기록 — 빌더 그래프(공유 반지름 × BOND_MULT)가 X···O 를 결합으로 잡는지 · 직접 잰 X···O · 이완 전 clash_gate",
+ "assign": "ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md §2-1",
+ "machine": "laptop",
+ "bond_mult": 1.15,
+ "note": "판정 아님 — 등록 관문은 laptop2 이완 뒤. clash_gate 는 Bondi 반지름 · 겹침 0.4 Å(결합 판정을 쓰지 않음)",
+ "rows": [
+  {
+   "name": "e24j_cl_ovl",
+   "cif": "e24j_candidates/e24j_cl_ovl.cif",
+   "site": "겹침(고리 0·1)",
+   "md5": "84e234e5385af5b57f890f2066b26e99",
+   "X_O_min_A": 2.161,
+   "X_O_counted_as_bond_any": false,
+   "per_X": [
+    {
+     "atom": "Cl200",
+     "X_O_min_A": 2.161,
+     "O": "O189",
+     "graph_neighbors": [
+      "C132"
+     ],
+     "X_O_counted_as_bond": false
+    },
+    {
+     "atom": "Cl201",
+     "X_O_min_A": 2.161,
+     "O": "O188",
+     "graph_neighbors": [
+      "C133"
+     ],
+     "X_O_counted_as_bond": false
+    },
+    {
+     "atom": "Cl202",
+     "X_O_min_A": 2.161,
+     "O": "O191",
+     "graph_neighbors": [
+      "C134"
+     ],
+     "X_O_counted_as_bond": false
+    },
+    {
+     "atom": "Cl203",
+     "X_O_min_A": 2.161,
+     "O": "O190",
+     "graph_neighbors": [
+      "C135"
+     ],
+     "X_O_counted_as_bond": false
+    }
+   ],
+   "clash_gate_unrelaxed": {
+    "min_margin_A": -1.109,
+    "worst_pair": "Cl200···O189 2.161",
+    "n_clash_pairs": 12,
+    "pass_0b": false
+   }
+  },
+  {
+   "name": "e24j_br_ovl",
+   "cif": "e24j_candidates/e24j_br_ovl.cif",
+   "site": "겹침(고리 0·1)",
+   "md5": "bbc992f515516b435851f3608718c271",
+   "X_O_min_A": 2.069,
+   "X_O_counted_as_bond_any": true,
+   "per_X": [
+    {
+     "atom": "Br200",
+     "X_O_min_A": 2.069,
+     "O": "O189",
+     "graph_neighbors": [
+      "C132",
+      "O189"
+     ],
+     "X_O_counted_as_bond": true
+    },
+    {
+     "atom": "Br201",
+     "X_O_min_A": 2.069,
+     "O": "O188",
+     "graph_neighbors": [
+      "C133",
+      "O188"
+     ],
+     "X_O_counted_as_bond": true
+    },
+    {
+     "atom": "Br202",
+     "X_O_min_A": 2.069,
+     "O": "O191",
+     "graph_neighbors": [
+      "C134",
+      "O191"
+     ],
+     "X_O_counted_as_bond": true
+    },
+    {
+     "atom": "Br203",
+     "X_O_min_A": 2.069,
+     "O": "O190",
+     "graph_neighbors": [
+      "C135",
+      "O190"
+     ],
+     "X_O_counted_as_bond": true
+    }
+   ],
+   "clash_gate_unrelaxed": {
+    "min_margin_A": -1.301,
+    "worst_pair": "Br203···O190 2.069",
+    "n_clash_pairs": 12,
+    "pass_0b": false
+   }
+  },
+  {
+   "name": "E24i_ZnDia_Cl_open",
+   "cif": "e24i_candidates/E24i_ZnDia_Cl_open.cif",
+   "site": "열린(고리 2·3) 대조",
+   "md5": "2c25ede32af913cdc613eb65500d1d57",
+   "X_O_min_A": 3.316,
+   "X_O_counted_as_bond_any": false,
+   "per_X": [
+    {
+     "atom": "Cl200",
+     "X_O_min_A": 3.316,
+     "O": "O197",
+     "graph_neighbors": [
+      "C156"
+     ],
+     "X_O_counted_as_bond": false
+    },
+    {
+     "atom": "Cl201",
+     "X_O_min_A": 3.316,
+     "O": "O196",
+     "graph_neighbors": [
+      "C157"
+     ],
+     "X_O_counted_as_bond": false
+    },
+    {
+     "atom": "Cl202",
+     "X_O_min_A": 3.316,
+     "O": "O199",
+     "graph_neighbors": [
+      "C158"
+     ],
+     "X_O_counted_as_bond": false
+    },
+    {
+     "atom": "Cl203",
+     "X_O_min_A": 3.316,
+     "O": "O198",
+     "graph_neighbors": [
+      "C159"
+     ],
+     "X_O_counted_as_bond": false
+    }
+   ],
+   "clash_gate_unrelaxed": {
+    "min_margin_A": 0.046,
+    "worst_pair": "Cl203···O198 3.316",
+    "n_clash_pairs": 0,
+    "pass_0b": true
+   }
+  },
+  {
+   "name": "E24i_ZnDia_Br_open",
+   "cif": "e24i_candidates/E24i_ZnDia_Br_open.cif",
+   "site": "열린(고리 2·3) 대조",
+   "md5": "dd3492cf7889ed06ae7892c9d7434b0e",
+   "X_O_min_A": 3.148,
+   "X_O_counted_as_bond_any": false,
+   "per_X": [
+    {
+     "atom": "Br200",
+     "X_O_min_A": 3.148,
+     "O": "O197",
+     "graph_neighbors": [
+      "C156"
+     ],
+     "X_O_counted_as_bond": false
+    },
+    {
+     "atom": "Br201",
+     "X_O_min_A": 3.148,
+     "O": "O196",
+     "graph_neighbors": [
+      "C157"
+     ],
+     "X_O_counted_as_bond": false
+    },
+    {
+     "atom": "Br202",
+     "X_O_min_A": 3.148,
+     "O": "O199",
+     "graph_neighbors": [
+      "C158"
+     ],
+     "X_O_counted_as_bond": false
+    },
+    {
+     "atom": "Br203",
+     "X_O_min_A": 3.148,
+     "O": "O198",
+     "graph_neighbors": [
+      "C159"
+     ],
+     "X_O_counted_as_bond": false
+    }
+   ],
+   "clash_gate_unrelaxed": {
+    "min_margin_A": -0.222,
+    "worst_pair": "Br200···O197 3.148",
+    "n_clash_pairs": 0,
+    "pass_0b": true
+   }
+  }
+ ]
+}

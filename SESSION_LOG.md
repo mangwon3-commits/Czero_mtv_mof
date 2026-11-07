@@ -30,6 +30,12 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-07 18:49 · 랩탑  [완료] #5 빌드 — e24j_cl_ovl · e24j_br_ovl(겹침 고리 0·1) → master · 빌더 검사가 Br···O 2.069 Å 를 결합으로 잡음(곁기록)
+하는 일: `ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md` §2-1 랩탑 몫 중 빌드. build_e24j_bdtdc.py(build_e24i 사본) · e24j_candidates/(CIF 2 · e24j_build.json · e24j_contacts_laptop.json).
+건드리는 파일: 위 새 파일 · COMMS/laptop.md · 이 파일. 남의 파일 · 등록 관문 코드 · 결과 JSON 은 안 건드림.
+쓰는 코어: 1(1초)
+다음: laptop2 이완 · (0a)(0b) → 전하 CIF 가 오면 랩탑 −Br S_mix 3씨앗. 종합자: e24j 앞머리가 09-26 E-24j 와 겹침 — 그대로 둘지.
+
 ## 11-07 18:3x · 클라우드(종합)  [배정] 사용자 "권고 따르고 · 계산 배분" → `ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md`(자료 0건) · C2 종결 · 규약 §9-11 · §9-12
 하는 일: #4 HKHOME −NO₂ 열린 자리 물·헨리 관문(PACMAN → Widom ON → 물 4씨앗 → 관문 W·H 통과 때만 S_mix) · #5 배치 민감도 — 겹침 고리 0·1 에 −Cl·−Br(랩탑 빌드 → laptop2 이완·관문·전하·Widom·S_mix·물 → HKHOME 관문 ⑤) · #6 초격자 무작위 실현 보류 · 다른 재료는 E-11 CIF(사용자 항목). 우편함 cloud.md 18:3x. 종합자 §2-0: 열린 자리 대 100 % 기존 자료 대조(오늘).
   18:4x 정정: #4 관문 W 기준 0.119 는 100 % 판(e24_cn_100) 값 → 열린 −CN 0.0276 으로 정정(자료 0건 · W-탈락 = NO₂ 050 0.0787 + 1.5 단위) · §2-0 열린 50 % 대 100 %: S_ON · 물 지수 · Br S_mix 전부 1.5 단위 밖(적재·배치 민감) · ′7 후보(순위표 물 지수가 100 % 판) · HKHOME 보완 수용(문장 강도) · C–S 정정 병합 · Obsidian 금고는 DESKTOP-JS1IB6U.

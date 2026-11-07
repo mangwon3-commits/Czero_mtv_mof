@@ -1,3 +1,28 @@
+
+## 2026-11-07 18:49 — [#5] 랩탑 빌드 끝: `e24j_cl_ovl` · `e24j_br_ovl`(겹침 고리 0·1) · ⚠ 빌더 검사는 Br···O 2.069 Å 를 결합으로 잡아 보지 못합니다
+
+**받는 곳**: laptop2(이완 · 관문) · 클라우드 종합자 · HKHOME · 사용자
+**요약**: 등록문 `ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md` §2-1 대로 빌더 사본을 만들어 두 구조를 빌드했습니다. 빌더 충돌 검사는 둘 다 통과로 찍혔지만, −Br 의 기록은 실제 최근접 접촉을 빠뜨렸습니다. Br···O 2.069 Å 가 공유 반지름 합 × 1.15(2.139 Å) 안에 들어와 빌더 그래프가 이 짝을 Br–O 결합으로 잡았기 때문입니다. laptop2 가 쓸 관문 (0b) `clash_gate.check` 는 결합 판정 없이 Bondi 반지름으로 재므로 이 접촉을 봅니다. 그래서 이완 전 값은 참고로만 적고, 판정은 이완 뒤 관문과 종합자에게 둡니다.
+**답 필요**: 예 — laptop2: 이완 착수 한 줄 / 종합자: 아래 ③ 의 이름 겹침을 그대로 둘지
+
+    빌드      build_e24j_bdtdc.py = build_e24i_bdtdc.py 사본. 바꾼 것 다섯: OPEN_RINGS (0, 1) · KINDS ('Cl', 'Br') · 출력 e24j_candidates/ · 이름 · 기록 파일
+              형판 core_pop_cifs/2017_Zn__dia_3_ASR_1.cif md5 526ff364(zip 판과 직접 대조해 일치) · seed 3618 · 랩탑 18:46 · 1초
+    산출      e24j_candidates/e24j_cl_ovl.cif 84e234e5 · e24j_br_ovl.cif bbc992f5 · e24j_build.json ccafad0d
+              둘 다 C88H68X4N16O16S8Zn4 · 204 원자 · 고리 [0, 1] · 치환 4
+    ① 빌더 기록   Cl: 비결합 최소 O–Cl 2.161 · Br: 비결합 최소 H–H 2.284, 치환기 최소 H–Br 2.605 · 충돌 검사 둘 다 통과
+    ② 직접 잰 값  X···O 최소: Cl 2.161 · **Br 2.069**(네 자리 같음) / 열린 판(e24i) 대조: Cl 3.316 · Br 3.148
+                  이완 전 (0b) clash_gate: Cl 여유 −1.109 · Br −1.301 · 충돌 짝 각 12 / 열린 판 Cl +0.046 · Br −0.222(둘 다 통과)
+                  원인: Br 1.20 + O 0.66 = 1.86 Å × 1.15 = 2.139 Å > 2.069 → Br 의 그래프 이웃이 C · O 둘. Cl 은 1.932 Å < 2.161 이라 결합으로 안 잡힘
+                  곁기록 e24j_candidates/e24j_contacts_laptop.json(e24j_contacts_laptop.py) — 판정 아님
+    ③ 이름 겹침   앞머리 e24j 는 09-26 의 E-24j(HKHOME 24차 · 모체 UFF4MOF 상한 300 · run_e24j_relax.py · results_e24j_relax300_hkhome.json)와 같습니다.
+                  파일 이름은 겹치지 않으므로 등록문 이름을 그대로 썼습니다.
+    랩탑      빌드만 했습니다. 다음 몫은 laptop2 의 전하 CIF(charged_v3/e24j_br_ovl_DDEC6.cif)가 master 에 온 뒤의 −Br S_mix 3씨앗입니다.
+
+- ② 는 빌더 검사의 눈이 닿지 않는 자리를 적은 것입니다. HKHOME 이 C1 에서 말단 C–O 1.358 Å 가 결합으로 잡혀 알카인으로 안 보인다고 적은 것(11-05 01:39)과 같은 모양입니다. 등록 관문의 코드와 문턱은 바꾸지 않았습니다.
+- 이 기록은 랩탑의 데스크탑앱 세션이 적었고, 작업트리를 건드리지 않는 별도 worktree 에서 빌드하고 직접 커밋했습니다.
+
+---
+
 ## 2026-11-05 12:1x — 결정 ④ 끝: postman.sh (21) — add 단계는 자기 우편함만 올림 · master b46f63d4 · 판 ecb74e22
 
 **받는 곳**: HKHOME · laptop2 · 클라우드 종합자 · 사용자
