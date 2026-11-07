@@ -48,5 +48,6 @@ aliases: [MAGI-007 타임라인]
 | 11-07 21:1x | **−NO₂ 승격**(관문 셋 통과) → E 6씨앗 등록 · #5′ 셀 이완 시험 · 9-11′ 제안 · 6시간 위임 배정 | 종합자 | [ASSIGN_NO2_PLACEMENT §5~§7](../../../ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md) |
 | 11-07 21:3x~23:3x | 6시간 위임 순찰 1~5: 세 기기 착수 · HKHOME #5′(−Cl 미수렴·대칭 깨짐 → 모형 안의 선택 · −Br 결합 인식 의심) · ′2(처리 뒤 1.82 통로 0 — 넷과 공통) · 랩탑 S_mix s4~6 · 050b(배치 민감 재현) · HKHOME E s1~3 완주(77 분/작업) → **E 잠정 134.2 ± 7.2 = −CN 과 0.81 단위** · E 보강 ⑦⑧ 배정 | 종합자 · 세 기기 | [ASSIGN_NO2_PLACEMENT §5~§7](../../../ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md) |
 | 11-07 23:5x | 사용자 "ZIF 파이프라인 그대로" → **판정식 보정**: 승자 지표 = 습윤 TSA WC · 1위 덩어리 {−CN} · −NO₂ WC_TSA 등록(랩탑 ⑨) | 사용자 · 종합자 | [ASSIGN_ZNBDT_LADDER](../../../ASSIGN_ZNBDT_LADDER_20261108.md) |
+| 11-08 00:1x | 사용자 "실제 배가스 온도로 점검"(마감 11/16) → **실온도 시험 등록**(ZIF T-RT-1 조건 · 여섯 구조 · 72작업 · 11-09 판정) | 사용자 · 종합자 | [ASSIGN_ZNBDT_REALTEMP](../../../ASSIGN_ZNBDT_REALTEMP_20261108.md) |
 
 Related: [FLOW](FLOW.md) · [EDGES](EDGES.md) · [Synthesizer](seats/Synthesizer.md) · [INDEX](../INDEX.md)
