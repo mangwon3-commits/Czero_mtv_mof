@@ -1,0 +1,2234 @@
+{
+ "test": "#5′ — 셀 이완본의 관문 (0a)(0b), LAMMPS 슈퍼셀 전체에서(접지 않음)",
+ "assign": "ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md §5-3",
+ "supersedes": "results_e24j_screen_cellrelax_hkhome.json(복제 0 을 단위셀로 접어 잼 — c 방향 복제 대칭이 깨져 대표 못 함)",
+ "relax_record": "results_e24j_cellrelax_hkhome.json",
+ "code": "e24j_cellrelax_measure_super.py · measure = run_e24j_cellrelax.measure(= e24j_measure.py · clash_gate.check)",
+ "frame_note": "빌드본 · 모체 기준 원자 = 슈퍼셀 배수로 반복 → 이완 셀로 분수좌표 그대로(셀 변형 몫 제외). 원점 강체 이동(복제 0 중앙값)만 뺌.",
+ "machine": "hkhome",
+ "rows": {
+  "e24j_cl_ovl": {
+   "status": "ok",
+   "substituent": "Cl",
+   "supercell_n": [
+    2,
+    2,
+    3
+   ],
+   "rep": 12,
+   "symbol_order_ok": true,
+   "replica_symmetry_by_axis": {
+    "a": {
+     "max_dev_A": 0.0,
+     "n_atoms_dev_gt_0.5A": 0,
+     "n_atoms_per_cell": 204
+    },
+    "b": {
+     "max_dev_A": 0.0,
+     "n_atoms_dev_gt_0.5A": 0,
+     "n_atoms_per_cell": 204
+    },
+    "c": {
+     "max_dev_A": 5.1311,
+     "n_atoms_dev_gt_0.5A": 138,
+     "n_atoms_per_cell": 204
+    }
+   },
+   "rigid_shift_unitfrac_removed": [
+    -0.02476,
+    0.00475,
+    -0.07585
+   ],
+   "relaxed_data": "lmp_e24j_cr/e24j_cl_ovl/min_e24j_cl_ovl.data",
+   "relaxed_data_md5": "a1eeaa9d210b4d92cad4810d6bfced3a",
+   "super_cif": "e24j_cellrelax/e24j_cl_ovl_cellrelaxed_super.cif",
+   "super_cif_md5": "1bbcc712f82eb1333c7b2d23a5e393e9",
+   "cell_change_per_unitcell": {
+    "before_cellpar": [
+     24.404,
+     14.181,
+     9.304,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "after_cellpar": [
+     24.826,
+     14.0456,
+     9.7565,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "d_len_pct": [
+     1.729,
+     -0.955,
+     4.863
+    ],
+    "d_angle_deg": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "d_volume_pct": 5.657
+   },
+   "final_EDiff_outer_loops": [
+    6.36680113062994,
+    12
+   ],
+   "super": {
+    "measured": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cellrelax/e24j_cl_ovl_cellrelaxed_super.cif",
+    "n_framework_matched": 2400,
+    "max_framework_disp_A": 2.458,
+    "min_heteroatom_H": [
+     2.415,
+     "H···O",
+     "H1933",
+     "O2016"
+    ],
+    "gate0a_pass": "False",
+    "gate0b": {
+     "cif": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cellrelax/e24j_cl_ovl_cellrelaxed_super.cif",
+     "n_sub_atoms": 396,
+     "n_groups": 244,
+     "min_margin_A": -2.003,
+     "worst_pair": "C1680···C1676 1.397",
+     "n_clash_pairs": 467,
+     "pass_0b": false
+    },
+    "gate0b_pass": false,
+    "gate_all_pass": "False",
+    "sites": [
+     {
+      "X": 88,
+      "ipso_C": 60,
+      "graph_neighbors_of_X": [
+       "C60"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.898,
+       "Cl88···H148"
+      ],
+      "min_X_O": [
+       3.072,
+       "Cl88···O181"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.198,
+       "Cl88···O181 3.072"
+      ]
+     },
+     {
+      "X": 89,
+      "ipso_C": 61,
+      "graph_neighbors_of_X": [
+       "C61"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.9,
+       "Cl89···H149"
+      ],
+      "min_X_O": [
+       3.201,
+       "Cl89···O180"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.093,
+       "Cl89···N165 3.207"
+      ]
+     },
+     {
+      "X": 90,
+      "ipso_C": 62,
+      "graph_neighbors_of_X": [
+       "C62"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.877,
+       "Cl90···H150"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       0.133,
+       "Cl90···C615 3.317"
+      ]
+     },
+     {
+      "X": 91,
+      "ipso_C": 63,
+      "graph_neighbors_of_X": [
+       "C63"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl91···H151"
+      ],
+      "min_X_O": [
+       3.398,
+       "Cl91···O182"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.098,
+       "Cl91···C7 3.352"
+      ]
+     },
+     {
+      "X": 292,
+      "ipso_C": 264,
+      "graph_neighbors_of_X": [
+       "C264"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl292···H352"
+      ],
+      "min_X_O": [
+       3.207,
+       "Cl292···O385"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.063,
+       "Cl292···O385 3.207"
+      ]
+     },
+     {
+      "X": 293,
+      "ipso_C": 265,
+      "graph_neighbors_of_X": [
+       "C265"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.9,
+       "Cl293···H353"
+      ],
+      "min_X_O": [
+       3.071,
+       "Cl293···O384"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.199,
+       "Cl293···O384 3.071"
+      ]
+     },
+     {
+      "X": 294,
+      "ipso_C": 266,
+      "graph_neighbors_of_X": [
+       "C266"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl294···H354"
+      ],
+      "min_X_O": [
+       3.178,
+       "Cl294···O387"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.092,
+       "Cl294···O387 3.178"
+      ]
+     },
+     {
+      "X": 295,
+      "ipso_C": 267,
+      "graph_neighbors_of_X": [
+       "C267"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.903,
+       "Cl295···H355"
+      ],
+      "min_X_O": [
+       3.105,
+       "Cl295···O386"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.165,
+       "Cl295···O386 3.105"
+      ]
+     },
+     {
+      "X": 496,
+      "ipso_C": 468,
+      "graph_neighbors_of_X": [
+       "C468"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.883,
+       "Cl496···H556"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -0.137,
+       "Cl496···C420 3.587"
+      ]
+     },
+     {
+      "X": 497,
+      "ipso_C": 469,
+      "graph_neighbors_of_X": [
+       "C469"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.887,
+       "Cl497···H557"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -9.9,
+       null
+      ]
+     },
+     {
+      "X": 498,
+      "ipso_C": 470,
+      "graph_neighbors_of_X": [
+       "C470"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.891,
+       "Cl498···H558"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       0.014,
+       "Cl498···C414 3.436"
+      ]
+     },
+     {
+      "X": 499,
+      "ipso_C": 471,
+      "graph_neighbors_of_X": [
+       "C471"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.887,
+       "Cl499···H559"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -0.091,
+       "Cl499···C1030 3.541"
+      ]
+     },
+     {
+      "X": 700,
+      "ipso_C": 672,
+      "graph_neighbors_of_X": [
+       "C672"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.898,
+       "Cl700···H760"
+      ],
+      "min_X_O": [
+       3.072,
+       "Cl700···O793"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.198,
+       "Cl700···O793 3.072"
+      ]
+     },
+     {
+      "X": 701,
+      "ipso_C": 673,
+      "graph_neighbors_of_X": [
+       "C673"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.9,
+       "Cl701···H761"
+      ],
+      "min_X_O": [
+       3.201,
+       "Cl701···O792"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.093,
+       "Cl701···N777 3.207"
+      ]
+     },
+     {
+      "X": 702,
+      "ipso_C": 674,
+      "graph_neighbors_of_X": [
+       "C674"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.877,
+       "Cl702···H762"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       0.133,
+       "Cl702···C3 3.317"
+      ]
+     },
+     {
+      "X": 703,
+      "ipso_C": 675,
+      "graph_neighbors_of_X": [
+       "C675"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl703···H763"
+      ],
+      "min_X_O": [
+       3.398,
+       "Cl703···O794"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.098,
+       "Cl703···C619 3.352"
+      ]
+     },
+     {
+      "X": 904,
+      "ipso_C": 876,
+      "graph_neighbors_of_X": [
+       "C876"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl904···H964"
+      ],
+      "min_X_O": [
+       3.207,
+       "Cl904···O997"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.063,
+       "Cl904···O997 3.207"
+      ]
+     },
+     {
+      "X": 905,
+      "ipso_C": 877,
+      "graph_neighbors_of_X": [
+       "C877"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.9,
+       "Cl905···H965"
+      ],
+      "min_X_O": [
+       3.071,
+       "Cl905···O996"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.199,
+       "Cl905···O996 3.071"
+      ]
+     },
+     {
+      "X": 906,
+      "ipso_C": 878,
+      "graph_neighbors_of_X": [
+       "C878"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl906···H966"
+      ],
+      "min_X_O": [
+       3.178,
+       "Cl906···O999"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.092,
+       "Cl906···O999 3.178"
+      ]
+     },
+     {
+      "X": 907,
+      "ipso_C": 879,
+      "graph_neighbors_of_X": [
+       "C879"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.903,
+       "Cl907···H967"
+      ],
+      "min_X_O": [
+       3.105,
+       "Cl907···O998"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.165,
+       "Cl907···O998 3.105"
+      ]
+     },
+     {
+      "X": 1108,
+      "ipso_C": 1080,
+      "graph_neighbors_of_X": [
+       "C1080"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.883,
+       "Cl1108···H1168"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -0.137,
+       "Cl1108···C1032 3.587"
+      ]
+     },
+     {
+      "X": 1109,
+      "ipso_C": 1081,
+      "graph_neighbors_of_X": [
+       "C1081"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.887,
+       "Cl1109···H1169"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -9.9,
+       null
+      ]
+     },
+     {
+      "X": 1110,
+      "ipso_C": 1082,
+      "graph_neighbors_of_X": [
+       "C1082"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.891,
+       "Cl1110···H1170"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       0.014,
+       "Cl1110···C1026 3.436"
+      ]
+     },
+     {
+      "X": 1111,
+      "ipso_C": 1083,
+      "graph_neighbors_of_X": [
+       "C1083"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.887,
+       "Cl1111···H1171"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -0.091,
+       "Cl1111···C418 3.541"
+      ]
+     },
+     {
+      "X": 1312,
+      "ipso_C": 1284,
+      "graph_neighbors_of_X": [
+       "C1284"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.898,
+       "Cl1312···H1372"
+      ],
+      "min_X_O": [
+       3.072,
+       "Cl1312···O1405"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.198,
+       "Cl1312···O1405 3.072"
+      ]
+     },
+     {
+      "X": 1313,
+      "ipso_C": 1285,
+      "graph_neighbors_of_X": [
+       "C1285"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.9,
+       "Cl1313···H1373"
+      ],
+      "min_X_O": [
+       3.201,
+       "Cl1313···O1404"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.093,
+       "Cl1313···N1389 3.207"
+      ]
+     },
+     {
+      "X": 1314,
+      "ipso_C": 1286,
+      "graph_neighbors_of_X": [
+       "C1286"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.877,
+       "Cl1314···H1374"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       0.133,
+       "Cl1314···C1839 3.317"
+      ]
+     },
+     {
+      "X": 1315,
+      "ipso_C": 1287,
+      "graph_neighbors_of_X": [
+       "C1287"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl1315···H1375"
+      ],
+      "min_X_O": [
+       3.398,
+       "Cl1315···O1406"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.098,
+       "Cl1315···C1231 3.352"
+      ]
+     },
+     {
+      "X": 1516,
+      "ipso_C": 1488,
+      "graph_neighbors_of_X": [
+       "C1488"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl1516···H1576"
+      ],
+      "min_X_O": [
+       3.207,
+       "Cl1516···O1609"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.063,
+       "Cl1516···O1609 3.207"
+      ]
+     },
+     {
+      "X": 1517,
+      "ipso_C": 1489,
+      "graph_neighbors_of_X": [
+       "C1489"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.9,
+       "Cl1517···H1577"
+      ],
+      "min_X_O": [
+       3.071,
+       "Cl1517···O1608"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.199,
+       "Cl1517···O1608 3.071"
+      ]
+     },
+     {
+      "X": 1518,
+      "ipso_C": 1490,
+      "graph_neighbors_of_X": [
+       "C1490"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl1518···H1578"
+      ],
+      "min_X_O": [
+       3.178,
+       "Cl1518···O1611"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.092,
+       "Cl1518···O1611 3.178"
+      ]
+     },
+     {
+      "X": 1519,
+      "ipso_C": 1491,
+      "graph_neighbors_of_X": [
+       "C1491"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.903,
+       "Cl1519···H1579"
+      ],
+      "min_X_O": [
+       3.105,
+       "Cl1519···O1610"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.165,
+       "Cl1519···O1610 3.105"
+      ]
+     },
+     {
+      "X": 1720,
+      "ipso_C": 1692,
+      "graph_neighbors_of_X": [
+       "C1692"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.883,
+       "Cl1720···H1780"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -0.137,
+       "Cl1720···C1644 3.587"
+      ]
+     },
+     {
+      "X": 1721,
+      "ipso_C": 1693,
+      "graph_neighbors_of_X": [
+       "C1693"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.887,
+       "Cl1721···H1781"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -9.9,
+       null
+      ]
+     },
+     {
+      "X": 1722,
+      "ipso_C": 1694,
+      "graph_neighbors_of_X": [
+       "C1694"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.891,
+       "Cl1722···H1782"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       0.014,
+       "Cl1722···C1638 3.436"
+      ]
+     },
+     {
+      "X": 1723,
+      "ipso_C": 1695,
+      "graph_neighbors_of_X": [
+       "C1695"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.887,
+       "Cl1723···H1783"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -0.091,
+       "Cl1723···C2254 3.541"
+      ]
+     },
+     {
+      "X": 1924,
+      "ipso_C": 1896,
+      "graph_neighbors_of_X": [
+       "C1896"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.898,
+       "Cl1924···H1984"
+      ],
+      "min_X_O": [
+       3.072,
+       "Cl1924···O2017"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.198,
+       "Cl1924···O2017 3.072"
+      ]
+     },
+     {
+      "X": 1925,
+      "ipso_C": 1897,
+      "graph_neighbors_of_X": [
+       "C1897"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.9,
+       "Cl1925···H1985"
+      ],
+      "min_X_O": [
+       3.201,
+       "Cl1925···O2016"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.093,
+       "Cl1925···N2001 3.207"
+      ]
+     },
+     {
+      "X": 1926,
+      "ipso_C": 1898,
+      "graph_neighbors_of_X": [
+       "C1898"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.877,
+       "Cl1926···H1986"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       0.133,
+       "Cl1926···C1227 3.317"
+      ]
+     },
+     {
+      "X": 1927,
+      "ipso_C": 1899,
+      "graph_neighbors_of_X": [
+       "C1899"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl1927···H1987"
+      ],
+      "min_X_O": [
+       3.398,
+       "Cl1927···O2018"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.098,
+       "Cl1927···C1843 3.352"
+      ]
+     },
+     {
+      "X": 2128,
+      "ipso_C": 2100,
+      "graph_neighbors_of_X": [
+       "C2100"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl2128···H2188"
+      ],
+      "min_X_O": [
+       3.207,
+       "Cl2128···O2221"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.063,
+       "Cl2128···O2221 3.207"
+      ]
+     },
+     {
+      "X": 2129,
+      "ipso_C": 2101,
+      "graph_neighbors_of_X": [
+       "C2101"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.9,
+       "Cl2129···H2189"
+      ],
+      "min_X_O": [
+       3.071,
+       "Cl2129···O2220"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.199,
+       "Cl2129···O2220 3.071"
+      ]
+     },
+     {
+      "X": 2130,
+      "ipso_C": 2102,
+      "graph_neighbors_of_X": [
+       "C2102"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl2130···H2190"
+      ],
+      "min_X_O": [
+       3.178,
+       "Cl2130···O2223"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.092,
+       "Cl2130···O2223 3.178"
+      ]
+     },
+     {
+      "X": 2131,
+      "ipso_C": 2103,
+      "graph_neighbors_of_X": [
+       "C2103"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.903,
+       "Cl2131···H2191"
+      ],
+      "min_X_O": [
+       3.105,
+       "Cl2131···O2222"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.165,
+       "Cl2131···O2222 3.105"
+      ]
+     },
+     {
+      "X": 2332,
+      "ipso_C": 2304,
+      "graph_neighbors_of_X": [
+       "C2304"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.883,
+       "Cl2332···H2392"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -0.137,
+       "Cl2332···C2256 3.587"
+      ]
+     },
+     {
+      "X": 2333,
+      "ipso_C": 2305,
+      "graph_neighbors_of_X": [
+       "C2305"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.887,
+       "Cl2333···H2393"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -9.9,
+       null
+      ]
+     },
+     {
+      "X": 2334,
+      "ipso_C": 2306,
+      "graph_neighbors_of_X": [
+       "C2306"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.891,
+       "Cl2334···H2394"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       0.014,
+       "Cl2334···C2250 3.436"
+      ]
+     },
+     {
+      "X": 2335,
+      "ipso_C": 2307,
+      "graph_neighbors_of_X": [
+       "C2307"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.887,
+       "Cl2335···H2395"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       -0.091,
+       "Cl2335···C1642 3.541"
+      ]
+     }
+    ],
+    "sub_count_fixedcell_x_rep": 48,
+    "sub_count_match": false,
+    "gate0b_carry": {
+     "n_sub_atoms": 48,
+     "n_groups": 48,
+     "n_groups_without_attach_C": 0,
+     "min_margin_A": -0.199,
+     "worst_pair": "Cl2129···O2220 3.071",
+     "n_clash_pairs": 0,
+     "pass_0b": true
+    },
+    "gate0b_carry_fixedcell_check": {
+     "n_sub_atoms": [
+      4,
+      4
+     ],
+     "min_margin_A": [
+      -0.74,
+      -0.74
+     ],
+     "n_clash_pairs": [
+      12,
+      12
+     ],
+     "pass_0b": [
+      false,
+      false
+     ],
+     "match": true
+    },
+    "gate_all_pass_carry": "False"
+   }
+  },
+  "e24j_br_ovl": {
+   "status": "ok",
+   "substituent": "Br",
+   "supercell_n": [
+    2,
+    2,
+    3
+   ],
+   "rep": 12,
+   "symbol_order_ok": true,
+   "replica_symmetry_by_axis": {
+    "a": {
+     "max_dev_A": 0.0,
+     "n_atoms_dev_gt_0.5A": 0,
+     "n_atoms_per_cell": 204
+    },
+    "b": {
+     "max_dev_A": 0.0,
+     "n_atoms_dev_gt_0.5A": 0,
+     "n_atoms_per_cell": 204
+    },
+    "c": {
+     "max_dev_A": 0.0,
+     "n_atoms_dev_gt_0.5A": 0,
+     "n_atoms_per_cell": 204
+    }
+   },
+   "rigid_shift_unitfrac_removed": [
+    -0.04625,
+    -0.01636,
+    -0.00979
+   ],
+   "relaxed_data": "lmp_e24j_cr/e24j_br_ovl/min_e24j_br_ovl.data",
+   "relaxed_data_md5": "7286382ff277e1592ccba8a05b70ba25",
+   "super_cif": "e24j_cellrelax/e24j_br_ovl_cellrelaxed_super.cif",
+   "super_cif_md5": "c8a1a789a9ca394ac4cf0262545184d3",
+   "cell_change_per_unitcell": {
+    "before_cellpar": [
+     24.404,
+     14.181,
+     9.304,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "after_cellpar": [
+     25.5713,
+     14.4169,
+     9.3651,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "d_len_pct": [
+     4.783,
+     1.663,
+     0.657
+    ],
+    "d_angle_deg": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "d_volume_pct": 7.226
+   },
+   "final_EDiff_outer_loops": [
+    0.0978847213900735,
+    12
+   ],
+   "super": {
+    "measured": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cellrelax/e24j_br_ovl_cellrelaxed_super.cif",
+    "n_framework_matched": 2400,
+    "max_framework_disp_A": 0.828,
+    "min_heteroatom_H": [
+     2.479,
+     "H···O",
+     "H2395",
+     "O2426"
+    ],
+    "gate0a_pass": "True",
+    "gate0b": {
+     "cif": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cellrelax/e24j_br_ovl_cellrelaxed_super.cif",
+     "n_sub_atoms": 144,
+     "n_groups": 144,
+     "min_margin_A": -1.492,
+     "worst_pair": "Br0···O181 1.878",
+     "n_clash_pairs": 96,
+     "pass_0b": false
+    },
+    "gate0b_pass": false,
+    "gate_all_pass": false,
+    "sites": [
+     {
+      "X": 0,
+      "ipso_C": 64,
+      "graph_neighbors_of_X": [
+       "C64",
+       "O181"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br0···O181"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br0···O181"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br0···O181 1.878"
+      ]
+     },
+     {
+      "X": 1,
+      "ipso_C": 65,
+      "graph_neighbors_of_X": [
+       "C65",
+       "O180"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1···O180"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1···O180"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1···O180 1.878"
+      ]
+     },
+     {
+      "X": 2,
+      "ipso_C": 66,
+      "graph_neighbors_of_X": [
+       "C66",
+       "O183"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2···O183"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2···O183"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2···O183 1.878"
+      ]
+     },
+     {
+      "X": 3,
+      "ipso_C": 67,
+      "graph_neighbors_of_X": [
+       "C67",
+       "O182"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br3···O182"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br3···O182"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br3···O182 1.878"
+      ]
+     },
+     {
+      "X": 204,
+      "ipso_C": 268,
+      "graph_neighbors_of_X": [
+       "C268",
+       "O385"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br204···O385"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br204···O385"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br204···O385 1.878"
+      ]
+     },
+     {
+      "X": 205,
+      "ipso_C": 269,
+      "graph_neighbors_of_X": [
+       "C269",
+       "O384"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br205···O384"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br205···O384"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br205···O384 1.878"
+      ]
+     },
+     {
+      "X": 206,
+      "ipso_C": 270,
+      "graph_neighbors_of_X": [
+       "C270",
+       "O387"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br206···O387"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br206···O387"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br206···O387 1.878"
+      ]
+     },
+     {
+      "X": 207,
+      "ipso_C": 271,
+      "graph_neighbors_of_X": [
+       "C271",
+       "O386"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br207···O386"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br207···O386"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br207···O386 1.878"
+      ]
+     },
+     {
+      "X": 408,
+      "ipso_C": 472,
+      "graph_neighbors_of_X": [
+       "C472",
+       "O589"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br408···O589"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br408···O589"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br408···O589 1.878"
+      ]
+     },
+     {
+      "X": 409,
+      "ipso_C": 473,
+      "graph_neighbors_of_X": [
+       "C473",
+       "O588"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br409···O588"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br409···O588"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br409···O588 1.878"
+      ]
+     },
+     {
+      "X": 410,
+      "ipso_C": 474,
+      "graph_neighbors_of_X": [
+       "C474",
+       "O591"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br410···O591"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br410···O591"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br410···O591 1.878"
+      ]
+     },
+     {
+      "X": 411,
+      "ipso_C": 475,
+      "graph_neighbors_of_X": [
+       "C475",
+       "O590"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br411···O590"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br411···O590"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br411···O590 1.878"
+      ]
+     },
+     {
+      "X": 612,
+      "ipso_C": 676,
+      "graph_neighbors_of_X": [
+       "C676",
+       "O793"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br612···O793"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br612···O793"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br612···O793 1.878"
+      ]
+     },
+     {
+      "X": 613,
+      "ipso_C": 677,
+      "graph_neighbors_of_X": [
+       "C677",
+       "O792"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br613···O792"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br613···O792"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br613···O792 1.878"
+      ]
+     },
+     {
+      "X": 614,
+      "ipso_C": 678,
+      "graph_neighbors_of_X": [
+       "C678",
+       "O795"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br614···O795"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br614···O795"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br614···O795 1.878"
+      ]
+     },
+     {
+      "X": 615,
+      "ipso_C": 679,
+      "graph_neighbors_of_X": [
+       "C679",
+       "O794"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br615···O794"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br615···O794"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br615···O794 1.878"
+      ]
+     },
+     {
+      "X": 816,
+      "ipso_C": 880,
+      "graph_neighbors_of_X": [
+       "C880",
+       "O997"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br816···O997"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br816···O997"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br816···O997 1.878"
+      ]
+     },
+     {
+      "X": 817,
+      "ipso_C": 881,
+      "graph_neighbors_of_X": [
+       "C881",
+       "O996"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br817···O996"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br817···O996"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br817···O996 1.878"
+      ]
+     },
+     {
+      "X": 818,
+      "ipso_C": 882,
+      "graph_neighbors_of_X": [
+       "C882",
+       "O999"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br818···O999"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br818···O999"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br818···O999 1.878"
+      ]
+     },
+     {
+      "X": 819,
+      "ipso_C": 883,
+      "graph_neighbors_of_X": [
+       "C883",
+       "O998"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br819···O998"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br819···O998"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br819···O998 1.878"
+      ]
+     },
+     {
+      "X": 1020,
+      "ipso_C": 1084,
+      "graph_neighbors_of_X": [
+       "C1084",
+       "O1201"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1020···O1201"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1020···O1201"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1020···O1201 1.878"
+      ]
+     },
+     {
+      "X": 1021,
+      "ipso_C": 1085,
+      "graph_neighbors_of_X": [
+       "C1085",
+       "O1200"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1021···O1200"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1021···O1200"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1021···O1200 1.878"
+      ]
+     },
+     {
+      "X": 1022,
+      "ipso_C": 1086,
+      "graph_neighbors_of_X": [
+       "C1086",
+       "O1203"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1022···O1203"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1022···O1203"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1022···O1203 1.878"
+      ]
+     },
+     {
+      "X": 1023,
+      "ipso_C": 1087,
+      "graph_neighbors_of_X": [
+       "C1087",
+       "O1202"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1023···O1202"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1023···O1202"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1023···O1202 1.878"
+      ]
+     },
+     {
+      "X": 1224,
+      "ipso_C": 1288,
+      "graph_neighbors_of_X": [
+       "C1288",
+       "O1405"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1224···O1405"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1224···O1405"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1224···O1405 1.878"
+      ]
+     },
+     {
+      "X": 1225,
+      "ipso_C": 1289,
+      "graph_neighbors_of_X": [
+       "C1289",
+       "O1404"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1225···O1404"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1225···O1404"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1225···O1404 1.878"
+      ]
+     },
+     {
+      "X": 1226,
+      "ipso_C": 1290,
+      "graph_neighbors_of_X": [
+       "C1290",
+       "O1407"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1226···O1407"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1226···O1407"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1226···O1407 1.878"
+      ]
+     },
+     {
+      "X": 1227,
+      "ipso_C": 1291,
+      "graph_neighbors_of_X": [
+       "C1291",
+       "O1406"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1227···O1406"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1227···O1406"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1227···O1406 1.878"
+      ]
+     },
+     {
+      "X": 1428,
+      "ipso_C": 1492,
+      "graph_neighbors_of_X": [
+       "C1492",
+       "O1609"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1428···O1609"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1428···O1609"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1428···O1609 1.878"
+      ]
+     },
+     {
+      "X": 1429,
+      "ipso_C": 1493,
+      "graph_neighbors_of_X": [
+       "C1493",
+       "O1608"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1429···O1608"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1429···O1608"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1429···O1608 1.878"
+      ]
+     },
+     {
+      "X": 1430,
+      "ipso_C": 1494,
+      "graph_neighbors_of_X": [
+       "C1494",
+       "O1611"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1430···O1611"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1430···O1611"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1430···O1611 1.878"
+      ]
+     },
+     {
+      "X": 1431,
+      "ipso_C": 1495,
+      "graph_neighbors_of_X": [
+       "C1495",
+       "O1610"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1431···O1610"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1431···O1610"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1431···O1610 1.878"
+      ]
+     },
+     {
+      "X": 1632,
+      "ipso_C": 1696,
+      "graph_neighbors_of_X": [
+       "C1696",
+       "O1813"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1632···O1813"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1632···O1813"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1632···O1813 1.878"
+      ]
+     },
+     {
+      "X": 1633,
+      "ipso_C": 1697,
+      "graph_neighbors_of_X": [
+       "C1697",
+       "O1812"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1633···O1812"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1633···O1812"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1633···O1812 1.878"
+      ]
+     },
+     {
+      "X": 1634,
+      "ipso_C": 1698,
+      "graph_neighbors_of_X": [
+       "C1698",
+       "O1815"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1634···O1815"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1634···O1815"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1634···O1815 1.878"
+      ]
+     },
+     {
+      "X": 1635,
+      "ipso_C": 1699,
+      "graph_neighbors_of_X": [
+       "C1699",
+       "O1814"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1635···O1814"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1635···O1814"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1635···O1814 1.878"
+      ]
+     },
+     {
+      "X": 1836,
+      "ipso_C": 1900,
+      "graph_neighbors_of_X": [
+       "C1900",
+       "O2017"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1836···O2017"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1836···O2017"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1836···O2017 1.878"
+      ]
+     },
+     {
+      "X": 1837,
+      "ipso_C": 1901,
+      "graph_neighbors_of_X": [
+       "C1901",
+       "O2016"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1837···O2016"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1837···O2016"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1837···O2016 1.878"
+      ]
+     },
+     {
+      "X": 1838,
+      "ipso_C": 1902,
+      "graph_neighbors_of_X": [
+       "C1902",
+       "O2019"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1838···O2019"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1838···O2019"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1838···O2019 1.878"
+      ]
+     },
+     {
+      "X": 1839,
+      "ipso_C": 1903,
+      "graph_neighbors_of_X": [
+       "C1903",
+       "O2018"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1839···O2018"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1839···O2018"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1839···O2018 1.878"
+      ]
+     },
+     {
+      "X": 2040,
+      "ipso_C": 2104,
+      "graph_neighbors_of_X": [
+       "C2104",
+       "O2221"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2040···O2221"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2040···O2221"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2040···O2221 1.878"
+      ]
+     },
+     {
+      "X": 2041,
+      "ipso_C": 2105,
+      "graph_neighbors_of_X": [
+       "C2105",
+       "O2220"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2041···O2220"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2041···O2220"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2041···O2220 1.878"
+      ]
+     },
+     {
+      "X": 2042,
+      "ipso_C": 2106,
+      "graph_neighbors_of_X": [
+       "C2106",
+       "O2223"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2042···O2223"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2042···O2223"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2042···O2223 1.878"
+      ]
+     },
+     {
+      "X": 2043,
+      "ipso_C": 2107,
+      "graph_neighbors_of_X": [
+       "C2107",
+       "O2222"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2043···O2222"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2043···O2222"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2043···O2222 1.878"
+      ]
+     },
+     {
+      "X": 2244,
+      "ipso_C": 2308,
+      "graph_neighbors_of_X": [
+       "C2308",
+       "O2425"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2244···O2425"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2244···O2425"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2244···O2425 1.878"
+      ]
+     },
+     {
+      "X": 2245,
+      "ipso_C": 2309,
+      "graph_neighbors_of_X": [
+       "C2309",
+       "O2424"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2245···O2424"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2245···O2424"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2245···O2424 1.878"
+      ]
+     },
+     {
+      "X": 2246,
+      "ipso_C": 2310,
+      "graph_neighbors_of_X": [
+       "C2310",
+       "O2427"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2246···O2427"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2246···O2427"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2246···O2427 1.878"
+      ]
+     },
+     {
+      "X": 2247,
+      "ipso_C": 2311,
+      "graph_neighbors_of_X": [
+       "C2311",
+       "O2426"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2247···O2426"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2247···O2426"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2247···O2426 1.878"
+      ]
+     }
+    ],
+    "sub_count_fixedcell_x_rep": 48,
+    "sub_count_match": false,
+    "gate0b_carry": {
+     "n_sub_atoms": 48,
+     "n_groups": 48,
+     "n_groups_without_attach_C": 0,
+     "min_margin_A": -1.492,
+     "worst_pair": "Br0···O181 1.878",
+     "n_clash_pairs": 96,
+     "pass_0b": false
+    },
+    "gate0b_carry_fixedcell_check": {
+     "n_sub_atoms": [
+      4,
+      4
+     ],
+     "min_margin_A": [
+      -1.464,
+      -1.464
+     ],
+     "n_clash_pairs": [
+      20,
+      20
+     ],
+     "pass_0b": [
+      false,
+      false
+     ],
+     "match": true
+    },
+    "gate_all_pass_carry": false
+   }
+  }
+ },
+ "note": "판정은 종합자.",
+ "elapsed_s": 278.0,
+ "finished": true
+}
