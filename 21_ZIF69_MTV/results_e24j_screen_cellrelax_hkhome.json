@@ -1,0 +1,489 @@
+{
+ "test": "#5′ — 셀 이완본의 관문 (0a)(0b)(e24j_measure.py 측정 · clash_gate.check) · 고정셀 입력 재현 열 포함",
+ "assign": "ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md §5-3",
+ "relax_record": "results_e24j_cellrelax_hkhome.json",
+ "frame_note": "빌드본 · 모체 기준 원자는 잴 구조의 셀로 분수좌표 그대로 옮겨 씀(셀 변형 몫 제외) — 셀 변화율은 relax_record",
+ "machine": "hkhome",
+ "dry": false,
+ "rows": {
+  "e24j_cl_ovl": {
+   "substituent": "Cl",
+   "inputs": [
+    {
+     "path": "e24j_candidates/e24j_cl_ovl.cif",
+     "from": "git show HEAD:21_ZIF69_MTV/e24j_candidates/e24j_cl_ovl.cif",
+     "commit": "754b9049",
+     "md5": "84e234e5385af5b57f890f2066b26e99"
+    },
+    {
+     "path": "relax_tnf/e24j_cl_ovl_relaxed.cif",
+     "from": "git show HEAD:21_ZIF69_MTV/relax_tnf/e24j_cl_ovl_relaxed.cif",
+     "commit": "2e5acbac",
+     "md5": "8f6b6039e7683348d0e6628722aa9129"
+    }
+   ],
+   "fixedcell_repro": {
+    "laptop2_gate0b_min_margin": -0.74,
+    "hkhome_gate0b_min_margin": -0.74,
+    "laptop2_max_disp": 0.319,
+    "hkhome_max_disp": 0.319,
+    "laptop2_min_het_H": 2.013,
+    "hkhome_min_het_H": 2.013,
+    "match": true
+   },
+   "fixedcell": {
+    "max_framework_disp_A": 0.319,
+    "min_heteroatom_H": [
+     2.013,
+     "H···O",
+     "H148",
+     "O181"
+    ],
+    "gate0a_pass": "True",
+    "gate0b": {
+     "cif": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cr_stage/src/relax_tnf__e24j_cl_ovl_relaxed.cif",
+     "n_sub_atoms": 4,
+     "n_groups": 4,
+     "min_margin_A": -0.74,
+     "worst_pair": "Cl91···O182 2.530",
+     "n_clash_pairs": 12,
+     "pass_0b": false
+    },
+    "gate0b_pass": false,
+    "gate_all_pass": false
+   },
+   "cellrelaxed": {
+    "measured": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cellrelax/e24j_cl_ovl_cellrelaxed.cif",
+    "n_framework_matched": 200,
+    "max_framework_disp_A": 2.099,
+    "min_heteroatom_H": [
+     2.291,
+     "H···O",
+     "H103",
+     "O188"
+    ],
+    "gate0a_pass": "False",
+    "gate0b": {
+     "cif": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cellrelax/e24j_cl_ovl_cellrelaxed.cif",
+     "n_sub_atoms": 30,
+     "n_groups": 25,
+     "min_margin_A": -1.907,
+     "worst_pair": "C13···N173 1.343",
+     "n_clash_pairs": 29,
+     "pass_0b": false
+    },
+    "gate0b_pass": false,
+    "gate_all_pass": "False",
+    "sites": [
+     {
+      "X": 88,
+      "ipso_C": 60,
+      "graph_neighbors_of_X": [
+       "C60"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.898,
+       "Cl88···H148"
+      ],
+      "min_X_O": [
+       3.072,
+       "Cl88···O181"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.198,
+       "Cl88···O181 3.072"
+      ]
+     },
+     {
+      "X": 89,
+      "ipso_C": 61,
+      "graph_neighbors_of_X": [
+       "C61"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.9,
+       "Cl89···H149"
+      ],
+      "min_X_O": [
+       3.201,
+       "Cl89···O180"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.093,
+       "Cl89···N165 3.207"
+      ]
+     },
+     {
+      "X": 90,
+      "ipso_C": 62,
+      "graph_neighbors_of_X": [
+       "C62"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.877,
+       "Cl90···H150"
+      ],
+      "min_X_O": [
+       9.9,
+       null
+      ],
+      "max_bondi_overlap_from_X": [
+       0.133,
+       "Cl90···C3 3.317"
+      ]
+     },
+     {
+      "X": 91,
+      "ipso_C": 63,
+      "graph_neighbors_of_X": [
+       "C63"
+      ],
+      "graph_nonC_neighbor": false,
+      "closest_contact_any": [
+       2.899,
+       "Cl91···H151"
+      ],
+      "min_X_O": [
+       3.398,
+       "Cl91···O182"
+      ],
+      "max_bondi_overlap_from_X": [
+       0.098,
+       "Cl91···C7 3.352"
+      ]
+     }
+    ],
+    "contacts": {
+     "C···H": [
+      2.664,
+      "C20",
+      "H120"
+     ],
+     "C···O": [
+      1.697,
+      "C66",
+      "O190"
+     ],
+     "C···Cl": [
+      3.185,
+      "C50",
+      "Cl90"
+     ],
+     "C···N": [
+      3.026,
+      "C37",
+      "N171"
+     ],
+     "C···C": [
+      2.745,
+      "C80",
+      "C81"
+     ],
+     "Cl···H": [
+      2.877,
+      "Cl90",
+      "H150"
+     ],
+     "Cl···O": [
+      3.072,
+      "Cl88",
+      "O181"
+     ],
+     "Cl···S": [
+      3.323,
+      "Cl88",
+      "S193"
+     ],
+     "Cl···N": [
+      3.207,
+      "Cl89",
+      "N165"
+     ],
+     "H···H": [
+      2.348,
+      "H129",
+      "H145"
+     ],
+     "H···N": [
+      2.626,
+      "H137",
+      "N173"
+     ],
+     "H···O": [
+      2.291,
+      "H103",
+      "O188"
+     ],
+     "H···S": [
+      3.016,
+      "H158",
+      "S199"
+     ],
+     "N···N": [
+      3.168,
+      "N160",
+      "N165"
+     ],
+     "N···O": [
+      3.251,
+      "N165",
+      "O188"
+     ],
+     "O···O": [
+      2.285,
+      "O178",
+      "O182"
+     ],
+     "O···S": [
+      3.029,
+      "O177",
+      "S193"
+     ]
+    },
+    "sub_count_match": false,
+    "sub_count_fixedcell": 4
+   }
+  },
+  "e24j_br_ovl": {
+   "substituent": "Br",
+   "inputs": [
+    {
+     "path": "e24j_candidates/e24j_br_ovl.cif",
+     "from": "git show HEAD:21_ZIF69_MTV/e24j_candidates/e24j_br_ovl.cif",
+     "commit": "754b9049",
+     "md5": "bbc992f515516b435851f3608718c271"
+    },
+    {
+     "path": "relax_tnf/e24j_br_ovl_relaxed.cif",
+     "from": "git show HEAD:21_ZIF69_MTV/relax_tnf/e24j_br_ovl_relaxed.cif",
+     "commit": "2e5acbac",
+     "md5": "bb4e8d335b450cc5be4665ff9f7c6112"
+    }
+   ],
+   "fixedcell_repro": {
+    "laptop2_gate0b_min_margin": -1.464,
+    "hkhome_gate0b_min_margin": -1.464,
+    "laptop2_max_disp": 0.58,
+    "hkhome_max_disp": 0.58,
+    "laptop2_min_het_H": 1.776,
+    "hkhome_min_het_H": 1.776,
+    "match": true
+   },
+   "fixedcell": {
+    "max_framework_disp_A": 0.58,
+    "min_heteroatom_H": [
+     1.776,
+     "H···O",
+     "H151",
+     "O182"
+    ],
+    "gate0a_pass": false,
+    "gate0b": {
+     "cif": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cr_stage/src/relax_tnf__e24j_br_ovl_relaxed.cif",
+     "n_sub_atoms": 4,
+     "n_groups": 4,
+     "min_margin_A": -1.464,
+     "worst_pair": "Br0···O181 1.906",
+     "n_clash_pairs": 20,
+     "pass_0b": false
+    },
+    "gate0b_pass": false,
+    "gate_all_pass": false
+   },
+   "cellrelaxed": {
+    "measured": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cellrelax/e24j_br_ovl_cellrelaxed.cif",
+    "n_framework_matched": 200,
+    "max_framework_disp_A": 0.828,
+    "min_heteroatom_H": [
+     2.479,
+     "H···O",
+     "H151",
+     "O182"
+    ],
+    "gate0a_pass": "True",
+    "gate0b": {
+     "cif": "/home/mangwon1/mof_project/21_ZIF69_MTV/e24j_cellrelax/e24j_br_ovl_cellrelaxed.cif",
+     "n_sub_atoms": 12,
+     "n_groups": 12,
+     "min_margin_A": -1.492,
+     "worst_pair": "Br0···O181 1.878",
+     "n_clash_pairs": 8,
+     "pass_0b": false
+    },
+    "gate0b_pass": false,
+    "gate_all_pass": false,
+    "sites": [
+     {
+      "X": 0,
+      "ipso_C": 64,
+      "graph_neighbors_of_X": [
+       "C64",
+       "O181"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br0···O181"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br0···O181"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br0···O181 1.878"
+      ]
+     },
+     {
+      "X": 1,
+      "ipso_C": 65,
+      "graph_neighbors_of_X": [
+       "C65",
+       "O180"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br1···O180"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br1···O180"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br1···O180 1.878"
+      ]
+     },
+     {
+      "X": 2,
+      "ipso_C": 66,
+      "graph_neighbors_of_X": [
+       "C66",
+       "O183"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br2···O183"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br2···O183"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br2···O183 1.878"
+      ]
+     },
+     {
+      "X": 3,
+      "ipso_C": 67,
+      "graph_neighbors_of_X": [
+       "C67",
+       "O182"
+      ],
+      "graph_nonC_neighbor": true,
+      "closest_contact_any": [
+       1.878,
+       "Br3···O182"
+      ],
+      "min_X_O": [
+       1.878,
+       "Br3···O182"
+      ],
+      "max_bondi_overlap_from_X": [
+       1.492,
+       "Br3···O182 1.878"
+      ]
+     }
+    ],
+    "contacts": {
+     "Br···N": [
+      3.565,
+      "Br3",
+      "N167"
+     ],
+     "Br···C": [
+      3.189,
+      "Br0",
+      "C52"
+     ],
+     "Br···H": [
+      2.788,
+      "Br3",
+      "H151"
+     ],
+     "Br···O": [
+      3.435,
+      "Br0",
+      "O177"
+     ],
+     "Br···S": [
+      3.6,
+      "Br3",
+      "S194"
+     ],
+     "C···H": [
+      2.679,
+      "C20",
+      "H116"
+     ],
+     "C···N": [
+      3.032,
+      "C43",
+      "N169"
+     ],
+     "C···O": [
+      2.773,
+      "C52",
+      "O180"
+     ],
+     "C···C": [
+      2.746,
+      "C84",
+      "C85"
+     ],
+     "H···O": [
+      2.479,
+      "H151",
+      "O182"
+     ],
+     "H···H": [
+      2.363,
+      "H150",
+      "H151"
+     ],
+     "H···N": [
+      2.691,
+      "H132",
+      "N168"
+     ],
+     "H···S": [
+      3.02,
+      "H156",
+      "S197"
+     ],
+     "N···O": [
+      3.579,
+      "N160",
+      "O188"
+     ],
+     "O···S": [
+      3.058,
+      "O184",
+      "S196"
+     ]
+    },
+    "sub_count_match": false,
+    "sub_count_fixedcell": 4
+   }
+  }
+ },
+ "note": "판정은 종합자.",
+ "elapsed_min": 9.2,
+ "finished": true
+}

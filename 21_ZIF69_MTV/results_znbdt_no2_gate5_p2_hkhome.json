@@ -1,0 +1,96 @@
+{
+ "test": "−NO₂ 열린 자리 관문 ⑤ 처리 뒤 1.65 · 1.82 통로 수(′2 서술 열)",
+ "assign": "ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md §5-1 · §7 ④",
+ "inputs": {
+  "treated_data": "lmp_znbdt_no2_g5/e24i_no2_open/min_e24i_no2_open.data",
+  "treated_data_md5": "5ce1b88078a8c9bb0b6e0e05c381eac9",
+  "before_cif": "lmp_znbdt_no2_g5/e24i_no2_open/e24i_no2_open.cif",
+  "before_cif_md5": "ddcdae7491d740eb46303cd876482ac8"
+ },
+ "fold": {
+  "supercell_n": [
+   2,
+   2,
+   3
+  ],
+  "rep": 12,
+  "symbol_order_ok": true,
+  "replica_max_frac_dev_vs_r0": 1e-06,
+  "rigid_shift_frac_removed": [
+   -0.03796,
+   0.01297,
+   -0.02197
+  ]
+ },
+ "cell_change_vs_before": {
+  "before_cellpar": [
+   24.404,
+   14.181,
+   9.304,
+   90.0,
+   99.608,
+   90.0
+  ],
+  "after_cellpar": [
+   25.3443,
+   13.9885,
+   9.4407,
+   90.0,
+   99.608,
+   90.0
+  ],
+  "d_len_pct": [
+   3.853,
+   -1.357,
+   1.469
+  ],
+  "d_angle_deg": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "d_volume_pct": 3.949
+ },
+ "treated_unitcell_cif": "znbdt_no2_g5p2_runs/e24i_no2_open_g5treated.cif",
+ "treated_unitcell_md5": "ac1b523aa21b64909415a751a6b22eeb",
+ "pre_treatment_ref": "results_znbdt_no2_access_hkhome.json (r1.65 · r1.82 chan)",
+ "machine": "hkhome",
+ "runs": {
+  "res": {
+   "rc": 0,
+   "LCD": 5.01527,
+   "PLD": 3.61671
+  },
+  "chan1.65": {
+   "rc": 0,
+   "n_channels_chanfile": 4,
+   "dimensionality": [
+    "1",
+    "1",
+    "1",
+    "1"
+   ],
+   "channels_stdout": 4,
+   "pockets_stdout": 0,
+   "chan_file_head": [
+    "/home/mangwon1/mof_project/21_ZIF69_MTV/znbdt_no2_g5p2_runs/e24i_no2_open_g5treated_r1.65.chan   4 channels identified of dimensionality 1 1 1 1 ",
+    "Channel  0  5.01527  3.54253  5.01527",
+    "Channel  1  4.13221  3.61671  4.13221"
+   ]
+  },
+  "chan1.82": {
+   "rc": 0,
+   "n_channels_chanfile": 0,
+   "dimensionality": [],
+   "channels_stdout": 0,
+   "pockets_stdout": 9,
+   "chan_file_head": [
+    "/home/mangwon1/mof_project/21_ZIF69_MTV/znbdt_no2_g5p2_runs/e24i_no2_open_g5treated_r1.82.chan   0 channels identified of dimensionality ",
+    "/home/mangwon1/mof_project/21_ZIF69_MTV/znbdt_no2_g5p2_runs/e24i_no2_open_g5treated_r1.82.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+   ]
+  }
+ },
+ "elapsed_s": 2.4,
+ "status": "ok",
+ "finished": true
+}
