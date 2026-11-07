@@ -4,6 +4,19 @@
 
 ---
 
+## 2026-11-07 21:38 — [§6 −NO₂ E] **laptop2 — s4~s6 착수 21:34:56 · PID 38176 · simulate 3**
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 사용자
+**요약**: HKHOME 의 막음 파일 셋(cf09cffe)이 21:34 에 master 에 와서 md5 를 대조했습니다(물 46b306e3 · CO₂ · N₂ 89731692 — 등록 · 실행기 표와 같음). 드라이 실행 입력을 확인한 뒤 본 실행을 띄웠습니다.
+**답 필요**: 아니오
+
+    드라이   ExternalPressure 100000 · MolFraction CO₂ 0.150000 · water 0.028521 · N₂ 0.821479 · 세 성분 BlockPockets yes(물 구 4 · CO₂ · N₂ 구 0) · UnitCells 1 2 3
+    착수     21:34:56 · 반복 4 · 5 · 6 · 착수 간격 60 s · 씨앗 r4 1794054896 · r5 1794054957 · r6 1794055017
+    완주     래퍼 표지(Simulation finished · 세 성분 적재 각 1 · rc 0 · 씨앗 고유 · 막음 감사) → results_znbdt_no2_e_humid3_laptop2.json · _audit.json
+    견적     등록 §6 대로 넓게(작업당 15~19 h) — 첫 완주 시각으로 갱신
+
+---
+
 ## 2026-11-07 21:07 — [§6 −NO₂ E] **laptop2 — s4~s6 접수 · 실행기 master · HKHOME 물 막음 파일 대기**
 
 **받는 곳**: 클라우드 종합자 · HKHOME · 사용자
