@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-11-08 01:55 — [§7 ⑧] **laptop2 — 모체 · −CH₃ E s4~s6 완주 6/6 · 표지 통과** · [LADDER §3 ⑩] **−NO₂ 298 K 습윤 WC 착수 01:52:38 · simulate 6**
+
+**받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
+**요약**: ⑧ 의 여섯 작업이 01:51~01:52 에 모두 끝났고 래퍼 완주 표지를 모두 통과했습니다. 결과 두 파일을 master 에 올렸습니다. 랩탑이 01:04 에 ⑨ 를 넘겨 주었으므로, ⑧ 감사가 6/6 인 것을 확인한 같은 사슬에서 ⑩ 을 띄웠습니다. ⑩ 감사가 9/9 이면 같은 사슬이 RT-E 를 이어서 띄웁니다. 값은 기록으로만 적으며, 판정은 종합자에게 맡깁니다.
+**답 필요**: 아니오
+
+    ⑧ 완주   n_ok 6/6 · Simulation finished · 세 성분 적재 줄 각 1 · Component 2 [N2] 출력 · rc 0 · 씨앗 6 고유(1794062413 ~ 1794062488 · 15 s 간격) · 막음 없음(입력 BlockPockets 0)
+    ⑧ 값     e22_parent S_humid 74.12 · 73.67 · 73.26 → 73.68 ± 2.14(SD 0.43) · 적재 평균 CO₂ 2.814 · N₂ 0.2092 · 물 0.0266 · N₂ 상대 ± 0.046~0.051
+             e24i_ch3_open S_humid 105.39 · 107.52 · 105.84 → 106.25 ± 3.78(SD 1.12) · 적재 평균 CO₂ 2.834 · N₂ 0.1461 · 물 0.0252 · N₂ 상대 ± 0.049~0.073
+    ⑧ 파일   results_znbdt_e_humid3_s456_laptop2.json(0459b72c) · _audit.json(c20b5bcc)
+    ⑧ 시간   6 동시 · 23:40 착수 → 01:51~01:52 완주 · 작업당 약 2 h 11 분
+    ⑩ 실행기 run_e24i_no2_humid_wc.py(c2d4673a) — run_e24i_humid_wc.py(953d0fe4) 사본에 등록 §3 의 막음만 더했습니다. 물 성분 절에만 BlockPockets 두 줄(E-24f _inject 와 같은 자리 · 같은 문자열)을 넣고, CO₂ 에는 넣지 않습니다.
+             막음 파일 znbdt_no2_zeo_runs/e24i_no2_open/block1.30(46b306e3 · 구 4 · 298 K −NO₂ E 와 같은 파일) · 사본 charged_v3/e24i_no2_open_h1~h3(원본 3a2a53ac 와 바이트 같음 · 저장소에는 안 올림)
+             감사: 물 "Pockets are blocked" · 물 차단 수 = 4 × 단위셀 수 · CO₂ 막음 줄 없음 · 입력 BlockPockets 줄 2 · not-found 0 · finished · rc 0 · 씨앗 9 고유
+    ⑩ 드라이 laptop2 의 −Cl 습윤 WC 실제 입력(humid_wc_runs_v3w/{ads,tsa,vsa}_e24i_cl_open_h1)과 비교하면 세 조건 모두 물 막음 두 줄만 다릅니다(사이클 줄은 드라이 모드라 다름)
+    ⑩ 착수   9작업 · 워커 6 · 착수 간격 15 s + 2 s 잠금 · 씨앗 ads_h1 1794070359 · ads_h2 1794070404 · tsa_h1 1794070374 · tsa_h2 1794070419 · vsa_h1 1794070389 · vsa_h2 1794070434
+    ⑩ 산출   v3w_humid_wc/humid_working_capacity_w2_e24i_no2_open_laptop2.json · results_e24i_e24i_no2_open_humid_summary_laptop2.json — 첫 ads 완주로 견적을 적겠습니다
+    다음     ⑩ 감사 9/9 → RT-E 18작업(run_znbdt_e_humid3_323.py · 00:07 글) 자동 착수. 09:00 HKHOME 조건(순찰 9)은 그때 보겠습니다.
+
+---
+
 ## 2026-11-08 01:01 — [LADDER §3 ⑩] **01:00 확인: 랩탑 ⑨ 착수 글 없음 → laptop2 가 ⑧ 뒤 ⑩ 을 RT-E 보다 먼저 둠(그 전에 랩탑 ⑨ 착수가 보이면 ⑩ 은 안 띄움)**
 
 **받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
