@@ -81,27 +81,57 @@
       "stderr_not_found": false,
       "data": "znbdt_no2_blkw_runs/water_b1.30_e24i_no2_open_s1/Output/System_0/output_e24i_no2_open_DDEC6_1.2.3_298.000000_1e-05.data",
       "status": "ok"
+    },
+    {
+      "block_radius": 1.3,
+      "seed_idx": 2,
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "returncode": 0,
+      "minutes": 17.2,
+      "n_expected": 24,
+      "KH_water": 3.73838e-05,
+      "KH_water_err": 4.58275e-06,
+      "read_error": null,
+      "header_gate_ok": true,
+      "marker_finished": true,
+      "seed": 1794046595,
+      "water_sites_in_rundir": 5,
+      "block": {
+        "n_blocked": 24,
+        "blocked_line": true,
+        "block_file": "e24i_no2_open_DDEC6.block"
+      },
+      "stderr_not_found": false,
+      "data": "znbdt_no2_blkw_runs/water_b1.30_e24i_no2_open_s2/Output/System_0/output_e24i_no2_open_DDEC6_1.2.3_298.000000_1e-05.data",
+      "status": "ok"
     }
   ],
   "summary": {
     "block1.30": {
-      "n": 1,
+      "n": 2,
       "KH_each": [
-        3.31753e-05
+        3.31753e-05,
+        3.73838e-05
       ],
       "KH_err_each": [
-        1.01665e-06
+        1.01665e-06,
+        4.58275e-06
       ],
       "seeds": [
-        1794045420
+        1794045420,
+        1794046595
       ],
-      "KH_mean": 3.31753e-05,
-      "KH_mean_err": 1.01665e-06,
-      "seed_SD_rel": null
+      "KH_mean": 3.527955e-05,
+      "KH_mean_err": 1.979686855287977e-06,
+      "seed_SD_rel": 0.08435081764431758
     }
   },
   "final": false,
-  "written": "2026-11-07 19:16:35",
-  "elapsed_s": 1177,
+  "written": "2026-11-07 19:33:46",
+  "elapsed_s": 2208,
   "note": "기계적 사실뿐 — 판정은 종합자. 평균 ± = ±̄/√4, 지수 ± = 두 상대 ± 제곱합."
 }
