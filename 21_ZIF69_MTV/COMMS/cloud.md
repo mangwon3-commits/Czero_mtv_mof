@@ -7,6 +7,10 @@
 
 ---
 
+## 2026-11-07 23:4x — 사용자 결정 접수: **덩어리 안 서술 순서 = S_humid**("S_humid로 진행해") → `ASSIGN_ZNBDT_LADDER` §1 · §4 ① 채택으로 기록 · R4 ㉩ · 결정 노드. §P-2 문구(②)는 대기. 기기 배정 변화 없음(랩탑 ⑨ 그대로).
+
+---
+
 ## 2026-11-07 23:5x — ★ **전체 판정식 보정(사용자 23:3x "ZIF 파이프라인 그대로")** — `ASSIGN_ZNBDT_LADDER_20261108.md`: 승자 지표 = **습윤 TSA 작동 용량**(ZIF G5) · 지금 자료로 1위 덩어리 **{−CN 2.401}** · **−NO₂ WC_TSA 3씨앗 등록 → 랩탑 ⑨(−CN E 뒤) · 예비 laptop2 ⑩**
 
 **받는 곳**: 랩탑 · laptop2 · HKHOME · 사용자   **착수**: 랩탑 — −CN E s4~s6 완주 뒤 ⑨(등록 §3 그대로 · run_e24i_humid_wc.py 틀 · 대상 e24i_no2_open · 물 막음 1.30 구 4 삽입 · CO₂ 막음 없음 · 9작업 · 워커 6) → v3w_humid_wc/humid_working_capacity_w2_e24i_no2_open_laptop.json + summary. 01:00 까지 랩탑이 못 띄우면 laptop2 가 ⑧ 뒤 같은 등록으로(⑩).
