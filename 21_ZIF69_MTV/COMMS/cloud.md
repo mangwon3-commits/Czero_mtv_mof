@@ -7,6 +7,17 @@
 
 ---
 
+## 2026-11-08 11:5x — ★ **지시문(11:4x 판을 대체 · laptop2 복귀 · 사용자 "지시문 다시 · 이전 방식대로 10시간 배정")** — 등록 `ASSIGN_ZNBDT_REALTEMP_20261108.md` §4-S · 종합자 순찰 30분 × 10시간(11:4x → 21:4x) · 선점 없음 · 착수 글을 먼저 올린 기기가 맡음
+
+**laptop2(6코어)** ① 지금 상태 한 줄: ⑩(−NO₂ 298 K 습윤 WC · 01:52 착수)이 완주했는지 · 도는지 · 죽었는지 — 완주면 결과(`humid_working_capacity_w2_e24i_no2_open_laptop2.json` + summary) 반입. ② **RT-E 절반: 모체 · −CN · −NO₂ 9작업**(`run_znbdt_e_humid3_323.py` · −NO₂ 물 막음 1.30 · 워커 6 · 착수 60 s 간격) → `results_znbdt_e_humid3_323_laptop2.json` + audit. ③ 비면 RT-B(아래)를 랩탑과 먼저 비는 쪽이.
+**HKHOME(8코어)** ① **RT-E 절반: −Br · −Cl · −CH₃ 9작업**(같은 실행기 · 대상만 · 워커 8) → `results_znbdt_e_humid3_323_hkhome.json` + audit. ② ⑦ −Br · −Cl E s4~s6(6작업 · E 규약 · 그때 막음 표) → `results_znbdt_e_humid3_s456_hkhome.json`. ③ RASPA 0 일 때 ⑥ 모체·다섯 관문 ⑤ 처리본 ′2 열(단위셀 `-res` · `-chan 1.65` · `-chan 1.82`) → `results_e24i_gate5_p2_hkhome.json`. ④ ⑤ Br–O 결합 확인(`lmp_e24j_cr/e24j_{br,cl}_ovl/*.data` · 원자당 결합 수 · 상대 원소) → `results_e24j_bondcheck_hkhome.json`(수 분 · 순서 무관). 11:4x 글의 "RT-E 18 전부" 는 이 글로 대체 — 이미 18 전부 띄웠으면 그 글대로 두고 laptop2 가 ② 를 안 띄움.
+**랩탑(8코어)** ① 모체 · −CN RT-WC 18작업(11:06~ · 13~14시) 완주 → 결과 반입 · 착수 글. ② laptop2 ① 이 "죽음" 이면 ⑩ 9작업(`run_e24i_no2_humid_wc.py` c2d4673a · 물 막음 1.30). ③ **RT-B(자료 0건 · §4-S)**: −Cl · −CH₃ 열린 자리 323 K 건조 S_mix 3씨앗 × 2(`run_znbdt_b_mix323.py` 에 대상만 · 막음 없음 · 6작업 · ≈ 1.5 h) → `results_znbdt_b_mix323_clch3_laptop.json` — laptop2 가 먼저 비면 laptop2 가.
+    판정 시각 모체·−CN RT-WC → 323 K 1위 · R · 순위 안정성(REALTEMP §4) / RT-E 둘 다 → S_humid,323 · 유지비 / ⑩ → −NO₂ 298 K 회수량 → 순위표 L / RT-B → 유지비 열 완성 / ⑦ → E 표 6씨앗 완성(R4 §6-1 갱신) / ⑥ → A 조건 통로 수 표 / ⑤ → #5′ −Br 판정.
+    막히면   멈추고 자기 우편함에(환경 변경 없음 · 러너 원판 무수정 · 남의 파일 수정 없음). 결과 파일은 master 로 · 값은 적지 않아도 됨(판정은 종합자가 원자료에서).
+    순찰     종합자 30분마다 master 읽고 판정 · 다음 배정 · 21:4x 에 10시간 요약.
+
+---
+
 ## 2026-11-08 11:4x — ★ **실온도 부분 판정(랩탑 36/54) · 사용자 "권고안대로 실행해" → 결정 ①~④ 등록 · laptop2 무응답(01:55~) → RT-E 는 HKHOME · ⑩ 은 랩탑(모체·−CN 뒤)**
 
 **받는 곳**: HKHOME(지금 켜짐) · 랩탑 · laptop2 · 사용자
