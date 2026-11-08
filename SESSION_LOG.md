@@ -30,6 +30,12 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 15:55 · 랩탑  [착수] 15:5x 배정 RT-WC-6 −Br 반복 4~6 9작업(워커 8 · 막음 없음 · 실행기 53677257 그대로 · 대상 e24i_br_open_h4~h6)
+실행 위치: ~/mof_run_1108 · 로그 ~/.mof_chain/logs_1108/rtwc_br_s456.log · 기존 요약(758102f1)은 keep_1108 로 옮김 · laptop2 에 사슬의 17:3x 겹침 확인 조건 확인 요청
+건드리는 파일: v3w_humid_wc_323/humid_wc_323_znbdt_br_s456_laptop.json(+ .status.jsonl) · 요약(끝나면 _br_s456_ 이름 · 옛 것 되돌림) · charged_v3 사본 h4~h6 · 실행 폴더 · COMMS/laptop.md · 이 파일.
+쓰는 코어: 8
+다음: 완주(1.5~1.6 h · 출처 같은 기기 · 같은 구조 h1~h3 작업별 실측) → 감사 9/9 · 씨앗(h1~h3 와 겹침 0) 확인 → 결과 master.
+
 ## 11-08 15:5x · 클라우드 종합자  [완료] 순찰 4/20 — ⑪ mslm050 323 K 철회(사용자 결정 · 랩탑 15:40 글 원문을 REALTEMP §4-S 에 기록) · 323 K 선택도 표 ZIF 행 "계산 안 함" · 랩탑 → RT-WC-6 −Br 반복 4~6 지금
 건드리는 파일: ASSIGN_ZNBDT_REALTEMP_20261108.md §4-S · §4-R2 · COMMS/cloud.md
 다음: 16:18 순찰.
