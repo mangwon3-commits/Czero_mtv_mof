@@ -6530,3 +6530,24 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
                최장 단일(N_super 3816) ÷ (작업합 ÷ 8) 비는 1/4 안팎이라 벽시계는 작업합 쪽이 묶음
     다음       C 끝 → PLAN §1 당기는 법대로 G(LPT 순서 · 아직 아무도 착수 글을 안 올린 다음 구조 · 착수 글 먼저)
     그대로     러너 원판 무수정 · 환경 변경 없음 · 이 기기에서 `git commit -a` 안 함 · 판정 없음
+
+---
+
+## 2026-11-09 00:36 — [6SEED_CORE §A] **HKHOME — A −CN · −NO₂ 298 K 습윤 WC 반복 4~6 18/18 완주**(22:30:27 → 00:33:33 · 2 h 03 m) · 감사 9/9 + 9/9 · 씨앗 18 고유 · 반복 1~3 과 겹침 0 · **C 짝수 33 착수 00:34:33**(사슬 자동 · simulate 8)
+
+**받는 곳**: 클라우드 종합자(수요일) · laptop2 · 랩탑 · 사용자
+**요약**: 22:30 재착수분이 끝났습니다. 두 묶음 모두 완주 표지 · rc · 막음 줄 · 씨앗이 통과했고, −NO₂ 결과는 postman 이 00:26 에 master 에 올렸으며(f3512f7e) −CN 결과는 다음 틱에 올라갑니다. A 사슬이 끝나자 C 사슬이 00:34:33 에 짝수 번째 33작업을 띄웠습니다(23:15 착수 글대로). 값은 기계적 사실로만 적습니다 — 판정은 종합자 몫입니다.
+**답 필요**: 아니오
+
+    −CN     results_e24i_cn_open_s456_humid_summary_hkhome.json(+ 러너 결과 v3w_humid_wc/humid_working_capacity_w2_e24i_cn_open_s456_hkhome.json) · 감사 n 9 · n_ok 9 · 씨앗 고유 · 완주 9/9 · rc 0 · 막음 줄 0 · not-found False
+            TSA 회수량 h4~h6 2.414 · 2.420 · 2.430 → 평균 2.4214 ± 0.0406(± = ±̄/√3) · VSA 0.804 · 0.821 · 0.820 → 0.8152 ± 0.046
+            반복 1~3(junseok · results_e24i_e24i_cn_open_humid_summary_junseok.json) TSA 2.4005 ± 0.0305 · 씨앗 9 와 겹침 0
+    −NO₂    results_e24i_no2_open_s456_humid_summary_hkhome.json(+ humid_working_capacity_w2_e24i_no2_open_s456_hkhome.json · master f3512f7e) · 감사 n 9 · n_ok 9 · 씨앗 고유 · 완주 9/9 · rc 0
+            · 막음 줄 2(물 1.30 · 구 4) · 물 차단 24 = 4 × 셀 6 (9/9) · not-found False · 발사기 4a9c4d5f(요약에 hkhome_launcher 기록 · laptop2 ⑩ 요약 안 건드림)
+            TSA h4~h6 2.312 · 2.318 · 2.339 → 평균 2.3229 ± 0.0231 · VSA 0.812 · 0.776 · 0.830 → 0.8061 ± 0.041
+            반복 1~3(laptop2 ⑩ · results_e24i_e24i_no2_open_humid_summary_laptop2.json) TSA 2.3247 ± 0.0297 · 씨앗 9 와 겹침 0
+    시간    22:30:27 착수 → 00:33:33 두 드라이버 끝(rc 0 · 0) · 2 h 03 m — 22:3x 견적 2.0~2.5 h(이 기기 끊긴 실행 실측) 안 · tsa 23~25 분 · ads · vsa 60~65 분 · 꼬리(둘째 물결 vsa) 00:33
+    옮긴 것 끊긴 20:23 분은 ~/.mof_chain/hk_a_aborted_20261108_2230/ 에 그대로(지우지 않음 · 어떤 값도 쓰지 않음)
+    C 착수  00:34:33 · run_core22_e_humid3.py d24e8e2d · 막음 표 4781d1d8 · CORE22_E_SLOT=even · 워커 8 · LPT 짝수 ● 33/66 · 파일 관문 8e8ec933 일치 · simulate 8(00:36) · 기록 hk_c_chain.log · 드라이버 로그 core22_e3_even_hkhome.log
+            견적 11-09 07~11시(23:15 글 그대로 · 첫 물결로 갱신) · 첫 완주 때 씨앗 · 막음 차단 수(= 구 × 셀) 확인해 적음
+    다음    C 끝 → PLAN §1 당기는 법대로 G(착수 글 먼저)
