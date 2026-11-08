@@ -4,6 +4,24 @@
 
 ---
 
+## 2026-11-08 14:1x — [REALTEMP §4-S 14:1x 정정] **laptop2 — 접수 · RT-WC-6 −Cl 반복 4~6 → −Br 반복 4~6 착수 글**(RT-B 가 끝나면 같은 사슬이 차례로 띄움 · 드라이 둘 다 통과) · RT-B 는 도는 중(simulate 6)
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 랩탑 · 사용자
+**요약**: 14:1x 정정 글의 laptop2 몫을 받았습니다. RT-B(13:51 착수)가 끝나면 사슬이 −Cl 323 K 습윤 WC 반복 4~6 의 9작업을 띄우고, 그것이 끝나면 −Br 반복 4~6 의 9작업을 띄웁니다. 두 대상 모두 드라이를 통과했습니다. −Br 은 HKHOME 이 비면 맡아도 되는 항목이므로, −Cl 이 끝날 때(≈ 17:3x) 사슬이 master 를 다시 읽습니다. 그때까지 HKHOME 이 −Br RT-WC 착수 글을 먼저 올렸거나 종합자가 −Br 을 HKHOME 으로 옮겼으면 −Br 을 띄우지 않습니다.
+**답 필요**: 아니오
+
+    실행기   run_znbdt_humid_wc_323.py(53677257 · master 무수정 · 랩탑 실행기) → 래퍼 run_humid_wc_v3w_323.py(b9a006b1) 무수정 import · env 만:
+             HWC_323_MACHINE=laptop2 · HWC_323_WORKERS=6 · HWC_323_TARGETS=e24i_<cl|br>_open_h4,h5,h6 · HWC_323_RESULT=humid_wc_323_znbdt_<cl|br>_s456_laptop2.json
+    사본     charged_v3/e24i_cl_open_h4~h6_DDEC6.cif = 원본 c1e97588 · e24i_br_open_h4~h6 = 원본 4015ec2d(바이트 같음 · cp -p · 커밋 안 함 · h1~h3 과 같은 원본)
+    드라이   두 대상 모두 파일 관문 8e8ec933 일치 · 자식 대조 일치(P_H2O 11,114.1 Pa · 조건 3 · 5,000 + 15,000 · run_one_323 · fork) · 기존 .data 0/9 · 막음이 필요한 대상 없음
+             조건 ads 323 K · CO₂ 15 kPa · RH 90 % / tsa 373 K · RH 11.0 % / vsa 323 K · CO₂ 5 kPa · 착수 하한 T0 + 15 s × i(0~120 s) + 2 s 잠금
+    요약 이름 실행기가 요약 경로를 기기 이름으로만 정하므로(results_znbdt_humid_wc_323_summary_laptop2.json), 사슬이 대상마다 끝난 직후
+             results_znbdt_<cl|br>_s456_humid_wc_323_summary_laptop2.json 으로 옮깁니다(랩탑 모체 · −CN 때와 같은 처리).
+    견적     RT-B 완주 15:0x~15:3x → −Cl 9작업 ÷ 6 = 두 물결 × 50~65 분(출처: 랩탑 같은 구조 h1~h3 실측 tsa 34~42 · vsa 39~51 · ads 62~67 분 · 6코어라 조금 더 길게 봄) → 17:3x 안팎 → −Br 19:3x~20:0x.
+    결과     v3w_humid_wc_323/humid_wc_323_znbdt_cl_s456_laptop2.json · ..._br_s456_laptop2.json(+ .status.jsonl) + 위 요약 · 끝나는 대로 master 로 올립니다.
+
+---
+
 ## 2026-11-08 13:5x — [REALTEMP §4-S] **laptop2 — RT-B 착수 13:51:41 · simulate 6 · 드라이 · 입력 · 씨앗 확인** · 실행기 master 반입
 
 **받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
