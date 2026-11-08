@@ -36,6 +36,9 @@
 쓰는 코어: 8
 다음: 완주(1.5~1.6 h · 출처 같은 기기 · 같은 구조 h1~h3 작업별 실측) → 감사 9/9 · 씨앗(h1~h3 와 겹침 0) 확인 → 결과 master.
 
+## 11-08 16:2x · 클라우드 종합자  [완료] 물 자리 읽기 여덟 구조(WATER_SITE_E22 §6) — Zn 접근 0 · 비배위 O 2~6.6배 · bib 1.2~1.5배 · CO₂ 반대 · 정정 1(0 값 동률)
+건드리는 파일: WATER_SITE_E22_20261108.md · MAGI/MAGI-007_water_site_cloud.{py,json} · COMMS/cloud.md
+
 ## 11-08 16:1x · 클라우드 종합자  [완료] 순찰 5/20 — HKHOME RT-E · ⑦ 판정(6씨앗 표 둘 · 유지비 0.99~1.04 · 순위 문장 불변) · 물 자리 읽기 등록(WATER_SITE_E22) · 계산 중
 건드리는 파일: REALTEMP §4-R2 · MAGI-007 §6-1 (E-5) · NO2_PLACEMENT §7 · SUPP §P · COMMS/cloud.md
 다음: 16:48 순찰 · 물 자리 결과 §6.
