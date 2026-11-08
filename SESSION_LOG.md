@@ -30,6 +30,13 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 11:05 · 랩탑  [착수] REALTEMP §3 RT-WC 모체 · −CN 18작업(워커 8) — 사용자 결정 10:2x("랩탑이 지금 맡음") · laptop2 예비 몫에서 넘겨받음
+하는 일: e22_parent_h1~h3 · e24i_cn_open_h1~h3 × ads/tsa/vsa(323 K · RH 90 %) · 실행기 run_znbdt_humid_wc_323.py(53677257) 수정 없이 대상 · 결과 이름만 바꿈.
+실행 위치: ~/mof_run_1108(master ba146baf worktree) · 로그 ~/.mof_chain/logs_1108/rtwc_pcn.log
+건드리는 파일: 실행 worktree 의 v3w_humid_wc_323/humid_wc_323_znbdt_parent_cn_laptop.json(+ .status.jsonl) · 요약(실행 중에는 results_znbdt_humid_wc_323_summary_laptop.json 경로 — 옛 파일은 ~/.mof_chain/keep_1108/ 로 옮겨 두고 끝나면 되돌림) · 실행 폴더 · COMMS/laptop.md · 이 파일.
+쓰는 코어: 8
+다음: 첫 완주로 견적 갱신 → 완주(2~3 h 견적, 출처 같은 기기 · 이웃 계) → 감사 18/18 확인 뒤 결과 master.
+
 ## 11-08 10:18 · 랩탑  [완주] −NO₂ RT-WC 9/9 · 표지 통과 · WC_TSA,323 = 1.3993 ± 0.0435(SD 0.0524) · WC_VSA,323 = 0.9453 ± 0.0459(SD 0.0588) · 벽시계 1.22 h(09:38 견적 안) · 결과 master
 다음: 랩탑 몫 RT-WC 36/36 끝. 모체 · −CN 18작업(laptop2 몫)을 랩탑이 받을지 사용자 · 종합자 결정 대기 — 그때까지 랩탑은 빕니다.
 
