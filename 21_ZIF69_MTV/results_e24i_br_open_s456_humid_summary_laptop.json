@@ -1,0 +1,384 @@
+{
+  "test": "MAGI-005 E-24i 습윤 TSA 작업 용량(차단 없음) — e24i_br_open",
+  "assign": "ASSIGN_MAGI5B_20260925.md §HKHOME 22차 습윤 WC 보완",
+  "ported_from": "run_e24f_humid_wc.py (E-24f, 막음 삽입 뺌)",
+  "machine": "laptop",
+  "made": "2026-11-08 19:31:18",
+  "smoke": false,
+  "runner_result": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/v3w_humid_wc/humid_working_capacity_w2_e24i_br_open_s456_laptop.json",
+  "blocking": null,
+  "audit_summary": {
+    "n": 9,
+    "n_ok": 9,
+    "seeds_distinct": true
+  },
+  "audit": [
+    {
+      "target": "e24i_br_open_h4",
+      "condition": "ads",
+      "dir": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/humid_wc_runs_v3w/ads_e24i_br_open_h4",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794126752,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "stderr_not_found": false,
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h4",
+      "condition": "tsa",
+      "dir": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/humid_wc_runs_v3w/tsa_e24i_br_open_h4",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794126767,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "stderr_not_found": false,
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h4",
+      "condition": "vsa",
+      "dir": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/humid_wc_runs_v3w/vsa_e24i_br_open_h4",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794126783,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "stderr_not_found": false,
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h5",
+      "condition": "ads",
+      "dir": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/humid_wc_runs_v3w/ads_e24i_br_open_h5",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794126798,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "stderr_not_found": false,
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h5",
+      "condition": "tsa",
+      "dir": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/humid_wc_runs_v3w/tsa_e24i_br_open_h5",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794128336,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "stderr_not_found": false,
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h5",
+      "condition": "vsa",
+      "dir": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/humid_wc_runs_v3w/vsa_e24i_br_open_h5",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794129640,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "stderr_not_found": false,
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h6",
+      "condition": "ads",
+      "dir": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/humid_wc_runs_v3w/ads_e24i_br_open_h6",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794129911,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "stderr_not_found": false,
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h6",
+      "condition": "tsa",
+      "dir": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/humid_wc_runs_v3w/tsa_e24i_br_open_h6",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794130395,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "stderr_not_found": false,
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h6",
+      "condition": "vsa",
+      "dir": "/home/skyjun/mof_run_1108/21_ZIF69_MTV/humid_wc_runs_v3w/vsa_e24i_br_open_h6",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794130466,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "stderr_not_found": false,
+      "ok": true
+    }
+  ],
+  "note": "기계적 사실뿐 — 판정은 종합자. 평균 ± = ±̄/√n, 단위 = d/√(±₁²+±₂²).",
+  "summary": {
+    "WC_TSA_each": [
+      2.1608,
+      2.155,
+      2.1687
+    ],
+    "WC_TSA_mean": 2.1614999999999998,
+    "WC_TSA_mean_err": 0.024229466296991294,
+    "WC_VSA_each": [
+      0.7558,
+      0.7353,
+      0.7706
+    ],
+    "WC_VSA_mean": 0.7539,
+    "WC_VSA_mean_err": 0.028732798396670377,
+    "loadings": {
+      "e24i_br_open_h4": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 2.9436409375,
+            "err": 0.0360012563
+          },
+          "water": {
+            "mol_per_kg": 0.0140926746,
+            "err": 0.0017770486
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.7828005508,
+            "err": 0.0185625155
+          },
+          "water": {
+            "mol_per_kg": 0.0049340277,
+            "err": 0.0004786248
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 2.1878524832,
+            "err": 0.0355437833
+          },
+          "water": {
+            "mol_per_kg": 0.0218961691,
+            "err": 0.0045282015
+          }
+        }
+      },
+      "e24i_br_open_h5": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 2.9288343068,
+            "err": 0.0270372958
+          },
+          "water": {
+            "mol_per_kg": 0.0158389111,
+            "err": 0.0052227294
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.7738419936,
+            "err": 0.0117927735
+          },
+          "water": {
+            "mol_per_kg": 0.0051341173,
+            "err": 0.0007757241
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 2.1935368469,
+            "err": 0.0263168707
+          },
+          "water": {
+            "mol_per_kg": 0.0232740589,
+            "err": 0.003229741
+          }
+        }
+      },
+      "e24i_br_open_h6": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 2.9479701489,
+            "err": 0.0520222235
+          },
+          "water": {
+            "mol_per_kg": 0.0134105509,
+            "err": 0.0023537106
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.7792762453,
+            "err": 0.020572285
+          },
+          "water": {
+            "mol_per_kg": 0.0051841397,
+            "err": 0.0007412137
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 2.1773614214,
+            "err": 0.0318241284
+          },
+          "water": {
+            "mol_per_kg": 0.0264118276,
+            "err": 0.0084887335
+          }
+        }
+      }
+    }
+  }
+}
