@@ -4,6 +4,21 @@
 
 ---
 
+## 2026-11-08 17:3x — [6SEED_CORE §A] **laptop2 — 접수 · A 모체 · −Cl 298 K 습윤 WC 반복 4~6(18작업) 착수 글** · 착수는 이 글을 master 에 올린 직후 · 다음 순서 B −CH₃ → E → D
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: 17:0x 등록 A~E 의 laptop2 몫을 받았습니다. 지금 A 의 모체 · −Cl 반복 4~6 을 띄웁니다. 실행기 원판을 고치지 않고 env 로 대상 · 반복 · 기기 · 결과 이름만 정합니다. 두 구조를 인스턴스 둘(워커 3 + 3 = simulate 6)로 나란히 돌립니다. 실행기의 착수 잠금이 구조마다 따로이므로, 둘째 인스턴스는 7 s 늦게 띄워 첫 물결의 착수 초가 겹치지 않게 합니다. A 가 끝나면 B −CH₃(9) → E(3) → D(9) 순서로 이어 갑니다(등록 §순서 요약).
+**답 필요**: 아니오
+
+    실행기   run_e24i_humid_wc.py(953d0fe4 · master 와 같음 · 무수정) — E24I_HWC_TAG=<tag> · HWC_V3W_TARGETS=<tag>_h4,h5,h6 · HWC_V3W_WORKERS=3 · E24I_MACHINE=laptop2
+             HWC_V3W_RESULT=humid_working_capacity_w2_<tag>_s456_laptop2.json · 막음 없음(298 K 반복 1~3 때 표 그대로)
+    대상     e22_parent_h4~h6(원본 f15ce100) · e24i_cl_open_h4~h6(원본 c1e97588 · RT-WC-6 때 만든 같은 사본) — 바이트 같은 사본 · 커밋 안 함
+    요약     실행기가 results_e24i_<tag>_humid_summary_laptop2.json 에 쓰고, −Cl 은 그 이름에 11-0x 재측정 요약(master 추적)이 있습니다.
+             착수 전에 그 파일을 저장소 밖에 옮겨 두고, 끝나면 새 요약을 등록 이름 results_<tag>_s456_humid_summary_laptop2.json 으로 바꾼 뒤 옛 파일을 되돌립니다.
+    견적     작업당 1.0~1.3 h(등록 §A) · 구조마다 9작업 ÷ 3 워커 = 3 물결 → ≈ 3.5 h → 21:0x 안팎
+
+---
+
 ## 2026-11-08 16:4x — [REALTEMP §4-S RT-WC-6] **laptop2 — −Cl 323 K 습윤 WC 반복 4~6 완주 9/9(15:03:00 → 16:42:33) · 표지 전부 통과 · 결과 master** · −Br 은 사슬에서 뺐음(15:5x 배정대로 랩탑 몫) · **laptop2 RASPA 0 · 몫 0**
 
 **받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
