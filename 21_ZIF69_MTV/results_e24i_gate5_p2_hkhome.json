@@ -1,0 +1,990 @@
+{
+ "test": "관문 ⑤ 처리 뒤 1.65 · 1.82 통로 수(′2 서술 열) — 모체 · 열린 자리 다섯",
+ "assign": "ASSIGN_ZNBDT_NO2_PLACEMENT_20261107.md §7 추가(22:0x) ⑥ · cloud.md 11-08 11:4x ③",
+ "method": "−NO₂ ′2 와 같음(znbdt_no2_gate5_p2.py) + 초격자 직접 측정(접기 확인 · 서술)",
+ "note_cap": "−NO₂ ′2 는 관문 ⑤ 상한 12 처리본 · 여기 uff300 판은 상한 300 처리본(다섯의 상한 12 산출물은 이 기기에 없음) · 모체는 두 판 모두",
+ "machine": "hkhome",
+ "rows": {
+  "e22_parent/uff300": {
+   "variant": "uff300",
+   "outer_loop_cap": 300,
+   "inputs": {
+    "treated": "uff300_e24i/e22_parent_after.cif",
+    "treated_md5": "4f80dd4ca570a89ef359233d1bc0c1ea",
+    "before_cif": "uff300_e24i/e22_parent_before.cif",
+    "before_cif_md5": "07953a308bbd92c5c269a8901853772c"
+   },
+   "fold": {
+    "supercell_n": [
+     2,
+     2,
+     3
+    ],
+    "rep": 12,
+    "symbol_order_ok": true,
+    "replica_max_frac_dev_vs_r0": 4e-06,
+    "rigid_shift_frac_removed": [
+     -0.03935,
+     0.03006,
+     -0.00653
+    ]
+   },
+   "cell_change_vs_before": {
+    "before_cellpar": [
+     24.404,
+     14.181,
+     9.304,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "after_cellpar": [
+     25.3931,
+     13.8939,
+     9.3447,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "d_len_pct": [
+     4.053,
+     -2.024,
+     0.437
+    ],
+    "d_angle_deg": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "d_volume_pct": 2.392
+   },
+   "unitcell_cif": "e24i_g5p2_runs/e22_parent_uff300_unit.cif",
+   "unitcell_md5": "80627e0d73046dc384ac578f3e4a9e3a",
+   "supercell_cif": "e24i_g5p2_runs/e22_parent_uff300_super.cif",
+   "unit": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.54487,
+     "PLD": 4.06802
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 2,
+     "dimensionality": [
+      "1",
+      "1"
+     ],
+     "channels_stdout": 2,
+     "pockets_stdout": 2,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e22_parent_uff300_unit_r1.65.chan   2 channels identified of dimensionality 1 1 ",
+      "Channel  0  5.54487  4.06802  5.54487",
+      "Channel  1  5.53647  4.0664  5.53647"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 2,
+     "dimensionality": [
+      "1",
+      "1"
+     ],
+     "channels_stdout": 2,
+     "pockets_stdout": 2,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e22_parent_uff300_unit_r1.82.chan   2 channels identified of dimensionality 1 1 ",
+      "Channel  0  5.54487  4.06802  5.54487",
+      "Channel  1  5.53647  4.0664  5.53647"
+     ]
+    }
+   },
+   "super": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.5449,
+     "PLD": 4.06803
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 8,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 8,
+     "pockets_stdout": 24,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e22_parent_uff300_super_r1.65.chan   8 channels identified of dimensionality 1 1 1 1 1 1 1 1 ",
+      "Channel  0  5.5449  4.06803  5.5449",
+      "Channel  1  5.53649  4.06639  5.53649"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 8,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 8,
+     "pockets_stdout": 24,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e22_parent_uff300_super_r1.82.chan   8 channels identified of dimensionality 1 1 1 1 1 1 1 1 ",
+      "Channel  0  5.5449  4.06803  5.5449",
+      "Channel  1  5.53649  4.06639  5.53649"
+     ]
+    }
+   },
+   "elapsed_s": 41.5,
+   "status": "ok"
+  },
+  "e24i_cn_open/uff300": {
+   "variant": "uff300",
+   "outer_loop_cap": 300,
+   "inputs": {
+    "treated": "uff300_e24i/e24i_cn_open_after.cif",
+    "treated_md5": "ea0001e582aaf4dc7f75dce1d60304ba",
+    "before_cif": "uff300_e24i/e24i_cn_open_before.cif",
+    "before_cif_md5": "a10d88d67b2ad98ac1c23538840e130f"
+   },
+   "fold": {
+    "supercell_n": [
+     2,
+     2,
+     3
+    ],
+    "rep": 12,
+    "symbol_order_ok": true,
+    "replica_max_frac_dev_vs_r0": 0.0,
+    "rigid_shift_frac_removed": [
+     -0.05119,
+     0.00017,
+     0.00381
+    ]
+   },
+   "cell_change_vs_before": {
+    "before_cellpar": [
+     24.404,
+     14.181,
+     9.304,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "after_cellpar": [
+     25.7269,
+     14.1785,
+     9.2804,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "d_len_pct": [
+     5.421,
+     -0.017,
+     -0.253
+    ],
+    "d_angle_deg": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "d_volume_pct": 5.135
+   },
+   "unitcell_cif": "e24i_g5p2_runs/e24i_cn_open_uff300_unit.cif",
+   "unitcell_md5": "d6af2978136f95baef90cfc88e79d6e1",
+   "supercell_cif": "e24i_g5p2_runs/e24i_cn_open_uff300_super.cif",
+   "unit": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.11194,
+     "PLD": 3.29628
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 5,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cn_open_uff300_unit_r1.65.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cn_open_uff300_unit_r1.65.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 4,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cn_open_uff300_unit_r1.82.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cn_open_uff300_unit_r1.82.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+     ]
+    }
+   },
+   "super": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.11193,
+     "PLD": 3.2963
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 60,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cn_open_uff300_super_r1.65.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cn_open_uff300_super_r1.65.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 48,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cn_open_uff300_super_r1.82.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cn_open_uff300_super_r1.82.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+     ]
+    }
+   },
+   "elapsed_s": 32.8,
+   "status": "ok"
+  },
+  "e24i_br_open/uff300": {
+   "variant": "uff300",
+   "outer_loop_cap": 300,
+   "inputs": {
+    "treated": "uff300_e24i/e24i_br_open_after.cif",
+    "treated_md5": "2344c9e64a6a678f71434506938a3de5",
+    "before_cif": "uff300_e24i/e24i_br_open_before.cif",
+    "before_cif_md5": "c9a6366b03b681989733ad3f13cda4b1"
+   },
+   "fold": {
+    "supercell_n": [
+     2,
+     2,
+     3
+    ],
+    "rep": 12,
+    "symbol_order_ok": true,
+    "replica_max_frac_dev_vs_r0": 0.0,
+    "rigid_shift_frac_removed": [
+     -0.04642,
+     0.00701,
+     -0.00453
+    ]
+   },
+   "cell_change_vs_before": {
+    "before_cellpar": [
+     24.404,
+     14.181,
+     9.304,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "after_cellpar": [
+     25.5845,
+     14.0823,
+     9.3322,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "d_len_pct": [
+     4.837,
+     -0.696,
+     0.303
+    ],
+    "d_angle_deg": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "d_volume_pct": 4.423
+   },
+   "unitcell_cif": "e24i_g5p2_runs/e24i_br_open_uff300_unit.cif",
+   "unitcell_md5": "d4418e1e5a7731356903ad9dbe38467e",
+   "supercell_cif": "e24i_g5p2_runs/e24i_br_open_uff300_super.cif",
+   "unit": {
+    "res": {
+     "rc": 0,
+     "LCD": 4.99457,
+     "PLD": 3.34868
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 4,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 4,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_br_open_uff300_unit_r1.65.chan   4 channels identified of dimensionality 1 1 1 1 ",
+      "Channel  0  4.97657  3.32407  4.97657",
+      "Channel  1  4.99457  3.34868  4.99457"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 4,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_br_open_uff300_unit_r1.82.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_br_open_uff300_unit_r1.82.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+     ]
+    }
+   },
+   "super": {
+    "res": {
+     "rc": 0,
+     "LCD": 4.99458,
+     "PLD": 3.34867
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 16,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 16,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_br_open_uff300_super_r1.65.chan   16 channels identified of dimensionality 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ",
+      "Channel  0  4.97658  3.32399  4.97658",
+      "Channel  1  4.99458  3.34867  4.99458"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 48,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_br_open_uff300_super_r1.82.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_br_open_uff300_super_r1.82.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+     ]
+    }
+   },
+   "elapsed_s": 44.4,
+   "status": "ok"
+  },
+  "e24i_cl_open/uff300": {
+   "variant": "uff300",
+   "outer_loop_cap": 300,
+   "inputs": {
+    "treated": "uff300_e24i/e24i_cl_open_after.cif",
+    "treated_md5": "fd2ccde474b0b43ddf4b93e781bff02f",
+    "before_cif": "uff300_e24i/e24i_cl_open_before.cif",
+    "before_cif_md5": "7dd7e292a79549fe17025c118d151af4"
+   },
+   "fold": {
+    "supercell_n": [
+     2,
+     2,
+     3
+    ],
+    "rep": 12,
+    "symbol_order_ok": true,
+    "replica_max_frac_dev_vs_r0": 0.074607,
+    "rigid_shift_frac_removed": [
+     -0.04785,
+     0.01386,
+     -0.00648
+    ]
+   },
+   "cell_change_vs_before": {
+    "before_cellpar": [
+     24.404,
+     14.181,
+     9.304,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "after_cellpar": [
+     25.6475,
+     13.9872,
+     9.3439,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "d_len_pct": [
+     5.096,
+     -1.367,
+     0.429
+    ],
+    "d_angle_deg": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "d_volume_pct": 4.104
+   },
+   "unitcell_cif": "e24i_g5p2_runs/e24i_cl_open_uff300_unit.cif",
+   "unitcell_md5": "4fb9aa90a377a7b96bce16e68352556f",
+   "supercell_cif": "e24i_g5p2_runs/e24i_cl_open_uff300_super.cif",
+   "unit": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.29327,
+     "PLD": 4.51488
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 2,
+     "dimensionality": [
+      "1",
+      "1"
+     ],
+     "channels_stdout": 2,
+     "pockets_stdout": 4,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cl_open_uff300_unit_r1.65.chan   2 channels identified of dimensionality 1 1 ",
+      "Channel  0  5.29327  4.51488  5.29327",
+      "Channel  1  5.28543  4.51265  5.28543"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 2,
+     "dimensionality": [
+      "1",
+      "1"
+     ],
+     "channels_stdout": 2,
+     "pockets_stdout": 2,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cl_open_uff300_unit_r1.82.chan   2 channels identified of dimensionality 1 1 ",
+      "Channel  0  5.29327  4.51488  5.29327",
+      "Channel  1  5.28543  4.51265  5.28543"
+     ]
+    }
+   },
+   "super": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.09757,
+     "PLD": 2.9622
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 36,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cl_open_uff300_super_r1.65.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cl_open_uff300_super_r1.65.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.65  probe_diam: 3.3"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 32,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cl_open_uff300_super_r1.82.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_cl_open_uff300_super_r1.82.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+     ]
+    }
+   },
+   "elapsed_s": 33.2,
+   "status": "ok"
+  },
+  "e24i_ch3_open/uff300": {
+   "variant": "uff300",
+   "outer_loop_cap": 300,
+   "inputs": {
+    "treated": "uff300_e24i/e24i_ch3_open_after.cif",
+    "treated_md5": "01bcfa700d26de658e83e92f80f8ab3e",
+    "before_cif": "uff300_e24i/e24i_ch3_open_before.cif",
+    "before_cif_md5": "d47b19e98dd722decd400e9b1797668b"
+   },
+   "fold": {
+    "supercell_n": [
+     2,
+     2,
+     3
+    ],
+    "rep": 12,
+    "symbol_order_ok": true,
+    "replica_max_frac_dev_vs_r0": 0.0,
+    "rigid_shift_frac_removed": [
+     -0.03932,
+     0.03626,
+     -0.025
+    ]
+   },
+   "cell_change_vs_before": {
+    "before_cellpar": [
+     24.404,
+     14.181,
+     9.304,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "after_cellpar": [
+     25.3617,
+     13.6848,
+     9.4617,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "d_len_pct": [
+     3.924,
+     -3.499,
+     1.695
+    ],
+    "d_angle_deg": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "d_volume_pct": 1.988
+   },
+   "unitcell_cif": "e24i_g5p2_runs/e24i_ch3_open_uff300_unit.cif",
+   "unitcell_md5": "033c7948085254ca2520afec3a76fdbf",
+   "supercell_cif": "e24i_g5p2_runs/e24i_ch3_open_uff300_super.cif",
+   "unit": {
+    "res": {
+     "rc": 0,
+     "LCD": 4.52505,
+     "PLD": 3.57772
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 4,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 4,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_ch3_open_uff300_unit_r1.65.chan   4 channels identified of dimensionality 1 1 1 1 ",
+      "Channel  0  4.51438  3.57771  4.51438",
+      "Channel  1  4.52504  3.569  4.52504"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 18,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_ch3_open_uff300_unit_r1.82.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_ch3_open_uff300_unit_r1.82.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+     ]
+    }
+   },
+   "super": {
+    "res": {
+     "rc": 0,
+     "LCD": 4.52505,
+     "PLD": 3.57773
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 16,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 16,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_ch3_open_uff300_super_r1.65.chan   16 channels identified of dimensionality 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ",
+      "Channel  0  4.51439  3.57771  4.51439",
+      "Channel  1  4.52505  3.56901  4.52505"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 0,
+     "dimensionality": [],
+     "channels_stdout": 0,
+     "pockets_stdout": 216,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_ch3_open_uff300_super_r1.82.chan   0 channels identified of dimensionality ",
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_ch3_open_uff300_super_r1.82.chan summary(Max_of_columns_above)   0 0  0  probe_rad: 1.82  probe_diam: 3.64"
+     ]
+    }
+   },
+   "elapsed_s": 41.8,
+   "status": "ok"
+  },
+  "e24i_c2h5_open/uff300": {
+   "variant": "uff300",
+   "outer_loop_cap": 300,
+   "inputs": {
+    "treated": "uff300_e24i/e24i_c2h5_open_after.cif",
+    "treated_md5": "448d8a365de0009c468ee516f44d436f",
+    "before_cif": "uff300_e24i/e24i_c2h5_open_before.cif",
+    "before_cif_md5": "b6f450dd7024dd2f0749d56ba43ae833"
+   },
+   "fold": {
+    "supercell_n": [
+     2,
+     2,
+     3
+    ],
+    "rep": 12,
+    "symbol_order_ok": true,
+    "replica_max_frac_dev_vs_r0": 2e-05,
+    "rigid_shift_frac_removed": [
+     -0.04127,
+     0.0357,
+     0.02182
+    ]
+   },
+   "cell_change_vs_before": {
+    "before_cellpar": [
+     24.404,
+     14.181,
+     9.304,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "after_cellpar": [
+     25.4894,
+     13.8619,
+     9.1706,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "d_len_pct": [
+     4.448,
+     -2.25,
+     -1.434
+    ],
+    "d_angle_deg": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "d_volume_pct": 0.634
+   },
+   "unitcell_cif": "e24i_g5p2_runs/e24i_c2h5_open_uff300_unit.cif",
+   "unitcell_md5": "745333ec82c313008e2b90b5cf8883ea",
+   "supercell_cif": "e24i_g5p2_runs/e24i_c2h5_open_uff300_super.cif",
+   "unit": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.49634,
+     "PLD": 4.6761
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 2,
+     "dimensionality": [
+      "1",
+      "1"
+     ],
+     "channels_stdout": 2,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_c2h5_open_uff300_unit_r1.65.chan   2 channels identified of dimensionality 1 1 ",
+      "Channel  0  5.49634  4.6761  5.49634",
+      "Channel  1  5.49631  4.6737  5.49631"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 2,
+     "dimensionality": [
+      "1",
+      "1"
+     ],
+     "channels_stdout": 2,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_c2h5_open_uff300_unit_r1.82.chan   2 channels identified of dimensionality 1 1 ",
+      "Channel  0  5.49634  4.6761  5.49634",
+      "Channel  1  5.49631  4.6737  5.49631"
+     ]
+    }
+   },
+   "super": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.49637,
+     "PLD": 4.67616
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 8,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 8,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_c2h5_open_uff300_super_r1.65.chan   8 channels identified of dimensionality 1 1 1 1 1 1 1 1 ",
+      "Channel  0  5.49635  4.67611  5.49635",
+      "Channel  1  5.49634  4.67357  5.49634"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 8,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 8,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e24i_c2h5_open_uff300_super_r1.82.chan   8 channels identified of dimensionality 1 1 1 1 1 1 1 1 ",
+      "Channel  0  5.49635  4.67611  5.49635",
+      "Channel  1  5.49634  4.67357  5.49634"
+     ]
+    }
+   },
+   "elapsed_s": 34.1,
+   "status": "ok"
+  },
+  "e22_parent/g5cap12": {
+   "variant": "g5cap12",
+   "outer_loop_cap": 12,
+   "inputs": {
+    "treated": "lmp_e22/e22_parent/min_e22_parent.data",
+    "treated_md5": "4a3539a9e0d6559bd6e7e9e49cdf2f3d",
+    "before_cif": "lmp_e22/e22_parent/e22_parent.cif",
+    "before_cif_md5": "75ef5ea3f60c8721cbe42713b47d8b53"
+   },
+   "fold": {
+    "supercell_n": [
+     2,
+     2,
+     3
+    ],
+    "rep": 12,
+    "symbol_order_ok": true,
+    "replica_max_frac_dev_vs_r0": 0.0,
+    "rigid_shift_frac_removed": [
+     -0.04006,
+     0.03019,
+     -0.02286
+    ]
+   },
+   "cell_change_vs_before": {
+    "before_cellpar": [
+     24.404,
+     14.181,
+     9.304,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "after_cellpar": [
+     25.385,
+     13.7655,
+     9.448,
+     90.0,
+     99.608,
+     90.0
+    ],
+    "d_len_pct": [
+     4.02,
+     -2.93,
+     1.547
+    ],
+    "d_angle_deg": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "d_volume_pct": 2.534
+   },
+   "unitcell_cif": "e24i_g5p2_runs/e22_parent_g5cap12_unit.cif",
+   "unitcell_md5": "9074ce4aa6fdfc23c1ac0c6969e24067",
+   "supercell_cif": "e24i_g5p2_runs/e22_parent_g5cap12_super.cif",
+   "unit": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.24089,
+     "PLD": 3.71075
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 4,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 4,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e22_parent_g5cap12_unit_r1.65.chan   4 channels identified of dimensionality 1 1 1 1 ",
+      "Channel  0  5.24089  3.70918  5.24089",
+      "Channel  1  5.23442  3.68412  5.23442"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 4,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 4,
+     "pockets_stdout": 4,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e22_parent_g5cap12_unit_r1.82.chan   4 channels identified of dimensionality 1 1 1 1 ",
+      "Channel  0  5.24089  3.70918  5.24089",
+      "Channel  1  5.23508  3.70153  5.23508"
+     ]
+    }
+   },
+   "super": {
+    "res": {
+     "rc": 0,
+     "LCD": 5.24089,
+     "PLD": 3.71074
+    },
+    "chan1.65": {
+     "rc": 0,
+     "n_channels_chanfile": 16,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 16,
+     "pockets_stdout": 0,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e22_parent_g5cap12_super_r1.65.chan   16 channels identified of dimensionality 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ",
+      "Channel  0  5.24089  3.70918  5.24089",
+      "Channel  1  5.23442  3.68412  5.23442"
+     ]
+    },
+    "chan1.82": {
+     "rc": 0,
+     "n_channels_chanfile": 16,
+     "dimensionality": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+     ],
+     "channels_stdout": 16,
+     "pockets_stdout": 36,
+     "chan_file_head": [
+      "/home/mangwon1/mof_project/21_ZIF69_MTV/e24i_g5p2_runs/e22_parent_g5cap12_super_r1.82.chan   16 channels identified of dimensionality 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ",
+      "Channel  0  5.24089  3.70918  5.24089",
+      "Channel  1  5.2285  3.71074  5.2285"
+     ]
+    }
+   },
+   "elapsed_s": 47.4,
+   "status": "ok"
+  }
+ },
+ "status": "ok",
+ "finished": true
+}
