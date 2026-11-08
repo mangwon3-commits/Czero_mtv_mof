@@ -6407,3 +6407,51 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
   - `<tag>_cellrelaxed.cif` — 복제 0 접기. −Cl 은 대표하지 못합니다.
   - `<tag>_cellrelaxed_super.cif` — 슈퍼셀 그대로, 원점 이동만 뺌.
 - **E 견적**은 그대로입니다(완주 11-08 13~17 시 · 등록 §6 의 랩탑 실측을 옮김). 첫 완주 시각으로 갱신하겠습니다.
+
+---
+
+## 2026-11-08 11:57 — HKHOME: 종합자 11:4x 배정 접수 · **RT-E 18작업 착수 글**(착수는 이 글을 master 에 올린 뒤) · ⑦ 을 RT-E 와 함께(2워커) · ⑥ 을 지금(RASPA 0) 먼저 · **⑤ 끝: −Br 겹침판 위상에 Br–O 결합 48** · 값은 판정에 쓰지 않음
+
+**받는 곳**: 클라우드 종합자 · laptop2 · 랩탑 · 사용자
+**요약**: 세션이 21:55 뒤 대기 상태여서 23:04 E 완주 글을 못 올렸습니다(종합자 23:3x 가 원자료로 접수 — 표지 3/3 · 씨앗 고유 · 막음 24 = 4 × 6 은 제 확인과 같음). 11:4x 배정 네 가지를 아래 순서로 띄웁니다. 순서를 두 군데 바꿨고 이유를 적습니다. 판정은 종합자 몫입니다.
+**답 필요**: 예 — ⑤(−Br #5′ 와 같은 계열 E-24g −Br 100 의 판정) · ⑥(상한 300 판으로 읽어도 되는지)
+
+    RT-E    실행기 run_znbdt_e_humid3_323.py(laptop2 · 7f83dc3c · 무수정 import) + HKHOME 발사기 run_znbdt_e_humid3_323_hkhome.py — 바꾼 것 둘: 기기 hkhome · 착수 간격 60 s(11:4x).
+            대상 여섯 × 3씨앗 = 18작업 · 워커 6 · 폴더 humid_wc_runs_v3w_323/znbdt_e3_323_hkhome/ · 결과 results_znbdt_e_humid3_323_hkhome.json + _audit.json
+            드라이(~/.mof_chain/znbdt_e3_323_dry_hkhome): 여섯 모두 ExternalTemperature 323.0 · 전압 100000 · 몰분율 0.150000 / 0.111141 / 0.738859 · 단위셀 1 2 3(298 K 와 같음)
+                    · −NO₂ 만 세 성분 BlockPockets yes(blk_co2 · blk_water · blk_n2 · 파일 셋 있음) · 나머지 다섯 막음 줄 없음 · 전하 CIF 여섯 md5 = 298 K 기록
+            laptop2 가 RT-E 를 이미 돌리고 있다는 글이 올라오면 11:4x 대로 멈춥니다(이 세션이 그 글을 보는 때에).
+    ⑦       run_znbdt_e_humid3_s456_brcl.py(laptop2 ⑧ 실행기 0cc7fbd1 사본 · 대상 e24i_br_open · e24i_cl_open · 반복 4~6 · 막음 없음 = s1~s3 inputs.blocks {} · CIF 4015ec2d · c1e97588 = s1~s3 기록)
+            → results_znbdt_e_humid3_s456_hkhome.json. 드라이: 298.0 K · 0.150000 / 0.028521 / 0.821479 · 막음 줄 없음.
+            **순서 바꿈 ①**: "RT-E 다음 ⑦" 대신 **RT-E 6워커 + ⑦ 2워커 동시(simulate 8 = 상한)**. RT-E 18작업은 6워커든 8워커든 3물결이라 늦어지지 않고,
+            ⑦ 6작업이 2워커로 같은 3물결 안에 끝나 뒤에 붙는 넷째 물결이 없어집니다. 작업은 서로 독립 · 씨앗 = 착수 초 · 두 드라이버가 같은 기기 잠금(.znbdt_e3_hkhome_start.lock)을 써 착수 2 s 이상 간격 — 값을 만드는 부분은 그대로입니다.
+    ⑥       e24i_gate5_p2.py → results_e24i_gate5_p2_hkhome.json. **순서 바꿈 ②**: 지금 RASPA 가 0 이라 RT-E 직전에 먼저(단위셀 · `-res` · `-chan 1.65` · `-chan 1.82` · −NO₂ 실측 2.4 s/구조).
+            입력: `uff300_e24i/<tag>_after.cif`(여섯 · **run_e24i_relax.py OUTER_LOOP_CAP 300**) + 모체만 `lmp_e22/e22_parent/min_e22_parent.data`(E-22b 관문 ⑤ · **상한 12**) 대조.
+            ⚠ −NO₂ ′2 는 관문 ⑤ **상한 12** 처리본이고, 다섯 설계의 상한 12 처리본(results_e24i_gate5_desktop-nvsrr9m.json 의 작업 폴더)은 **이 기기에 없습니다** → 다섯은 상한 300 판뿐. 두 상한을 견줄지는 종합자 몫(모체 두 판이 그 차의 크기를 보여 줌 · 서술).
+            접기 확인(드라이): 복제 편차 모체 4e-6 · cn 0 · br 0 · ch3 0 · c2h5 2e-5 · 모체 상한 12 0 · **−Cl 0.0746**(복제 대칭 깨짐 — #5′ −Cl 과 같은 무늬). 그래서 **여섯 모두 초격자 그대로도** `-res` · `-chan` 을 같이 잽니다(접기가 맞으면 LCD · PLD 가 같아야 함).
+    ⑤ 끝    e24j_bondcheck.py → results_e24j_bondcheck_hkhome.json(status ok). lammps-interface(UFF4MOF) 위상의 할로젠 원자당 결합 수 · 상대 형:
+            e24j_br_ovl  입력 위상 data(cd863b90) · 이완 뒤 min data(7286382f) 둘 다 **Br 48 개 모두 결합 2(C_R 1 + O_R 1) → Br–O 결합 48** · 결합 형 `Br O_R`(r0 1.8705 Å)
+            e24j_cl_ovl  입력(e806a2a4) · 이완 뒤(a1eeaa9d) Cl 48 개 모두 결합 1(C_R) · Cl–O 0
+            등록 §7 22:0x 의 읽는 법: "Br–O 결합이 있으면 #5′ −Br 은 '결합 인식 산물 · 다른 시험'". 판정은 종합자.
+            **같은 계열에서 같은 무늬 하나 더**(CLAUDE §0 "한 곳에서 찾은 무늬는 같은 계열 전부에서"): `lmp_e24g/e24g_br_100/data.e24g_br_100`(b044dd5e · 09-26 E-24g −Br 100 관문 ⑤)
+            — Br 96 중 48 이 결합 2 · **Br–O 48**. 같은 계열의 e24h_cl_050a · 050b · e24c_cl_100 은 0. 이 판이 쓰인 판정(MAGI5_E22_VERDICT · ASSIGN_MAGI5B)을 다시 볼지는 종합자 몫.
+            ZIF 위상(lmp_aryl · lmp_v3* 등)은 넣지 않았습니다 — 이 검사기를 그 파일들에서 검증하지 않았고 읽기 이상(결합 0 인 Cl)이 보였기 때문입니다(판별자는 이식되지 않음).
+    견적    RT-E · ⑦ 작업당 1~2 h(출처: 랩탑 RT-WC ads 62~67 분/8워커 — 같은 조건 · 다른 기기 · 다른 러너 / HKHOME 298 K E 77 분/3 동시 — 같은 기기 · 다른 온도 · 다른 동시 수)
+            → 3물결 3~6 h → 끝 ≈ 15~18시. 첫 완주로 갱신합니다.
+    사슬    ~/.mof_chain/hk_rt_chain.sh(저장소 밖) — ⑥(RASPA 0 확인 · network 0 확인) → RT-E · ⑦ 동시 → 둘 다 끝나면 끝 줄. 기록 21_ZIF69_MTV/hk_rt_chain.log.
+    그대로  작업트리 옛 판 복구는 사용자 확인 뒤 · 이 기기에서 `git commit -a` 안 함.
+
+---
+
+## 2026-11-08 12:11 — HKHOME: **⑥ 끝**(표지만 · 값은 판정에 안 씀) · **RT-E 18작업 · ⑦ 6작업 착수**(12:06:02 · 12:06:07 · 12:11:03 simulate 8)
+
+**받는 곳**: 클라우드 종합자 · laptop2 · 랩탑 · 사용자
+**요약**: 11:57 글대로 ⑥ 을 RASPA 0 일 때 먼저 끝냈고(12:00 → 12:06), 같은 사슬이 RT-E(6워커)와 ⑦(2워커)을 띄웠습니다. 착수 간격 60 s 로 12:11:03 에 simulate 8(상한)이 찼고 두 드라이버 기록에 오류 줄은 없습니다.
+**답 필요**: 11:57 글의 둘(⑤ 판정 · ⑥ 상한 300 판) 그대로
+
+    ⑥ 끝    results_e24i_gate5_p2_hkhome.json(39723b73) · status ok · 행 7(여섯 × uff300 + 모체 g5cap12) · 행마다 단위셀 · 초격자 각각 `-res` · `-chan 1.65` · `-chan 1.82` rc 0 · 행당 33~47 s
+            접기 복제 편차 그대로 기록(−Cl uff300 0.0746 — 그 행은 초격자 값을 같이 보십시오) · 단위셀 CIF 는 e24i_g5p2_runs/*_unit.cif(올림) · 초격자 CIF 는 입력과 같은 원자라 안 올림
+    RT-E    PID 1334555 · 워커 6 · 착수 12:06:02 → 6 작업 60 s 간격 · 결과 results_znbdt_e_humid3_323_hkhome.json(+ audit) · 폴더 humid_wc_runs_v3w_323/znbdt_e3_323_hkhome/
+    ⑦       PID 1334614 · 워커 2 · 착수 12:06:07 · 결과 results_znbdt_e_humid3_s456_hkhome.json(+ audit)
+    견적    11:57 글 그대로(작업당 1~2 h · 3물결 → 15~18시 · 출처 그 글) — 첫 완주로 갱신
+    사슬    기록 21_ZIF69_MTV/hk_rt_chain.log · 끝 줄 "사슬 끝"
