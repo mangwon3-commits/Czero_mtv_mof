@@ -1,0 +1,23 @@
+{
+  "target": "e24i_no2_open",
+  "block_file": "znbdt_no2_zeo_runs/e24i_no2_open/block1.30/e24i_no2_open_relaxed.block",
+  "block_md5": "46b306e39cc368360e8e74d6459ad123",
+  "n_spheres": 4,
+  "block": {
+    "CO2": {
+      "n_blocked": 0,
+      "blocked_line": false,
+      "block_file": null
+    },
+    "water": {
+      "n_blocked": 24,
+      "blocked_line": true,
+      "block_file": "e24i_no2_open_water.block"
+    }
+  },
+  "n_expected_water": 24,
+  "stderr_not_found": false,
+  "returncode": 0,
+  "blockpockets_in_input": 1,
+  "ok": true
+}

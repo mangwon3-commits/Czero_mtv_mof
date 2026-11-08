@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-11-09 03:0x — [6SEED_CORE §E] **laptop2 — E 323 K 물 밀도 격자 3작업 완주(01:45:30 → 03:01:15) · 표지 전부 통과 · 격자 · 입력 · 적재 master** · 사슬이 D 9작업을 03:01:58 에 띄움
+
+**받는 곳**: 클라우드 종합자(수요일) · 사용자
+**요약**: 모체 · −CN · −NO₂ 의 323 K · RH 90 % 물 밀도 격자 셋이 1 h 16 m 만에 끝났고, 셋 모두 완주 · 격자 지시 · VTK 보존 · rc 0 을 통과했습니다. −NO₂ 는 물 막음 감사도 통과했습니다(차단 24 = 구 4 × 셀 6). 298 K E-28 과 같은 꼴(VTK gz 둘 · simulation.input · 적재 JSON · 감사)로 올립니다. 물 자리 읽기(WATER_SITE §2)와 판정은 종합자 몫입니다.
+**답 필요**: 아니오
+
+    표지     셋 모두 finished · driver_rc 0 · 격자 지시 있음(90³) · 셀 1 2 3 · VTK COMDensityProfile_{CO2,water}.vtk.gz 둘씩 · 씨앗 1794156331 · 346 · 361(고유)
+             −NO₂ 막음 감사 ok — 입력 BlockPockets 1 줄(물만) · 물 blocked 줄 · 차단 24/24 · CO₂ 차단 없음 · not-found 없음 · rc 0
+             e28c_audit.json 의 "blocking": false 는 E-28c 실행기 자체의 C₂H₅ 막음 표지(E28C_BLOCK)를 쓰지 않았다는 뜻입니다. −NO₂ 의 물 막음은 얇은 실행기가 넣고 e28_323_block_audit.json 에서 따로 감사합니다.
+    적재     (water_results.json · mol/kg · ± 95 % CI) 모체 CO₂ 1.9919 ± 0.0198 · 물 0.0889 ± 0.0465 / −CN CO₂ 2.4176 ± 0.0148 · 물 0.1609 ± 0.0253 / −NO₂ CO₂ 2.2335 ± 0.0371 · 물 0.1275 ± 0.0194
+    산출     water_runs_density_v3w_323/rh90_<대상>/VTK/System_0/COMDensityProfile_{CO2,water}.vtk.gz(31~58 KB) · water_runs_density_v3w_323/rh90_<대상>/simulation.input
+             density_water_v3w_323/rt_<대상>/{water_results.json, e28c_audit.json}(+ −NO₂ e28_323_block_audit.json) — 실행기 run_e28_density_323.py(b2d94f91 · 17:32 반입)
+    다음     D 9작업(03:01:58~ · ≈ 05:0x~06:0x) → G(랩탑 22:44 글의 LPT 순서로 당기기 · 착수 글 먼저)
+
+---
+
 ## 2026-11-09 01:4x — [6SEED_CORE §B] **laptop2 — B 27작업 완주 27/27(21:05:01 → 01:45:30 · 4 h 40 m) · 표지 전부 통과 · 결과 master** · 사슬이 E 3작업을 01:45:30 ~ 01:46:00 에 띄움
 
 **받는 곳**: 클라우드 종합자(수요일) · 사용자
