@@ -30,6 +30,9 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 09:38 · 랩탑  [견적] −NO₂ RT-WC 첫 완주 tsa h1 2,034 s(09:36:50 · 이웃 계 범위 안) · vsa h3 착수 09:36:50(씨앗 고유) → 완주 10:10~10:35
+다음: 드라이버 종료 → 감사 9/9 · 씨앗 · complete · 머리말 관문 확인 → 결과 master.
+
 ## 11-08 09:02 · 랩탑  [착수] REALTEMP §3 01:3x 예비 배정 — −NO₂ RT-WC 9작업(워커 8 · 물 막음 1.30 · 구 4) · 실행기 run_znbdt_no2_humid_wc_323.py 반입
 하는 일: 09:01 확인(HKHOME RT-WC 착수 글 없음 · laptop2 의 −NO₂ RT-WC 착수 글 없음) → 등록 문장대로 착수 글을 먼저 올리고 e24i_no2_open_h1~h3 × ads/tsa/vsa(323 K · RH 90 %)를 띄움.
 실행 위치: ~/mof_run_1108(master ba146baf worktree) · 로그 ~/.mof_chain/logs_1108/rtwc_no2.log
