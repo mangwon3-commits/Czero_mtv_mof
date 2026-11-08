@@ -1,0 +1,445 @@
+{
+  "test": "CoRE 판 Zn(bib)(bdtdc) 2017[Zn][dia]3[FSR]1(CoRE 기하 · CoRE 전하) 298 K 습윤 TSA 작업 용량 — 물 막음 1.30 구 4",
+  "assign": "ASSIGN_ZNBDT_6SEED_CORE_20261108.md §D · ASSIGN_CORE22_HUMID_PLAN_20261108.md §0(G 의 이 행)",
+  "ported_from": "run_e24i_humid_wc.py (953d0fe4) + run_e24f_humid_wc.py 의 물 막음 삽입",
+  "machine": "laptop2",
+  "made": "2026-11-09 06:12:44",
+  "dry": false,
+  "runner_result": "/home/leehk/mof_project/21_ZIF69_MTV/v3w_humid_wc/humid_working_capacity_w2_core_zn_dia_fsr1_laptop2.json",
+  "inputs": {
+    "src": "../../.mof_chain/core22_1108/cifs/2017_Zn__dia_3_FSR_1.cif",
+    "src_md5": "430a80b09897741b80702e70cc784cbb",
+    "copies": {
+      "core_zn_dia_fsr1_h1": "charged_v3/core_zn_dia_fsr1_h1_DDEC6.cif",
+      "core_zn_dia_fsr1_h2": "charged_v3/core_zn_dia_fsr1_h2_DDEC6.cif",
+      "core_zn_dia_fsr1_h3": "charged_v3/core_zn_dia_fsr1_h3_DDEC6.cif"
+    },
+    "water_block": {
+      "file": "../../.mof_chain/core22_d/2017_Zn__dia_3_FSR_1.block",
+      "md5": "db1549bb850119209e2014f70fd63bde",
+      "n_spheres": 4
+    },
+    "co2_block": null
+  },
+  "blocking": {
+    "water": "block1.30 구 4",
+    "CO2": "없음(1.65 구 0)"
+  },
+  "audit_summary": {
+    "n": 9,
+    "n_ok": 9,
+    "seeds_distinct": true
+  },
+  "audit": [
+    {
+      "target": "core_zn_dia_fsr1_h1",
+      "condition": "ads",
+      "dir": "/home/leehk/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w/ads_core_zn_dia_fsr1_h1",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794160918,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "core_zn_dia_fsr1_water.block"
+        }
+      },
+      "blockpockets_in_input": 2,
+      "n_expected_water": 24,
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "ok": true
+    },
+    {
+      "target": "core_zn_dia_fsr1_h1",
+      "condition": "tsa",
+      "dir": "/home/leehk/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w/tsa_core_zn_dia_fsr1_h1",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794160933,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "core_zn_dia_fsr1_water.block"
+        }
+      },
+      "blockpockets_in_input": 2,
+      "n_expected_water": 24,
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "ok": true
+    },
+    {
+      "target": "core_zn_dia_fsr1_h1",
+      "condition": "vsa",
+      "dir": "/home/leehk/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w/vsa_core_zn_dia_fsr1_h1",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794160948,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "core_zn_dia_fsr1_water.block"
+        }
+      },
+      "blockpockets_in_input": 2,
+      "n_expected_water": 24,
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "ok": true
+    },
+    {
+      "target": "core_zn_dia_fsr1_h2",
+      "condition": "ads",
+      "dir": "/home/leehk/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w/ads_core_zn_dia_fsr1_h2",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794160963,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "core_zn_dia_fsr1_water.block"
+        }
+      },
+      "blockpockets_in_input": 2,
+      "n_expected_water": 24,
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "ok": true
+    },
+    {
+      "target": "core_zn_dia_fsr1_h2",
+      "condition": "tsa",
+      "dir": "/home/leehk/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w/tsa_core_zn_dia_fsr1_h2",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794160978,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "core_zn_dia_fsr1_water.block"
+        }
+      },
+      "blockpockets_in_input": 2,
+      "n_expected_water": 24,
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "ok": true
+    },
+    {
+      "target": "core_zn_dia_fsr1_h2",
+      "condition": "vsa",
+      "dir": "/home/leehk/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w/vsa_core_zn_dia_fsr1_h2",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794160993,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "core_zn_dia_fsr1_water.block"
+        }
+      },
+      "blockpockets_in_input": 2,
+      "n_expected_water": 24,
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "ok": true
+    },
+    {
+      "target": "core_zn_dia_fsr1_h3",
+      "condition": "ads",
+      "dir": "/home/leehk/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w/ads_core_zn_dia_fsr1_h3",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794163330,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "core_zn_dia_fsr1_water.block"
+        }
+      },
+      "blockpockets_in_input": 2,
+      "n_expected_water": 24,
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "ok": true
+    },
+    {
+      "target": "core_zn_dia_fsr1_h3",
+      "condition": "tsa",
+      "dir": "/home/leehk/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w/tsa_core_zn_dia_fsr1_h3",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794163402,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "core_zn_dia_fsr1_water.block"
+        }
+      },
+      "blockpockets_in_input": 2,
+      "n_expected_water": 24,
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "ok": true
+    },
+    {
+      "target": "core_zn_dia_fsr1_h3",
+      "condition": "vsa",
+      "dir": "/home/leehk/mof_project/21_ZIF69_MTV/humid_wc_runs_v3w/vsa_core_zn_dia_fsr1_h3",
+      "unit_cells": [
+        1,
+        2,
+        3
+      ],
+      "seed": 1794165848,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 24,
+          "blocked_line": true,
+          "block_file": "core_zn_dia_fsr1_water.block"
+        }
+      },
+      "blockpockets_in_input": 2,
+      "n_expected_water": 24,
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "ok": true
+    }
+  ],
+  "note": "기계적 사실뿐 — 판정은 종합자. 평균 ± = ±̄/√n · SD 병기.",
+  "summary": {
+    "WC_TSA_each": [
+      2.4189,
+      2.4491,
+      2.4189
+    ],
+    "WC_TSA_mean": 2.4289666666666667,
+    "WC_TSA_mean_err": 0.045745386328791354,
+    "WC_TSA_SD": 0.017435978129526828,
+    "WC_VSA_each": [
+      0.8538,
+      0.9949,
+      0.8161
+    ],
+    "WC_VSA_mean": 0.8882666666666666,
+    "WC_VSA_mean_err": 0.0633930595570209,
+    "WC_VSA_SD": 0.09425138372105382,
+    "loadings": {
+      "core_zn_dia_fsr1_h1": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 3.382449864,
+            "err": 0.1114760168
+          },
+          "water": {
+            "mol_per_kg": 0.6652721637,
+            "err": 0.3232638141
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.9635869299,
+            "err": 0.0332264325
+          },
+          "water": {
+            "mol_per_kg": 0.0236293577,
+            "err": 0.0048669636
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 2.5286441467,
+            "err": 0.0931141545
+          },
+          "water": {
+            "mol_per_kg": 0.9017746189,
+            "err": 0.3004462951
+          }
+        }
+      },
+      "core_zn_dia_fsr1_h2": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 3.3997032116,
+            "err": 0.0535796708
+          },
+          "water": {
+            "mol_per_kg": 0.5505144257,
+            "err": 0.1764487692
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.9506051435,
+            "err": 0.0278196266
+          },
+          "water": {
+            "mol_per_kg": 0.0225066368,
+            "err": 0.0044264333
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 2.4048524222,
+            "err": 0.092631288
+          },
+          "water": {
+            "mol_per_kg": 1.4247223309,
+            "err": 0.4335038806
+          }
+        }
+      },
+      "core_zn_dia_fsr1_h3": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 3.3763610616,
+            "err": 0.0483584887
+          },
+          "water": {
+            "mol_per_kg": 0.8334923027,
+            "err": 0.1526657122
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.9574615737,
+            "err": 0.037190932
+          },
+          "water": {
+            "mol_per_kg": 0.0236189138,
+            "err": 0.0014426405
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 2.5602422116,
+            "err": 0.0601239561
+          },
+          "water": {
+            "mol_per_kg": 0.764760898,
+            "err": 0.2261174239
+          }
+        }
+      }
+    }
+  },
+  "core": {
+    "key": "2017[Zn][dia]3[FSR]1",
+    "file": "2017_Zn__dia_3_FSR_1.cif",
+    "cif_md5": "430a80b09897741b80702e70cc784cbb",
+    "blocks_source": "results_core22_blocks_laptop.json (origin/master)",
+    "block_r1.30": "core22_zeo_runs/2017_Zn__dia_3_FSR_1/block1.30/2017_Zn__dia_3_FSR_1.block",
+    "n_spheres": {
+      "r1.65": 0,
+      "r1.82": 0,
+      "r1.30": 4
+    }
+  },
+  "launcher": {
+    "file": "run_core22_d_humid_wc.py",
+    "md5": "bc847f822233ea9a3facfc42c4ff0627"
+  },
+  "launcher_fix": {
+    "why": "⑩ 실행기 summarize() 가 −NO₂ 문구를 고정으로 씀 — 값 · 행 · 감사는 그대로",
+    "before": {
+      "test": "ZNBDT 습윤 TSA 작업 용량(물 막음 1.30 구 4) — core_zn_dia_fsr1",
+      "assign": "ASSIGN_ZNBDT_LADDER_20261108.md §3 (laptop2 ⑩)"
+    }
+  }
+}
