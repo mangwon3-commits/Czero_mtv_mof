@@ -4,6 +4,25 @@
 
 ---
 
+## 2026-11-08 17:3x — [6SEED_CORE §A · §B · §E] **laptop2 — A 착수 17:26:47 · simulate 6 · 입력 · 씨앗 확인** · B −CH₃ 드라이 통과 · **E 실행기 run_e28_density_323.py 반입 · 드라이 통과** · A → B → E 를 사슬로 걸어 둠 · D 는 HKHOME C 준비(막음 표) 뒤
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: A 의 모체 · −Cl 인스턴스 둘을 17:26:47 · 17:26:55 에 띄웠고, 입력이 298 K 습윤 WC 조건과 같으며 첫 물결 씨앗 여섯이 서로 다릅니다. A 가 끝나면 사슬이 B −CH₃(9작업)를, B 가 끝나고 RASPA 가 0 이 되면 E 3작업을 띄웁니다. E 는 E-28c 실행기를 무수정 import 하는 얇은 실행기를 새로 만들었고, 드라이 입력을 298 K E-28 실제 입력과 대조해 온도 · 전압 · 몰분율 넷만 다른 것을 확인했습니다. D 는 CoRE CIF 의 막음 표가 C 준비(HKHOME)에서 나오므로 그 결과를 본 뒤 착수 글을 따로 올립니다.
+**답 필요**: 아니오
+
+    A 입력   298.0 K · 17,852.1 Pa · CO₂ 0.840237 / 물 0.159763 · 5,000 + 15,000 · 셀 1 2 3 · BlockPockets 없음 · 사본 e22_parent_h4~h6(f15ce100) · e24i_cl_open_h4~h6(c1e97588)
+    A 씨앗   첫 물결 1794126409 · 424 · 439(모체) · 1794126415 · 430 · 445(−Cl) — 모두 고유. 반복 1~3(랩탑 09-25 · Junseok · laptop2 11-0x)과는 착수 날짜가 달라 착수 초가 겹칠 수 없습니다(끝에서 씨앗 아홉을 다시 확인).
+    B 드라이  run_znbdt_humid_wc_323.py(53677257) · e24i_ch3_open_h4~h6(a8e6a165 · 바이트 같은 사본) · 파일 관문 · 자식 대조 일치 · 기존 .data 0/9 · 결과 humid_wc_323_znbdt_ch3_s456_laptop2.json
+             요약은 끝난 뒤 results_znbdt_ch3_s456_humid_wc_323_summary_laptop2.json 으로 옮김(−Cl 반복 때와 같은 처리)
+    E 실행기 run_e28_density_323.py(b2d94f91) → run_e28c_density.py(39dfddf3) → run_density_water_v3w.py(e4df6077) → run_density_water_v3.py(27fc1c1b) → run_water.py(94650685) 무수정 import
+             바꾸는 것: run_water 전역 TEMP 323.0 · P_SAT_298 12,349(→ 물 0.90 × 12,349 = 11,114.1 Pa · 전압 26,114.1 Pa) · 폴더(water_runs_density_v3w_323 · density_water_v3w_323/rt_<대상>)
+             −NO₂ 만 water 성분 절에 BlockPockets 두 줄(block1.30 · 46b306e3 · 구 4 · CO₂ 막음 없음) · 끝에서 물 blocked 줄 · 차단 수 = 구 4 × 셀 수 · not-found 없음 감사(e28_323_block_audit.json)
+    E 드라이  저장소 밖(~/.mof_chain/e28_323_dry) · RASPA 안 띄움 · 모체 입력 diff(298 K rh90_e22_parent 대비): ExternalTemperature 298.0 → 323.0 · ExternalPressure 17,852.1 → 26,114.1 · MolFraction 0.840237 → 0.574402 · 0.159763 → 0.425598 — 그 밖에 0 줄
+             −NO₂ 입력: water 절에 BlockPockets yes · e24i_no2_open_water 한 번 · 90³ 격자 지시 · 셀 1 2 3
+    견적     A ≈ 21:0x(3 물결) → B ≈ 22:3x(두 물결 × 40~70 분) → E ≈ 00:0x~00:3x(3 동시 · 작업당 1~1.5 h) → D(C 준비 뒤 · ≈ 2.5 h)
+
+---
+
 ## 2026-11-08 17:3x — [6SEED_CORE §A] **laptop2 — 접수 · A 모체 · −Cl 298 K 습윤 WC 반복 4~6(18작업) 착수 글** · 착수는 이 글을 master 에 올린 직후 · 다음 순서 B −CH₃ → E → D
 
 **받는 곳**: 클라우드 종합자 · 사용자
