@@ -102,7 +102,9 @@ def analyse(name):
         wmed=lambda d,w: float(np.interp(0.5, np.cumsum(w[np.argsort(d)])/w.sum(), np.sort(d)))
         res={'nonzero_voxels':int(nz_.sum()),'max_count':int(round(1/minnz)),'n_samples':float(nsamp),
              'median_nearest_any_weighted':wmed(dmin[nz_],vals[nz_])}
-        top=np.argsort(vals)[-int(0.05*vals.size):]
+        # [16:1x 정정] 상위 5 % 는 0 이 아닌 복셀 안에서 고름 — 0 값 동률이 섞이면(모체 물: 0 아닌 복셀 20,622 < 36,450) 골격 안 복셀이 '최근접 Zn' 으로 잡힘
+        ntop=min(int(0.05*vals.size), int(nz_.sum())); top=np.argsort(vals)[-ntop:]
+        res['n_top']=int(ntop)
         f_top={c_:float((ncls[top]==c_).mean()) for c_ in sorted(set(cls))}
         f_pore={c_:float((ncls[pore]==c_).mean()) for c_ in sorted(set(cls))}
         w=vals[nz_]; f_w={c_:float(w[ncls[nz_]==c_].sum()/w.sum()) for c_ in sorted(set(cls))}
