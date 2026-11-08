@@ -1,0 +1,364 @@
+{
+  "p_h2o_Pa": 11114.1,
+  "conditions": [
+    {
+      "label": "ads",
+      "p_co2_Pa": 15000.0,
+      "T_K": 323.0,
+      "RH_pct": 90.0
+    },
+    {
+      "label": "tsa",
+      "p_co2_Pa": 15000.0,
+      "T_K": 373.0,
+      "RH_pct": 10.97
+    },
+    {
+      "label": "vsa",
+      "p_co2_Pa": 5000.0,
+      "T_K": 323.0,
+      "RH_pct": 90.0
+    }
+  ],
+  "cycles": 15000,
+  "note": "실온도 판: 물 분압 11,114.1 Pa(RH90 @ 323 K) 세 조건 공통 고정. TSA 는 승온만으로 RH 90 -> 11.0 %. 등록 REALTEMP_WC_REGISTRATION_20260916.md. 298 K 계열(v3w_humid_wc/)과 tsa 잔류끼리 견주지 말 것.",
+  "rows": [
+    {
+      "name": "e24i_no2_open_h1",
+      "p_h2o_Pa": 11114.1,
+      "loadings": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 2.1784156568,
+            "err": 0.0562540721
+          },
+          "water": {
+            "mol_per_kg": 0.1329043808,
+            "err": 0.0401185792
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.7739065809,
+            "err": 0.0272003939
+          },
+          "water": {
+            "mol_per_kg": 0.0427398996,
+            "err": 0.0045577593
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 1.1954990746,
+            "err": 0.0396761707
+          },
+          "water": {
+            "mol_per_kg": 0.4554685705,
+            "err": 0.2417827952
+          }
+        }
+      },
+      "working_capacity": {
+        "tsa": {
+          "value": 1.4045,
+          "err": 0.0625
+        },
+        "vsa": {
+          "value": 0.9829,
+          "err": 0.0688
+        }
+      },
+      "raspa_seed": {
+        "ads": 1794113992,
+        "tsa": 1794114007,
+        "vsa": 1794114022
+      }
+    },
+    {
+      "name": "e24i_no2_open_h2",
+      "p_h2o_Pa": 11114.1,
+      "loadings": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 2.2142946397,
+            "err": 0.0270148837
+          },
+          "water": {
+            "mol_per_kg": 0.156101501,
+            "err": 0.0213567537
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.7555385831,
+            "err": 0.0265480393
+          },
+          "water": {
+            "mol_per_kg": 0.0432646995,
+            "err": 0.0017203956
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 1.2152007384,
+            "err": 0.0263407942
+          },
+          "water": {
+            "mol_per_kg": 0.2315330665,
+            "err": 0.0616693149
+          }
+        }
+      },
+      "working_capacity": {
+        "tsa": {
+          "value": 1.4588,
+          "err": 0.0379
+        },
+        "vsa": {
+          "value": 0.9991,
+          "err": 0.0377
+        }
+      },
+      "raspa_seed": {
+        "ads": 1794114037,
+        "tsa": 1794114052,
+        "vsa": 1794114067
+      }
+    },
+    {
+      "name": "e24i_no2_open_h3",
+      "p_h2o_Pa": 11114.1,
+      "loadings": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 2.1950022236,
+            "err": 0.0396314705
+          },
+          "water": {
+            "mol_per_kg": 0.1722740055,
+            "err": 0.0488536132
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.7774357401,
+            "err": 0.0243028282
+          },
+          "water": {
+            "mol_per_kg": 0.0432935876,
+            "err": 0.0074430198
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 1.2094712712,
+            "err": 0.0597138592
+          },
+          "water": {
+            "mol_per_kg": 0.3829787735,
+            "err": 0.3352463729
+          }
+        }
+      },
+      "working_capacity": {
+        "tsa": {
+          "value": 1.4176,
+          "err": 0.0465
+        },
+        "vsa": {
+          "value": 0.9855,
+          "err": 0.0717
+        }
+      },
+      "raspa_seed": {
+        "ads": 1794114082,
+        "tsa": 1794114097,
+        "vsa": 1794116077
+      }
+    }
+  ],
+  "p_sat_323_Pa": 12349.0,
+  "runner": "run_humid_wc_v3w_323.py",
+  "machine": "laptop",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "jobs": {
+    "expected": 9,
+    "with_loading": 9,
+    "status": [
+      {
+        "tag": "e24i_no2_open_h1",
+        "label": "tsa",
+        "status": "ok",
+        "t": "2026-11-08 14:34:37",
+        "pid": 1032357
+      },
+      {
+        "tag": "e24i_no2_open_h2",
+        "label": "tsa",
+        "status": "ok",
+        "t": "2026-11-08 14:35:19",
+        "pid": 1032360
+      },
+      {
+        "tag": "e24i_no2_open_h3",
+        "label": "tsa",
+        "status": "ok",
+        "t": "2026-11-08 14:36:06",
+        "pid": 1032363
+      },
+      {
+        "tag": "e24i_no2_open_h2",
+        "label": "vsa",
+        "status": "ok",
+        "t": "2026-11-08 14:46:08",
+        "pid": 1032361
+      },
+      {
+        "tag": "e24i_no2_open_h1",
+        "label": "vsa",
+        "status": "ok",
+        "t": "2026-11-08 14:49:59",
+        "pid": 1032358
+      },
+      {
+        "tag": "e24i_no2_open_h1",
+        "label": "ads",
+        "status": "ok",
+        "t": "2026-11-08 15:01:00",
+        "pid": 1032356
+      },
+      {
+        "tag": "e24i_no2_open_h2",
+        "label": "ads",
+        "status": "ok",
+        "t": "2026-11-08 15:03:56",
+        "pid": 1032359
+      },
+      {
+        "tag": "e24i_no2_open_h3",
+        "label": "ads",
+        "status": "ok",
+        "t": "2026-11-08 15:04:17",
+        "pid": 1032362
+      },
+      {
+        "tag": "e24i_no2_open_h3",
+        "label": "vsa",
+        "status": "ok",
+        "t": "2026-11-08 15:13:36",
+        "pid": 1032357
+      }
+    ]
+  },
+  "header_gate": {
+    "ads_e24i_no2_open_h1": {
+      "ok": true,
+      "header": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      }
+    },
+    "tsa_e24i_no2_open_h1": {
+      "ok": true,
+      "header": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      }
+    },
+    "vsa_e24i_no2_open_h1": {
+      "ok": true,
+      "header": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      }
+    },
+    "ads_e24i_no2_open_h2": {
+      "ok": true,
+      "header": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      }
+    },
+    "tsa_e24i_no2_open_h2": {
+      "ok": true,
+      "header": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      }
+    },
+    "vsa_e24i_no2_open_h2": {
+      "ok": true,
+      "header": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      }
+    },
+    "ads_e24i_no2_open_h3": {
+      "ok": true,
+      "header": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      }
+    },
+    "tsa_e24i_no2_open_h3": {
+      "ok": true,
+      "header": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      }
+    },
+    "vsa_e24i_no2_open_h3": {
+      "ok": true,
+      "header": {
+        "OwOw": "Ow -      Ow [LENNARD_JONES] p_0/k_B:  89.63300 [K], p_1: 3.09700 [A], shift/k_B:  -0.10591545 [K], ",
+        "OwOw_eps": 89.633,
+        "OwHw": "ZERO_POTENTIAL",
+        "OwLw": "ZERO_POTENTIAL",
+        "HwHw": "ZERO_POTENTIAL",
+        "LwLw": "ZERO_POTENTIAL",
+        "ok": true
+      }
+    }
+  },
+  "complete": true
+}
