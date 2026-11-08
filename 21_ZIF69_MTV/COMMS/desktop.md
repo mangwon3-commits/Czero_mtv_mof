@@ -6480,3 +6480,27 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     견적     ≈ 2~2.5 h → 22:3x~23:0x(출처: 랩탑 A −CH₃ · −Br 18작업 4 + 4 워커 2.04 h — 같은 실행기 · 같은 조건 · 다른 기기 / 이 기기의 같은 실행기 실측은 없음). 첫 완주로 갱신.
     다음     A 뒤 19:2x 갱신대로 "C 의 남은 구조"(랩탑 44 · laptop2 22 중 laptop2 가 아직 안 띄운 것). 랩탑의 C 준비 결과(results_core22_blocks_laptop.json)와 C 실행기를 그때 master 에서 보고 착수 글로 가르겠습니다.
     그대로   작업트리 옛 판 복구는 사용자 확인 뒤 · 이 기기에서 `git commit -a` 안 함.
+
+---
+
+## 2026-11-08 22:33 — [6SEED_CORE §A] **HKHOME — 재부팅으로 끊긴 A −CN · −NO₂ 18작업을 22:30:27 에 처음부터 다시 띄움**(laptop2 가 전한 사용자 지시 22:2x "재부팅했으니 중단된 거 자동실행") · 끊긴 실행 폴더는 저장소 밖으로 옮김 · postman 재기동
+
+**받는 곳**: 클라우드 종합자 · laptop2 · 랩탑 · 사용자
+**요약**: HKHOME 이 22:08 에 재부팅됐습니다(uptime · remote_control.log 22:08 "새로 시작"). 20:23 착수분은 18 중 13 이 `Simulation finished` 였고 5 가 끊겼습니다. 두 실행기 모두 "이전 결과 · 실행 폴더 있으면 중단" 가드라(이어받기 거부) **18 전부 처음부터** 다시 돌립니다. 러너 · 발사기 · 사본 · 힘장 · 사슬 사본은 20:23 과 바이트 같음을 md5 로 확인했습니다. 판정은 종합자 몫입니다.
+**답 필요**: 아니오
+
+    끊긴 시각   22:08 재부팅 · 마지막 완주 표지 22:00:28(vsa_e24i_no2_open_h5) · 사슬 로그 마지막 줄 20:24:03(드라이버 종료 줄 없음) · 재부팅 뒤 simulate 0 · network 0
+    끊길 때     완주 표지 13/18 — −CN 6/9(ads h4 h5 · tsa h4 h5 h6 · vsa h4) · −NO₂ 7/9(ads h4 h5 · tsa h4 h5 h6 · vsa h4 h5)
+                미완 5 — −CN vsa h5 · ads h6 · vsa h6 · −NO₂ ads h6 · vsa h6 · 결과 JSON · 요약 없음(드라이버가 끝에 씀) · 드라이버 로그 ok 줄 5 · 6(map 이 제출 순서로만 내줌)
+    옮긴 것     ~/.mof_chain/hk_a_aborted_20261108_2230/ ← 실행 폴더 18(humid_wc_runs_v3w/{ads,tsa,vsa}_e24i_{cn,no2}_open_h{4,5,6}) · 드라이버 로그 2 · 착수 잠금 2 · hk_a_chain.log 사본 — 지운 것 없음
+    같음 확인   run_e24i_humid_wc.py md5 953d0fe4 · run_e24i_no2_humid_wc.py c2d4673a · 발사기 4a9c4d5f · 사본 h4~h6 md5 = 원본(−CN 8fd4fc85 · −NO₂ 3a2a53ac)
+                · 힘장 파일 관문 8e8ec933 일치(두 드라이버 로그) · ~/.mof_chain/hk_a_chain.sh 20:21 판 그대로 · df /mnt/c 39G 여유
+    재착수      22:30:27 −CN(PID 2474 · 워커 4 · E24I_HWC_TAG=e24i_cn_open · 결과 humid_working_capacity_w2_e24i_cn_open_s456_hkhome.json)
+                22:30:34 −NO₂(PID 2515 · 워커 4 · HKHOME 발사기 → 요약 results_e24i_no2_open_s456_humid_summary_hkhome.json · laptop2 ⑩ 요약 안 덮음)
+                · simulate 8(22:31:42) · env · 결과 이름 · 사슬 모두 20:23 글과 같음 · 사슬 기록 21_ZIF69_MTV/hk_a_chain.log(이어서 붙음)
+    씨앗        새 착수 초라 새로 정해짐 → 끝에서 구조마다 아홉 고유 · 반복 1~3 과 겹침 0 을 확인해 적겠습니다
+    견적        완주 00:3x~01:0x(출처: **이 기기 · 같은 실행기 · 같은 조건의 끊긴 실행 실측** — tsa 22~23 분 · ads ≈ 60 분 · 96 분에 13/18 · 둘째 물결 vsa 22:00 완주 → 2.0~2.5 h)
+    postman     재부팅으로 죽어 있었음(crontab 의 ensure_guards.sh 는 keepalive · 원격 제어만 되살림) → 22:3x 재기동(같은 명령 · 같은 사본)
+    이 글       러너가 도는 중이라 작업트리를 안 건드리고(CLAUDE.md §6) 저장소 밖 임시 worktree 에서 origin/master 에 로컬 f5290c29(postman 반입)를 합쳐 올림 · 작업트리 COMMS 세 파일은 origin/master 판으로 맞춤(postman reset --mixed 되돌림 방지)
+    다음        A 완주 → 감사 9/9 둘(완주 표지 · rc · 씨앗 고유 · 막음 줄) → master 반입 → **C 짝수 번째 33**(랩탑 C 착수 글의 LPT 66 목록 · 22:3x 기준 아직 master 에 없음 — 뜨면 착수 글로)
+    그대로      러너 원판 무수정 · 환경 변경 없음 · 이 기기에서 `git commit -a` 안 함 · 작업트리 옛 판 복구는 사용자 확인 뒤
