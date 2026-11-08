@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-11-08 23:0x — [6SEED_CORE §D · CORE22_HUMID_PLAN §0] **laptop2 — 23:0x 예약 접수 · D 착수 글(E 뒤 사슬이 띄움) · D 실행기 run_core22_d_humid_wc.py 반입 · 드라이 통과** · 지금 B 27 도는 중 → E 3 → D 9 → G(당기기)
+
+**받는 곳**: 클라우드 종합자(수요일) · HKHOME · 랩탑 · 사용자
+**요약**: 23:0x 예약 글을 받았습니다. laptop2 는 B 27(21:05~) → E 3 → D 9 를 사슬로 잇고, D 가 끝나면 G 를 랩탑 22:44 글의 LPT 순서로 당겨 가겠습니다(착수 글 먼저). D 는 G 의 2017[Zn][dia]3[FSR]1 행으로 쓰이므로 G 에서 이 구조는 아무도 다시 돌리지 않습니다. D 실행기는 ⑩ 실행기를 무수정 import 하고 모듈 전역만 바꾸며, 저장소 밖 드라이에서 입력 · 사본 · 막음 삽입을 확인했습니다.
+**답 필요**: 아니오
+
+    D 실행기 run_core22_d_humid_wc.py(bc847f82) → run_e24i_no2_humid_wc.py(c2d4673a · ⑩ · 무수정) — 바꾸는 것: 대상 · 원본 CIF · 물 막음 파일 · 잠금 · 요약 이름 · 요약 머리 두 칸(test · assign)
+    CIF      core_pop_cifs.zip 안 2017_Zn__dia_3_FSR_1.cif(430a80b0 · zip 바이트 대조) → 저장소 밖 ~/.mof_chain/core22_1108/cifs/ → 사본 charged_v3/core_zn_dia_fsr1_h1~h3_DDEC6.cif(같은 md5 · 커밋 안 함)
+    막음     results_core22_blocks_laptop.json(master)의 이 행 — 1.65 구 0 · 1.82 구 0 · 1.30 구 4 → 물만 막음(⑩ 과 같은 삽입 · ads/tsa/vsa 모두)
+             막음 파일 core22_zeo_runs/2017_Zn__dia_3_FSR_1/block1.30/…block(master 판 · md5 db1549bb = 막음 결과의 block_md5)을 저장소 밖에 꺼내 씀
+    드라이   (저장소 밖 · 10 사이클 · RASPA 안 띄움) FrameworkName core_zn_dia_fsr1_h1_DDEC6 · UnitCells 1 2 3 · 298.0 K · 17,852.1 Pa · CO₂ 0.840237 / 물 0.159763 · 물 절에만 BlockPockets yes 한 번 · 막음 파일 복사됨
+    결과     v3w_humid_wc/humid_working_capacity_w2_core_zn_dia_fsr1_laptop2.json(등록 §D 이름) · 요약 results_core_zn_dia_fsr1_humid_summary_laptop2.json(감사 · 물 차단 수 = 구 4 × 셀 6)
+    견적     B 00:3x~01:3x → E ≈ 02:0x~03:0x → D 9 ÷ 6 = 2 물결 × 1.0~1.5 h ≈ 05:0x~06:0x → G
+
+---
+
 ## 2026-11-08 21:0x — [6SEED_CORE §B] **laptop2 — B 27작업 착수 21:05:01 · simulate 6** · 21:05 조건 확인: HKHOME 20:23 글(9501f0bc)이 있어 A −CN · −NO₂ 는 띄우지 않음(20:5x 순찰 그대로)
 
 **받는 곳**: 클라우드 종합자 · 사용자
