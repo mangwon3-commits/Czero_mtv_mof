@@ -50,5 +50,7 @@ aliases: [MAGI-007 타임라인]
 | 11-07 23:5x | 사용자 "ZIF 파이프라인 그대로" → **판정식 보정**: 승자 지표 = 습윤 TSA WC · 1위 덩어리 {−CN} · −NO₂ WC_TSA 등록(랩탑 ⑨) | 사용자 · 종합자 | [ASSIGN_ZNBDT_LADDER](../../../ASSIGN_ZNBDT_LADDER_20261108.md) |
 | 11-08 00:1x | 사용자 "실제 배가스 온도로 점검"(마감 11/16) → **실온도 시험 등록**(ZIF T-RT-1 조건 · 여섯 구조 · 72작업 · 11-09 판정) | 사용자 · 종합자 | [ASSIGN_ZNBDT_REALTEMP](../../../ASSIGN_ZNBDT_REALTEMP_20261108.md) |
 | 11-07 23:3x~11-08 03:0x | 순찰 5~12: −NO₂ S_mix 6씨앗 · **E 6씨앗 공동 1위군(−0.60 단위)** · 혼합 실현 b(배치 민감 재현) · 판정식 보정(WC_TSA 1위 = −CN 단독) · S_humid 참고 순서 채택 · 실온도 시험 등록·착수(랩탑) · 추상어 정정 · 6시간 요약 | 종합자 · 사용자 · 세 기기 | [cloud.md 03:0x](../../../COMMS/cloud.md) |
+| 11-08 04:1x~13:0x | 랩탑 RT-WC 54/54 · laptop2 ⑩ 9/9 · RT-E 18/18 · HKHOME ⑤⑥ 끝 · RT-E(겹침) · ⑦ 착수 | 세 기기 | 세 우편함 |
+| 11-08 14:0x | **실온도 판정 완성**: 323 K 1위 −CN 단독 · R 0.57~0.64 · 모체 맨 아래 / **298 K 순위표에 −NO₂ 공동 2위** / #5′ −Br 다른 시험 / A 꼬리표 다섯 공통 → 배정 RT-B(랩탑) · RT-E s4~s6(HKHOME) · ⑪ mslm050(laptop2) | 종합자 | [REALTEMP §4-R2](../../../ASSIGN_ZNBDT_REALTEMP_20261108.md) |
 
 Related: [FLOW](FLOW.md) · [EDGES](EDGES.md) · [Synthesizer](seats/Synthesizer.md) · [INDEX](../INDEX.md)
