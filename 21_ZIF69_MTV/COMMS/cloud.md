@@ -7,6 +7,19 @@
 
 ---
 
+## 2026-11-08 17:0x — ★ **새 등록 A~E(사용자 17:0x "순서대로 우편함에 · 무거운 것은 HKHOME") — `ASSIGN_ZNBDT_6SEED_CORE_20261108.md`(자료 0건 · 읽는 법 · 예측 고정)**
+
+**받는 곳**: HKHOME · laptop2 · 랩탑 · 사용자   **착수**: 착수 글 먼저 · 러너 원판 무수정(대상 · 반복 · 막음 표 · 기기 · 이름만) · 결과 JSON 만 master · 판정은 종합자.
+    A  298 K 습윤 TSA 회수량 반복 4~6(여섯 · 54작업 · 1위 값의 6씨앗 — −CN 대 −NO₂ 1.78 단위가 문턱 1.5 에 가까움) — **laptop2 모체 · −Cl 지금** · **HKHOME −CN · −NO₂(C 준비 뒤)** · **랩탑 −CH₃ · −Br(−Br 323 K 뒤)**. 실행기 run_e24i_humid_wc.py(−NO₂ 는 run_e24i_no2_humid_wc.py · 물 막음 1.30) · 대상 h4~h6 · 결과 humid_working_capacity_w2_<tag>_s456_<기기>.json.
+    B  323 K 회수량 반복 4~6 −CN · 모체 · −CH₃(27) — **랩탑 −CN · 모체(A 뒤)** · **laptop2 −CH₃(A 뒤)**. run_znbdt_humid_wc_323.py 그대로.
+    C  **CoRE 3차원 22종 습윤 3성분 선택도 66작업 + Zeo++ 막음 준비 — HKHOME 주 몫**: ① 지금(RASPA 0) core_pop_cifs.zip 에서 22 CIF(등록 §C 목록 · namelist 확인 · md5) → Zeo++ -block 세 탐침(1.65 · 1.82 · 1.30 · E-24i 막음 파일과 같은 명령) → results_core22_blocks_hkhome.json ② A 몫 ③ **C 44작업(N_super 큰 순)** · 랩탑이 B 뒤 나머지 22(착수 글로 가름). 실행기 = run_znbdt_e_humid3.py 얇은 실행기(대상 · CIF 뿌리 · BLOCKS 표 · 기기 · 이름만) · 결과 results_core22_e_humid3_<기기>.json + audit.
+    D  CoRE 판 Zn(bib)(bdtdc)(2017_Zn_dia_3_FSR_1) 298 K 습윤 WC 9작업 — **laptop2(E 뒤)** · E 3작업은 C 의 그 행을 씀.
+    E  323 K 물 밀도 격자 모체 · −CN · −NO₂ 3작업 — **laptop2(B 뒤)** · run_e28c_density.py 계열에 RT 조건만.
+    견적 A laptop2 ≈ 20:4x · 랩탑 ≈ 20:3x · HKHOME ≈ 21:3x / B ≈ 23:0x~00:3x / C HKHOME 11-09 06~12시 · 랩탑 05~09시 / D · E 11-09 새벽. 출처는 등록문 각 절.
+    막히면 멈추고 자기 우편함에(환경 변경 없음 · 러너 원판 무수정 · 남의 파일 수정 없음).
+
+---
+
 ## 2026-11-08 16:5x — 순찰 6/20: **laptop2 −Cl 323 K 회수량 반복 4~6 도착(16:42 · 9/9) → 두 묶음 차 −0.64 단위 · 잠정 6씨앗 1.4149 ± 0.0185(−NO₂ 6씨앗 1.4131 과 0.06 단위 — 같은 값)** · laptop2 몫 0 · HKHOME 몫 0 · 랩탑 −Br 반복 4~6 도는 중(17:1x~17:3x) · 판정 변화 없음
 
 **받는 곳**: laptop2 · 랩탑 · HKHOME · 사용자
