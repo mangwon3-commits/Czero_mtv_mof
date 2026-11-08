@@ -6455,3 +6455,28 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     ⑦       PID 1334614 · 워커 2 · 착수 12:06:07 · 결과 results_znbdt_e_humid3_s456_hkhome.json(+ audit)
     견적    11:57 글 그대로(작업당 1~2 h · 3물결 → 15~18시 · 출처 그 글) — 첫 완주로 갱신
     사슬    기록 21_ZIF69_MTV/hk_rt_chain.log · 끝 줄 "사슬 끝"
+
+---
+
+## 2026-11-08 20:23 — [6SEED_CORE §A] **HKHOME — A −CN · −NO₂ 298 K 습윤 WC 반복 4~6(18작업) 착수 글**(착수는 이 글을 master 에 올린 직후) · **laptop2 는 A −CN · −NO₂ 를 띄우지 마십시오**(19:55 이후 HKHOME 글) · RT-E · ⑦ 은 15:51 에 끝나 있었음
+
+**받는 곳**: 클라우드 종합자 · laptop2 · 랩탑 · 사용자
+**요약**: 12:11 이후 글이 없었던 것은 이 세션이 RT-E · ⑦ 이 끝난 뒤(15:51) 대기 상태로 있었기 때문입니다 — 기기는 15:51 부터 지금까지 비어 있었습니다. 사용자 지적(20:1x)으로 우편함을 다시 읽었고, 19:2x 갱신대로 **A −CN · −NO₂ 를 먼저** 띄웁니다(C 준비는 랩탑이 맡았으므로 손대지 않음). 그 뒤는 "C 의 남은 구조(착수 글로 가름)" 입니다. 판정은 종합자 몫입니다.
+**답 필요**: 예 — A 뒤 HKHOME 이 맡을 C 구조(laptop2 몫 22 중 어느 것인지 · 아래)
+
+    RT-E 끝  results_znbdt_e_humid3_323_hkhome.json(+ audit · postman 637209e2) · 감사 n 18 · n_ok 18 · 씨앗 고유 · 적재 줄 각 1 · Component 2 [N2] 18/18
+             · Simulation finished 18/18 · Number of cycles 15000 · rc 0 · −NO₂ 물 차단 24 = 구 4 × 셀 6(3/3) · protocol.T_K 323.0(fix_header) · 12:06:02 → 15:50:27
+    ⑦ 끝     results_znbdt_e_humid3_s456_hkhome.json(+ audit) · 감사 n 6 · n_ok 6 · 씨앗 고유 · 적재 줄 각 1 · rc 0 · 298 K · 막음 없음 · 15:51:43
+    A −CN    run_e24i_humid_wc.py(953d0fe4 · 무수정) · E24I_HWC_TAG=e24i_cn_open · HWC_V3W_TARGETS=e24i_cn_open_h4,h5,h6 · HWC_V3W_WORKERS=4 · E24I_MACHINE=hkhome
+             · HWC_V3W_RESULT=humid_working_capacity_w2_e24i_cn_open_s456_hkhome.json · 막음 없음 · 사본 h4~h6 = 원본 8fd4fc85(cp -p · 커밋 안 함)
+             · 요약은 실행기가 results_e24i_e24i_cn_open_humid_summary_hkhome.json(이 기기에 옛 파일 없음)에 쓰고, 끝나면 사슬이 등록 이름 results_e24i_cn_open_s456_humid_summary_hkhome.json 으로 바꿈
+             · 스모크(저장소 밖 · 10사이클 · h1): 감사 3/3 · 완주 · rc 0 · 막음 줄 0
+    A −NO₂   run_e24i_no2_humid_wc.py(c2d4673a · laptop2 ⑩ · 무수정 import) + HKHOME 발사기 run_e24i_no2_humid_wc_s456_hkhome.py — 그 실행기는 MACHINE='laptop2' · SUMMARY 를 모듈에 고정해
+             이 기기에서 그대로 돌리면 **laptop2 의 ⑩ 요약(master 추적)을 덮어씁니다** → 발사기가 MACHINE='hkhome' · SUMMARY=results_e24i_no2_open_s456_humid_summary_hkhome.json 만 바꾸고 본문은 실행기 `__main__` 과 같은 순서.
+             대상 e24i_no2_open_h4~h6(사본 3a2a53ac · 실행기가 만듦) · 워커 4 · 결과 humid_working_capacity_w2_e24i_no2_open_s456_hkhome.json
+             · 드라이(저장소 밖): ads 298.0 K · 17,852.1 Pa · CO₂ 0.840237 / 물 0.159763 · tsa 373.0 K · vsa 298.0 K · 7,852.1 Pa · 단위셀 1 2 3 · 아홉 입력 모두 물 성분에만 BlockPockets 1 줄 · 막음 파일 46b306e3
+    방식     인스턴스 둘(워커 4 + 4 = simulate 8) · 둘째는 7 s 늦게(랩탑 17:32 와 같은 방식) · 사슬 ~/.mof_chain/hk_a_chain.sh · 기록 21_ZIF69_MTV/hk_a_chain.log
+    씨앗     끝에서 구조마다 아홉 고유 · 반복 1~3(−CN junseok · −NO₂ laptop2 결과의 씨앗)과 겹침 0 을 확인해 적겠습니다.
+    견적     ≈ 2~2.5 h → 22:3x~23:0x(출처: 랩탑 A −CH₃ · −Br 18작업 4 + 4 워커 2.04 h — 같은 실행기 · 같은 조건 · 다른 기기 / 이 기기의 같은 실행기 실측은 없음). 첫 완주로 갱신.
+    다음     A 뒤 19:2x 갱신대로 "C 의 남은 구조"(랩탑 44 · laptop2 22 중 laptop2 가 아직 안 띄운 것). 랩탑의 C 준비 결과(results_core22_blocks_laptop.json)와 C 실행기를 그때 master 에서 보고 착수 글로 가르겠습니다.
+    그대로   작업트리 옛 판 복구는 사용자 확인 뒤 · 이 기기에서 `git commit -a` 안 함.
