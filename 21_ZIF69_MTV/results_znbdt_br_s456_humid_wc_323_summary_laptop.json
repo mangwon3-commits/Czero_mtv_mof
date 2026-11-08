@@ -1,0 +1,263 @@
+{
+  "test": "Zn(bib)(bdtdc) 실온도 습윤 TSA 작업 용량(RT-WC · 323 K · RH 90 % · 막음 없음)",
+  "assign": "ASSIGN_ZNBDT_REALTEMP_20261108.md §1 · §3",
+  "wrapper": "run_humid_wc_v3w_323.py (무수정 import)",
+  "runner": "run_znbdt_humid_wc_323.py",
+  "machine": "laptop",
+  "made": "2026-11-08 16:54:39",
+  "smoke": false,
+  "runner_result": "humid_wc_323_znbdt_br_s456_laptop.json",
+  "complete": true,
+  "stagger_s": 15.0,
+  "gap_s": 2.0,
+  "audit_summary": {
+    "n": 9,
+    "n_expected": 9,
+    "n_ok": 9,
+    "seeds_distinct": true
+  },
+  "audit": [
+    {
+      "target": "e24i_br_open_h4",
+      "condition": "ads",
+      "dir": "humid_wc_runs_v3w_323/ads_e24i_br_open_h4",
+      "seed": 1794120912,
+      "finished": true,
+      "returncode": 0,
+      "blockpockets_in_input": 0,
+      "blocked_line_in_output": false,
+      "stderr_not_found": false,
+      "temperature_line": "323",
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h4",
+      "condition": "tsa",
+      "dir": "humid_wc_runs_v3w_323/tsa_e24i_br_open_h4",
+      "seed": 1794120927,
+      "finished": true,
+      "returncode": 0,
+      "blockpockets_in_input": 0,
+      "blocked_line_in_output": false,
+      "stderr_not_found": false,
+      "temperature_line": "373",
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h4",
+      "condition": "vsa",
+      "dir": "humid_wc_runs_v3w_323/vsa_e24i_br_open_h4",
+      "seed": 1794120942,
+      "finished": true,
+      "returncode": 0,
+      "blockpockets_in_input": 0,
+      "blocked_line_in_output": false,
+      "stderr_not_found": false,
+      "temperature_line": "323",
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h5",
+      "condition": "ads",
+      "dir": "humid_wc_runs_v3w_323/ads_e24i_br_open_h5",
+      "seed": 1794120957,
+      "finished": true,
+      "returncode": 0,
+      "blockpockets_in_input": 0,
+      "blocked_line_in_output": false,
+      "stderr_not_found": false,
+      "temperature_line": "323",
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h5",
+      "condition": "tsa",
+      "dir": "humid_wc_runs_v3w_323/tsa_e24i_br_open_h5",
+      "seed": 1794120972,
+      "finished": true,
+      "returncode": 0,
+      "blockpockets_in_input": 0,
+      "blocked_line_in_output": false,
+      "stderr_not_found": false,
+      "temperature_line": "373",
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h5",
+      "condition": "vsa",
+      "dir": "humid_wc_runs_v3w_323/vsa_e24i_br_open_h5",
+      "seed": 1794120987,
+      "finished": true,
+      "returncode": 0,
+      "blockpockets_in_input": 0,
+      "blocked_line_in_output": false,
+      "stderr_not_found": false,
+      "temperature_line": "323",
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h6",
+      "condition": "ads",
+      "dir": "humid_wc_runs_v3w_323/ads_e24i_br_open_h6",
+      "seed": 1794121002,
+      "finished": true,
+      "returncode": 0,
+      "blockpockets_in_input": 0,
+      "blocked_line_in_output": false,
+      "stderr_not_found": false,
+      "temperature_line": "323",
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h6",
+      "condition": "tsa",
+      "dir": "humid_wc_runs_v3w_323/tsa_e24i_br_open_h6",
+      "seed": 1794121017,
+      "finished": true,
+      "returncode": 0,
+      "blockpockets_in_input": 0,
+      "blocked_line_in_output": false,
+      "stderr_not_found": false,
+      "temperature_line": "373",
+      "ok": true
+    },
+    {
+      "target": "e24i_br_open_h6",
+      "condition": "vsa",
+      "dir": "humid_wc_runs_v3w_323/vsa_e24i_br_open_h6",
+      "seed": 1794122687,
+      "finished": true,
+      "returncode": 0,
+      "blockpockets_in_input": 0,
+      "blocked_line_in_output": false,
+      "stderr_not_found": false,
+      "temperature_line": "323",
+      "ok": true
+    }
+  ],
+  "note": "기계적 사실뿐 — 판정은 종합자. 평균 ± = ±̄/√n · SD = 씨앗 SD.",
+  "summary": {
+    "e24i_br_open": {
+      "n": 3,
+      "names": [
+        "e24i_br_open_h4",
+        "e24i_br_open_h5",
+        "e24i_br_open_h6"
+      ],
+      "WC_TSA_each": [
+        1.3395,
+        1.3073,
+        1.3599
+      ],
+      "WC_TSA_mean": 1.3355666666666666,
+      "WC_TSA_mean_err": 0.02996447897094158,
+      "WC_TSA_seed_SD": 0.026519678228314504,
+      "WC_VSA_each": [
+        0.878,
+        0.8516,
+        0.89
+      ],
+      "WC_VSA_mean": 0.8732,
+      "WC_VSA_mean_err": 0.028097713100561788,
+      "WC_VSA_seed_SD": 0.019644846652493872,
+      "loadings": {
+        "e24i_br_open_h4": {
+          "ads": {
+            "CO2": {
+              "mol_per_kg": 2.1117138416,
+              "err": 0.0526463806
+            },
+            "water": {
+              "mol_per_kg": 0.0395495291,
+              "err": 0.0068570959
+            }
+          },
+          "tsa": {
+            "CO2": {
+              "mol_per_kg": 0.7721867068,
+              "err": 0.024270279
+            },
+            "water": {
+              "mol_per_kg": 0.0203363797,
+              "err": 0.0010809055
+            }
+          },
+          "vsa": {
+            "CO2": {
+              "mol_per_kg": 1.2337479469,
+              "err": 0.0293049394
+            },
+            "water": {
+              "mol_per_kg": 0.0728371631,
+              "err": 0.0163641449
+            }
+          }
+        },
+        "e24i_br_open_h5": {
+          "ads": {
+            "CO2": {
+              "mol_per_kg": 2.0945106832,
+              "err": 0.0399190703
+            },
+            "water": {
+              "mol_per_kg": 0.0500724232,
+              "err": 0.0106309706
+            }
+          },
+          "tsa": {
+            "CO2": {
+              "mol_per_kg": 0.7872434495,
+              "err": 0.029103001
+            },
+            "water": {
+              "mol_per_kg": 0.0205046369,
+              "err": 0.0015346399
+            }
+          },
+          "vsa": {
+            "CO2": {
+              "mol_per_kg": 1.2428702138,
+              "err": 0.006740064
+            },
+            "water": {
+              "mol_per_kg": 0.0638695109,
+              "err": 0.0065626946
+            }
+          }
+        },
+        "e24i_br_open_h6": {
+          "ads": {
+            "CO2": {
+              "mol_per_kg": 2.1391715921,
+              "err": 0.0327309142
+            },
+            "water": {
+              "mol_per_kg": 0.0439696903,
+              "err": 0.0050149922
+            }
+          },
+          "tsa": {
+            "CO2": {
+              "mol_per_kg": 0.7793126252,
+              "err": 0.0355215605
+            },
+            "water": {
+              "mol_per_kg": 0.0201590275,
+              "err": 0.0007643938
+            }
+          },
+          "vsa": {
+            "CO2": {
+              "mol_per_kg": 1.2491457514,
+              "err": 0.0312204909
+            },
+            "water": {
+              "mol_per_kg": 0.068853561,
+              "err": 0.0153749474
+            }
+          }
+        }
+      }
+    }
+  }
+}
