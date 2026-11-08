@@ -30,6 +30,10 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 23:10 · 랩탑  [준비] CORE22 §G 얇은 실행기 run_core22_g_humid_wc.py(0dbdfb36) 올림 · 착수 글 아님(구조 안 가져감)
+run_e24i_no2_humid_wc.py(c2d4673a) import · _inject 만 구조별 막음 표(1.65 CO₂ · 1.30 물 · 구 0 이면 없음)로. 막는 구조 8/21(Cd dia 여섯 · Zn pcu ASR1 · Zn dia ASR1).
+드라이 63입력 막음 낱말 = 기대 · 막음 파일 md5 = 표 · 저장소 안 파일 0. 스모크 · G 착수 글은 C 홀수 33 완주 뒤.
+
 ## 11-08 22:44 · 랩탑  [완주 · 착수] 6SEED_CORE §C 준비 66/66(19:37 → 22:35 · 2.95 h) → 결과 · .block 66 master · **C 착수: LPT 66 목록의 홀수 번째 33(랩탑) · 짝수 번째 33 = HKHOME**
 막음 필요 구조 1.65/1.82/1.30 Å = 7/8/9 종(Cd dia 여섯 셋 다 · Zn pcu 셋 다 · Ni pcu N₂ 만 296 구 · Zn dia 둘 물만). 실행기 run_core22_e_humid3.py(d24e8e2d · run_znbdt_e_humid3.py import · 성분별 막음).
 스모크 22/22 ok · 드라이 세 갈래 · 멈추는 길 확인. 보실 것: Ni pcu 경계(PLD 3.688 vs 3.64) · Cd 막음 부피 31~46 % · 우리 여섯은 물 1.30 구가 있어도 안 막았음(자 차이). 견적 6~10 h.
