@@ -1,0 +1,365 @@
+{
+ "test": "Zn(bib)(bdtdc) 보강 E — 습윤 3성분 흡착점 S_humid",
+ "assign": "ASSIGN_ZNBDT_SUPP_20261103.md §E (f589c08b) + 사용자 11-04 −C₂H₅ 추가",
+ "wrapper": "run_znbdt_e_humid3.py",
+ "wrapper_md5": "9702366386edf93755c50d2527dbbe92",
+ "machine": "hkhome",
+ "smoke": false,
+ "dry": false,
+ "started": "2026-11-08 12:06:07",
+ "made": "2026-11-08 15:51:43",
+ "protocol": {
+  "T_K": 298.0,
+  "P_Pa": 100000,
+  "y": {
+   "CO2": 0.15,
+   "N2": 0.821479,
+   "water": 0.028521
+  },
+  "p_h2o_Pa_runner": 2852.1,
+  "cycles": 15000,
+  "init": 5000,
+  "ff_md5_gate": "8e8ec933f9013c7e932da04dc256efd3",
+  "water": "TIP5P-Ew 5자리(run_water.WATER_DEF) · Hw none/Lw none(ff_gate)",
+  "replicates": "byte-identical copies, seed = 착수 초(15 s 간격 + 2 s 잠금)"
+ },
+ "definition": "S_humid = (N_CO2/N_N2)/(0.150000/0.821479); 상대 ± = hypot(e_C/N_C, e_N/N_N); 평균 ± = ±̄/√n; SD = 회차 SD",
+ "inputs": {
+  "cifs": {
+   "e24i_br_open": {
+    "src": "charged_v3/e24i_br_open_DDEC6.cif",
+    "md5": "4015ec2d0cc2f00b5d9cf1040df7b26c",
+    "copies": [
+     "e24i_br_open_e3r4_DDEC6.cif",
+     "e24i_br_open_e3r5_DDEC6.cif",
+     "e24i_br_open_e3r6_DDEC6.cif"
+    ]
+   },
+   "e24i_cl_open": {
+    "src": "charged_v3/e24i_cl_open_DDEC6.cif",
+    "md5": "c1e97588cb5da6bd11d2ff71be9de919",
+    "copies": [
+     "e24i_cl_open_e3r4_DDEC6.cif",
+     "e24i_cl_open_e3r5_DDEC6.cif",
+     "e24i_cl_open_e3r6_DDEC6.cif"
+    ]
+   }
+  },
+  "blocks": {}
+ },
+ "audit_summary": {
+  "n": 6,
+  "n_ok": 6,
+  "seeds_distinct": true,
+  "loading_line_counts_all_1": true,
+  "component2_N2_seen_all": true
+ },
+ "materials": {
+  "e24i_br_open": {
+   "n_ok": 3,
+   "S_humid_each": [
+    131.36167088922426,
+    129.8985285733516,
+    126.6710960217466
+   ],
+   "S_humid_err_each": [
+    5.767977133798125,
+    7.9643849163491955,
+    5.78231599237582
+   ],
+   "S_humid_mean": 129.31043182810748,
+   "S_humid_pm": 3.755601540333205,
+   "S_humid_SD": 2.3999513501690575,
+   "N_CO2_mean": 2.8335992348,
+   "N_N2_mean": 0.12002950873333333,
+   "N_H2O_mean": 0.012816345433333334,
+   "N2_rel_pm_each": [
+    0.0425145374997643,
+    0.060515378943138645,
+    0.04372056212000087
+   ],
+   "S_humid_rel_pm": 0.029043299038128113,
+   "flag_N2_rel_pm_gt_20pct": false,
+   "flag_S_rel_pm_gt_10pct": false,
+   "blocked": false
+  },
+  "e24i_cl_open": {
+   "n_ok": 3,
+   "S_humid_each": [
+    112.74877430549361,
+    110.77972269258285,
+    115.34798383698332
+   ],
+   "S_humid_err_each": [
+    6.388248697847155,
+    5.623096759196344,
+    6.302837506309835
+   ],
+   "S_humid_mean": 112.95882694501992,
+   "S_humid_pm": 3.524566154626702,
+   "S_humid_SD": 2.2913629250707412,
+   "N_CO2_mean": 2.9911926919666665,
+   "N_N2_mean": 0.14505528626666667,
+   "N_H2O_mean": 0.016539212566666666,
+   "N2_rel_pm_each": [
+    0.05537018611484917,
+    0.050045047309461244,
+    0.053332873312142204
+   ],
+   "S_humid_rel_pm": 0.03120221987027364,
+   "flag_N2_rel_pm_gt_20pct": false,
+   "flag_S_rel_pm_gt_10pct": false,
+   "blocked": false
+  }
+ },
+ "rows": [
+  {
+   "name": "e24i_br_open_e3r4",
+   "base": "e24i_br_open",
+   "runner_status": "ok",
+   "dir": "humid_wc_runs_v3w/znbdt_e3_hkhome/runs/ads_e24i_br_open_e3r4",
+   "input_components": 3,
+   "input_external_pressure": "100000",
+   "input_molfractions": {
+    "CO2": "0.150000",
+    "water": "0.028521",
+    "N2": "0.821479"
+   },
+   "input_blockpockets_lines": 0,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "net_charge_ok": true,
+   "seed": 1794107167,
+   "returncode": 0,
+   "stderr_not_found": false,
+   "not_found_in_output": false,
+   "ok": true,
+   "N_CO2": 2.8446329638,
+   "N_CO2_err": 0.0312296264,
+   "N_N2": 0.1185940174,
+   "N_N2_err": 0.0050419698,
+   "N_H2O": 0.0128102821,
+   "N_H2O_err": 0.002922261,
+   "S_humid": 131.36167088922426,
+   "S_humid_err": 5.767977133798125,
+   "N2_rel_pm": 0.0425145374997643
+  },
+  {
+   "name": "e24i_br_open_e3r5",
+   "base": "e24i_br_open",
+   "runner_status": "ok",
+   "dir": "humid_wc_runs_v3w/znbdt_e3_hkhome/runs/ads_e24i_br_open_e3r5",
+   "input_components": 3,
+   "input_external_pressure": "100000",
+   "input_molfractions": {
+    "CO2": "0.150000",
+    "water": "0.028521",
+    "N2": "0.821479"
+   },
+   "input_blockpockets_lines": 0,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "net_charge_ok": true,
+   "seed": 1794107227,
+   "returncode": 0,
+   "stderr_not_found": false,
+   "not_found_in_output": false,
+   "ok": true,
+   "N_CO2": 2.8350604952,
+   "N_CO2_err": 0.0279356327,
+   "N_N2": 0.1195262531,
+   "N_N2_err": 0.0072331765,
+   "N_H2O": 0.0124282929,
+   "N_H2O_err": 0.0006019862,
+   "S_humid": 129.8985285733516,
+   "S_humid_err": 7.9643849163491955,
+   "N2_rel_pm": 0.060515378943138645
+  },
+  {
+   "name": "e24i_br_open_e3r6",
+   "base": "e24i_br_open",
+   "runner_status": "ok",
+   "dir": "humid_wc_runs_v3w/znbdt_e3_hkhome/runs/ads_e24i_br_open_e3r6",
+   "input_components": 3,
+   "input_external_pressure": "100000",
+   "input_molfractions": {
+    "CO2": "0.150000",
+    "water": "0.028521",
+    "N2": "0.821479"
+   },
+   "input_blockpockets_lines": 0,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "net_charge_ok": true,
+   "seed": 1794111731,
+   "returncode": 0,
+   "stderr_not_found": false,
+   "not_found_in_output": false,
+   "ok": true,
+   "N_CO2": 2.8211042454,
+   "N_CO2_err": 0.0370281849,
+   "N_N2": 0.1219682557,
+   "N_N2_err": 0.0053325207,
+   "N_H2O": 0.0132104613,
+   "N_H2O_err": 0.0021682149,
+   "S_humid": 126.6710960217466,
+   "S_humid_err": 5.78231599237582,
+   "N2_rel_pm": 0.04372056212000087
+  },
+  {
+   "name": "e24i_cl_open_e3r4",
+   "base": "e24i_cl_open",
+   "runner_status": "ok",
+   "dir": "humid_wc_runs_v3w/znbdt_e3_hkhome/runs/ads_e24i_cl_open_e3r4",
+   "input_components": 3,
+   "input_external_pressure": "100000",
+   "input_molfractions": {
+    "CO2": "0.150000",
+    "water": "0.028521",
+    "N2": "0.821479"
+   },
+   "input_blockpockets_lines": 0,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "net_charge_ok": true,
+   "seed": 1794111758,
+   "returncode": 0,
+   "stderr_not_found": false,
+   "not_found_in_output": false,
+   "ok": true,
+   "N_CO2": 3.0068769072,
+   "N_CO2_err": 0.036132696,
+   "N_N2": 0.1460525107,
+   "N_N2_err": 0.0080869547,
+   "N_H2O": 0.0188426375,
+   "N_H2O_err": 0.0057080843,
+   "S_humid": 112.74877430549361,
+   "S_humid_err": 6.388248697847155,
+   "N2_rel_pm": 0.05537018611484917
+  },
+  {
+   "name": "e24i_cl_open_e3r5",
+   "base": "e24i_cl_open",
+   "runner_status": "ok",
+   "dir": "humid_wc_runs_v3w/znbdt_e3_hkhome/runs/ads_e24i_cl_open_e3r5",
+   "input_components": 3,
+   "input_external_pressure": "100000",
+   "input_molfractions": {
+    "CO2": "0.150000",
+    "water": "0.028521",
+    "N2": "0.821479"
+   },
+   "input_blockpockets_lines": 0,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "net_charge_ok": true,
+   "seed": 1794116335,
+   "returncode": 0,
+   "stderr_not_found": false,
+   "not_found_in_output": false,
+   "ok": true,
+   "N_CO2": 2.9749003333,
+   "N_CO2_err": 0.0252421173,
+   "N_N2": 0.1470677179,
+   "N_N2_err": 0.0073600109,
+   "N_H2O": 0.0149436535,
+   "N_H2O_err": 0.0024089127,
+   "S_humid": 110.77972269258285,
+   "S_humid_err": 5.623096759196344,
+   "N2_rel_pm": 0.050045047309461244
+  },
+  {
+   "name": "e24i_cl_open_e3r6",
+   "base": "e24i_cl_open",
+   "runner_status": "ok",
+   "dir": "humid_wc_runs_v3w/znbdt_e3_hkhome/runs/ads_e24i_cl_open_e3r6",
+   "input_components": 3,
+   "input_external_pressure": "100000",
+   "input_molfractions": {
+    "CO2": "0.150000",
+    "water": "0.028521",
+    "N2": "0.821479"
+   },
+   "input_blockpockets_lines": 0,
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "net_charge_ok": true,
+   "seed": 1794116407,
+   "returncode": 0,
+   "stderr_not_found": false,
+   "not_found_in_output": false,
+   "ok": true,
+   "N_CO2": 2.9918008354,
+   "N_CO2_err": 0.0355692446,
+   "N_N2": 0.1420456302,
+   "N_N2_err": 0.0075757016,
+   "N_H2O": 0.0158313467,
+   "N_H2O_err": 0.0012920574,
+   "S_humid": 115.34798383698332,
+   "S_humid_err": 6.302837506309835,
+   "N2_rel_pm": 0.053332873312142204
+  }
+ ],
+ "thresholds_registered": "§E: 회차 N₂ 상대 ± > 20 % 또는 평균 S_humid 상대 ± > 10 % → 사이클 연장안을 사용자에게(E′). 넘었는지만 적음.",
+ "judgement": "없음 — 종합자"
+}
