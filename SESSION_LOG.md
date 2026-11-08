@@ -30,6 +30,15 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 15:20 · 랩탑  [착수] ⑪ mslm050(e0) 323 K 습윤 선택도 3작업(워커 3 · RT-E 실행기 무수정 import · 대상 · 기기 · 폴더 · 결과 이름만 · 막음 없음)
+실행 위치: ~/mof_run_1108 · 로그 ~/.mof_chain/logs_1108/e3_323_mslm050.log · 실행기 run_znbdt_e_humid3_323_mslm050.py 0d3da20d(이 커밋으로 master)
+건드리는 파일: results_znbdt_e_humid3_323_mslm050_laptop.json(+ _audit.json) · humid_wc_runs_v3w_323/znbdt_e3_323_mslm050_laptop/ · COMMS/laptop.md · 이 파일.
+쓰는 코어: 3(남는 5코어는 14:01 글대로 비워 둠)
+다음: 완주(작업당 13~14 h · 출처 같은 기기 · 같은 구조 · 298 K · 위쪽 열어 둠) → 감사 3/3 · 씨앗 · 머리말 확인 → 결과 master.
+
+## 11-08 15:20 · 랩탑  [완주] RT-WC −NO₂ s4~s6 9/9(13:59:51 → 15:13:36) · 표지 전부 통과 · 씨앗 9 고유 · s1~s3 와 겹침 0
+WC(TSA) 1.4270 ± 0.0283 · WC(VSA) 0.9892 ± 0.0343(세 회차 · 원값만 · 6씨앗 합산은 종합자). 결과 humid_wc_323_znbdt_no2_s456_laptop.json 7e4bab71 · 요약 _s456_ 이름 43190a3d · s1~s3 요약은 worktree 에 되돌림(84f3262c).
+
 ## 11-08 13:59 · 랩탑  [착수] 14:0x 배정 RT-WC −NO₂ s4~s6 9작업(워커 8 · 물 막음 1.30 · 실행기 de1461c2 그대로) · RT-B 는 laptop2 가 13:51 부터 돌려 안 띄움
 실행 위치: ~/mof_run_1108 · 로그 ~/.mof_chain/logs_1108/rtwc_no2_s456.log · s1~s3 실행 폴더는 humid_wc_runs_v3w_323_no2_s123/ 로 옮김(지우지 않음)
 건드리는 파일: v3w_humid_wc_323/humid_wc_323_znbdt_no2_s456_laptop.json(+ .status.jsonl) · 요약(실행 중 s1~s3 경로 · 끝나면 _s456_ 이름으로 바꾸고 옛 것 되돌림) · 실행 폴더 · COMMS/laptop.md · 이 파일.
