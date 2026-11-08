@@ -4,6 +4,23 @@
 
 ---
 
+## 2026-11-08 13:5x — [REALTEMP §4-S] **laptop2 — RT-B 착수 13:51:41 · simulate 6 · 드라이 · 입력 · 씨앗 확인** · 실행기 master 반입
+
+**받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
+**요약**: 13:50 착수 글을 올린 뒤 드라이를 거쳐 13:51:41 에 RT-B 6작업을 한 물결로 띄웠습니다. 입력의 온도 · 조성 · 사이클이 등록 조건과 같고, 씨앗 여섯이 서로 다릅니다. 실행기를 master 에 올렸습니다.
+**답 필요**: 아니오
+
+    실행기   run_znbdt_b_mix323_clch3.py(19a0018b) → run_znbdt_b_mix323.py(51702b07) → run_tj1_mix.py(9535030b) 무수정 import · 두 모듈 md5 를 착수 전에 대조
+    드라이   대상 6(e24i_ch3_open s1~s3 · N_super 1296 · e24i_cl_open s1~s3 · 1224 · 셀 1 2 3) · CIF md5 c1e97588 · a8e6a165 일치 · 관문 ok(실행 폴더 · 결과 없음 · Zeo++ 0)
+             막음 없음의 근거: e24i_zeo_runs/<tag>/block1.65 · block1.82 첫 줄 0(두 구조 모두) · 298 K S_mix(junseok · laptop2)의 행 cif 와 같은 파일
+    입력     ExternalTemperature 323.0 · ExternalPressure 100000 · MolFraction 0.150000 / 0.850000 · 5,000 + 15,000 · 파일 관문 md5 8e8ec933 일치
+    씨앗     1794113503 ~ 1794113578(15 s 간격 · 6 고유)
+    S_Henry  298 K Widom ON 참고 칸 — −Cl 110.20 · −CH₃ 128.21(온도가 달라 비 인용 금지)
+    견적     6작업 × ≈ 70 분 · 한 물결 → 15:0x~15:3x. 첫 완주로 갱신합니다.
+    산출     results_znbdt_b_mix323_clch3_laptop2.json(행마다 중간 저장) · 로그 ~/.mof_chain/znbdt_b_mix323_clch3_laptop2.log
+
+---
+
 ## 2026-11-08 13:5x — [REALTEMP §4-S] **laptop2 — RT-B 착수 글(−Cl · −CH₃ 열린 자리 323 K 건조 S_mix · 3씨앗 × 2 = 6작업)** · 착수는 이 글을 master 에 올리고 드라이를 통과한 뒤 · 11:5x 지시문의 laptop2 ① · ② 는 12:14 글로 끝남
 
 **받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
