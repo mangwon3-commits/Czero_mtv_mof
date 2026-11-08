@@ -4,6 +4,28 @@
 
 ---
 
+## 2026-11-09 06:2x — [CORE22 §G] **laptop2 — G 착수 글: 2024[Co][pcu]3[ASR]1 · 2024[Co][pcu]3[FSR]1(LPT 1 · 2번째 · 18작업)** · [6SEED_CORE §D] **D 완주 9/9(03:01:58 → 06:12:44) · 표지 전부 통과 · 결과 master**
+
+**받는 곳**: 클라우드 종합자(수요일) · HKHOME · 랩탑 · 사용자
+**요약**: D 가 끝나 laptop2 가 비었습니다. 06:1x 에 master 를 읽었을 때 G 착수 글은 아무 기기에도 없어서, 랩탑 22:44 글의 LPT 순서 첫 두 구조를 가져갑니다(착수는 이 글을 올린 직후). 실행기는 랩탑이 23:10 에 올린 `run_core22_g_humid_wc.py`(0dbdfb36)를 무수정으로 씁니다. 기기 env 만 laptop2 로 주며, 저장소 밖 드라이를 통과했습니다. 22:5x 에 준비해 둔 laptop2 판 G 실행기는 이름이 겹쳐 올리지 않고 지웠습니다. D 결과는 G 의 2017[Zn][dia]3[FSR]1 행으로 씁니다(PLAN §0). 값은 기록으로만 올리며 판정은 종합자 몫입니다.
+**답 필요**: 아니오
+
+    G 대상   2024[Co][pcu]3[ASR]1 · 2024[Co][pcu]3[FSR]1 — 막음 0/0/0(1.65 · 1.82 · 1.30 구 0) · 셀 3 2 3 · 구조마다 h1~h3 × ads · tsa · vsa = 9작업 · 합 18
+    G 실행기 run_core22_g_humid_wc.py(랩탑 · 0dbdfb36 · 무수정) · CORE22_G_KEYS = 위 둘 · CORE22_G_MACHINE=laptop2 · CORE22_G_WORKERS=6 · 실행 뿌리 humid_wc_runs_v3w/core22_g_laptop2
+             결과 v3w_humid_wc/humid_working_capacity_w2_core22_2024_Co__pcu_3_{ASR,FSR}_1_laptop2.json · 요약 results_core22_2024_Co__pcu_3_{ASR,FSR}_1_humid_summary_laptop2.json
+             드라이(저장소 밖 · RASPA 안 띄움): 막음 낱말 0(기대 0) · UnitCells 3 2 3 · ads 298.0 K · 17,852.1 Pa / tsa 373.0 K / vsa 298.0 K · 7,852.1 Pa
+             가지에는 실행기 · 막음 결과 JSON · core22_zeo_runs 막음 파일을 master 판 그대로 들였습니다(RASPA 0 일 때 · 경로 지정 checkout · 내용 같음).
+    G 견적   18 ÷ 6 = 3 물결 · N_super 가 가장 큰 두 구조라 작업당 1.2~2 h(A 실측 1.0~1.3 h 를 셀 18 로 늘려 봄 · 위쪽 열어 둠) → 10~12시. 끝나면 다음 미착수 구조를 같은 방식으로 당겨 갑니다.
+
+    D 표지   감사 n_ok 9/9 · 씨앗 1794160918 ~ 1794165848(9 고유) · 입력 막음 줄 2(물만) · 물 차단 24/24(구 4 × 셀 6) · CO₂ 차단 없음 · 완주 · rc 0 · not-found 없음 · 셀 1 2 3
+    D 값     WC_TSA h1 2.4189 · h2 2.4491 · h3 2.4189 → 2.4290 ± 0.0457(± = ±̄/√3) · SD 0.0174
+             WC_VSA 0.8538 · 0.9949 · 0.8161 → 0.8883 ± 0.0634 · SD 0.0943
+             CO₂ ads 3.382 · 3.400 · 3.376 · tsa 잔류 0.964 · 0.951 · 0.957 · vsa 잔류 2.529 · 2.405 · 2.560(mol/kg)
+             물 ads 0.665 · 0.551 · 0.834 · tsa 0.024 · 0.023 · 0.024 · vsa 0.902 · 1.425 · 0.765 — 물 적재가 우리 모체(ads 0.03~0.04)보다 한 자릿수 이상 큽니다(서술 · 판정 아님).
+    D 산출   v3w_humid_wc/humid_working_capacity_w2_core_zn_dia_fsr1_laptop2.json(34a6c763) · results_core_zn_dia_fsr1_humid_summary_laptop2.json(2f5af832)
+
+---
+
 ## 2026-11-09 03:0x — [6SEED_CORE §E] **laptop2 — E 323 K 물 밀도 격자 3작업 완주(01:45:30 → 03:01:15) · 표지 전부 통과 · 격자 · 입력 · 적재 master** · 사슬이 D 9작업을 03:01:58 에 띄움
 
 **받는 곳**: 클라우드 종합자(수요일) · 사용자
