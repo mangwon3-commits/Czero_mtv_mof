@@ -4,6 +4,87 @@
 
 ---
 
+## 2026-11-08 19:5x — [6SEED_CORE §A · 19:5x 조건] **laptop2 — 조건 접수 · 사슬에 "21:05 에 HKHOME 글이 없으면 A −CN · −NO₂ 를 B 앞에" 를 넣음** · A 모체 · −Cl 도는 중(simulate 6)
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 사용자
+**요약**: 19:5x 순찰 글의 조건을 받았습니다. A 모체 · −Cl 이 21:0x 전에 끝나도 사슬이 B 를 바로 띄우지 않고 21:05 까지 기다립니다. 그때 master 를 읽어 19:55 이후 HKHOME 의 desktop.md 글이 없으면, 착수 글을 자동으로 올리고 A −CN · −NO₂ 18작업을 먼저 띄웁니다. 랩탑이 A −CN 착수 글을 먼저 올렸으면 띄우지 않습니다. 그 뒤 B 27 → E 순서는 그대로입니다. 사슬 셸만 바꾸었고(19:2x 사슬 54367 종료) A 러너 둘은 그대로입니다. 21:21 순찰에서 다르게 정하시면 그 글을 따르겠습니다.
+**답 필요**: 아니오
+
+    −CN      run_e24i_humid_wc.py(953d0fe4) · e24i_cn_open_h4~h6 · 워커 3 · 막음 없음 · 결과 humid_working_capacity_w2_e24i_cn_open_s456_laptop2.json
+    −NO₂     run_e24i_no2_humid_wc.py(c2d4673a · ⑩ 실행기 · env 로 대상 h4~h6 · 결과 이름) · 물만 막음 1.30(46b306e3 · 구 4) · 워커 3 · 결과 humid_working_capacity_w2_e24i_no2_open_s456_laptop2.json
+             ⑩ 요약(results_e24i_e24i_no2_open_humid_summary_laptop2.json)과 이름이 겹쳐, 착수 전에 옮겨 두고 끝나면 새 요약을 results_e24i_no2_open_s456_humid_summary_laptop2.json 으로 바꾼 뒤 되돌림
+    견적     A2 ≈ 21:05 → 00:0x~00:3x · B 27 ≈ 04:0x~05:0x · E ≈ 06:0x
+
+---
+
+## 2026-11-08 19:2x — [6SEED_CORE §B · 19:2x 순서 변경] **laptop2 — 접수 · B 27작업(−CN · 모체 · −CH₃ 323 K 반복 4~6) 전부를 A 뒤에 띄움 · 드라이 통과 · 사슬 다시 걺(A → B 27 → E)** · A 도는 중(simulate 6)
+
+**받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
+**요약**: 19:2x 순찰 글의 순서 변경을 받았습니다. 17:28 에 건 사슬은 B 를 −CH₃ 9작업으로만 띄우게 되어 있어, 사슬 셸 둘(PID 52483 A→B · 52645 E)만 끝내고 A 러너(52284 · 52318)는 그대로 두었습니다. 새 사슬은 A 가 끝나면 요약 이름을 정리하고, B 27작업을 한 인스턴스(워커 6)로 띄운 뒤, RASPA 가 0 이 되면 E 3작업을 띄웁니다. 그 뒤 D(막음 표는 랩탑 C 준비 결과) → C 나머지 22(착수 글로 가름) 순서입니다. 랩탑은 B 를 띄우지 않아도 됩니다.
+**답 필요**: 아니오
+
+    B 실행기 run_znbdt_humid_wc_323.py(53677257 · 무수정) · HWC_323_TARGETS = e24i_cn_open_h4~h6 · e22_parent_h4~h6 · e24i_ch3_open_h4~h6(이 순서 · −CN 의 ads 가 가장 길어 앞에) · 워커 6 · 막음 없음
+    사본     e24i_cn_open_h4~h6 = 원본 8fd4fc85(새로 만듦) · e22_parent_h4~h6 = f15ce100(A 와 같은 사본) · e24i_ch3_open_h4~h6 = a8e6a165 — 바이트 같음 · 커밋 안 함
+    드라이   파일 관문 8e8ec933 일치 · 자식 대조 일치(물 11,114.1 Pa · 조건 3 · 5,000 + 15,000 · run_one_323 · fork) · 기존 .data 0/27 · 착수 하한 T0 + 15 s × i(0~390 s) + 2 s 잠금
+    결과 이름 한 인스턴스라 결과가 한 파일입니다: v3w_humid_wc_323/humid_wc_323_znbdt_cn_parent_ch3_s456_laptop2.json(+ .status.jsonl) · 요약 results_znbdt_cn_parent_ch3_s456_humid_wc_323_summary_laptop2.json(구조별 칸 · 끝난 직후 이름 바꿈)
+             — 등록 §B 의 "<tag> 마다 한 파일" 과 다르지만, 랩탑의 모체 · −CN RT-WC(humid_wc_323_znbdt_parent_cn_laptop.json)와 같은 방식입니다. 행 이름(<tag>_h4~h6)과 씨앗으로 구조를 가릅니다.
+    견적     A ≈ 20:3x~21:0x → B 27 ÷ 6 = 4.5 물결 × 0.6~1.1 h(랩탑 RT-WC 실측 · laptop2 −Cl 반복 실측 tsa 40 · vsa 50 · ads 70 분) ≈ 3.5~4.5 h → 00:3x~01:3x → E ≈ 02:0x~03:0x → D
+
+---
+
+## 2026-11-08 17:3x — [6SEED_CORE §A · §B · §E] **laptop2 — A 착수 17:26:47 · simulate 6 · 입력 · 씨앗 확인** · B −CH₃ 드라이 통과 · **E 실행기 run_e28_density_323.py 반입 · 드라이 통과** · A → B → E 를 사슬로 걸어 둠 · D 는 HKHOME C 준비(막음 표) 뒤
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: A 의 모체 · −Cl 인스턴스 둘을 17:26:47 · 17:26:55 에 띄웠고, 입력이 298 K 습윤 WC 조건과 같으며 첫 물결 씨앗 여섯이 서로 다릅니다. A 가 끝나면 사슬이 B −CH₃(9작업)를, B 가 끝나고 RASPA 가 0 이 되면 E 3작업을 띄웁니다. E 는 E-28c 실행기를 무수정 import 하는 얇은 실행기를 새로 만들었고, 드라이 입력을 298 K E-28 실제 입력과 대조해 온도 · 전압 · 몰분율 넷만 다른 것을 확인했습니다. D 는 CoRE CIF 의 막음 표가 C 준비(HKHOME)에서 나오므로 그 결과를 본 뒤 착수 글을 따로 올립니다.
+**답 필요**: 아니오
+
+    A 입력   298.0 K · 17,852.1 Pa · CO₂ 0.840237 / 물 0.159763 · 5,000 + 15,000 · 셀 1 2 3 · BlockPockets 없음 · 사본 e22_parent_h4~h6(f15ce100) · e24i_cl_open_h4~h6(c1e97588)
+    A 씨앗   첫 물결 1794126409 · 424 · 439(모체) · 1794126415 · 430 · 445(−Cl) — 모두 고유. 반복 1~3(랩탑 09-25 · Junseok · laptop2 11-0x)과는 착수 날짜가 달라 착수 초가 겹칠 수 없습니다(끝에서 씨앗 아홉을 다시 확인).
+    B 드라이  run_znbdt_humid_wc_323.py(53677257) · e24i_ch3_open_h4~h6(a8e6a165 · 바이트 같은 사본) · 파일 관문 · 자식 대조 일치 · 기존 .data 0/9 · 결과 humid_wc_323_znbdt_ch3_s456_laptop2.json
+             요약은 끝난 뒤 results_znbdt_ch3_s456_humid_wc_323_summary_laptop2.json 으로 옮김(−Cl 반복 때와 같은 처리)
+    E 실행기 run_e28_density_323.py(b2d94f91) → run_e28c_density.py(39dfddf3) → run_density_water_v3w.py(e4df6077) → run_density_water_v3.py(27fc1c1b) → run_water.py(94650685) 무수정 import
+             바꾸는 것: run_water 전역 TEMP 323.0 · P_SAT_298 12,349(→ 물 0.90 × 12,349 = 11,114.1 Pa · 전압 26,114.1 Pa) · 폴더(water_runs_density_v3w_323 · density_water_v3w_323/rt_<대상>)
+             −NO₂ 만 water 성분 절에 BlockPockets 두 줄(block1.30 · 46b306e3 · 구 4 · CO₂ 막음 없음) · 끝에서 물 blocked 줄 · 차단 수 = 구 4 × 셀 수 · not-found 없음 감사(e28_323_block_audit.json)
+    E 드라이  저장소 밖(~/.mof_chain/e28_323_dry) · RASPA 안 띄움 · 모체 입력 diff(298 K rh90_e22_parent 대비): ExternalTemperature 298.0 → 323.0 · ExternalPressure 17,852.1 → 26,114.1 · MolFraction 0.840237 → 0.574402 · 0.159763 → 0.425598 — 그 밖에 0 줄
+             −NO₂ 입력: water 절에 BlockPockets yes · e24i_no2_open_water 한 번 · 90³ 격자 지시 · 셀 1 2 3
+    견적     A ≈ 21:0x(3 물결) → B ≈ 22:3x(두 물결 × 40~70 분) → E ≈ 00:0x~00:3x(3 동시 · 작업당 1~1.5 h) → D(C 준비 뒤 · ≈ 2.5 h)
+
+---
+
+## 2026-11-08 17:3x — [6SEED_CORE §A] **laptop2 — 접수 · A 모체 · −Cl 298 K 습윤 WC 반복 4~6(18작업) 착수 글** · 착수는 이 글을 master 에 올린 직후 · 다음 순서 B −CH₃ → E → D
+
+**받는 곳**: 클라우드 종합자 · 사용자
+**요약**: 17:0x 등록 A~E 의 laptop2 몫을 받았습니다. 지금 A 의 모체 · −Cl 반복 4~6 을 띄웁니다. 실행기 원판을 고치지 않고 env 로 대상 · 반복 · 기기 · 결과 이름만 정합니다. 두 구조를 인스턴스 둘(워커 3 + 3 = simulate 6)로 나란히 돌립니다. 실행기의 착수 잠금이 구조마다 따로이므로, 둘째 인스턴스는 7 s 늦게 띄워 첫 물결의 착수 초가 겹치지 않게 합니다. A 가 끝나면 B −CH₃(9) → E(3) → D(9) 순서로 이어 갑니다(등록 §순서 요약).
+**답 필요**: 아니오
+
+    실행기   run_e24i_humid_wc.py(953d0fe4 · master 와 같음 · 무수정) — E24I_HWC_TAG=<tag> · HWC_V3W_TARGETS=<tag>_h4,h5,h6 · HWC_V3W_WORKERS=3 · E24I_MACHINE=laptop2
+             HWC_V3W_RESULT=humid_working_capacity_w2_<tag>_s456_laptop2.json · 막음 없음(298 K 반복 1~3 때 표 그대로)
+    대상     e22_parent_h4~h6(원본 f15ce100) · e24i_cl_open_h4~h6(원본 c1e97588 · RT-WC-6 때 만든 같은 사본) — 바이트 같은 사본 · 커밋 안 함
+    요약     실행기가 results_e24i_<tag>_humid_summary_laptop2.json 에 쓰고, −Cl 은 그 이름에 11-0x 재측정 요약(master 추적)이 있습니다.
+             착수 전에 그 파일을 저장소 밖에 옮겨 두고, 끝나면 새 요약을 등록 이름 results_<tag>_s456_humid_summary_laptop2.json 으로 바꾼 뒤 옛 파일을 되돌립니다.
+    견적     작업당 1.0~1.3 h(등록 §A) · 구조마다 9작업 ÷ 3 워커 = 3 물결 → ≈ 3.5 h → 21:0x 안팎
+
+---
+
+## 2026-11-08 16:4x — [REALTEMP §4-S RT-WC-6] **laptop2 — −Cl 323 K 습윤 WC 반복 4~6 완주 9/9(15:03:00 → 16:42:33) · 표지 전부 통과 · 결과 master** · −Br 은 사슬에서 뺐음(15:5x 배정대로 랩탑 몫) · **laptop2 RASPA 0 · 몫 0**
+
+**받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
+**요약**: −Cl 반복 4~6 의 9작업이 1 h 40 m 만에 끝났고, 실행기 감사 9/9 · 머리말 관문 9/9 · 씨앗 9 고유를 통과했습니다. 결과와 요약을 master 에 올렸습니다. 15:5x 글이 −Br 반복 4~6 을 랩탑으로 옮겼으므로, 15:53 에 사슬 셸(PID 49157)만 끝내 −Br 단계를 뺐습니다. 그 사슬이 −Br 겹침을 확인할 때 HKHOME 글과 종합자 머리줄만 읽고 랩탑 글은 읽지 않게 짜여 있었기 때문입니다. −Cl 러너는 멈추지 않았습니다. 값은 기록으로만 올리며 6씨앗 합산과 판정은 종합자 몫입니다.
+**답 필요**: 아니오
+
+    표지     감사 n_ok 9/9 · seeds_distinct True · complete True · 머리말 관문(물 OwOw ε 89.633 · Hw/Lw ZERO) 9/9 · 완주 · rc 0 · BlockPockets 줄 0 · not-found 없음
+             T 줄 323 / 373 / 323 · 물 분압 11,114.1 Pa · 파일 관문 8e8ec933 · 씨앗 1794117781 ~ 1794120729(9 고유) · 행 꼬리표 h4 · h5 · h6(실행기 그대로)
+    값       WC_TSA h4 1.3956 · h5 1.4176 · h6 1.3952 → 1.4028 ± 0.0316(± = ±̄/√3) · SD 0.0128
+             WC_VSA 0.9434 · 0.9828 · 0.9403 → 0.9555 ± 0.0353 · SD 0.0237
+             CO₂ ads 2.190 · 2.220 · 2.190 · tsa 잔류 0.794 · 0.803 · 0.795 · vsa 잔류 1.247 · 1.238 · 1.250(mol/kg)
+             물 ads 0.070 · 0.070 · 0.064 · tsa 0.024 · 0.024 · 0.025 · vsa 0.078 · 0.104 · 0.088
+    작업 시간 tsa 40~41 분 · vsa 49~50 분 · ads 69~70 분(6 동시) · 두 물결
+    산출     v3w_humid_wc_323/humid_wc_323_znbdt_cl_s456_laptop2.json(35ed61f8) · .status.jsonl(9d74a392)
+             results_znbdt_cl_s456_humid_wc_323_summary_laptop2.json(8fe7cc23 · 실행기가 쓴 results_znbdt_humid_wc_323_summary_laptop2.json 을 끝난 직후 옮긴 이름)
+    laptop2  RASPA 0 · 사슬 끝 · 다음 배정을 기다립니다.
+
+---
+
 ## 2026-11-08 15:0x — [REALTEMP §4-S] **laptop2 — RT-B 완주 6/6(13:51:41 → 15:02:26) · 표지 전부 통과 · 결과 master** · 사슬이 RT-WC-6 −Cl 반복 4~6 을 이어 띄움
 
 **받는 곳**: 클라우드 종합자 · 사용자
