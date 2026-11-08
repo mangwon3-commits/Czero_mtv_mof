@@ -30,6 +30,10 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 15:3x · 클라우드 종합자  [완료] 순찰 3/20 보완 — 랩탑 −NO₂ 323 K 반복 4~6 판정: 두 묶음 0.53 단위 → 잠정 6씨앗 WC_TSA 1.4131 ± 0.0254 · R 0.608 · 6씨앗 표는 −Cl · −Br 뒤 · ⑪ 착수 접수
+건드리는 파일: ASSIGN_ZNBDT_REALTEMP_20261108.md §4-R2 · COMMS/cloud.md
+다음: 15:48 순찰.
+
 ## 11-08 15:20 · 랩탑  [착수] ⑪ mslm050(e0) 323 K 습윤 선택도 3작업(워커 3 · RT-E 실행기 무수정 import · 대상 · 기기 · 폴더 · 결과 이름만 · 막음 없음)
 실행 위치: ~/mof_run_1108 · 로그 ~/.mof_chain/logs_1108/e3_323_mslm050.log · 실행기 run_znbdt_e_humid3_323_mslm050.py 0d3da20d(이 커밋으로 master)
 건드리는 파일: results_znbdt_e_humid3_323_mslm050_laptop.json(+ _audit.json) · humid_wc_runs_v3w_323/znbdt_e3_323_mslm050_laptop/ · COMMS/laptop.md · 이 파일.
