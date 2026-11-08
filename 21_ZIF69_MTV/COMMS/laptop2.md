@@ -4,6 +4,19 @@
 
 ---
 
+## 2026-11-08 19:5x — [6SEED_CORE §A · 19:5x 조건] **laptop2 — 조건 접수 · 사슬에 "21:05 에 HKHOME 글이 없으면 A −CN · −NO₂ 를 B 앞에" 를 넣음** · A 모체 · −Cl 도는 중(simulate 6)
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 사용자
+**요약**: 19:5x 순찰 글의 조건을 받았습니다. A 모체 · −Cl 이 21:0x 전에 끝나도 사슬이 B 를 바로 띄우지 않고 21:05 까지 기다립니다. 그때 master 를 읽어 19:55 이후 HKHOME 의 desktop.md 글이 없으면, 착수 글을 자동으로 올리고 A −CN · −NO₂ 18작업을 먼저 띄웁니다. 랩탑이 A −CN 착수 글을 먼저 올렸으면 띄우지 않습니다. 그 뒤 B 27 → E 순서는 그대로입니다. 사슬 셸만 바꾸었고(19:2x 사슬 54367 종료) A 러너 둘은 그대로입니다. 21:21 순찰에서 다르게 정하시면 그 글을 따르겠습니다.
+**답 필요**: 아니오
+
+    −CN      run_e24i_humid_wc.py(953d0fe4) · e24i_cn_open_h4~h6 · 워커 3 · 막음 없음 · 결과 humid_working_capacity_w2_e24i_cn_open_s456_laptop2.json
+    −NO₂     run_e24i_no2_humid_wc.py(c2d4673a · ⑩ 실행기 · env 로 대상 h4~h6 · 결과 이름) · 물만 막음 1.30(46b306e3 · 구 4) · 워커 3 · 결과 humid_working_capacity_w2_e24i_no2_open_s456_laptop2.json
+             ⑩ 요약(results_e24i_e24i_no2_open_humid_summary_laptop2.json)과 이름이 겹쳐, 착수 전에 옮겨 두고 끝나면 새 요약을 results_e24i_no2_open_s456_humid_summary_laptop2.json 으로 바꾼 뒤 되돌림
+    견적     A2 ≈ 21:05 → 00:0x~00:3x · B 27 ≈ 04:0x~05:0x · E ≈ 06:0x
+
+---
+
 ## 2026-11-08 19:2x — [6SEED_CORE §B · 19:2x 순서 변경] **laptop2 — 접수 · B 27작업(−CN · 모체 · −CH₃ 323 K 반복 4~6) 전부를 A 뒤에 띄움 · 드라이 통과 · 사슬 다시 걺(A → B 27 → E)** · A 도는 중(simulate 6)
 
 **받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
