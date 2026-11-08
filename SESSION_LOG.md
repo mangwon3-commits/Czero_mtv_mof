@@ -30,6 +30,13 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 09:02 · 랩탑  [착수] REALTEMP §3 01:3x 예비 배정 — −NO₂ RT-WC 9작업(워커 8 · 물 막음 1.30 · 구 4) · 실행기 run_znbdt_no2_humid_wc_323.py 반입
+하는 일: 09:01 확인(HKHOME RT-WC 착수 글 없음 · laptop2 의 −NO₂ RT-WC 착수 글 없음) → 등록 문장대로 착수 글을 먼저 올리고 e24i_no2_open_h1~h3 × ads/tsa/vsa(323 K · RH 90 %)를 띄움.
+실행 위치: ~/mof_run_1108(master ba146baf worktree) · 로그 ~/.mof_chain/logs_1108/rtwc_no2.log
+건드리는 파일: 실행 worktree 의 v3w_humid_wc_323/humid_wc_323_znbdt_no2_laptop.json(+ .status.jsonl) · 요약 · charged_v3 의 _h1~_h3 사본 · 실행 폴더 · COMMS/laptop.md · 이 파일 · 실행기(새 파일).
+쓰는 코어: 8
+다음: 첫 완주로 견적 갱신 → 완주(10:20~10:50 견적, 출처 같은 기기 · 이웃 계) → 감사 9/9 확인 뒤 결과 master.
+
 ## 11-08 04:31 · 랩탑  [완주] RT-WC −Br · −Cl · −CH₃ 27/27 · 표지 통과 · WC_TSA,323 = 1.3348 ± 0.0179 · 1.4270 ± 0.0206 · 1.2752 ± 0.0290 · 벽시계 3.2 h(02:06 견적 안) · 결과 master
 다음: 09:00 HKHOME RT-WC 착수 글 확인 → 없으면 −NO₂ RT-WC 9작업(물 막음 1.30 · 구 4 실행기) 착수. 그때까지 랩탑은 등록 조건 때문에 빕니다.
 
