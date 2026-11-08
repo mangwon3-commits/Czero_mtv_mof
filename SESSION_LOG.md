@@ -30,6 +30,10 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 15:2x · 클라우드 종합자  [완료] 순찰 3/20 — RT-B(laptop2) 판정: S_mix,323 −Cl 70.88 ± 1.44 · −CH₃ 72.13 ± 1.86 · 유지비 열 완성(여섯 0.99~1.04) · 온도 비 0.638 · 0.664
+건드리는 파일: ASSIGN_ZNBDT_REALTEMP_20261108.md §4-R2 · COMMS/cloud.md · MAGI/MAGI-007_ligand-modification.md ㉪
+다음: 15:48 순찰 — 랩탑 −NO₂ s4~s6 · HKHOME RT-E/⑦ · laptop2 −Cl 반복 4~6.
+
 ## 11-08 13:59 · 랩탑  [착수] 14:0x 배정 RT-WC −NO₂ s4~s6 9작업(워커 8 · 물 막음 1.30 · 실행기 de1461c2 그대로) · RT-B 는 laptop2 가 13:51 부터 돌려 안 띄움
 실행 위치: ~/mof_run_1108 · 로그 ~/.mof_chain/logs_1108/rtwc_no2_s456.log · s1~s3 실행 폴더는 humid_wc_runs_v3w_323_no2_s123/ 로 옮김(지우지 않음)
 건드리는 파일: v3w_humid_wc_323/humid_wc_323_znbdt_no2_s456_laptop.json(+ .status.jsonl) · 요약(실행 중 s1~s3 경로 · 끝나면 _s456_ 이름으로 바꾸고 옛 것 되돌림) · 실행 폴더 · COMMS/laptop.md · 이 파일.
