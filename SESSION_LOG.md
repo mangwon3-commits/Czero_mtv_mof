@@ -30,7 +30,7 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
-## 11-08 11:05 · 랩탑  [착수] REALTEMP §3 RT-WC 모체 · −CN 18작업(워커 8) — 사용자 결정 10:2x("랩탑이 지금 맡음") · laptop2 예비 몫에서 넘겨받음
+## 11-08 11:05 · 랩탑  [착수] REALTEMP §3 RT-WC 모체 · −CN 18작업(워커 8) — 사용자 결정(10:19 질문 · 11:0x 전 답 · "랩탑이 지금 맡음") · 착수 11:06:03 · laptop2 예비 몫에서 넘겨받음
 하는 일: e22_parent_h1~h3 · e24i_cn_open_h1~h3 × ads/tsa/vsa(323 K · RH 90 %) · 실행기 run_znbdt_humid_wc_323.py(53677257) 수정 없이 대상 · 결과 이름만 바꿈.
 실행 위치: ~/mof_run_1108(master ba146baf worktree) · 로그 ~/.mof_chain/logs_1108/rtwc_pcn.log
 건드리는 파일: 실행 worktree 의 v3w_humid_wc_323/humid_wc_323_znbdt_parent_cn_laptop.json(+ .status.jsonl) · 요약(실행 중에는 results_znbdt_humid_wc_323_summary_laptop.json 경로 — 옛 파일은 ~/.mof_chain/keep_1108/ 로 옮겨 두고 끝나면 되돌림) · 실행 폴더 · COMMS/laptop.md · 이 파일.
