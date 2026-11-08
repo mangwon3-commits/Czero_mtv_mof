@@ -1,4 +1,28 @@
 
+## 2026-11-08 19:01 — [6SEED_CORE §C 준비 · 예비 배정] **랩탑 — C 준비 접수(19:00 까지 HKHOME 글 없음) · Zeo++ 66건은 A 완주 직후 RASPA 0 창에** · 입력 대조 22/22 · 드라이 통과 · 견적은 1 h 가 아니라 1.5~3 h · 그 다음 B −CN · 모체 → C 44작업
+**받는 곳**: 클라우드 종합자 · HKHOME · laptop2 · 사용자
+**요약**: 19:00 까지 master 에 HKHOME 의 C 준비 착수 글이 없으므로, 17:5x 예비 배정대로 랩탑이 C 준비를 맡습니다. Zeo++ 는 RASPA 가 0 일 때만 돌릴 수 있어(CLAUDE.md §5), 지금 도는 A 18작업이 끝난 직후에 띄웁니다. Zeo++ 없이 할 수 있는 일, 곧 CIF 풀기 · 입력 대조 · 드라이 · 막는 길 시험은 마쳤습니다. 다만 견적이 등록의 "≈ 1 h" 보다 깁니다. E-24i 의 같은 명령이 원자 200개 안팎의 단위셀에서 건당 155~166 s 였으므로, 한 번에 하나씩 66건이면 1.5~3 h 가 됩니다. 순서를 바꾸실 일이면 A 완주 전에 알려 주십시오.
+**답 필요**: 아니오(순서를 바꾸실 때만)
+
+    입력    core_pop_cifs.zip(96a5fbf8 · master 와 같음) — namelist 524개 안에 대상 22개가 모두 있음 · 저장소 밖 ~/.mof_chain/core22_1108/cifs/ 에 풀었고 풀린 파일 md5 = zip 안 바이트 md5(22/22)
+            원자 수 = core_pop_annotated.json(cbccf2e0) 의 NAtoms(86~212) · 22개 모두 P 1 · 대칭 연산 1 · 전하 열 있음
+    실행기  core22_blocks_laptop.py — znbdt_a_zeo.py(883348e7 · HKHOME) 사본. 바꾼 것: 입력 22 · 탐침 1.65 · 1.82 · 1.30 · -block 만(-chan 안 함) · 폴더 · 출력 이름
+            명령 network -ha -block r 50000 <cif>(E-24i 막음 파일과 같음) · 단위셀 그대로 · 한 번에 하나
+            호출마다 직전에 simulate · network 수 확인 · MemAvailable 가드 5,000 MB · 가드 kill · rc ≠ 0 · 빈 .block 은 구 0 이 아니라 None(원판 1차 시도 결함의 수정분 그대로)
+            시작할 때 zip 을 다시 읽어 namelist · md5 · 원자 수를 대조하고, 어긋나면 멈춥니다(CLAUDE.md §0 09-23 — 풀어 둔 폴더에도 판본이 있음).
+    시험    드라이(CORE22_ZEO_DRY=1): 입력 대조 22/22 통과 · 66건 계획
+            막는 길: simulate 8 인 지금 실제로 띄우면 "Zeo++ 안 띄움" 으로 rc 1 · core22_zeo_runs/ 와 결과 파일을 만들지 않음 · network 0
+    산출    results_core22_blocks_laptop.json(구조 · 탐침별 구 수 · 주머니 · 통로 · .block md5 · 시간 · 최대 RSS)
+            core22_zeo_runs/<파일 이름>/block<r>/<파일 이름>.block 66개 — e24i_zeo_runs/ 와 같은 관례로 .block 만 master 에 올립니다(C 의 HKHOME 몫이 같은 파일을 쓰도록).
+    견적    Zeo++ 66건 1.5~3 h. 출처는 E-24i Junseok(results_e24i_access_junseok.json) 의 -block 15건으로, 원자 204~228 단위셀에서 건당 155~166 s · 최대 RSS 5.2~6.4 GB 였습니다.
+            다른 기기 · 다른 구조의 값을 옮긴 견적이고, 이번 22종 가운데 원자가 적은 것(86~148)은 더 짧을 수 있어 아래쪽을 1.5 h 로 둡니다. 랩탑 메모리 24 GB 라 한 건씩이면 여유가 있습니다.
+    순서    A 완주(20:3x~21:3x) → 감사 · 결과 master → C 준비 Zeo++(≈ 22:xx~00:xx) → 결과 master → B −CN · 모체 18 착수 글 → B(≈ 2.5 h) → C 44작업(LPT)
+            B 드라이(HWC_323_DRYRUN=1)는 통과했습니다. 18작업 · ads 323 K / tsa 373 K / vsa 323 K · 물 11,114.1 Pa · 기존 .data 0 이고, 잠금 · 요약 파일은 건드리지 않았습니다.
+            사본 e24i_cn_open_h4~h6(8fd4fc85) · e22_parent_h4~h6(f15ce100)은 원본 · master 와 md5 가 같습니다(커밋 안 함).
+    HKHOME  이 글 뒤에 깨어나면 예비 배정대로 A −CN · −NO₂ 를 먼저 하고, C 는 남은 구조를 맡습니다(착수 글로 가름). 막음 파일은 위 .block 을 그대로 쓰시면 됩니다.
+
+---
+
 ## 2026-11-08 17:32 — [6SEED_CORE §A] **랩탑 — 접수 · A −CH₃ · −Br 298 K 습윤 WC 반복 4~6(18작업) 착수 글** · 착수는 이 글을 master 에 올린 직후 · 다음 순서 B −CN · 모체 → C 나머지 22
 
 **받는 곳**: 클라우드 종합자 · laptop2 · HKHOME · 사용자

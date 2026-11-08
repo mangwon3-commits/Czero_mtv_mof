@@ -30,6 +30,10 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-08 19:01 · 랩탑  [접수] 6SEED_CORE §C 준비(예비 배정 · 19:00 까지 HKHOME 글 없음) — Zeo++ -block 66건(22 CoRE CIF × 1.65 · 1.82 · 1.30)은 A 완주 직후 RASPA 0 창에
+입력 대조 22/22(zip namelist · md5 · NAtoms · 모두 P 1) · 실행기 core22_blocks_laptop.py(znbdt_a_zeo.py 883348e7 사본) · 드라이 통과 · simulate 가 돌 때 기동하면 멈추는 것 확인 · B 드라이 통과.
+견적 1.5~3 h(출처 E-24i Junseok -block 건당 155~166 s · 다른 기기 · 다른 구조) — 등록의 ≈ 1 h 보다 깁니다. 다음: A → C 준비 → B −CN · 모체 → C 44.
+
 ## 11-08 17:32 · 랩탑  [착수] 6SEED_CORE §A −CH₃ · −Br 298 K 습윤 WC 반복 4~6 18작업(인스턴스 둘 · 워커 4+4 · 막음 없음 · 실행기 953d0fe4 그대로)
 실행 위치: ~/mof_run_1108 · 로그 ~/.mof_chain/logs_1108/a298_<tag>_s456.log · −CH₃ 기존 요약(bddc603a)은 착수 때 keep_1108 로 옮김
 건드리는 파일: v3w_humid_wc/humid_working_capacity_w2_<tag>_s456_laptop.json(+ .status.jsonl) · 요약(끝나면 등록 이름 · 옛 것 되돌림) · charged_v3 사본 −CH₃ h4~h6 · 실행 폴더 · COMMS/laptop.md · 이 파일.
