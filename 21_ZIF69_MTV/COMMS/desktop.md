@@ -6504,3 +6504,29 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     이 글       러너가 도는 중이라 작업트리를 안 건드리고(CLAUDE.md §6) 저장소 밖 임시 worktree 에서 origin/master 에 로컬 f5290c29(postman 반입)를 합쳐 올림 · 작업트리 COMMS 세 파일은 origin/master 판으로 맞춤(postman reset --mixed 되돌림 방지)
     다음        A 완주 → 감사 9/9 둘(완주 표지 · rc · 씨앗 고유 · 막음 줄) → master 반입 → **C 짝수 번째 33**(랩탑 C 착수 글의 LPT 66 목록 · 22:3x 기준 아직 master 에 없음 — 뜨면 착수 글로)
     그대로      러너 원판 무수정 · 환경 변경 없음 · 이 기기에서 `git commit -a` 안 함 · 작업트리 옛 판 복구는 사용자 확인 뒤
+
+---
+
+## 2026-11-08 23:15 — [6SEED_CORE §C] **HKHOME — C 짝수 번째 33작업 착수 글**(착수는 A 사슬이 끝나는 즉시 · ≈ 00:3x~01:0x · 사슬이 자동으로) · 드라이 22/22 통과 · 랩탑 22:44 LPT 목록 그대로
+
+**받는 곳**: 클라우드 종합자(수요일) · 랩탑 · laptop2 · 사용자
+**요약**: 랩탑 22:44 글의 LPT 66 목록 가운데 **짝수 번째 33** 을 HKHOME 이 맡습니다(등록 [20:5x 갱신] · PLAN §0). 같은 얇은 실행기 `run_core22_e_humid3.py`(d24e8e2d · master 판 그대로 · 무수정)를 `CORE22_E_SLOT=even CORE22_E_MACHINE=hkhome CORE22_E_WORKERS=8` 로 띄웁니다. A −CN · −NO₂ 가 아직 도는 중(simulate 8)이라 **저장소 밖 사슬이 A 사슬 종료 → simulate 0 · network 0 확인 → 착수** 순서로 자동 착수합니다. 판정은 종합자 몫입니다.
+**답 필요**: 아니오
+
+    몫(33)     LPT 짝수 번째 = 구조마다 r2(홀수 번째 구조) 또는 r1·r3(짝수 번째 구조) — 랩탑 22:44 표의 HKHOME 열 그대로
+               2024 Co pcu ASR1 r2 · FSR1 r1·r3 · 2024 Cu srs FSR2 r2 · 2024 Zn ths ASR1 r1·r3 · FSR1 r2 · 2018 Cd dia FSR5 r1·r3 · ASR6 r2 · ASR5 r1·r3 · FSR3 r2 · ASR4 r1·r3 · FSR4 r2
+               · 2021 Zn srs FSR1 r1·r3 · 2014 Cu dia FSR6 r2 · FSR2 r1·r3 · ASR5 r2 · ASR1 r1·r3 · 2019 Zn pcu ASR1 r2 · 2021 Co dia ASR1 r1·r3 · FSR1 r2 · 2019 Ni pcu ASR1 r1·r3 · 2017 Zn dia ASR1 r2 · FSR1 r1·r3
+    준비물     실행기 run_core22_e_humid3.py d24e8e2d · 막음 표 results_core22_blocks_laptop.json 4781d1d8 · .block 66개 · run_znbdt_e_humid3.py 97023663 · run_aryl_gcmc.py · core_pop_annotated.json · core_pop_cifs.zip — 전부 origin/master 와 바이트 같음
+               (이 기기 작업트리는 옛 판이라 pull 이 안 됨 → 세 파일은 git archive 로 origin/master 에서 그대로 풀어 넣음 · 러너가 쓰는 파일은 안 건드림)
+    드라이     CORE22_E_SLOT=even CORE22_E_DRY=1(저장소 밖 ~/.mof_chain/core22_e3_dry_hkhome · RASPA 안 띄움 · 래퍼대로 r1 만 22작업) · rc 0 · 입력 22/22
+               막음 줄 = 표대로: Cd dia 여섯 3(CO₂ · 물 · N₂) · Zn pcu 3 · Ni pcu 1(N₂) · Zn dia 둘 1(물) · 나머지 12 는 0 · 막음 파일 수 = 막음 줄 수
+               조건 22 모두 298.0 K · 100,000 Pa · y 0.150000/0.821479/0.028521 · UFF_MOF · Ewald · 12.0 Å · 힘장 파일 관문 8e8ec933 일치 · CIF 는 zip 바이트 md5 대조 뒤 저장소 밖 사본
+               N_super 큰 순 22(3816 · 3816 · 3072 · 2752 ×2 · 2352 ×6 · 2304 · 1968 ×4 · 1776 · 1680 ×2 · 1408 · 1224 ×2) — 랩탑 표와 같은 순서
+    사슬       ~/.mof_chain/hk_c_chain.sh(A 사슬 PID 2466 종료 대기 → simulate · network · A 드라이버 0 확인(최대 30분) → 이전 결과 · 실행 폴더 없음 확인 → 착수) · 기록 21_ZIF69_MTV/hk_c_chain.log · 드라이버 로그 core22_e3_even_hkhome.log
+               고아 simulate 가 남으면 사슬은 죽이지 않고 "착수 안 함" 으로 멈춤(이 세션이 PID 로 정리한 뒤 다시 띄움)
+    산출       results_core22_e_humid3_hkhome.json + _audit.json(실행기 그대로 · postman 패턴 results_*.json 안) · 실행 뿌리 humid_wc_runs_v3w/core22_e3_hkhome(gitignore)
+    씨앗       착수 초 · 끝에서 33 고유와 랩탑 33 과의 겹침을 적음
+    견적       33 ÷ 8 = 4.1 물결 × 작업당 1.5~2.5 h → 6~10 h · 착수 ≈ 00:4x 면 **11-09 07~11시**(출처: 등록 §C · 랩탑 22:44 와 같은 값 = Zn-BDT E 실측을 옮긴 것 · 다른 구조 · 이 기기 같은 계 실측 없음 · 첫 물결로 갱신)
+               최장 단일(N_super 3816) ÷ (작업합 ÷ 8) 비는 1/4 안팎이라 벽시계는 작업합 쪽이 묶음
+    다음       C 끝 → PLAN §1 당기는 법대로 G(LPT 순서 · 아직 아무도 착수 글을 안 올린 다음 구조 · 착수 글 먼저)
+    그대로     러너 원판 무수정 · 환경 변경 없음 · 이 기기에서 `git commit -a` 안 함 · 판정 없음
