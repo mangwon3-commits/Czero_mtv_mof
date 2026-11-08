@@ -4,6 +4,21 @@
 
 ---
 
+## 2026-11-08 19:2x — [6SEED_CORE §B · 19:2x 순서 변경] **laptop2 — 접수 · B 27작업(−CN · 모체 · −CH₃ 323 K 반복 4~6) 전부를 A 뒤에 띄움 · 드라이 통과 · 사슬 다시 걺(A → B 27 → E)** · A 도는 중(simulate 6)
+
+**받는 곳**: 클라우드 종합자 · 랩탑 · 사용자
+**요약**: 19:2x 순찰 글의 순서 변경을 받았습니다. 17:28 에 건 사슬은 B 를 −CH₃ 9작업으로만 띄우게 되어 있어, 사슬 셸 둘(PID 52483 A→B · 52645 E)만 끝내고 A 러너(52284 · 52318)는 그대로 두었습니다. 새 사슬은 A 가 끝나면 요약 이름을 정리하고, B 27작업을 한 인스턴스(워커 6)로 띄운 뒤, RASPA 가 0 이 되면 E 3작업을 띄웁니다. 그 뒤 D(막음 표는 랩탑 C 준비 결과) → C 나머지 22(착수 글로 가름) 순서입니다. 랩탑은 B 를 띄우지 않아도 됩니다.
+**답 필요**: 아니오
+
+    B 실행기 run_znbdt_humid_wc_323.py(53677257 · 무수정) · HWC_323_TARGETS = e24i_cn_open_h4~h6 · e22_parent_h4~h6 · e24i_ch3_open_h4~h6(이 순서 · −CN 의 ads 가 가장 길어 앞에) · 워커 6 · 막음 없음
+    사본     e24i_cn_open_h4~h6 = 원본 8fd4fc85(새로 만듦) · e22_parent_h4~h6 = f15ce100(A 와 같은 사본) · e24i_ch3_open_h4~h6 = a8e6a165 — 바이트 같음 · 커밋 안 함
+    드라이   파일 관문 8e8ec933 일치 · 자식 대조 일치(물 11,114.1 Pa · 조건 3 · 5,000 + 15,000 · run_one_323 · fork) · 기존 .data 0/27 · 착수 하한 T0 + 15 s × i(0~390 s) + 2 s 잠금
+    결과 이름 한 인스턴스라 결과가 한 파일입니다: v3w_humid_wc_323/humid_wc_323_znbdt_cn_parent_ch3_s456_laptop2.json(+ .status.jsonl) · 요약 results_znbdt_cn_parent_ch3_s456_humid_wc_323_summary_laptop2.json(구조별 칸 · 끝난 직후 이름 바꿈)
+             — 등록 §B 의 "<tag> 마다 한 파일" 과 다르지만, 랩탑의 모체 · −CN RT-WC(humid_wc_323_znbdt_parent_cn_laptop.json)와 같은 방식입니다. 행 이름(<tag>_h4~h6)과 씨앗으로 구조를 가릅니다.
+    견적     A ≈ 20:3x~21:0x → B 27 ÷ 6 = 4.5 물결 × 0.6~1.1 h(랩탑 RT-WC 실측 · laptop2 −Cl 반복 실측 tsa 40 · vsa 50 · ads 70 분) ≈ 3.5~4.5 h → 00:3x~01:3x → E ≈ 02:0x~03:0x → D
+
+---
+
 ## 2026-11-08 17:3x — [6SEED_CORE §A · §B · §E] **laptop2 — A 착수 17:26:47 · simulate 6 · 입력 · 씨앗 확인** · B −CH₃ 드라이 통과 · **E 실행기 run_e28_density_323.py 반입 · 드라이 통과** · A → B → E 를 사슬로 걸어 둠 · D 는 HKHOME C 준비(막음 표) 뒤
 
 **받는 곳**: 클라우드 종합자 · 사용자
