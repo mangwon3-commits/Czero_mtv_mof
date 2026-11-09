@@ -6585,3 +6585,23 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
              ads · vsa 는 2~6 h · tsa 는 그 아래 → **11-09 밤 ~ 11-10 새벽(22시~06시)** · 출처: 같은 기기 · 같은 구조 · 다른 조건 실측의 옮김 · 첫 완주로 갱신
     C 현황   26/33 완주(12:39) · 표지 지금까지 전부 통과(적재 줄 3 · rc 0 · 차단 수 = 구 × 셀) · 남은 7 = Co dia 둘 · Ni pcu 둘 · Zn dia 셋(10:50~12:24 착수) · 완주 글은 끝나면 따로
     다음     G 셋 끝 → 그때 미착수 구조를 같은 방식으로(착수 글 먼저)
+
+---
+
+## 2026-11-09 15:32 — [6SEED_CORE §C] **HKHOME — C 짝수 번째 33/33 완주**(00:34:33 → 15:30:18 · 14 h 56 m) · 감사 33/33 ok · 씨앗 33 고유 · 표지 전부 통과 · **G(LPT 3~5 · 27작업) 15:31:10 착수**(12:4x 글대로 · 사슬 자동)
+
+**받는 곳**: 클라우드 종합자(수요일) · 랩탑 · laptop2 · 사용자
+**요약**: CoRE 22 의 습윤 3성분 선택도 S_humid 짝수 몫이 끝났습니다. 얇은 실행기 감사 33/33 ok(완주 표지 · 적재 줄 CO₂/N₂/물 각 1 · Component 2 [N2] · rc 0 · not-found 없음 · 막은 성분마다 blocked 줄과 차단 수 = 구 × 셀 · 안 막은 성분은 blocked 줄 없음 · 입력 BlockPockets 줄 수 = 표의 성분 수). 결과 둘은 postman 패턴(results_*.json) 안이라 다음 틱에 master 로 갑니다. 구조마다 HKHOME 몫은 반복 1~2개뿐이므로 **3씨앗 평균은 랩탑 홀수 몫과 합쳐 종합자가** 냅니다 — 아래 값은 HKHOME 몫만의 기계적 사실이고 판정이 아닙니다.
+**답 필요**: 아니오
+
+    산출     results_core22_e_humid3_hkhome.json(slot even · selected 33 · thin_runner_md5 d24e8e2d) + results_core22_e_humid3_hkhome_audit.json(33행) · 실행 뿌리 humid_wc_runs_v3w/core22_e3_hkhome(gitignore · 보존)
+    감사     n 33 · ok 33 · ok_wrapper_original 0(래퍼 원판의 "막음 줄 == 3" 조건 때문 — 랩탑 22:44 글의 설명 그대로) · 씨앗 1794152076~1794194647 33 고유 · 완주 33 · rc 0 33 · 적재 줄 {CO₂ 1 · N₂ 1 · 물 1} 33
+    시간     00:34:33 → 15:30:18 · 14 h 56 m(05:2x 갱신 견적 12~15시 안) · 작업당 실측: Co pcu 6.4 h · Zn ths 6.2~6.4 · Zn srs 5.2 · Cu srs 4.7 · Ni pcu 3.1~3.3 · Cd dia 2.0~2.4 · Co dia 2.1 · Cu dia 1.9~2.1 · Zn dia 2.0~3.2 · Zn pcu 0.7
+             — 막음 없는 큰 구조일수록 N_super 비례보다 가파름 · 벽시계는 작업합 ÷ 8 이 묶었고 꼬리(마지막 8작업 → 1작업) 3 h
+    S_humid  (HKHOME 몫 반복의 평균 ± · 반복 1~2개 · 판정 아님)
+             Zn dia ASR1 121.2 ± 8.1 · FSR1 121.4 ± 5.3(물 막음) · Zn srs 114.9 ± 3.3 · Cu srs FSR2 107.7 ± 3.0 · Co pcu FSR1 100.7 ± 4.4 · ASR1 96.0 ± 4.1 · Zn ths FSR1 90.6 ± 4.8 · ASR1 82.5 ± 3.3
+             Cu dia ASR5 71.1 ± 4.4 · FSR6 69.4 ± 2.2 · FSR2 68.3 ± 2.5 · ASR1 67.7 ± 1.8 · Ni pcu 65.4 ± 1.8(N₂ 막음) · Cd dia FSR5 48.4 · FSR3 48.3 · ASR6 47.6 · ASR4 46.3 · ASR5 41.5 · FSR4 40.7(± 1.7~3.9 · 세 성분 막음)
+             Co dia FSR1 43.6 ± 2.6 · ASR1 42.8 ± 1.4 · Zn pcu 21.2 ± 1.3(세 성분 막음) · fc 미상 6행은 JSON 에 fc_unknown 꼬리표
+    G 착수   15:31:10 · run_core22_g_humid_wc.py 0dbdfb36 · 틀 c2d4673a · 막음 표 4781d1d8 · KEYS = Cu srs FSR2 · Zn ths ASR1 · Zn ths FSR1 · 27작업 · 워커 8 · 파일 관문 8e8ec933 일치
+             · 기록 hk_g_chain.log · 드라이버 로그 core22_g_hkhome.log · 견적 12:4x 글 그대로(11-09 22시~11-10 06시 · 첫 완주로 갱신)
+    다음     G 셋 끝 → 그때 미착수 구조를 같은 방식으로(착수 글 먼저 · 13:15 랩탑이 LPT 6~11 을 가져갔으므로 그 다음부터)
