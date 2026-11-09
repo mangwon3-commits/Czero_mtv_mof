@@ -6605,3 +6605,20 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     G 착수   15:31:10 · run_core22_g_humid_wc.py 0dbdfb36 · 틀 c2d4673a · 막음 표 4781d1d8 · KEYS = Cu srs FSR2 · Zn ths ASR1 · Zn ths FSR1 · 27작업 · 워커 8 · 파일 관문 8e8ec933 일치
              · 기록 hk_g_chain.log · 드라이버 로그 core22_g_hkhome.log · 견적 12:4x 글 그대로(11-09 22시~11-10 06시 · 첫 완주로 갱신)
     다음     G 셋 끝 → 그때 미착수 구조를 같은 방식으로(착수 글 먼저 · 13:15 랩탑이 LPT 6~11 을 가져갔으므로 그 다음부터)
+
+---
+
+## 2026-11-09 22:05 — [CORE22 §G] **HKHOME — G 둘째 묶음 착수 글: 2014[Cu][dia]3[ASR]1 · 2019[Zn][pcu]3[ASR]1 · 2021[Co][dia]3[ASR]1(LPT 16 · 17 · 18번째 · 27작업)** · 착수는 첫 묶음(LPT 3~5)이 끝나는 즉시(≈ 01:0x~02:0x · 사슬 자동) · 첫 묶음 18/27 완주
+
+**받는 곳**: 랩탑 · laptop2 · 클라우드 종합자(수요일) · 사용자
+**요약**: 22:04 에 master 를 읽었을 때 G 착수 글은 laptop2 LPT 1~2(끝) · 12~15, HKHOME 3~5, 랩탑 6~11 이라 HKHOME 이 **다음 미착수 세 구조(LPT 16 · 17 · 18)** 를 가져갑니다. 첫 묶음은 두 구조(Cu srs FSR2 · Zn ths ASR1) 18작업이 끝났고 마지막 구조(Zn ths FSR1) 9작업이 도는 중입니다. 첫 묶음이 끝나면 저장소 밖 사슬이 simulate 0 · network 0 을 확인하고, laptop2 21:0x 글과 같은 수로 실행 뿌리의 runner_result_all.json 을 runner_result_all_batch1_lpt3-5.json 으로 이름만 바꾼 뒤(gitignore 안 · 구조별 결과 · 요약은 실행기가 따로 씀) 착수합니다. 남는 미착수는 LPT 19 · 20 · 21(Co dia FSR1 · Ni pcu · Zn dia ASR1)이며 22(Zn dia FSR1)는 D 와 같은 계산이라 G 에서 돌리지 않습니다. 판정 없음.
+**답 필요**: 아니오
+
+    G 대상   2014[Cu][dia]3[ASR]1(N_super 1968 · 셀 3 2 2 · 막음 없음 · fc 미상) · 2019[Zn][pcu]3[ASR]1(1776 · 셀 3 2 2 · 막음 CO₂ 1구 · 물 4구 → 차단 12 · 48 기대) · 2021[Co][dia]3[ASR]1(1680 · 셀 3 2 2 · 막음 없음)
+             구조마다 h1~h3 × ads · tsa · vsa = 9 · 합 27
+    G 실행기 run_core22_g_humid_wc.py(0dbdfb36 · 무수정) · 틀 c2d4673a · 막음 표 4781d1d8 · CORE22_G_KEYS = 위 셋 · CORE22_G_MACHINE=hkhome · CORE22_G_WORKERS=8 · 실행 뿌리 humid_wc_runs_v3w/core22_g_hkhome(첫 묶음과 같은 뿌리 · 작업 이름이 달라 겹치지 않음)
+             결과 v3w_humid_wc/humid_working_capacity_w2_core22_<줄기>_hkhome.json × 3 · 요약 results_core22_<줄기>_humid_summary_hkhome.json × 3
+    사슬     ~/.mof_chain/hk_g2_chain.sh(첫 묶음 사슬 PID 2351251 종료 대기 → simulate · network · G 드라이버 0(최대 30분) → runner_result_all.json 이름 바꾸기(없으면 착수 안 함) → 착수) · 기록 hk_g_chain.log([g2] 표지) · 드라이버 로그 core22_g2_hkhome.log
+    첫 묶음  실측(같은 실행기 · 이 기기): Cu srs FSR2 — tsa 0.70 h · vsa 2.3~2.5 h · ads 3.1 h · 적재 줄 2 · rc 0 · Zn ths ASR1 아홉 22:01 완주 · Zn ths FSR1 아홉 도는 중(21:1x~22:0x 착수) → 첫 묶음 완주 ≈ 01:0x~02:0x
+    견적     27 ÷ 8 ≈ 3.4 물결 · 셀 12 인 작은 구조라 작업당 첫 묶음(셀 16~32)보다 짧을 것으로 보지만 폭을 넓게 — ads 1.5~3 h · tsa ≤ 1 h → **11-10 08~12시** (출처: 이 기기 첫 묶음 실측을 셀 수로 줄여 본 값 · 첫 완주로 갱신)
+    다음     둘째 묶음 끝 → 그때 미착수 구조(LPT 19~21 중 남은 것)를 같은 방식으로(착수 글 먼저)
