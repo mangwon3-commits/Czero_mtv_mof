@@ -20,6 +20,7 @@
 전하 CIF 그대로 · 착수 간격 15 s + 2 s 잠금(씨앗 = 착수 초).
 env  CORE22_G_KEYS 쉼표(core_pop key · 실행은 필수) · CORE22_G_MACHINE(기본 laptop) · CORE22_G_WORKERS(기본 8)
      CORE22_G_SMOKE=1 (10 사이클 · h1 만 · 저장소 밖) · CORE22_G_DRY=1 (RASPA 안 띄우고 입력만 · h1 만 · 저장소 밖 · 키 기본 21종)
+     CORE22_G_BATCH=<이름> (선택) — 같은 기기의 둘째 묶음부터 실행 뿌리를 core22_g_<기기>_<이름> 으로 가름(앞 묶음 뿌리가 있으면 멈추므로)
      CORE22_G_CORE_CAP=N (선택 · 기본 0 = 끔) — 기기 전체 simulate 가 N 개 미만일 때만 RASPA 를 띄움(⑥ · 앞 묶음이 비우는 코어를 채움)
 판정 없음 — 종합자.
 """
@@ -133,7 +134,9 @@ import ff_gate                      # noqa: E402
 hw = T.hw
 V = T.V
 
-ROOT = os.path.join(CHAIN, f'core22_g_{MODE}_{MACHINE}') if MODE else os.path.join(HERE, 'humid_wc_runs_v3w', f'core22_g_{MACHINE}')
+BATCH = os.environ.get('CORE22_G_BATCH', '')         # 같은 기기의 둘째 묶음부터 실행 뿌리를 가름(기본 '' = 이전 판과 같은 뿌리)
+ROOT = (os.path.join(CHAIN, f'core22_g_{MODE}_{MACHINE}') if MODE
+        else os.path.join(HERE, 'humid_wc_runs_v3w', f'core22_g_{MACHINE}' + (f'_{BATCH}' if BATCH else '')))
 hw.RUNS = os.path.join(ROOT, 'runs')
 hw.CHARGED = os.path.join(ROOT, 'cifs')
 hw.RESULT = os.path.join(ROOT, 'runner_result_all.json')
@@ -333,7 +336,7 @@ def summarize(rows, aud, info):
             os.replace(tmp, res_name(b))
         out = {'test': f'CORE22 §G — CoRE 22 의 298 K 습윤 TSA 회수량 — {k}', 'assign': 'ASSIGN_CORE22_HUMID_PLAN_20261108.md §G',
                'ported_from': 'run_e24i_no2_humid_wc.py (c2d4673a) — _inject 만 구조별 막음 표로', 'thin_runner': 'run_core22_g_humid_wc.py',
-               'thin_runner_md5': me, 'machine': MACHINE, 'made': time.strftime('%F %T'), 'mode': MODE, 'core_cap': CORE_CAP,
+               'thin_runner_md5': me, 'machine': MACHINE, 'made': time.strftime('%F %T'), 'mode': MODE, 'core_cap': CORE_CAP, 'batch': BATCH,
                'runner_result': os.path.relpath(res_name(b), HERE) if not MODE else res_name(b),
                'core22': {**KINFO[k], 'cif_md5': info[b]['md5'], 'blocked_components': sorted(BLOCKS.get(b, {}))},
                'inputs': {'cif_source': {'zip': os.path.basename(ZIP), 'zip_md5': md5(ZIP), 'unpacked': CIFS},
