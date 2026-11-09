@@ -6642,3 +6642,24 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     둘째 묶음 01:35:02 착수 · KEYS = 2014[Cu][dia]3[ASR]1 · 2019[Zn][pcu]3[ASR]1(막음 CO₂ 1구 · 물 4구 → 차단 12 · 48 기대) · 2021[Co][dia]3[ASR]1 · 27작업 · 워커 8 · 기록 hk_g_chain.log([g2]) · 드라이버 로그 core22_g2_hkhome.log
              견적 22:0x 글 그대로(11-10 08~12시 · 셀 12 인 작은 구조 · 첫 완주로 갱신)
     다음     둘째 묶음 끝 → 미착수 구조(LPT 19~21 중 남은 것)를 같은 방식으로(착수 글 먼저)
+
+---
+
+## 2026-11-10 02:52 — [CORE22 §F] **HKHOME — F 착수 글: LPT 9~16 번째 8구조(24작업)** — 2018[Cd][dia]3[FSR]3 · [ASR]4 · [FSR]4 · 2021[Zn][srs]3[FSR]1 · 2014[Cu][dia]3[FSR]6 · [FSR]2 · [ASR]5 · [ASR]1 · 착수는 G 둘째 묶음이 끝나는 즉시(≈ 05~06시 · 사슬 자동) · G2 10/27 완주
+
+**받는 곳**: laptop2 · 랩탑 · 클라우드 종합자(수요일) · 사용자
+**요약**: 02:51 에 master 를 읽었을 때 F 착수 글은 랩탑 LPT 1~8 뿐입니다. 랩탑 23:16 글의 나누기(워커 몫 8/22 × 66 ≈ 24작업)를 따라 HKHOME 이 **다음 여덟 구조(LPT 9~16 · 24작업)** 를 가져갑니다. 남는 미착수는 LPT 17~22(Zn pcu · Co dia 둘 · Ni pcu · Zn dia 둘 · 18작업)로 laptop2 6워커 몫과 맞습니다. G 둘째 묶음(LPT 16~18)은 셀 12 인 작은 구조라 첫 구조 9작업이 1 h 15 m 에 끝나(10/27 · 02:51) 22:0x 견적(08~12시)보다 훨씬 빨리 05~06시에 끝날 것으로 보여 F 글을 지금 올립니다. 판정 없음.
+**답 필요**: 아니오
+
+    F 대상   LPT 9 2018[Cd][dia]3[FSR]3 · 10 [ASR]4 · 11 [FSR]4(N_super 2352 · 셀 2 2 3 · 막음 CO₂ · N₂ · 물 2구씩) · 12 2021[Zn][srs]3[FSR]1(2304 · 셀 3 3 2 · 막음 없음)
+             · 13 2014[Cu][dia]3[FSR]6 · 14 [FSR]2 · 15 [ASR]5 · 16 [ASR]1(1968 · 셀 3 2 2 · 막음 없음 · FSR2 · ASR1 fc 미상) × e3r1~3 = 24작업
+    F 실행기 run_core22_e_humid3_323.py(b975bd93 · 랩탑 · master 판 그대로 · 무수정) · import 대조 run_core22_e_humid3.py d24e8e2d · run_znbdt_e_humid3_323.py 7f83dc3c · 래퍼 97023663 · 막음 표 4781d1d8
+             CORE22_F_KEYS = 위 여덟 · CORE22_F_MACHINE=hkhome · CORE22_F_WORKERS=8 · 코어 문 없음(G 와 겹쳐 돌리지 않고 사슬로 순서대로)
+             실행 뿌리 humid_wc_runs_v3w_323/core22_e3_323_hkhome(gitignore) · 결과 results_core22_e_humid3_323_hkhome.json + _audit.json(postman 패턴 안)
+    드라이   CORE22_F_DRY=1(저장소 밖 ~/.mof_chain/core22_e3_323_dry_hkhome · 5종 · RASPA 안 띄움) · rc 0 · 입력 다섯 모두 T 323.0 · P 100,000 · y 0.150000/0.111141/0.738859 · 물 11,114.1 Pa
+             · 막음 줄 Cd FSR5 3 · Zn pcu 3 · Ni pcu 1 · Zn dia ASR1 1 · Co pcu 0(표대로) · 파일 관문 8e8ec933 일치
+    사슬     ~/.mof_chain/hk_f_chain.sh(G2 사슬 PID 3942664 종료 대기 → simulate · network · core22 드라이버 0(최대 30분) → 이전 결과 · 실행 뿌리 없음 → 착수) · 기록 21_ZIF69_MTV/hk_f_chain.log · 드라이버 로그 core22_f_hkhome.log
+    견적     24 ÷ 8 = 3 물결 · 작업당은 같은 구조의 C(298 K · 같은 성분 셋) 실측을 위로 — Cd 2.0~2.4 h · Zn srs 5.2 h · Cu dia 1.9~2.1 h → 작업합 ≈ 60 h ÷ 8 ≈ 7.5 h · 최장 단일 5.2 h
+             → 착수 05~06시면 **11-10 13~17시**(출처: 이 기기 C 실측 · 323 K 는 적재가 작아 더 짧을 수 있음 · 첫 완주로 갱신)
+    G2 현황  10/27 완주(02:51) · Cu dia ASR1 아홉 1 h 15 m(tsa 0.4 · vsa 0.9~1.0 · ads 1.2 h) · 표지 지금까지 전부 통과 · 완주 글은 끝나면 따로
+    다음     F 여덟 끝 → H(PLAN §H · 착수 글 먼저 · F 22 구조가 모두 착수된 뒤에만)
