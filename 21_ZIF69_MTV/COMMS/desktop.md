@@ -6565,3 +6565,23 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     견적        짝수 33 의 N_super 합 73,664 · 실측 1.04~1.54 h / 1,000 N_super → 작업합 77~113 h ÷ 8 = 9.6~14 h → 00:35 착수 기준 **10:1x~14:4x**, 꼬리를 더해 **12~15시**
                 (출처: 이 기기 · 같은 실행기 · 같은 계 실측 2건의 비례 환산 · 큰 구조가 위쪽 · 다음 물결로 다시 갱신) · 랩탑 홀수 33 도 같은 구조 분포라 같은 폭으로 밀릴 것으로 봅니다
     G 영향      PLAN §2 "C 끝(~09시) → G" 는 HKHOME 에서 12~15시로 밀림 · G 당기기는 C 끝난 뒤 착수 글로(규칙 그대로)
+
+---
+
+## 2026-11-09 12:41 — [CORE22 §G] **HKHOME — G 착수 글: 2024[Cu][srs]3[FSR]2 · 2024[Zn][ths]3[ASR]1 · 2024[Zn][ths]3[FSR]1(LPT 3 · 4 · 5번째 · 27작업)** · 착수는 C 짝수 33 이 끝나는 즉시(≈ 14:0x · 사슬 자동) · [6SEED_CORE §C] C 26/33 완주 · 남은 7 도는 중
+
+**받는 곳**: 랩탑 · laptop2 · 클라우드 종합자(수요일) · 사용자
+**요약**: PLAN §1 당기는 법대로, 12:40 에 master 를 읽었을 때 G 착수 글은 laptop2 의 LPT 1 · 2번째(Co pcu 둘)뿐이라 HKHOME 이 **다음 세 구조(LPT 3 · 4 · 5)** 를 가져갑니다. C 의 꼬리(7작업 · 가장 작은 구조들 · 완주 ≈ 13:0x~14:0x)가 끝나면 저장소 밖 사슬이 simulate 0 · network 0 을 확인하고 자동 착수합니다. 글을 먼저 올리는 이유는 랩탑의 C 도 비슷한 시각에 끝날 것이라 같은 구조를 겹쳐 잡지 않기 위해서입니다. 판정 없음.
+**답 필요**: 아니오
+
+    G 대상   2024[Cu][srs]3[FSR]2(N_super 3072 · 셀 4 2 2 · fc 미상) · 2024[Zn][ths]3[ASR]1 · 2024[Zn][ths]3[FSR]1(2752 · 셀 4 4 2 · fc 미상) — 셋 다 막음 0/0/0 → 삽입 없음 · 구조마다 h1~h3 × ads · tsa · vsa = 9 · 합 27
+    G 실행기 run_core22_g_humid_wc.py(랩탑 · 0dbdfb36 · master 판 그대로 · 무수정) · 틀 run_e24i_no2_humid_wc.py c2d4673a · 막음 표 results_core22_blocks_laptop.json 4781d1d8
+             CORE22_G_KEYS = 위 셋 · CORE22_G_MACHINE=hkhome · CORE22_G_WORKERS=8 · 실행 뿌리 humid_wc_runs_v3w/core22_g_hkhome(gitignore)
+             결과 v3w_humid_wc/humid_working_capacity_w2_core22_<줄기>_hkhome.json × 3 · 요약 results_core22_<줄기>_humid_summary_hkhome.json × 3(감사 포함 · postman 패턴 안)
+    드라이   CORE22_G_DRY=1(저장소 밖 ~/.mof_chain/core22_g_dry_hkhome · RASPA 안 띄움 · 기본 21종 h1) · rc 0 · 입력 63/63 · 막음 낱말 = 표대로(Cd 여섯 · Zn pcu CO₂+물 · Zn dia ASR1 물 · 나머지 0)
+             · ads 298.0 K · 17,852.1 Pa · y 0.840237/0.159763 · tsa 373.0 K · vsa 298.0 K · 7,852.1 Pa · 셀 4 2 2 / 4 4 2 · 파일 관문 8e8ec933 일치
+    사슬     ~/.mof_chain/hk_g_chain.sh(C 사슬 PID 126816 종료 대기 → simulate · network · C 드라이버 0(최대 30분) → 실행 뿌리 없음 → 착수) · 기록 21_ZIF69_MTV/hk_g_chain.log · 드라이버 로그 core22_g_hkhome.log
+    견적     27 ÷ 8 ≈ 3.4 물결 · 작업당은 **C 의 같은 구조 실측**(E 조건 3성분 · Cu srs 4.7 h · Zn ths 6.2~6.4 h)을 위로, PLAN §G 의 1.0~1.5 h(Zn-BDT A)를 아래로 두면
+             ads · vsa 는 2~6 h · tsa 는 그 아래 → **11-09 밤 ~ 11-10 새벽(22시~06시)** · 출처: 같은 기기 · 같은 구조 · 다른 조건 실측의 옮김 · 첫 완주로 갱신
+    C 현황   26/33 완주(12:39) · 표지 지금까지 전부 통과(적재 줄 3 · rc 0 · 차단 수 = 구 × 셀) · 남은 7 = Co dia 둘 · Ni pcu 둘 · Zn dia 셋(10:50~12:24 착수) · 완주 글은 끝나면 따로
+    다음     G 셋 끝 → 그때 미착수 구조를 같은 방식으로(착수 글 먼저)
