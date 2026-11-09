@@ -20,8 +20,10 @@
 전하 CIF 그대로 · 착수 간격 15 s + 2 s 잠금(씨앗 = 착수 초).
 env  CORE22_G_KEYS 쉼표(core_pop key · 실행은 필수) · CORE22_G_MACHINE(기본 laptop) · CORE22_G_WORKERS(기본 8)
      CORE22_G_SMOKE=1 (10 사이클 · h1 만 · 저장소 밖) · CORE22_G_DRY=1 (RASPA 안 띄우고 입력만 · h1 만 · 저장소 밖 · 키 기본 21종)
+     CORE22_G_CORE_CAP=N (선택 · 기본 0 = 끔) — 기기 전체 simulate 가 N 개 미만일 때만 RASPA 를 띄움(⑥ · 앞 묶음이 비우는 코어를 채움)
 판정 없음 — 종합자.
 """
+import fcntl
 import glob
 import hashlib
 import json
@@ -31,6 +33,7 @@ import re
 import shutil
 import statistics as st
 import sys
+import threading
 import time
 import zipfile
 
@@ -187,6 +190,39 @@ def _inject(cwd):
 
 T._inject = _inject               # 틀 _run 이 호출 때 모듈 전역에서 찾음
 
+# ⑥ 코어 문(선택 · 기본 끔): CORE22_G_CORE_CAP=N 이면 기기 전체 simulate 가 N 개 미만일 때만 RASPA 를 띄움 —
+#    앞 묶음(C)의 마지막 물결이 비우는 코어를 G 가 채우되 N 을 넘기지 않음. 문 잠금을 잡고 기다렸다가 띄운 뒤 5 s 에 타이머가
+#    잠금을 풀므로, 다음 작업은 이 simulate 가 셈에 든 뒤에 셈. 끄면(0) 틀 그대로.
+CORE_CAP = int(os.environ.get('CORE22_G_CORE_CAP', '0'))
+GATE = os.path.join(CHAIN, f'.core22_g_{MACHINE}_gate.lock')
+_t_run = hw.subprocess.run       # 틀의 _run(막음 삽입 → RASPA)
+
+
+def n_simulate():
+    n = 0
+    for p in os.listdir('/proc'):
+        if p.isdigit():
+            try:
+                with open(f'/proc/{p}/comm') as f:
+                    n += f.read().strip() == 'simulate'
+            except OSError:
+                pass
+    return n
+
+
+def _gated(args, *a, **k):
+    if CORE_CAP and k.get('cwd') and args and args[0] == rg.SIMULATE and not DRY:
+        f = open(GATE, 'a+')
+        fcntl.flock(f, fcntl.LOCK_EX)
+        while n_simulate() >= CORE_CAP:
+            time.sleep(20)
+        threading.Timer(5.0, f.close).start()
+        return _t_run(args, *a, **k)
+    return _t_run(args, *a, **k)
+
+
+hw.subprocess.run = _gated
+
 
 def stage():
     """CoRE CIF → cifs/<base>_h{r}_DDEC6.cif 바이트 같은 사본(zip 바이트 md5 대조)."""
@@ -297,7 +333,7 @@ def summarize(rows, aud, info):
             os.replace(tmp, res_name(b))
         out = {'test': f'CORE22 §G — CoRE 22 의 298 K 습윤 TSA 회수량 — {k}', 'assign': 'ASSIGN_CORE22_HUMID_PLAN_20261108.md §G',
                'ported_from': 'run_e24i_no2_humid_wc.py (c2d4673a) — _inject 만 구조별 막음 표로', 'thin_runner': 'run_core22_g_humid_wc.py',
-               'thin_runner_md5': me, 'machine': MACHINE, 'made': time.strftime('%F %T'), 'mode': MODE,
+               'thin_runner_md5': me, 'machine': MACHINE, 'made': time.strftime('%F %T'), 'mode': MODE, 'core_cap': CORE_CAP,
                'runner_result': os.path.relpath(res_name(b), HERE) if not MODE else res_name(b),
                'core22': {**KINFO[k], 'cif_md5': info[b]['md5'], 'blocked_components': sorted(BLOCKS.get(b, {}))},
                'inputs': {'cif_source': {'zip': os.path.basename(ZIP), 'zip_md5': md5(ZIP), 'unpacked': CIFS},
