@@ -1,0 +1,456 @@
+{
+  "test": "CORE22 §G — CoRE 22 의 298 K 습윤 TSA 회수량 — 2021[Zn][srs]3[FSR]1",
+  "assign": "ASSIGN_CORE22_HUMID_PLAN_20261108.md §G",
+  "ported_from": "run_e24i_no2_humid_wc.py (c2d4673a) — _inject 만 구조별 막음 표로",
+  "thin_runner": "run_core22_g_humid_wc.py",
+  "thin_runner_md5": "0dbdfb36f53270f290c48bf253b5003c",
+  "machine": "laptop2",
+  "made": "2026-11-10 09:25:11",
+  "mode": null,
+  "runner_result": "v3w_humid_wc/humid_working_capacity_w2_core22_2021_Zn__srs_3_FSR_1_laptop2.json",
+  "core22": {
+    "key": "2021[Zn][srs]3[FSR]1",
+    "file": "2021_Zn__srs_3_FSR_1.cif",
+    "n_atoms": 128,
+    "unit_cells": [
+      3,
+      3,
+      2
+    ],
+    "N_super": 2304,
+    "fc_unknown": false,
+    "base": "core22_2021_Zn__srs_3_FSR_1",
+    "cif_md5": "38518207f9dfdfd9af4748ca26003659",
+    "blocked_components": []
+  },
+  "inputs": {
+    "cif_source": {
+      "zip": "core_pop_cifs.zip",
+      "zip_md5": "96a5fbf877881b4606bd32e22f13feb8",
+      "unpacked": "/home/leehk/.mof_chain/core22_1108/cifs"
+    },
+    "copies": {
+      "core22_2021_Zn__srs_3_FSR_1_h1": "humid_wc_runs_v3w/core22_g_laptop2/cifs/core22_2021_Zn__srs_3_FSR_1_h1_DDEC6.cif",
+      "core22_2021_Zn__srs_3_FSR_1_h2": "humid_wc_runs_v3w/core22_g_laptop2/cifs/core22_2021_Zn__srs_3_FSR_1_h2_DDEC6.cif",
+      "core22_2021_Zn__srs_3_FSR_1_h3": "humid_wc_runs_v3w/core22_g_laptop2/cifs/core22_2021_Zn__srs_3_FSR_1_h3_DDEC6.cif"
+    },
+    "blocks_source": {
+      "file": "results_core22_blocks_laptop.json",
+      "md5": "4781d1d803e1129b8b5df4277a2786e0"
+    }
+  },
+  "blocking": {},
+  "audit_summary": {
+    "n": 9,
+    "n_ok": 9,
+    "seeds_distinct_within_structure": true,
+    "seeds_distinct_machine": true
+  },
+  "audit": [
+    {
+      "target": "core22_2021_Zn__srs_3_FSR_1_h1",
+      "core_key": "2021[Zn][srs]3[FSR]1",
+      "condition": "ads",
+      "blocked_components": [],
+      "unit_cells": [
+        3,
+        3,
+        2
+      ],
+      "seed": 1794225739,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2021_Zn__srs_3_FSR_1_h1",
+      "core_key": "2021[Zn][srs]3[FSR]1",
+      "condition": "tsa",
+      "blocked_components": [],
+      "unit_cells": [
+        3,
+        3,
+        2
+      ],
+      "seed": 1794225754,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2021_Zn__srs_3_FSR_1_h1",
+      "core_key": "2021[Zn][srs]3[FSR]1",
+      "condition": "vsa",
+      "blocked_components": [],
+      "unit_cells": [
+        3,
+        3,
+        2
+      ],
+      "seed": 1794225769,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2021_Zn__srs_3_FSR_1_h2",
+      "core_key": "2021[Zn][srs]3[FSR]1",
+      "condition": "ads",
+      "blocked_components": [],
+      "unit_cells": [
+        3,
+        3,
+        2
+      ],
+      "seed": 1794225784,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2021_Zn__srs_3_FSR_1_h2",
+      "core_key": "2021[Zn][srs]3[FSR]1",
+      "condition": "tsa",
+      "blocked_components": [],
+      "unit_cells": [
+        3,
+        3,
+        2
+      ],
+      "seed": 1794225799,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2021_Zn__srs_3_FSR_1_h2",
+      "core_key": "2021[Zn][srs]3[FSR]1",
+      "condition": "vsa",
+      "blocked_components": [],
+      "unit_cells": [
+        3,
+        3,
+        2
+      ],
+      "seed": 1794225814,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2021_Zn__srs_3_FSR_1_h3",
+      "core_key": "2021[Zn][srs]3[FSR]1",
+      "condition": "ads",
+      "blocked_components": [],
+      "unit_cells": [
+        3,
+        3,
+        2
+      ],
+      "seed": 1794229150,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2021_Zn__srs_3_FSR_1_h3",
+      "core_key": "2021[Zn][srs]3[FSR]1",
+      "condition": "tsa",
+      "blocked_components": [],
+      "unit_cells": [
+        3,
+        3,
+        2
+      ],
+      "seed": 1794229152,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2021_Zn__srs_3_FSR_1_h3",
+      "core_key": "2021[Zn][srs]3[FSR]1",
+      "condition": "vsa",
+      "blocked_components": [],
+      "unit_cells": [
+        3,
+        3,
+        2
+      ],
+      "seed": 1794232568,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "runner_loading": true,
+      "ok": true
+    }
+  ],
+  "note": "기계적 사실뿐 — 판정은 종합자. 평균 ± = ±̄/√n · SD 병기. 구 0 인 성분은 막음 없음. 전하는 CoRE CIF 의 것.",
+  "summary": {
+    "WC_TSA_each": [
+      3.0599,
+      2.9806,
+      3.0365
+    ],
+    "WC_TSA_mean": 3.0256666666666665,
+    "WC_TSA_mean_err": 0.04872836271960442,
+    "WC_TSA_SD": 0.040744856526110554,
+    "WC_VSA_each": [
+      1.3342,
+      1.2973,
+      1.2852
+    ],
+    "WC_VSA_mean": 1.3055666666666665,
+    "WC_VSA_mean_err": 0.05994820295085614,
+    "WC_VSA_SD": 0.025524563332863067,
+    "loadings": {
+      "core22_2021_Zn__srs_3_FSR_1_h1": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 3.820827742,
+            "err": 0.0688414709
+          },
+          "water": {
+            "mol_per_kg": 0.2805249009,
+            "err": 0.0947364115
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.760940401,
+            "err": 0.0204989057
+          },
+          "water": {
+            "mol_per_kg": 0.0194570595,
+            "err": 0.0023047836
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 2.4866161352,
+            "err": 0.077845537
+          },
+          "water": {
+            "mol_per_kg": 0.626429117,
+            "err": 0.2742886095
+          }
+        }
+      },
+      "core22_2021_Zn__srs_3_FSR_1_h2": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 3.7468701303,
+            "err": 0.1168914646
+          },
+          "water": {
+            "mol_per_kg": 0.4235723483,
+            "err": 0.2702431745
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.7662688321,
+            "err": 0.0185794921
+          },
+          "water": {
+            "mol_per_kg": 0.0186031623,
+            "err": 0.0013634693
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 2.4495923873,
+            "err": 0.0664620487
+          },
+          "water": {
+            "mol_per_kg": 0.6667532899,
+            "err": 0.179331587
+          }
+        }
+      },
+      "core22_2021_Zn__srs_3_FSR_1_h3": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 3.7982415986,
+            "err": 0.0620439092
+          },
+          "water": {
+            "mol_per_kg": 0.3077484927,
+            "err": 0.1280728618
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.7617914894,
+            "err": 0.0108348817
+          },
+          "water": {
+            "mol_per_kg": 0.019027302,
+            "err": 0.0020928656
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 2.513002683,
+            "err": 0.0385913615
+          },
+          "water": {
+            "mol_per_kg": 0.4855445013,
+            "err": 0.0775841481
+          }
+        }
+      }
+    }
+  }
+}
