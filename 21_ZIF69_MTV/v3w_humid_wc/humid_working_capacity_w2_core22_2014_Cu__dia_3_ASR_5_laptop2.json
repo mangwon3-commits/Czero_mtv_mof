@@ -1,0 +1,167 @@
+{
+  "p_h2o_Pa": 2852.1,
+  "conditions": [
+    {
+      "label": "ads",
+      "p_co2_Pa": 15000.0,
+      "T_K": 298.0,
+      "RH_pct": 90.0
+    },
+    {
+      "label": "tsa",
+      "p_co2_Pa": 15000.0,
+      "T_K": 373.0,
+      "RH_pct": 2.81
+    },
+    {
+      "label": "vsa",
+      "p_co2_Pa": 5000.0,
+      "T_K": 298.0,
+      "RH_pct": 90.0
+    }
+  ],
+  "cycles": 15000,
+  "note": "물 분압 고정. TSA 는 승온만으로 RH 가 90 -> 2.8% 로 떨어진다.",
+  "rows": [
+    {
+      "name": "core22_2014_Cu__dia_3_ASR_5_h1",
+      "p_h2o_Pa": 2852.1,
+      "loadings": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 2.2908094644,
+            "err": 0.0334485186
+          },
+          "water": {
+            "mol_per_kg": 0.0163746976,
+            "err": 0.0034678232
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.478156327,
+            "err": 0.0276459961
+          },
+          "water": {
+            "mol_per_kg": 0.0046793872,
+            "err": 0.0002724967
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 1.586672206,
+            "err": 0.0502343475
+          },
+          "water": {
+            "mol_per_kg": 0.0246662433,
+            "err": 0.0040081504
+          }
+        }
+      },
+      "working_capacity": {
+        "tsa": {
+          "value": 1.8127,
+          "err": 0.0434
+        },
+        "vsa": {
+          "value": 0.7041,
+          "err": 0.0604
+        }
+      }
+    },
+    {
+      "name": "core22_2014_Cu__dia_3_ASR_5_h2",
+      "p_h2o_Pa": 2852.1,
+      "loadings": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 2.3042540195,
+            "err": 0.0317617303
+          },
+          "water": {
+            "mol_per_kg": 0.0160115873,
+            "err": 0.0038970857
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.4727096719,
+            "err": 0.0092687806
+          },
+          "water": {
+            "mol_per_kg": 0.0047141195,
+            "err": 0.0005637373
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 1.5741243756,
+            "err": 0.0412267684
+          },
+          "water": {
+            "mol_per_kg": 0.0265196848,
+            "err": 0.0048571093
+          }
+        }
+      },
+      "working_capacity": {
+        "tsa": {
+          "value": 1.8315,
+          "err": 0.0331
+        },
+        "vsa": {
+          "value": 0.7301,
+          "err": 0.052
+        }
+      }
+    },
+    {
+      "name": "core22_2014_Cu__dia_3_ASR_5_h3",
+      "p_h2o_Pa": 2852.1,
+      "loadings": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 2.3047844763,
+            "err": 0.0241116267
+          },
+          "water": {
+            "mol_per_kg": 0.0160810519,
+            "err": 0.0029407628
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.4679418752,
+            "err": 0.0093134951
+          },
+          "water": {
+            "mol_per_kg": 0.0043289068,
+            "err": 0.0004160917
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 1.5650908218,
+            "err": 0.0124513799
+          },
+          "water": {
+            "mol_per_kg": 0.0281173703,
+            "err": 0.0042494118
+          }
+        }
+      },
+      "working_capacity": {
+        "tsa": {
+          "value": 1.8368,
+          "err": 0.0258
+        },
+        "vsa": {
+          "value": 0.7397,
+          "err": 0.0271
+        }
+      }
+    }
+  ],
+  "split_from": "humid_wc_runs_v3w/core22_g_laptop2/runner_result_all.json",
+  "core_key": "2014[Cu][dia]3[ASR]5"
+}
