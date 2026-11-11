@@ -4,7 +4,7 @@
  "machine": "hkhome",
  "script": "znbdt_k_xtb_cluster.py",
  "script_md5": "10fed638b907ee5784a22c151843dd20",
- "started": "2026-11-11 13:54:06",
+ "started": "2026-11-11 14:01:23",
  "xtb": {
   "path": "/home/mangwon1/miniconda3/envs/spectra/bin/xtb",
   "version": "6.7.1 (edcfbbe)"
@@ -32,9 +32,7 @@
   "e24i_cn_open_zn2"
  ],
  "states_env": "abc",
- "only_env": [
-  "e22_parent_zn1"
- ],
+ "only_env": [],
  "clusters": {
   "e22_parent_zn1": {
    "structure": "e22_parent",
@@ -206,7 +204,7 @@
    "repeat_of": null,
    "states": {
     "a_nowater": {
-     "cached": false,
+     "cached": true,
      "seconds": 10.6,
      "returncode": 0,
      "normal_termination": true,
@@ -230,7 +228,7 @@
      "wbo_file": true,
      "markers_ok": true,
      "single_point": {
-      "cached": false,
+      "cached": true,
       "seconds": 0.3,
       "returncode": 0,
       "normal_termination": true,
@@ -295,7 +293,7 @@
      "topology_same_as_start": true
     },
     "b_face_opp_Na": {
-     "cached": false,
+     "cached": true,
      "seconds": 15.9,
      "returncode": 0,
      "normal_termination": true,
@@ -319,7 +317,7 @@
      "wbo_file": true,
      "markers_ok": true,
      "single_point": {
-      "cached": false,
+      "cached": true,
       "seconds": 0.3,
       "returncode": 0,
       "normal_termination": true,
@@ -416,7 +414,7 @@
      "dE_w_kJmol": -55.582884672585344
     },
     "b_face_opp_Nb": {
-     "cached": false,
+     "cached": true,
      "seconds": 19.1,
      "returncode": 0,
      "normal_termination": true,
@@ -440,7 +438,7 @@
      "wbo_file": true,
      "markers_ok": true,
      "single_point": {
-      "cached": false,
+      "cached": true,
       "seconds": 0.3,
       "returncode": 0,
       "normal_termination": true,
@@ -537,7 +535,7 @@
      "dE_w_kJmol": -55.62086417635984
     },
     "b_face_opp_Osub": {
-     "cached": false,
+     "cached": true,
      "seconds": 24.1,
      "returncode": 0,
      "normal_termination": true,
@@ -561,7 +559,7 @@
      "wbo_file": true,
      "markers_ok": true,
      "single_point": {
-      "cached": false,
+      "cached": true,
       "seconds": 0.4,
       "returncode": 0,
       "normal_termination": true,
@@ -658,7 +656,7 @@
      "dE_w_kJmol": -57.936573328317394
     },
     "b_face_opp_Ounsub": {
-     "cached": false,
+     "cached": true,
      "seconds": 20.3,
      "returncode": 0,
      "normal_termination": true,
@@ -682,7 +680,7 @@
      "wbo_file": true,
      "markers_ok": true,
      "single_point": {
-      "cached": false,
+      "cached": true,
       "seconds": 0.3,
       "returncode": 0,
       "normal_termination": true,
@@ -774,7 +772,7 @@
      "dE_w_kJmol": -43.908619552144565
     },
     "b_hb_Ofree_sub": {
-     "cached": false,
+     "cached": true,
      "seconds": 41.4,
      "returncode": 0,
      "normal_termination": true,
@@ -798,7 +796,7 @@
      "wbo_file": true,
      "markers_ok": true,
      "single_point": {
-      "cached": false,
+      "cached": true,
       "seconds": 0.3,
       "returncode": 0,
       "normal_termination": true,
@@ -887,7 +885,7 @@
      "dE_w_kJmol": -45.38075386120978
     },
     "b_hb_Ofree_unsub": {
-     "cached": false,
+     "cached": true,
      "seconds": 43.6,
      "returncode": 0,
      "normal_termination": true,
@@ -911,7 +909,7 @@
      "wbo_file": true,
      "markers_ok": true,
      "single_point": {
-      "cached": false,
+      "cached": true,
       "seconds": 0.3,
       "returncode": 0,
       "normal_termination": true,
@@ -997,6 +995,1014 @@
       "min_dist_H_to_cluster_A": 2.4055417950505555
      },
      "dE_w_kJmol": -58.79580701348156
+    },
+    "c_w_sub_p04": {
+     "cached": true,
+     "seconds": 55.2,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 282,
+     "energy_Eh_raw": -142.806646614657,
+     "n_atoms": 74,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      49
+     ],
+     "constraint": {
+      "i": 0,
+      "j": 41,
+      "target_A": 2.344547265360282,
+      "force_constant": 5.0,
+      "achieved_A": 2.3442686358626275
+     },
+     "restraint_Eh_last": 1.854941e-06,
+     "anchor_pair_max_change_A": 0.00010470439960741373,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": true,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -142.806648468278,
+      "n_atoms": 74,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -142.806646614657,
+     "energy_Eh": -142.806648468278,
+     "geometry": {
+      "d_Zn_Osub_A": 2.3442686358626275,
+      "d_Zn_Ounsub_A": 1.9615254668540234,
+      "d_Zn_Na_A": 2.086801906094168,
+      "d_Zn_Nb_A": 2.042561481912802,
+      "wbo_Zn_Osub": 0.20743303271637947,
+      "wbo_Zn_Ounsub": 0.4359741934715693,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 2.06670872321961,
+      "d_Zn_Ofree_unsub_A": 2.9360458205583013,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 64,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 1.9615254668540234
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.042561481912802
+       },
+       {
+        "atom_0based": 43,
+        "symbol": "O",
+        "role": "ofree_sub",
+        "d_A": 2.06670872321961
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.086801906094168
+       },
+       {
+        "atom_0based": 41,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 2.3442686358626275
+       },
+       {
+        "atom_0based": 71,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.4897613341345397
+       }
+      ],
+      "cn_Zn_within_2p5A": 6,
+      "d_Zn_Ow_A": 2.4897613341345397,
+      "water_OH_A": [
+       0.9861304828553412,
+       0.959709032712641
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.15858158982110399,
+      "min_Hw_Ofree_sub_A": 4.546564338878425,
+      "min_Hw_Ofree_unsub_A": 1.7127552605121434,
+      "min_Hw_acceptor_A": 1.7127552605121434,
+      "min_Hw_acceptor_atom_0based": 66,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "scan": {
+      "from_state": "b_hb_Ofree_unsub",
+      "side": "sub",
+      "d0_A": 1.9445472653602822,
+      "stretch_A": 0.4
+     },
+     "dE_stretch_kJmol": 12.49425855268447
+    },
+    "c_w_sub_p08": {
+     "cached": true,
+     "seconds": 22.3,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 131,
+     "energy_Eh_raw": -142.802899002813,
+     "n_atoms": 74,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      49
+     ],
+     "constraint": {
+      "i": 0,
+      "j": 41,
+      "target_A": 2.744547265360282,
+      "force_constant": 5.0,
+      "achieved_A": 2.7443056879309418
+     },
+     "restraint_Eh_last": 1.319995e-06,
+     "anchor_pair_max_change_A": 9.200609484594224e-05,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": true,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -142.802900320777,
+      "n_atoms": 74,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -142.802899002813,
+     "energy_Eh": -142.802900320777,
+     "geometry": {
+      "d_Zn_Osub_A": 2.7443056879309418,
+      "d_Zn_Ounsub_A": 1.9278362248478027,
+      "d_Zn_Na_A": 2.0681875322278978,
+      "d_Zn_Nb_A": 2.036178086578442,
+      "wbo_Zn_Osub": null,
+      "wbo_Zn_Ounsub": 0.4538416488590039,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 1.9653438192711876,
+      "d_Zn_Ofree_unsub_A": 2.9671939937706266,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 64,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 1.9278362248478027
+       },
+       {
+        "atom_0based": 43,
+        "symbol": "O",
+        "role": "ofree_sub",
+        "d_A": 1.9653438192711876
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.036178086578442
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.0681875322278978
+       },
+       {
+        "atom_0based": 71,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.409379118493119
+       }
+      ],
+      "cn_Zn_within_2p5A": 5,
+      "d_Zn_Ow_A": 2.409379118493119,
+      "water_OH_A": [
+       0.989723569691005,
+       0.9597733857458763
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.18078140946124827,
+      "min_Hw_Ofree_sub_A": 4.427435092500815,
+      "min_Hw_Ofree_unsub_A": 1.6926582544576791,
+      "min_Hw_acceptor_A": 1.6926582544576791,
+      "min_Hw_acceptor_atom_0based": 66,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "scan": {
+      "from_state": "b_hb_Ofree_unsub",
+      "side": "sub",
+      "d0_A": 1.9445472653602822,
+      "stretch_A": 0.8
+     },
+     "dE_stretch_kJmol": 22.33501846347799
+    },
+    "c_w_sub_p12": {
+     "cached": true,
+     "seconds": 20.0,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 117,
+     "energy_Eh_raw": -142.799770851597,
+     "n_atoms": 74,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      49
+     ],
+     "constraint": {
+      "i": 0,
+      "j": 41,
+      "target_A": 3.1445472653602824,
+      "force_constant": 5.0,
+      "achieved_A": 3.144318085715368
+     },
+     "restraint_Eh_last": 1.269403e-06,
+     "anchor_pair_max_change_A": 9.60986970071076e-05,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": true,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -142.799772118749,
+      "n_atoms": 74,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -142.799770851597,
+     "energy_Eh": -142.799772118749,
+     "geometry": {
+      "d_Zn_Osub_A": 3.144318085715368,
+      "d_Zn_Ounsub_A": 1.9215833831368845,
+      "d_Zn_Na_A": 2.0480833046511506,
+      "d_Zn_Nb_A": 2.0335905191420323,
+      "wbo_Zn_Osub": null,
+      "wbo_Zn_Ounsub": 0.45628512549256145,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 1.9431733289099218,
+      "d_Zn_Ofree_unsub_A": 2.9574985925909054,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 64,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 1.9215833831368845
+       },
+       {
+        "atom_0based": 43,
+        "symbol": "O",
+        "role": "ofree_sub",
+        "d_A": 1.9431733289099218
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.0335905191420323
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.0480833046511506
+       },
+       {
+        "atom_0based": 71,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.3477536871026925
+       }
+      ],
+      "cn_Zn_within_2p5A": 5,
+      "d_Zn_Ow_A": 2.3477536871026925,
+      "water_OH_A": [
+       0.9917659601247217,
+       0.960155330485881
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.1997423093980825,
+      "min_Hw_Ofree_sub_A": 4.339240790002652,
+      "min_Hw_Ofree_unsub_A": 1.6913377759790285,
+      "min_Hw_acceptor_A": 1.6913377759790285,
+      "min_Hw_acceptor_atom_0based": 66,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "scan": {
+      "from_state": "b_hb_Ofree_unsub",
+      "side": "sub",
+      "d0_A": 1.9445472653602822,
+      "stretch_A": 1.2
+     },
+     "dE_stretch_kJmol": 30.548111758771437
+    },
+    "c_w_unsub_p04": {
+     "cached": true,
+     "seconds": 22.9,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 138,
+     "energy_Eh_raw": -142.80435649972,
+     "n_atoms": 74,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      49
+     ],
+     "constraint": {
+      "i": 0,
+      "j": 64,
+      "target_A": 2.385971031830705,
+      "force_constant": 5.0,
+      "achieved_A": 2.3851930989193852
+     },
+     "restraint_Eh_last": 1.0974097e-05,
+     "anchor_pair_max_change_A": 5.5685219304990596e-05,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": true,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -142.80436747195,
+      "n_atoms": 74,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -142.80435649972,
+     "energy_Eh": -142.80436747195,
+     "geometry": {
+      "d_Zn_Osub_A": 1.9508812106857916,
+      "d_Zn_Ounsub_A": 2.3851930989193852,
+      "d_Zn_Na_A": 2.019256702066051,
+      "d_Zn_Nb_A": 2.01775241466026,
+      "wbo_Zn_Osub": 0.39539532925427556,
+      "wbo_Zn_Ounsub": 0.2812485108027341,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 2.281572075553122,
+      "d_Zn_Ofree_unsub_A": 3.38298376990967,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 41,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.9508812106857916
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.01775241466026
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.019256702066051
+       },
+       {
+        "atom_0based": 43,
+        "symbol": "O",
+        "role": "ofree_sub",
+        "d_A": 2.281572075553122
+       },
+       {
+        "atom_0based": 71,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.302208415402479
+       },
+       {
+        "atom_0based": 64,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 2.3851930989193852
+       }
+      ],
+      "cn_Zn_within_2p5A": 6,
+      "d_Zn_Ow_A": 2.302208415402479,
+      "water_OH_A": [
+       1.0168277907793484,
+       0.9598340531633657
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.23665133625910525,
+      "min_Hw_Ofree_sub_A": 4.65503993417837,
+      "min_Hw_Ofree_unsub_A": 1.5727311047667856,
+      "min_Hw_acceptor_A": 1.5727311047667856,
+      "min_Hw_acceptor_atom_0based": 66,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "scan": {
+      "from_state": "b_hb_Ofree_unsub",
+      "side": "unsub",
+      "d0_A": 1.9859710318307047,
+      "stretch_A": 0.4
+     },
+     "dE_stretch_kJmol": 18.483013588437785
+    },
+    "c_w_unsub_p08": {
+     "cached": true,
+     "seconds": 15.6,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 88,
+     "energy_Eh_raw": -142.793329248094,
+     "n_atoms": 74,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      49
+     ],
+     "constraint": {
+      "i": 0,
+      "j": 64,
+      "target_A": 2.7859710318307047,
+      "force_constant": 5.0,
+      "achieved_A": 2.785302152400473
+     },
+     "restraint_Eh_last": 8.229079e-06,
+     "anchor_pair_max_change_A": 9.686532871455711e-05,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": true,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -142.793337474962,
+      "n_atoms": 74,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -142.793329248094,
+     "energy_Eh": -142.793337474962,
+     "geometry": {
+      "d_Zn_Osub_A": 1.9547405361434635,
+      "d_Zn_Ounsub_A": 2.785302152400473,
+      "d_Zn_Na_A": 2.006598028440406,
+      "d_Zn_Nb_A": 2.008123928144839,
+      "wbo_Zn_Osub": 0.3954663273722716,
+      "wbo_Zn_Ounsub": 0.1476173254287305,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 2.173551694108083,
+      "d_Zn_Ofree_unsub_A": 3.3650511543525594,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 41,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.9547405361434635
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.006598028440406
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.008123928144839
+       },
+       {
+        "atom_0based": 43,
+        "symbol": "O",
+        "role": "ofree_sub",
+        "d_A": 2.173551694108083
+       },
+       {
+        "atom_0based": 71,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.2018339700175793
+       }
+      ],
+      "cn_Zn_within_2p5A": 5,
+      "d_Zn_Ow_A": 2.2018339700175793,
+      "water_OH_A": [
+       1.0399082474984427,
+       0.9610932233325353
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.28723975395404405,
+      "min_Hw_Ofree_sub_A": 4.556644671969254,
+      "min_Hw_Ofree_unsub_A": 1.5082575642454494,
+      "min_Hw_acceptor_A": 1.5082575642454494,
+      "min_Hw_acceptor_atom_0based": 66,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "scan": {
+      "from_state": "b_hb_Ofree_unsub",
+      "side": "unsub",
+      "d0_A": 1.9859710318307047,
+      "stretch_A": 0.8
+     },
+     "dE_stretch_kJmol": 47.44226669864106
+    },
+    "c_w_unsub_p12": {
+     "cached": true,
+     "seconds": 36.9,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 212,
+     "energy_Eh_raw": -142.810315387815,
+     "n_atoms": 74,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      49
+     ],
+     "constraint": {
+      "i": 0,
+      "j": 64,
+      "target_A": 3.1859710318307046,
+      "force_constant": 5.0,
+      "achieved_A": 3.1861003003226305
+     },
+     "restraint_Eh_last": 1.580792e-06,
+     "anchor_pair_max_change_A": 0.00015393591765899828,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": true,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -142.810316967474,
+      "n_atoms": 74,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -142.810315387815,
+     "energy_Eh": -142.810316967474,
+     "geometry": {
+      "d_Zn_Osub_A": 1.9462811649405494,
+      "d_Zn_Ounsub_A": 3.1861003003226305,
+      "d_Zn_Na_A": 2.0522928957157798,
+      "d_Zn_Nb_A": 2.0679073287182397,
+      "wbo_Zn_Osub": 0.4088191798032502,
+      "wbo_Zn_Ounsub": null,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 2.5188262446995187,
+      "d_Zn_Ofree_unsub_A": 1.9915768688284914,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 41,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.9462811649405494
+       },
+       {
+        "atom_0based": 66,
+        "symbol": "O",
+        "role": "ofree_unsub",
+        "d_A": 1.9915768688284914
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.0522928957157798
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.0679073287182397
+       },
+       {
+        "atom_0based": 71,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.3783226287869983
+       }
+      ],
+      "cn_Zn_within_2p5A": 5,
+      "d_Zn_Ow_A": 2.3783226287869983,
+      "water_OH_A": [
+       0.9595089722643452,
+       0.9985164380132685
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.19936757303892708,
+      "min_Hw_Ofree_sub_A": 4.75832793535173,
+      "min_Hw_Ofree_unsub_A": 2.595645090058453,
+      "min_Hw_acceptor_A": 1.6328051470521634,
+      "min_Hw_acceptor_atom_0based": 64,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "scan": {
+      "from_state": "b_hb_Ofree_unsub",
+      "side": "unsub",
+      "d0_A": 1.9859710318307047,
+      "stretch_A": 1.2
+     },
+     "dE_stretch_kJmol": 2.862615237962811
+    },
+    "c_dry_sub_p04": {
+     "cached": true,
+     "seconds": 7.0,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 41,
+     "energy_Eh_raw": -137.709131928456,
+     "n_atoms": 71,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      49
+     ],
+     "constraint": {
+      "i": 0,
+      "j": 41,
+      "target_A": 2.300406708127867,
+      "force_constant": 5.0,
+      "achieved_A": 2.299324067855989
+     },
+     "restraint_Eh_last": 2.4333433e-05,
+     "anchor_pair_max_change_A": 0.00024841609887360505,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": true,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -137.709156259915,
+      "n_atoms": 71,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -137.709131928456,
+     "energy_Eh": -137.709156259915,
+     "geometry": {
+      "d_Zn_Osub_A": 2.299324067855989,
+      "d_Zn_Ounsub_A": 1.976585859979274,
+      "d_Zn_Na_A": 2.0594652569045784,
+      "d_Zn_Nb_A": 2.058972589113053,
+      "wbo_Zn_Osub": 0.3587268906035452,
+      "wbo_Zn_Ounsub": 0.42759289944361917,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 3.4586345509468144,
+      "d_Zn_Ofree_unsub_A": 2.2847283080070566,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 64,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 1.976585859979274
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.058972589113053
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.0594652569045784
+       },
+       {
+        "atom_0based": 66,
+        "symbol": "O",
+        "role": "ofree_unsub",
+        "d_A": 2.2847283080070566
+       },
+       {
+        "atom_0based": 41,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 2.299324067855989
+       }
+      ],
+      "cn_Zn_within_2p5A": 5
+     },
+     "topology_same_as_start": true,
+     "scan": {
+      "from_state": "a_nowater",
+      "side": "sub",
+      "d0_A": 1.9004067081278673,
+      "stretch_A": 0.4
+     },
+     "dE_stretch_kJmol": 24.449845699514743
+    },
+    "c_dry_sub_p08": {
+     "cached": true,
+     "seconds": 32.2,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 199,
+     "energy_Eh_raw": -137.718801576095,
+     "n_atoms": 71,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      49
+     ],
+     "constraint": {
+      "i": 0,
+      "j": 41,
+      "target_A": 2.7004067081278675,
+      "force_constant": 5.0,
+      "achieved_A": 2.7000094415123987
+     },
+     "restraint_Eh_last": 6.020264e-06,
+     "anchor_pair_max_change_A": 0.0002682004764729129,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": true,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -137.718807595109,
+      "n_atoms": 71,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -137.718801576095,
+     "energy_Eh": -137.718807595109,
+     "geometry": {
+      "d_Zn_Osub_A": 2.7000094415123987,
+      "d_Zn_Ounsub_A": 2.050752470947089,
+      "d_Zn_Na_A": 2.111145494078548,
+      "d_Zn_Nb_A": 2.1054088035500635,
+      "wbo_Zn_Osub": 0.11530982043606311,
+      "wbo_Zn_Ounsub": 0.3698203175949207,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 1.9726964736391572,
+      "d_Zn_Ofree_unsub_A": 2.2131113217113776,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 43,
+        "symbol": "O",
+        "role": "ofree_sub",
+        "d_A": 1.9726964736391572
+       },
+       {
+        "atom_0based": 64,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 2.050752470947089
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.1054088035500635
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.111145494078548
+       },
+       {
+        "atom_0based": 66,
+        "symbol": "O",
+        "role": "ofree_unsub",
+        "d_A": 2.2131113217113776
+       }
+      ],
+      "cn_Zn_within_2p5A": 5
+     },
+     "topology_same_as_start": true,
+     "scan": {
+      "from_state": "a_nowater",
+      "side": "sub",
+      "d0_A": 1.9004067081278673,
+      "stretch_A": 0.8
+     },
+     "dE_stretch_kJmol": -0.8897313682199836
+    },
+    "c_dry_sub_p12": {
+     "cached": true,
+     "seconds": 23.3,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 145,
+     "energy_Eh_raw": -137.715060504717,
+     "n_atoms": 71,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      49
+     ],
+     "constraint": {
+      "i": 0,
+      "j": 41,
+      "target_A": 3.100406708127867,
+      "force_constant": 5.0,
+      "achieved_A": 3.100250175373352
+     },
+     "restraint_Eh_last": 3.904218e-06,
+     "anchor_pair_max_change_A": 0.000275237359176117,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": true,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -137.715064407789,
+      "n_atoms": 71,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -137.715060504717,
+     "energy_Eh": -137.715064407789,
+     "geometry": {
+      "d_Zn_Osub_A": 3.100250175373352,
+      "d_Zn_Ounsub_A": 2.0112663700722604,
+      "d_Zn_Na_A": 2.073883535228134,
+      "d_Zn_Nb_A": 2.1003719901538314,
+      "wbo_Zn_Osub": null,
+      "wbo_Zn_Ounsub": 0.4101142111617198,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 1.9415598008804031,
+      "d_Zn_Ofree_unsub_A": 2.3247001215639838,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 43,
+        "symbol": "O",
+        "role": "ofree_sub",
+        "d_A": 1.9415598008804031
+       },
+       {
+        "atom_0based": 64,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 2.0112663700722604
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.073883535228134
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.1003719901538314
+       },
+       {
+        "atom_0based": 66,
+        "symbol": "O",
+        "role": "ofree_unsub",
+        "d_A": 2.3247001215639838
+       }
+      ],
+      "cn_Zn_within_2p5A": 5
+     },
+     "topology_same_as_start": true,
+     "scan": {
+      "from_state": "a_nowater",
+      "side": "sub",
+      "d0_A": 1.9004067081278673,
+      "stretch_A": 1.2
+     },
+     "dE_stretch_kJmol": 8.938005589218205
     }
    },
    "water_start_from_cif_geometry": {
@@ -1067,12 +2073,1040 @@
      "min_dist_H_to_cluster_A": 2.8330309923206136
     }
    },
-   "E0_Eh": -137.718468714328
+   "E0_Eh": -137.718468714328,
+   "lowest_water_state": "b_hb_Ofree_unsub"
+  },
+  "e24i_ch3_open_zn1": {
+   "structure": "e24i_ch3_open",
+   "cif": "charged_v3/e24i_ch3_open_DDEC6.cif",
+   "cif_md5": "a8e6a165aaa036205631d834ec82f6bb",
+   "zn_ordinal": 1,
+   "zn_cif_index": 212,
+   "n_atoms": 77,
+   "composition": {
+    "Zn": 1,
+    "N": 4,
+    "C": 34,
+    "H": 26,
+    "O": 8,
+    "S": 4
+   },
+   "charge": 0,
+   "n_electrons": 416,
+   "closed_shell": true,
+   "sub_linker_composition": {
+    "O": 4,
+    "C": 14,
+    "S": 2,
+    "H": 8
+   },
+   "unsub_linker_composition": {
+    "O": 4,
+    "C": 12,
+    "S": 2,
+    "H": 4
+   },
+   "source_cif_index": [
+    212,
+    172,
+    16,
+    180,
+    8,
+    0,
+    108,
+    100,
+    92,
+    24,
+    124,
+    116,
+    null,
+    177,
+    21,
+    185,
+    13,
+    5,
+    113,
+    105,
+    97,
+    29,
+    129,
+    121,
+    null,
+    64,
+    65,
+    68,
+    69,
+    72,
+    73,
+    76,
+    77,
+    80,
+    81,
+    84,
+    85,
+    88,
+    89,
+    156,
+    157,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    196,
+    197,
+    200,
+    201,
+    208,
+    209,
+    null,
+    40,
+    41,
+    44,
+    45,
+    48,
+    49,
+    52,
+    53,
+    56,
+    57,
+    60,
+    61,
+    148,
+    149,
+    152,
+    153,
+    188,
+    189,
+    192,
+    193,
+    204,
+    205,
+    null
+   ],
+   "roles": {
+    "zn": 0,
+    "n_a": 1,
+    "cme_a": 9,
+    "h_cap_a": 12,
+    "n_b": 13,
+    "cme_b": 21,
+    "h_cap_b": 24,
+    "o_sub": 47,
+    "ofree_sub": 49,
+    "ccarb_sub": 25,
+    "ofar_sub": 48,
+    "cfar_sub": 26,
+    "h_acid_sub": 53,
+    "linker_sub_range": [
+     25,
+     53
+    ],
+    "o_unsub": 70,
+    "ofree_unsub": 72,
+    "ccarb_unsub": 54,
+    "ofar_unsub": 71,
+    "cfar_unsub": 55,
+    "h_acid_unsub": 76,
+    "linker_unsub_range": [
+     54,
+     76
+    ]
+   },
+   "fixed_atoms_0based": [
+    9,
+    21,
+    26,
+    55
+   ],
+   "sub_side_rule": "치환 링커(조성 ≠ C12H4O4S2)의 배위 O",
+   "d_ZnO_cif_A": {
+    "sub": 1.8507109561003816,
+    "unsub": 1.8409997698202083
+   },
+   "d_ZnN_cif_A": [
+    1.9919877051734125,
+    1.9919071625360667
+   ],
+   "name": "e24i_ch3_open_zn1",
+   "repeat_of": null,
+   "states": {
+    "a_nowater": {
+     "cached": false,
+     "seconds": 14.5,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 83,
+     "energy_Eh_raw": -144.062670976433,
+     "n_atoms": 77,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      55
+     ],
+     "constraint": null,
+     "restraint_Eh_last": 3.77584e-06,
+     "anchor_pair_max_change_A": 0.00025615492190311784,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": false,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -144.062674751031,
+      "n_atoms": 77,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -144.062670976433,
+     "energy_Eh": -144.062674751031,
+     "geometry": {
+      "d_Zn_Osub_A": 1.8945006084833433,
+      "d_Zn_Ounsub_A": 1.9653890541583963,
+      "d_Zn_Na_A": 2.0795561592950453,
+      "d_Zn_Nb_A": 2.0795541232945993,
+      "wbo_Zn_Osub": 0.48237308973906035,
+      "wbo_Zn_Ounsub": 0.44103335748088357,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 3.2333701356210263,
+      "d_Zn_Ofree_unsub_A": 2.490856974973415,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 47,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.8945006084833433
+       },
+       {
+        "atom_0based": 70,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 1.9653890541583963
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.0795541232945993
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.0795561592950453
+       },
+       {
+        "atom_0based": 72,
+        "symbol": "O",
+        "role": "ofree_unsub",
+        "d_A": 2.490856974973415
+       }
+      ],
+      "cn_Zn_within_2p5A": 5
+     },
+     "topology_same_as_start": true
+    },
+    "b_face_opp_Na": {
+     "cached": false,
+     "seconds": 20.7,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 105,
+     "energy_Eh_raw": -149.154308314337,
+     "n_atoms": 80,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      55
+     ],
+     "constraint": null,
+     "restraint_Eh_last": 3.819686e-06,
+     "anchor_pair_max_change_A": 0.00028015179327667283,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": false,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -149.154312133155,
+      "n_atoms": 80,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -149.154308314337,
+     "energy_Eh": -149.154312133155,
+     "geometry": {
+      "d_Zn_Osub_A": 1.9712615423031077,
+      "d_Zn_Ounsub_A": 2.080279932509378,
+      "d_Zn_Na_A": 2.102868213281906,
+      "d_Zn_Nb_A": 2.0784374323178025,
+      "wbo_Zn_Osub": 0.4217444693634149,
+      "wbo_Zn_Ounsub": 0.3444344788860632,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 3.448085788533826,
+      "d_Zn_Ofree_unsub_A": 2.2648752587750374,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 47,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.9712615423031077
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.0784374323178025
+       },
+       {
+        "atom_0based": 70,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 2.080279932509378
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.102868213281906
+       },
+       {
+        "atom_0based": 72,
+        "symbol": "O",
+        "role": "ofree_unsub",
+        "d_A": 2.2648752587750374
+       },
+       {
+        "atom_0based": 77,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.483121540319732
+       }
+      ],
+      "cn_Zn_within_2p5A": 6,
+      "d_Zn_Ow_A": 2.483121540319732,
+      "water_OH_A": [
+       0.966465547961377,
+       0.9625261745513702
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.1747349778357916,
+      "min_Hw_Ofree_sub_A": 3.939818095098553,
+      "min_Hw_Ofree_unsub_A": 3.2040049405727995,
+      "min_Hw_acceptor_A": 2.003238393278351,
+      "min_Hw_acceptor_atom_0based": 47,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "start": {
+      "kind": "Zn 면",
+      "opposite_ligand": "Na",
+      "d_Zn_Ow_A": 2.2,
+      "tilt_from_face_normal_deg": 0,
+      "tilt_azimuth_deg": 0,
+      "water_azimuth_deg": 90,
+      "min_dist_Ow_to_cluster_A_at_registered_point": 1.9207481790334173,
+      "registered_point_used": true,
+      "min_dist_H_to_cluster_A": 2.387262550778097,
+      "min_dist_Ow_to_cluster_A": 1.9207481790334173
+     },
+     "dE_w_kJmol": -55.37954998336728
+    },
+    "b_face_opp_Nb": {
+     "cached": false,
+     "seconds": 20.7,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 107,
+     "energy_Eh_raw": -149.154303792988,
+     "n_atoms": 80,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      55
+     ],
+     "constraint": null,
+     "restraint_Eh_last": 3.738143e-06,
+     "anchor_pair_max_change_A": 0.0002740952287680898,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": false,
+      "seconds": 0.5,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -149.154307530118,
+      "n_atoms": 80,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -149.154303792988,
+     "energy_Eh": -149.154307530118,
+     "geometry": {
+      "d_Zn_Osub_A": 1.970817594952098,
+      "d_Zn_Ounsub_A": 2.0799016782021176,
+      "d_Zn_Na_A": 2.078382306324099,
+      "d_Zn_Nb_A": 2.102994184821884,
+      "wbo_Zn_Osub": 0.4218694695120571,
+      "wbo_Zn_Ounsub": 0.344714107826374,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 3.44822854120338,
+      "d_Zn_Ofree_unsub_A": 2.266110646553755,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 47,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.970817594952098
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.078382306324099
+       },
+       {
+        "atom_0based": 70,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 2.0799016782021176
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.102994184821884
+       },
+       {
+        "atom_0based": 72,
+        "symbol": "O",
+        "role": "ofree_unsub",
+        "d_A": 2.266110646553755
+       },
+       {
+        "atom_0based": 77,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.4825932701294118
+       }
+      ],
+      "cn_Zn_within_2p5A": 6,
+      "d_Zn_Ow_A": 2.4825932701294118,
+      "water_OH_A": [
+       0.9625254235523619,
+       0.9664770027447702
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.17487296919567183,
+      "min_Hw_Ofree_sub_A": 3.9375457836061742,
+      "min_Hw_Ofree_unsub_A": 3.2053668896182868,
+      "min_Hw_acceptor_A": 2.0032440182381297,
+      "min_Hw_acceptor_atom_0based": 47,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "start": {
+      "kind": "Zn 면",
+      "opposite_ligand": "Nb",
+      "d_Zn_Ow_A": 2.2,
+      "tilt_from_face_normal_deg": 0,
+      "tilt_azimuth_deg": 0,
+      "water_azimuth_deg": 90,
+      "min_dist_Ow_to_cluster_A_at_registered_point": 1.9208479285941624,
+      "registered_point_used": true,
+      "min_dist_H_to_cluster_A": 2.3872712639549154,
+      "min_dist_Ow_to_cluster_A": 1.9208479285941624
+     },
+     "dE_w_kJmol": -55.36746471135165
+    },
+    "b_face_opp_Osub": {
+     "cached": false,
+     "seconds": 27.1,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 133,
+     "energy_Eh_raw": -149.155235694555,
+     "n_atoms": 80,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      55
+     ],
+     "constraint": null,
+     "restraint_Eh_last": 1.012581e-06,
+     "anchor_pair_max_change_A": 0.00014433629061016973,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": false,
+      "seconds": 0.4,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -149.155236705516,
+      "n_atoms": 80,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -149.155235694555,
+     "energy_Eh": -149.155236705516,
+     "geometry": {
+      "d_Zn_Osub_A": 1.9356707460474312,
+      "d_Zn_Ounsub_A": 1.9942466013763045,
+      "d_Zn_Na_A": 2.060556429819221,
+      "d_Zn_Nb_A": 2.0488676004568678,
+      "wbo_Zn_Osub": 0.4130949780189161,
+      "wbo_Zn_Ounsub": 0.4155978004604682,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 2.4726656813189427,
+      "d_Zn_Ofree_unsub_A": 3.34932276659185,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 47,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.9356707460474312
+       },
+       {
+        "atom_0based": 70,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 1.9942466013763045
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.0488676004568678
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.060556429819221
+       },
+       {
+        "atom_0based": 77,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.4050280576295826
+       },
+       {
+        "atom_0based": 49,
+        "symbol": "O",
+        "role": "ofree_sub",
+        "d_A": 2.4726656813189427
+       }
+      ],
+      "cn_Zn_within_2p5A": 6,
+      "d_Zn_Ow_A": 2.4050280576295826,
+      "water_OH_A": [
+       0.9592288818129704,
+       1.0004720929043418
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.19410739544927216,
+      "min_Hw_Ofree_sub_A": 4.767358757063576,
+      "min_Hw_Ofree_unsub_A": 1.6313718508460624,
+      "min_Hw_acceptor_A": 1.6313718508460624,
+      "min_Hw_acceptor_atom_0based": 72,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "start": {
+      "kind": "Zn 면",
+      "opposite_ligand": "Osub",
+      "d_Zn_Ow_A": 2.2,
+      "tilt_from_face_normal_deg": 20,
+      "tilt_azimuth_deg": 90,
+      "water_azimuth_deg": 30,
+      "min_dist_Ow_to_cluster_A_at_registered_point": 1.281558952192058,
+      "registered_point_used": false,
+      "min_dist_H_to_cluster_A": 1.8046099695381415,
+      "min_dist_Ow_to_cluster_A": 2.0336317596479447
+     },
+     "dE_w_kJmol": -57.80701438336679
+    },
+    "b_face_opp_Ounsub": {
+     "cached": false,
+     "seconds": 29.0,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 130,
+     "energy_Eh_raw": -149.150099182094,
+     "n_atoms": 80,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      55
+     ],
+     "constraint": null,
+     "restraint_Eh_last": 4.142966e-06,
+     "anchor_pair_max_change_A": 0.00028211566329616744,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": false,
+      "seconds": 0.5,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -149.150103323706,
+      "n_atoms": 80,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -149.150099182094,
+     "energy_Eh": -149.150103323706,
+     "geometry": {
+      "d_Zn_Osub_A": 1.926479545833607,
+      "d_Zn_Ounsub_A": 1.9870238617874825,
+      "d_Zn_Na_A": 2.0609624871830463,
+      "d_Zn_Nb_A": 2.085939938284342,
+      "wbo_Zn_Osub": 0.4549675562184961,
+      "wbo_Zn_Ounsub": 0.4231288330674403,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 3.4032652236339236,
+      "d_Zn_Ofree_unsub_A": 2.3691577918173334,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 47,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.926479545833607
+       },
+       {
+        "atom_0based": 70,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 1.9870238617874825
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.0609624871830463
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.085939938284342
+       },
+       {
+        "atom_0based": 72,
+        "symbol": "O",
+        "role": "ofree_unsub",
+        "d_A": 2.3691577918173334
+       }
+      ],
+      "cn_Zn_within_2p5A": 5,
+      "d_Zn_Ow_A": 4.101866921549351,
+      "water_OH_A": [
+       0.9776188731801708,
+       0.9594136321938518
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": null,
+      "min_Hw_Ofree_sub_A": 1.7693499866676992,
+      "min_Hw_Ofree_unsub_A": 5.6141955151147345,
+      "min_Hw_acceptor_A": 1.7693499866676992,
+      "min_Hw_acceptor_atom_0based": 49,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "비배위 O 수소결합",
+      "hb_linker": "sub"
+     },
+     "topology_same_as_start": true,
+     "start": {
+      "kind": "Zn 면",
+      "opposite_ligand": "Ounsub",
+      "d_Zn_Ow_A": 2.2,
+      "tilt_from_face_normal_deg": 15,
+      "tilt_azimuth_deg": 270,
+      "water_azimuth_deg": 45,
+      "min_dist_Ow_to_cluster_A_at_registered_point": 1.4536277897177146,
+      "registered_point_used": false,
+      "min_dist_H_to_cluster_A": 1.4079955667089188,
+      "min_dist_Ow_to_cluster_A": 1.9868207867197625
+     },
+     "dE_w_kJmol": -44.32932229436874
+    },
+    "b_hb_Ofree_sub": {
+     "cached": false,
+     "seconds": 49.6,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 238,
+     "energy_Eh_raw": -149.150617945347,
+     "n_atoms": 80,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      55
+     ],
+     "constraint": null,
+     "restraint_Eh_last": 3.89673e-06,
+     "anchor_pair_max_change_A": 0.00026942240793204064,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": false,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -149.150621840895,
+      "n_atoms": 80,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -149.150617945347,
+     "energy_Eh": -149.150621840895,
+     "geometry": {
+      "d_Zn_Osub_A": 1.9254320849604576,
+      "d_Zn_Ounsub_A": 1.9869948271687057,
+      "d_Zn_Na_A": 2.07905079238391,
+      "d_Zn_Nb_A": 2.072301550327585,
+      "wbo_Zn_Osub": 0.4563172003803303,
+      "wbo_Zn_Ounsub": 0.4247853863210406,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 3.4252135426596557,
+      "d_Zn_Ofree_unsub_A": 2.3803059555548214,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 47,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.9254320849604576
+       },
+       {
+        "atom_0based": 70,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 1.9869948271687057
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.072301550327585
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.07905079238391
+       },
+       {
+        "atom_0based": 72,
+        "symbol": "O",
+        "role": "ofree_unsub",
+        "d_A": 2.3803059555548214
+       }
+      ],
+      "cn_Zn_within_2p5A": 5,
+      "d_Zn_Ow_A": 4.9617808270495765,
+      "water_OH_A": [
+       0.9773169069822959,
+       0.9585156810063477
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": null,
+      "min_Hw_Ofree_sub_A": 1.7473722974510677,
+      "min_Hw_Ofree_unsub_A": 6.524917064225796,
+      "min_Hw_acceptor_A": 1.7473722974510677,
+      "min_Hw_acceptor_atom_0based": 49,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "비배위 O 수소결합",
+      "hb_linker": "sub"
+     },
+     "topology_same_as_start": true,
+     "start": {
+      "kind": "비배위 O 수소결합",
+      "linker": "sub",
+      "d_Ofree_Ow_A": 2.8,
+      "tilt_deg": 0,
+      "azimuth_deg": 0,
+      "min_dist_Ow_to_cluster_A": 2.8000000000000003,
+      "min_dist_H_to_cluster_A": 2.5902035156955083
+     },
+     "dE_w_kJmol": -45.6906889869609
+    },
+    "b_hb_Ofree_unsub": {
+     "cached": false,
+     "seconds": 46.8,
+     "returncode": 0,
+     "normal_termination": true,
+     "opt": true,
+     "converged": true,
+     "opt_iterations": 228,
+     "energy_Eh_raw": -149.155552762118,
+     "n_atoms": 80,
+     "charge": 0,
+     "uhf": 0,
+     "xtb_version": "6.7.1 (edcfbbe)",
+     "fixed_atoms_0based": [
+      9,
+      21,
+      26,
+      55
+     ],
+     "constraint": null,
+     "restraint_Eh_last": 8.74663e-07,
+     "anchor_pair_max_change_A": 0.00013890423840834387,
+     "wbo_file": true,
+     "markers_ok": true,
+     "single_point": {
+      "cached": false,
+      "seconds": 0.3,
+      "returncode": 0,
+      "normal_termination": true,
+      "opt": false,
+      "converged": null,
+      "opt_iterations": null,
+      "energy_Eh_raw": -149.15555363548,
+      "n_atoms": 80,
+      "charge": 0,
+      "uhf": 0,
+      "xtb_version": "6.7.1 (edcfbbe)",
+      "fixed_atoms_0based": null,
+      "constraint": null,
+      "markers_ok": true
+     },
+     "energy_Eh_with_restraint": -149.155552762118,
+     "energy_Eh": -149.15555363548,
+     "geometry": {
+      "d_Zn_Osub_A": 1.9411693918285793,
+      "d_Zn_Ounsub_A": 1.98757079374524,
+      "d_Zn_Na_A": 2.04464510706393,
+      "d_Zn_Nb_A": 2.058025094246993,
+      "wbo_Zn_Osub": 0.4105134192115353,
+      "wbo_Zn_Ounsub": 0.4186394348230737,
+      "wbo_note": "None = xtb wbo 파일에 그 쌍이 없음(인쇄 문턱 미만)",
+      "d_Zn_Ofree_sub_A": 2.4903166476923393,
+      "d_Zn_Ofree_unsub_A": 3.322909778367955,
+      "Zn_NO_within_2p5A": [
+       {
+        "atom_0based": 47,
+        "symbol": "O",
+        "role": "o_sub",
+        "d_A": 1.9411693918285793
+       },
+       {
+        "atom_0based": 70,
+        "symbol": "O",
+        "role": "o_unsub",
+        "d_A": 1.98757079374524
+       },
+       {
+        "atom_0based": 1,
+        "symbol": "N",
+        "role": "n_a",
+        "d_A": 2.04464510706393
+       },
+       {
+        "atom_0based": 13,
+        "symbol": "N",
+        "role": "n_b",
+        "d_A": 2.058025094246993
+       },
+       {
+        "atom_0based": 77,
+        "symbol": "O",
+        "role": "water_O",
+        "d_A": 2.3908299045246415
+       },
+       {
+        "atom_0based": 49,
+        "symbol": "O",
+        "role": "ofree_sub",
+        "d_A": 2.4903166476923393
+       }
+      ],
+      "cn_Zn_within_2p5A": 6,
+      "d_Zn_Ow_A": 2.3908299045246415,
+      "water_OH_A": [
+       1.00023765859064,
+       0.9594051456321249
+      ],
+      "water_intact": true,
+      "wbo_Zn_Ow": 0.1982580397874358,
+      "min_Hw_Ofree_sub_A": 4.776640186307828,
+      "min_Hw_Ofree_unsub_A": 1.6328935833936755,
+      "min_Hw_acceptor_A": 1.6328935833936755,
+      "min_Hw_acceptor_atom_0based": 72,
+      "min_Hw_acceptor_symbol": "O",
+      "end_state": "Zn 배위"
+     },
+     "topology_same_as_start": true,
+     "start": {
+      "kind": "비배위 O 수소결합",
+      "linker": "unsub",
+      "d_Ofree_Ow_A": 2.8,
+      "tilt_deg": 0,
+      "azimuth_deg": 0,
+      "min_dist_Ow_to_cluster_A": 2.8,
+      "min_dist_H_to_cluster_A": 2.389936883536464
+     },
+     "dE_w_kJmol": -58.63911388947617
+    }
+   },
+   "water_start_from_cif_geometry": {
+    "b_face_opp_Na": {
+     "kind": "Zn 면",
+     "opposite_ligand": "Na",
+     "d_Zn_Ow_A": 2.2,
+     "tilt_from_face_normal_deg": 0,
+     "tilt_azimuth_deg": 0,
+     "water_azimuth_deg": 0,
+     "min_dist_Ow_to_cluster_A_at_registered_point": 2.152863506546308,
+     "registered_point_used": true,
+     "min_dist_H_to_cluster_A": 2.3831567301424483,
+     "min_dist_Ow_to_cluster_A": 2.152863506546308
+    },
+    "b_face_opp_Nb": {
+     "kind": "Zn 면",
+     "opposite_ligand": "Nb",
+     "d_Zn_Ow_A": 2.2,
+     "tilt_from_face_normal_deg": 0,
+     "tilt_azimuth_deg": 0,
+     "water_azimuth_deg": 0,
+     "min_dist_Ow_to_cluster_A_at_registered_point": 2.152876896679109,
+     "registered_point_used": true,
+     "min_dist_H_to_cluster_A": 2.383160045191048,
+     "min_dist_Ow_to_cluster_A": 2.152876896679109
+    },
+    "b_face_opp_Osub": {
+     "kind": "Zn 면",
+     "opposite_ligand": "Osub",
+     "d_Zn_Ow_A": 2.2,
+     "tilt_from_face_normal_deg": 15,
+     "tilt_azimuth_deg": 270,
+     "water_azimuth_deg": 90,
+     "min_dist_Ow_to_cluster_A_at_registered_point": 1.372820111361481,
+     "registered_point_used": false,
+     "min_dist_H_to_cluster_A": 1.619107599010426,
+     "min_dist_Ow_to_cluster_A": 1.9240936451283008
+    },
+    "b_face_opp_Ounsub": {
+     "kind": "Zn 면",
+     "opposite_ligand": "Ounsub",
+     "d_Zn_Ow_A": 2.2,
+     "tilt_from_face_normal_deg": 20,
+     "tilt_azimuth_deg": 270,
+     "water_azimuth_deg": 30,
+     "min_dist_Ow_to_cluster_A_at_registered_point": 1.3521868980697773,
+     "registered_point_used": false,
+     "min_dist_H_to_cluster_A": 1.551912641868266,
+     "min_dist_Ow_to_cluster_A": 2.015749402773787
+    },
+    "b_hb_Ofree_sub": {
+     "kind": "비배위 O 수소결합",
+     "linker": "sub",
+     "d_Ofree_Ow_A": 2.8,
+     "tilt_deg": 0,
+     "azimuth_deg": 0,
+     "min_dist_Ow_to_cluster_A": 2.8,
+     "min_dist_H_to_cluster_A": 2.540504950426914
+    },
+    "b_hb_Ofree_unsub": {
+     "kind": "비배위 O 수소결합",
+     "linker": "unsub",
+     "d_Ofree_Ow_A": 2.8,
+     "tilt_deg": 0,
+     "azimuth_deg": 0,
+     "min_dist_Ow_to_cluster_A": 2.7999999999999994,
+     "min_dist_H_to_cluster_A": 2.8368286297851357
+    }
+   },
+   "E0_Eh": -144.062674751031
   }
  },
  "note": "기계적 사실뿐 — 클러스터 사이의 차 · 순위 · 판정은 적지 않음(종합자 · 등록 §K-5). 표지가 하나라도 빠진 상태의 값은 None(0 과 다름). dE_w = E − E0 − E(H2O) · dE_stretch = E(늘린 점 · 한 점 계산) − E(그 스캔의 출발 상태).",
+ "previous_started": "2026-11-11 13:54:06",
  "water_ref": {
-  "cached": false,
+  "cached": true,
   "seconds": 0.0,
   "returncode": 0,
   "normal_termination": true,
