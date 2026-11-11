@@ -6884,3 +6884,28 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     시간      클러스터당 265 ~ 508 s · 합 3,269 s(종합자 견적 1~1.5 h 안)
     산출      results_znbdt_kprime_xtb_hkhome.json(postman 글롭 안) · k_xtb_runs/<클러스터>/kp_*.start.xyz · .end.xyz 252개(이 커밋) · 로그 kp_xtb_hkhome.log · 사슬 기록 hk_k_chain.log
     HKHOME    xtb 프로세스 0 · K · K′ 끝 · L 은 등록대로 띄우지 않음 · RASPA 사슬은 그대로(H 앞 넷 16:00 현재 완주 12/36 · simulate 8 · 오류 0 · Ni pcu 의 ads · vsa 여섯이 도는 중 · 가장 오래된 ads 227분째)
+
+---
+
+## 2026-11-11 19:43 — [CORE22 §H] **HKHOME — H 앞 넷 36/36 완주**(11:21:36 → 19:41:35 · 8 h 20 m) · 감사 9/9 × 4 · 씨앗 36 고유 · 2021[Zn][srs]3[FSR]1 · 2019[Ni][pcu]3[ASR]1 · 2017[Zn][dia]3[ASR]1 · [FSR]1 · **I 착수 확인(19:41:52 · 사슬 자동)**
+
+**받는 곳**: 클라우드 종합자 · laptop2 · 랩탑 · 사용자
+**요약**: H 첫 묶음(b1)이 끝났고 네 구조 모두 9작업 완주 · 머리말 관문 통과 · 감사 통과입니다. 값은 읽지 않았습니다. 사슬이 17초 뒤 I 를 띄웠습니다(I-C 셋 먼저 → I-G).
+**답 필요**: 아니오
+
+    표지      드라이버 rc 0 · 래퍼 "완주 36/36 · 머리말 관문 전부 통과" · 감사 n 36 · n_ok 36 · 씨앗 36 고유(착수 11:21:37 ~ 18:42:52) · 오류 줄 0
+              구조마다 complete True · finished 9 · rc 0 9 · 조건 어긋남 0(.data 이름 · 머리말 온도 · 전압력) · not-found 0 · 러너 적재 9/9 · 머리말 관문 9/9 · 온도 줄 ads 323 · tsa 373 · vsa 323
+              2021[Zn][srs]3[FSR]1  셀 3 3 2 · 막음 없음(입력 BlockPockets 0 · CO₂ · 물 막힘 줄 없음)
+              2019[Ni][pcu]3[ASR]1  셀 2 2 2 · 막음 없음(같음) · fc 미상
+              2017[Zn][dia]3[ASR]1  셀 1 2 3 · 물 막음 차단 24 = 구 4 × 셀 6(9작업 모두) · CO₂ 막힘 줄 없음 · 입력 BlockPockets 2
+              2017[Zn][dia]3[FSR]1  셀 1 2 3 · 물 막음 차단 24 = 구 4 × 셀 6(9작업 모두) · CO₂ 막힘 줄 없음 · 입력 BlockPockets 2
+    실행기    요약에 적힌 thin_runner_md5 d34e88e6 = 디스크 = master(도는 동안 무수정) · 틀 53677257 · 래퍼 b9a006b1 · 막음 표 4781d1d8 · 묶음 b1 · 워커 8
+    씨앗      이 묶음 36 고유. 다른 기기의 H 결과는 19:42 현재 master 에 없어 기기 사이 겹침은 아직 못 봤습니다(laptop2 H Co pcu 둘 19:38 착수 · 랩탑 Cd dia 여섯은 F 뒤)
+    시간      작업당(h1 · h2 · h3 분) — Zn srs ads 211 · 195 · 225 · tsa 48 · 49 · 48 · vsa 185 · 195 · 216 / Ni pcu ads 236 · 192 · 198 · tsa 34 · 35 · 36 · vsa 201 · 172 · 188
+              Zn dia ASR1 ads 89 · 79 · 84 · tsa 31 · 31 · 31 · vsa 81 · 75 · 102 / Zn dia FSR1 ads 80 · 75 · 74 · tsa 31 · 31 · 29 · vsa 82 · 69 · 58
+              작업합 ≈ 64.6 h ÷ 8워커 = 8.1 h · 최장 단일 3.9 h → 작업합이 묶음(11:21 글 견적 5~8 h 는 Zn srs · Ni pcu 의 ads · vsa 를 1.5~3 h 로 봐서 짧았음 · 종합자 견적 17:30~21:30 안)
+    산출      v3w_humid_wc_323/humid_wc_323_core22_<줄기>_hkhome.json(+ .status.jsonl) × 4 · results_core22_<줄기>_humid_wc_323_summary_hkhome.json × 4(이 커밋 · postman 글롭 안)
+    I         19:41:52 사슬이 I 착수(I-G 247406c1 · I-C 2d41c69e · I-H b76cbe43 · 코어 문 1a871a3e · 막음 표 5bf7e725 · 대상 bf0f3c9a) · 19:42:27 I-C 셋 뜸(simulate 3) → I-G 착수(워커 8 · 코어 문 8)
+              그 뒤 I-H → H 다음 넷(b2: Zn ths 둘 · Co dia 둘) → H b3(Cu srs FSR2 · Zn pcu ASR1 · Cu dia ASR1 · FSR2)
+    견적      I 의 I-C(3성분 298 K · 워커 3)가 가장 깁니다. b2 · b3 는 이 묶음 실측으로 다시 잡으면 구조당 9작업의 작업합이 Zn dia 급 9 h ~ Zn srs 급 23 h 라 묶음당 6~10 h —
+              b2 는 내일(11-12) 새벽 ~ 아침 · b3 는 11-12 낮(출처: 이 묶음 실측을 다른 구조에 옮긴 것 · 첫 완주로 갱신)

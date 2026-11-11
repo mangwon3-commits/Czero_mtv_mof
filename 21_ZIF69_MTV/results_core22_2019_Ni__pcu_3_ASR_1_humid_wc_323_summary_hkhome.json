@@ -1,0 +1,485 @@
+{
+  "test": "CORE22 §H — CoRE 22 의 323 K 습윤 TSA 회수량(T-RT-1 조건) — 2019[Ni][pcu]3[ASR]1",
+  "assign": "ASSIGN_CORE22_HUMID_PLAN_20261108.md §H · 11-11 갱신",
+  "ported_from": "run_znbdt_humid_wc_323.py (53677257) 무수정 import + run_core22_g_humid_wc.py (6a8a8eeb) 의 구조별 막음 삽입 · 감사",
+  "wrapper": "run_humid_wc_v3w_323.py (b9a006b1 · 무수정 import)",
+  "thin_runner": "run_core22_h_humid_wc_323.py",
+  "thin_runner_md5": "d34e88e6c04fd9e9e2a47db4a9115cb2",
+  "machine": "hkhome",
+  "made": "2026-11-11 19:41:34",
+  "mode": null,
+  "batch": "b1",
+  "batch_keys": [
+    "2021[Zn][srs]3[FSR]1",
+    "2019[Ni][pcu]3[ASR]1",
+    "2017[Zn][dia]3[ASR]1",
+    "2017[Zn][dia]3[FSR]1"
+  ],
+  "runner_result": "v3w_humid_wc_323/humid_wc_323_core22_2019_Ni__pcu_3_ASR_1_hkhome.json",
+  "complete": true,
+  "stagger_s": 15.0,
+  "gap_s": 2.0,
+  "core22": {
+    "key": "2019[Ni][pcu]3[ASR]1",
+    "file": "2019_Ni__pcu_3_ASR_1.cif",
+    "n_atoms": 176,
+    "unit_cells": [
+      2,
+      2,
+      2
+    ],
+    "N_super": 1408,
+    "fc_unknown": true,
+    "base": "core22_2019_Ni__pcu_3_ASR_1",
+    "cif_md5": "7c07c83bcc1d0a43956bb7425bef2aed",
+    "blocked_components": []
+  },
+  "inputs": {
+    "cif_source": {
+      "zip": "core_pop_cifs.zip",
+      "zip_md5": "96a5fbf877881b4606bd32e22f13feb8",
+      "unpacked": "/home/mangwon1/.mof_chain/core22_1108/cifs"
+    },
+    "copies": {
+      "core22_2019_Ni__pcu_3_ASR_1_h1": "humid_wc_runs_v3w_323/core22_h_hkhome_b1/cifs/core22_2019_Ni__pcu_3_ASR_1_h1_DDEC6.cif",
+      "core22_2019_Ni__pcu_3_ASR_1_h2": "humid_wc_runs_v3w_323/core22_h_hkhome_b1/cifs/core22_2019_Ni__pcu_3_ASR_1_h2_DDEC6.cif",
+      "core22_2019_Ni__pcu_3_ASR_1_h3": "humid_wc_runs_v3w_323/core22_h_hkhome_b1/cifs/core22_2019_Ni__pcu_3_ASR_1_h3_DDEC6.cif"
+    },
+    "blocks_source": {
+      "file": "results_core22_blocks_laptop.json",
+      "md5": "4781d1d803e1129b8b5df4277a2786e0"
+    }
+  },
+  "blocking": {},
+  "audit_summary": {
+    "n": 9,
+    "n_ok": 9,
+    "seeds_distinct_within_structure": true,
+    "seeds_distinct_batch": true
+  },
+  "audit": [
+    {
+      "target": "core22_2019_Ni__pcu_3_ASR_1_h1",
+      "core_key": "2019[Ni][pcu]3[ASR]1",
+      "condition": "ads",
+      "blocked_components": [],
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "seed": 1794366710,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "temperature_line": "323",
+      "condition_mismatch": null,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2019_Ni__pcu_3_ASR_1_h1",
+      "core_key": "2019[Ni][pcu]3[ASR]1",
+      "condition": "tsa",
+      "blocked_components": [],
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "seed": 1794366731,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "temperature_line": "373",
+      "condition_mismatch": null,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2019_Ni__pcu_3_ASR_1_h1",
+      "core_key": "2019[Ni][pcu]3[ASR]1",
+      "condition": "vsa",
+      "blocked_components": [],
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "seed": 1794368787,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "temperature_line": "323",
+      "condition_mismatch": null,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2019_Ni__pcu_3_ASR_1_h2",
+      "core_key": "2019[Ni][pcu]3[ASR]1",
+      "condition": "ads",
+      "blocked_components": [],
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "seed": 1794374849,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "temperature_line": "323",
+      "condition_mismatch": null,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2019_Ni__pcu_3_ASR_1_h2",
+      "core_key": "2019[Ni][pcu]3[ASR]1",
+      "condition": "tsa",
+      "blocked_components": [],
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "seed": 1794375452,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "temperature_line": "373",
+      "condition_mismatch": null,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2019_Ni__pcu_3_ASR_1_h2",
+      "core_key": "2019[Ni][pcu]3[ASR]1",
+      "condition": "vsa",
+      "blocked_components": [],
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "seed": 1794375517,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "temperature_line": "323",
+      "condition_mismatch": null,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2019_Ni__pcu_3_ASR_1_h3",
+      "core_key": "2019[Ni][pcu]3[ASR]1",
+      "condition": "ads",
+      "blocked_components": [],
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "seed": 1794376371,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "temperature_line": "323",
+      "condition_mismatch": null,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2019_Ni__pcu_3_ASR_1_h3",
+      "core_key": "2019[Ni][pcu]3[ASR]1",
+      "condition": "tsa",
+      "blocked_components": [],
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "seed": 1794377305,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "temperature_line": "373",
+      "condition_mismatch": null,
+      "runner_loading": true,
+      "ok": true
+    },
+    {
+      "target": "core22_2019_Ni__pcu_3_ASR_1_h3",
+      "core_key": "2019[Ni][pcu]3[ASR]1",
+      "condition": "vsa",
+      "blocked_components": [],
+      "unit_cells": [
+        2,
+        2,
+        2
+      ],
+      "seed": 1794377605,
+      "finished": true,
+      "returncode": 0,
+      "block": {
+        "CO2": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        },
+        "water": {
+          "n_blocked": 0,
+          "blocked_line": false,
+          "block_file": null
+        }
+      },
+      "blockpockets_in_input": 0,
+      "n_expected": {},
+      "stderr_not_found": false,
+      "not_found_in_output": false,
+      "temperature_line": "323",
+      "condition_mismatch": null,
+      "runner_loading": true,
+      "ok": true
+    }
+  ],
+  "note": "기계적 사실뿐 — 판정은 종합자. 평균 ± = ±̄/√n · SD = 씨앗 SD. 구 0 인 성분은 막음 없음. 전하는 CoRE CIF 의 것. 물 분압 11,114.1 Pa 세 조건 공통(RH 90 % @ 323 K).",
+  "summary": {
+    "WC_TSA_each": [
+      0.8001,
+      0.8688,
+      0.8435
+    ],
+    "WC_TSA_mean": 0.8374666666666667,
+    "WC_TSA_mean_err": 0.02636566229299291,
+    "WC_TSA_SD": 0.03474511956136189,
+    "WC_VSA_each": [
+      0.764,
+      0.8292,
+      0.8156
+    ],
+    "WC_VSA_mean": 0.8029333333333334,
+    "WC_VSA_mean_err": 0.030580319258077176,
+    "WC_VSA_SD": 0.03439612381262363,
+    "loadings": {
+      "core22_2019_Ni__pcu_3_ASR_1_h1": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 1.2139240938,
+            "err": 0.075528387
+          },
+          "water": {
+            "mol_per_kg": 4.9055611216,
+            "err": 1.2887901302
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.4138425306,
+            "err": 0.0142122198
+          },
+          "water": {
+            "mol_per_kg": 0.2116130727,
+            "err": 0.0423876007
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 0.4499336452,
+            "err": 0.0167542989
+          },
+          "water": {
+            "mol_per_kg": 4.6948515452,
+            "err": 0.6221562736
+          }
+        }
+      },
+      "core22_2019_Ni__pcu_3_ASR_1_h2": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 1.2741621771,
+            "err": 0.0387460592
+          },
+          "water": {
+            "mol_per_kg": 3.8808014048,
+            "err": 0.5290131204
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.4053811568,
+            "err": 0.0198491819
+          },
+          "water": {
+            "mol_per_kg": 0.2500097898,
+            "err": 0.0235199523
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 0.4450075286,
+            "err": 0.014520275
+          },
+          "water": {
+            "mol_per_kg": 4.1547294776,
+            "err": 0.4953272916
+          }
+        }
+      },
+      "core22_2019_Ni__pcu_3_ASR_1_h3": {
+        "ads": {
+          "CO2": {
+            "mol_per_kg": 1.2554624286,
+            "err": 0.0155386709
+          },
+          "water": {
+            "mol_per_kg": 4.156551466,
+            "err": 0.4263449908
+          }
+        },
+        "tsa": {
+          "CO2": {
+            "mol_per_kg": 0.4119755549,
+            "err": 0.0057453618
+          },
+          "water": {
+            "mol_per_kg": 0.2229873785,
+            "err": 0.0332407819
+          }
+        },
+        "vsa": {
+          "CO2": {
+            "mol_per_kg": 0.4398564751,
+            "err": 0.0369377753
+          },
+          "water": {
+            "mol_per_kg": 4.915829488,
+            "err": 1.2976512076
+          }
+        }
+      }
+    }
+  }
+}
