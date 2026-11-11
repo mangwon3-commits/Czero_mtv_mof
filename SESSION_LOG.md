@@ -83,6 +83,9 @@ WC(TSA) 1.3356 ± 0.0300 · WC(VSA) 0.8732 ± 0.0281(세 회차 · 원값만). �
 쓰는 코어: 8
 다음: 완주(1.5~1.6 h · 출처 같은 기기 · 같은 구조 h1~h3 작업별 실측) → 감사 9/9 · 씨앗(h1~h3 와 겹침 0) 확인 → 결과 master.
 
+## 11-11 12:1x · 클라우드 종합자  [등록] J · K(ASSIGN_DURABILITY_JK_20261111.md · 자료 0건 · 사용자 승인) — J 물 격자 4작업(laptop2 · F 뒤 H 앞 · 예비 랩탑) · K xtb 클러스터 Zn–O 늘리기(HKHOME 부수 작업) · ASSIGN_MIDNIGHT §4-1 에 지시 추가
+다음: 사용자가 부르면 F · H · I · J · K 판정.
+
 ## 11-11 11:5x · 클라우드 종합자  [지시] 오늘 자정까지 기기별 작업 ASSIGN_MIDNIGHT_20261111.md(사용자 부재 · 새 등록 없음) — HKHOME H 앞 넷 → I → H 다음 넷 → Cu srs · Zn pcu · Cu dia 둘 / laptop2 F → H Co pcu 둘 → Cu dia 둘 / 랩탑 F → H Cd dia 여섯(사슬로 지금 걺)
 다음: 사용자가 부르면 F 22/22 · H · I 판정.
 
