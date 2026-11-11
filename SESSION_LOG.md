@@ -30,6 +30,12 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-11 11:21 · HKHOME  [진행중] CORE22 §H 앞 넷(Zn srs FSR1 · Ni pcu ASR1 · Zn dia FSR1 · ASR1 · 36작업) 착수 → §I 21작업 → §H 다음 넷(Zn ths 둘 · Co dia 둘) · 사슬
+하는 일: 종합자 11-11 10:5x 배정 ①~⑤. H 얇은 실행기 run_core22_h_humid_wc_323.py(d34e88e6 · 드라이 66 · 스모크 12/12 · 감사 변조 시험) master · I 준비 Zeo++ 세 탐침 구 0(results_i_blocks_hkhome.json) · I 실행기 셋(G · C · H 사본 · 드라이 · 스모크 통과)
+건드리는 파일: run_core22_h_humid_wc_323.py · run_core22_i_{g_humid_wc,e_humid3,h_humid_wc_323}.py · i_blocks_hkhome.py · results_i_blocks_hkhome.json · i_zeo_runs/ · v3w_humid_wc_323/humid_wc_323_core22_*_hkhome.json · results_core22_*_humid_wc_323_summary_hkhome.json · results_i_znsrs_ourfe_*_hkhome.json · COMMS/desktop.md
+쓰는 코어: 8
+다음: H 앞 넷 끝(견적 오늘 16:30~19:30 · 출처 이 기기 G · F 실측을 옮긴 것) → 완주 글 → I → H 다음 넷 → 당기기 규칙. postman 재기동(§9 권고안 실행 · COMMS/desktop.md 같은 시각 글).
+
 ## 11-11 08:43 · 랩탑  [완주 · 끊김 · 재착수] CORE22 §G 2차 LPT 19~21 27/27 ok(11-09 23:11 → 11-10 05:37) · 결과 master · §F LPT 1~8 은 11-10 05:48 WSL 정지(wslhost.exe 응답 없음 · 닫힘)로 결과 없이 끊김 → 11-11 08:41 처음부터 재착수(같은 실행기 · 키 · 코어 문)
 WC_TSA Ni pcu ASR1 2.57 · Zn dia ASR1 2.41 · Co dia FSR1 2.20 · 랩탑 G 아홉 구조 모두 master. 계산 공백 약 27 h. F 견적 12~17 h. 랩탑 postman 꺼져 있음(재기동은 사용자 결정).
 
