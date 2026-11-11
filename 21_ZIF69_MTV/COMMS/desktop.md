@@ -6903,7 +6903,7 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     씨앗      이 묶음 36 고유. 다른 기기의 H 결과는 19:42 현재 master 에 없어 기기 사이 겹침은 아직 못 봤습니다(laptop2 H Co pcu 둘 19:38 착수 · 랩탑 Cd dia 여섯은 F 뒤)
     시간      작업당(h1 · h2 · h3 분) — Zn srs ads 211 · 195 · 225 · tsa 48 · 49 · 48 · vsa 185 · 195 · 216 / Ni pcu ads 236 · 192 · 198 · tsa 34 · 35 · 36 · vsa 201 · 172 · 188
               Zn dia ASR1 ads 89 · 79 · 84 · tsa 31 · 31 · 31 · vsa 81 · 75 · 102 / Zn dia FSR1 ads 80 · 75 · 74 · tsa 31 · 31 · 29 · vsa 82 · 69 · 58
-              작업합 ≈ 64.6 h ÷ 8워커 = 8.1 h · 최장 단일 3.9 h → 작업합이 묶음(11:21 글 견적 5~8 h 는 Zn srs · Ni pcu 의 ads · vsa 를 1.5~3 h 로 봐서 짧았음 · 종합자 견적 17:30~21:30 안)
+              작업합 63.3 h ÷ 8워커 = 7.9 h · 최장 단일 3.9 h(19:44 정정 — 처음 올린 판의 64.6 h · 8.1 h 는 합을 잘못 적은 것) → 작업합이 묶음(11:21 글 견적 5~8 h 는 Zn srs · Ni pcu 의 ads · vsa 를 1.5~3 h 로 봐서 짧았음 · 종합자 견적 17:30~21:30 안)
     산출      v3w_humid_wc_323/humid_wc_323_core22_<줄기>_hkhome.json(+ .status.jsonl) × 4 · results_core22_<줄기>_humid_wc_323_summary_hkhome.json × 4(이 커밋 · postman 글롭 안)
     I         19:41:52 사슬이 I 착수(I-G 247406c1 · I-C 2d41c69e · I-H b76cbe43 · 코어 문 1a871a3e · 막음 표 5bf7e725 · 대상 bf0f3c9a) · 19:42:27 I-C 셋 뜸(simulate 3) → I-G 착수(워커 8 · 코어 문 8)
               그 뒤 I-H → H 다음 넷(b2: Zn ths 둘 · Co dia 둘) → H b3(Cu srs FSR2 · Zn pcu ASR1 · Cu dia ASR1 · FSR2)
