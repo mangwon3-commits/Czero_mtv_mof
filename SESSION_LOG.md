@@ -30,6 +30,8 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-11 11:58 · 랩탑  [착수 글 · 사슬] CORE22 §H 2018 Cd dia 여섯 54작업 — F LPT 1~8 끝나면 저장소 밖 사슬(PID 425656)이 실행기 checkout · md5 d34e88e6 · 드라이 뒤 착수 · 사전 드라이 18/18 ok · F/H 결과는 45분 유예 뒤 사슬이 게시
+
 ## 11-11 11:21 · HKHOME  [진행중] CORE22 §H 앞 넷(Zn srs FSR1 · Ni pcu ASR1 · Zn dia FSR1 · ASR1 · 36작업) 착수 → §I 21작업 → §H 다음 넷(Zn ths 둘 · Co dia 둘) · 사슬
 하는 일: 종합자 11-11 10:5x 배정 ①~⑤. H 얇은 실행기 run_core22_h_humid_wc_323.py(d34e88e6 · 드라이 66 · 스모크 12/12 · 감사 변조 시험) master · I 준비 Zeo++ 세 탐침 구 0(results_i_blocks_hkhome.json) · I 실행기 셋(G · C · H 사본 · 드라이 · 스모크 통과)
 건드리는 파일: run_core22_h_humid_wc_323.py · run_core22_i_{g_humid_wc,e_humid3,h_humid_wc_323}.py · i_blocks_hkhome.py · results_i_blocks_hkhome.json · i_zeo_runs/ · v3w_humid_wc_323/humid_wc_323_core22_*_hkhome.json · results_core22_*_humid_wc_323_summary_hkhome.json · results_i_znsrs_ourfe_*_hkhome.json · COMMS/desktop.md
