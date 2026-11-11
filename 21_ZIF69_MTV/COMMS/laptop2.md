@@ -4,6 +4,25 @@
 
 ---
 
+## 2026-11-11 11:27 — [CORE22 §H] **laptop2 — H 착수 글: 2024[Co][pcu]3[ASR]1 · 2024[Co][pcu]3[FSR]1(남은 14 의 LPT 1 · 2번째 · 18작업 · F 가 끝나면 사슬이 착수)**
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 랩탑 · 사용자
+**요약**: 종합자 10:5x 글과 HKHOME 11:21 글에 따라 H 의 앞 여덟은 HKHOME 이 맡았습니다. 남은 14 구조 가운데 LPT 순서의 첫 두 구조를 laptop2 가 가져갑니다. laptop2 는 지금 F(LPT 17~22)를 돌리는 중이므로, F 가 끝나 simulate 가 0 이 되면 사슬이 H 실행기를 받아 바로 착수합니다. 실행기는 HKHOME H 실행기(d34e88e6)를 무수정으로 쓰고 기기 env 만 laptop2 로 주며, 저장소 밖 드라이를 통과했습니다. 랩탑의 F 는 11-11 21시~11-12 02시에 끝난다고 했으므로, 남은 12 구조는 그 뒤 비는 기기가 LPT 순으로 당기면 됩니다. 값은 기록으로만 올리며 판정은 종합자 몫입니다.
+**답 필요**: 아니오
+
+    대상     2024[Co][pcu]3[ASR]1 · 2024[Co][pcu]3[FSR]1 — 막음 없음 · 셀 3 2 3 · N_super 3816 · 구조마다 h1~h3 × ads · tsa · vsa = 9작업 · 합 18
+    실행기   run_core22_h_humid_wc_323.py(HKHOME · d34e88e6 · 무수정) · 틀 run_znbdt_humid_wc_323.py 53677257 · 래퍼 run_humid_wc_v3w_323.py b9a006b1(가지 판 md5 같음)
+             CORE22_H_KEYS = 위 둘 · CORE22_H_MACHINE=laptop2 · CORE22_H_WORKERS=6 · CORE22_H_BATCH=b1 · 실행 뿌리 humid_wc_runs_v3w_323/core22_h_laptop2_b1
+             결과 v3w_humid_wc_323/humid_wc_323_core22_2024_Co__pcu_3_{ASR,FSR}_1_laptop2.json · 요약 results_core22_2024_Co__pcu_3_{ASR,FSR}_1_humid_wc_323_summary_laptop2.json
+    드라이   저장소 밖(저장소를 심볼릭 링크로 비춘 폴더 · RASPA 안 띄움) · 입력 6/6 ok · 막음 낱말 0(기대 0) · UnitCells 3 2 3 · 파일 관문 8e8ec933 일치
+             ads 323.0 K · 26,114.1 Pa / tsa 373.0 K · 26,114.1 Pa / vsa 323.0 K · 16,114.1 Pa · 5,000 + 15,000 · 몰분율 CO₂ · 물 0.574402 · 0.425598(ads · tsa) / 0.310287 · 0.689713(vsa)
+    사슬     F(PID 599) 끝 → simulate 0 확인 → 실행 뿌리 없음 확인 → 실행기를 12c34d68 에서 경로 지정으로 받고 md5 d34e88e6 대조 → 착수.
+             가지에 실행기가 없어서 받아야 하는데, RASPA 가 도는 동안에는 가지 파일을 건드리지 않으려고 F 뒤로 미뤘습니다.
+             끝난 뒤 세션이 45분 안에 완주 글을 못 올리면 사슬이 결과 파일과 고정 문안의 완주 글을 올립니다(F 도 같은 예비를 걸어 둠).
+    견적     같은 두 구조의 G(298 K · 6워커)가 14 h 45 m 이었습니다. 323 K 는 물 적재가 커서 길어질 수 있으므로 F 끝(13~17시 견적) 뒤 15~19 h → 11-12 05~12시로 넓게 둡니다. 첫 완주로 갱신합니다.
+
+---
+
 ## 2026-11-11 08:4x — [CORE22 §F] **laptop2 — F 착수 글: LPT 17~22 번째 6구조(18작업)** — 2019[Zn][pcu]3[ASR]1 · 2021[Co][dia]3[ASR]1 · 2021[Co][dia]3[FSR]1 · 2019[Ni][pcu]3[ASR]1 · 2017[Zn][dia]3[ASR]1 · 2017[Zn][dia]3[FSR]1 · [CORE22 §G] **G 둘째 묶음(LPT 12~15) 36/36 완주 · 결과 master(늦게 올림)**
 
 **받는 곳**: 클라우드 종합자 · HKHOME · 랩탑 · 사용자
