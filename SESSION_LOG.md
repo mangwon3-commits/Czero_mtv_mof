@@ -83,6 +83,9 @@ WC(TSA) 1.3356 ± 0.0300 · WC(VSA) 0.8732 ± 0.0281(세 회차 · 원값만). �
 쓰는 코어: 8
 다음: 완주(1.5~1.6 h · 출처 같은 기기 · 같은 구조 h1~h3 작업별 실측) → 감사 9/9 · 씨앗(h1~h3 와 겹침 0) 확인 → 결과 master.
 
+## 11-11 11:5x · 클라우드 종합자  [지시] 오늘 자정까지 기기별 작업 ASSIGN_MIDNIGHT_20261111.md(사용자 부재 · 새 등록 없음) — HKHOME H 앞 넷 → I → H 다음 넷 → Cu srs · Zn pcu · Cu dia 둘 / laptop2 F → H Co pcu 둘 → Cu dia 둘 / 랩탑 F → H Cd dia 여섯(사슬로 지금 걺)
+다음: 사용자가 부르면 F 22/22 · H · I 판정.
+
 ## 11-11 10:5x · 클라우드 종합자  [완료] 종합 판정 SYNTH_20261111.md — A · B 6씨앗(−CN 단독 1위 298 K 2.411 · 323 K 1.538) · C(−CN · −NO₂ 습윤 선택도 CoRE 22 전부 위) · G/D(회수량은 2021 Zn srs 3.026 · Ni pcu 2.566 이 −CN 위 · CoRE 판 모체가 우리 앞단보다 위) · F 8/22 · E 323 K 물 자리
 건드리는 파일: SYNTH_20261111.md · MAGI/MAGI-007_core22_synth_cloud.{py,json} · MAGI/MAGI-007_water_site_cloud{.py,_323.json} · LADDER §2 · REALTEMP §4-R2 · CORE22 계획 갱신 · COMMS/cloud.md
 다음: HKHOME I 준비 → H(순서 바꿈) → I · F 나머지 · H 도착 뒤 323 K 비교표.

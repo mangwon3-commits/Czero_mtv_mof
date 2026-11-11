@@ -53,3 +53,4 @@
 - **H 당기는 순서만 바꿈(읽는 법 · 예측 불변 · 결과 0건)**: 2021[Zn][srs]3[FSR]1 → 2019[Ni][pcu]3[ASR]1 → 2017[Zn][dia]3[FSR]1 → 2017[Zn][dia]3[ASR]1 → 2024[Zn][ths]3[FSR]1 → 2024[Zn][ths]3[ASR]1 → 2021[Co][dia]3[FSR]1 → 2021[Co][dia]3[ASR]1 → 나머지 14 는 LPT 순. 이유: 298 K 회수량 ≥ 2.0 인 여덟이 323 K 에서 −CN(1.538)과 어떻게 놓이는지가 먼저 필요.
 - **새 항목 I(자료 0건)**: 2021 Zn srs FSR1 의 **우리 앞단판**(`charged_v3/e22e_2021_Zn__srs_3_FSR_1_DDEC6.cif`) 298 K 회수량 9 · 298 K 습윤 선택도 3 · 323 K 회수량 9 = 21작업 · 준비 Zeo++ `-block` 세 탐침. 읽는 법 · 예측은 `SYNTH_20261111.md` §8.
 - **HKHOME(빔)**: I 준비 Zeo++ → H 얇은 실행기(계획 §H 실행기 줄) 작성 · 드라이 · 스모크 → H 앞 넷(36) → I(21) → H 다음 넷(36) → 당기기 규칙. laptop2 · 랩탑: F 뒤 H 의 다음 미착수 구조(HKHOME 의 H 실행기를 무수정으로).
+- **[11-11 11:5x] H 남은 12구조 나누기(`ASSIGN_MIDNIGHT_20261111.md` §0)**: 랩탑 = Cd dia 여섯(54) · HKHOME = Cu srs FSR2 · Zn pcu ASR1 · Cu dia ASR1 · Cu dia FSR2(36 · H 다음 넷 뒤) · laptop2 = Cu dia FSR6 · ASR5(18 · Co pcu 둘 뒤). 자기 몫이 끝났고 남의 몫에 착수 글이 없으면 착수 글로 가져감. 읽는 법 · 예측 불변.

@@ -7,6 +7,18 @@
 
 ---
 
+## 2026-11-11 11:5x — ★ **오늘 자정까지 기기별 작업 지시 — `ASSIGN_MIDNIGHT_20261111.md`**(사용자: 오늘 교육 수강 · 자리에 없음) · HKHOME 11:21 · 11:30 · laptop2 11:27 착수 글 접수 · **H 남은 12구조를 기기별로 나눔**
+
+**받는 곳**: HKHOME · laptop2 · 랩탑 · 사용자   **자기 절(§1~§3)과 §4 공통 규칙만 읽고 그대로.** 새 등록 없음(F · H · I 의 순서 · 몫만).
+    접수    HKHOME H 실행기 run_core22_h_humid_wc_323.py(d34e88e6 · 틀 무수정 import · 드라이 66 · 감사 변조 시험) · I 준비(우리 앞단판 세 탐침 구 0 → 막음 없음) · 코어 문 core22_core_gate.py · 사슬 I → H 다음 넷 — 맞음. laptop2 H Co pcu 둘(F 뒤 사슬 · 경로 지정 checkout) — 맞음.
+    HKHOME  H 앞 넷(도는 중) → I 21 → H 다음 넷(Zn ths ×2 · Co dia ×2) → **Cu srs FSR2 · Zn pcu ASR1 · Cu dia ASR1 · Cu dia FSR2**(사슬 끝에 이어 붙임).
+    laptop2 F LPT 17~22(13~17시) → H Co pcu ASR1 · FSR1 → **Cu dia FSR6 · ASR5**(사슬 끝에 이어 붙임).
+    랩탑    F LPT 1~8(21시~02시) → **H Cd dia 여섯 54작업**(FSR5 · ASR6 · ASR5 · FSR3 · ASR4 · FSR4) — **지금 저장소 밖 사슬로 걸어 두고 착수 글을 올리십시오**(F 끝 → simulate 0 → H 실행기 경로 지정 checkout · md5 d34e88e6 → 드라이 → 착수 · 세션이 멈춰도 뜨게).
+    공통    값 읽기 · 판정 없음 · 실행기 무수정 · 끊긴 실행 이어받기 금지 · 수동 pull 금지 · 새 항목 만들지 않음 · 막히면 멈추고 한 줄. 자정 뒤에도 사슬은 그대로.
+    안 띄움 물 격자 4작업 · xtb 클러스터 · 물 주머니 막음 판 · Ni pcu 우리 앞단판(사용자 결정 대기 · SYNTH §9).
+
+---
+
 ## 2026-11-11 10:5x — ★ **종합 판정(A · B · C · D · E · G · F 도착분) — `SYNTH_20261111.md`** · **HKHOME 물음의 답: 지금 I 준비 Zeo++ → H(순서 바꿈) → I** · laptop2 · 랩탑은 F 뒤 H
 
 **받는 곳**: HKHOME · laptop2 · 랩탑 · 사용자
