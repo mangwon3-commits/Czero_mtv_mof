@@ -77,6 +77,10 @@ WC(TSA) 1.3356 ± 0.0300 · WC(VSA) 0.8732 ± 0.0281(세 회차 · 원값만). �
 쓰는 코어: 8
 다음: 완주(1.5~1.6 h · 출처 같은 기기 · 같은 구조 h1~h3 작업별 실측) → 감사 9/9 · 씨앗(h1~h3 와 겹침 0) 확인 → 결과 master.
 
+## 11-11 10:5x · 클라우드 종합자  [완료] 종합 판정 SYNTH_20261111.md — A · B 6씨앗(−CN 단독 1위 298 K 2.411 · 323 K 1.538) · C(−CN · −NO₂ 습윤 선택도 CoRE 22 전부 위) · G/D(회수량은 2021 Zn srs 3.026 · Ni pcu 2.566 이 −CN 위 · CoRE 판 모체가 우리 앞단보다 위) · F 8/22 · E 323 K 물 자리
+건드리는 파일: SYNTH_20261111.md · MAGI/MAGI-007_core22_synth_cloud.{py,json} · MAGI/MAGI-007_water_site_cloud{.py,_323.json} · LADDER §2 · REALTEMP §4-R2 · CORE22 계획 갱신 · COMMS/cloud.md
+다음: HKHOME I 준비 → H(순서 바꿈) → I · F 나머지 · H 도착 뒤 323 K 비교표.
+
 ## 11-08 23:0x · 클라우드 종합자  [중단 · 사용자 지시] 순찰 끝(순찰 19 · 20 예약 삭제) · 수요일 오전까지의 예약 등록 ASSIGN_CORE22_HUMID_PLAN_20261108.md(C → G → F → H · 당기기 규칙) · 오늘 요약은 cloud.md 23:0x
 다음: 11-11 수요일 오전 토큰 초기화 뒤 종합자 판정(A 머리 문장 → B → C/F → G/H → E → 포스터 행 초안).
 

@@ -84,7 +84,7 @@ def within(centers, w, atoms, Ms, r=3.5, chunk=30000):
         hit[s:s+chunk]=h
     return float(w[hit].sum()/w.sum()) if w.sum()>0 else float('nan')
 def analyse(name):
-    cif=os.path.join(ROOT,'charged_v3',f'{name}_DDEC6.cif'); vdir=os.path.join(ROOT,'water_runs_density_v3w',f'rh90_{name}','VTK','System_0')
+    cif=os.path.join(ROOT,'charged_v3',f'{name}_DDEC6.cif'); vdir=os.path.join(ROOT,os.environ.get('WATER_SITE_RUNS','water_runs_density_v3w'),f'rh90_{name}','VTK','System_0')   # [11-11] 323 K 격자(등록 E)는 WATER_SITE_RUNS=water_runs_density_v3w_323
     sym,fr,M,(a,b,c)=read_cif(cif)
     vals_w,dims,cellp=read_vtk(os.path.join(vdir,'COMDensityProfile_water.vtk.gz'))
     vals_c,dims2,cellp2=read_vtk(os.path.join(vdir,'COMDensityProfile_CO2.vtk.gz'))
@@ -128,7 +128,7 @@ def analyse(name):
 if __name__=='__main__':
     names=sys.argv[1:] or ['e22_parent']
     res=[analyse(n) for n in names]
-    outp=os.path.join(HERE,'MAGI-007_water_site_cloud.json')
+    outp=os.path.join(HERE,'MAGI-007_water_site_cloud'+os.environ.get('WATER_SITE_SUFFIX','')+'.json')
     old=[]
     if os.path.exists(outp):
         old=[r for r in json.load(open(outp)) if r['name'] not in names]
