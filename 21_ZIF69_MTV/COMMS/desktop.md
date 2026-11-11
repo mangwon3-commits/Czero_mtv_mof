@@ -6971,3 +6971,25 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
               I + b2 사슬(40774) 종료 대기 → simulate 0 확인 → M → b3 · 기록 hk_m_b3_chain.log. L-1 은 표지가 False 라 사슬에 넣지 않았습니다
     지금      03:22 simulate 8 · I-H 4/9 완주(tsa 48 · 49 · 48분 · vsa 93분 · ads 셋은 69~164분째) · H b2 1/36 완주 · 4 뜸 · xtb 0
     견적      I-H 끝 05:30~06:30(ads 가 3.5 h 를 넘을 것으로 봄 · 출처 같은 구조 I-G ads 4.6 h · CoRE 판 H ads 3.5 h) · b2 는 그 뒤 8코어 → 끝 11-12 12~15시 · M 2 h(출처 A 실측) → 14~17시 · b3 는 그 뒤
+
+---
+
+## 2026-11-12 05:17 — [등록 I] **HKHOME — I 완주 21/21**(2021 Zn srs 우리 앞단판 · I-G 9/9 · I-C 3/3 · I-H 9/9) · 감사 전부 통과 · 씨앗 21 고유 · 11-11 19:41:52 → 11-12 05:15
+
+**받는 곳**: 클라우드 종합자 · laptop2 · 랩탑 · 사용자
+**요약**: I 의 마지막 묶음 I-H(323 K 회수량)가 05:15 에 끝났습니다. 세 부분 모두 완주 · 감사 통과이고 값은 읽지 않았습니다(판정은 종합자 · SYNTH §8). H 다음 넷(b2)이 8코어를 이어받아 돌고 있습니다.
+**답 필요**: 아니오
+
+    대상      charged_v3/e22e_2021_Zn__srs_3_FSR_1_DDEC6.cif bf0f3c9a(세 실행기 모두 md5 대조) · 256원자 · 셀 2 3 2 · 막음 없음(results_i_blocks_hkhome.json · 세 탐침 구 0 · 입력 BlockPockets 0)
+    I-G       298 K 습윤 TSA 회수량 · run_core22_i_g_humid_wc.py 247406c1(← G 6a8a8eeb 사본) · 감사 9/9 · finished 9 · rc 0 9 · 러너 적재 9 · 씨앗 9 고유 · 코어 문 8
+              11-11 19:42:28 → 11-12 01:46:54 · 작업당 tsa 39 · 39 · 38분 · vsa 164 · 166 · 160분 · ads 276 · 282 · 276분
+              결과 v3w_humid_wc/humid_working_capacity_w2_i_znsrs_ourfe_hkhome.json e65fe1ef · 요약 results_i_znsrs_ourfe_humid_summary_hkhome.json 6218a78e
+    I-C       298 K 습윤 3성분 선택도 · run_core22_i_e_humid3.py 2d41c69e(← C d24e8e2d 사본) · 감사 3/3 · 적재 줄 CO₂ · 물 · N₂ 각 1 · 순전하 검사 통과 · 298 K · 100 kPa · y 0.150000/0.028521/0.821479
+              11-11 19:41:53 → 11-12 02:19:44 · 작업당 6 h 38 m · 결과 results_i_znsrs_ourfe_e_humid3_hkhome.json bf862658 · _audit.json 4fb796b7
+    I-H       323 K 습윤 TSA 회수량 · run_core22_i_h_humid_wc_323.py b76cbe43(← H d34e88e6 사본) · 코어 문 core22_core_gate.py 1a871a3e(8) · 래퍼 "완주 9/9 · 머리말 관문 전부 통과"
+              감사 9/9 · complete True · finished 9 · rc 0 9 · 조건 어긋남 0 · 온도 줄 323 · 373 · 323 · 머리말 관문 9/9 · 적재 9/9 · 씨앗 9 고유
+              11-12 00:35:31(손 착수 · 00:36 글) → 05:15 · 작업당 tsa 49 · 48 · 48분 · vsa 93 · 100 · 90분 · ads 183 · 184 · 185분
+              결과 v3w_humid_wc_323/humid_wc_323_i_znsrs_ourfe_hkhome.json 2668a5a9(+ .status.jsonl) · 요약 results_i_znsrs_ourfe_humid_wc_323_summary_hkhome.json d935e081
+    씨앗      I 21개 모두 고유(I-C 19:41:53~19:42:23 · I-G 19:42:28~23:06:48 · I-H 00:35:31~02:17:46) · HKHOME H 앞 넷 36개와 겹침 0
+    사슬 기록 hk_i_b2_chain.log 의 "I-H 드라이버 끝 rc=1"(01:46:55)은 사슬이 I-H 를 다시 띄우려다 실행기가 "이전 결과 있음" 으로 멈춘 줄입니다(00:36 글) — I-H 의 실패가 아닙니다
+    지금      05:16 simulate 8 · 전부 H b2(Zn ths 둘 · Co dia 둘 · 36작업 중 3 완주 · 11 뜸 · 01:46:55 착수) · 그 뒤 M → b3(hk_m_b3_chain.sh · PID 3134271)
