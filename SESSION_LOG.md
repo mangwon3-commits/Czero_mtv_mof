@@ -30,6 +30,8 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-11 12:03 · 랩탑  [보완] H 사슬에 J 예비 갈래(§4-1) — laptop2 J 착수 글이 F 끝 때 없으면 J 넷(run_j_density_laptop.py 853ecbf5 · 드라이 4/4) → H · 사슬 PID 426345
+
 ## 11-11 11:58 · 랩탑  [착수 글 · 사슬] CORE22 §H 2018 Cd dia 여섯 54작업 — F LPT 1~8 끝나면 저장소 밖 사슬(PID 425656)이 실행기 checkout · md5 d34e88e6 · 드라이 뒤 착수 · 사전 드라이 18/18 ok · F/H 결과는 45분 유예 뒤 사슬이 게시
 
 ## 11-11 11:21 · HKHOME  [진행중] CORE22 §H 앞 넷(Zn srs FSR1 · Ni pcu ASR1 · Zn dia FSR1 · ASR1 · 36작업) 착수 → §I 21작업 → §H 다음 넷(Zn ths 둘 · Co dia 둘) · 사슬
