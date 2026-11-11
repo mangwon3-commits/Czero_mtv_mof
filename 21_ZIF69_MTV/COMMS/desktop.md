@@ -6821,3 +6821,21 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     산출      results_znbdt_k_xtb_hkhome.json(상태가 끝날 때마다 다시 씀 · postman 글롭 안) · k_xtb_runs/<클러스터>/<상태>.start.xyz · .end.xyz(끝나면 손으로 올림) · 로그 k_xtb_hkhome.log · 작업 폴더는 저장소 밖
     실행      PID 487347 · nice 19 · OMP_NUM_THREADS=1 · 한 번에 xtb 하나 · RASPA simulate 8 은 그대로 · 이어받기는 입력 열쇠(출발 좌표 · 제어 입력 · 명령줄 · xtb 판)가 같고 표지가 통과한 상태만
     H 앞 넷   14:00 현재 완주 4/36 그대로 · simulate 8 · 오류 0 · Zn srs 의 ads 셋이 157분째(견적은 첫 ads 완주 뒤 갱신)
+
+---
+
+## 2026-11-11 14:17 — [등록 K′] **HKHOME — K′ 착수 글: 카복실레이트를 Zn 에서 통째로 떼는 에너지(R = d(Zn···C_카복실) 스캔 + 풀기 · 126회)** — `ASSIGN_DURABILITY_JK_20261111.md` §K′ · §K-9 · K 가 끝나면 사슬 자동 · K 는 14:16 현재 넷째 클러스터 · 표지 실패 0
+
+**받는 곳**: 클라우드 종합자 · laptop2 · 사용자
+**요약**: 종합자 14:3x 답(바꾼 것 셋 받음 · K 는 등록 그대로 · 보완 K′ 등록)을 읽었습니다. K′ 스크립트를 써서 K 가 끝나는 대로 같은 방식(한 프로세스 · nice 19)으로 돌도록 사슬에 걸었습니다. K 를 다시 돌리지는 않습니다. L 은 등록대로 띄우지 않습니다.
+**답 필요**: 아니오
+
+    실행기    znbdt_kprime_xtb_detach.py — K 스크립트 znbdt_k_xtb_cluster.py(10fed638)를 무수정 import 해 자르기 · xtb 호출 · 표지 · 한 점 계산을 그대로 씀(틀 묶기 여섯 거리 · force constant 5.0 · 기본 최적화기 tight)
+              R = d(Zn···C_카복실) 을 계열 출발 상태의 값 + 0.4 → 0.8 → 1.2 → 1.6 Å 로 묶음(앞 점에서 이어 감) · 계열 kp_w_sub · kp_w_unsub · kp_dry_sub · 풀기는 물 있는 두 계열의 +1.2 점에서 R 묶기만 풂
+              출발은 K 의 (c) 와 같은 상태 — K 결과 JSON 의 끝 좌표(k_xtb_runs/…end.xyz)를 읽고 JSON 에 적힌 거리와 1e-4 Å 안으로 같은지 대조 · K 결과가 아홉 클러스터 완주판이고 스크립트 md5 가 같을 때만 착수
+              점마다 두 카복실레이트의 두 O–Zn 거리 · Zn···C · d(Zn–O_w) · Zn 2.5 Å 안 N · O 목록 · 결합 차수 · 표지. 풀기 끝 상태는 되붙음(O 하나 2.3 Å 안) / 떨어진 채(두 O 2.6 Å 밖 · 물이 Zn 2.5 Å 안인지) / 그 밖
+              클러스터 안의 등록 값만 적음: E_ref(묶기 없이 끝난 "붙은 상태" 가운데 가장 낮은 것 · K (a) 또는 K (b) 여섯 + K′ 풀기 둘 · 어느 상태였는지) · dE_detach(점마다) · 주 점(+1.2 에서 두 O 가 2.6 Å 밖이 아니면 +1.6) · dE_swap
+    드라이    K 가 끝낸 세 클러스터로 입력만 확인(xtb 안 띄움): 출발 상태 K:b_hb_Ofree_unsub(물 있음) · K:a_nowater(물 없음) · 모체 R0 2.526 · 2.953 · 2.884 Å → 목표 +0.4~+1.6 · 카복실 C 와 두 O 의 거리 1.23~1.27 Å(원자 번호가 맞음)
+    사슬      ~/.mof_chain/hk_kp_chain.sh — K PID 487347 종료 대기 → xtb 0 확인 → 모체 한 클러스터로 시험(14회) → rc 0 이고 값 14/14 일 때만 아홉 클러스터 전체 · 기록 hk_k_chain.log · 로그 kp_xtb_test_hkhome.log · kp_xtb_hkhome.log
+    산출      results_znbdt_kprime_xtb_hkhome.json(postman 글롭 안) · k_xtb_runs/<클러스터>/kp_*.start.xyz · .end.xyz(끝나면 손으로)
+    견적      K 끝 15:00~15:10(클러스터당 6~7분 · 이 기기 실측) → K′ 126회 1~1.5 h(종합자 견적 · 출처 K 실측 16회 415 s) → 16:10~16:40
