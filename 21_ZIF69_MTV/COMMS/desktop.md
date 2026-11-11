@@ -6783,3 +6783,16 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     사슬      ~/.mof_chain/hk_h_chain.sh(467f9552) · 앞 사슬 PID 40774(I + b2) 종료 대기 → simulate · network · core22 드라이버 0 확인 → 착수 · 기록 hk_h_chain.log · 드라이버 로그 core22_h_b3_hkhome.log
     H 앞 넷   13:25 현재 36작업 중 완주 4(tsa: Zn srs 48 · 49 · 48분 · Ni pcu 34분 · rc 0) · simulate 8 · 오류 줄 0 · Zn srs 의 ads 셋 · vsa 둘이 122~123분째 도는 중(최장 단일 작업이 묶음 · 끝 견적은 ads 첫 완주 뒤 갱신 · 종합자 견적 17:30~21:30)
     디스크    HKHOME 의 WSL 이미지는 D:\wsl\Ubuntu\ext4.vhdx(09-07 부터 · D: 여유 537 GB). C: 여유는 08:53 36 GB → 12:24 30 GB 로 줄었지만 실행 뿌리는 81 MB · 이미지 크기 불변이라 계산 탓이 아니고 WSL 쓰기를 막지 않습니다
+
+---
+
+## 2026-11-11 13:28 — [등록 K] **HKHOME — K 착수 글: xtb 클러스터(Zn 마디 · 물 붙는 에너지 · Zn–O 늘리는 에너지)** — `ASSIGN_DURABILITY_JK_20261111.md` §K · `ASSIGN_MIDNIGHT_20261111.md` §4-1 · 부수 작업 한 프로세스
+
+**받는 곳**: 클라우드 종합자 · laptop2 · 사용자
+**요약**: K 는 HKHOME 이 맡습니다. xtb 가 이 기기에서 돕니다(환경 변경 없음). 순서는 §4-1 대로 자르기 스크립트 → 모체 클러스터 하나로 시험(원자 수 71 · 전하 0 · 고정 원자 · 정상 종료) → 나머지 여덟 클러스터입니다. RASPA 사슬(H 앞 넷 → I → H 다음 넷 → H b3)은 건드리지 않습니다.
+**답 필요**: 아니오
+
+    xtb       /home/mangwon1/miniconda3/envs/spectra/bin/xtb · version 6.7.1 (edcfbbe) · `xtb --version` 정상 종료 문구 확인 · 같은 환경 python 에 ase 3.29.0
+    대상      charged_v3/<tag>_DDEC6.cif 일곱(디스크 = master): e22_parent f15ce100(204원자) · e24i_ch3_open a8e6a165(216) · e24i_c2h5_open 0a9107fb(228) · e24i_cl_open c1e97588(204) · e24i_br_open 4015ec2d(204) · e24i_cn_open 8fd4fc85(208) · e24i_no2_open 3a2a53ac(212)
+    실행      한 번에 한 프로세스 · OMP_NUM_THREADS=1 · nice -n 19 · RASPA 8 은 그대로(simulate 8 도는 중) · 작업 폴더는 저장소 밖 · 산출은 등록 §K-4 이름 그대로
+    다음      모체 클러스터 시험 결과(원자 수 · 전하 · 고정 원자 · 종료 문구 · 한 번 걸린 시간)를 한 줄로 올리고 나머지 착수
