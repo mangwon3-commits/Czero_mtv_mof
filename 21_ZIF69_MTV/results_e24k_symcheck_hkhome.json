@@ -1,0 +1,468 @@
+{
+ "test": "등록 L (L-0) 점검 — 대칭 깨기(등록 밖 · 다른 시험)",
+ "assign": "ASSIGN_NOON_20261112.md §L(점검은 HKHOME 이 덧붙임 — CLAUDE.md §0 \"나쁜 결과를 보면 검사기부터\")",
+ "machine": "hkhome",
+ "made": "2026-11-12 03:22:34",
+ "rattle_stdev_A": 0.03,
+ "registered_run": {
+  "tag": "e24k_me37_open",
+  "steps_logged": 86,
+  "energy_eV": -1167.576945,
+  "fmax_eV_A": 0.049781,
+  "min_margin_A": -0.461,
+  "worst_pair": "C90···O202 2.759",
+  "max_framework_disp_A": 0.318,
+  "twist_with_methyl_deg": [
+   0.08,
+   0.08,
+   0.5,
+   0.5
+  ],
+  "gate_all_pass": false
+ },
+ "rows": {
+  "e24k_me37_open_rattle1": {
+   "build": "e24k_candidates/E24k_ZnDia_Me37_open_rattle1.cif",
+   "build_md5": "e7002440189375e43018228b4c10f8a5",
+   "relaxed": "relax_tnf/e24k_me37_open_rattle1_relaxed.cif",
+   "n_methyl_expected": 4,
+   "builder_markers_ok": true,
+   "builder_clash_check_pass": true,
+   "before": {
+    "n_atoms": 216,
+    "formula": "C92H80N16O16S8Zn4",
+    "methyl": [
+     {
+      "methyl_C": 200,
+      "attached_ring_C": 144,
+      "neighbors": [
+       "C",
+       "H",
+       "H",
+       "H"
+      ],
+      "neighbors_ok": true,
+      "d_methylC_ringC_A": 1.4740495788187509,
+      "d_methylC_own_O_free_A": 2.8998882866915308,
+      "d_methylC_own_O_coord_A": 4.4621714067897855,
+      "d_methylC_nearest_Zn_A": 5.911700375763316,
+      "carboxylate_twist_deg": 10.798810438969413,
+      "margin_methylC_own_O_free_A": -0.320111713308469,
+      "nearest_nonbonded_to_methyl(C · H)": [
+       [
+        1.697,
+        "H203···H206"
+       ],
+       [
+        1.718,
+        "H203···H207"
+       ],
+       [
+        1.754,
+        "H202···H206"
+       ]
+      ]
+     },
+     {
+      "methyl_C": 204,
+      "attached_ring_C": 145,
+      "neighbors": [
+       "C",
+       "H",
+       "H",
+       "H"
+      ],
+      "neighbors_ok": true,
+      "d_methylC_ringC_A": 1.590825472839929,
+      "d_methylC_own_O_free_A": 2.8652805914156994,
+      "d_methylC_own_O_coord_A": 4.422545335114307,
+      "d_methylC_nearest_Zn_A": 5.886540707779832,
+      "carboxylate_twist_deg": 6.608280980439711,
+      "margin_methylC_own_O_free_A": -0.3547194085843004,
+      "nearest_nonbonded_to_methyl(C · H)": [
+       [
+        1.697,
+        "H206···H203"
+       ],
+       [
+        1.718,
+        "H207···H203"
+       ],
+       [
+        1.754,
+        "H206···H202"
+       ]
+      ]
+     },
+     {
+      "methyl_C": 208,
+      "attached_ring_C": 146,
+      "neighbors": [
+       "C",
+       "H",
+       "H",
+       "H"
+      ],
+      "neighbors_ok": true,
+      "d_methylC_ringC_A": 1.5086455189003862,
+      "d_methylC_own_O_free_A": 2.8350753080942073,
+      "d_methylC_own_O_coord_A": 4.362933450745286,
+      "d_methylC_nearest_Zn_A": 5.85398937596988,
+      "carboxylate_twist_deg": 8.08427742406283,
+      "margin_methylC_own_O_free_A": -0.3849246919057925,
+      "nearest_nonbonded_to_methyl(C · H)": [
+       [
+        1.694,
+        "H211···H215"
+       ],
+       [
+        1.703,
+        "H211···H214"
+       ],
+       [
+        1.727,
+        "H210···H214"
+       ]
+      ]
+     },
+     {
+      "methyl_C": 212,
+      "attached_ring_C": 147,
+      "neighbors": [
+       "C",
+       "H",
+       "H",
+       "H"
+      ],
+      "neighbors_ok": true,
+      "d_methylC_ringC_A": 1.5759732422869195,
+      "d_methylC_own_O_free_A": 2.7970391587868884,
+      "d_methylC_own_O_coord_A": 4.408193113256225,
+      "d_methylC_nearest_Zn_A": 5.823349385234768,
+      "carboxylate_twist_deg": 4.1479923317790846,
+      "margin_methylC_own_O_free_A": -0.4229608412131114,
+      "nearest_nonbonded_to_methyl(C · H)": [
+       [
+        1.694,
+        "H215···H211"
+       ],
+       [
+        1.703,
+        "H214···H211"
+       ],
+       [
+        1.727,
+        "H214···H210"
+       ]
+      ]
+     }
+    ],
+    "n_methyl": 4,
+    "methyl_neighbors_ok": true,
+    "carboxylate_twist_deg": {
+     "with_methyl": [
+      4.15,
+      6.61,
+      8.08,
+      10.8
+     ],
+     "without_methyl": [
+      0.43,
+      3.13,
+      3.76,
+      11.37
+     ]
+    },
+    "n_carboxylate": 8,
+    "Zn_O_A": [
+     1.9708928751004116,
+     2.146889875203288,
+     8
+    ],
+    "Zn_N_A": [
+     1.9156564408736467,
+     2.013889318391614,
+     8
+    ],
+    "Zn_coordination": "[(('N', 'N', 'O', 'O'), 4)]",
+    "linker_compositions": {
+     "{'C': 12, 'H': 4, 'O': 4, 'S': 2}": 2,
+     "{'C': 14, 'H': 8, 'O': 4, 'S': 2}": 2
+    }
+   },
+   "relax_record": {
+    "error": null,
+    "steps": 81,
+    "minutes": 4.0,
+    "fmax_reached": 0.04934782972855174,
+    "wrote_cif": true,
+    "cell_moved": 0.0,
+    "dmin_before": 0.8391152272373693,
+    "dmin_after": 1.073733827275825
+   },
+   "relaxed_exists": true,
+   "relaxed_md5": "2b760b639f6c9a10b287fa6a3304d833",
+   "n_atoms_equal": true,
+   "cell_max_diff_A": 0.0,
+   "n_framework_matched": 200,
+   "max_framework_disp_A": 0.364,
+   "max_framework_disp_atom": "H23",
+   "min_heteroatom_H": [
+    2.025,
+    "H···O",
+    "H169",
+    "O203"
+   ],
+   "gate0a_pass": true,
+   "gate0a_e24i_style_pass": true,
+   "gate0b": {
+    "cif": "relax_tnf/e24k_me37_open_rattle1_relaxed.cif",
+    "n_sub_atoms": 16,
+    "n_groups": 4,
+    "min_margin_A": -0.462,
+    "worst_pair": "C88···O200 2.758",
+    "n_clash_pairs": 8,
+    "pass_0b": false
+   },
+   "n_sub_atoms_expected": 16,
+   "gate0b_mapping_ok": true,
+   "gate0b_pass": false,
+   "gate0b_pass_clash_gate_own": false,
+   "topology_after_ok": true,
+   "clash_check_after": {
+    "name": "e24k_me37_open_rattle1_relaxed.cif",
+    "n_atoms": 216,
+    "n_zn": 4,
+    "n_components": 12,
+    "expected": 12,
+    "fused": 0,
+    "forbidden_contacts": 0,
+    "worst": null,
+    "h_clashes": 0,
+    "squashed_bonds": 0,
+    "pass": true
+   },
+   "after": {
+    "n_atoms": 216,
+    "formula": "C92H80N16O16S8Zn4",
+    "methyl": [
+     {
+      "methyl_C": 88,
+      "attached_ring_C": 72,
+      "neighbors": [
+       "C",
+       "H",
+       "H",
+       "H"
+      ],
+      "neighbors_ok": true,
+      "d_methylC_ringC_A": 1.4694721719155193,
+      "d_methylC_own_O_free_A": 2.757925643440235,
+      "d_methylC_own_O_coord_A": 4.3136846620781855,
+      "d_methylC_nearest_Zn_A": 5.634547435792791,
+      "carboxylate_twist_deg": 1.4267285238853062,
+      "margin_methylC_own_O_free_A": -0.4620743565597647,
+      "nearest_nonbonded_to_methyl(C · H)": [
+       [
+        2.013,
+        "H162···H165"
+       ],
+       [
+        2.021,
+        "H162···H164"
+       ],
+       [
+        2.036,
+        "H162···H156"
+       ]
+      ]
+     },
+     {
+      "methyl_C": 89,
+      "attached_ring_C": 73,
+      "neighbors": [
+       "C",
+       "H",
+       "H",
+       "H"
+      ],
+      "neighbors_ok": true,
+      "d_methylC_ringC_A": 1.468971948215286,
+      "d_methylC_own_O_free_A": 2.809592106856863,
+      "d_methylC_own_O_coord_A": 4.348154926294286,
+      "d_methylC_nearest_Zn_A": 5.662175046008451,
+      "carboxylate_twist_deg": 0.16531482546975004,
+      "margin_methylC_own_O_free_A": -0.41040789314313697,
+      "nearest_nonbonded_to_methyl(C · H)": [
+       [
+        2.013,
+        "H165···H162"
+       ],
+       [
+        2.021,
+        "H164···H162"
+       ],
+       [
+        2.028,
+        "H163···O201"
+       ]
+      ]
+     },
+     {
+      "methyl_C": 90,
+      "attached_ring_C": 74,
+      "neighbors": [
+       "C",
+       "H",
+       "H",
+       "H"
+      ],
+      "neighbors_ok": true,
+      "d_methylC_ringC_A": 1.4696956133680668,
+      "d_methylC_own_O_free_A": 2.7605074313477465,
+      "d_methylC_own_O_coord_A": 4.316144348285363,
+      "d_methylC_nearest_Zn_A": 5.637703543081488,
+      "carboxylate_twist_deg": 0.8080694817867659,
+      "margin_methylC_own_O_free_A": -0.4594925686522533,
+      "nearest_nonbonded_to_methyl(C · H)": [
+       [
+        2.005,
+        "H168···H171"
+       ],
+       [
+        2.027,
+        "H168···H170"
+       ],
+       [
+        2.035,
+        "H168···H158"
+       ]
+      ]
+     },
+     {
+      "methyl_C": 91,
+      "attached_ring_C": 75,
+      "neighbors": [
+       "C",
+       "H",
+       "H",
+       "H"
+      ],
+      "neighbors_ok": true,
+      "d_methylC_ringC_A": 1.4691498808017633,
+      "d_methylC_own_O_free_A": 2.812083460745162,
+      "d_methylC_own_O_coord_A": 4.349136786363244,
+      "d_methylC_nearest_Zn_A": 5.6496422249149125,
+      "carboxylate_twist_deg": 1.289208948340315,
+      "margin_methylC_own_O_free_A": -0.40791653925483784,
+      "nearest_nonbonded_to_methyl(C · H)": [
+       [
+        2.005,
+        "H171···H168"
+       ],
+       [
+        2.025,
+        "H169···O203"
+       ],
+       [
+        2.027,
+        "H170···H168"
+       ]
+      ]
+     }
+    ],
+    "n_methyl": 4,
+    "methyl_neighbors_ok": true,
+    "carboxylate_twist_deg": {
+     "with_methyl": [
+      0.17,
+      0.81,
+      1.29,
+      1.43
+     ],
+     "without_methyl": [
+      0.32,
+      0.4,
+      0.42,
+      1.79
+     ]
+    },
+    "n_carboxylate": 8,
+    "Zn_O_A": [
+     1.8408137028002736,
+     1.8497158220612937,
+     8
+    ],
+    "Zn_N_A": [
+     1.9926536520286215,
+     1.9950934413469354,
+     8
+    ],
+    "Zn_coordination": "[(('N', 'N', 'O', 'O'), 4)]",
+    "linker_compositions": {
+     "{'C': 12, 'H': 4, 'O': 4, 'S': 2}": 2,
+     "{'C': 14, 'H': 8, 'O': 4, 'S': 2}": 2
+    }
+   },
+   "contacts_after": {
+    "C···H": [
+     2.229,
+     "C91",
+     "H168"
+    ],
+    "C···O": [
+     2.758,
+     "C88",
+     "O200"
+    ],
+    "C···C": [
+     2.759,
+     "C56",
+     "C57"
+    ],
+    "C···N": [
+     2.967,
+     "C36",
+     "N182"
+    ],
+    "H···N": [
+     2.595,
+     "H146",
+     "N180"
+    ],
+    "H···H": [
+     2.005,
+     "H168",
+     "H171"
+    ],
+    "H···O": [
+     2.025,
+     "H169",
+     "O203"
+    ],
+    "H···S": [
+     3.039,
+     "H156",
+     "S209"
+    ],
+    "N···O": [
+     3.464,
+     "N175",
+     "O203"
+    ],
+    "O···S": [
+     2.977,
+     "O190",
+     "S206"
+    ]
+   },
+   "gate_all_pass": false,
+   "seed": 1,
+   "steps_logged": 81,
+   "energy_eV": -1167.549406,
+   "fmax_eV_A": 0.04968,
+   "energy_minus_registered_run_eV": 0.027538999999933367
+  }
+ },
+ "note": "기계적 사실뿐. 흩뜨린 빌드본은 모체 원자와 0.3 Å 짝짓기가 그대로 됨(흩뜨림 0.03 Å). 에너지는 FIRE 기록의 마지막 줄(GFN-FF · eV · fmax 0.05 에서 멈춘 값)."
+}
