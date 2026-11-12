@@ -51,12 +51,12 @@
  "workers": 8,
  "core_cap": 8,
  "note": "기계적 사실뿐 — 평균 · 순위 · 판정은 종합자(등록문의 읽는 법). ± 는 RASPA 95 % CI.",
- "made": "2026-11-12 22:48:23",
+ "made": "2026-11-12 23:20:21",
  "complete": false,
  "audit_summary": {
-  "n": 19,
+  "n": 22,
   "n_expected": 27,
-  "n_ok": 19,
+  "n_ok": 22,
   "seeds_distinct": true
  },
  "rows": [
@@ -116,6 +116,33 @@
   },
   {
    "tag": "e22_parent",
+   "condition": "ads298",
+   "rep": 3,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/laptop/runs/ads298_e22_parent_s3",
+   "returncode": 0,
+   "minutes": 132.2,
+   "seed": 1794484799,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 1.9895135884,
+   "N_CO2_err": 0.0761934217,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e22_parent",
    "condition": "ads323",
    "rep": 1,
    "T_K": 323.0,
@@ -165,6 +192,33 @@
    "water_per_cell_err": 0.0,
    "N_CO2": 1.5389056537,
    "N_CO2_err": 0.046029309,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e22_parent",
+   "condition": "ads323",
+   "rep": 3,
+   "T_K": 323.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/laptop/runs/ads323_e22_parent_s3",
+   "returncode": 0,
+   "minutes": 121.9,
+   "seed": 1794485018,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 1.5788745164,
+   "N_CO2_err": 0.0229808006,
    "N_H2O": 3.7598094009,
    "N_H2O_err": 0.0
   },
@@ -570,6 +624,33 @@
    "water_per_cell_err": 0.0,
    "N_CO2": 0.557369641,
    "N_CO2_err": 0.0201728793,
+   "N_H2O": 3.5909778757,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cn_open",
+   "condition": "des373",
+   "rep": 3,
+   "T_K": 373.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/laptop/runs/des373_e24i_cn_open_s3",
+   "returncode": 0,
+   "minutes": 100.1,
+   "seed": 1794487216,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 0.5668558076,
+   "N_CO2_err": 0.0187610246,
    "N_H2O": 3.5909778757,
    "N_H2O_err": 0.0
   }
