@@ -1,0 +1,89 @@
+{
+ "test": "등록 N — 물 수 고정 회수량(스트레스 시험)",
+ "assign": "ASSIGN_FIXEDWATER_20261112.md",
+ "machine": "hkhome",
+ "smoke": false,
+ "runner": "run_znbdt_fixedwater_wc.py",
+ "runner_md5": "0ed029a4c5d0f5099f9f1b1c6685fcd9",
+ "started": "2026-11-12 17:24:30",
+ "protocol": {
+  "cycles": 15000,
+  "init": 5000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "ewald": 1e-06,
+  "water": "TIP5P-Ew 5자리(run_water.WATER_DEF) · 개수 고정(SwapProbability 0.0) · 셀당 8분자",
+  "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
+  "conditions": [
+   [
+    "ads298",
+    15000.0,
+    298.0,
+    2852.1
+   ],
+   [
+    "ads323",
+    15000.0,
+    323.0,
+    11114.1
+   ],
+   [
+    "des373",
+    15000.0,
+    373.0,
+    2852.1
+   ]
+  ],
+  "reps": [
+   1,
+   2,
+   3
+  ],
+  "blocking": false
+ },
+ "inputs": {
+  "e24i_ch3_open": "a8e6a165"
+ },
+ "n_expected": 9,
+ "workers": 8,
+ "core_cap": 8,
+ "note": "기계적 사실뿐 — 평균 · 순위 · 판정은 종합자(등록문의 읽는 법). ± 는 RASPA 95 % CI.",
+ "made": "2026-11-12 18:51:21",
+ "complete": false,
+ "audit_summary": {
+  "n": 1,
+  "n_expected": 9,
+  "n_ok": 1,
+  "seeds_distinct": true
+ },
+ "rows": [
+  {
+   "tag": "e24i_ch3_open",
+   "condition": "des373",
+   "rep": 1,
+   "T_K": 373.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome/runs/des373_e24i_ch3_open_s1",
+   "returncode": 0,
+   "minutes": 82.0,
+   "seed": 1794472163,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 0.436645072,
+   "N_CO2_err": 0.0105935881,
+   "N_H2O": 3.6632151646,
+   "N_H2O_err": 0.0
+  }
+ ]
+}
