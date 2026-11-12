@@ -50,12 +50,12 @@
  "workers": 8,
  "core_cap": 8,
  "note": "기계적 사실뿐 — 평균 · 순위 · 판정은 종합자(등록문의 읽는 법). ± 는 RASPA 95 % CI.",
- "made": "2026-11-12 22:02:02",
+ "made": "2026-11-12 22:28:44",
  "complete": false,
  "audit_summary": {
-  "n": 7,
+  "n": 9,
   "n_expected": 18,
-  "n_ok": 7,
+  "n_ok": 9,
   "seeds_distinct": true
  },
  "rows": [
@@ -83,6 +83,33 @@
    "water_per_cell_err": 0.0,
    "N_CO2": 2.127801467,
    "N_CO2_err": 0.0732115719,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e22_parent",
+   "condition": "ads298",
+   "rep": 2,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome2/runs/ads298_e22_parent_s2",
+   "returncode": 0,
+   "minutes": 108.3,
+   "seed": 1794483624,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 2.0533729067,
+   "N_CO2_err": 0.0453437427,
    "N_H2O": 3.7598094009,
    "N_H2O_err": 0.0
   },
@@ -164,6 +191,33 @@
    "water_per_cell_err": 0.0,
    "N_CO2": 0.4362266638,
    "N_CO2_err": 0.0154621819,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e22_parent",
+   "condition": "des373",
+   "rep": 2,
+   "T_K": 373.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome2/runs/des373_e22_parent_s2",
+   "returncode": 0,
+   "minutes": 78.6,
+   "seed": 1794485386,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 0.4158662515,
+   "N_CO2_err": 0.0214893273,
    "N_H2O": 3.7598094009,
    "N_H2O_err": 0.0
   },
