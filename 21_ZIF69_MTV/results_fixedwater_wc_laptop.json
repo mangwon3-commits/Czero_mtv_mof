@@ -1,0 +1,226 @@
+{
+ "test": "등록 N — 물 수 고정 회수량(스트레스 시험)",
+ "assign": "ASSIGN_FIXEDWATER_20261112.md",
+ "machine": "laptop",
+ "smoke": false,
+ "runner": "run_znbdt_fixedwater_wc.py",
+ "runner_md5": "0ed029a4c5d0f5099f9f1b1c6685fcd9",
+ "started": "2026-11-12 16:57:51",
+ "protocol": {
+  "cycles": 15000,
+  "init": 5000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "ewald": 1e-06,
+  "water": "TIP5P-Ew 5자리(run_water.WATER_DEF) · 개수 고정(SwapProbability 0.0) · 셀당 8분자",
+  "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
+  "conditions": [
+   [
+    "ads298",
+    15000.0,
+    298.0,
+    2852.1
+   ],
+   [
+    "ads323",
+    15000.0,
+    323.0,
+    11114.1
+   ],
+   [
+    "des373",
+    15000.0,
+    373.0,
+    2852.1
+   ]
+  ],
+  "reps": [
+   1,
+   2,
+   3
+  ],
+  "blocking": false
+ },
+ "inputs": {
+  "e22_parent": "f15ce100",
+  "e24i_cn_open": "8fd4fc85",
+  "e24i_cl_open": "c1e97588"
+ },
+ "n_expected": 27,
+ "workers": 8,
+ "core_cap": 8,
+ "note": "기계적 사실뿐 — 평균 · 순위 · 판정은 종합자(등록문의 읽는 법). ± 는 RASPA 95 % CI.",
+ "made": "2026-11-12 19:17:41",
+ "complete": false,
+ "audit_summary": {
+  "n": 6,
+  "n_expected": 27,
+  "n_ok": 6,
+  "seeds_distinct": true
+ },
+ "rows": [
+  {
+   "tag": "e22_parent",
+   "condition": "ads298",
+   "rep": 1,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/laptop/runs/ads298_e22_parent_s1",
+   "returncode": 0,
+   "minutes": 139.5,
+   "seed": 1794470289,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 2.0226312429,
+   "N_CO2_err": 0.0519585598,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e22_parent",
+   "condition": "ads323",
+   "rep": 1,
+   "T_K": 323.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/laptop/runs/ads323_e22_parent_s1",
+   "returncode": 0,
+   "minutes": 127.6,
+   "seed": 1794470280,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 1.5709945825,
+   "N_CO2_err": 0.0343072426,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e22_parent",
+   "condition": "des373",
+   "rep": 1,
+   "T_K": 373.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/laptop/runs/des373_e22_parent_s1",
+   "returncode": 0,
+   "minutes": 99.1,
+   "seed": 1794470283,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 0.4465870275,
+   "N_CO2_err": 0.0184275769,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cl_open",
+   "condition": "ads323",
+   "rep": 1,
+   "T_K": 323.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/laptop/runs/ads323_e24i_cl_open_s1",
+   "returncode": 0,
+   "minutes": 129.5,
+   "seed": 1794470286,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 1.6022225258,
+   "N_CO2_err": 0.0806344127,
+   "N_H2O": 3.5311553958,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cn_open",
+   "condition": "ads323",
+   "rep": 1,
+   "T_K": 323.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/laptop/runs/ads323_e24i_cn_open_s1",
+   "returncode": 0,
+   "minutes": 137.8,
+   "seed": 1794470293,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 1.8890339115,
+   "N_CO2_err": 0.0567542667,
+   "N_H2O": 3.5909778757,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cn_open",
+   "condition": "des373",
+   "rep": 1,
+   "T_K": 373.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/laptop/runs/des373_e24i_cn_open_s1",
+   "returncode": 0,
+   "minutes": 104.4,
+   "seed": 1794470276,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 0.5570554304,
+   "N_CO2_err": 0.0311088788,
+   "N_H2O": 3.5909778757,
+   "N_H2O_err": 0.0
+  }
+ ]
+}
