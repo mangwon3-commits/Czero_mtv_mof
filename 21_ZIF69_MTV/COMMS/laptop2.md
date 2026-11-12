@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-11-12 17:00 — [등록 N] **laptop2 — 착수 글: 물 수 고정 회수량 `e24i_no2_open` · `e24i_br_open`(18작업)** · ASSIGN_FIXEDWATER_20261112.md 의 laptop2 몫 · 시험 실행 6/6 ok · 이 글 바로 뒤에 띄웁니다
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 랩탑 · 사용자
+**요약**: H b3 가 16:53 에 끝나 simulate 가 0 이므로, 지시문이 laptop2 에 나눈 등록 N 의 두 구조(18작업)를 이 글 바로 뒤에 띄웁니다. 실행기는 master 의 것을 고치지 않고 가져왔고(md5 0ed029a4), 저장소 밖 시험 실행(10 사이클)에서 6작업이 모두 표지를 채웠습니다. 끝나면 결과 파일과 완주 글(표지 · 씨앗 · 작업 시간)을 master 에 올리며, 값은 읽지 않습니다.
+**답 필요**: 아니오
+
+    근거     ASSIGN_FIXEDWATER_20261112.md(master 085ef8bd · HKHOME 세션의 사용자 지시)의 laptop2 행 — e24i_no2_open · e24i_br_open · 18작업 · "H Cu dia ASR1 이 끝나는 대로"
+             이 배정은 HKHOME 의 교차 세션 메시지로 먼저 닿았으며, master 의 지시문에서 laptop2 행을 확인한 뒤 착수합니다.
+    겹침     master 47c883c1 기준으로 이 두 구조의 착수 글은 없습니다(랩탑 16:57 글은 e22_parent · e24i_cn_open · e24i_cl_open).
+    입력     실행기 run_znbdt_fixedwater_wc.py md5 0ed029a4(무수정 · master 에서 경로 지정으로 가져옴)
+             CIF md5 e24i_no2_open 3a2a53ac · e24i_br_open 4015ec2d(지시문과 일치) · 힘장 관문 8e8ec933 일치
+             ff_gate.py · run_aryl_gcmc.py · run_water.py 는 master 와 같습니다.
+    시험     FXW_SMOKE=1 · 저장소 밖(~/.mof_chain/fxw_smoke_laptop2) · 6/6 ok · rc 0 · 완주 · 물/셀 8.0 · 셀 1 2 3(물 48) · 씨앗 6개 고유 · 23 s
+    명령     FXW_MACHINE=laptop2 FXW_TAGS=e24i_no2_open,e24i_br_open FXW_WORKERS=6 python -u run_znbdt_fixedwater_wc.py(사이클 5000+15000 · 반복 3)
+             이전 결과 파일과 실행 폴더는 없습니다. 끊기면 이어받지 않고 한 줄을 올립니다.
+    견적     지시문의 작업당 1~2 h 를 그대로 쓰면 6워커로 세 차례이므로 3~6 h 이고, 끝은 20:00~23:00 입니다. laptop2 의 실측은 아직 없습니다.
+    사슬     분리된 사슬이 본 실행을 띄웁니다. 끝난 뒤 45분 안에 세션이 완주 글을 올리지 못하면 사슬이 표지만 적은 글과 결과 파일을 스스로 올립니다.
+    우편함   이 글을 올리기 전에 종합자 우편함을 읽었으며, 03:2x 글 뒤로 새 지시는 없었습니다.
+
+---
+
 ## 2026-11-12 16:5x — [CORE22 §H] **laptop2 — H b3 완주 9/9(2014 Cu dia ASR1 · 14:41:48 → 16:53:07 · 2 h 11 m)** · 결과 master · 씨앗 겹침 0 · 지금 유휴(RASPA 0 · 6코어)
 
 **받는 곳**: HKHOME · 클라우드 종합자 · 랩탑 · 사용자
