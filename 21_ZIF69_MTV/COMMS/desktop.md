@@ -7071,3 +7071,21 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
               파일 관문 8e8ec933 일치 · 기존 .data 0/18 · Cu srs N_super 3072 막음 없음 · Zn pcu N_super 1776 막음 CO₂ 1 · 물 4 · 기록 hk_b3r_chain.log · core22_h_b3r_hkhome.log
     견적      b3r 끝 19:00~20:30(출처: Cu srs tsa 실측 51분 × 같은 급 구조의 비) · 랩탑 · laptop2 는 각 1.5~3 h(출처: laptop2 의 Cu dia 둘 3 h 48 m)
               나누지 않았을 때는 20:00~20:30 으로 봤음 — 당겨지는 것은 30분~1시간
+
+---
+
+## 2026-11-12 16:55 — [등록 N] ★ **HKHOME — 사용자 지시 "급하다. 2번 빨리 전체 애들한테 배분해서 재계산해" → 등록 N: 물 수 고정 회수량(스트레스 시험) `ASSIGN_FIXEDWATER_20261112.md`** · 랩탑 = 모체 · −CN · −Cl(27작업) · laptop2 = −NO₂ · −Br(18 · Cu dia ASR1 뒤) · HKHOME = −CH₃(9 · b3r 뒤 빈 코어)
+
+**받는 곳**: 랩탑 · laptop2 · 클라우드 종합자 · 사용자
+**요약**: 사용자가 물 과소평가(실측의 1/50 ~ 1/2,463)를 보고 습윤 결론이 뒤집히는지 물었고, 물을 모체 결정에서 관측된 수(셀당 8분자 · 3.76 mol/kg)로 고정해 여섯 구조의 CO₂ 흡착량과 회수량을 다시 계산하라고 지시했습니다. 읽는 법 · 예측 · 한계는 등록문에 자료 0건에서 적었습니다. 판정은 종합자 몫입니다.
+**답 필요**: 예 — 랩탑 · laptop2 의 착수 글
+
+    실행기    run_znbdt_fixedwater_wc.py(0ed029a4) — 입력은 A · B 습윤 회수량과 같고 물 성분만 SwapProbability 0.0 · CreateNumberOfMolecules 8 × 셀수(48) · CLAUDE.md §1 그대로 · 막음 없음
+              표지 = Simulation finished · rc 0 · CO₂ 적재 줄 · 물 순전하 · 물/셀 8.0 유지 · 씨앗 고유 · 이전 결과 · 실행 폴더 있으면 멈춤
+    스모크    HKHOME 16:53 · 10 사이클 · 초기화 0 · 모체 · −CN → 6/6 ok · 물/셀 8.0 · 모체 물 3.7598 mol/kg · 물 삽입삭제 0 % · 힘장 파일 관문 8e8ec933 일치(값은 평형값 아님 · 안 씀)
+    명령      FXW_MACHINE=<기기> FXW_TAGS=<대상,대상> FXW_WORKERS=<코어 수> python -u run_znbdt_fixedwater_wc.py > fixedwater_wc_<기기>.log 2>&1
+              랩탑    FXW_TAGS=e22_parent,e24i_cn_open,e24i_cl_open
+              laptop2 FXW_TAGS=e24i_no2_open,e24i_br_open
+              HKHOME  FXW_TAGS=e24i_ch3_open · FXW_CORE_CAP=8(b3r 이 작업을 다 띄운 뒤 사슬이 착수)
+    결과      results_fixedwater_wc_<기기>.json(작업마다 갱신) · 완주 글에 표지 · 씨앗 · 작업 시간 · 값은 읽지 않음
+    HKHOME    H b3r(Cu srs FSR2 · Zn pcu ASR1)은 끊지 않고 그대로 · 16:53 simulate 8 · b3r 7/18 완주
