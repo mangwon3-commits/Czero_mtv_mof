@@ -50,12 +50,12 @@
  "workers": 8,
  "core_cap": 8,
  "note": "기계적 사실뿐 — 평균 · 순위 · 판정은 종합자(등록문의 읽는 법). ± 는 RASPA 95 % CI.",
- "made": "2026-11-12 23:35:42",
- "complete": false,
+ "made": "2026-11-13 00:16:23",
+ "complete": true,
  "audit_summary": {
-  "n": 15,
+  "n": 18,
   "n_expected": 18,
-  "n_ok": 15,
+  "n_ok": 18,
   "seeds_distinct": true
  },
  "rows": [
@@ -358,6 +358,33 @@
   },
   {
    "tag": "e24i_cn_open",
+   "condition": "ads298",
+   "rep": 3,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome2/runs/ads298_e24i_cn_open_s3",
+   "returncode": 0,
+   "minutes": 105.6,
+   "seed": 1794490103,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 2.2806549862,
+   "N_CO2_err": 0.0970907357,
+   "N_H2O": 3.5909778757,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cn_open",
    "condition": "ads323",
    "rep": 1,
    "T_K": 323.0,
@@ -412,6 +439,33 @@
   },
   {
    "tag": "e24i_cn_open",
+   "condition": "ads323",
+   "rep": 3,
+   "T_K": 323.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome2/runs/ads323_e24i_cn_open_s3",
+   "returncode": 0,
+   "minutes": 100.7,
+   "seed": 1794490126,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 1.9707286582,
+   "N_CO2_err": 0.0595701822,
+   "N_H2O": 3.5909778757,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cn_open",
    "condition": "des373",
    "rep": 1,
    "T_K": 373.0,
@@ -461,6 +515,33 @@
    "water_per_cell_err": 0.0,
    "N_CO2": 0.5779180144,
    "N_CO2_err": 0.0251521237,
+   "N_H2O": 3.5909778757,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cn_open",
+   "condition": "des373",
+   "rep": 3,
+   "T_K": 373.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome2/runs/des373_e24i_cn_open_s3",
+   "returncode": 0,
+   "minutes": 72.4,
+   "seed": 1794492241,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 0.5514744523,
+   "N_CO2_err": 0.0147314743,
    "N_H2O": 3.5909778757,
    "N_H2O_err": 0.0
   }
