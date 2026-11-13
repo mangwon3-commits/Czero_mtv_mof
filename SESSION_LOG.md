@@ -30,6 +30,10 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-13 09:4x · 클라우드 종합자  [완료] 종합 판정 SYNTH_20261113.md — H(323 K 회수량: −CN 위 CoRE 0 · Zn srs CoRE 판만 구별 불가) · I(우리 앞단 Zn srs 298 K +7.49 · 323 K −7.05 단위) · F 22/22 · M(혼합 −Cl 회수량 내려감) · N(323 K −CN 단독 1위 · 298 K 는 모체와 구별 안 됨) · J(물 접근 값 표) · K(구별 불가) · K′(문장 없음) · L-0(탈락).
+건드리는 파일: 21_ZIF69_MTV/SYNTH_20261113.md · MAGI/MAGI-007_synth2_cloud.{py,json} · MAGI-007_core22_synth_cloud.json · MAGI-007_water_site_cloud{.py,_j298.json,_j323.json} · MAGI-007_water_access_cloud.json · MAGI-007_kprime_cloud.json · COMMS/cloud.md · CLAUDE.md §8.
+다음: 사용자 결정 대기 — 제안 ① N 보강(모체 · −CN 298 K 흡착 12작업) ② K″(같은 물 자리 출발 xtb 90회). 기기는 띄우지 않음.
+
 ## 11-13 00:40 · 랩탑  [완주] 등록 N 물 수 고정 회수량 27/27 ok(11-12 16:57 → 11-13 00:39 · 7 h 41 m) · 결과 master · 씨앗 고유 · 블록 평균 대본 출력은 우편함 · 랩탑 8코어 빔
 
 ## 11-12 16:57 · 랩탑  [착수] 등록 N 물 수 고정 회수량 e22_parent · e24i_cn_open · e24i_cl_open 27작업(워커 8) — ASSIGN_FIXEDWATER_20261112.md 랩탑 몫 · 실행기 0ed029a4 무수정 · 스모크 9/9 ok

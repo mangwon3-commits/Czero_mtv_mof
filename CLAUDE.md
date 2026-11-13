@@ -313,6 +313,7 @@
 | 관문 ⑤ 두 갈래 · **처리 보정 자기 감소**(외부 골격) · `probe_convention` · `formal_charge_nonzero` | `21_ZIF69_MTV/MAGI5_USER_DECISIONS_20260925.md` §4 · 2·3번 |
 | 등록 A~E · G · F · H · I · **J · K**(6씨앗 · CoRE 22 습윤 비교 · 2021 Zn srs 우리 앞단판 · 물 격자 · xtb 클러스터) · 「물 접근 값」 · 잡음 바닥 ε | `21_ZIF69_MTV/ASSIGN_ZNBDT_6SEED_CORE_20261108.md` · `ASSIGN_CORE22_HUMID_PLAN_20261108.md` · `SYNTH_20261111.md` §8 · `ASSIGN_DURABILITY_JK_20261111.md` |
 | 등록 **K′**(카복실레이트 떼기) · **L**(티오펜 3,7-메틸 · `e24k_me37_*`) · **M**(−Cl 혼합 배치 회수량) | `21_ZIF69_MTV/ASSIGN_DURABILITY_JK_20261111.md` §K′ · §L · `ASSIGN_NOON_20261112.md` §M · §L |
+| 등록 **N**(물 수 고정 회수량 · 셀당 8분자 · 스트레스 시험) · 「기본 묶음 / 추가 묶음」 · 제안 **N 보강** · **K″**(미착수) | `21_ZIF69_MTV/ASSIGN_FIXEDWATER_20261112.md` · `SYNTH_20261113.md` §5 · §11 |
 
 같은 이유로, 다른 기기의 세션에 일을 시킬 때는 **대화 맥락을 옮기려 하지 말고**
 읽을 파일을 지정하세요. 아이패드에서든 랩탑에서든 이 한 줄이면 부팅됩니다.

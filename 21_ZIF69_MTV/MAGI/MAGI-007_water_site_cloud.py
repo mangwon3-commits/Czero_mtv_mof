@@ -61,7 +61,7 @@ def classify(ssym, spos, Ms):
         s=ssym[i]
         if s=='Zn': cls.append('Zn'); continue
         lig=kind[comp[i]]; dzn=min(D[i,z] for z in zn)
-        if s=='O': cls.append('O_c' if dzn<2.4 else 'O_f')
+        if s=='O': cls.append('O_n' if any(ssym[j]=='N' for j in adj[i]) else ('O_c' if dzn<2.4 else 'O_f'))   # [11-13 · J-2 등록] 니트로 O(N 에 붙은 O)를 따로 셈
         elif s=='N': cls.append(('N_c' if dzn<2.4 else 'N_a') if lig=='bib' else 'N_bdt')
         elif s=='S': cls.append('S')
         elif s in ('Cl','Br'): cls.append('X_bdt')
@@ -111,7 +111,7 @@ def analyse(name):
         res['f_top']=f_top; res['f_pore']=f_pore; res['f_weighted']=f_w
         res['E_top']={c_:(f_top[c_]/f_pore[c_] if f_pore[c_]>0 else None) for c_ in f_top}
         res['E_weighted']={c_:(f_w[c_]/f_pore[c_] if f_pore[c_]>0 else None) for c_ in f_w}
-        groups={'Zn':['Zn'],'O_f':['O_f'],'O_c':['O_c'],'bib':['N_c','N_a','C_bib','H_bib'],'bdt_ring':['C_bdt','H_bdt','S'],'N_bdt':['N_bdt'],'X_bdt':['X_bdt']}
+        groups={'Zn':['Zn'],'O_f':['O_f'],'O_n':['O_n'],'O_c':['O_c'],'bib':['N_c','N_a','C_bib','H_bib'],'bdt_ring':['C_bdt','H_bdt','S'],'N_bdt':['N_bdt'],'X_bdt':['X_bdt']}
         Cz=C[nz_]; wz=vals[nz_]; Cp=C[pore]; wp=np.ones(pore.sum())
         res['within35']={}; res['within35_pore']={}
         for g,members in groups.items():
@@ -119,7 +119,7 @@ def analyse(name):
             if len(atoms)==0: continue
             res['within35'][g]=within(Cz,wz,atoms,Ms); res['within35_pore'][g]=within(Cp,wp,atoms,Ms)
         res['median_dist_weighted']={}
-        for g,members in (('Zn',['Zn']),('O_f',['O_f']),('O_c',['O_c']),('N_c',['N_c']),('N_bdt',['N_bdt'])):
+        for g,members in (('Zn',['Zn']),('O_f',['O_f']),('O_n',['O_n']),('O_c',['O_c']),('N_c',['N_c']),('N_bdt',['N_bdt'])):
             atoms=spos[np.isin(cls,members)]
             if len(atoms)==0: continue
             d,_=nearest(Cz,atoms,Ms); res['median_dist_weighted'][g]=wmed(d,wz)
