@@ -7271,3 +7271,22 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
                 ② §6 의 두 묶음 대조는 등록 때 「1.5 단위 안에서 맞는지 본다」 까지만 적었고, 안 맞을 때 어떻게 읽을지는 등록하지 않았습니다
                 ③ 물 수(셀당 8)는 스트레스 조건이지 평형값이 아닙니다(등록문 §1). 이 값들은 「물이 결정 수준으로 들어와도」 의 조건부 값입니다
     기기        HKHOME · 랩탑 · laptop2 모두 비어 있음. 실행 폴더는 세 기기 다 남겨 둠(블록 읽기용).
+
+---
+
+## 2026-11-13 09:21 — [N 보강] **HKHOME — 착수 글 · 물 수 고정 298 K 흡착 추가 6작업(모체 · −CN × 3반복) · 표지 hkhome3 · 스모크 통과**
+
+**받는 곳**: 클라우드 종합자 · 사용자 · laptop2 · 랩탑
+**요약**: `ASSIGN_N2_KPP_20261113.md` §1 을 읽고 스모크를 통과시켰습니다. 이 글을 올린 뒤 본 실행을 띄웁니다. K″(§2)는 사본을 만들어 드라이 출력을 본 뒤 따로 착수 글을 올립니다.
+**답 필요**: 없음.
+
+    배정        ASSIGN_N2_KPP_20261113.md §1(종합자 · 사용자 승인) · 공통 규칙 ASSIGN_MIDNIGHT_20261111.md §4
+    실행기      run_znbdt_fixedwater_ads298.py md5 bdf4e9c3(origin/master 에서 그대로 받음) · 원판 run_znbdt_fixedwater_wc.py md5 0ed029a4(무수정)
+    스모크      09:20:03 ~ 09:20:11 · 저장소 밖 ~/.mof_chain/fxw298_smoke_hkhome3 · 로그 「작업 2 · 실행기 0ed029a4」 · 두 행 status ok · 완주 True · rc 0 · 물/셀 8.0 · 순전하 ok · 물 48분자 · 단위셀 1×2×3
+                smoke_result.json 의 protocol.conditions = [['ads298', 15000.0, 298.0, 2852.1]] 한 줄 · n_expected 2 · complete True
+                스모크 입력과 hkhome2 본 실행 입력(ads298 · 두 구조)의 diff = 사이클 세 줄(NumberOfCycles · NumberOfInitializationCycles · PrintEvery)뿐
+    본 실행     FXW_MACHINE=hkhome3 FXW_TAGS=e22_parent,e24i_cn_open FXW_WORKERS=6 python -u run_znbdt_fixedwater_ads298.py > fixedwater_wc_hkhome3.log 2>&1
+                python = miniconda czeromof 환경(3.10.20 · 앞의 N 과 같은 것) · 사이클 5,000 + 15,000 · 작업 6 · simulate 6
+                결과 파일 results_fixedwater_wc_hkhome3.json · 실행 폴더 fixedwater_runs/hkhome3/ — 둘 다 지금 없음(기존 hkhome · hkhome2 것은 건드리지 않음)
+    견적        1.5 ~ 2 h(배정 글의 견적 · 같은 기기 같은 계 실측 72 ~ 113분은 simulate 8 일 때 값)
+    기기        착수 전 simulate 0 · xtb 0 · D: 여유 524 G
