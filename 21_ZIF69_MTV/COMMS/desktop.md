@@ -7290,3 +7290,28 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
                 결과 파일 results_fixedwater_wc_hkhome3.json · 실행 폴더 fixedwater_runs/hkhome3/ — 둘 다 지금 없음(기존 hkhome · hkhome2 것은 건드리지 않음)
     견적        1.5 ~ 2 h(배정 글의 견적 · 같은 기기 같은 계 실측 72 ~ 113분은 simulate 8 일 때 값)
     기기        착수 전 simulate 0 · xtb 0 · D: 여유 524 G
+
+---
+
+## 2026-11-13 09:25 — [등록 K″] **HKHOME — 착수 글 · 같은 물 자리에서 출발한 떼기 스캔(xtb · 아홉 클러스터 × 출발 둘 × 5 = 90회) · 사본 znbdt_kpp_xtb_samestart.py 5e794ff7 · 드라이 통과** · N 보강은 09:21:20 착수(simulate 6)
+
+**받는 곳**: 클라우드 종합자 · 사용자 · laptop2 · 랩탑
+**요약**: `ASSIGN_N2_KPP_20261113.md` §2 대로 K′ 스크립트의 사본을 만들고 드라이 출력으로 출발 상태 · R · 목표를 확인했습니다. 이 글을 올린 뒤 사슬로 띄웁니다(모체 첫 Zn 시험 10회 → 통과하면 전체 90회). N 보강 여섯 작업과 같이 돕니다(코어 7).
+**답 필요**: 없음.
+
+    실행기    znbdt_kpp_xtb_samestart.py md5 5e794ff7 — znbdt_kprime_xtb_detach.py(de1c721b)의 사본 · K 모듈 znbdt_k_xtb_cluster.py(10fed638) 무수정 import · K 결과 d0711867(아홉 클러스터 완주판)
+              바꾼 것 넷(등록문 그대로): ① 계열은 물 있음 · 치환 쪽만 · 출발은 K 의 b_face_opp_Nb 와 b_hb_Ofree_unsub 를 각각(끝 좌표를 K 결과 JSON 의 거리와 1e-4 Å 안으로 대조)
+              ② 상태 이름 kpp_fNb_p04 · p08 · p12 · p16 · p12_release · kpp_hbU_… ③ 점마다 dE_kJmol = E(점 · 묶기 없는 한 점 계산) − E(그 출발 상태 · K 값) — K′ 의 E_ref · 주 점 고르기 · dE_swap 은 뺌
+              ④ 결과 results_znbdt_kpp_xtb_hkhome.json. 그 밖(틀 여섯 거리 묶기 · force constant 5.0 · --opt tight · R 을 출발값 + 0.4 → 0.8 → 1.2 → 1.6 Å · 풀기 · 표지 · 기하 기록)은 K′ 그대로
+    K′ 와 같은 입력  **캐시로 받지 않고 다시 돌립니다**(상태 이름이 달라 작업 폴더가 새것). 입력이 같은 계열은 여섯: kpp_hbU 의 모체 첫 Zn · −CH₃ · −C₂H₅ · −CN 첫 Zn · 모체 둘째 Zn, kpp_fNb 의 −NO₂.
+              그 여섯에는 K′ 값과의 에너지 차(Eh)를 rerun_minus_kprime_Eh 로 적습니다(기계적 재현 기록 · 해석 없음).
+              등록문 표에 없는 셋: K′ 에서 −Cl · −Br 은 b_face_opp_Osub, −CN 둘째 Zn 은 b_face_opp_Ounsub 에서 출발했습니다(그래서 이 셋은 K″ 의 두 계열 모두 새 입력).
+    드라이    xtb 안 띄움 · 아홉 클러스터 모두 두 출발 상태의 값과 끝 좌표가 있고 대조 통과 · 결과 파일 · kpp_* 좌표는 만들지 않음
+              출발 b_face_opp_Nb    R0 3.015 ~ 3.032 Å → 목표 +0.4 ~ +1.6 = 3.42 ~ 4.63 Å · 치환 쪽 두 O–Zn 1.97 ~ 2.01 · 3.44 ~ 3.47 Å · d(Zn–Ow) 2.450 ~ 2.484 Å
+              출발 b_hb_Ofree_unsub R0 2.503 ~ 2.541 Å → 목표 +0.4 ~ +1.6 = 2.90 ~ 4.14 Å · 치환 쪽 두 O–Zn 1.94 ~ 1.96 · 2.47 ~ 2.54 Å · d(Zn–Ow) 2.366 ~ 2.405 Å
+              ⚠ 적어 둘 사실: 두 출발의 R0 가 0.49 ~ 0.51 Å 다릅니다(b_face_opp_Nb 에서는 치환 쪽 카복실레이트의 둘째 O 가 이미 3.4 Å 밖). 등록대로 「출발값 + 늘림」 이므로 같은 「+1.2 점」 이라도 절대 R 은 4.22 Å 대 3.72 Å 입니다.
+              카복실 C 와 두 O 의 거리 1.22 ~ 1.27 Å(원자 번호가 맞음)
+    사슬      ~/.mof_chain/hk_kpp_chain.sh — xtb 0 확인 → 모체 첫 Zn 시험(10회) → rc 0 이고 값 10/10 일 때만 전체 · 기록 hk_kpp_chain.log · 로그 kpp_xtb_test_hkhome.log · kpp_xtb_hkhome.log
+              python = miniconda spectra 환경(xtb 6.7.1 (edcfbbe) · K · K′ 와 같은 것) · 한 번에 한 프로세스 · OMP_NUM_THREADS=1 · nice 19
+    견적      40 ~ 50분(배정 글 · 같은 기기 K′ 126회 54.5분) — 이번에는 simulate 6 과 같이 돌아 더 길 수 있음
+    N 보강    09:21:20 착수 · 로그 첫 줄 「작업 6 · 워커 6 · simulate 상한 6 · 사이클 5000+15000 · 실행기 0ed029a4」 · simulate 6 · 실행 폴더 여섯
