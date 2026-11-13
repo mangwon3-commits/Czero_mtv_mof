@@ -78,11 +78,12 @@ out['M']=M
 # ---------- N: 물 수 고정
 print('=== N  물 수 고정(셀당 8) 회수량')
 rows=[];
-for f in sorted(glob.glob(os.path.join(R,'results_fixedwater_wc_*.json'))):
+NFILES=[os.path.join(R,f'results_fixedwater_wc_{m}.json') for m in ('hkhome','hkhome2','laptop','laptop2')]   # [11-13 오후] 등록 N 의 네 파일만 — N 보강(hkhome3 · laptop2b)은 MAGI-007_synth3_cloud.py
+for f in NFILES:
     d=json.load(open(f)); assert d.get('complete') is True,(f);
     for r in d['rows']: r['_m']=d['machine']; rows.append(r)
 assert len(rows)==72 and all(r['status']=='ok' and r['finished'] and r['returncode']==0 and r['net_charge_ok'] and not r['stderr_not_found'] and r['water_per_cell']==8.0 and r['n_water_fixed']==48 for r in rows)
-assert len({r['seed'] for r in rows})==72 and len({json.load(open(f))['runner_md5'] for f in glob.glob(os.path.join(R,'results_fixedwater_wc_*.json'))})==1
+assert len({r['seed'] for r in rows})==72 and len({json.load(open(f))['runner_md5'] for f in NFILES})==1
 CN=('ads298','ads323','des373')
 def q(tag,c,mach=None):
     rr=[r for r in rows if r['tag']==tag and r['condition']==c and (mach is None or r['_m'] in mach)]

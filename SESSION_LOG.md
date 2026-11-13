@@ -30,6 +30,10 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-13 13:4x · 클라우드 종합자  [완료] N 보강 · K″ 판정 + 최종 결론(SYNTH_20261113.md §12 · §13) — 물 수 고정 298 K 도 −CN 이 모체보다 위(+2.60 단위 · +2.27 σ · 여유 4.5 %) · K″ 일곱 모두 "치환기 효과로 쓰지 않음" · K′ 의 −NO₂ 값은 경로 차이로 확인.
+건드리는 파일: 21_ZIF69_MTV/SYNTH_20261113.md · MAGI/MAGI-007_synth3_cloud.{py,json} · MAGI-007_synth2_cloud.py · COMMS/cloud.md.
+다음: 남은 계산 없음. 포스터 문장 확정은 사용자.
+
 ## 11-13 09:2x · 클라우드 종합자  [지시 · 등록] ASSIGN_N2_KPP_20261113.md(사용자 "둘 다 우편에 올려" · 자료 0건) — HKHOME: N 보강 6작업(hkhome3) + K″ xtb 90회 / laptop2: N 보강 6작업(laptop2b) / 랩탑 없음(정오까지 laptop2 착수 글이 없으면 laptopb 로).
 건드리는 파일: 21_ZIF69_MTV/ASSIGN_N2_KPP_20261113.md · run_znbdt_fixedwater_ads298.py(새 · bdf4e9c3) · SYNTH_20261113.md §11 · COMMS/cloud.md · CLAUDE.md §8.
 다음: 사용자가 부르면 두 항목을 원자료에서 다시 내어 SYNTH_20261113.md §5 · §7 에 덧붙임. 순찰 없음.
