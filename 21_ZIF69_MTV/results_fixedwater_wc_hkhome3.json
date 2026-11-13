@@ -1,0 +1,186 @@
+{
+ "test": "등록 N — 물 수 고정 회수량(스트레스 시험)",
+ "assign": "ASSIGN_FIXEDWATER_20261112.md",
+ "machine": "hkhome3",
+ "smoke": false,
+ "runner": "run_znbdt_fixedwater_wc.py",
+ "runner_md5": "0ed029a4c5d0f5099f9f1b1c6685fcd9",
+ "started": "2026-11-13 09:21:20",
+ "protocol": {
+  "cycles": 15000,
+  "init": 5000,
+  "forcefield": "UFF_MOF",
+  "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+  "cutoff": 12.0,
+  "ewald": 1e-06,
+  "water": "TIP5P-Ew 5자리(run_water.WATER_DEF) · 개수 고정(SwapProbability 0.0) · 셀당 8분자",
+  "water_def_md5": "6fc8850d3d22a56a17e5643f35a6f731",
+  "conditions": [
+   [
+    "ads298",
+    15000.0,
+    298.0,
+    2852.1
+   ]
+  ],
+  "reps": [
+   1,
+   2,
+   3
+  ],
+  "blocking": false
+ },
+ "inputs": {
+  "e22_parent": "f15ce100",
+  "e24i_cn_open": "8fd4fc85"
+ },
+ "n_expected": 6,
+ "workers": 6,
+ "core_cap": 6,
+ "note": "기계적 사실뿐 — 평균 · 순위 · 판정은 종합자(등록문의 읽는 법). ± 는 RASPA 95 % CI.",
+ "made": "2026-11-13 11:06:39",
+ "complete": false,
+ "audit_summary": {
+  "n": 5,
+  "n_expected": 6,
+  "n_ok": 5,
+  "seeds_distinct": true
+ },
+ "rows": [
+  {
+   "tag": "e22_parent",
+   "condition": "ads298",
+   "rep": 1,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome3/runs/ads298_e22_parent_s1",
+   "returncode": 0,
+   "minutes": 102.2,
+   "seed": 1794529286,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 2.1020154408,
+   "N_CO2_err": 0.058987821,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e22_parent",
+   "condition": "ads298",
+   "rep": 2,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome3/runs/ads298_e22_parent_s2",
+   "returncode": 0,
+   "minutes": 99.3,
+   "seed": 1794529299,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 1.934515932,
+   "N_CO2_err": 0.0352065043,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e22_parent",
+   "condition": "ads298",
+   "rep": 3,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome3/runs/ads298_e22_parent_s3",
+   "returncode": 0,
+   "minutes": 103.3,
+   "seed": 1794529283,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 2.1927051767,
+   "N_CO2_err": 0.0443066796,
+   "N_H2O": 3.7598094009,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cn_open",
+   "condition": "ads298",
+   "rep": 1,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome3/runs/ads298_e24i_cn_open_s1",
+   "returncode": 0,
+   "minutes": 105.2,
+   "seed": 1794529289,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 2.2610492445,
+   "N_CO2_err": 0.1031107211,
+   "N_H2O": 3.5909778757,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cn_open",
+   "condition": "ads298",
+   "rep": 2,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome3/runs/ads298_e24i_cn_open_s2",
+   "returncode": 0,
+   "minutes": 103.2,
+   "seed": 1794529296,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 2.1249262457,
+   "N_CO2_err": 0.0777696832,
+   "N_H2O": 3.5909778757,
+   "N_H2O_err": 0.0
+  }
+ ]
+}
