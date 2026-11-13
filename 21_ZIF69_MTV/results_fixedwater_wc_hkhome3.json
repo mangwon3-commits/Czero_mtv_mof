@@ -38,12 +38,12 @@
  "workers": 6,
  "core_cap": 6,
  "note": "기계적 사실뿐 — 평균 · 순위 · 판정은 종합자(등록문의 읽는 법). ± 는 RASPA 95 % CI.",
- "made": "2026-11-13 11:06:39",
- "complete": false,
+ "made": "2026-11-13 11:06:53",
+ "complete": true,
  "audit_summary": {
-  "n": 5,
+  "n": 6,
   "n_expected": 6,
-  "n_ok": 5,
+  "n_ok": 6,
   "seeds_distinct": true
  },
  "rows": [
@@ -179,6 +179,33 @@
    "water_per_cell_err": 0.0,
    "N_CO2": 2.1249262457,
    "N_CO2_err": 0.0777696832,
+   "N_H2O": 3.5909778757,
+   "N_H2O_err": 0.0
+  },
+  {
+   "tag": "e24i_cn_open",
+   "condition": "ads298",
+   "rep": 3,
+   "T_K": 298.0,
+   "p_CO2_Pa": 15000.0,
+   "status": "ok",
+   "unit_cells": [
+    1,
+    2,
+    3
+   ],
+   "n_water_fixed": 48,
+   "dir": "fixedwater_runs/hkhome3/runs/ads298_e24i_cn_open_s3",
+   "returncode": 0,
+   "minutes": 105.3,
+   "seed": 1794529292,
+   "finished": true,
+   "net_charge_ok": true,
+   "stderr_not_found": false,
+   "water_per_cell": 8.0,
+   "water_per_cell_err": 0.0,
+   "N_CO2": 2.2846200243,
+   "N_CO2_err": 0.0578963631,
    "N_H2O": 3.5909778757,
    "N_H2O_err": 0.0
   }

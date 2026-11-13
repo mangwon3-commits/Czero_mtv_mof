@@ -7344,3 +7344,24 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
     시간      클러스터당 131 ~ 332 s · 합 1,726 s(견적 40 ~ 50분 안 · simulate 6 과 같이 돎)
     산출      results_znbdt_kpp_xtb_hkhome.json(이 커밋 · postman 이 중간판을 먼저 올렸음) · k_xtb_runs/<클러스터>/kpp_*.start.xyz · .end.xyz 180개(이 커밋) · 로그 kpp_xtb_hkhome.log · kpp_xtb_test_hkhome.log · 사슬 기록 hk_kpp_chain.log(디스크)
     HKHOME    xtb 프로세스 0 · K″ 사슬 끝 · N 보강 simulate 6 그대로
+
+---
+
+## 2026-11-13 11:07 — [N 보강] **HKHOME — 완주 6/6**(09:21:20 → 11:06:53 · 1 h 46 m) · 표지 hkhome3 · 결과 `results_fixedwater_wc_hkhome3.json`(be0aa92c) · complete True · 값의 평균 · 판정은 적지 않음
+
+**받는 곳**: 클라우드 종합자 · 사용자 · laptop2 · 랩탑
+**요약**: `ASSIGN_N2_KPP_20261113.md` §1 의 HKHOME 몫(모체 · −CN 의 물 수 고정 298 K 흡착 3반복씩 · 6작업)이 끝났고 등록 표지가 전부 통과했습니다. 등록문대로 값은 읽지 않았습니다. laptop2 몫(laptop2b)이 master 에 오면 12행이 찹니다. HKHOME 의 이번 배정 둘(N 보강 · K″)은 모두 끝났고 기기는 비어 있습니다.
+**답 필요**: 종합자 — 판정(laptop2b 완주 뒤 · 사용자가 부를 때). 사용자 — 없음.
+
+    표지      로그 첫 줄 「작업 6 · 워커 6 · simulate 상한 6 · 사이클 5000+15000 · 셀당 물 8 · 힘장 8e8ec933 · 실행기 0ed029a4」
+              결과 파일 n_expected 6 · protocol.conditions = [['ads298', 15000.0, 298.0, 2852.1]] 한 줄 · reps [1, 2, 3] · inputs 모체 f15ce100 · −CN 8fd4fc85
+              행 6 · status ok 6 · finished True 6 · returncode 0 6 · net_charge_ok 6 · water_per_cell 8.0 6 · 물 48분자 6 · stderr 「not found」 0 · complete True
+              .data 파일 6 에서 'Simulation finished' 6(파일을 직접 셈) · fxw_returncode.txt 여섯 모두 0 · 로그에 Traceback · !! 0
+              실행기 사본 run_znbdt_fixedwater_ads298.py bdf4e9c3(착수 글과 같음) · 원판 0ed029a4 무수정
+    씨앗      모체 s1 1794529286 · s2 1794529299 · s3 1794529283 / −CN s1 1794529289 · s2 1794529296 · s3 1794529292 — 여섯 고유
+              master 의 결과 파일 다섯(laptop 27 · laptop2 18 · hkhome 9 · hkhome2 18 · hkhome3 6 = 78행) 전체에서 78개 고유 · 겹침 0 — laptop2b 는 아직 master 에 없어 못 셈(오면 여섯 파일로 다시 셀 것)
+    작업 시간 모체 102.2 · 99.3 · 103.3분 / −CN 105.2 · 103.2 · 105.3분(simulate 6 · 견적 1.5 ~ 2 h 안)
+    산출      results_fixedwater_wc_hkhome3.json(이 커밋 · postman 이 중간판을 먼저 올렸음) · 실행 폴더 fixedwater_runs/hkhome3/runs 여섯은 남겨 둠(21 M) · 로그 fixedwater_wc_hkhome3.log(디스크)
+              기존 results_fixedwater_wc_hkhome.json · hkhome2.json · fixedwater_runs/hkhome · hkhome2 는 건드리지 않음
+    하지 않은 것  값의 평균 · 네 묶음 대조 · 블록 흐름 읽기 — 등록문이 완주 글에 적지 말라고 한 것과 등록에 없는 것은 하지 않았습니다. 실행 폴더가 남아 있으니 블록 읽기(fixedwater_block_drift.py)가 필요하면 한 줄 주십시오.
+    HKHOME    simulate 0 · xtb 0 · 드라이버 0 · D: 여유 523 G · K″ 는 09:54:35 완주(09:56 글 · 8d4f8860) · 등록된 다음 배정 없음
