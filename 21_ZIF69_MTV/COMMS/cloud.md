@@ -7,6 +7,24 @@
 
 ---
 
+## 2026-11-13 09:2x — ★ **작업 지시 — `ASSIGN_N2_KPP_20261113.md`**(사용자 "둘 다 우편에 올려") · HKHOME: N 보강 6작업 + K″ xtb 90회 · laptop2: N 보강 6작업 · 랩탑: 없음 — 아래 글의 "띄우지 마십시오" 는 이 글로 풀립니다
+
+**받는 곳**: HKHOME · laptop2 · 랩탑 · 사용자   그 문서의 §0 과 자기 절만 읽고 그대로. 공통 규칙은 `ASSIGN_MIDNIGHT_20261111.md` §4.
+**답 필요**: 착수 글 · 완주 글(표지 · 씨앗 · 시간). 값의 평균 · 판정은 종합자.
+
+    HKHOME   ① N 보강: run_znbdt_fixedwater_ads298.py(bdf4e9c3 · 원판 0ed029a4 무수정 import · 조건 ads298 만) · FXW_MACHINE=hkhome3 · FXW_TAGS=e22_parent,e24i_cn_open · FXW_WORKERS=6
+             먼저 스모크(FXW_SMOKE=1 · 저장소 밖 폴더) — "작업 2" · 조건 한 줄이 아니면 본 실행을 띄우지 말고 한 줄
+             ② K″: znbdt_kprime_xtb_detach.py(de1c721b) 사본 znbdt_kpp_xtb_samestart.py — 물 있음 · 치환 쪽만 · 출발 둘(b_face_opp_Nb · b_hb_Ofree_unsub 끝 좌표) · 클러스터 아홉 · 90회 · 부수 작업 한 프로세스(①과 같이)
+    laptop2  ① N 보강: 같은 실행기 · FXW_MACHINE=laptop2b · 같은 대상 · FXW_WORKERS=6 · 스모크 먼저
+    랩탑     없음. laptop2 가 11-13 12:00 까지 착수 글을 못 올리면 laptop2 몫을 FXW_MACHINE=laptopb 로(착수 글 먼저)
+    견적     HKHOME ① 1.5 ~ 2 h(같은 기기 · 같은 계 실측 72 ~ 113분) · ② 40 ~ 50분(K′ 실측) / laptop2 2.5 ~ 3 h(같은 기기 · 같은 계 실측 최대 176분)
+    읽는 법  ① 12행씩 합쳐 −CN − 모체 차를 등록 자 1.5 단위 · 반복 SD 자 2.0 σ 로 — 둘 다 넘으면 "298 K 에서도 −CN 이 위" · 그 밖은 "구별되지 않음"
+             ② 출발 둘 × 점 둘(+1.2 · +1.6) 네 값이 모두 −ε″ 아래일 때만 "떼기 쉽게" · 점을 고르는 조건 없음
+    주의     종합자는 RASPA 가 없어 사본을 대역 모듈로만 확인했습니다(작업 18 → 6). 실물 확인은 스모크입니다.
+             기존 results_fixedwater_wc_*.json · fixedwater_runs/ 는 건드리지 않습니다(새 표지라 겹치지 않음).
+
+---
+
 ## 2026-11-13 09:4x — ★ **종합 판정 `SYNTH_20261113.md` — H · I · F(22/22) · M · N · J · K · K′ · L-0**(사용자 "결과 읽고 보고") · 새 배정 없음 — §11 의 제안 둘은 사용자 결정 대기
 
 **받는 곳**: HKHOME · 랩탑 · laptop2 · 사용자
