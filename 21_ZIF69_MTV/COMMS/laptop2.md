@@ -4,6 +4,28 @@
 
 ---
 
+## 2026-11-13 09:25 — [N 보강] **laptop2 — 착수 글: 모체 · −CN 물 수 고정 298 K 흡착 6작업(기기 표지 `laptop2b`)** · ASSIGN_N2_KPP_20261113.md §1 의 laptop2 몫 · 스모크 "작업 2" · 조건 한 줄 · 이 글 바로 뒤에 띄웁니다
+
+**받는 곳**: 클라우드 종합자 · HKHOME · 랩탑 · 사용자
+**요약**: 사용자가 laptop2 세션에서 "배정 작업 실행" 을 지시했으므로, 지시문 §1 이 laptop2 에 나눈 N 보강 6작업을 이 글 바로 뒤에 띄웁니다. 실행기 사본과 원판은 master 의 것을 고치지 않고 썼고(bdf4e9c3 · 0ed029a4), 저장소 밖 스모크에서 로그가 "작업 2" 였으며 조건 표는 ads298 한 줄이었습니다. 끝나면 결과 파일과 완주 글(표지 · 씨앗 · 작업 시간)을 master 에 올리며, 값은 읽지 않습니다.
+**답 필요**: 아니오
+
+    근거     ASSIGN_N2_KPP_20261113.md §0 · §1(master ae3121b5 · 사용자 승인 "둘 다 우편에 올려")의 laptop2 행 — N 보강 6작업 · FXW_MACHINE=laptop2b · 12:00 전 착수 글
+    겹침     master 1e4f231a 기준으로 laptop2b · laptopb 의 착수 글은 없습니다. 랩탑 09:19 글은 laptopb 스모크만 돌렸고 12:00 에 laptop2 우편함을 다시 읽는다고 적었습니다.
+             이 글이 그 착수 글이므로 랩탑은 넘겨받지 않아도 됩니다. HKHOME 의 hkhome3 착수 글(09:21 · 8373c6a2)과는 표지가 달라 겹치지 않습니다.
+    입력     실행기 사본 run_znbdt_fixedwater_ads298.py md5 bdf4e9c3 · 원판 run_znbdt_fixedwater_wc.py md5 0ed029a4(둘 다 무수정 · master 에서 경로 지정으로 가져옴)
+             CIF md5 e22_parent f15ce100 · e24i_cn_open 8fd4fc85(원판의 등록 md5 관문 통과) · 힘장 관문 8e8ec933 일치
+             ff_gate.py · run_aryl_gcmc.py · run_water.py 는 master 와 같습니다.
+    스모크   FXW_SMOKE=1 · 저장소 밖(~/.mof_chain/fxw_smoke_laptop2b) · 워커 2 · 로그 "작업 2 · 실행기 0ed029a4" · smoke_result.json 의 protocol.conditions 는 [ads298 · 15000.0 · 298.0 · 2852.1] 한 줄
+             두 행 ok · rc 0 · 완주 · 물 알짜 전하 통과 · 물/셀 8.0 · 셀 1 2 3(물 48) · 씨앗 둘 고유 · 10 s
+    명령     FXW_MACHINE=laptop2b FXW_TAGS=e22_parent,e24i_cn_open FXW_WORKERS=6 python -u run_znbdt_fixedwater_ads298.py > fixedwater_wc_laptop2b.log(사이클 5000+15000 · 반복 3)
+             results_fixedwater_wc_laptop2b.json 과 fixedwater_runs/laptop2b 는 없습니다. 기존 laptop2 결과와 실행 폴더는 건드리지 않습니다. 끊기면 이어받지 않고 한 줄을 올립니다.
+    견적     등록 N 에서 laptop2 의 298 K 작업은 169.8 ~ 182.2분 걸렸습니다(다른 두 구조 · 같은 셀 · 6워커). 6워커에 6작업이라 한 차례로 끝나므로, 끝은 12:10 ~ 12:40 로 봅니다.
+    사슬     분리된 사슬이 본 실행을 띄웁니다. 끝난 뒤 45분 안에 세션이 완주 글을 올리지 못하면 사슬이 표지만 적은 글과 결과 파일을 스스로 올립니다.
+    우편함   이 글을 올리기 전에 종합자 우편함을 다시 읽었으며, 09:2x 작업 지시 글 뒤로 새 지시는 없었습니다.
+
+---
+
 ## 2026-11-13 01:20 — [등록 N] **laptop2 — 등록 N 완주 18/18(e24i_no2_open · e24i_br_open · 11-12 17:01:02 → 11-13 01:18:56 · 8 h 18 m)** · 결과 master · 블록 평균 대본의 최종 출력 포함 · 값은 읽지 않았습니다 · 지금 유휴(RASPA 0 · 6코어)
 
 **받는 곳**: 클라우드 종합자 · HKHOME · 랩탑 · 사용자
