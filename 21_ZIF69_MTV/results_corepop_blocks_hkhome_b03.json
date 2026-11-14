@@ -2730,7 +2730,82 @@
         118.32
       ],
       "PLD_core": 7.00232,
-      "LCD_core": 9.71385
+      "LCD_core": 9.71385,
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 61337,
+        "accessible_nodes": 2712,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2023_In__neb_3_FSR_4/block1.82/2023_In__neb_3_FSR_4.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 431.1,
+        "peak_rss_MB": 5271,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 61338,
+        "accessible_nodes": 3868,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2023_In__neb_3_FSR_4/block1.30/2023_In__neb_3_FSR_4.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 50.2,
+        "peak_rss_MB": 640,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 61337,
+        "accessible_nodes": 3031,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2023_In__neb_3_FSR_4/block1.65/2023_In__neb_3_FSR_4.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 908.4,
+        "peak_rss_MB": 14093,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2020[Co][mab]3[FSR]1",
@@ -2747,7 +2822,57 @@
         90.0
       ],
       "PLD_core": 5.69127,
-      "LCD_core": 7.50262
+      "LCD_core": 7.50262,
+      "r1.82": {
+        "gas": "N2",
+        "channels": 2,
+        "pockets": 0,
+        "nodes": 71250,
+        "accessible_nodes": 1775,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2020_Co__mab_3_FSR_1/block1.82/2020_Co__mab_3_FSR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 467.2,
+        "peak_rss_MB": 6761,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 2,
+        "pockets": 0,
+        "nodes": 71248,
+        "accessible_nodes": 2273,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2020_Co__mab_3_FSR_1/block1.65/2020_Co__mab_3_FSR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 470.2,
+        "peak_rss_MB": 6845,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2020[Co][mab]3[ASR]1",
@@ -2768,5 +2893,5 @@
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 12438
+  "elapsed_s": 13395
 }
