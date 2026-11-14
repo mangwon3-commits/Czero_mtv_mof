@@ -53,24 +53,24 @@
         "pockets": 0,
         "nodes": 65494,
         "accessible_nodes": 1640,
-        "n_spheres": null,
+        "n_spheres": 0,
         "sphere_radii": [],
         "sphere_volume_sum_A3": 0,
         "sphere_volume_pct_of_cell": 0.0,
         "block_file": "corepop_zeo_runs/2024_Ni__etb_3_FSR_1/block1.65/2024_Ni__etb_3_FSR_1.block",
-        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
         "n_block_files": 1,
-        "block_ok": false,
-        "blockpockets_needed": null,
-        "rc": -9,
-        "seconds": 459.3,
-        "peak_rss_MB": 5931,
-        "stopped_by_guard": true,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 477.3,
+        "peak_rss_MB": 6414,
+        "stopped_by_guard": false,
         "pre_counts": {
           "simulate": 0,
-          "network": 1
+          "network": 0
         },
-        "tries": 1
+        "tries": 2
       },
       "r1.82": {
         "gas": "N2",
@@ -697,24 +697,24 @@
         "pockets": 0,
         "nodes": 60228,
         "accessible_nodes": 1329,
-        "n_spheres": null,
+        "n_spheres": 0,
         "sphere_radii": [],
         "sphere_volume_sum_A3": 0,
         "sphere_volume_pct_of_cell": 0.0,
         "block_file": "corepop_zeo_runs/2019_Co__jaj_3_FSR_1/block1.65/2019_Co__jaj_3_FSR_1.block",
-        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
         "n_block_files": 1,
-        "block_ok": false,
-        "blockpockets_needed": null,
-        "rc": -9,
-        "seconds": 425.1,
-        "peak_rss_MB": 5638,
-        "stopped_by_guard": true,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 391.8,
+        "peak_rss_MB": 6422,
+        "stopped_by_guard": false,
         "pre_counts": {
           "simulate": 0,
-          "network": 1
+          "network": 0
         },
-        "tries": 1
+        "tries": 2
       },
       "r1.82": {
         "gas": "N2",
@@ -2646,7 +2646,82 @@
         94.7717
       ],
       "PLD_core": 6.2187,
-      "LCD_core": 7.05077
+      "LCD_core": 7.05077,
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 2,
+        "nodes": 49336,
+        "accessible_nodes": 3637,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cd__pts_3_ASR_1/block1.82/2019_Cd__pts_3_ASR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 428.1,
+        "peak_rss_MB": 4411,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 49336,
+        "accessible_nodes": 4370,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cd__pts_3_ASR_1/block1.65/2019_Cd__pts_3_ASR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 768.9,
+        "peak_rss_MB": 8065,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 49336,
+        "accessible_nodes": 5539,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cd__pts_3_ASR_1/block1.30/2019_Cd__pts_3_ASR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 513.6,
+        "peak_rss_MB": 6584,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2019[Cd][pts]3[FSR]1",
@@ -2663,7 +2738,82 @@
         94.7717
       ],
       "PLD_core": 6.2187,
-      "LCD_core": 7.05077
+      "LCD_core": 7.05077,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 49336,
+        "accessible_nodes": 4370,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cd__pts_3_FSR_1/block1.65/2019_Cd__pts_3_FSR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 757.9,
+        "peak_rss_MB": 7724,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 2,
+        "nodes": 49336,
+        "accessible_nodes": 3637,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cd__pts_3_FSR_1/block1.82/2019_Cd__pts_3_FSR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 726.7,
+        "peak_rss_MB": 6380,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 49336,
+        "accessible_nodes": 5539,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cd__pts_3_FSR_1/block1.30/2019_Cd__pts_3_FSR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 749.9,
+        "peak_rss_MB": 6741,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2021[Cd][tfz]3[FSR]2",
@@ -2680,7 +2830,82 @@
         62.283
       ],
       "PLD_core": 5.41385,
-      "LCD_core": 6.62776
+      "LCD_core": 6.62776,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 50047,
+        "accessible_nodes": 1284,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cd__tfz_3_FSR_2/block1.65/2021_Cd__tfz_3_FSR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 495.6,
+        "peak_rss_MB": 5634,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 50047,
+        "accessible_nodes": 995,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cd__tfz_3_FSR_2/block1.82/2021_Cd__tfz_3_FSR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 491.5,
+        "peak_rss_MB": 5809,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 50047,
+        "accessible_nodes": 1865,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cd__tfz_3_FSR_2/block1.30/2021_Cd__tfz_3_FSR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 502.6,
+        "peak_rss_MB": 6803,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2021[Cd][tfz]3[ASR]4",
@@ -2697,9 +2922,84 @@
         116.889
       ],
       "PLD_core": 3.85246,
-      "LCD_core": 5.97916
+      "LCD_core": 5.97916,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 25459,
+        "accessible_nodes": 1004,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cd__tfz_3_ASR_4/block1.65/2021_Cd__tfz_3_ASR_4.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 266.4,
+        "peak_rss_MB": 2811,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 25459,
+        "accessible_nodes": 835,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cd__tfz_3_ASR_4/block1.82/2021_Cd__tfz_3_ASR_4.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 263.3,
+        "peak_rss_MB": 2809,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 25459,
+        "accessible_nodes": 1463,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cd__tfz_3_ASR_4/block1.30/2021_Cd__tfz_3_ASR_4.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 256.3,
+        "peak_rss_MB": 3050,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 14049
+  "elapsed_s": 17940
 }
