@@ -1,3 +1,19 @@
+## 2026-11-15 08:13 — [COREPOP-H323] **랩탑 — b05 착수 글(가져감 · 32종 · Zeo++ 병렬 3 → 스모크 2종 → GCMC 워커 16 · 1씨앗)** · b01 과 같은 사슬 · 같은 명령 · 이 글 바로 뒤에 띄웁니다
+**받는 곳**: HKHOME · 클라우드 종합자 · laptop2
+**요약**: 배정 §4("다음 묶음은 끝난 기기가 착수 글을 먼저 올려 가져감 · 숫자 순")에 따라 랩탑이 b05 를 가져갑니다. b04 는 HKHOME 이 11-15 02:07 에 가져갔고, laptop2 는 05:39 글에서 b05 부터는 먼저 끝난 기기가 가져가도 된다고 적었습니다. 이 글을 올리는 시점에 master 에 b05 착수 글은 없습니다. 사슬과 실행기는 b01 때와 같은 파일이고 master 와 md5 를 다시 맞춰 보았습니다. 값은 읽지 않습니다.
+**답 필요**: 아니오
+
+    파일    corepop_humid323_targets.json f0cbc615 · corepop_blocks.py c00cd11a · run_corepop_e_humid3.py e05cbc1b · run_corepop_e_humid3_323.py 75307c47 · ~/.mof_chain/corepop_chain.sh ec27c8b3 (master efe85d8d 와 같음)
+    드라이  COREPOP_ZEO_DRY=1 · "입력 대조 통과: zip 524개 중 대상 32/32 · 묶음 ['b05'] · 원자 수 = NAtoms (38~348) · 계획 96건(병렬 3)"
+    명령    REPO=/home/skyjun/mof_run_1108 setsid nohup bash ~/.mof_chain/corepop_chain.sh laptop b05 3 16 < /dev/null > /dev/null 2>&1 &
+    겹침    실행 트리에 results_corepop_blocks_laptop_b05.json · results_corepop_e_humid3_323_laptop_b05.json · b05 구조의 corepop_zeo_runs 폴더 없음. simulate 0 · network 0 · 메모리 여유 22 GB · C: 여유 116 GB
+    견적    Zeo++ 끝 11:15 ~ 13:30(b01 실측 3 h 41 m · 같은 기기 · 같은 병렬 · 다른 구조) · GCMC 끝 11-15 20:00 ~ 11-16 01:00(b01 실측: 30작업이 9.5 h 에 끝나고 한 작업이 10.9 h · 같은 기기 · 다른 구조)
+            b01 에서 벽시계를 정한 것은 가장 긴 작업 하나였습니다. b05 에서 가장 긴 작업이 얼마나 걸릴지는 자료가 없어, 위 범위를 넘을 수 있습니다
+    가드    Zeo++ 호출이 메모리 가드에 걸리면 사슬이 끝에서 한 번에 하나로 한 번 더 돌리고, 그래도 안 되는 구조는 빼고 본 계산을 띄웁니다(b01 과 같음). 빠진 구조는 진행 글에 적습니다
+    기록    ~/.mof_chain/corepop_laptop_b05.chain.log · .zeo.log · .smoke.log · .gcmc.log
+
+---
+
 ## 2026-11-15 08:12 — [COREPOP-H323] **랩탑 — b01 완주 31/31(GCMC 11-14 21:14:59 → 11-15 08:10:39 · 10 h 56 m) · 감사 31/31 ok · 씨앗 고유 · 결과 master** · b01 의 32번째 구조는 막음 단계에서 빠짐 · 견적을 2 h 55 m 넘김(작업 하나가 10.9 h)
 **받는 곳**: HKHOME · 클라우드 종합자 · laptop2
 **요약**: b01 의 본 계산 31작업이 모두 끝났고 사슬이 rc 0 으로 나갔습니다. 실행기의 감사 줄은 n 31 · n_ok 31 · 씨앗 고유 · 적재 줄 모두 1 · N₂ 성분 모두 보임입니다. 결과 파일과 감사 파일을 이 글과 함께 올립니다. 2013[ZnCr][lon]3[ASR]6 은 11-14 21:16 글에 적은 대로 막음 파일이 없어 돌지 않았습니다. 값 · 평균 · 순위는 적지 않았고 판정은 종합자 몫입니다. 랩탑은 이어서 b05 를 착수 글로 가져갑니다(b04 는 HKHOME 이 02:07 에 가져감).
