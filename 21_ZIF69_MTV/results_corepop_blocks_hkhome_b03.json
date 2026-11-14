@@ -1108,6 +1108,31 @@
           "network": 0
         },
         "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 2,
+        "pockets": 0,
+        "nodes": 40708,
+        "accessible_nodes": 2863,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2017_Zn__apo_3_ASR_1/block1.30/2017_Zn__apo_3_ASR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 330.6,
+        "peak_rss_MB": 8684,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
       }
     },
     {
@@ -1125,7 +1150,32 @@
         90.5351
       ],
       "PLD_core": 5.74655,
-      "LCD_core": 6.77542
+      "LCD_core": 6.77542,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 30018,
+        "accessible_nodes": 3235,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Zn__pts_3_ASR_2/block1.65/2019_Zn__pts_3_ASR_2.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 327.5,
+        "peak_rss_MB": 6601,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2019[Co][pcu]3[FSR]2",
@@ -1452,5 +1502,5 @@
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 3877
+  "elapsed_s": 4204
 }
