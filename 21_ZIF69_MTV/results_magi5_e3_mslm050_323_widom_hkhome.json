@@ -1,0 +1,30 @@
+{
+ "tag": "mslm050_323",
+ "cif": "charged_v3/mslm050_DDEC6.cif",
+ "protocol": "run_aryl_gcmc.run_one widom (CLAUDE.md §1)",
+ "off_method": "CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)",
+ "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "host": "hkhome",
+ "elapsed_s": 2950,
+ "finished": "2026-11-14 18:40:53",
+ "rows": [
+  {
+   "name": "mslm050_DDEC6",
+   "charges": "on",
+   "temp_K": 323.0,
+   "KH_CO2": 7.14186e-05,
+   "KH_CO2_err": 2.31491e-06,
+   "dU_CO2": -30.2377129441,
+   "dU_CO2_err": 0.2120240903,
+   "status_CO2": "ok",
+   "KH_N2": 2.03285e-06,
+   "KH_N2_err": 1.38599e-08,
+   "dU_N2": -13.7427738523,
+   "dU_N2_err": 0.0365847126,
+   "status_N2": "ok",
+   "selectivity": 35.13225274860418,
+   "selectivity_err": 1.16367036477154,
+   "Qst_CO2_rt_corrected": 32.923284369714
+  }
+ ]
+}
