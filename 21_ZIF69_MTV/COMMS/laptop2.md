@@ -4,6 +4,28 @@
 
 ---
 
+## 2026-11-14 17:35 — [COREPOP-H323] **laptop2 — b02 착수(32종 · Zeo++ 막음 병렬 2 → 스모크 2종 → 323 K 습윤 3성분 GCMC 워커 12 · 1씨앗)** · 사슬 무수정 · 다섯 파일 md5 일치 · 드라이 통과 · 이 글 바로 뒤에 띄웁니다
+
+**받는 곳**: HKHOME · 랩탑 · 클라우드 종합자 · 사용자
+**요약**: 사용자가 laptop2 세션에서 "배정 작업 착수해" 라고 지시했으므로, ASSIGN_COREPOP_HUMID323_20261114.md(master f48d584f)가 laptop2 에 준 첫 묶음 b02 를 이 글 바로 뒤에 띄웁니다. 사슬 corepop_chain.sh 는 저장소 밖(~/.mof_chain/)에 복사해 지시문의 명령 그대로 돌리며, 다섯 파일은 master 에서 경로 지정으로 가져와 md5 를 지시문 표와 대조했습니다. 끝나면 결과 파일과 완주 글(표지만)을 master 에 올리고, 값 · 평균 · 순위는 적지 않습니다.
+**답 필요**: 아니오
+
+    근거     ASSIGN_COREPOP_HUMID323_20261114.md §4 의 laptop2 행 — 첫 묶음 b02 · Zeo++ 병렬 2 · 워커 12 · 사용자 지시 "코어 최대로"
+    겹침     master 1e3eea7c 기준으로 b02 착수 글은 없습니다. 랩탑은 b01(17:33 · 1e3eea7c), HKHOME 은 b03(Widom 뒤 자동)입니다.
+    입력     corepop_blocks.py c00cd11a · run_corepop_e_humid3.py e05cbc1b · run_corepop_e_humid3_323.py 75307c47 · corepop_chain.sh ec27c8b3 · corepop_humid323_targets.json f0cbc615(모두 지시문 · master 와 같음)
+             무수정 import 대상 run_znbdt_e_humid3.py 97023663 · run_znbdt_e_humid3_323.py 7f83dc3c · run_core22_e_humid3.py d24e8e2d · run_core22_e_humid3_323.py b975bd93(master 와 같음)
+             core_pop_cifs.zip · core_pop_annotated.json 은 master 와 같습니다. Zeo++ 는 ~/miniconda3/envs/czeromof/bin/network 입니다.
+    드라이   COREPOP_ZEO_DRY=1 · "입력 대조 통과: zip 524개 중 대상 32/32 · 묶음 ['b02'] · 풀린 파일 md5 = zip 바이트 · 원자 수 = NAtoms (54~388) · 계획 96건(-block · 병렬 2)"
+             CIF 는 저장소 밖 ~/.mof_chain/corepop_1114/cifs 에 풀렸고, 저장소에는 결과 파일 · 실행 폴더가 아직 없습니다.
+    명령     cp 21_ZIF69_MTV/corepop_chain.sh ~/.mof_chain/ 뒤 bash ~/.mof_chain/corepop_chain.sh laptop2 b02 2 12(simulate 0 · network 0 · 논리 12 · 메모리 15.5 GB 여유에서 띄움)
+             스모크와 본 계산의 관문은 사슬이 그대로 지킵니다. 어느 단계든 멈추면 이어받지 않고 한 줄을 올립니다.
+    견적     지시문 §5 의 laptop2 견적은 Zeo++ 1.4 ~ 2.1 h, GCMC 12워커 3물결 9 ~ 11 h 입니다. 그래서 끝은 11-15 04:05 ~ 06:45 로 봅니다. laptop2 는 물리 6코어라 아래쪽보다 위쪽에 가까울 수 있습니다.
+    중간     사슬이 도는 동안 60분마다, 바뀐 것이 있을 때만 결과 파일(막음 · GCMC · 감사)과 .block 을 파일만 master 에 올립니다. 끝난 만큼 쓰는 계산이라는 지시문 §1 에 맞춘 것이며 값은 읽지 않습니다.
+    사슬     사슬이 끝난 뒤 45분 안에 세션이 완주 글을 올리지 못하면, 바깥 감싸개가 사슬 기록과 결과 파일의 표지만 적은 글을 스스로 올립니다.
+    다음     b02 가 끝나면 지시문 §4 대로 남은 묶음(b04 부터 숫자 순)을 착수 글을 먼저 올려 가져갑니다.
+
+---
+
 ## 2026-11-13 12:34 — [N 보강] **laptop2 — N 보강 완주 6/6(표지 `laptop2b` · 모체 · −CN · ads298 · 09:25:51 → 12:32:59 · 3 h 07 m)** · 감사 6/6 ok · 씨앗 고유 · 결과 master · 값의 평균 · 판정은 적지 않음 · laptop2 는 지금 비어 있습니다
 
 **받는 곳**: 클라우드 종합자 · HKHOME · 랩탑 · 사용자
