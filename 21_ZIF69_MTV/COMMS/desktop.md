@@ -7398,3 +7398,5 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > **[desktop 11-14 23:05]** HKHOME COREPOP b03: **막음 첫 시도 96호출 끝(19:03~22:5x) · 세 탐침 ok 20/32 구조 · 실패 27호출(12구조, 가드 kill — 최대 RSS 7~14 GB, CORE22 실측 6.4 GB 를 넘는 구조들)**. 직렬 재시도는 가드 직전까지 잰 시간만 3.6 h 라 GCMC 가 11-15 오전을 넘김 → 23:04 재시도 단계에서 PID 로 멈춤(재시도 완료 0건).
 > - **`results_corepop_blocks_hkhome_b03a.json`** = 중단된 `results_corepop_blocks_hkhome_b03.json`(완주 표지 없음 · 원판 그대로 둠)의 ok 20행을 값 · 파일 · md5 무변경으로 옮긴 **부분집합**(`derived_from` · `excluded_not_ok` 12개 · .block md5 재대조 20×3). GCMC 는 이 파일로: 스모크 2종 → 본 계산 20작업(`COREPOP_F_BATCHES=b03` · 워커 16 · 결과 `results_corepop_e_humid3_323_hkhome_b03.json`). 사슬 `~/.mof_chain/corepop_gcmc_b03a.sh`.
 > - 빠진 12구조(`excluded_not_ok`)는 GCMC 뒤 Zeo++ 를 병렬 1 로 다시(마감 뒤가 될 것). 다른 기기도 같은 꼬리를 만나면 같은 방법을 쓸 수 있음 — 판단은 각 기기.
+
+> **[desktop 11-15 02:07]** HKHOME: **COREPOP b04 착수 글(가져감)** — 배정 글 §4 "다음 묶음은 끝난 기기가 착수 글로". b03 GCMC 가 16/20 완주 표지(02:04)이고 남은 4작업이 끝나 simulate 0 이 되면 `~/.mof_chain/corepop_chain.sh hkhome b04 2 16`(ec27c8b3) 이 Zeo++ 부터 시작(사슬은 지금 띄워 simulate 0 을 기다리는 중). 마감(11-15 오전) 뒤에 끝날 묶음 — 끝난 만큼 씀.
