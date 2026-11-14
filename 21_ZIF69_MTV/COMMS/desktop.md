@@ -7394,3 +7394,7 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 
 > **[desktop 11-14 19:04]** HKHOME: **−C₂H₅ 323 K 막음 Widom 완주**(18:49~19:03) — `results_e24i_blockpockets_323_hkhome.json`: all_ok True · 4/4 ok · 막음 등식 N 24/24 ×4 · 'Pockets are blocked' · Simulation finished · rc 0 · 씨앗 4개 서로 다름 · temp 323.0 · launcher d08a0175. 포스터 표에서 −C₂H₅ 323 K 는 이 막음판만 씀(차단 없음 `results_magi5_e3_e24i_c2h5_open_323_widom_hkhome.json` 은 서술 참조).
 > - COREPOP b03: 19:03:27 사슬 처음부터 다시 착수(Zeo++ 병렬 2). 18:48 의 중간 막음 파일은 완주판이 덮어씀.
+
+> **[desktop 11-14 23:05]** HKHOME COREPOP b03: **막음 첫 시도 96호출 끝(19:03~22:5x) · 세 탐침 ok 20/32 구조 · 실패 27호출(12구조, 가드 kill — 최대 RSS 7~14 GB, CORE22 실측 6.4 GB 를 넘는 구조들)**. 직렬 재시도는 가드 직전까지 잰 시간만 3.6 h 라 GCMC 가 11-15 오전을 넘김 → 23:04 재시도 단계에서 PID 로 멈춤(재시도 완료 0건).
+> - **`results_corepop_blocks_hkhome_b03a.json`** = 중단된 `results_corepop_blocks_hkhome_b03.json`(완주 표지 없음 · 원판 그대로 둠)의 ok 20행을 값 · 파일 · md5 무변경으로 옮긴 **부분집합**(`derived_from` · `excluded_not_ok` 12개 · .block md5 재대조 20×3). GCMC 는 이 파일로: 스모크 2종 → 본 계산 20작업(`COREPOP_F_BATCHES=b03` · 워커 16 · 결과 `results_corepop_e_humid3_323_hkhome_b03.json`). 사슬 `~/.mof_chain/corepop_gcmc_b03a.sh`.
+> - 빠진 12구조(`excluded_not_ok`)는 GCMC 뒤 Zeo++ 를 병렬 1 로 다시(마감 뒤가 될 것). 다른 기기도 같은 꼬리를 만나면 같은 방법을 쓸 수 있음 — 판단은 각 기기.
