@@ -322,7 +322,82 @@
         119.99999999999999
       ],
       "PLD_core": 7.20357,
-      "LCD_core": 12.38016
+      "LCD_core": 12.38016,
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 47781,
+        "accessible_nodes": 3930,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2013_ZnCr__lon_3_ASR_4/block1.82/2013_ZnCr__lon_3_ASR_4.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 517.4,
+        "peak_rss_MB": 7801,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 47781,
+        "accessible_nodes": 5861,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2013_ZnCr__lon_3_ASR_4/block1.30/2013_ZnCr__lon_3_ASR_4.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 239.1,
+        "peak_rss_MB": 3796,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      },
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 47781,
+        "accessible_nodes": 4419,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2013_ZnCr__lon_3_ASR_4/block1.65/2013_ZnCr__lon_3_ASR_4.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 805.8,
+        "peak_rss_MB": 12508,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2017[Cu][rob]3[ASR]1",
@@ -339,7 +414,32 @@
         127.102
       ],
       "PLD_core": 4.11066,
-      "LCD_core": 4.79113
+      "LCD_core": 4.79113,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 11622,
+        "accessible_nodes": 113,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2017_Cu__rob_3_ASR_1/block1.65/2017_Cu__rob_3_ASR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 42.2,
+        "peak_rss_MB": 1098,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2019[Zn][pcu]3[FSR]3",
@@ -802,5 +902,5 @@
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 475
+  "elapsed_s": 1275
 }
