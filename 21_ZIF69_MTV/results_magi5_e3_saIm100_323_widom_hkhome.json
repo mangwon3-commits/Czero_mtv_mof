@@ -1,0 +1,30 @@
+{
+ "tag": "saIm100_323",
+ "cif": "charged_v3/saIm100_DDEC6.cif",
+ "protocol": "run_aryl_gcmc.run_one widom (CLAUDE.md §1)",
+ "off_method": "CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)",
+ "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "host": "hkhome",
+ "elapsed_s": 3155,
+ "finished": "2026-11-14 18:26:07",
+ "rows": [
+  {
+   "name": "saIm100_DDEC6",
+   "charges": "on",
+   "temp_K": 323.0,
+   "KH_CO2": 0.000122439,
+   "KH_CO2_err": 1.14703e-05,
+   "dU_CO2": -34.6614735737,
+   "dU_CO2_err": 0.5725181129,
+   "status_CO2": "ok",
+   "KH_N2": 1.69352e-06,
+   "KH_N2_err": 1.21494e-08,
+   "dU_N2": -13.8095017549,
+   "dU_N2_err": 0.0295076302,
+   "status_N2": "ok",
+   "selectivity": 72.29852614672399,
+   "selectivity_err": 6.792883280801885,
+   "Qst_CO2_rt_corrected": 37.347044999314
+  }
+ ]
+}
