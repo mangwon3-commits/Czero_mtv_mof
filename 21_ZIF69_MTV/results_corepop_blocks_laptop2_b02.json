@@ -2720,24 +2720,24 @@
         "pockets": 0,
         "nodes": 49336,
         "accessible_nodes": 5539,
-        "n_spheres": null,
+        "n_spheres": 0,
         "sphere_radii": [],
         "sphere_volume_sum_A3": 0,
         "sphere_volume_pct_of_cell": 0.0,
         "block_file": "corepop_zeo_runs/2019_Cd__pts_3_ASR_1/block1.30/2019_Cd__pts_3_ASR_1.block",
-        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
         "n_block_files": 1,
-        "block_ok": false,
-        "blockpockets_needed": null,
-        "rc": -9,
-        "seconds": 513.6,
-        "peak_rss_MB": 6584,
-        "stopped_by_guard": true,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 670.2,
+        "peak_rss_MB": 9693,
+        "stopped_by_guard": false,
         "pre_counts": {
           "simulate": 0,
-          "network": 1
+          "network": 0
         },
-        "tries": 1
+        "tries": 2
       }
     },
     {
@@ -2762,24 +2762,24 @@
         "pockets": 0,
         "nodes": 49336,
         "accessible_nodes": 4370,
-        "n_spheres": null,
+        "n_spheres": 0,
         "sphere_radii": [],
         "sphere_volume_sum_A3": 0,
         "sphere_volume_pct_of_cell": 0.0,
         "block_file": "corepop_zeo_runs/2019_Cd__pts_3_FSR_1/block1.65/2019_Cd__pts_3_FSR_1.block",
-        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
         "n_block_files": 1,
-        "block_ok": false,
-        "blockpockets_needed": null,
-        "rc": -9,
-        "seconds": 757.9,
-        "peak_rss_MB": 7724,
-        "stopped_by_guard": true,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 656.4,
+        "peak_rss_MB": 7998,
+        "stopped_by_guard": false,
         "pre_counts": {
           "simulate": 0,
-          "network": 1
+          "network": 0
         },
-        "tries": 1
+        "tries": 2
       },
       "r1.82": {
         "gas": "N2",
@@ -2787,24 +2787,27 @@
         "pockets": 2,
         "nodes": 49336,
         "accessible_nodes": 3637,
-        "n_spheres": null,
-        "sphere_radii": [],
-        "sphere_volume_sum_A3": 0,
-        "sphere_volume_pct_of_cell": 0.0,
+        "n_spheres": 2,
+        "sphere_radii": [
+          0.499,
+          0.511
+        ],
+        "sphere_volume_sum_A3": 1.0812423647143783,
+        "sphere_volume_pct_of_cell": 0.020205337291012804,
         "block_file": "corepop_zeo_runs/2019_Cd__pts_3_FSR_1/block1.82/2019_Cd__pts_3_FSR_1.block",
-        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "block_md5": "e6ed5c2bc714e9476726cd0042005324",
         "n_block_files": 1,
-        "block_ok": false,
-        "blockpockets_needed": null,
-        "rc": -9,
-        "seconds": 726.7,
-        "peak_rss_MB": 6380,
-        "stopped_by_guard": true,
+        "block_ok": true,
+        "blockpockets_needed": true,
+        "rc": 0,
+        "seconds": 658.2,
+        "peak_rss_MB": 8019,
+        "stopped_by_guard": false,
         "pre_counts": {
           "simulate": 0,
-          "network": 1
+          "network": 0
         },
-        "tries": 1
+        "tries": 2
       },
       "r1.30": {
         "gas": "water",
@@ -2812,24 +2815,24 @@
         "pockets": 0,
         "nodes": 49336,
         "accessible_nodes": 5539,
-        "n_spheres": null,
+        "n_spheres": 0,
         "sphere_radii": [],
         "sphere_volume_sum_A3": 0,
         "sphere_volume_pct_of_cell": 0.0,
         "block_file": "corepop_zeo_runs/2019_Cd__pts_3_FSR_1/block1.30/2019_Cd__pts_3_FSR_1.block",
-        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
         "n_block_files": 1,
-        "block_ok": false,
-        "blockpockets_needed": null,
-        "rc": -9,
-        "seconds": 749.9,
-        "peak_rss_MB": 6741,
-        "stopped_by_guard": true,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 669.2,
+        "peak_rss_MB": 10020,
+        "stopped_by_guard": false,
         "pre_counts": {
           "simulate": 0,
-          "network": 1
+          "network": 0
         },
-        "tries": 1
+        "tries": 2
       }
     },
     {
@@ -3018,5 +3021,174 @@
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 25216
+  "elapsed_s": 27870,
+  "summary": {
+    "2024[Ni][etb]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Zn][fsc]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2023[Cd][rtl]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2017[Ni][dia]3[FSR]3": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2024[Cd][dia]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2017[Ni][dia]3[ASR]3": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2024[Cd][dia]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Co][jaj]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Zn][fsc]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2023[Ni][dia]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2016[Zn][dia]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2016[Zn][dia]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2023[Ni][dia]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Zn][mog]3[ASR]3": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 3
+    },
+    "2019[Zn][mog]3[FSR]3": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 3
+    },
+    "2017[Zn][unc]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2021[Cd][tfz]3[FSR]3": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Zn][mog]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Zn][mog]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2018[Zn][pcu]3[FSR]15": {
+      "spheres_1.65": null,
+      "spheres_1.82": null,
+      "spheres_1.30": 0
+    },
+    "2018[Zn][pcu]3[ASR]15": {
+      "spheres_1.65": null,
+      "spheres_1.82": null,
+      "spheres_1.30": 0
+    },
+    "2022[Cd][nuc]3[FSR]1": {
+      "spheres_1.65": 9,
+      "spheres_1.82": 4,
+      "spheres_1.30": 0
+    },
+    "2022[Cd][nuc]3[ASR]1": {
+      "spheres_1.65": 9,
+      "spheres_1.82": 4,
+      "spheres_1.30": 0
+    },
+    "2019[Co][apo]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Co][apo]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Cd][ins]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Cd][ins]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2021[Co][svk]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Cd][pts]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 2,
+      "spheres_1.30": 0
+    },
+    "2019[Cd][pts]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 2,
+      "spheres_1.30": 0
+    },
+    "2021[Cd][tfz]3[FSR]2": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2021[Cd][tfz]3[ASR]4": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    }
+  },
+  "all_blocks_ok": false,
+  "n_needing_blockpockets": {
+    "1.65": 2,
+    "1.82": 4,
+    "1.30": 2
+  },
+  "finished": "2026-11-15 01:20:39"
 }
