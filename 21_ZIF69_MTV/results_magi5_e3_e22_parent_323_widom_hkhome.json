@@ -1,0 +1,48 @@
+{
+ "tag": "e22_parent_323",
+ "cif": "charged_v3/e22_parent_DDEC6.cif",
+ "protocol": "run_aryl_gcmc.run_one widom (CLAUDE.md §1)",
+ "off_method": "CIF _atom_site_charge = 0 사본 (골격 전하 0, 흡착질 전하·Ewald 유지)",
+ "ff_md5": "8e8ec933f9013c7e932da04dc256efd3",
+ "host": "hkhome",
+ "elapsed_s": 1229,
+ "finished": "2026-11-14 17:33:31",
+ "rows": [
+  {
+   "name": "e22_parent_DDEC6",
+   "charges": "on",
+   "temp_K": 323.0,
+   "KH_CO2": 0.000311829,
+   "KH_CO2_err": 3.51249e-06,
+   "dU_CO2": -31.8697911558,
+   "dU_CO2_err": 0.0337760024,
+   "status_CO2": "ok",
+   "KH_N2": 5.69302e-06,
+   "KH_N2_err": 4.44992e-08,
+   "dU_N2": -17.2118754915,
+   "dU_N2_err": 0.0342764178,
+   "status_N2": "ok",
+   "selectivity": 54.7739161288736,
+   "selectivity_err": 0.7509782516128031,
+   "Qst_CO2_rt_corrected": 34.555362581414
+  },
+  {
+   "name": "e22_parent_DDEC6_q0",
+   "charges": "off",
+   "temp_K": 323.0,
+   "KH_CO2": 0.000139635,
+   "KH_CO2_err": 6.20294e-07,
+   "dU_CO2": -28.2763506254,
+   "dU_CO2_err": 0.0253317092,
+   "status_CO2": "ok",
+   "KH_N2": 5.09115e-06,
+   "KH_N2_err": 3.17828e-08,
+   "dU_N2": -16.6989431448,
+   "dU_N2_err": 0.0242291675,
+   "status_N2": "ok",
+   "selectivity": 27.427005686338052,
+   "selectivity_err": 0.2101445589525401,
+   "Qst_CO2_rt_corrected": 30.961922051014
+  }
+ ]
+}
