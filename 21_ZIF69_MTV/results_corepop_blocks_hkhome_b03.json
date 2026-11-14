@@ -2410,6 +2410,31 @@
           "network": 1
         },
         "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 27182,
+        "accessible_nodes": 2345,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2022_Zn__pcu_3_ASR_3/block1.30/2022_Zn__pcu_3_ASR_3.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 359.7,
+        "peak_rss_MB": 7774,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
       }
     },
     {
@@ -2477,6 +2502,31 @@
           "network": 1
         },
         "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 6701,
+        "accessible_nodes": 407,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Mn__bpq_3_FSR_1/block1.30/2019_Mn__bpq_3_FSR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 47.2,
+        "peak_rss_MB": 830,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
       }
     },
     {
@@ -2494,7 +2544,32 @@
         90.0
       ],
       "PLD_core": 4.33077,
-      "LCD_core": 5.4427
+      "LCD_core": 5.4427,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 69218,
+        "accessible_nodes": 2465,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Mn__srs_3_ASR_1/block1.65/2019_Mn__srs_3_ASR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 415.1,
+        "peak_rss_MB": 7169,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2023[In][neb]3[FSR]2",
@@ -2566,5 +2641,5 @@
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 10301
+  "elapsed_s": 10763
 }
