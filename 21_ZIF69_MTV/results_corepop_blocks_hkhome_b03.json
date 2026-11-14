@@ -2872,6 +2872,31 @@
           "network": 0
         },
         "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 2,
+        "pockets": 0,
+        "nodes": 71248,
+        "accessible_nodes": 3484,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2020_Co__mab_3_FSR_1/block1.30/2020_Co__mab_3_FSR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 472.1,
+        "peak_rss_MB": 6786,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
       }
     },
     {
@@ -2889,9 +2914,34 @@
         90.0
       ],
       "PLD_core": 5.69127,
-      "LCD_core": 7.50262
+      "LCD_core": 7.50262,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 2,
+        "pockets": 0,
+        "nodes": 71248,
+        "accessible_nodes": 2273,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2020_Co__mab_3_ASR_1/block1.65/2020_Co__mab_3_ASR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 469.1,
+        "peak_rss_MB": 6750,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 13395
+  "elapsed_s": 13867
 }
