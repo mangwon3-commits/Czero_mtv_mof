@@ -1,3 +1,21 @@
+## 2026-11-14 17:33 — [COREPOP-H323] **랩탑 — b01 착수(32종 · Zeo++ 막음 병렬 3 → 스모크 2종 → 323 K 습윤 3성분 GCMC 워커 16 · 1씨앗)** · 사슬 무수정 · 다섯 파일 md5 일치 · 드라이 입력 대조 통과
+**받는 곳**: HKHOME · 클라우드 종합자 · laptop2
+**요약**: ASSIGN_COREPOP_HUMID323_20261114.md(master f48d584f)가 랩탑에 준 첫 묶음 b01 을 이 글 바로 뒤에 띄웁니다. 사슬 corepop_chain.sh 를 저장소 밖(~/.mof_chain/)에 복사해 그대로 쓰고, 랩탑의 실행 트리가 ~/mof_run_1108 이라 REPO 만 env 로 줍니다. 순서는 사슬 그대로입니다(simulate 0 확인 → Zeo++ 96호출 → 막음 ok 구조만 → 스모크 2종 → 본 계산). 워커 16 은 배정 §4 의 값이고 랩탑은 물리 8 · 논리 16 입니다. 값 · 평균 · 순위는 읽지도 적지도 않습니다. b01 이 끝나면 완주 글을 올리고, 그때 남은 묶음 가운데 숫자가 가장 작은 것을 착수 글로 가져갑니다.
+**답 필요**: 아니오
+
+    파일    corepop_humid323_targets.json f0cbc615 · corepop_blocks.py c00cd11a · run_corepop_e_humid3.py e05cbc1b · run_corepop_e_humid3_323.py 75307c47 · corepop_chain.sh ec27c8b3
+            (master f48d584f 에서 git show 로 받음 · 배정 §3 표와 같음). 래퍼 run_znbdt_e_humid3.py 97023663 · run_znbdt_e_humid3_323.py 7f83dc3c · ff_gate.py 9fee09a4 는 실행 트리와 master 가 같음
+            core_pop_cifs.zip 96a5fbf8 · core_pop_annotated.json cbccf2e0 (실행 트리와 master 가 같음)
+    원판비  세 실행기를 원판(core22_blocks_laptop.py c7c8ca40 · run_core22_e_humid3.py d24e8e2d · run_core22_e_humid3_323.py b975bd93)과 diff 로 읽음 — 바뀐 곳은 대상 목록 · 묶음 · 병렬 · 이름 · 반복 수. 조건 줄은 건드린 곳 없음
+    드라이  COREPOP_ZEO_DRY=1 · "입력 대조 통과: zip 524개 중 대상 32/32 · 풀린 파일 md5 = zip 바이트 · 원자 수 = NAtoms (94~392) · 계획 96건(병렬 3)" · CIF 는 ~/.mof_chain/corepop_1114/cifs/
+    명령    REPO=/home/skyjun/mof_run_1108 setsid nohup bash ~/.mof_chain/corepop_chain.sh laptop b01 3 16 < /dev/null > /dev/null 2>&1 &
+    겹침    실행 트리에 corepop_zeo_runs/ · results_corepop_* · humid_wc_runs_v3w_323/corepop_* 없음(처음 띄움 · 이어받기 없음). simulate 0 · network 0 · 메모리 여유 22 GB · C: 여유 115 GB
+    견적    Zeo++ 끝 19:00~20:00(배정 §5 의 랩탑 CORE22 실측 평균 161 s/호출 × 96 ÷ 병렬 3 · 같은 기기 · 다른 구조 · 병렬은 처음) · GCMC 끝 11-15 01:30~04:30(배정 §5 의 6~8 h — HKHOME 실측에서 옮긴 값 · 랩탑의 워커 16 은 실측 없음)
+            묶는 쪽은 작업합 ÷ 워커(32작업 · 2물결)로 보았고, 가장 긴 작업 하나가 얼마나 걸리는지는 랩탑에 자료가 없습니다
+    기록    ~/.mof_chain/corepop_laptop_b01.chain.log · .zeo.log · .smoke.log · .gcmc.log. 랩탑 postman 은 꺼져 있어 결과 반입은 완주 글과 함께 손으로 올립니다
+
+---
+
 ## 2026-11-13 09:19 — [N 보강] **랩탑 — ASSIGN_N2_KPP_20261113.md 읽음 · 랩탑 몫 없음 · 띄운 계산 없음** · laptop2 몫을 넘겨받을 때를 대비해 스모크만 통과시켜 둠(표지 laptopb)
 **받는 곳**: 클라우드 종합자 · laptop2 · HKHOME
 **요약**: 사용자가 랩탑 세션에서 "배정 작업 읽고 수행" 이라고 했고, 배당 §0 에 랩탑 몫은 없습니다. 본 실행은 띄우지 않았습니다. §0 의 조건(laptop2 가 11-13 12:00 까지 착수 글을 못 올리면 랩탑이 laptopb 로 가져감)에 대비해 실행기를 받아 등록된 스모크만 저장소 밖에서 돌렸고 통과했습니다. 12:00 에 master 의 laptop2 우편함을 다시 읽고, 착수 글이 없을 때만 착수 글을 먼저 올린 뒤 띄웁니다. 09:2x 현재 laptop2 의 N 보강 착수 글은 없습니다.
