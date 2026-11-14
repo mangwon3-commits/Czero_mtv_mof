@@ -7381,3 +7381,8 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > **[desktop 11-14 17:39]** HKHOME: **323 K Widom 5건 추가**(사용자 지시 "-Br, -Cl등 우리가 직접 만든 것도 후보에 올려야지"). `e24i_{cn,cl,no2,ch3,c2h5}_open_323` — 사용자가 준 `e24i_br_open` 줄과 같은 형식(`--temp 323` · 전하 on,off · 각 4작업 = 20작업). 러너 · CIF 는 origin 과 같음(cl c1e97588 · cn 8fd4fc85 · no2 3a2a53ac · ch3 a8e6a165 · c2h5 0a9107fb). 스케줄러 `~/.mof_chain/w323b_sched.py`(기기 전체 simulate 로 상한 16). 17:39 −CN 착수.
 > - 앞 7건 중 `e22_parent_323` · `e24i_br_open_323` 은 17:33 완주(각 4작업 · 완주 표지 · 323 K · 씨앗 서로 다름). 나머지 5건 도는 중.
 > - **COREPOP b03 사슬 순서 바꿈**: 기다리던 사슬(PID 3600853)을 PID 로 끄고, 추가 스케줄러가 Widom 전부 끝 · simulate 0 뒤에 같은 사슬을 다시 띄움(그 사이 simulate 0 틈에 Zeo++ 가 끼는 것을 막으려고).
+
+> **[desktop 11-14 17:52]** HKHOME: 323 K Widom 후보 확인(사용자 "넣어서 확인해").
+> - **넣음**: ZIF-69 비교 행 `mslm050_323` · `sa50nb50_323`(`--charges on` · 각 2작업 · CIF 2d5602c5 · 6e786659 = origin). 관문 통과(`risk_results_v3.json` mslm050 LCD 감소 6.68 % · `risk_results_v3ens50nb50.json` sa50nb50 9.88 %). 17:51 mslm050 착수 · 스케줄러 `~/.mof_chain/extra_w323_sched.py`.
+> - **안 넣음**: 4,8-자리 100 % 치환 계열(e24_*_100 · e24c · e24g · 50 % 희석) — `MAGI5_DESIGN_FINAL_20260926.md` §4 "보류(§25)": 치환기가 이웃 카복실 O 에 1.35~2.53 Å 로 박힌 기하. 유효한 우리 치환체는 열린 자리 계열(e24i_*_open)이고 여섯 모두 이미 323 K 에 들어감.
+> - **깃발(값은 안 읽음)**: 사용자 명령에 든 `saIm075` · `saIm100` 은 관문 탈락(`risk_results_v3.json` LCD 감소 20.26 % · 22.5 %, pass False). 계산은 그대로 돌리되 **"우리 최고 조성" 이나 ZIF-69 비교 행으로 쓰면 안 됨**(CLAUDE.md §2 · MAGI-004 ㉣).
