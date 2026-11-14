@@ -7391,3 +7391,6 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > - **−C₂H₅ 는 차단 없음 값이라 그대로 못 씀**: `e24i_c2h5_open` 은 CO₂ · N₂ 탐침 모두 주머니 구 4(`e24i_zeo_runs`) — 규칙(MAGI5_E22_VERDICT §15 · E-24b)대로 막음판 필요. 나머지 넷(Br · Cl · CH₃ · CN)은 구 0, −NO₂ 는 1.65 · 1.82 구 0(물 1.30 만 4) → 차단 없음 Widom 이 맞음.
 > - 그래서 **−C₂H₅ 323 K 막음 Widom** 착수 18:49: `21_ZIF69_MTV/e24i_bp_323_hkhome.py`(d08a0175 · `e24i_bp_desktop.py` e7acead8 무수정 import · TEMP 323 · 폴더 · 결과 이름만) · 4작업 · 입력 `BlockPockets yes` · 323.0 확인 · 결과 `results_e24i_blockpockets_323_hkhome.json`.
 > - **COREPOP b03 다시 시작 예정**: 막음 Widom 이 RASPA 라 b03 Zeo++(18:46 착수)를 18:48 에 PID 로 멈춤(CLAUDE.md §5). 멈추기 직전 postman 이 **중간 막음 파일**(`results_corepop_blocks_hkhome_b03.json`, 2호출 · `finished` 없음)을 f58c2d56 에 반입 — GCMC 실행기는 `finished` 없는 파일을 안 받음. 막음 Widom 끝 · simulate 0 뒤 `~/.mof_chain/after_bp323_b03.sh` 가 b03 사슬을 처음부터 띄우고 완주판으로 덮어씀.
+
+> **[desktop 11-14 19:04]** HKHOME: **−C₂H₅ 323 K 막음 Widom 완주**(18:49~19:03) — `results_e24i_blockpockets_323_hkhome.json`: all_ok True · 4/4 ok · 막음 등식 N 24/24 ×4 · 'Pockets are blocked' · Simulation finished · rc 0 · 씨앗 4개 서로 다름 · temp 323.0 · launcher d08a0175. 포스터 표에서 −C₂H₅ 323 K 는 이 막음판만 씀(차단 없음 `results_magi5_e3_e24i_c2h5_open_323_widom_hkhome.json` 은 서술 참조).
+> - COREPOP b03: 19:03:27 사슬 처음부터 다시 착수(Zeo++ 병렬 2). 18:48 의 중간 막음 파일은 완주판이 덮어씀.
