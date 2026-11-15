@@ -30,6 +30,8 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-15 15:25 · 랩탑  [완료] COREPOP-H323 새 기기 2대 합류용 인계 글(HANDOVER_COREPOP_NEWMACHINE_20261115.md) · corepop_preflight.sh · corepop_post.sh 올림 — 사용자 지시 · 배정 글은 그대로
+
 ## 11-15 15:12 · 랩탑  [진행중] COREPOP-H323 b05 Zeo++ 직렬 재시도 중(첫 물결 가드 kill 43호출) · 견적 고침: Zeo++ 끝 18:40 무렵 · GCMC 끝 11-16 04 ~ 06시
 
 ## 11-15 08:13 · 랩탑  [진행중] COREPOP-H323 b05 착수(가져감 · 32종 · Zeo++ 병렬 3 → 워커 16) — 견적 끝 11-15 20:00 ~ 11-16 01:00(b01 실측에서)
