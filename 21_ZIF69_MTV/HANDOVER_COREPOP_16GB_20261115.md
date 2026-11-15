@@ -105,9 +105,12 @@
 - b06 ~ b10 을 가져가는 기기는 `corepop_chain.sh`(통째로) 대신 `corepop_chain_keys.sh` 로 **그 묶음의 무거운 구조만** 돌립니다.
 - 안 그러면 가벼운 구조가 두 번 돌고, 읽기 스크립트가 "같은 구조가 두 번" 으로 멈춥니다.
 - 키 파일은 분할표에서 이렇게 뽑습니다(예: b06 → 27종).
+  - ⚠ **11-15 23:5x 부터는 pc5 몫(중간 5종 · `HANDOVER_COREPOP_PC5_20261115.md`)을 빼는 아래 판을 씁니다.**
+  - b08 · b09 는 이 한 줄이 21종씩을 냅니다. 같은 파일을 master 에 미리 올려 두었습니다(8f075da3 · 5d475e88).
+  - 옛 판(pc5 몫을 안 뺌)은 b08 · b09 에서 25 · 22종을 내 겹칩니다.
 
       cd ~/mof_project/21_ZIF69_MTV
-      python3 -c "import json,sys; d=json.load(open('corepop_light_keys_b06_b07_b08_b09_b10.json')); b=sys.argv[1]; k=[r['key'] for r in d['rows'] if r['batch']==b and not r['light']]; json.dump({'keys':k,'from':'corepop_light_keys_b06_b07_b08_b09_b10.json','batch':b,'part':'heavy'}, open(f'corepop_rest_keys_{b}.json','w'), ensure_ascii=False); print(b, len(k))" b06
+      python3 -c "import json,sys; d=json.load(open('corepop_light_keys_b06_b07_b08_b09_b10.json')); b=sys.argv[1]; M=set(json.load(open('corepop_medium_keys_pc5_20261115.json'))['keys']); k=[r['key'] for r in d['rows'] if r['batch']==b and not r['light'] and r['key'] not in M]; json.dump({'keys':k,'from':'corepop_light_keys_b06_b07_b08_b09_b10.json','batch':b,'part':'heavy','minus':'corepop_medium_keys_pc5_20261115.json'}, open(f'corepop_rest_keys_{b}.json','w'), ensure_ascii=False); print(b, len(k))" b08
       RASPA_DIR=… REPO=… setsid nohup bash ~/.mof_chain/corepop_chain_keys.sh <기기> corepop_rest_keys_b06.json <Zeo++ 병렬> <워커> < /dev/null > /dev/null 2>&1 &
 
   - Zeo++ 병렬과 워커는 그 기기의 평소 값입니다.

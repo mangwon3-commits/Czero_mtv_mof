@@ -1,0 +1,52 @@
+{
+ "test": "COREPOP-H323 — 메모리 16 GB 기기 pc5 몫(중간 구조)",
+ "rule": "분할표 06e0ffb5 의 무거운 목록(b08 · b09 · b10) 가운데 pred_peak_GB × 1.17(맞춘 식의 보통 잔차) ≤ 6.0 GB 인 구조",
+ "from": "corepop_light_keys_b06_b07_b08_b09_b10.json",
+ "from_md5": "06e0ffb5",
+ "made": "2026-11-15 23:4x HKHOME",
+ "user_decision": "11-15 23:4x \"중간 5종만 맡김\"",
+ "keys": [
+  "2015[V][bpq]3[ASR]1",
+  "2015[V][bpq]3[FSR]1",
+  "2016[Cu][nbo]3[FSR]2",
+  "2014[Zn][unj]3[FSR]1",
+  "2021[Fe][acs]3[ASR]1"
+ ],
+ "rows": [
+  {
+   "key": "2015[V][bpq]3[ASR]1",
+   "batch": "b08",
+   "rank": 234,
+   "cell_volume_A3": 2992.3,
+   "pred_peak_GB": 4.58
+  },
+  {
+   "key": "2015[V][bpq]3[FSR]1",
+   "batch": "b08",
+   "rank": 235,
+   "cell_volume_A3": 2992.3,
+   "pred_peak_GB": 4.58
+  },
+  {
+   "key": "2016[Cu][nbo]3[FSR]2",
+   "batch": "b08",
+   "rank": 237,
+   "cell_volume_A3": 3140.7,
+   "pred_peak_GB": 4.82
+  },
+  {
+   "key": "2014[Zn][unj]3[FSR]1",
+   "batch": "b08",
+   "rank": 243,
+   "cell_volume_A3": 3258.9,
+   "pred_peak_GB": 5.01
+  },
+  {
+   "key": "2021[Fe][acs]3[ASR]1",
+   "batch": "b09",
+   "rank": 278,
+   "cell_volume_A3": 2959.6,
+   "pred_peak_GB": 4.52
+  }
+ ]
+}
