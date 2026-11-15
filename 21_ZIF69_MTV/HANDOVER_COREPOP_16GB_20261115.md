@@ -2,7 +2,7 @@
 
 2026-11-15 18:05 KST · desktop(HKHOME) 작성 · 사용자 지시. 값은 읽지 않음. 계산의 정의(`ASSIGN_COREPOP_HUMID323_20261114.md`)는 그대로입니다. 환경 구축 · 글 올리기 · 함정은 랩탑의 `HANDOVER_COREPOP_NEWMACHINE_20261115.md`(아래 "새 기기 글")를 따르고, **이 글은 16 GB 기기에서 달라지는 것만** 덮어씁니다.
 
-> ⚠ **§5 의 묶음 나누기는 배정 §4("안 가져간 가장 작은 묶음을 통째로")를 바꿉니다.** 사용자가 이 글을 확인하기 전에는 이 기기가 착수 글을 올리지 않습니다. 확인되면 이 줄을 지우고 확인 시각을 적습니다.
+> **사용자 확인 11-15 18:1x** — 선택지 셋(남은 묶음의 가벼운 31종 · 기존 규칙대로 b06 통째 · GCMC 만) 가운데 **"남은 묶음의 가벼운 31종"**. 이 결정으로 배정 §4 가 b06 ~ b10 에 한해 바뀝니다(`ASSIGN_COREPOP_HUMID323_20261114.md` §4-보완). 나누는 선은 분할표 `corepop_light_keys_b06_b07_b08_b09_b10.json`(06e0ffb5 · 한도 6.0 GB)으로 고정했습니다.
 
 ## 0. 사용자 지시 (원문 · HKHOME 세션 11-15)
 - 17:4x "한 로컬에 인계하려는데, 내 계정을 로그인시키는 방식이 제일 좋을까?"
@@ -66,38 +66,54 @@
   - 점검이 실패로 끝나므로 도구가 띄우는 명령을 찍어 주지 않습니다. 명령은 §5 의 것을 씁니다.
   - 점검 마지막의 Zeo++ 드라이(zip 대조 32/32)는 통과해야 합니다.
 
-## 5. 맡을 몫 — 남은 묶음 전부의 "가벼운 구조" (⚠ 사용자 확인 뒤 유효)
+## 5. 맡을 몫 — 남은 묶음 전부의 "가벼운 구조" (사용자 확인 11-15 18:1x)
 
-1. **한도를 잽니다.** 아무것도 안 돌 때(simulate 0 · network 0) 다음 값을 소수 첫째 자리로 내림합니다. 보통 6.0 안팎입니다.
+**분할표** `21_ZIF69_MTV/corepop_light_keys_b06_b07_b08_b09_b10.json` (md5 06e0ffb5)
+- HKHOME 이 11-15 18:10 에 `corepop_light_keys.py`(e2bdd36c)로 한도 6.0 GB 에서 만들었습니다.
+- `keys` 31종이 이 기기 몫이고, `heavy` 105종이 큰 기기 몫입니다. 묶음은 `rows[].batch` 에 적혀 있습니다.
+- 고르는 규칙은 "예측 × 1.46(가장 큰 잔차) ≤ 한도, 그리고 부피 ≤ 6,208 Å³(맞춘 범위)" 입니다.
+- 두 목록은 겹치지 않고, 합치면 대상 136종입니다.
+
+1. **한도를 잽니다.** 아무것도 안 돌 때(simulate 0 · network 0) 다음 값을 소수 첫째 자리로 내림합니다.
 
        awk '/^MemAvailable:/{printf "%.1f\n", $2/1048576 - 5}' /proc/meminfo
 
-2. **안 가져간 묶음을 확인합니다**(새 기기 글 §5-1 의 방법). 11-15 18:00 현재 b06 · b07 · b08 · b09 · b10 은 아무도 안 가져갔습니다. 이미 누가 가져간 묶음은 목록에서 뺍니다.
-3. **키 파일을 만듭니다.** `corepop_light_keys.py`(e2bdd36c)를 씁니다.
-
-       cd ~/mof_project/21_ZIF69_MTV
-       ~/miniconda3/envs/czeromof/bin/python corepop_light_keys.py b06,b07,b08,b09,b10 <한도> --out corepop_light_keys_<기기>.json
-
-   - `keys` 는 이 기기가 막고 돌릴 가벼운 구조입니다. `heavy` 는 큰 기기 몫이고, 묶음별로 `rows[].batch` 에 적힙니다.
-   - 고르는 규칙은 "예측 × 1.46(가장 큰 잔차) ≤ 한도, 그리고 부피 ≤ 6,208 Å³(맞춘 범위)" 입니다.
-4. **착수 글을 먼저 올립니다**(새 기기 글 §6 의 `corepop_post.sh`). 글과 함께 키 파일 `corepop_light_keys_<기기>.json` 을 올립니다.
-   - 글에 적는 것: "b06 ~ b10 의 가벼운 구조 N종을 가져감 · 한도 X GB · 목록은 키 파일".
-   - 올린 뒤 `git fetch` 로 다시 읽습니다. 그사이 누가 b06 등을 통째로 가져갔으면, 그 묶음을 빼고 키 파일을 다시 만듭니다.
-5. **띄웁니다.**
+   - **6.0 이상**이면 분할표를 그대로 씁니다(아래 `<키 파일>` = `corepop_light_keys_b06_b07_b08_b09_b10.json`).
+   - **6.0 미만**이면 자기 한도로 다시 만듭니다:
+     `~/miniconda3/envs/czeromof/bin/python corepop_light_keys.py b06,b07,b08,b09,b10 <한도> --out corepop_light_keys_<기기>.json`
+     분할표의 `keys` 가운데 여기서 빠진 구조는 착수 글에 "내려놓는 구조" 로 이름을 적습니다. 그 구조는 큰 기기 몫에 더해집니다(HKHOME 이 받습니다).
+2. **분할표 이후 누가 무엇을 가져갔는지 확인합니다**(새 기기 글 §5-1 의 방법). 11-15 18:10 현재 b06 ~ b10 은 아무도 안 가져갔습니다.
+   - 다른 기기가 가져가도 그 묶음의 **무거운 구조만** 가져가므로(아래), 이 기기 몫과 겹치지 않습니다.
+3. **착수 글을 먼저 올립니다**(새 기기 글 §6 의 `corepop_post.sh`).
+   - 글에 적는 것: "b06 ~ b10 의 가벼운 구조 N종을 가져감 · 키 파일 이름과 md5 · 잰 한도".
+   - 자기 한도로 다시 만들었으면 그 키 파일도 같이 올립니다.
+4. **띄웁니다.**
 
        mkdir -p ~/.mof_chain && cp ~/mof_project/21_ZIF69_MTV/corepop_chain_keys.sh ~/.mof_chain/
-       RASPA_DIR=$HOME/RASPA/simulations REPO=$HOME/mof_project setsid nohup bash ~/.mof_chain/corepop_chain_keys.sh <기기> corepop_light_keys_<기기>.json 1 $(nproc) < /dev/null > /dev/null 2>&1 &
+       RASPA_DIR=$HOME/RASPA/simulations REPO=$HOME/mof_project setsid nohup bash ~/.mof_chain/corepop_chain_keys.sh <기기> <키 파일> 1 $(nproc) < /dev/null > /dev/null 2>&1 &
 
    - Zeo++ 병렬은 **1**, 워커는 논리 코어 전부입니다.
    - 사슬의 순서: simulate 0 · network 0 → Zeo++(래퍼 `corepop_blocks_keys.py` c2a71d4c · 원판 `corepop_blocks.py` c00cd11a 무수정 import) → 세 탐침 ok 구조만 → 스모크 2종 → 본 계산.
    - 기록은 `~/.mof_chain/corepop_<기기>_heavy.{chain,zeo,smoke,gcmc}.log` 에 남습니다.
    - ⚠ 파일 이름의 `heavy` 는 이 사슬이 원래 무거운 구조용으로 만들어져 붙은 고정 꼬리표입니다. 여기서는 "키 파일로 고른 부분" 이라는 뜻일 뿐입니다. 랩탑이 이미 같은 파일을 받아 md5 를 맞춰 두어서 이름을 바꾸지 않았습니다.
-6. **산출** — 셋 다 postman 글롭 안입니다.
+5. **산출** — 셋 다 postman 글롭 안입니다.
    - `results_corepop_blocks_<기기>_b06_b07_b08_b09_b10_heavy.json`
    - `results_corepop_e_humid3_323_<기기>_b06_b07_b08_b09_b10.json` + `_audit.json`
    - 읽는 법 등록(`COREPOP_H323_READING_REGISTRATION_20261115.md`)은 이 결과를 그대로 받고, 행마다 대상 목록의 묶음으로 나눕니다.
 
-**다른 기기가 할 일 (사용자 확인 뒤)**: 이 기기가 착수 글을 올린 뒤에는, b06 ~ b10 을 가져가는 기기가 `corepop_chain.sh`(통째로) 대신 `corepop_chain_keys.sh` 를 씁니다. 키 파일에는 이 기기 키 파일의 `heavy` 가운데 **그 묶음 것만** 넣습니다. 안 그러면 가벼운 구조가 두 번 돌고, 읽기 스크립트가 "같은 구조가 두 번" 으로 멈춥니다. 키 파일은 `{"keys": [...]}` 모양이고, 만드는 도구가 필요하면 HKHOME 이 올립니다.
+**다른 기기가 할 일 (11-15 18:1x 부터 · 배정 §4-보완)**
+- b06 ~ b10 을 가져가는 기기는 `corepop_chain.sh`(통째로) 대신 `corepop_chain_keys.sh` 로 **그 묶음의 무거운 구조만** 돌립니다.
+- 안 그러면 가벼운 구조가 두 번 돌고, 읽기 스크립트가 "같은 구조가 두 번" 으로 멈춥니다.
+- 키 파일은 분할표에서 이렇게 뽑습니다(예: b06 → 27종).
+
+      cd ~/mof_project/21_ZIF69_MTV
+      python3 -c "import json,sys; d=json.load(open('corepop_light_keys_b06_b07_b08_b09_b10.json')); b=sys.argv[1]; k=[r['key'] for r in d['rows'] if r['batch']==b and not r['light']]; json.dump({'keys':k,'from':'corepop_light_keys_b06_b07_b08_b09_b10.json','batch':b,'part':'heavy'}, open(f'corepop_rest_keys_{b}.json','w'), ensure_ascii=False); print(b, len(k))" b06
+      RASPA_DIR=… REPO=… setsid nohup bash ~/.mof_chain/corepop_chain_keys.sh <기기> corepop_rest_keys_b06.json <Zeo++ 병렬> <워커> < /dev/null > /dev/null 2>&1 &
+
+  - Zeo++ 병렬과 워커는 그 기기의 평소 값입니다.
+  - 착수 글에는 "b06 무거운 구조 27종 · 분할표 06e0ffb5" 를 적고, `corepop_rest_keys_b06.json` 을 같이 올립니다.
+  - 결과 이름은 `results_corepop_blocks_<기기>_b06_heavy.json` · `results_corepop_e_humid3_323_<기기>_b06.json` 입니다.
+- 16 GB 기기가 착수 글에서 "내려놓는 구조" 를 적으면, 그 구조도 큰 기기 몫입니다. HKHOME 이 다음 무거운 키 파일에 합칩니다.
 
 ## 6. 도는 동안 볼 것
 - **호스트 커밋**: 착수 전과 몇 시간마다 봅니다. **80 % 를 넘으면 윈도우 쪽 프로그램을 닫습니다.** 90 % 에 가까우면 사용자에게 알립니다. 사슬은 죽이지 않습니다.
@@ -122,13 +138,14 @@
 
 ## 9. 새 기기 세션에 붙여 넣을 한 줄
 ```
-CLAUDE.md, 21_ZIF69_MTV/HANDOVER_COREPOP_16GB_20261115.md, 21_ZIF69_MTV/HANDOVER_COREPOP_NEWMACHINE_20261115.md, 21_ZIF69_MTV/ASSIGN_COREPOP_HUMID323_20261114.md 를 읽고, 이 기기 이름은 <pc3> 로 해서 16GB 글 §2 설정 → §3 계정 → §4 환경·점검 → §5 대로 가벼운 구조 키 파일을 만들어 착수 글을 올리고 띄워 줘(§5 머리의 사용자 확인이 되어 있는지 먼저 봐)
+CLAUDE.md, 21_ZIF69_MTV/HANDOVER_COREPOP_16GB_20261115.md, 21_ZIF69_MTV/HANDOVER_COREPOP_NEWMACHINE_20261115.md, 21_ZIF69_MTV/ASSIGN_COREPOP_HUMID323_20261114.md 를 읽고, 이 기기 이름은 <pc3> 로 해서 16GB 글 §2 설정 → §3 계정 → §4 환경·점검 → §5 대로 한도를 재고 분할표(또는 자기 한도 키 파일)로 착수 글을 올린 뒤 띄워 줘
 ```
 
 ## 10. 이 글과 함께 올린 파일과 시험
 | 파일 | md5 | 무엇 |
 |---|---|---|
-| `corepop_light_keys.py` | e2bdd36c | §5-3 키 파일 만들기 · 예측식 · 고르는 규칙 |
+| `corepop_light_keys.py` | e2bdd36c | 키 파일 만들기 · 예측식 · 고르는 규칙 |
+| `corepop_light_keys_b06_b07_b08_b09_b10.json` | 06e0ffb5 | §5 분할표(한도 6.0 GB · 가벼움 31 · 무거움 105 · 18:10) |
 | (이미 master) `corepop_chain_keys.sh` · `corepop_blocks_keys.py` | e5f65f5a · c2a71d4c | 사슬 · 래퍼(`HANDOVER_COREPOP_HEAVY_LAPTOP_20261115.md` §4 에서 시험) |
 | (이미 master) `corepop_preflight.sh` · `corepop_post.sh` | 13a6dd41 · 101672d3 | 점검 · 게시(랩탑) |
 
