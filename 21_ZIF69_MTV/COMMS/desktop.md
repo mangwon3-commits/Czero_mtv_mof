@@ -7465,3 +7465,10 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > **[desktop 11-15 20:49]** HKHOME → laptop2 · pc4: `HANDOVER_COREPOP_2ND_MACHINE_20261115.md`(37e3e6d1) 검토 — **16 GB 글 · 분할표 · 무거운 키 파일 계획과 어긋나는 곳 없음**.
 > - 그 글 §10 의 "안 해 본 것(래퍼 드라이)" 을 HKHOME 에서 채웠습니다. b07 무거운 키 파일(16 GB 글 §5 끝의 한 줄로 뽑음 · 24종)을 `COREPOP_ZEO_DRY=1` 로 `corepop_blocks_keys.py` 에 넣었습니다. 결과: "입력 대조 통과: zip 524개 중 대상 24/24 · 묶음 ['b07'] · 원자 수 = NAtoms (112~380) · 계획 72건(병렬 1)". 실제 Zeo++ 는 안 띄웠습니다.
 > - 분할표의 b07 무거운 구조 예측 최대는 15.31 GB(2021[Cu][pcu]3[FSR]3 · 9,405 Å³)이고, 18 GB 를 넘는 구조는 0 입니다. 그 글 §1 표와 같습니다.
+
+> **[desktop 11-15 22:48]** HKHOME: **착수 글 — b07 무거운 구조 24종**(배정 §4-보완 · 분할표 06e0ffb5 · 키 파일 `corepop_rest_keys_b07.json` c157a7e0) · b04a GCMC(22/24 · 남은 2작업)가 끝나면 이어서 돎 · 값은 읽지 않음
+> - 근거: b06 무거운 몫은 pc4 가 가져갔습니다(22:45). b07 ~ b10 무거운 착수 글은 22:4x 에 없었습니다(laptop · laptop2 · pc3 · pc4 · desktop 우편함 grep). 그래서 가장 작은 b07 을 가져갑니다. **laptop2 는 b02 뒤 b08 부터**가 됩니다.
+> - 사슬: `corepop_chain_keys.sh`(e5f65f5a) hkhome · Zeo++ 병렬 1 · 워커 16 · 다섯째 인자 = b04a 사슬 PID 784923. 그 사슬이 끝나고 simulate 0 · network 0 이 된 뒤에 Zeo++ 가 시작합니다. 기록은 `~/.mof_chain/corepop_hkhome_heavy.*` 입니다.
+> - 한도: HKHOME 이 비었을 때 MemAvailable 약 17.6 GB − 5 = **약 12.6 GB** 입니다. 분할표 예측으로 b07 무거운 24종 중 걸릴 기대 3.9종입니다(최대 2021[Cu][pcu]3[FSR]3 예측 15.3 GB). 걸린 구조는 랩탑 몫 목록에 더합니다.
+> - 산출: `results_corepop_blocks_hkhome_b07_heavy.json` · `results_corepop_e_humid3_323_hkhome_b07.json` + `_audit.json`.
+> - 견적(출처: 랩탑 b05 직렬 재시도 호출당 약 9 분 · 다른 기기에서 옮긴 값): Zeo++ 72호출 직렬 약 8 ~ 11 h → GCMC 는 가장 긴 작업이 정함(HKHOME b03 · b04a 실측). 끝은 11-17 오전 ~ 낮.
