@@ -1,0 +1,73 @@
+{
+  "test": "COREPOP-H323 — 다른 기기에서 막음이 안 된 구조(넘길 목록)",
+  "why": "사용자 지시 \"랩탑으로 넘겨\"(11-15 16:1x) — HKHOME(WSL 20 GB)이 막지 못한 구조. HANDOVER_COREPOP_HEAVY_LAPTOP_20261115.md",
+  "made": "2026-11-15 19:06:38",
+  "keys": [
+    "2013[ZnCr][lon]3[ASR]4",
+    "2017[Cu][rob]3[ASR]1",
+    "2013[ZnCr][lon]3[ASR]1",
+    "2017[Zn][apo]3[FSR]1",
+    "2017[Zn][apo]3[ASR]1",
+    "2019[Zn][pts]3[ASR]2",
+    "2023[In][neb]3[ASR]2",
+    "2022[Zn][pcu]3[FSR]2",
+    "2023[In][neb]3[FSR]2",
+    "2023[In][neb]3[FSR]4",
+    "2020[Co][mab]3[FSR]1",
+    "2020[Co][mab]3[ASR]1",
+    "2023[In][neb]3[ASR]4",
+    "2015[Zn][pcu]3[FSR]6",
+    "2015[Zn][pcu]3[ASR]7",
+    "2013[ZnCr][lon]3[ASR]5",
+    "2023[In][neb]3[ASR]3",
+    "2023[In][neb]3[FSR]3",
+    "2024[Zn][hex]3[ASR]1",
+    "2020[Cu][lvt]3[ASR]1"
+  ],
+  "n": 20,
+  "sources": [
+    {
+      "file": "results_corepop_blocks_hkhome_b03a.json",
+      "md5": "b7efc748b83c37ba5b0ceff93e11caf2",
+      "excluded_not_ok": [
+        "2013[ZnCr][lon]3[ASR]4",
+        "2017[Cu][rob]3[ASR]1",
+        "2013[ZnCr][lon]3[ASR]1",
+        "2017[Zn][apo]3[FSR]1",
+        "2017[Zn][apo]3[ASR]1",
+        "2019[Zn][pts]3[ASR]2",
+        "2023[In][neb]3[ASR]2",
+        "2022[Zn][pcu]3[FSR]2",
+        "2023[In][neb]3[FSR]2",
+        "2023[In][neb]3[FSR]4",
+        "2020[Co][mab]3[FSR]1",
+        "2020[Co][mab]3[ASR]1"
+      ],
+      "excluded_reasons": null
+    },
+    {
+      "file": "results_corepop_blocks_hkhome_b04a.json",
+      "md5": "74add2927704578eb662af2a0d09c937",
+      "excluded_not_ok": [
+        "2023[In][neb]3[ASR]4",
+        "2015[Zn][pcu]3[FSR]6",
+        "2015[Zn][pcu]3[ASR]7",
+        "2013[ZnCr][lon]3[ASR]5",
+        "2023[In][neb]3[ASR]3",
+        "2023[In][neb]3[FSR]3",
+        "2024[Zn][hex]3[ASR]1",
+        "2020[Cu][lvt]3[ASR]1"
+      ],
+      "excluded_reasons": {
+        "2023[In][neb]3[ASR]4": "r1.65 실패(rc -9 · 가드 True · 최대 14219 MB)",
+        "2015[Zn][pcu]3[FSR]6": "r1.65 실패(rc -9 · 가드 True · 최대 7660 MB)",
+        "2015[Zn][pcu]3[ASR]7": "r1.65 실패(rc -9 · 가드 True · 최대 8098 MB)",
+        "2013[ZnCr][lon]3[ASR]5": "r1.65 실패(rc -9 · 가드 True · 최대 9758 MB)",
+        "2023[In][neb]3[ASR]3": "r1.65 실패(rc -9 · 가드 True · 최대 7536 MB)",
+        "2023[In][neb]3[FSR]3": "r1.65 실패(rc -9 · 가드 True · 최대 7638 MB)",
+        "2024[Zn][hex]3[ASR]1": "r1.65 실패(rc -9 · 가드 True · 최대 13157 MB)",
+        "2020[Cu][lvt]3[ASR]1": "r1.65 실패(rc -9 · 가드 True · 최대 6991 MB)"
+      }
+    }
+  ]
+}

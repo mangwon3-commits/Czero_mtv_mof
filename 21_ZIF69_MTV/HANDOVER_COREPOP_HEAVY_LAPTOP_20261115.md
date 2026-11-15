@@ -21,7 +21,14 @@
   - 재시도를 멈춥니다.
   - `results_corepop_blocks_hkhome_b04a.json`(세 탐침 ok 부분집합)을 만들고, 그 파일로 HKHOME GCMC 를 띄웁니다.
   - 빠진 구조를 키 파일에 합칩니다.
-- **키 파일은 그때 올립니다. 이 글을 올리는 시점에는 아직 없습니다.** 키 파일이 master 에 오면 우편함에 따로 알립니다.
+- **키 파일은 11-15 19:0x 에 올렸습니다**(86d48956 · 20종). b04 첫 판은 19:05 에 재시도 단계(실패 21호출)에서 멈췄고, `results_corepop_blocks_hkhome_b04a.json` 은 세 탐침 ok 24종입니다. HKHOME GCMC 는 그 24종으로 19:05 에 띄웠습니다.
+  - b04 에서 빠진 8종: 2023[In][neb]3[ASR]4 · 2015[Zn][pcu]3[FSR]6 · 2015[Zn][pcu]3[ASR]7 · 2013[ZnCr][lon]3[ASR]5 · 2023[In][neb]3[ASR]3 · 2023[In][neb]3[FSR]3 · 2024[Zn][hex]3[ASR]1 · 2020[Cu][lvt]3[ASR]1. 모두 CO₂ 탐침이 가드에 걸렸습니다(kill 시점 7.0 ~ 14.2 GB).
+  - 이름과 사유는 b04a 의 `excluded_reasons` 에 있습니다.
+  - 단위셀 부피 예측식(`HANDOVER_COREPOP_16GB_20261115.md` §1-2)으로 20종을 대 보았습니다.
+    - **2013[ZnCr][lon]3 셋(ASR1 · ASR4 · ASR5)은 예측 18.8 ~ 19.0 GB** 입니다. 랩탑에서 혼자 17.8 GB 인 호출이 실패한 적이 있어(b05), 랩탑에서도 막음이 안 될 공산이 큽니다.
+    - In neb 넷(b03 ASR2 · FSR2 · FSR4 · b04 ASR4) · Zn hex 는 예측 12.1 ~ 12.2 GB 입니다. In neb 는 실측(13.9 GB 에서 kill)이 예측보다 크지만, 랩탑 한도 안일 공산이 큽니다.
+    - 나머지 12종(In neb ASR3 · FSR3 포함)은 12 GB 아래입니다.
+    - 예측이므로 확인은 실제 실행에서 합니다.
 
 ## 3. 랩탑이 돌릴 것
 
@@ -32,7 +39,7 @@
 | `corepop_blocks_keys.py` | c2a71d4c | `corepop_blocks.py`(c00cd11a) **무수정 import** 래퍼. 대상만 키 파일의 구조로, 결과 이름은 `results_corepop_blocks_<기기>_<묶음들>_heavy.json`. 측정 · 가드 · 재시도는 원판 그대로입니다 |
 | `corepop_chain_keys.sh` | e5f65f5a | `corepop_chain.sh`(ec27c8b3)와 같은 순서 · 관문으로, 대상만 키 파일입니다. 다섯째 인자로 **기다릴 앞 사슬 PID** 를 받습니다 |
 | `corepop_subset_blocks.py` | f3db3fce | 부분집합 · 키 파일을 만드는 도구입니다. 랩탑은 안 써도 되고, 같은 꼬리를 만나면 쓸 수 있습니다 |
-| `corepop_heavy_keys_20261115.json` | (올릴 때 적음) | 넘기는 구조 목록 |
+| `corepop_heavy_keys_20261115.json` | 86d48956 | 넘기는 구조 목록 — **20종**(b03 12 · b04 8 · 11-15 19:0x) |
 
 ### 3-2. 띄우는 명령 — 랩탑의 b05 사슬이 **끝난 뒤** 돌도록 그 PID 를 줍니다
 Zeo++ 와 RASPA 는 같은 기기에서 동시에 돌리지 않습니다(CLAUDE.md §5). 그런데 앞 사슬의 Zeo++ 끝과 GCMC 시작 사이에 simulate 0 인 틈이 있어서, "simulate 0 기다림" 만으로는 그 틈에 끼어듭니다. 그래서 PID 를 기다립니다.

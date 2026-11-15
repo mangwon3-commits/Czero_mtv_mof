@@ -7449,3 +7449,15 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > - **b06 ~ b10 을 가져가는 기기**는 `corepop_chain.sh`(통째) 대신 `corepop_chain_keys.sh`(e5f65f5a)로 **그 묶음의 무거운 구조만** 돌립니다(예: b06 27종). 키 파일을 뽑는 한 줄과 명령은 `HANDOVER_COREPOP_16GB_20261115.md` §5 끝에 있습니다. 착수 글에는 "bNN 무거운 구조 N종 · 분할표 06e0ffb5".
 > - 통째로 돌리면 가벼운 구조가 두 번 돌고, 읽기 스크립트가 "같은 구조가 두 번" 으로 멈춥니다.
 > - 가져가는 규칙(착수 글 먼저 · 숫자 순)과 b01 ~ b05 는 그대로입니다. `ASSIGN_COREPOP_HUMID323_20261114.md` §4-보완.
+
+> **[desktop 11-15 19:08]** HKHOME COREPOP b04: **막음 첫 판 96호출 끝(15:33 ~ 19:04) · 세 탐침 ok 24/32 · b04a GCMC 24작업 19:05 착수** · 랩탑에 넘길 **키 파일 `corepop_heavy_keys_20261115.json`(86d48956 · 20종)** 올림 · 값은 읽지 않음
+> - 재시도 단계(실패 21호출)에 들어간 19:05 에 사슬 · Zeo++ 를 PID 2099 · 2103 · 777380 로 멈췄습니다. 사용자 지시 "랩탑으로 넘겨" 에 따른 것입니다.
+>   - 원판 `results_corepop_blocks_hkhome_b04.json`(0c6560de · `finished` 없음)은 그대로 둡니다.
+>   - `results_corepop_blocks_hkhome_b04a.json` 은 `corepop_subset_blocks.py` 로 만들었습니다(세 탐침 ok 24행 · .block md5 재대조 · `excluded_reasons`).
+> - b04 에서 빠진 8종: In neb ASR4 · ASR3 · FSR3 · Zn pcu FSR6 · ASR7 · ZnCr lon ASR5 · Zn hex ASR1 · Cu lvt ASR1. 모두 CO₂ 탐침이 가드 kill 됐습니다(7.0 ~ 14.2 GB).
+> - GCMC: 스모크 rc 0 · n_ok 2(19:05:46) → 본 계산 `run_corepop_e_humid3_323.py`(75307c47) · 워커 16 · `COREPOP_F_BATCHES=b04` · 결과 `results_corepop_e_humid3_323_hkhome_b04.json`.
+>   - 견적: b03 실측(같은 기기 · 다른 구조 · 작업 0.68 ~ 14.01 h)에서 옮기면 24작업 · 16워커 → 가장 긴 작업이 정할 공산이 크고 **11-16 05 ~ 10시** 입니다.
+> - 키 파일 20종 = b03 12 + b04 8. 랩탑은 인계 글 §3-2 명령에 이 파일을 쓰면 됩니다.
+>   - 부피 예측으로 **ZnCr lon 셋은 18.8 ~ 19.0 GB** 라 랩탑에서도 안 될 공산이 큽니다. 나머지 17종은 12.2 GB 이하입니다.
+>   - 인계 글 §2 에 적었습니다.
+> - 호스트 커밋: 18:1x 에 86 % 까지 올라 경고했습니다(Notion 앱 13.4 GB). 사용자가 닫은 뒤 18:26 에 44 % 입니다.
