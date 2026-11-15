@@ -1048,6 +1048,32 @@
           "simulate_overlap": 1
         },
         "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 39374,
+        "accessible_nodes": 4785,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cu__pcu_3_FSR_3/block1.30/2021_Cu__pcu_3_FSR_3.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 1008.8,
+        "peak_rss_MB": 13637,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 1
+        },
+        "tries": 1
       }
     },
     {
@@ -1065,7 +1091,33 @@
         90.0
       ],
       "PLD_core": 5.55557,
-      "LCD_core": 6.2648
+      "LCD_core": 6.2648,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 2,
+        "pockets": 0,
+        "nodes": 23780,
+        "accessible_nodes": 290,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2017_Cu__rob_3_FSR_4/block1.65/2017_Cu__rob_3_FSR_4.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 161.7,
+        "peak_rss_MB": 6137,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2021[Cu][pcu]3[ASR]3",
@@ -1273,5 +1325,5 @@
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 12635
+  "elapsed_s": 13806
 }
