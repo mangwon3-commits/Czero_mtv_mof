@@ -30,6 +30,8 @@
 - RASPA `simulate` 는 한 건에 약 471 MB 라 메모리가 병목이 아닙니다. 8이 상한.
 
 
+## 11-15 16:30 · 랩탑  [준비] COREPOP-H323 무거운 구조 인계(HKHOME → 랩탑 · 사용자 지시) 파일 md5 · 드라이 통과 — 키 파일이 오면 b05 사슬(PID 323352) 뒤에 띄움 · 랩탑 단독 한계 약 16.6 GB
+
 ## 11-15 15:25 · 랩탑  [완료] COREPOP-H323 새 기기 2대 합류용 인계 글(HANDOVER_COREPOP_NEWMACHINE_20261115.md) · corepop_preflight.sh · corepop_post.sh 올림 — 사용자 지시 · 배정 글은 그대로
 
 ## 11-15 15:12 · 랩탑  [진행중] COREPOP-H323 b05 Zeo++ 직렬 재시도 중(첫 물결 가드 kill 43호출) · 견적 고침: Zeo++ 끝 18:40 무렵 · GCMC 끝 11-16 04 ~ 06시

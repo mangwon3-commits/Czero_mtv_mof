@@ -1,3 +1,20 @@
+## 2026-11-15 16:30 — [COREPOP-H323] **랩탑 — 무거운 구조 인계(HANDOVER_COREPOP_HEAVY_LAPTOP_20261115.md) 준비 끝 · 키 파일이 오면 b05 사슬(PID 323352) 뒤에 줄 세워 띄웁니다** · 랩탑도 단독 약 16.6 GB 가 한계 · lon 계열은 랩탑에서도 안 될 공산
+**받는 곳**: HKHOME · 클라우드 종합자 · laptop2
+**요약**: HKHOME 이 넘긴 인계 글을 읽고 세 파일을 master 에서 집어 와 md5 를 맞췄습니다. 래퍼는 랩탑에서 13종 시험 목록으로 드라이를 돌려 입력 대조가 통과했습니다. 아직 키 파일이 master 에 없어 사슬은 띄우지 않았습니다. 키 파일이 오면 인계 글 §3-2 의 명령 그대로, 다섯째 인자에 b05 사슬의 bash PID 323352 를 주어 띄웁니다. 그러면 랩탑은 b05 가 끝난 뒤 b06 을 가져가지 않고 이 구조들을 먼저 돕니다. 이 구조들은 메모리 때문에 랩탑만 돌릴 수 있고 b06 부터는 어느 기기든 가져갈 수 있기 때문입니다. 사용자가 순서를 다르게 정하면 바꿉니다.
+**답 필요**: 아니오
+
+    파일    corepop_blocks_keys.py c2a71d4c · corepop_chain_keys.sh e5f65f5a · corepop_subset_blocks.py f3db3fce · corepop_blocks.py c00cd11a (git show 로 실행 트리 /home/skyjun/mof_run_1108 에 둠 · 사슬은 ~/.mof_chain/ 에 사본 · bash -n 통과)
+    대조    corepop_chain_keys.sh 를 corepop_chain.sh(ec27c8b3)와 diff: 대상(키 파일) · 앞 사슬 PID 대기 · network 0 대기 · 기록과 결과 이름만 다름. 스모크와 본 계산 줄은 묶음 이름만 다름
+    드라이  COREPOP_ZEO_DRY=1 · b03a 의 excluded_not_ok 12종 + 2023[In][neb]3[ASR]4 를 담은 시험 목록(랩탑 스크래치, 실제 키 파일 아님) → 입력 대조 통과 rc 0 · 실행 폴더는 안 생김(corepop_zeo_runs 64개 그대로)
+    폴더    위 13종의 corepop_zeo_runs/<파일 이름>/ 은 랩탑 트리에 없음(대상 목록의 file 이름으로 대조) · results_corepop_blocks_laptop_b03* 없음
+    한계    랩탑은 전체 24 GB · 비었을 때 가용 약 21.6 GB · 가드 5,000 MB → 단독 호출 약 16.6 GB 까지. 랩탑에서 혼자 돌려도 실패한 호출의 최대 RSS:
+            b01 2013[ZnCr][lon]3[ASR]6 17.9 GB · b05 2015[Zn][pcu]3[FSR]5 17.8 ~ 17.9 GB · b05 2015[Zn][pcu]3[ASR]6 17.9 ~ 18.7 GB (세 탐침 모두)
+            넘기는 목록의 2013[ZnCr][lon]3[ASR]4 · [ASR]1 은 같은 lon 계열이라 랩탑에서도 실패할 공산이 있습니다(재 보지 않음). 실패 호출은 하나에 약 16분입니다
+            위 세 구조(랩탑이 뺀 것)는 지금 붙어 있는 어느 기기에서도 막음이 안 됩니다. 메모리가 더 큰 기기가 있어야 합니다
+    b05     16:26 기준 직렬 재시도 28/43 호출 끝(ok 22 · 실패 6 = 위 pcu 두 구조) · 사슬 PID 323352 살아 있음 · simulate 0 · network 1
+
+---
+
 ## 2026-11-15 15:25 — [COREPOP-H323] **랩탑 — 새 로컬 기기 2대 합류용 인계 글과 도구 둘을 올림(사용자 지시)** · HANDOVER_COREPOP_NEWMACHINE_20261115.md · corepop_preflight.sh · corepop_post.sh · 배정 글은 그대로
 **받는 곳**: HKHOME · 클라우드 종합자 · laptop2 · 새로 붙는 기기
 **요약**: 사용자가 랩탑 세션에서 새 로컬 기기를 2대 붙이는 기준으로 인계 글과 파일을 쓸 수 있느냐고 물어, 처음 붙는 기기가 이 배정에 합류하는 절차를 글 하나와 도구 둘로 올렸습니다. 계산의 정의(ASSIGN_COREPOP_HUMID323_20261114.md)는 건드리지 않았고, 묶음을 가져가는 규칙도 배정 §4 그대로입니다(예약 없음 · 안 가져간 가장 작은 묶음을 착수 글로). 그래서 기존 세 기기가 하던 방식은 달라지지 않습니다. 새 기기의 이름은 사용자가 정합니다(글의 예는 pc3 · pc4). 지금 안 가져간 묶음은 b06 ~ b10 입니다.
