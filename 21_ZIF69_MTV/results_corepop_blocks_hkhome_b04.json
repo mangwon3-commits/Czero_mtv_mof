@@ -506,7 +506,32 @@
         118.32
       ],
       "PLD_core": 7.00232,
-      "LCD_core": 9.71385
+      "LCD_core": 9.71385,
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 61337,
+        "accessible_nodes": 2712,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2023_In__neb_3_ASR_4/block1.82/2023_In__neb_3_ASR_4.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 591.9,
+        "peak_rss_MB": 7529,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2019[Zn][pts]3[ASR]1",
@@ -952,5 +977,5 @@
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 1449
+  "elapsed_s": 2041
 }
