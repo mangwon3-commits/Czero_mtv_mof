@@ -1,0 +1,50 @@
+{
+ "keys": [
+  "2017[Zn][dia]3[ASR]4",
+  "2018[Co][nia]3[FSR]1",
+  "2019[Cu][nbo]3[ASR]1",
+  "2018[Co][nia]3[ASR]1",
+  "2019[Ni][fcu]3[FSR]1",
+  "2024[Zn][fsc]3[FSR]1",
+  "2024[Zn][fsc]3[ASR]1",
+  "2017[Zn][dia]3[ASR]3",
+  "2017[Zn][dia]3[FSR]3",
+  "2017[Co][tfz]3[FSR]2",
+  "2017[Zn][dia]3[FSR]5",
+  "2017[Zn][dia]3[ASR]5",
+  "2017[Co][tfz]3[ASR]2",
+  "2024[Ni][etb]3[ASR]1",
+  "2024[Cd][nia]3[ASR]1",
+  "2024[Cd][nia]3[FSR]1",
+  "2019[Cu][ssa]3[ASR]1"
+ ],
+ "from": "corepop_rest_keys_b08.json",
+ "from_md5": "8f075da3",
+ "batch": "b08",
+ "part": "heavy · laptop",
+ "set_aside_on_laptop": [
+  {
+   "key": "2007[In][ctn]3[ASR]1",
+   "cell_volume_A3": 8456.2,
+   "est_peak_GB_laptop": 17.4
+  },
+  {
+   "key": "0000[In][ctn]3[ASR]1",
+   "cell_volume_A3": 8493.5,
+   "est_peak_GB_laptop": 17.5
+  },
+  {
+   "key": "2019[Cu][pts]3[ASR]2",
+   "cell_volume_A3": 9098.6,
+   "est_peak_GB_laptop": 18.8
+  },
+  {
+   "key": "2019[GaCu][agw]3[ASR]1",
+   "cell_volume_A3": 11971.8,
+   "est_peak_GB_laptop": 25.1
+  }
+ ],
+ "rule": "랩탑 예측 최대 = 분할표(06e0ffb5) 식 exp(A + B ln V) × 1.27(랩탑에서 잰 6,000 Å³ 초과 셀 5종의 잰 최대 ÷ 식 가운데값 · 1.21 ~ 1.29). 이 값이 랩탑의 빈 기기 한도 16.6 GB 를 넘으면 이 실행에서 미룸",
+ "why": "사용자 지시 2026-11-16 03:0x \"예측 메모리 빠질거 같은 애들은 뒤로 빼. 새벽엔 자야 해서 즉각적 대처가 어려움\". 미룬 구조는 이 실행에서 시도하지 않았고(결과 없음 ≠ 실패), b08 의 나머지가 끝난 뒤에 따로 시도할지 정함",
+ "made": "2026-11-16 laptop"
+}

@@ -1,17 +1,23 @@
 # -*- coding: utf-8 -*-
 """COREPOP-H323 — 다음 묶음의 Zeo++ 막음을 앞 묶음의 GCMC 가 도는 동안 돌리는 판(랩탑 · 사용자 결정 2026-11-16 01:1x "바로 시작해").
-`corepop_blocks_keys_overlap.py`(e80fb0cd)와 같은 일을 하고 `corepop_blocks.py`(c00cd11a)를 **무수정 import** 합니다. 그 판과 다른 것은 셋입니다:
+`corepop_blocks_keys_overlap.py`(e80fb0cd)와 같은 일을 하고 `corepop_blocks.py`(c00cd11a)를 **무수정 import** 합니다. 그 판과 다른 것은 넷입니다:
   ① 같이 돌아도 되는 simulate 수(env COREPOP_ZEO_ALLOW_SIM · 필수 · 정수)를 0 ~ 16 까지 받습니다(그 판은 0 ~ 2). 넘으면 원판과 똑같이 멈춥니다.
   ② 호출 순서를 단위셀 부피가 작은 구조부터로 바꿉니다. GCMC 가 메모리를 쓰는 동안에는 큰 구조가 가드에 걸리므로, 작은 구조를 먼저 끝내고
      큰 구조는 GCMC 작업이 줄어든 뒤에 시도하게 하려는 것입니다. 호출은 서로 독립이라 순서는 값에 닿지 않습니다. 결과 파일의 rows 도 그 순서입니다.
   ③ 끝의 직렬 재시도(원판: 실패한 호출을 한 번에 하나로 한 번 더)는 simulate 가 0 이 될 때까지 기다린 뒤에 합니다. GCMC 와 메모리를 나눠 써서
      가드에 걸린 호출을 "이 기기에서 안 되는 구조" 로 적지 않으려는 것입니다. 재시도는 빈 기기에서 도므로 그 실패는 원판의 실패와 같은 뜻입니다.
+  ④ simulate 가 도는 동안에는 호출이 메모리에 들어갈 때만 띄웁니다(2판 · 사용자 지시 2026-11-16 03:0x "예측 메모리 빠질거 같은 애들은 뒤로 빼. 새벽엔 자야 해서
+     즉각적 대처가 어려움"). 조건은 MemAvailable ≥ 예측 최대 + 7,000 MB 입니다. 예측 최대 = 분할표(06e0ffb5)의 식 exp(A + B ln V) × 1.27 이고, 1.27 은 랩탑에서 잰
+     6,000 Å³ 초과 셀 5종의 (잰 최대 ÷ 식) 가운데값입니다(1.21 ~ 1.29). 7,000 MB = 가드 5,000 + 여유 2,000 입니다. 안 들어가면 60초마다 다시 보고, simulate 가 0 이 되면
+     원판대로 띄웁니다. 그래서 큰 구조는 GCMC 작업이 줄어 메모리가 빈 뒤나 GCMC 가 끝난 뒤에 돕니다. 기다린 시간과 그때의 여유는 호출마다 'overlap_gate' 에 남깁니다.
+     (1판 6fab8cd3 은 이 조건 없이 띄우고 가드에 맡겼습니다. 1판은 한 번도 실제로 돌지 않았습니다.)
 측정 · 파싱 · 메모리 가드(새 호출은 MemAvailable ≥ 8,000 MB · 호출 중 < 5,000 MB 면 kill) · 실패 표지 · 결과 이름은 그대로입니다.
 실제 simulate 수는 호출마다 pre_counts 의 'simulate_overlap' 에 남기고, 첫 시도에서 실패한 호출은 결과 파일 머리 'overlap.first_pass_failed' 에 남깁니다.
 사용: COREPOP_MACHINE=laptop COREPOP_KEYS_FILE=<키 파일> COREPOP_ZEO_PAR=1 COREPOP_ZEO_ALLOW_SIM=16 python corepop_blocks_keys_overlap2.py   (COREPOP_ZEO_DRY=1 이면 입력 대조 · 계획만)
 """
 import hashlib
 import json
+import math
 import os
 import sys
 import time
@@ -50,6 +56,13 @@ _orig_one_call = cb.one_call
 SEEN = []
 FIRST_FAIL = []
 WAIT_S = int(os.environ.get('COREPOP_ZEO_RETRY_POLL_S', '60'))
+FIT_A, FIT_B = -6.918700059576604, 1.0544304677782175     # 분할표 corepop_light_keys_b06_b07_b08_b09_b10.json(06e0ffb5) 'fit' · GB = exp(A + B ln V[Å³])
+EST_RATIO = 1.27                                           # 랩탑 실측: 6,000 Å³ 초과 셀 5종의 (잰 최대 ÷ 식) 가운데값(1.21 ~ 1.29)
+FIT_MARGIN_MB = 7000                                       # 가드 5,000 + 여유 2,000
+
+
+def est_peak_mb(row):
+    return EST_RATIO * math.exp(FIT_A + FIT_B * math.log(row['cell_volume_A3'])) * 1024
 
 
 def counts():
@@ -81,7 +94,20 @@ def one_call(row, r):
                 print(f"  재시도 대기: simulate 0 이 될 때까지 기다림({row['key']} r={r:.2f} 부터)", flush=True)
             time.sleep(WAIT_S)
             waited = round(time.time() - t0)
+    est = est_peak_mb(row)
+    gate_wait, told = 0, False
+    if not retry:                                   # ④ simulate 가 도는 동안에는 메모리에 들어갈 때만
+        t1 = time.time()
+        while _orig_counts()['simulate'] > 0 and cb.avail_mb() < est + FIT_MARGIN_MB:
+            if not told:
+                print(f"  메모리 대기: {row['key']} r={r:.2f} 예측 최대 {est:.0f} MB + {FIT_MARGIN_MB} MB > 여유 {cb.avail_mb()} MB — 들어갈 때까지 또는 simulate 0 까지 기다림", flush=True)
+                told = True
+            time.sleep(WAIT_S)
+            gate_wait = round(time.time() - t1)
+    gate = {'est_peak_MB': round(est), 'margin_MB': FIT_MARGIN_MB, 'waited_s': gate_wait, 'avail_MB_before': cb.avail_mb(),
+            'simulate_before': _orig_counts()['simulate']}
     x = _orig_one_call(row, r)
+    x['overlap_gate'] = gate
     if retry:
         x['retry_waited_for_simulate_0_s'] = waited
     elif not x['block_ok']:
@@ -96,14 +122,15 @@ cb.one_call = one_call
 
 if __name__ == '__main__':
     print(f"무거운 구조 {len(cb.KEYS)} · 묶음 {BATS} · 키 파일 {os.path.basename(KF)} · 결과 {os.path.basename(cb.OUT)} · 병렬 {cb.PAR} · "
-          f"같이 돌아도 되는 simulate ≤ {ALLOW} · 부피 작은 순 · 재시도는 simulate 0 뒤", flush=True)
+          f"같이 돌아도 되는 simulate ≤ {ALLOW} · 부피 작은 순 · simulate 가 돌 때는 여유 ≥ 예측 최대 + {FIT_MARGIN_MB} MB 일 때만 · 재시도는 simulate 0 뒤", flush=True)
     rc = cb.main()
     if os.path.exists(cb.OUT) and not cb.DRY:
         d = json.load(open(cb.OUT, encoding='utf-8'))
         d['overlap'] = {'allow_simulate': ALLOW, 'simulate_seen_max': max(SEEN) if SEEN else None, 'first_pass_failed': FIRST_FAIL,
                         'order': '단위셀 부피 작은 순(원판은 대상 순위 순)', 'retry': '직렬 재시도는 simulate 0 을 기다린 뒤(원판은 바로)',
+                        'gate': f'simulate 가 도는 동안에는 MemAvailable ≥ 예측 최대(분할표 식 × {EST_RATIO}) + {FIT_MARGIN_MB} MB 일 때만 띄움 · 호출마다 overlap_gate',
                         'why': '사용자 결정 2026-11-16 01:1x "바로 시작해" — 앞 묶음(무거운 구조 b03 · b04)의 GCMC 가 도는 동안 다음 묶음의 Zeo++ 를 같이 돌림'
-                               '(CLAUDE.md §5 의 동시 금지를 이 묶음에서 풂). 호출마다 pre_counts.simulate_overlap 이 실제 simulate 수',
+                               '(CLAUDE.md §5 의 동시 금지를 이 묶음에서 풂). 03:0x "예측 메모리 빠질거 같은 애들은 뒤로 빼" — 메모리 조건과 키 파일의 미룬 구조. 호출마다 pre_counts.simulate_overlap 이 실제 simulate 수',
                         'wrapper': 'corepop_blocks_keys_overlap2.py'}
         tmp = cb.OUT + '.tmp'
         json.dump(d, open(tmp, 'w', encoding='utf-8'), indent=2, ensure_ascii=False)
