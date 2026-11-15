@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """COREPOP-H323 읽는 법 — `COREPOP_H323_READING_REGISTRATION_20261115.md` 의 계산을 그대로 하는 스크립트.
 값을 보기 전(자료 0건)에 등록 문서와 함께 커밋. 등록 뒤에는 고치지 않음 — 고칠 일이 생기면 새 등록(CLAUDE.md §2).
+보완 1(자료 0건 · 2026-11-15): 막음 없는 구조만의 민감도 판 · 판정 구간을 Fisher z(Bonett–Wright)로 · 부트스트랩은 참고.
 
 물음 하나: 298 K 건조 Widom 선택도(§AV 우리 자, `core_pop_annotated.json` 의 `selectivity`) 순서가
 323 K 습윤 3성분 선택도(결과 파일의 `S_humid`)에서도 유지되는가.
@@ -11,6 +12,7 @@
 """
 import hashlib
 import json
+import math
 import os
 import random
 import statistics as st
@@ -78,6 +80,18 @@ def boot_ci(rows, fn, seed):
     return pct(out, 0.025), pct(out, 0.975)
 
 
+def fisher_bw(rows):
+    """보완 1: 판정 구간 = Spearman ρ 의 Fisher z 95 % 구간, 분산은 Bonett–Wright (1 + ρ²/2)/(n − 3).
+    무관 자료 보정 시험(n 16 · 30 · 48 · 80, 각 4,000회)에서 한쪽 거짓 양성 1.9 ~ 2.6 % — 백분위 부트스트랩은 n 48 에서 5.0 % 였음."""
+    r = spearman(rows)
+    n = len(rows)
+    if not (abs(r) < 1) or n < 4:
+        return float('nan'), float('nan')
+    se = math.sqrt((1 + r * r / 2) / (n - 3))
+    z = math.atanh(r)
+    return math.tanh(z - 1.959964 * se), math.tanh(z + 1.959964 * se)
+
+
 def median_s(rows):
     return st.median(r['S'] for r in rows)
 
@@ -130,8 +144,12 @@ def load(paths):
                 excluded.append({'key': k, 'name': r.get('name'), 'why': why})
                 continue
             flag = (Ne / N > FLAG_N2) or (Se / S > FLAG_S)
+            bl, bc = r.get('input_blockpockets_lines'), r.get('blocked_components')          # 보완 1: 막음 표지
+            if not isinstance(bl, int) or not isinstance(bc, list) or (bl > 0) != bool(bc):
+                raise SystemExit(f'!! 막음 표지가 없거나 서로 어긋남({k}: input_blockpockets_lines {bl!r} · blocked_components {bc!r}) — 계산 안 함')
             rows.append({'key': k, 'batch': T[k]['batch'], 'dry_rank': T[k]['rank'], 'dry_sel': A[k]['selectivity'],
-                         'S': S, 'S_err': Se, 'N2_rel': Ne / N, 'S_rel': Se / S, 'flag': flag, 'file': os.path.basename(p)})
+                         'S': S, 'S_err': Se, 'N2_rel': Ne / N, 'S_rel': Se / S, 'flag': flag, 'blocked': bool(bc),
+                         'file': os.path.basename(p)})
     missing = sorted((T[k]['rank'], k) for k in T if T[k]['batch'] in batches and k not in seen)
     return rows, excluded, files, sorted(batches), [{'dry_rank': r, 'key': k} for r, k in missing]
 
@@ -143,17 +161,30 @@ def main(paths):
     out = {'registration': REG, 'script_md5': md5(os.path.abspath(__file__)), 'made': time.strftime('%F %T'),
            'files': files, 'batches': batches, 'n_included': len(rows), 'excluded': excluded,
            'missing_from_results': missing, 'n_missing': len(missing),
-           'boot': {'seed': SEED, 'n': NBOOT, 'ci': 'percentile 95 %'}}
+           'ci_rule': 'ρ 판정 구간 = Fisher z 95 % · Bonett–Wright 분산(보완 1). ci95_bootstrap_ref 는 참고(판정에 안 씀)',
+           'boot': {'seed': SEED, 'n': NBOOT, 'ci': 'percentile 95 % — ρ 는 참고 · 묶음 중앙값 구간에 씀'}}
     prim = spearman(rows)
-    lo, hi = boot_ci(rows, spearman, SEED)
-    out['primary'] = {'rows': 'all included (flag 포함)', 'n': len(rows), 'spearman_rho': prim, 'ci95': [lo, hi], 'verdict': verdict(lo, hi)}
+    lo, hi = fisher_bw(rows)                                      # 보완 1: 판정 = Fisher z(Bonett–Wright) · 부트스트랩은 참고
+    out['primary'] = {'rows': 'all included (flag 포함)', 'n': len(rows), 'spearman_rho': prim, 'ci95': [lo, hi],
+                      'ci95_bootstrap_ref': list(boot_ci(rows, spearman, SEED)), 'verdict': verdict(lo, hi)}
     nf = [r for r in rows if not r['flag']]
     if len(nf) >= 10:
         p2 = spearman(nf)
-        l2, h2 = boot_ci(nf, spearman, SEED + 1)
+        l2, h2 = fisher_bw(nf)
         out['sensitivity_no_flag'] = {'n': len(nf), 'flagged': [r['key'] for r in rows if r['flag']],
-                                      'spearman_rho': p2, 'ci95': [l2, h2], 'verdict': verdict(l2, h2)}
+                                      'spearman_rho': p2, 'ci95': [l2, h2], 'ci95_bootstrap_ref': list(boot_ci(nf, spearman, SEED + 1)),
+                                      'verdict': verdict(l2, h2)}
         out['flag_sensitive'] = verdict(lo, hi).split(' — ')[0] != verdict(l2, h2).split(' — ')[0]
+    nb = [r for r in rows if not r['blocked']]                    # 보완 1: 323 K 에서 어느 성분도 막지 않은 구조만(298 K 건조도 막음 없음)
+    out['sensitivity_no_block'] = {'n': len(nb), 'blocked': [r['key'] for r in rows if r['blocked']]}
+    if len(nb) >= 10:
+        p3 = spearman(nb)
+        l3, h3 = fisher_bw(nb)
+        out['sensitivity_no_block'].update({'spearman_rho': p3, 'ci95': [l3, h3], 'ci95_bootstrap_ref': list(boot_ci(nb, spearman, SEED + 2)),
+                                            'verdict': verdict(l3, h3)})
+        out['block_sensitive'] = verdict(lo, hi).split(' — ')[0] != verdict(l3, h3).split(' — ')[0]
+    else:
+        out['sensitivity_no_block']['verdict'] = '계산 안 함 — 막음 없는 행 10 미만'
     T = {r['key']: r for r in json.load(open(TGT, encoding='utf-8'))['rows']}
     per = []
     for i, b in enumerate(batches):
@@ -192,6 +223,11 @@ def main(paths):
     if 'sensitivity_no_flag' in out:
         s = out['sensitivity_no_flag']
         print(f"깃발 뺀 ρ = {s['spearman_rho']:.3f}  [{s['ci95'][0]:.3f}, {s['ci95'][1]:.3f}] (n {s['n']}, 깃발 {len(s['flagged'])}) · 깃발에 민감 {out['flag_sensitive']}")
+    s = out['sensitivity_no_block']
+    if 'spearman_rho' in s:
+        print(f"막음 없는 구조만 ρ = {s['spearman_rho']:.3f}  [{s['ci95'][0]:.3f}, {s['ci95'][1]:.3f}] (n {s['n']}, 막음 {len(s['blocked'])}) · 막음에 민감 {out['block_sensitive']}")
+    else:
+        print(f"막음 없는 구조만: {s['verdict']} (n {s['n']})")
     for e in per:
         ci = e.get('median_ci95')
         print(f"  {e['batch']}: n {e['n']} · 빠짐 {e['n_missing']} · 중앙 S {e.get('median_S', float('nan')):.2f}"
