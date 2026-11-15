@@ -1,3 +1,23 @@
+## 2026-11-15 19:14 — [COREPOP-H323] **랩탑 — 무거운 구조(b03 · b04) 착수 글: 넘겨받은 20종 가운데 17종을 b05 사슬(PID 323352) 뒤에 줄 세웁니다 · 2013[ZnCr][lon]3 셋(ASR1 · ASR4 · ASR5)은 랩탑에서 시도하지 않습니다** · 키 파일 corepop_heavy_keys_laptop_20261115.json a828968a · 이 글 바로 뒤에 띄웁니다
+**받는 곳**: HKHOME · 클라우드 종합자 · laptop2
+**요약**: HKHOME 이 올린 키 파일(corepop_heavy_keys_20261115.json 86d48956 · 20종)을 받아 대조했습니다. 그 가운데 lon 셋은 랩탑에서 돌리지 않기로 했습니다. 단위셀 부피가 11,452 ~ 11,517 Å³ 로, 랩탑이 b01 에서 혼자 돌려도 세 탐침 모두 가드에 걸린 2013[ZnCr][lon]3[ASR]6(11,497 Å³ · kill 시점 17.9 GB)과 같은 셀이기 때문입니다. 병렬 1 이면 첫 판과 재시도가 같은 조건이라 실패 호출 하나가 약 16분씩 두 번 돕니다. 셋이면 9호출 × 2 × 16분 ≈ 4.8 h 를 논리 16 가운데 1 만 쓰며 보내게 됩니다. 그래서 랩탑은 17종 키 파일을 따로 만들어 돌립니다. 셋은 실패 표지가 아니라 시도하지 않은 것으로 남습니다. 사용자나 HKHOME 이 셋도 시도하라고 정하면, b05 가 끝나기 전에는 기다리는 사슬을 PID 로 내리고 20종 파일로 바꿔 띄우면 됩니다(비용 없음). 값은 읽지 않습니다.
+**답 필요**: 아니오(lon 셋을 랩탑에서 시도해야 한다고 보시면 알려 주십시오)
+
+    키 파일 corepop_heavy_keys_laptop_20261115.json a828968a — keys 17 · not_attempted_on_laptop 3 · from corepop_heavy_keys_20261115.json 86d48956
+    파일    corepop_blocks_keys.py c2a71d4c · corepop_chain_keys.sh e5f65f5a · corepop_blocks.py c00cd11a · corepop_humid323_targets.json f0cbc615 (master 와 같음 · 무수정)
+    드라이  래퍼 COREPOP_ZEO_DRY=1: 17종 · 묶음 b03 · b04 · 입력 대조 통과 · 계획 51호출 · 병렬 1 · rc 0 (20종 원본 파일도 rc 0 · 60호출)
+            사슬의 묶음 읽기 한 줄을 따로 돌려 b03,b04 를 확인. 사슬 전체는 랩탑에서 돌려 보지 않았습니다(HKHOME 이 대역으로 앞부분 · 뒷부분을 시험)
+    폴더    17종의 corepop_zeo_runs/<파일 이름>/ 없음 · results_corepop_*b03* 없음 · ~/.mof_chain/corepop_laptop_heavy.* 없음
+    명령    REPO=/home/skyjun/mof_run_1108 setsid nohup bash ~/.mof_chain/corepop_chain_keys.sh laptop corepop_heavy_keys_laptop_20261115.json 1 16 323352 < /dev/null > /dev/null 2>&1 &
+            PID 323352 = bash /home/skyjun/.mof_chain/corepop_chain.sh laptop b05 3 16 (ps -eo pid,args 로 확인)
+    산출    results_corepop_blocks_laptop_b03_b04_heavy.json · results_corepop_e_humid3_323_laptop_b03_b04.json + _audit.json
+    부피    17종 가운데 큰 것: In neb 여섯 7,419 ~ 7,529 Å³ · Zn hex 7,560 Å³. 랩탑에서 ok 였던 가장 큰 셀은 7,043 Å³(14.0 GB) · 6,984 Å³(14.5 GB)이고 실패한 가장 작은 셀은 9,960 Å³ 입니다. 그 사이라 일곱 구조는 될지 재 보아야 압니다
+    견적    시작 = b05 사슬 끝(견적 11-16 04:00 ~ 05:30) · Zeo++ 51호출 직렬 7 ~ 10 h(b05 직렬 재시도 실측: ok 6.9 ~ 11.6 분 · 실패 16분 × 2 · 같은 기기 · 다른 구조) → GCMC 착수 11-16 11:00 ~ 15:30
+            GCMC 는 작업 17 이하 · 워커 16 이라 가장 긴 작업 하나가 정합니다. b01 실측 작업 시간 1.3 ~ 10.9 h(같은 기기 · 다른 구조) → 끝 11-16 저녁 ~ 11-17 02시
+    그동안 랩탑은 b06 ~ b10 을 가져가지 않습니다
+
+---
+
 ## 2026-11-15 18:36 — [COREPOP-H323] **랩탑 — b05 Zeo++ 끝(18:32 · 10 h 19 m) · 세 탐침 ok 30/32 · 스모크 2/2 · GCMC 30작업 착수(18:32 · 워커 16)** · 뺀 구조 둘: 2015[Zn][pcu]3[FSR]5 · 2015[Zn][pcu]3[ASR]6 · 견적 끝 11-16 04:00 ~ 05:30
 **받는 곳**: HKHOME · 클라우드 종합자 · laptop2
 **요약**: b05 의 Zeo++ 막음이 18:32:25 에 끝났습니다. 32종 가운데 30종이 세 탐침 모두 ok 이고, 사슬이 그 30종으로 스모크(2종 · rc 0)를 지나 본 계산을 띄웠습니다. 빠진 두 구조는 혼자 돌려도 호출 하나가 17.8 ~ 18.7 GB 까지 올라 가드에 걸렸습니다. 랩탑의 단독 한계(약 16.6 GB)를 넘으므로 랩탑에서는 다시 돌려도 같습니다. 사슬과 실행기는 손대지 않았습니다. 값은 읽지 않았습니다.
