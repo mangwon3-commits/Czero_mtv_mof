@@ -7400,3 +7400,11 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > - 빠진 12구조(`excluded_not_ok`)는 GCMC 뒤 Zeo++ 를 병렬 1 로 다시(마감 뒤가 될 것). 다른 기기도 같은 꼬리를 만나면 같은 방법을 쓸 수 있음 — 판단은 각 기기.
 
 > **[desktop 11-15 02:07]** HKHOME: **COREPOP b04 착수 글(가져감)** — 배정 글 §4 "다음 묶음은 끝난 기기가 착수 글로". b03 GCMC 가 16/20 완주 표지(02:04)이고 남은 4작업이 끝나 simulate 0 이 되면 `~/.mof_chain/corepop_chain.sh hkhome b04 2 16`(ec27c8b3) 이 Zeo++ 부터 시작(사슬은 지금 띄워 simulate 0 을 기다리는 중). 마감(11-15 오전) 뒤에 끝날 묶음 — 끝난 만큼 씀.
+
+> **[desktop 11-15 14:45]** HKHOME COREPOP b03: **GCMC 20/20 완주**(11-14 23:05 ~ 11-15 14:43) · 결과 `results_corepop_e_humid3_323_hkhome_b03.json`(md5 6604e3d3) + `_audit.json`(80019204). 판정 없음 · 해석 없음.
+> - 표지: 행 20 · ok 20 · `.data` `Simulation finished` 20/20 · rc 0 20/20 · 씨앗 20개 서로 다름 · 파일 이름 온도 323.000000 · y 0.15/0.111141/0.738859 · 100 kPa · N₂ 출력 20/20 · not-found 0 · core_key = `b03a` 20구조와 같음. 사슬 감사 `{"n": 20, "n_ok": 20, "seeds_distinct": true, "loading_line_counts_all_1": true, "component2_N2_seen_all": true}`.
+> - 작업 시간 0.68 ~ 14.01 h(중앙 2.27). 가장 긴 셋: 2024[Zn][srs]3[ASR]2 14.01 h · 2019[Mn][srs]3[ASR]1 7.26 h · 2022[Zn][pcu]3[FSR]1 3.94 h. 벽시계는 가장 긴 작업 하나가 정함(06:21 부터 15스레드 유휴).
+> - **문턱 표지(넘었는지만)**: 결과 머리의 `thresholds_registered`(래퍼 `run_znbdt_e_humid3.py:341` 에서 물려온 문자열 "N₂ 상대 ± > 20 % 또는 S_humid 상대 ± > 10 % → 사이클 연장안을 사용자에게") 를 넘은 행은 **2024[Zn][srs]3[ASR]2 하나**(두 조건 다). 나머지 19행은 안 넘음. 이 문턱이 COREPOP 에도 걸리는지 · 그 행을 어떻게 쓸지는 종합자 · 사이클 연장은 CLAUDE.md §1 고정값이라 사용자 결정 — 사용자에게 물음.
+> - 정직 표지: 끝을 확인하려고 `corepop_hkhome_b03.gcmc.log` 끝 줄을 열어 값 줄 여섯이 화면에 찍혔음. 순위 · 비교에 쓰지 않음.
+> - **b04**: 사슬이 14:44:07 "simulate 0 — Zeo++ 착수"(병렬 2). 견적(b03 실측 · 같은 기기 · 다른 구조): 막음 ~4 h → GCMC ~7 h → 11-16 01~02시, 긴 작업이 끼면 아침.
+> - b03 의 빠진 12구조(`excluded_not_ok`)는 b04 뒤 Zeo++ 병렬 1 로.
