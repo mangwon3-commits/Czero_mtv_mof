@@ -1,0 +1,112 @@
+{
+ "audit_summary": {
+  "n": 4,
+  "n_ok": 4,
+  "seeds_distinct": true,
+  "loading_line_counts_all_1": true,
+  "component2_N2_seen_all": true
+ },
+ "smoke_ref": null,
+ "rows": [
+  {
+   "name": "corepop_2016_Cu__nbo_3_FSR_2_e3r1",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1794764230,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 3,
+   "block": {
+    "CO2": {
+     "n_blocked": 32,
+     "blocked_line": true,
+     "block_file": "blk_co2.block",
+     "n_spheres": 2,
+     "n_cells": 16,
+     "expected_n_blocked": 32,
+     "n_blocked_eq_spheres_x_cells": true
+    },
+    "N2": {
+     "n_blocked": 32,
+     "blocked_line": true,
+     "block_file": "blk_n2.block",
+     "n_spheres": 2,
+     "n_cells": 16,
+     "expected_n_blocked": 32,
+     "n_blocked_eq_spheres_x_cells": true
+    },
+    "water": {
+     "n_blocked": 32,
+     "blocked_line": true,
+     "block_file": "blk_water.block",
+     "n_spheres": 2,
+     "n_cells": 16,
+     "expected_n_blocked": 32,
+     "n_blocked_eq_spheres_x_cells": true
+    }
+   }
+  },
+  {
+   "name": "corepop_2015_V__bpq_3_ASR_1_e3r1",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1794764245,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 0,
+   "block": null
+  },
+  {
+   "name": "corepop_2015_V__bpq_3_FSR_1_e3r1",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1794764260,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 0,
+   "block": null
+  },
+  {
+   "name": "corepop_2021_Fe__acs_3_ASR_1_e3r1",
+   "ok": true,
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "returncode": 0,
+   "seed": 1794764275,
+   "stderr_not_found": false,
+   "net_charge_ok": true,
+   "input_components": 3,
+   "input_blockpockets_lines": 0,
+   "block": null
+  }
+ ]
+}

@@ -1,3 +1,26 @@
+## 2026-11-16 05:30 — [COREPOP-H323] **pc5 — 완주: b08 · b09 중간 구조 4종 GCMC(03:15 · 감사 n 4 · n_ok 4 · 씨앗 서로 다름)** · 결과 JSON 과 감사 JSON 첨부 · 이 기기의 COREPOP 몫 끝 · 값은 옮기지 않았습니다
+**받는 곳**: HKHOME · 클라우드 종합자 · 랩탑 · laptop2 · pc3 · pc4 · 사용자
+**요약**: 바로 앞 Zeo++ 끝 글의 막음 ok 4종을 스모크 뒤 한 물결(작업 4 · 워커 16)로 돌려 03:15:19 에 마쳤습니다. 감사 줄의 다섯 표지가 모두 참이고, 행 4개 모두 완주 표지(Simulation finished)가 있습니다. 2014[Zn][unj]3[FSR]1 은 막음이 없어 이 결과에 없습니다(앞 글 · 큰 기기 몫으로 돌려보냄). 키 파일 밖 구조는 돌리지 않았고, 이 기기에 배정된 몫은 여기서 끝입니다.
+**답 필요**: 아니오(이 기기의 다음 일은 사용자 · HKHOME 이 정합니다)
+
+    감사    chain.log 그대로: "2026-11-16 03:15:19 본 계산 끝 rc=0 · 감사 {"n": 4, "n_ok": 4, "seeds_distinct": true, "loading_line_counts_all_1": true, "component2_N2_seen_all": true}"
+    행      결과 JSON rows 4 · runner_status ok 4 · finished True 4 · ok True 4 · net_charge_ok True 4
+            씨앗 1794764230 · 1794764245 · 1794764260 · 1794764275(서로 다름)
+            실행 폴더 humid_wc_runs_v3w_323/corepop_e3_323_pc5_b08_b09/runs 4 · Simulation finished 4/4
+    관문    gcmc.log · smoke.log 둘 다 force_field_mixing_rules.def md5 8e8ec933 일치
+    작업    LPT 순 2016[Cu][nbo]3[FSR]2(N_super 2,928 · 막음 CO2 · N2 · water) → 2015[V][bpq]3[ASR]1 · [FSR]1(각 1,216 · 막음 없음) → 2021[Fe][acs]3[ASR]1(832 · 막음 없음)
+            작업 시간(02:37:09 착수 → 각 .data 의 마지막 쓰기 시각 · 근사): Fe acs 0.34 h · V bpq ASR 0.35 h · V bpq FSR 0.35 h · Cu nbo 0.64 h(가장 긺)
+            벽시계 38 m 10 s — 가장 긴 작업 하나(Cu nbo)가 정함 · 작업합 1.67 h ÷ 워커 16 = 0.10 h 보다 긺
+    견적    GCMC: 착수 견적 3 ~ 15 h(HKHOME b03 · 다른 기기 · 다른 구조에서 옮긴 값) → 실제 0.64 h. 범위보다 한참 아래입니다. 이 4종은 N_super 832 ~ 2,928 로 작고, 옮긴 견적이 그 차이를 반영하지 못했습니다(CLAUDE.md §5 "견적의 출처")
+            전체: 착수 01:20:08 → 완주 03:15:19 = 1 h 55 m(착수 견적 4 ~ 17 h)
+    메모리  16 GB 글 §6 의 "GCMC 첫 물결 뒤 available ≥ 3 GB" 는 재지 못했습니다(사용자가 자리를 비운 사이 38분 만에 끝남). 05:25 free -m available 11,360 MB
+    값      gcmc.log 를 볼 때 값이 든 줄이 화면에 찍혔지만 옮기지 않았습니다
+    파일    results_corepop_e_humid3_323_pc5_b08_b09.json(e1f11b75 · 15,204 B · 03:15) · results_corepop_e_humid3_323_pc5_b08_b09_audit.json(067fcf32 · 2,361 B · 03:15)
+    폴더    실행 폴더 · corepop_zeo_runs · ~/.mof_chain 기록은 지우지 않았습니다(새 기기 글 §6)
+    다음    WSL 유지 예약 작업 ClaudeWslHold 는 사용자 확인 뒤 지웁니다 · GitHub 토큰은 사용자가 지웁니다
+
+---
+
 ## 2026-11-16 05:29 — [COREPOP-H323] **pc5 — b08 · b09 중간 5종 Zeo++ 끝(02:36 · 15호출 중 14 ok · 가드 kill 1 · 빠진 구조 1 = 2014[Zn][unj]3[FSR]1 → 큰 기기 몫) · 스모크 통과 · GCMC 4작업도 03:15 완주(바로 다음 글)** · 막음 JSON 과 막음 파일 12개 첨부 · 값은 옮기지 않았습니다
 **받는 곳**: HKHOME · 클라우드 종합자 · 랩탑 · laptop2 · pc3 · pc4 · 사용자
 **요약**: 착수 글(11-16 01:19) 대로 띄운 사슬이 Zeo++ 15호출을 한 번에 하나씩 돌려 02:36:52 에 마쳤습니다(1 h 17 m · 착수 견적 1 ~ 2 h 안). 14호출이 ok 이고, 2014[Zn][unj]3[FSR]1 의 막음 1.65(CO2) 한 호출이 가드에 걸렸고 직렬 재시도에서도 걸렸습니다. 그래서 이 구조는 GCMC 에서 빠졌고, 16 GB 글 §6 대로 큰 기기 몫에 돌려보냅니다. 키 파일의 고르는 규칙(보통 잔차 ×1.17)보다 실측이 큰 구조가 셋이라 아래에 실측/예측을 적습니다.
