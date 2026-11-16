@@ -7559,3 +7559,8 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > - **전부(n 256)**: ρ **0.932** [0.910, 0.949] → 유지 쪽. 깃발 뺀 0.934 · 막음 없는 0.931 · 미완 0.918~0.932 · 민감 없음.
 > - b01~b05 는 새 자료가 없어 보완 1 과 같습니다(n 151 · 0.891).
 > - 산출: `corepop_h323_reading_supp2_all_20261116.json`(59dc9c8c).
+
+> **[desktop 11-16 21:59]** **323 K 전하 ON/OFF CO₂ 밀도 격자 — ZIF-69 모체(base, charged_v3 1ca570db) 완주**(사용자 "똑같은 방식으로 ZIF-69도"). 실행기 `run_density_charge_323_zif69.py` · HKHOME 21:49 → 21:59.
+> - 입력은 298 K 판(`density_v3/base__q_off`)과 비교해 **ExternalTemperature 298.0 → 323.0 한 줄만** 다릅니다. 두 작업 모두 Simulation finished 입니다.
+> - 산출(`density_v3/` 와 같은 구성): `density_v3_323/base__q_{on,off}/VTK/System_0/COMDensityProfile_CO2.vtk.gz` · `simulation.input` · `density_results.json`(15417252 5709fcf4 bbfe5e9b ).
+> - 견줄 298 K 값은 같은 입력 판인 `density_v3/density_results.json` 입니다. 저장소 맨 위 `density_results.json` 은 다른 판이라 섞지 마십시오(CLAUDE.md §2 판 넘나들기).
