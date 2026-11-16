@@ -2283,9 +2283,40 @@
           "simulate_overlap": 1
         },
         "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 2,
+        "pockets": 4,
+        "nodes": 36725,
+        "accessible_nodes": 1446,
+        "n_spheres": 4,
+        "sphere_radii": [
+          2.369,
+          2.383,
+          2.54,
+          2.519
+        ],
+        "sphere_volume_sum_A3": 247.9494116797615,
+        "sphere_volume_pct_of_cell": 4.894406085972834,
+        "block_file": "corepop_zeo_runs/2017_Zn__dia_3_FSR_4/block1.30/2017_Zn__dia_3_FSR_4.block",
+        "block_md5": "cf326a9e126514f811b9e1df5d7a884a",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": true,
+        "rc": 0,
+        "seconds": 419.0,
+        "peak_rss_MB": 8837,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 1
+        },
+        "tries": 1
       }
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 34033
+  "elapsed_s": 34452
 }
