@@ -668,6 +668,32 @@
           "simulate_overlap": 1
         },
         "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 34614,
+        "accessible_nodes": 3171,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cd__pcu_3_FSR_2/block1.30/2021_Cd__pcu_3_FSR_2.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 792.1,
+        "peak_rss_MB": 9999,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 1
+        },
+        "tries": 1
       }
     },
     {
@@ -685,7 +711,85 @@
         90.0
       ],
       "PLD_core": 4.13446,
-      "LCD_core": 6.42627
+      "LCD_core": 6.42627,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 73522,
+        "accessible_nodes": 2607,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2017_Cd__met_3_ASR_1/block1.65/2017_Cd__met_3_ASR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 632.3,
+        "peak_rss_MB": 10103,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 1
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 73522,
+        "accessible_nodes": 2049,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2017_Cd__met_3_ASR_1/block1.82/2017_Cd__met_3_ASR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 600.1,
+        "peak_rss_MB": 9872,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 1
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 73522,
+        "accessible_nodes": 3893,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2017_Cd__met_3_ASR_1/block1.30/2017_Cd__met_3_ASR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 690.5,
+        "peak_rss_MB": 9723,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2016[Ti][srs]3[ASR]1",
@@ -702,7 +806,33 @@
         90.0
       ],
       "PLD_core": 4.56727,
-      "LCD_core": 6.25402
+      "LCD_core": 6.25402,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 98158,
+        "accessible_nodes": 10887,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2016_Ti__srs_3_ASR_1/block1.65/2016_Ti__srs_3_ASR_1.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 917.7,
+        "peak_rss_MB": 10346,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 1
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2021[Cd][pcu]3[ASR]2",
@@ -910,5 +1040,5 @@
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 17374
+  "elapsed_s": 21007
 }
