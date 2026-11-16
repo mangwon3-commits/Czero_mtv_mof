@@ -1,0 +1,36 @@
+{
+  "test": "COREPOP-H323 — 다른 기기에서 막음이 안 된 구조(넘길 목록)",
+  "why": "HKHOME b07 무거운 24종 중 세 탐침 가드 kill 6종(13.4~14.1 GB) — 랩탑(23 GB) 몫 후보",
+  "made": "2026-11-16 09:46:10",
+  "keys": [
+    "2021[Cu][pcu]3[FSR]3",
+    "2021[Cu][pcu]3[ASR]3",
+    "2021[Mn][dia]3[ASR]1",
+    "2021[Mn][dia]3[FSR]1",
+    "2020[Cu][nan]3[ASR]2",
+    "2019[Cu][nan]3[ASR]2"
+  ],
+  "n": 6,
+  "sources": [
+    {
+      "file": "results_corepop_blocks_hkhome_b07_heavya.json",
+      "md5": "baeff3e955509faf888bb64ec100917b",
+      "excluded_not_ok": [
+        "2021[Cu][pcu]3[FSR]3",
+        "2021[Cu][pcu]3[ASR]3",
+        "2021[Mn][dia]3[ASR]1",
+        "2021[Mn][dia]3[FSR]1",
+        "2020[Cu][nan]3[ASR]2",
+        "2019[Cu][nan]3[ASR]2"
+      ],
+      "excluded_reasons": {
+        "2021[Cu][pcu]3[FSR]3": "r1.65 실패(rc -9 · 가드 True · 최대 13813 MB)",
+        "2021[Cu][pcu]3[ASR]3": "r1.65 실패(rc -9 · 가드 True · 최대 13941 MB)",
+        "2021[Mn][dia]3[ASR]1": "r1.65 실패(rc -9 · 가드 True · 최대 14053 MB)",
+        "2021[Mn][dia]3[FSR]1": "r1.65 실패(rc -9 · 가드 True · 최대 13687 MB)",
+        "2020[Cu][nan]3[ASR]2": "r1.65 실패(rc -9 · 가드 True · 최대 13360 MB)",
+        "2019[Cu][nan]3[ASR]2": "r1.65 실패(rc -9 · 가드 True · 최대 13596 MB)"
+      }
+    }
+  ]
+}

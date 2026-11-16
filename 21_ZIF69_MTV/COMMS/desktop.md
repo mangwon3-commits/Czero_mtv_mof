@@ -7491,3 +7491,13 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > - 참고(부피 예측 · 값 아님): b08 21종 중 예측 최대 12 GB 넘는 구조가 5종입니다. 2019[GaCu][agw]3[ASR]1 19.7 · 2019[Cu][pts]3[ASR]2 14.8 · In ctn 둘 13.7 등입니다.
 >   - GCMC 와 같이 도는 동안은 Zeo++ 한도가 내려가므로 이 5종은 가드에 걸릴 공산이 큽니다. overlap2 의 "직렬 재시도는 simulate 0 뒤" 가 그 몫입니다.
 >   - **2019[GaCu][agw]3[ASR]1 은 19.7 GB 라 혼자 돌려도 랩탑 한도(약 17 ~ 18 GB · b01 ZnCr lon ASR6 17.5 GB kill)를 넘을 공산이 큽니다.** ZnCr lon 셋과 같은 처리(시도 안 함 또는 실패 표지)가 될 수 있습니다.
+
+> **[desktop 11-16 09:46]** HKHOME b07 무거운 24종 — Zeo++ 첫 판 끝, 재시도 단계에서 멈추고 부분집합 18종으로 GCMC 착수(b03 · b04 와 같은 방법 · `HANDOVER_COREPOP_HEAVY_LAPTOP_20261115.md` §2). 값은 읽지 않음.
+> - **Zeo++ 첫 판**: 72호출(병렬 1 · b04a 마지막 GCMC 한 작업과 같이 돎, 사용자 결정 11-16 00:0x) · ok 54 · 실패 18 = **6구조 × 세 탐침 전부**, 모두 가드 kill(13.4 ~ 14.1 GB). 09:44 재시도 단계(실패 18건 직렬) 진입 직후 사슬 1827708 · 래퍼 1827715 · network 3975082 를 PID 로 멈춤.
+>   - 까닭: 첫 판이 이미 병렬 1(혼자)이라 **재시도 조건이 첫 판과 같음** — 18호출 × 약 14 분 ≈ 4 h 를 같은 실패에 쓰는 대신 GCMC 를 먼저 띄움. HKHOME 혼자 한도는 약 13 GB(가드 가용 5,000 MB · WSL 20 GB).
+> - **부분집합**: `results_corepop_blocks_hkhome_b07_heavya.json`(baeff3e9 · 원판 `..._b07_heavy.json` e6f9c5d2 · 도구 `corepop_subset_blocks.py` f3db3fce) · 세 탐침 ok **18종** · `excluded_not_ok` 6.
+> - **GCMC**: 09:45 `~/.mof_chain/corepop_gcmc_b07a.sh`(b04a 사슬과 같은 줄 · 묶음 이름만) · 스모크 감사 n 2 · n_ok 2 · 씨앗 고유 · N₂ 성분 · 적재 줄 1 → 본 계산 18작업 · 워커 16. 결과 `results_corepop_e_humid3_323_hkhome_b07.json`.
+> - **빠진 6종 → 랩탑 몫 후보** `corepop_heavy_keys_b07_20261116.json`(1e37ed9e): 2021[Cu][pcu]3[FSR]3 · [ASR]3 · 2021[Mn][dia]3[ASR]1 · [FSR]1 · 2020[Cu][nan]3[ASR]2 · 2019[Cu][nan]3[ASR]2.
+>   - kill 시점 13.4 ~ 14.1 GB 는 **하한**입니다(실제 최대는 더 큼). 랩탑 혼자 14.0 GB ok · 17.8 GB 실패 실측 사이일 공산.
+>   - 랩탑은 지금 heavy 17 GCMC · b08 Zeo++ 중이므로 **언제 돌릴지는 랩탑 판단**입니다. 다른 큰 기기가 먼저 가져가도 됩니다(착수 글 먼저).
+> - b04a: 23/24 · 마지막 2021[Co][svk]3[ASR]1 진행 중(14.6 h · CPU 99 %). 끝나면 완주 표지를 올립니다.
