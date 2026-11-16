@@ -1,3 +1,30 @@
+## 2026-11-16 17:00 — [COREPOP-H323] **랩탑 — 착수 글: 한도 근처 6종을 b08 사슬 뒤에 구조별 사슬로 줄 세웁니다(b07 에서 넘어온 nan 둘 · dia 둘 + b09 의 hww 하나 + b08 에서 미룬 nbo 하나)** · pcu 둘 · kag · ctn 둘 · pts · agw 는 랩탑에서 시도하지 않습니다 · 대기 사슬을 이 글 바로 뒤에 겁니다
+
+**받는 곳**: HKHOME · 클라우드 종합자 · laptop2 · pc4 · pc5 · 사용자
+**요약**: HKHOME 이 랩탑 몫 후보로 넘긴 b07 의 6종(09:46 글)과 b09 의 선택 2종(COREPOP_B09_SPLIT_20261116.md §2)을 랩탑의 실측 비로 다시 예측했습니다. 예측이 랩탑 한도(16.6 GB) 안쪽인 5종과, 아침에 b08 에서 미룬 nbo 하나를 합쳐 6종을 가져갑니다. 이 여섯은 한도에 가까워 가드에 걸릴 수 있으므로, 다른 구조 뒤가 아니라 줄의 맨 뒤에 따로 돌립니다(사용자 지시 03:0x "예측 메모리 빠질거 같은 애들은 뒤로 빼"). 사슬은 HKHOME 의 구조별 사슬을 그대로 씁니다. b08 사슬(PID 406451)이 끝난 뒤에 시작합니다. 예측이 한도를 넘는 7종은 랩탑에서 시도하지 않습니다.
+**답 필요**: 아니오
+
+    가져감   2019[Cu][nan]3[ASR]2 · 2020[Cu][nan]3[ASR]2 · 2021[Mn][dia]3[ASR]1 · 2021[Mn][dia]3[FSR]1 (b07 · corepop_heavy_keys_b07_20261116.json 1e37ed9e 에서)
+             2015[Zn][hww]3[ION]2 (b09 · corepop_b09_keys_laptop.json 7750c8be 에서)
+             2019[Cu][nbo]3[ASR]1 (b08 · 07:39 글에서 미룬 것)
+    예측     식 × 1.27 로 15.6 ~ 16.4 GB · 식 × 1.37 로 16.7 ~ 17.6 GB 입니다(nan 15.6 / 16.7 ~ 16.8 · hww 15.7 / 16.9 · nbo 16.0 / 17.2 · dia 16.4 / 17.6).
+             랩탑 실측은 16,484 MB 가 ok 였고 17.8 GB 는 가드 kill 이었습니다. 그래서 여섯 가운데 일부는 가드에 걸릴 수 있습니다. 걸리면 그 구조만 빠집니다.
+    안 가져감 2021[Cu][pcu]3[FSR]3 · [ASR]3 (b07 · 9,405 Å³ · 식 × 1.27 = 19.4 GB) · 2021[Cd][kag]3[FSR]1 (b09 · 8,796 Å³ · 18.1 GB)
+             b08 에서 미룬 2007[In][ctn]3[ASR]1 (17.4) · 0000[In][ctn]3[ASR]1 (17.5) · 2019[Cu][pts]3[ASR]2 (18.8) · 2019[GaCu][agw]3[ASR]1 (25.1)
+             이 일곱은 랩탑에서 시도하지 않습니다(결과 없음 ≠ 실패). B09 분할 글의 kag 예측 16.7 GB 는 desktop 비 1.17 이고, 랩탑의 큰 셀 비는 1.08 ~ 1.33(가운데 1.27)입니다.
+    기준     식 × 1.27 이 16.6 GB 이하이면 가져갑니다(03:04 글의 기준과 같습니다). 07:39 글에서 nbo 를 뺀 것은 b08 의 16종이 그 뒤에서 기다리기 때문이었고, 이번에는 뒤에 기다리는 구조가 없습니다.
+    키 파일  corepop_perkey_keys_laptop_20261116.json 5404b9c3 · keys 6 (이 글과 같이 올림)
+    사슬     corepop_chain_perkey.sh 8169fa70 (HKHOME 판 그대로) · Zeo++ 래퍼 corepop_blocks_keys.py c2a71d4c · 러너 75307c47 · 모두 무수정
+             앞 사슬이 끝나고 simulate 0 · network 0 이 된 뒤 Zeo++(병렬 1) → 세 탐침 ok 구조만 → 스모크 → 구조마다 러너 하나. RASPA 와 Zeo++ 는 겹치지 않습니다.
+    시험     키 파일로 래퍼 드라이 rc 0(6종 · 18호출 · 묶음 b07 · b08 · b09). 사슬 스크립트 bash -n 통과. 사슬 자체의 예행은 HKHOME 이 한 것(B09 분할 글 §3)에 기댑니다.
+    명령     REPO=/home/skyjun/mof_run_1108 setsid nohup bash ~/.mof_chain/corepop_chain_perkey.sh laptop /home/skyjun/mof_run_1108/21_ZIF69_MTV/corepop_perkey_keys_laptop_20261116.json 406451 < /dev/null > /dev/null 2>&1 &
+    산출     results_corepop_blocks_laptop_b07_b08_b09_heavy.json · 구조마다 results_corepop_e_humid3_323_laptop_sNN_b07_b08_b09.json + _audit.json
+             랩탑의 b08 결과(results_corepop_e_humid3_323_laptop_b08.json · 16종)와 이름이 겹치지 않습니다.
+    견적     b08 의 Zeo++ 끝 18:00 ~ 18:20 → b08 GCMC 16작업 끝 23:00 ~ 04:00(무거운 17종의 9 h 22 m 와 b05 의 4 h 55 m 에서 옮김) → 이 사슬의 Zeo++ 4.5 ~ 7 h(호출당 약 15분 · 실패한 호출은 원판대로 한 번 더 돎) → GCMC.
+             그래서 이 여섯의 결과는 11-17 낮 이후입니다. 오늘 23:59 마감 전에는 나오지 않습니다.
+
+---
+
 ## 2026-11-16 16:57 — [COREPOP-H323] **랩탑 — 무거운 17종(b03 · b04 인계분) 완주(16:55:58 · rc 0 · 17/17 ok · 감사 통과)** · GCMC 9 h 22 m · 결과와 감사 파일을 올립니다 · b08 Zeo++ 는 48호출 중 44호출 ok · lon 셋은 시도하지 않았습니다
 
 **받는 곳**: HKHOME · 클라우드 종합자 · laptop2 · pc4 · pc3 · pc5 · 사용자
