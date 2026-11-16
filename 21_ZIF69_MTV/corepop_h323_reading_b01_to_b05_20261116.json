@@ -1,0 +1,520 @@
+{
+  "registration": "COREPOP_H323_READING_REGISTRATION_20261115.md",
+  "script_md5": "f772de2861969bcea6ddbd19cb5f9e35",
+  "made": "2026-11-16 16:07:33",
+  "files": [
+    {
+      "file": "results_corepop_e_humid3_323_laptop_b01.json",
+      "md5": "f90d342488474aeccd9931f5b4e2ff78",
+      "audit_md5": "153a33d6b7844e71ff5a7edffd17bf87",
+      "machine": "laptop",
+      "batches": [
+        "b01"
+      ],
+      "n_rows": 31
+    },
+    {
+      "file": "results_corepop_e_humid3_323_laptop2_b02.json",
+      "md5": "0165cd9efdc8a04ec55ea8b8010f0ec8",
+      "audit_md5": "afa03d6bab2a347bdd1d665cef883007",
+      "machine": "laptop2",
+      "batches": [
+        "b02"
+      ],
+      "n_rows": 30
+    },
+    {
+      "file": "results_corepop_e_humid3_323_hkhome_b03.json",
+      "md5": "6604e3d3aa253c04e2f9395f4b4175c0",
+      "audit_md5": "8001920433ae7f32db4a30d6c30a300f",
+      "machine": "hkhome",
+      "batches": [
+        "b03"
+      ],
+      "n_rows": 20
+    },
+    {
+      "file": "results_corepop_e_humid3_323_hkhome_b04.json",
+      "md5": "9a0384e2bab5be338cb62c79e56d6a4c",
+      "audit_md5": "b8d1701b0cff9252ea01c7d41ca57396",
+      "machine": "hkhome",
+      "batches": [
+        "b04"
+      ],
+      "n_rows": 24
+    },
+    {
+      "file": "results_corepop_e_humid3_323_laptop_b05.json",
+      "md5": "9b79658737d5825473a75e0bd2024a6b",
+      "audit_md5": "bd2cf49ccad2c28c94fb34936b401cd1",
+      "machine": "laptop",
+      "batches": [
+        "b05"
+      ],
+      "n_rows": 30
+    }
+  ],
+  "batches": [
+    "b01",
+    "b02",
+    "b03",
+    "b04",
+    "b05"
+  ],
+  "n_included": 134,
+  "excluded": [
+    {
+      "key": "2021[Co][svk]3[FSR]1",
+      "name": "corepop_2021_Co__svk_3_FSR_1_e3r1",
+      "why": "결과 ok/finished 아님",
+      "dry_rank": 60,
+      "dry_sel": 31.27557092202364,
+      "batch": "b02"
+    }
+  ],
+  "missing_from_results": [
+    {
+      "dry_rank": 30,
+      "key": "2013[ZnCr][lon]3[ASR]6"
+    },
+    {
+      "dry_rank": 52,
+      "key": "2018[Zn][pcu]3[FSR]15"
+    },
+    {
+      "dry_rank": 53,
+      "key": "2018[Zn][pcu]3[ASR]15"
+    },
+    {
+      "dry_rank": 68,
+      "key": "2013[ZnCr][lon]3[ASR]4"
+    },
+    {
+      "dry_rank": 69,
+      "key": "2017[Cu][rob]3[ASR]1"
+    },
+    {
+      "dry_rank": 74,
+      "key": "2013[ZnCr][lon]3[ASR]1"
+    },
+    {
+      "dry_rank": 75,
+      "key": "2017[Zn][apo]3[FSR]1"
+    },
+    {
+      "dry_rank": 76,
+      "key": "2017[Zn][apo]3[ASR]1"
+    },
+    {
+      "dry_rank": 77,
+      "key": "2019[Zn][pts]3[ASR]2"
+    },
+    {
+      "dry_rank": 87,
+      "key": "2023[In][neb]3[ASR]2"
+    },
+    {
+      "dry_rank": 88,
+      "key": "2022[Zn][pcu]3[FSR]2"
+    },
+    {
+      "dry_rank": 93,
+      "key": "2023[In][neb]3[FSR]2"
+    },
+    {
+      "dry_rank": 94,
+      "key": "2023[In][neb]3[FSR]4"
+    },
+    {
+      "dry_rank": 95,
+      "key": "2020[Co][mab]3[FSR]1"
+    },
+    {
+      "dry_rank": 96,
+      "key": "2020[Co][mab]3[ASR]1"
+    },
+    {
+      "dry_rank": 102,
+      "key": "2023[In][neb]3[ASR]4"
+    },
+    {
+      "dry_rank": 105,
+      "key": "2015[Zn][pcu]3[FSR]6"
+    },
+    {
+      "dry_rank": 106,
+      "key": "2015[Zn][pcu]3[ASR]7"
+    },
+    {
+      "dry_rank": 107,
+      "key": "2013[ZnCr][lon]3[ASR]5"
+    },
+    {
+      "dry_rank": 108,
+      "key": "2023[In][neb]3[ASR]3"
+    },
+    {
+      "dry_rank": 109,
+      "key": "2023[In][neb]3[FSR]3"
+    },
+    {
+      "dry_rank": 122,
+      "key": "2024[Zn][hex]3[ASR]1"
+    },
+    {
+      "dry_rank": 123,
+      "key": "2020[Cu][lvt]3[ASR]1"
+    },
+    {
+      "dry_rank": 142,
+      "key": "2015[Zn][pcu]3[FSR]5"
+    },
+    {
+      "dry_rank": 143,
+      "key": "2015[Zn][pcu]3[ASR]6"
+    }
+  ],
+  "n_missing": 25,
+  "ci_rule": "ρ 판정 구간 = Fisher z 95 % · Bonett–Wright 분산(보완 1). ci95_bootstrap_ref 는 참고(판정에 안 씀)",
+  "boot": {
+    "seed": 20261115,
+    "n": 10000,
+    "ci": "percentile 95 % — ρ 는 참고 · 묶음 중앙값 구간에 씀"
+  },
+  "primary": {
+    "rows": "all included (flag 포함)",
+    "n": 134,
+    "spearman_rho": 0.9102332946794848,
+    "ci95": [
+      0.868080283044567,
+      0.9393542024210265
+    ],
+    "ci95_bootstrap_ref": [
+      0.8680687877712551,
+      0.9335296989130688
+    ],
+    "verdict": "유지 쪽 — 건조 선택도가 높을수록 습윤 S 도 높은 단조 관계(ρ 의 95 % CI 하한 > 0)"
+  },
+  "sensitivity_no_flag": {
+    "n": 126,
+    "flagged": [
+      "2019[Cd][pyr]3[ION]1",
+      "2019[Ni][pcu]3[FSR]1",
+      "2017[Ni][dia]3[FSR]3",
+      "2017[Ni][dia]3[ASR]3",
+      "2019[Zn][fsc]3[FSR]1",
+      "2019[Zn][fsc]3[ASR]1",
+      "2019[Co][jaj]3[FSR]1",
+      "2024[Zn][srs]3[ASR]2"
+    ],
+    "spearman_rho": 0.9287169103862017,
+    "ci95": [
+      0.8932037510466965,
+      0.9527157569080679
+    ],
+    "ci95_bootstrap_ref": [
+      0.9016566813288969,
+      0.9439118990167047
+    ],
+    "verdict": "유지 쪽 — 건조 선택도가 높을수록 습윤 S 도 높은 단조 관계(ρ 의 95 % CI 하한 > 0)"
+  },
+  "flag_sensitive": false,
+  "sensitivity_no_block": {
+    "n": 115,
+    "blocked": [
+      "2022[Zn][pcu]3[ASR]4",
+      "2022[Zn][pcu]3[FSR]3",
+      "2017[Zn][dia]3[ASR]8",
+      "2017[Zn][dia]3[FSR]9",
+      "2017[Cd][fsc]3[ION]1",
+      "2019[Ni][pcu]3[FSR]1",
+      "2022[Cd][nuc]3[FSR]1",
+      "2022[Cd][nuc]3[ASR]1",
+      "2019[Zn][mog]3[ASR]3",
+      "2019[Zn][mog]3[FSR]3",
+      "2019[Cd][pts]3[ASR]1",
+      "2019[Cd][pts]3[FSR]1",
+      "2019[Mn][srs]3[ASR]1",
+      "2017[Cd][pts]3[ASR]1",
+      "2017[Cd][pts]3[FSR]1",
+      "2019[Cu][ssa]3[FSR]1",
+      "2016[Ni][nbo]3[ASR]1",
+      "2019[Cd][fsc]3[ASR]1",
+      "2019[Cd][fsc]3[FSR]1"
+    ],
+    "spearman_rho": 0.9105894421210448,
+    "ci95": [
+      0.8644511408936364,
+      0.9415157505543206
+    ],
+    "ci95_bootstrap_ref": [
+      0.8651824721871963,
+      0.9354612999966397
+    ],
+    "verdict": "유지 쪽 — 건조 선택도가 높을수록 습윤 S 도 높은 단조 관계(ρ 의 95 % CI 하한 > 0)"
+  },
+  "block_sensitive": false,
+  "incomplete_bound": {
+    "keys": [
+      "2021[Co][svk]3[FSR]1"
+    ],
+    "k": 1,
+    "rule": "미완 행의 S 순위를 n+1 자리 전부(둘이면 순서까지)에 대입 · 각 자리 Fisher z(BW) 판정",
+    "n_with": 135,
+    "n_placements": 135,
+    "dry_rank": [
+      60
+    ],
+    "rho_min": 0.8964149839040093,
+    "ci95_at_min": [
+      0.8487561151809617,
+      0.9296275908072001
+    ],
+    "rho_max": 0.9110428250902352,
+    "ci95_at_max": [
+      0.869419800934526,
+      0.9398253909550924
+    ],
+    "verdicts": [
+      "유지 쪽"
+    ],
+    "verdict": "미완 행이 어느 자리에 들어가도 주 판정과 같음"
+  },
+  "incomplete_sensitive": false,
+  "per_batch": [
+    {
+      "batch": "b01",
+      "n": 31,
+      "n_missing": 1,
+      "median_S": 36.090751038711815,
+      "median_ci95": [
+        32.19544308289803,
+        37.81853889924915
+      ],
+      "n_flag": 2
+    },
+    {
+      "batch": "b02",
+      "n": 29,
+      "n_missing": 2,
+      "median_S": 26.662877304431646,
+      "median_ci95": [
+        26.09425386167569,
+        31.923536948201342
+      ],
+      "n_flag": 5
+    },
+    {
+      "batch": "b03",
+      "n": 20,
+      "n_missing": 12,
+      "median_S": 23.12657796637691,
+      "median_ci95": [
+        21.77762930790754,
+        24.151019068279403
+      ],
+      "n_flag": 1
+    },
+    {
+      "batch": "b04",
+      "n": 24,
+      "n_missing": 8,
+      "median_S": 15.341101538191133,
+      "median_ci95": [
+        14.769170687239374,
+        15.594785756625404
+      ],
+      "n_flag": 0
+    },
+    {
+      "batch": "b05",
+      "n": 30,
+      "n_missing": 2,
+      "median_S": 11.810446433723177,
+      "median_ci95": [
+        10.786870530769846,
+        12.582988633147027
+      ],
+      "n_flag": 0
+    }
+  ],
+  "per_batch_ci_separated": [
+    {
+      "pair": [
+        "b01",
+        "b02"
+      ],
+      "ci_separated": true
+    },
+    {
+      "pair": [
+        "b01",
+        "b03"
+      ],
+      "ci_separated": true
+    },
+    {
+      "pair": [
+        "b01",
+        "b04"
+      ],
+      "ci_separated": true
+    },
+    {
+      "pair": [
+        "b01",
+        "b05"
+      ],
+      "ci_separated": true
+    },
+    {
+      "pair": [
+        "b02",
+        "b03"
+      ],
+      "ci_separated": true
+    },
+    {
+      "pair": [
+        "b02",
+        "b04"
+      ],
+      "ci_separated": true
+    },
+    {
+      "pair": [
+        "b02",
+        "b05"
+      ],
+      "ci_separated": true
+    },
+    {
+      "pair": [
+        "b03",
+        "b04"
+      ],
+      "ci_separated": true
+    },
+    {
+      "pair": [
+        "b03",
+        "b05"
+      ],
+      "ci_separated": true
+    },
+    {
+      "pair": [
+        "b04",
+        "b05"
+      ],
+      "ci_separated": true
+    }
+  ],
+  "topk_overlap": {
+    "k": 10,
+    "overlap": 2,
+    "random_expectation": 0.746268656716418
+  },
+  "top_by_S": [
+    {
+      "S_order": 1,
+      "key": "2017[Ni][dia]3[FSR]3",
+      "batch": "b02",
+      "dry_rank": 36,
+      "S": 51.78343498755686,
+      "S_err": 30.82319044051276,
+      "flag": true,
+      "vs_next_resolved": false
+    },
+    {
+      "S_order": 2,
+      "key": "2019[Zn][fsc]3[FSR]1",
+      "batch": "b02",
+      "dry_rank": 34,
+      "S": 51.249530948871715,
+      "S_err": 12.728209603951806,
+      "flag": true,
+      "vs_next_resolved": false
+    },
+    {
+      "S_order": 3,
+      "key": "2024[Zn][srs]3[ASR]2",
+      "batch": "b03",
+      "dry_rank": 65,
+      "S": 50.184273694084304,
+      "S_err": 54.938478027638475,
+      "flag": true,
+      "vs_next_resolved": false
+    },
+    {
+      "S_order": 4,
+      "key": "2017[Ni][dia]3[ASR]3",
+      "batch": "b02",
+      "dry_rank": 38,
+      "S": 46.48053540282986,
+      "S_err": 17.919581354381403,
+      "flag": true,
+      "vs_next_resolved": false
+    },
+    {
+      "S_order": 5,
+      "key": "2024[Cd][dia]3[ASR]1",
+      "batch": "b02",
+      "dry_rank": 37,
+      "S": 45.39999965469292,
+      "S_err": 4.126291577770682,
+      "flag": false,
+      "vs_next_resolved": false
+    },
+    {
+      "S_order": 6,
+      "key": "2024[Cd][dia]3[FSR]1",
+      "batch": "b02",
+      "dry_rank": 39,
+      "S": 44.110199807541896,
+      "S_err": 2.3377857287758306,
+      "flag": false,
+      "vs_next_resolved": false
+    },
+    {
+      "S_order": 7,
+      "key": "2017[Zn][dia]3[ASR]8",
+      "batch": "b01",
+      "dry_rank": 4,
+      "S": 43.51724068312023,
+      "S_err": 2.0338218553502956,
+      "flag": false,
+      "vs_next_resolved": false
+    },
+    {
+      "S_order": 8,
+      "key": "2017[Cd][fsc]3[ION]1",
+      "batch": "b01",
+      "dry_rank": 28,
+      "S": 43.4407771614777,
+      "S_err": 3.3067324845618233,
+      "flag": false,
+      "vs_next_resolved": false
+    },
+    {
+      "S_order": 9,
+      "key": "2017[Zn][dia]3[FSR]9",
+      "batch": "b01",
+      "dry_rank": 5,
+      "S": 43.299108275831195,
+      "S_err": 2.2849607731931227,
+      "flag": false,
+      "vs_next_resolved": false
+    },
+    {
+      "S_order": 10,
+      "key": "2019[Cd][pyr]3[ION]1",
+      "batch": "b01",
+      "dry_rank": 24,
+      "S": 43.26108847109188,
+      "S_err": 6.405246066169729,
+      "flag": true,
+      "vs_next_resolved": false
+    }
+  ]
+}
