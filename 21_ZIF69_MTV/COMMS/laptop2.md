@@ -4,6 +4,29 @@
 
 ---
 
+## 2026-11-16 10:01 — [COREPOP-H323] **laptop2 — 착수 글: b09 무거운 구조 21종(키 파일 corepop_rest_keys_b09.json 5d475e88) · Zeo++ 는 b02 의 남은 GCMC 2작업과 같이 돎(사용자 결정 "같이 돌려.") · 랩탑의 겹침 판 사슬 · 래퍼를 무수정으로 씀** · Zeo++ 막음 병렬 1 → 스모크 2종 → 323 K 습윤 3성분 GCMC 워커 12 · 1씨앗 · 이 글 바로 뒤에 띄웁니다
+
+**받는 곳**: HKHOME · 랩탑 · pc3 · pc4 · pc5 · 클라우드 종합자 · 사용자
+**요약**: laptop2 의 b02 는 30작업 가운데 28개가 끝났고, 남은 2작업이 코어 2개로 돕니다. 가장 늦은 2021[Co][svk]3[FSR]1 은 생산 15,000 사이클 가운데 8,500 사이클까지 왔으므로(09:01), 11-16 밤 ~ 11-17 새벽에 끝날 것으로 봅니다. 그동안 논리 코어 대부분이 노는 것을 사용자에게 알리고 다음 묶음의 Zeo++ 를 같이 돌릴지 물었고, 사용자가 "같이 돌려." 라고 정했습니다(11-16 10:0x). CLAUDE.md §5 의 Zeo++ 와 RASPA 동시 금지를 이번 한 번 푸는 것이며, 랩탑(11-15 23:17)과 HKHOME(11-16 00:11)에 이은 세 번째입니다. 무거운 구조의 착수 글이 없는 묶음 가운데 숫자가 가장 작은 것이 b09 이므로, b09 의 무거운 구조 21종을 가져갑니다. b09 의 가벼운 구조와 pc5 몫은 분할표와 §4-보완 2차대로 돌리지 않습니다.
+**답 필요**: 아니오
+
+    근거     ASSIGN_COREPOP_HUMID323_20261114.md §4 · §4-보완 · §4-보완 2차(master ffe52e55)
+    겹침     master fc3e1e19 기준으로 b09 무거운 구조의 착수 글은 없습니다. b06 무거운 구조는 이미 착수 글이 있습니다(pc4 우편함 · 11-15 22:45). b07 무거운 구조는 이미 착수 글이 있습니다(HKHOME 우편함 · 11-15 22:48). b08 무거운 구조는 이미 착수 글이 있습니다(랩탑 우편함 · 11-16 07:39).
+    바뀐 것  Zeo++ 를 simulate 0 이 아니라 simulate ≤ 2 에서 띄웁니다. 랩탑이 올린 겹침 판 corepop_chain_keys_overlap.sh(0667627a)와 corepop_blocks_keys_overlap.py(e80fb0cd)를 고치지 않고 쓰고, 허용 수는 ALLOW_SIM=2 로 줍니다(래퍼가 받는 범위 0 ~ 2). Zeo++ 가 끝나면 사슬은 b02 작업을 기다리지 않고 스모크 → 본 계산으로 갑니다. 그때 b02 작업이 남아 있으면 simulate 가 워커 수보다 많아지지만, RASPA 끼리 겹치는 것은 규칙에 걸리지 않습니다.
+    입력     겹침 판 두 파일 · 분할표 06e0ffb5 · pc5 몫 c001941e · 원판 corepop_blocks.py c00cd11a · run_corepop_e_humid3.py e05cbc1b · run_corepop_e_humid3_323.py 75307c47 · corepop_humid323_targets.json f0cbc615(모두 master 와 같고 무수정)
+             키 파일은 HKHOME 이 올린 corepop_rest_keys_b09.json 을 그대로 씁니다. 16 GB 글 §5 의 새 한 줄로 다시 뽑은 키 목록과 같습니다.
+    꺼낸 파일 laptop2 작업 트리에 없던 파일 5개만 master 에서 꺼냈고, 도는 b02 사슬이 쓰는 파일은 md5 만 대조했습니다.
+    드라이   입력 대조 통과: zip 524개 중 대상 21/21 · 묶음 ['b09'] · 풀린 파일 md5 = zip 바이트 · 원자 수 = NAtoms (116~400) · 계획 63건(-block · 병렬 1)
+    한도     simulate 2 이 도는 지금 잰 MemAvailable − 5 GB 는 8.9 GB 입니다. 막음 가드(새 호출은 8,000 MB 이상에서 · 호출 중 5,000 MB 아래면 kill)는 원판 그대로입니다. 분할표의 예측 최대가 이 한도를 넘는 구조는 10종이며, 가드에 걸려 빠진 구조는 Zeo++ 끝 글과 완주 글에 이름을 적습니다.
+    기록     래퍼가 결과 파일 머리에 적는 overlap.why 문장은 랩탑의 경우(b05 의 마지막 작업)로 고정되어 있습니다. 래퍼를 고치지 않으므로 그 문장은 그대로 남고, laptop2 의 근거는 이 글의 사용자 결정입니다. 호출마다 실제 simulate 수는 pre_counts.simulate_overlap 에 남습니다.
+    명령     cp corepop_chain_keys_overlap.sh ~/.mof_chain/ 뒤 21_ZIF69_MTV 에서 ALLOW_SIM=2 bash ~/.mof_chain/corepop_chain_keys_overlap.sh laptop2 corepop_rest_keys_b09.json 1 12
+    산출     results_corepop_blocks_laptop2_b09_heavy.json · results_corepop_e_humid3_323_laptop2_b09.json + _audit.json
+    견적     2번째 기기 글 §7 의 값(Zeo++ 10 ~ 13 h · GCMC 15 ~ 25 h)을 옮기면 끝은 11-17 낮 ~ 11-18 새벽입니다. b09 는 예측 최대가 10 GB 를 넘는 구조가 10종으로 많아, 두 단계 모두 이 범위의 긴 쪽일 수 있습니다.
+    중간     60분마다 바뀐 결과 파일과 .block 을 파일만 master 에 올립니다. 사슬이 끝나고 45분 안에 세션이 완주 글을 올리지 못하면, 바깥 감싸개가 표지만 적은 글을 올립니다.
+    b02      남은 작업과 b02 사슬(PID 622)은 건드리지 않고, b02 완주 글은 따로 올립니다. b02 뒤 자동 착수를 기다리던 laptop2 스크립트(CPH_auto.sh)는 PID 로 내렸습니다.
+
+---
+
 ## 2026-11-15 23:51 — [COREPOP-H323] **laptop2 — 2번째 기기 글을 §4-보완 2차에 맞춰 고쳤습니다(키 파일은 pc5 몫을 뺀 새 한 줄 · b08 · b09 21종씩 · 무거운 착수 글 찾는 줄도 고침) · laptop2 의 b02 뒤 차례는 b08 무거운 구조 21종** · 값은 읽지 않았습니다
 
 **받는 곳**: pc4 · HKHOME · 랩탑 · pc5 · 클라우드 종합자 · 사용자
