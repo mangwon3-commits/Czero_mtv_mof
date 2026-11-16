@@ -2,6 +2,7 @@
 """COREPOP-H323 읽는 법 — `COREPOP_H323_READING_REGISTRATION_20261115.md` 의 계산을 그대로 하는 스크립트.
 값을 보기 전(자료 0건)에 등록 문서와 함께 커밋. 등록 뒤에는 고치지 않음 — 고칠 일이 생기면 새 등록(CLAUDE.md §2).
 보완 1(자료 0건 · 2026-11-15): 막음 없는 구조만의 민감도 판 · 판정 구간을 Fisher z(Bonett–Wright)로 · 부트스트랩은 참고.
+보완 2(자료 0건 · 2026-11-16 · 포스터 마감): 결과에 있으나 계산이 안 끝난 행(마감 전 미완)의 최악 대입 판 — 채워 넣지 않고, S 순위를 모든 자리에 넣어 판정 범위만 냄.
 
 물음 하나: 298 K 건조 Widom 선택도(§AV 우리 자, `core_pop_annotated.json` 의 `selectivity`) 순서가
 323 K 습윤 3성분 선택도(결과 파일의 `S_humid`)에서도 유지되는가.
@@ -104,6 +105,61 @@ def verdict(lo, hi):
     return '가릴 수 없음 — ρ 의 95 % CI 가 0 을 품음(관계가 없다는 뜻이 아님)'
 
 
+INCOMPLETE_WHY = ('결과 ok/finished 아님', '감사 ok/finished 아님')
+INCOMPLETE_MAX = 2       # 보완 2: 미완 행이 이보다 많으면 최악 대입 판을 계산하지 않음(사용자에게)
+
+
+def cat(v):
+    return v.split(' — ')[0]
+
+
+def incomplete_bound(rows, excluded, prim_verdict):
+    """보완 2(11-16): 결과 파일에 있으나 계산이 안 끝난 행(마감 전 미완 등)을 채워 넣지 않고,
+    그 구조의 건조 선택도는 그대로 두고 습윤 S 순위를 가능한 모든 자리에 넣어 판정 범위를 냄. 판정은 주 판(미완 뺀)이 그대로."""
+    inc = [e for e in excluded if 'dry_sel' in e]
+    res = {'keys': [e['key'] for e in inc], 'k': len(inc), 'rule': '미완 행의 S 순위를 n+1 자리 전부(둘이면 순서까지)에 대입 · 각 자리 Fisher z(BW) 판정'}
+    if not inc:
+        res['verdict'] = '미완 행 없음'
+        return res, False
+    if len(inc) > INCOMPLETE_MAX:
+        res['verdict'] = f'계산 안 함 — 미완 행 {len(inc)} > {INCOMPLETE_MAX}(사용자에게)'
+        return res, None
+    s = sorted(r['S'] for r in rows)
+    n = len(s)
+
+    def val(g, f):
+        lo = s[g - 1] if g > 0 else s[0] - 1.0
+        hi = s[g] if g < n else s[-1] + 1.0
+        return lo + f * (hi - lo)
+    combos = []
+    if len(inc) == 1:
+        combos = [[val(g, 0.5)] for g in range(n + 1)]
+    else:
+        for g1 in range(n + 1):
+            for g2 in range(n + 1):
+                if g1 != g2:
+                    combos.append([val(g1, 0.5), val(g2, 0.5)])
+                else:
+                    combos += [[val(g1, 1 / 3), val(g2, 2 / 3)], [val(g1, 2 / 3), val(g2, 1 / 3)]]
+    lo_r, hi_r, cats = None, None, set()
+    for c in combos:
+        rr = rows + [{'dry_sel': e['dry_sel'], 'S': v} for e, v in zip(inc, c)]
+        rho = spearman(rr)
+        l, h = fisher_bw(rr)
+        cats.add(cat(verdict(l, h)))
+        if lo_r is None or rho < lo_r[0]:
+            lo_r = (rho, l, h)
+        if hi_r is None or rho > hi_r[0]:
+            hi_r = (rho, l, h)
+    sens = cats != {cat(prim_verdict)}
+    res.update(n_with=n + len(inc), n_placements=len(combos), dry_rank=[e['dry_rank'] for e in inc],
+               rho_min=lo_r[0], ci95_at_min=[lo_r[1], lo_r[2]], rho_max=hi_r[0], ci95_at_max=[hi_r[1], hi_r[2]],
+               verdicts=sorted(cats),
+               verdict=('미완 행이 어느 자리에 들어가도 주 판정과 같음' if not sens else
+                        '미완에 민감 — 미완 행의 자리에 따라 판정이 달라짐(주 판정만 인용하지 않음)'))
+    return res, sens
+
+
 def load(paths):
     T = {r['key']: r for r in json.load(open(TGT, encoding='utf-8'))['rows']}
     A = {r['key']: r for r in json.load(open(ANN, encoding='utf-8'))['rows']}
@@ -141,7 +197,10 @@ def load(paths):
             elif not num(A.get(k, {}).get('selectivity')):
                 why = '건조 selectivity 없음'
             if why:
-                excluded.append({'key': k, 'name': r.get('name'), 'why': why})
+                e = {'key': k, 'name': r.get('name'), 'why': why}
+                if why in INCOMPLETE_WHY and k in T and num(A.get(k, {}).get('selectivity')):   # 보완 2: 계산이 안 끝난 행 — 최악 대입 판에 씀(값은 안 씀)
+                    e.update(dry_rank=T[k]['rank'], dry_sel=A[k]['selectivity'], batch=T[k]['batch'])
+                excluded.append(e)
                 continue
             flag = (Ne / N > FLAG_N2) or (Se / S > FLAG_S)
             bl, bc = r.get('input_blockpockets_lines'), r.get('blocked_components')          # 보완 1: 막음 표지
@@ -185,6 +244,7 @@ def main(paths):
         out['block_sensitive'] = verdict(lo, hi).split(' — ')[0] != verdict(l3, h3).split(' — ')[0]
     else:
         out['sensitivity_no_block']['verdict'] = '계산 안 함 — 막음 없는 행 10 미만'
+    out['incomplete_bound'], out['incomplete_sensitive'] = incomplete_bound(rows, excluded, verdict(lo, hi))   # 보완 2
     T = {r['key']: r for r in json.load(open(TGT, encoding='utf-8'))['rows']}
     per = []
     for i, b in enumerate(batches):
@@ -228,6 +288,12 @@ def main(paths):
         print(f"막음 없는 구조만 ρ = {s['spearman_rho']:.3f}  [{s['ci95'][0]:.3f}, {s['ci95'][1]:.3f}] (n {s['n']}, 막음 {len(s['blocked'])}) · 막음에 민감 {out['block_sensitive']}")
     else:
         print(f"막음 없는 구조만: {s['verdict']} (n {s['n']})")
+    ib = out['incomplete_bound']
+    if 'rho_min' in ib:
+        print(f"미완 {ib['k']}종 최악 대입(n {ib['n_with']} · 자리 {ib['n_placements']}): ρ {ib['rho_min']:.3f} ~ {ib['rho_max']:.3f} · "
+              f"판정 {ib['verdicts']} → {ib['verdict']} · 미완에 민감 {out['incomplete_sensitive']}")
+    else:
+        print(f"미완 최악 대입: {ib['verdict']}")
     for e in per:
         ci = e.get('median_ci95')
         print(f"  {e['batch']}: n {e['n']} · 빠짐 {e['n_missing']} · 중앙 S {e.get('median_S', float('nan')):.2f}"
