@@ -7564,3 +7564,8 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > - 입력은 298 K 판(`density_v3/base__q_off`)과 비교해 **ExternalTemperature 298.0 → 323.0 한 줄만** 다릅니다. 두 작업 모두 Simulation finished 입니다.
 > - 산출(`density_v3/` 와 같은 구성): `density_v3_323/base__q_{on,off}/VTK/System_0/COMDensityProfile_CO2.vtk.gz` · `simulation.input` · `density_results.json`(15417252 5709fcf4 bbfe5e9b ).
 > - 견줄 298 K 값은 같은 입력 판인 `density_v3/density_results.json` 입니다. 저장소 맨 위 `density_results.json` 은 다른 판이라 섞지 마십시오(CLAUDE.md §2 판 넘나들기).
+
+> **[desktop 11-16 22:58]** COREPOP-H323 **착수 글 — pc4 가 멈춘 b10 3종(pcu)을 HKHOME 이 다시 시도합니다**(pc4 글 ee5c2c86 · 키 파일 `corepop_rest_keys_b10_pc4.json` 05eeeae4 · 기기 이름 `hkhome3` · 사슬 `corepop_chain_perkey.sh` 8169fa70).
+> - 까닭: pc4 에서는 물 탐침이 10.0~10.5 GB 에서 가드에 걸렸습니다(pc4 한도 약 9.3~10). HKHOME 은 오늘 Cd met 물 탐침을 최대 13.46 GB 로 통과시켰습니다. 그래서 진짜 최대가 13.4 GB 아래면 됩니다. 넘으면 가드에 걸리고 끝납니다.
+> - b10 의 나머지 4종(CrMn noa 12.8 · Cd kag 14.3 · Zn rtl 21.0 · CrMn nod 22.1, 예측)은 pc4 실측 비 1.4~1.6 을 곱하면 HKHOME 한도를 넘으므로 시도하지 않습니다.
+> - 포스터 판정과 무관합니다. 결과가 나오면 보완 읽기에만 씁니다.
