@@ -1,0 +1,208 @@
+{
+ "test": "COREPOP-H323 — CoRE 모집단 3D 습윤 3성분 흡착점 S_humid,323(323 K · RH 90 % · RT-E 조건 · CORE22 §F 와 같은 조건)",
+ "assign": "ASSIGN_COREPOP_HUMID323_20261114.md",
+ "wrapper": "run_znbdt_e_humid3.py",
+ "wrapper_md5": "9702366386edf93755c50d2527dbbe92",
+ "machine": "hkhome2_s07",
+ "smoke": false,
+ "dry": false,
+ "started": "2026-11-16 21:06:48",
+ "made": "2026-11-16 21:42:59",
+ "protocol": {
+  "T_K": 323.0,
+  "P_Pa": 100000,
+  "y": {
+   "CO2": 0.15,
+   "N2": 0.738859,
+   "water": 0.111141
+  },
+  "p_h2o_Pa_runner": 11114.1,
+  "cycles": 15000,
+  "init": 5000,
+  "ff_md5_gate": "8e8ec933f9013c7e932da04dc256efd3",
+  "water": "TIP5P-Ew 5자리(run_water.WATER_DEF) · Hw none/Lw none(ff_gate)",
+  "replicates": "byte-identical copies, seed = 착수 초(15 s 간격 + 2 s 잠금)",
+  "p_sat_Pa_Buck_323": 12349.0
+ },
+ "definition": "S_humid,323 = (N_CO2/N_N2)/(0.150000/0.738859); 상대 ± = hypot(e_C/N_C, e_N/N_N); 평균 ± = ±̄/√n; SD = 회차 SD",
+ "inputs": {
+  "cifs": {
+   "corepop_2013_Cd__rtl_3_ASR_2": {
+    "src": "humid_wc_runs_v3w_323/corepop_e3_323_hkhome2_s07_b09/src/corepop_2013_Cd__rtl_3_ASR_2_DDEC6.cif",
+    "md5": "32165c86dcbbd8e51e7af3de028d4748",
+    "copies": [
+     "corepop_2013_Cd__rtl_3_ASR_2_e3r1_DDEC6.cif"
+    ]
+   }
+  },
+  "blocks": {}
+ },
+ "audit_summary": {
+  "n": 1,
+  "n_ok": 1,
+  "seeds_distinct": true,
+  "loading_line_counts_all_1": true,
+  "component2_N2_seen_all": true
+ },
+ "materials": {
+  "corepop_2013_Cd__rtl_3_ASR_2": {
+   "n_ok": 1,
+   "S_humid_each": [
+    5.025506202670289
+   ],
+   "S_humid_err_each": [
+    0.10966361308852503
+   ],
+   "S_humid_mean": 5.025506202670289,
+   "S_humid_pm": 0.10966361308852503,
+   "S_humid_SD": null,
+   "N_CO2_mean": 0.1564825152,
+   "N_N2_mean": 0.1533756137,
+   "N_H2O_mean": 0.1294788021,
+   "N2_rel_pm_each": [
+    0.008657779864518319
+   ],
+   "S_humid_rel_pm": 0.021821406374994738,
+   "flag_N2_rel_pm_gt_20pct": false,
+   "flag_S_rel_pm_gt_10pct": false,
+   "blocked": false,
+   "core_key": "2013[Cd][rtl]3[ASR]2",
+   "blocked_components": [],
+   "fc_unknown": false
+  }
+ },
+ "rows": [
+  {
+   "name": "corepop_2013_Cd__rtl_3_ASR_2_e3r1",
+   "base": "corepop_2013_Cd__rtl_3_ASR_2",
+   "runner_status": "ok",
+   "dir": "humid_wc_runs_v3w_323/corepop_e3_323_hkhome2_s07_b09/runs/ads_corepop_2013_Cd__rtl_3_ASR_2_e3r1",
+   "input_components": 3,
+   "input_external_pressure": "100000",
+   "input_molfractions": {
+    "CO2": "0.150000",
+    "water": "0.111141",
+    "N2": "0.738859"
+   },
+   "input_blockpockets_lines": 0,
+   "unit_cells": [
+    3,
+    2,
+    2
+   ],
+   "finished": true,
+   "loading_line_counts": {
+    "CO2": 1,
+    "water": 1,
+    "N2": 1
+   },
+   "component2_N2_in_output": true,
+   "net_charge_ok": true,
+   "seed": 1794830808,
+   "returncode": 0,
+   "stderr_not_found": false,
+   "not_found_in_output": false,
+   "ok": true,
+   "N_CO2": 0.1564825152,
+   "N_CO2_err": 0.0031344062,
+   "N_N2": 0.1533756137,
+   "N_N2_err": 0.0013278923,
+   "N_H2O": 0.1294788021,
+   "N_H2O_err": 0.0206895945,
+   "S_humid": 5.025506202670289,
+   "S_humid_err": 0.10966361308852503,
+   "N2_rel_pm": 0.008657779864518319,
+   "ok_wrapper_original": true,
+   "blocked_components": [],
+   "unblocked_components_clean": {
+    "CO2": true,
+    "N2": true,
+    "water": true
+   },
+   "core_key": "2013[Cd][rtl]3[ASR]2"
+  }
+ ],
+ "thresholds_registered": "§E: 회차 N₂ 상대 ± > 20 % 또는 평균 S_humid 상대 ± > 10 % → 사이클 연장안을 사용자에게(E′). 넘었는지만 적음.",
+ "judgement": "없음 — 종합자",
+ "thin_runner": "run_corepop_e_humid3.py",
+ "thin_runner_md5": "e05cbc1b1d3ce41b510a3e54c995035a",
+ "batches": [
+  "b09"
+ ],
+ "reps": 1,
+ "lpt_list": [
+  "corepop_2013_Cd__rtl_3_ASR_2_e3r1"
+ ],
+ "selected": [
+  "corepop_2013_Cd__rtl_3_ASR_2_e3r1"
+ ],
+ "corepop": {
+  "corepop_2013_Cd__rtl_3_ASR_2": {
+   "key": "2013[Cd][rtl]3[ASR]2",
+   "file": "2013_Cd__rtl_3_ASR_2.cif",
+   "n_atoms": 116,
+   "unit_cells": [
+    3,
+    2,
+    2
+   ],
+   "N_super": 1392,
+   "fc_unknown": false,
+   "base": "corepop_2013_Cd__rtl_3_ASR_2",
+   "rank": 288,
+   "batch": "b09",
+   "cif_md5": "32165c86dcbbd8e51e7af3de028d4748",
+   "blocked_components": []
+  }
+ },
+ "blocks_source": [
+  {
+   "file": "results_corepop_blocks_hkhome2_b09_heavy.json",
+   "md5": "d4fe07df7e7ad440fe6cd086dc8c2726"
+  }
+ ],
+ "targets_source": {
+  "file": "corepop_humid323_targets.json",
+  "md5": "f0cbc61567531ea5b5a7e11dd2df5c01"
+ },
+ "cif_source": {
+  "zip": "core_pop_cifs.zip",
+  "zip_md5": "96a5fbf877881b4606bd32e22f13feb8",
+  "unpacked": "/home/mangwon1/.mof_chain/corepop_1114/cifs"
+ },
+ "note": "CIF 이름의 _DDEC6 는 래퍼 규칙일 뿐 — 전하는 CoRE CIF 의 것. 구 0 인 성분은 막음 없음. ok 는 얇은 실행기가 다시 셈(ok_wrapper_original 병기).",
+ "launcher": {
+  "file": "run_znbdt_e_humid3_323.py",
+  "md5": "7f83dc3c57f5c89d357d877664139e5d"
+ },
+ "launcher_fix": {
+  "why": "래퍼 summarize() 가 298 K 판 문자열을 고정으로 씀 — 값 · 행 · 감사는 그대로",
+  "before": {
+   "test": "COREPOP-H323 — CoRE 모집단 3D 습윤 3성분 흡착점",
+   "assign": "ASSIGN_COREPOP_HUMID323_20261114.md",
+   "definition": "S_humid = (N_CO2/N_N2)/(0.150000/0.821479); 상대 ± = hypot(e_C/N_C, e_N/N_N); 평균 ± = ±̄/√n; SD = 회차 SD",
+   "protocol.T_K": 298.0
+  }
+ },
+ "thin_runner_F": {
+  "file": "run_corepop_e_humid3_323.py",
+  "md5": "75307c47744d1a7350a7ffa1765d834f",
+  "imports": {
+   "run_corepop_e_humid3.py": "e05cbc1b1d3ce41b510a3e54c995035a",
+   "run_znbdt_e_humid3_323.py": "7f83dc3c57f5c89d357d877664139e5d",
+   "run_znbdt_e_humid3.py": "9702366386edf93755c50d2527dbbe92"
+  },
+  "core_cap": 0,
+  "batch": "b09",
+  "keys": [
+   "2013[Cd][rtl]3[ASR]2"
+  ]
+ },
+ "launcher_fix_F": {
+  "why": "RT-E fix_header() 가 test · assign 을 Zn(bib)(bdtdc) RT-E 문자열로 씀 — COREPOP 판으로. 값 · 행 · 감사는 그대로",
+  "before": {
+   "test": "Zn(bib)(bdtdc) RT-E — 습윤 3성분 흡착점 S_humid,323(323 K · RH 90 %)",
+   "assign": "ASSIGN_ZNBDT_REALTEMP_20261108.md §1 · §3(laptop2 RT-E)"
+  }
+ }
+}
