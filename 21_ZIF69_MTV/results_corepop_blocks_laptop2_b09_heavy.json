@@ -1,0 +1,446 @@
+{
+  "test": "COREPOP-H323 준비 — CoRE 모집단 3D(CORE22 제외) Zeo++ 막음 파일(세 탐침)",
+  "assign": "ASSIGN_COREPOP_HUMID323_20261114.md",
+  "machine": "laptop2",
+  "batches": [
+    "b09"
+  ],
+  "ported_from": "core22_blocks_laptop.py (CORE22 막음) — 병렬 · 묶음만 바꿈",
+  "started": "2026-11-16 10:02:17",
+  "zeo": "/home/leehk/miniconda3/envs/czeromof/bin/network",
+  "flags": "-ha",
+  "block_samples": 50000,
+  "radii": [
+    1.65,
+    1.82,
+    1.3
+  ],
+  "probe_gas": {
+    "1.65": "CO2",
+    "1.82": "N2",
+    "1.30": "water"
+  },
+  "input_cell": "단위셀 그대로(CIF · P 1) — 초격자 아님",
+  "guard_MB": 5000,
+  "start_MB": 8000,
+  "parallel": 1,
+  "inputs": {
+    "zip": "core_pop_cifs.zip",
+    "zip_md5": "96a5fbf877881b4606bd32e22f13feb8",
+    "zip_n_entries": 524,
+    "keys_in_namelist": 21
+  },
+  "rows": [
+    {
+      "key": "2015[Zn][hww]3[ION]4",
+      "file": "2015_Zn__hww_3_ION_4.cif",
+      "cif_md5": "43d3e0c8c87618d40f53bf7a1b954389",
+      "n_atoms": 364,
+      "cell_volume_A3": 10155.824618101065,
+      "cellpar": [
+        10.298,
+        31.469,
+        32.722,
+        90.0,
+        106.72,
+        90.0
+      ],
+      "PLD_core": 11.14307,
+      "LCD_core": 12.65358,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 43428,
+        "accessible_nodes": 4178,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2015_Zn__hww_3_ION_4/block1.65/2015_Zn__hww_3_ION_4.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 1333.0,
+        "peak_rss_MB": 9282,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 2
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 43428,
+        "accessible_nodes": 3829,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2015_Zn__hww_3_ION_4/block1.82/2015_Zn__hww_3_ION_4.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 1354.7,
+        "peak_rss_MB": 9696,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0,
+          "simulate_overlap": 2
+        },
+        "tries": 1
+      }
+    },
+    {
+      "key": "2019[Cd][ins]3[FSR]2",
+      "file": "2019_Cd__ins_3_FSR_2.cif",
+      "cif_md5": "8c81a92b17ea49bc926034751c2aa7d6",
+      "n_atoms": 208,
+      "cell_volume_A3": 4739.966085621879,
+      "cellpar": [
+        12.292,
+        20.108,
+        19.807,
+        90.0,
+        104.48800000000001,
+        90.0
+      ],
+      "PLD_core": 6.4111,
+      "LCD_core": 9.07712
+    },
+    {
+      "key": "2019[Cd][ins]3[ASR]2",
+      "file": "2019_Cd__ins_3_ASR_2.cif",
+      "cif_md5": "dd5233a04302c949e75114759e78e82b",
+      "n_atoms": 208,
+      "cell_volume_A3": 4739.966085621879,
+      "cellpar": [
+        12.292,
+        20.108,
+        19.807,
+        90.0,
+        104.48800000000001,
+        90.0
+      ],
+      "PLD_core": 6.4111,
+      "LCD_core": 9.07712
+    },
+    {
+      "key": "2015[Zn][hww]3[ION]2",
+      "file": "2015_Zn__hww_3_ION_2.cif",
+      "cif_md5": "41b1456fe3a991a43835943639f8429f",
+      "n_atoms": 332,
+      "cell_volume_A3": 7689.198255223031,
+      "cellpar": [
+        10.364,
+        26.746,
+        29.002999999999997,
+        90.0,
+        106.97600000000001,
+        90.0
+      ],
+      "PLD_core": 8.71968,
+      "LCD_core": 9.34704
+    },
+    {
+      "key": "2020[Zr][hex]3[ASR]1",
+      "file": "2020_Zr__hex_3_ASR_1.cif",
+      "cif_md5": "f0243cc5325f34ab44a130ad76b5aeb2",
+      "n_atoms": 220,
+      "cell_volume_A3": 5003.113470376129,
+      "cellpar": [
+        14.669,
+        14.668999999999999,
+        26.8478,
+        90.0,
+        90.0,
+        119.99999999999999
+      ],
+      "PLD_core": 5.56526,
+      "LCD_core": 8.89938
+    },
+    {
+      "key": "2020[Zr][hex]3[FSR]1",
+      "file": "2020_Zr__hex_3_FSR_1.cif",
+      "cif_md5": "a5cf5864871051e07a2db4313a32cd8a",
+      "n_atoms": 220,
+      "cell_volume_A3": 5003.113470376129,
+      "cellpar": [
+        14.669,
+        14.668999999999999,
+        26.8478,
+        90.0,
+        90.0,
+        119.99999999999999
+      ],
+      "PLD_core": 5.56526,
+      "LCD_core": 8.89938
+    },
+    {
+      "key": "2021[Cd][pcu]3[FSR]2",
+      "file": "2021_Cd__pcu_3_FSR_2.cif",
+      "cif_md5": "d008bd9b45b35c0ecad702113cc97fe7",
+      "n_atoms": 172,
+      "cell_volume_A3": 4500.820871460044,
+      "cellpar": [
+        13.6113,
+        15.6911,
+        21.0736,
+        90.0,
+        90.0,
+        90.0
+      ],
+      "PLD_core": 6.46124,
+      "LCD_core": 8.038
+    },
+    {
+      "key": "2017[Cd][met]3[ASR]1",
+      "file": "2017_Cd__met_3_ASR_1.cif",
+      "cif_md5": "5f620c47f0c320bf271e1aef15f627bd",
+      "n_atoms": 360,
+      "cell_volume_A3": 6497.120980879193,
+      "cellpar": [
+        18.6598,
+        18.6598,
+        18.6598,
+        90.0,
+        90.0,
+        90.0
+      ],
+      "PLD_core": 4.13446,
+      "LCD_core": 6.42627
+    },
+    {
+      "key": "2016[Ti][srs]3[ASR]1",
+      "file": "2016_Ti__srs_3_ASR_1.cif",
+      "cif_md5": "5e1053d105725e6e98739f44448c22cb",
+      "n_atoms": 400,
+      "cell_volume_A3": 12027.562681431038,
+      "cellpar": [
+        22.9118,
+        22.9118,
+        22.9118,
+        90.0,
+        90.0,
+        90.0
+      ],
+      "PLD_core": 4.56727,
+      "LCD_core": 6.25402
+    },
+    {
+      "key": "2021[Cd][pcu]3[ASR]2",
+      "file": "2021_Cd__pcu_3_ASR_2.cif",
+      "cif_md5": "5ac79a85c2fbaab478f5a811d86870a3",
+      "n_atoms": 172,
+      "cell_volume_A3": 4500.820871460044,
+      "cellpar": [
+        13.6113,
+        15.6911,
+        21.0736,
+        90.0,
+        90.0,
+        90.0
+      ],
+      "PLD_core": 6.46124,
+      "LCD_core": 8.038
+    },
+    {
+      "key": "2015[Zr][ftw]3[ASR]2",
+      "file": "2015_Zr__ftw_3_ASR_2.cif",
+      "cif_md5": "7c1a1aee6b9ade5c1e1f1b61f7363ea0",
+      "n_atoms": 396,
+      "cell_volume_A3": 16259.653959704003,
+      "cellpar": [
+        25.334,
+        25.334,
+        25.334,
+        90.0,
+        90.0,
+        90.0
+      ],
+      "PLD_core": 8.58272,
+      "LCD_core": 21.33814
+    },
+    {
+      "key": "2020[Co][pts]3[FSR]1",
+      "file": "2020_Co__pts_3_FSR_1.cif",
+      "cif_md5": "351551ec29a0b542e30cd66a631f2c7c",
+      "n_atoms": 124,
+      "cell_volume_A3": 3408.2773294972408,
+      "cellpar": [
+        18.63,
+        9.3797,
+        19.601,
+        90.0,
+        95.69,
+        90.0
+      ],
+      "PLD_core": 5.99315,
+      "LCD_core": 7.10963
+    },
+    {
+      "key": "2020[Co][pts]3[ASR]1",
+      "file": "2020_Co__pts_3_ASR_1.cif",
+      "cif_md5": "bfb94b806af5857fe736762c5a9533f3",
+      "n_atoms": 124,
+      "cell_volume_A3": 3408.2773294972408,
+      "cellpar": [
+        18.63,
+        9.3797,
+        19.601,
+        90.0,
+        95.69,
+        90.0
+      ],
+      "PLD_core": 5.99315,
+      "LCD_core": 7.10963
+    },
+    {
+      "key": "2017[Ag][sqc]3[ASR]1",
+      "file": "2017_Ag__sqc_3_ASR_1.cif",
+      "cif_md5": "4c6d3a98e9b0df8cb68ced85f87ac0a9",
+      "n_atoms": 232,
+      "cell_volume_A3": 5448.596202623152,
+      "cellpar": [
+        11.2473,
+        18.5148,
+        27.330300000000005,
+        90.0,
+        106.793,
+        90.0
+      ],
+      "PLD_core": 8.70295,
+      "LCD_core": 10.03565
+    },
+    {
+      "key": "2017[Ag][sqc]3[FSR]1",
+      "file": "2017_Ag__sqc_3_FSR_1.cif",
+      "cif_md5": "a1b2d3d42c23b35f364b211256862aa2",
+      "n_atoms": 232,
+      "cell_volume_A3": 5448.596202623152,
+      "cellpar": [
+        11.2473,
+        18.5148,
+        27.330300000000005,
+        90.0,
+        106.793,
+        90.0
+      ],
+      "PLD_core": 8.70295,
+      "LCD_core": 10.03565
+    },
+    {
+      "key": "2017[Co][tfz]3[ASR]1",
+      "file": "2017_Co__tfz_3_ASR_1.cif",
+      "cif_md5": "009fe2ff7c39171fd71b4fce7d61add8",
+      "n_atoms": 396,
+      "cell_volume_A3": 10514.473847155105,
+      "cellpar": [
+        21.5398,
+        21.5398,
+        23.2138,
+        90.0,
+        90.0,
+        102.514
+      ],
+      "PLD_core": 8.55202,
+      "LCD_core": 10.30033
+    },
+    {
+      "key": "2020[Fe][tbo]3[FSR]2",
+      "file": "2020_Fe__tbo_3_FSR_2.cif",
+      "cif_md5": "cddfb222e24169ece5f41ea04df73263",
+      "n_atoms": 236,
+      "cell_volume_A3": 10204.31624983007,
+      "cellpar": [
+        24.3463,
+        24.3463,
+        24.3463,
+        59.999999999999986,
+        59.999999999999986,
+        59.999999999999986
+      ],
+      "PLD_core": 8.90611,
+      "LCD_core": 20.78081
+    },
+    {
+      "key": "2020[Fe][tbo]3[ASR]2",
+      "file": "2020_Fe__tbo_3_ASR_2.cif",
+      "cif_md5": "58b02b6201b2783409a36efc588669b3",
+      "n_atoms": 236,
+      "cell_volume_A3": 10204.31624983007,
+      "cellpar": [
+        24.3463,
+        24.3463,
+        24.3463,
+        59.999999999999986,
+        59.999999999999986,
+        59.999999999999986
+      ],
+      "PLD_core": 8.90611,
+      "LCD_core": 20.78081
+    },
+    {
+      "key": "2020[Fe][tbo]3[FSR]1",
+      "file": "2020_Fe__tbo_3_FSR_1.cif",
+      "cif_md5": "92ed027b0060ddc405487bd57f9a45b7",
+      "n_atoms": 236,
+      "cell_volume_A3": 10190.993650659157,
+      "cellpar": [
+        24.3357,
+        24.335700000000003,
+        24.335699999999996,
+        59.99999999999999,
+        59.999999999999986,
+        60.00000000000001
+      ],
+      "PLD_core": 8.92032,
+      "LCD_core": 20.78792
+    },
+    {
+      "key": "2021[Cd][kag]3[FSR]1",
+      "file": "2021_Cd__kag_3_FSR_1.cif",
+      "cif_md5": "dc4b6af1250d78ef5bba25c8c585b0e2",
+      "n_atoms": 258,
+      "cell_volume_A3": 8795.610135248935,
+      "cellpar": [
+        25.3567,
+        25.356699999999996,
+        15.7961,
+        90.0,
+        90.0,
+        119.99999999999999
+      ],
+      "PLD_core": 14.42961,
+      "LCD_core": 18.07452
+    },
+    {
+      "key": "2013[Cd][rtl]3[ASR]2",
+      "file": "2013_Cd__rtl_3_ASR_2.cif",
+      "cif_md5": "32165c86dcbbd8e51e7af3de028d4748",
+      "n_atoms": 116,
+      "cell_volume_A3": 3779.26804166151,
+      "cellpar": [
+        10.027,
+        18.42,
+        20.577,
+        89.26899999999999,
+        84.18,
+        88.402
+      ],
+      "PLD_core": 8.95998,
+      "LCD_core": 9.96128
+    }
+  ],
+  "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
+  "elapsed_s": 2688
+}
