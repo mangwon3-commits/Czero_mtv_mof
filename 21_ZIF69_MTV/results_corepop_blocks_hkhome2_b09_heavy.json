@@ -322,7 +322,57 @@
         90.0
       ],
       "PLD_core": 6.46124,
-      "LCD_core": 8.038
+      "LCD_core": 8.038,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 34614,
+        "accessible_nodes": 2626,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cd__pcu_3_ASR_2/block1.65/2021_Cd__pcu_3_ASR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 466.2,
+        "peak_rss_MB": 8204,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 34614,
+        "accessible_nodes": 2422,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Cd__pcu_3_ASR_2/block1.82/2021_Cd__pcu_3_ASR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 460.3,
+        "peak_rss_MB": 7811,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      }
     },
     {
       "key": "2020[Co][pts]3[FSR]1",
@@ -377,5 +427,5 @@
     }
   ],
   "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
-  "elapsed_s": 4313
+  "elapsed_s": 5239
 }
