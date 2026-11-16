@@ -4,6 +4,38 @@
 
 ---
 
+## 2026-11-16 16:03 — [COREPOP-H323] **laptop2 — COREPOP b02 완주: 30작업 가운데 29작업이 끝났고, 2021[Co][svk]3[FSR]1 은 등록 §8-2 대로 simulate 만 끈 미완 행 · 러너가 끝난 뒤 같은 폴더에서 다시 띄움(PID 33954)** · 사슬 기록과 결과 파일의 표지만 적고 값은 읽지 않았습니다
+
+**받는 곳**: HKHOME · 랩탑 · 클라우드 종합자 · 사용자
+**요약**: 오늘 밤 포스터 마감 전에 b02 를 읽을 수 있도록, 사용자 지시(11-16 15:5x)에 따라 COREPOP_H323_READING_REGISTRATION_20261115.md §8-2 의 방법으로 가장 늦은 작업 2021[Co][svk]3[FSR]1 의 simulate 하나만 PID 로 껐습니다. 러너(파이썬)는 그대로 두었으므로, 러너가 그 행을 ok False 로 적고 결과와 감사 파일을 평소대로 썼습니다. 그 행은 §8-1 대로 미완 행으로 남고 값이 채워지지 않습니다. 러너가 끝난 뒤에는 같은 폴더에서 러너가 쓰던 simulate 를 다시 띄워, 끄기 전 마지막 이어받기 파일에서 계산을 잇게 했습니다. 아래 표지는 사슬 기록 원문과 결과 파일에서 기계적으로 뽑았으며 값 · 평균 · 순위는 적지 않습니다.
+**답 필요**: 아니오
+
+    ①        CrashRestart/binary_restart.dat 는 있었습니다. 지시를 받은 15:53 에 12,315,024 B · mtime 2026-11-16 14:50:15 였고, 다음 진행 기록이 찍힌 뒤 끄기 직전에 12,406,376 B · mtime 2026-11-16 16:01:24 · md5 24226b28 였습니다.
+             끄기 직전 마지막 진행 기록은 'Writing Crash-file!: 11500'(16:01:24)입니다. 이어받기 파일이 쓰이는 도중에 끄지 않으려고 이 기록을 기다렸습니다.
+    ②        simulate PID 5903 을 2026-11-16 16:02:08 에 SIGTERM 으로 껐습니다. 러너 파이썬(PID 5849)은 끄지 않았습니다.
+    ③        러너는 2026-11-16 16:02:13 에 끝났고, 그 작업의 returncode.txt 는 -15 입니다. 결과와 감사 파일은 아래 파일 표지와 같으며 이 글과 함께 올립니다.
+    ④        2026-11-16 16:02:13 에 같은 폴더에서 러너가 쓰던 /home/leehk/miniconda3/envs/czeromof/bin/simulate 을 `setsid nohup <simulate> simulation.input < /dev/null > /dev/null 2>&1 &` 로 다시 띄웠습니다. 새 PID 는 33954 입니다.
+             러너가 그 simulate 에 준 환경 변수를 그대로 넘겼고, simulation.input 의 ContinueAfterCrash yes 에 따라 binary_restart.dat 에서 잇습니다. 60초 뒤에도 돌고 있었습니다.
+             stderr 를 /dev/null 로 보냈으므로 진행은 binary_restart.dat 의 mtime(500 사이클마다)으로 봅니다. 러너가 끝난 뒤 그 파일은 12,406,376 B · md5 24226b28 였습니다.
+    폴더     실행 폴더 안 파일은 지우거나 고치지 않았습니다. 이어받기 파일 사본은 저장소 밖(/home/leehk/.mof_chain/cosvk/crash_160124/binary_restart.dat · md5 24226b28)에 두었습니다.
+    읽기     다시 띄운 계산은 이어받은 계산입니다. 끝나면 그 값을 §8-2 의 n 81 판에 쓸지는 종합자가 정하고, 첫 읽기의 판정 기록은 고치지 않습니다.
+    사슬 기록(원문)
+      2026-11-14 17:35:57 시작 기기 laptop2 묶음 b02 Zeo++ 병렬 2 워커 12 · PY /home/leehk/miniconda3/envs/czeromof/bin/python
+      2026-11-14 17:35:57 simulate 0 — Zeo++ 착수
+      2026-11-15 01:20:39 Zeo++ 끝 rc=0 · 저장 /home/leehk/mof_project/21_ZIF69_MTV/results_corepop_blocks_laptop2_b02.json (27870 s) · 전부 ok False · 막음 필요 구조 수 {'1.65': 2, '1.82': 4, '1.30': 2}
+      2026-11-15 01:20:39 막음 ok 구조 30
+      2026-11-15 01:20:58 스모크 rc=0 n_ok=2 (기대 2)
+      2026-11-16 16:02:11 본 계산 끝 rc=2 · 감사 {"n": 30, "n_ok": 29, "seeds_distinct": true, "loading_line_counts_all_1": false, "component2_N2_seen_all": true}
+    파일     results_corepop_blocks_laptop2_b02.json(71f517a4) · 행 32 · status {"None": 32}
+             {"started": "2026-11-14 17:36:09", "finished": "2026-11-15 01:20:39"}
+    파일     results_corepop_e_humid3_323_laptop2_b02.json(0165cd9e) · 행 30 · status {"None": 30} · 씨앗 30개 · 고유 30개
+             {"audit_summary": {"n": 30, "n_ok": 29, "seeds_distinct": true, "loading_line_counts_all_1": false, "component2_N2_seen_all": true}, "started": "2026-11-15 01:21:07", "made": "2026-11-16 16:02:11"}
+    파일     results_corepop_e_humid3_323_laptop2_b02_audit.json(afa03d6b) · 행 30 · status {"None": 30} · 씨앗 30개 · 고유 30개
+             {"audit_summary": {"n": 30, "n_ok": 29, "seeds_distinct": true, "loading_line_counts_all_1": false, "component2_N2_seen_all": true}}
+    막음     .block 122개를 함께 올립니다.
+
+---
+
 ## 2026-11-16 15:55 — [COREPOP-H323] **laptop2 — COREPOP b09 무거운 구조 멈춤: COREPOP_B09_SPLIT_20261116.md §2 대로 사슬 bash · Zeo++ 래퍼 파이썬 · network 를 PID 로 끔(15:53:46) · 막음 중간 파일을 마지막으로 올림** · 값은 읽지 않았습니다
 
 **받는 곳**: HKHOME · 랩탑 · pc4 · 클라우드 종합자 · 사용자
