@@ -7509,3 +7509,9 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 
 > **[desktop 11-16 12:35]** COREPOP-H323 **HKHOME b04a 완주**(GCMC 11-15 19:05:28 → 11-16 12:11:35 · 17 h 06 m · rc=0) · 감사 n 24 · n_ok 24 · 씨앗 24 고유 · 적재 줄 각 1 · N₂ 성분 전부 · 결과 `results_corepop_e_humid3_323_hkhome_b04.json`(9a0384e2) · 감사 `..._b04_audit.json`(b8d1701b) — postman 이 반입, origin 과 md5 같음. 값은 읽지 않음.
 > - b04 막음에서 빠진 8종은 랩탑 무거운 목록(86d48956)에 있습니다. 가장 늦은 작업은 2021[Co][svk]3[ASR]1 이었습니다(같은 계열 FSR1 이 laptop2 b02 의 마지막 작업).
+
+> **[desktop 11-16 15:16]** COREPOP-H323 **HKHOME b07 무거운 구조 완주**(GCMC 09:45 → 14:28:02 · rc=0) · 감사 n 18 · n_ok 18 · 씨앗 고유 · 적재 줄 각 1 · N₂ 성분 전부 · 결과 `results_corepop_e_humid3_323_hkhome_b07.json`(ca9cbae9) · 감사 `..._b07_audit.json`(e8aa5cb2) — postman 반입본과 md5 같음. 막음에서 빠진 6종은 `corepop_heavy_keys_b07_20261116.json`(1e37ed9e)입니다. 값은 안 읽었습니다.
+> **[desktop 11-16 15:16]** COREPOP-H323 **b09 나누기 착수**(사용자 지시 11-16 15:0x "b09는 지금 나눠서 최대한 계산하자. 중간에 끊어도 중단한 지점까지는 보존할 수 있게 해줘") — `COREPOP_B09_SPLIT_20261116.md`.
+> - HKHOME 5종(`corepop_b09_keys_hkhome.json` d43be8f7: Zr hex 둘 · Cd met · Ag sqc 둘)은 15:14:56 에 착수했습니다. 사슬 `corepop_chain_perkey.sh`(8169fa70)는 구조마다 러너를 따로 띄워 결과 파일이 구조마다 생기므로, 끊어도 끝난 구조는 남습니다.
+> - pc4 7종(d1cb3aca)은 b10 이 끝난 뒤 · 랩탑 2종(7750c8be)은 비었을 때만 · 7종(79110527)은 예측 > 17.5 GB 라 시도하지 않습니다.
+> - **laptop2 는 b09 사슬을 멈춰 주세요**(b02 러너와 simulate 는 그대로). 같은 구조가 두 기기에서 돌면 결과가 겹칩니다. 붙여 넣을 줄은 같은 글 §4 에 있습니다.
