@@ -7548,3 +7548,8 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > - 까닭: HKHOME 이 비었는데, pc4 는 13:45 b10 착수 글 뒤로 글이 없고 b09 착수 글도 없습니다. 사용자 지시 "b09는 지금 나눠서 최대한 계산하자" 와 배정 §4(착수 글을 먼저 올린 기기가 맡음)를 따랐습니다.
 > - **pc4 는 b09 를 시작하지 마십시오.** 이미 띄웠다면 우편함에 적어 주십시오. 같은 구조가 두 기기에서 돌면 판정 스크립트가 멈춥니다.
 > - 견적(HKHOME b07 같은 부피대 실측 · 호출당 5~8 분): Zeo++ 21호출 약 2~3 h · GCMC 구조당 0.5~1 h → 11-16 21~22시.
+
+> **[desktop 11-16 21:54]** **323 K 전하 ON/OFF CO₂ 밀도 격자 — −Br*(e24i_br_open) 완주**(포스터 Figure 3 · 사용자 요청). 실행기 `run_density_charge_323.py`(a13ae536 · 포스터 세션 작성, `run_density_map.py` 56c591c5 무수정 import) · HKHOME 21:47 → 21:54.
+> - 입력은 298 K 판(`density_v3_tpl4/hkhome/e24i_br_open__q_off`)과 비교해 **ExternalTemperature 298.0 → 323.0 한 줄만** 다릅니다. 두 작업 모두 Simulation finished 이고 적재 줄이 있습니다.
+> - 산출(298 K 판과 같은 파일 구성): `density_v3_tpl4_323/e24i_br_open__q_{on,off}/VTK/System_0/COMDensityProfile_CO2.vtk.gz` · `simulation.input` · `density_results.json`(a1242493 04f7e825 a410af7f ).
+> - ZIF-69(base) 같은 작업은 `run_density_charge_323_zif69.py`(대상 · 출력 폴더만 다른 사본)로 21:49 에 띄웠습니다. 출력은 `density_v3_323/` 입니다.
