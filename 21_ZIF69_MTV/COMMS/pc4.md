@@ -1,3 +1,26 @@
+## 2026-11-16 13:45 — [COREPOP-H323] **pc4 — 착수 글: b10 무거운 구조 7종 가운데 3종(2011[Zn][pcu]3[ASR]8 · 2011[Zn][pcu]3[FSR]8 · 2007[Zn][pcu]3[ASR]3) · 키 파일 corepop_rest_keys_b10_pc4.json 05eeeae4 · 나머지 4종은 한도 초과 예측으로 미룸(시도하지 않음)** · 사용자 결정 · WSL 그대로(한도 9.2 GB) · 이 글 바로 뒤에 띄웁니다
+**받는 곳**: HKHOME · 클라우드 종합자 · 랩탑 · laptop2 · pc3 · pc5 · 사용자
+**요약**: b06 이 끝나(df8a105f) 2번째 기기 글 §5-8 대로 다음 무거운 묶음을 봤습니다. b07(HKHOME) · b08(랩탑) · b09(laptop2) 는 가져갔고 b10 무거운 7종은 아무도 안 가져갔습니다. 이 기기의 한도 9.2 GB 로는 7종 대부분이 가드에 걸릴 것이라 사용자에게 알렸고, 사용자가 **WSL 은 그대로 두고, 분할표 예측 × 1.17(16 GB 글 §1-2 의 보통 잔차) ≤ 9.3 GB 인 3종만** 가져가라고 정했습니다. **나머지 4종(2015[CrMn][noa]3[FSR]1 · 2021[Cd][kag]3[ASR]1 · 2022[Zn][rtl]3[ASR]1 · 2015[CrMn][nod]3[ASR]1)은 한도 초과 예측으로 미룹니다 — pc4 는 시도하지 않으며, 이 4종은 아직 아무도 가져가지 않은 상태입니다.** 키 파일은 b10 전체로 오해되지 않도록 표준 이름(corepop_rest_keys_b10.json)을 쓰지 않았고, 미룬 4종을 파일 안 `deferred` 에 적었습니다. 사슬 · 래퍼 · 실행기 · 분할표는 손대지 않았습니다. 값은 읽지 않습니다.
+**답 필요**: 예 — 종합자: 미룬 b10 4종을 맡을 기기(예측 최대 12.8 ~ 22.2 GB · 한도 17 GB 이상 기기가 필요할 공산)
+
+    가져감  13:3x origin/master 5a0f4f9e 에서 b10 무거운 착수 글 없음 · pc5 몫(corepop_medium_keys_pc5_20261115.json)에 b10 구조 없음 → 2번째 기기 글 §5-3 새 한 줄과 같은 7종
+    고른 규칙 pred_peak_GB × 1.17 ≤ 9.3(사용자 결정 11-16 13:3x)
+            가져감 3종  2011[Zn][pcu]3[ASR]8 6.54 → 7.65 · 2011[Zn][pcu]3[FSR]8 6.54 → 7.65 · 2007[Zn][pcu]3[ASR]3 6.70 → 7.84 GB (부피 4,197 ~ 4,297 Å³)
+            미룸 4종    2015[CrMn][noa]3[FSR]1 12.79 → 14.96 · 2021[Cd][kag]3[ASR]1 14.26 → 16.68 · 2022[Zn][rtl]3[ASR]1 20.97 → 24.53 · 2015[CrMn][nod]3[ASR]1 22.15 → 25.92 GB
+            ⚠ 가장 큰 잔차(× 1.46)로는 3종도 9.55 ~ 9.78 GB 라 가드에 걸릴 수 있습니다. b06 에서도 예측 아래였던 2020[Cd][sod]3[ASR]1 이 물 탐침 약 10 GB 로 빠졌습니다(df8a105f 글)
+    한도    simulate 0 · network 0 에서 MemAvailable − 5 = 9.28 GB(13:3x) → 내림 9.2 · WSL 15.5 GB 그대로(사용자 결정)
+    키 파일 corepop_rest_keys_b10_pc4.json 05eeeae4 · keys 3 · from 분할표 06e0ffb5 · minus pc5 키 파일 · rule · deferred 4 · 래퍼는 'keys' 만 읽음(corepop_blocks_keys.py:22 · corepop_chain_keys.sh:26) · 이 글과 같이 올림
+    드라이  래퍼 COREPOP_ZEO_DRY=1: 입력 대조 통과 · zip 524개 중 대상 3/3 · 묶음 b10 · 원자 수 = NAtoms(82 ~ 106) · 계획 9건 · 병렬 1
+    폴더    3종의 corepop_zeo_runs/<파일 이름>/ 없음 · results_corepop_*pc4_b10* 없음 · corepop_e3_323_pc4_b10 없음 · b06 기록 넷은 corepop_pc4_heavy_b06.*.log 로 옮김(§5-6)
+    파일    corepop_chain_keys.sh e5f65f5a(저장소 판과 cmp 같음) · corepop_blocks_keys.py c2a71d4c · corepop_blocks.py c00cd11a · master 5a0f4f9e 와 같음
+    WSL     ⑦-4 🔴 그대로(예약 작업 없음 · 사용자 선택 "창을 열어 둔 채")
+    커밋    호스트 커밋 착수 전 39.5/58.7 GB(67 %)
+    명령    cd ~/mof_project/21_ZIF69_MTV && RASPA_DIR=$HOME/RASPA/simulations REPO=$HOME/mof_project setsid nohup bash ~/.mof_chain/corepop_chain_keys.sh pc4 corepop_rest_keys_b10_pc4.json 1 28 < /dev/null > /dev/null 2>&1 &
+    산출    results_corepop_blocks_pc4_b10_heavy.json · results_corepop_e_humid3_323_pc4_b10.json + _audit.json · humid_wc_runs_v3w_323/corepop_e3_323_pc4_b10/
+    견적    이 기기 b06 실측(같은 기기 · 다른 구조)에서: Zeo++ 9호출 × 약 5.5 분 ≈ 50 분(부피가 b06 가운데쯤이라 4 ~ 6 분/호출) · GCMC 3작업 한 물결 · b06 작업 0.44 ~ 1.39 h → 합 약 1.5 ~ 2.5 h · 끝 11-16 15:30 ~ 16:30
+
+---
+
 ## 2026-11-16 13:30 — [COREPOP-H323] **pc4 — b06 무거운 구조 Zeo++ 끝 · 완주(감사 n 24 · n_ok 24 · 씨앗 서로 다름) · 빠진 구조 셋: 2021[Zn][scu]3[ASR]1 · 2018[Zn][pcu]3[ASR]3 · 2020[Cd][sod]3[ASR]1(가드 kill · 재시도에서도 실패)** · 사슬 8 h 51 m(Zeo++ 7.40 h + GCMC 1.45 h) · 값은 읽지 않았습니다
 **받는 곳**: HKHOME · 클라우드 종합자 · 랩탑 · laptop2 · pc3 · 사용자
 **요약**: 11-15 22:39 에 띄운 b06 무거운 27종 사슬이 11-16 07:30 에 끝났습니다. Zeo++ 81호출 가운데 74호출 ok, 가드 kill 로 끝까지 실패한 것이 7호출(구조 셋)입니다. 셋 가운데 둘은 착수 글에서 분할표 예측이 잰 한도 9.3 GB 를 넘는다고 적은 구조이고, 2020[Cd][sod]3[ASR]1 은 예측 아래였지만 물 탐침 최대가 약 10 GB 였습니다. 이 셋의 처리는 종합자 몫입니다. 막음 ok 24종의 GCMC 는 24/24 완주했습니다. 이 글은 Zeo++ 끝 글과 완주 글을 하나로 합쳤습니다(이 세션이 Zeo++ 끝 때 깨어 있지 않았음). 착수 글 머리의 22:45 는 실제 게시 22:38(7697f54a)입니다.
