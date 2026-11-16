@@ -1,0 +1,630 @@
+{
+  "test": "COREPOP-H323 준비 — CoRE 모집단 3D(CORE22 제외) Zeo++ 막음 파일(세 탐침)",
+  "assign": "ASSIGN_COREPOP_HUMID323_20261114.md",
+  "machine": "laptop",
+  "batches": [
+    "b07",
+    "b08",
+    "b09"
+  ],
+  "ported_from": "core22_blocks_laptop.py (CORE22 막음) — 병렬 · 묶음만 바꿈",
+  "started": "2026-11-16 19:41:47",
+  "zeo": "/home/skyjun/miniconda3/envs/czeromof/bin/network",
+  "flags": "-ha",
+  "block_samples": 50000,
+  "radii": [
+    1.65,
+    1.82,
+    1.3
+  ],
+  "probe_gas": {
+    "1.65": "CO2",
+    "1.82": "N2",
+    "1.30": "water"
+  },
+  "input_cell": "단위셀 그대로(CIF · P 1) — 초격자 아님",
+  "guard_MB": 5000,
+  "start_MB": 8000,
+  "parallel": 1,
+  "inputs": {
+    "zip": "core_pop_cifs.zip",
+    "zip_md5": "96a5fbf877881b4606bd32e22f13feb8",
+    "zip_n_entries": 524,
+    "keys_in_namelist": 6
+  },
+  "rows": [
+    {
+      "key": "2021[Mn][dia]3[ASR]1",
+      "file": "2021_Mn__dia_3_ASR_1.cif",
+      "cif_md5": "e8578311549aea5c4f353a457ce24856",
+      "n_atoms": 380,
+      "cell_volume_A3": 7993.782879463536,
+      "cellpar": [
+        30.9603,
+        26.675199999999997,
+        20.055900000000005,
+        81.65649999999998,
+        58.481700000000004,
+        39.8619
+      ],
+      "PLD_core": 5.47834,
+      "LCD_core": 10.29679,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 72663,
+        "accessible_nodes": 4052,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Mn__dia_3_ASR_1/block1.65/2021_Mn__dia_3_ASR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 1024.2,
+        "peak_rss_MB": 14522,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 72663,
+        "accessible_nodes": 3535,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Mn__dia_3_ASR_1/block1.82/2021_Mn__dia_3_ASR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 997.1,
+        "peak_rss_MB": 14630,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 72663,
+        "accessible_nodes": 5071,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Mn__dia_3_ASR_1/block1.30/2021_Mn__dia_3_ASR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 1037.3,
+        "peak_rss_MB": 16861,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      }
+    },
+    {
+      "key": "2021[Mn][dia]3[FSR]1",
+      "file": "2021_Mn__dia_3_FSR_1.cif",
+      "cif_md5": "b856ec7f78d2bd3a7066181aa9a10cb8",
+      "n_atoms": 380,
+      "cell_volume_A3": 7993.782879463536,
+      "cellpar": [
+        30.9603,
+        26.675199999999997,
+        20.055900000000005,
+        81.65649999999998,
+        58.481700000000004,
+        39.8619
+      ],
+      "PLD_core": 5.47834,
+      "LCD_core": 10.29679,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 72663,
+        "accessible_nodes": 4052,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Mn__dia_3_FSR_1/block1.65/2021_Mn__dia_3_FSR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 1037.4,
+        "peak_rss_MB": 14648,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 72663,
+        "accessible_nodes": 3535,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Mn__dia_3_FSR_1/block1.82/2021_Mn__dia_3_FSR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 1031.3,
+        "peak_rss_MB": 13744,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 72663,
+        "accessible_nodes": 5071,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2021_Mn__dia_3_FSR_1/block1.30/2021_Mn__dia_3_FSR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 1026.3,
+        "peak_rss_MB": 16500,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      }
+    },
+    {
+      "key": "2020[Cu][nan]3[ASR]2",
+      "file": "2020_Cu__nan_3_ASR_2.cif",
+      "cif_md5": "f9a892a419fa05017c1acfe57d96509e",
+      "n_atoms": 252,
+      "cell_volume_A3": 7638.248176295539,
+      "cellpar": [
+        20.851,
+        20.851,
+        18.3388,
+        90.0,
+        90.0,
+        106.66300000000001
+      ],
+      "PLD_core": 6.64379,
+      "LCD_core": 12.01795,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 32462,
+        "accessible_nodes": 3893,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2020_Cu__nan_3_ASR_2/block1.65/2020_Cu__nan_3_ASR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 797.1,
+        "peak_rss_MB": 16174,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 32462,
+        "accessible_nodes": 3607,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2020_Cu__nan_3_ASR_2/block1.82/2020_Cu__nan_3_ASR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 827.3,
+        "peak_rss_MB": 15852,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 32463,
+        "accessible_nodes": 4675,
+        "n_spheres": null,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2020_Cu__nan_3_ASR_2/block1.30/2020_Cu__nan_3_ASR_2.block",
+        "block_md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "n_block_files": 1,
+        "block_ok": false,
+        "blockpockets_needed": null,
+        "rc": -9,
+        "seconds": 816.3,
+        "peak_rss_MB": 17990,
+        "stopped_by_guard": true,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 2
+      }
+    },
+    {
+      "key": "2019[Cu][nan]3[ASR]2",
+      "file": "2019_Cu__nan_3_ASR_2.cif",
+      "cif_md5": "65d34d79af34ac743081d3044f8691e4",
+      "n_atoms": 270,
+      "cell_volume_A3": 7612.312942948542,
+      "cellpar": [
+        20.816,
+        20.816,
+        18.3552,
+        90.0,
+        90.0,
+        106.841
+      ],
+      "PLD_core": 6.66246,
+      "LCD_core": 11.30481,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 33556,
+        "accessible_nodes": 3991,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cu__nan_3_ASR_2/block1.65/2019_Cu__nan_3_ASR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 731.8,
+        "peak_rss_MB": 15584,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 33556,
+        "accessible_nodes": 3688,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cu__nan_3_ASR_2/block1.82/2019_Cu__nan_3_ASR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 710.6,
+        "peak_rss_MB": 14641,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 33556,
+        "accessible_nodes": 4836,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cu__nan_3_ASR_2/block1.30/2019_Cu__nan_3_ASR_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 727.8,
+        "peak_rss_MB": 17079,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      }
+    },
+    {
+      "key": "2019[Cu][nbo]3[ASR]1",
+      "file": "2019_Cu__nbo_3_ASR_1.cif",
+      "cif_md5": "548ab4004ea9b191d4791b9e90c85d70",
+      "n_atoms": 252,
+      "cell_volume_A3": 7808.387559837552,
+      "cellpar": [
+        18.5615,
+        18.5615,
+        28.3151,
+        70.6408,
+        109.35899999999998,
+        119.953
+      ],
+      "PLD_core": 6.83827,
+      "LCD_core": 10.89818,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 34525,
+        "accessible_nodes": 4020,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cu__nbo_3_ASR_1/block1.65/2019_Cu__nbo_3_ASR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 746.9,
+        "peak_rss_MB": 15594,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 34525,
+        "accessible_nodes": 3670,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cu__nbo_3_ASR_1/block1.82/2019_Cu__nbo_3_ASR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 797.2,
+        "peak_rss_MB": 15165,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 34525,
+        "accessible_nodes": 4928,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2019_Cu__nbo_3_ASR_1/block1.30/2019_Cu__nbo_3_ASR_1.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 789.0,
+        "peak_rss_MB": 17306,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 2
+      }
+    },
+    {
+      "key": "2015[Zn][hww]3[ION]2",
+      "file": "2015_Zn__hww_3_ION_2.cif",
+      "cif_md5": "41b1456fe3a991a43835943639f8429f",
+      "n_atoms": 332,
+      "cell_volume_A3": 7689.198255223031,
+      "cellpar": [
+        10.364,
+        26.746,
+        29.002999999999997,
+        90.0,
+        106.97600000000001,
+        90.0
+      ],
+      "PLD_core": 8.71968,
+      "LCD_core": 9.34704,
+      "r1.65": {
+        "gas": "CO2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 39402,
+        "accessible_nodes": 2985,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2015_Zn__hww_3_ION_2/block1.65/2015_Zn__hww_3_ION_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 638.3,
+        "peak_rss_MB": 14257,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.82": {
+        "gas": "N2",
+        "channels": 1,
+        "pockets": 0,
+        "nodes": 39402,
+        "accessible_nodes": 2518,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2015_Zn__hww_3_ION_2/block1.82/2015_Zn__hww_3_ION_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 632.2,
+        "peak_rss_MB": 13114,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      },
+      "r1.30": {
+        "gas": "water",
+        "channels": 1,
+        "pockets": 1,
+        "nodes": 39402,
+        "accessible_nodes": 4131,
+        "n_spheres": 0,
+        "sphere_radii": [],
+        "sphere_volume_sum_A3": 0,
+        "sphere_volume_pct_of_cell": 0.0,
+        "block_file": "corepop_zeo_runs/2015_Zn__hww_3_ION_2/block1.30/2015_Zn__hww_3_ION_2.block",
+        "block_md5": "897316929176464ebc9ad085f31e7284",
+        "n_block_files": 1,
+        "block_ok": true,
+        "blockpockets_needed": false,
+        "rc": 0,
+        "seconds": 674.5,
+        "peak_rss_MB": 15319,
+        "stopped_by_guard": false,
+        "pre_counts": {
+          "simulate": 0,
+          "network": 0
+        },
+        "tries": 1
+      }
+    }
+  ],
+  "note": "기계적 사실뿐. 구 0 = 그 탐침에서 막을 주머니 없음(그 성분 막음 없음). n_spheres None = 실패(구 0 과 다름). 주머니 부피 = .block 구 부피 합(겹침 무시).",
+  "elapsed_s": 16735,
+  "summary": {
+    "2021[Mn][dia]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2021[Mn][dia]3[FSR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2020[Cu][nan]3[ASR]2": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": null
+    },
+    "2019[Cu][nan]3[ASR]2": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2019[Cu][nbo]3[ASR]1": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    },
+    "2015[Zn][hww]3[ION]2": {
+      "spheres_1.65": 0,
+      "spheres_1.82": 0,
+      "spheres_1.30": 0
+    }
+  },
+  "all_blocks_ok": false,
+  "n_needing_blockpockets": {
+    "1.65": 0,
+    "1.82": 0,
+    "1.30": 0
+  },
+  "finished": "2026-11-17 00:20:42"
+}
