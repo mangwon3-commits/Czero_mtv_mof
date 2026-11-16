@@ -7553,3 +7553,9 @@ T-BR-1 등록 §2 의 풀 **524종 전부**입니다. 표본이 아니므로 "�
 > - 입력은 298 K 판(`density_v3_tpl4/hkhome/e24i_br_open__q_off`)과 비교해 **ExternalTemperature 298.0 → 323.0 한 줄만** 다릅니다. 두 작업 모두 Simulation finished 이고 적재 줄이 있습니다.
 > - 산출(298 K 판과 같은 파일 구성): `density_v3_tpl4_323/e24i_br_open__q_{on,off}/VTK/System_0/COMDensityProfile_CO2.vtk.gz` · `simulation.input` · `density_results.json`(a1242493 04f7e825 a410af7f ).
 > - ZIF-69(base) 같은 작업은 `run_density_charge_323_zif69.py`(대상 · 출력 폴더만 다른 사본)로 21:49 에 띄웠습니다. 출력은 `density_v3_323/` 입니다.
+
+> **[desktop 11-16 21:59]** COREPOP-H323 **HKHOME b09 7종(pc4 몫을 가져온 것) 완주** · Zeo++ 18:29 → 21:03(21/21 ok) · 구조별 러너 7개 21:03~21:06 → 21:38~21:58, 모두 rc 0 · 감사 1/1. `results_corepop_e_humid3_323_hkhome2_s01_b09.json` ~ `_s07_b09.json`. **b09 의 HKHOME 몫 12종이 다 끝났습니다.**
+> **[desktop 11-16 21:59]** COREPOP-H323 **보완 읽기 2**(등록 §9-3 · 주 판정은 고치지 않음). 보완 1 의 열 짝에 랩탑 b08(42ca699d · 감사 7c0a55d4)과 HKHOME b09 구조별 열두 짝을 더했습니다. hkhome2_s01 · s02 는 postman 반입 전이라 HKHOME 로컬본을 썼습니다(6ce26d79 · 29213075).
+> - **전부(n 256)**: ρ **0.932** [0.910, 0.949] → 유지 쪽. 깃발 뺀 0.934 · 막음 없는 0.931 · 미완 0.918~0.932 · 민감 없음.
+> - b01~b05 는 새 자료가 없어 보완 1 과 같습니다(n 151 · 0.891).
+> - 산출: `corepop_h323_reading_supp2_all_20261116.json`(59dc9c8c).
